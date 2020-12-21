@@ -7,8 +7,12 @@
 #endif
 
 #include "PL_Basic.hpp"
+#include "PL_GameFramework_classes.hpp"
+#include "PL_Core_classes.hpp"
+#include "PL_Engine_classes.hpp"
+#include "PL_IpDrv_classes.hpp"
 
-namespace Classes
+namespace SDK
 {
 //---------------------------------------------------------------------------
 //Constants
@@ -159,122 +163,204 @@ enum class EPComVideoPlayerError : uint8_t
 //---------------------------------------------------------------------------
 
 // ScriptStruct PlatformCommon.PComOpenBroadcaster.PComOpenBroadcasterSettings
-// 0x185BAF53A10
+// 0x0004
 struct FPComOpenBroadcasterSettings
 {
-	unsigned char                                      UnknownData00[0x185BAF53A10];                             // 0x0000(0x185BAF53A10) MISSED OFFSET
+	unsigned long                                      bAllowWebcam : 1;                                         // 0x0000(0x0004) (Edit)
+	unsigned long                                      bAllowMicrophone : 1;                                     // 0x0000(0x0004) (Edit)
+	unsigned long                                      bAllowDesktopAudio : 1;                                   // 0x0000(0x0004) (Edit)
 };
 
 // ScriptStruct PlatformCommon.PComImageDownloader.PComImageDownload
-// 0x185BAF549D0
+// 0x0040
 struct FPComImageDownload
 {
-	unsigned char                                      UnknownData00[0x185BAF549D0];                             // 0x0000(0x185BAF549D0) MISSED OFFSET
+	struct FString                                     URL;                                                      // 0x0000(0x0010) (AlwaysInit, NeedCtorLink)
+	struct FString                                     FilePath;                                                 // 0x0010(0x0010) (AlwaysInit, NeedCtorLink)
+	struct FPointer                                    HttpDownloader;                                           // 0x0020(0x0008) (Const, Native)
+	TEnumAsByte<EOnlineImageDownloadState>             State;                                                    // 0x0028(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0029(0x0003) MISSED OFFSET
+	TArray<unsigned char>                              Data;                                                     // 0x002C(0x0010) (AlwaysInit, NeedCtorLink)
+	unsigned long                                      bPendingRemoval : 1;                                      // 0x003C(0x0004)
 };
 
 // ScriptStruct PlatformCommon.PComInputLightingEffect.PComInputLightingPreset
-// 0x185BAF53DD0
+// 0x003C
 struct FPComInputLightingPreset
 {
-	unsigned char                                      UnknownData00[0x185BAF53DD0];                             // 0x0000(0x185BAF53DD0) MISSED OFFSET
+	struct FName                                       PresetName;                                               // 0x0000(0x0008) (Edit)
+	struct FInterpCurveLinearColor                     Curve;                                                    // 0x0008(0x0014) (Edit, NeedCtorLink)
+	struct FLinearColor                                ColorTint;                                                // 0x001C(0x0010) (Edit)
+	int                                                LoopCount;                                                // 0x002C(0x0004) (Edit)
+	float                                              PlaybackRate;                                             // 0x0030(0x0004) (Edit)
+	float                                              BlendInTime;                                              // 0x0034(0x0004) (Edit)
+	int                                                Priority;                                                 // 0x0038(0x0004) (Edit)
 };
 
 // ScriptStruct PlatformCommon.PComInputLightingEffect.PComActiveInputLightingPreset
-// 0x185BAF522D0
+// 0x000C
 struct FPComActiveInputLightingPreset
 {
-	unsigned char                                      UnknownData00[0x185BAF522D0];                             // 0x0000(0x185BAF522D0) MISSED OFFSET
-};
-
-// ScriptStruct PlatformCommon.PComMusicTheme.MusicEvent
-// 0x185BAF55D50
-struct FMusicEvent
-{
-	unsigned char                                      UnknownData00[0x185BAF55D50];                             // 0x0000(0x185BAF55D50) MISSED OFFSET
-};
-
-// ScriptStruct PlatformCommon.PComPerformanceCaptureBase.PComPerformanceCaptureProfile
-// 0x185B4EDBF70
-struct FPComPerformanceCaptureProfile
-{
-	unsigned char                                      UnknownData00[0x185B4EDBF70];                             // 0x0000(0x185B4EDBF70) MISSED OFFSET
+	int                                                LoopCount;                                                // 0x0000(0x0004)
+	float                                              CurrentTime;                                              // 0x0004(0x0004)
+	float                                              PlaybackRate;                                             // 0x0008(0x0004)
 };
 
 // ScriptStruct PlatformCommon.PComPerformanceCaptureBase.PComPerformanceCaptureStat
-// 0x185B4EDD470
+// 0x0010
 struct FPComPerformanceCaptureStat
 {
-	unsigned char                                      UnknownData00[0x185B4EDD470];                             // 0x0000(0x185B4EDD470) MISSED OFFSET
+	struct FName                                       StatName;                                                 // 0x0000(0x0008)
+	struct FDouble                                     StatValue;                                                // 0x0008(0x0008)
+};
+
+// ScriptStruct PlatformCommon.PComPerformanceCaptureBase.PComPerformanceCaptureProfile
+// 0x001C
+struct FPComPerformanceCaptureProfile
+{
+	struct FName                                       ProfileName;                                              // 0x0000(0x0008) (Edit)
+	int                                                ScalabilityBucket;                                        // 0x0008(0x0004) (Edit)
+	int                                                ResolutionX;                                              // 0x000C(0x0004) (Edit)
+	int                                                ResolutionY;                                              // 0x0010(0x0004) (Edit)
+	int                                                VsyncInterval;                                            // 0x0014(0x0004) (Edit)
+	unsigned long                                      bFullScreen : 1;                                          // 0x0018(0x0004) (Edit)
 };
 
 // ScriptStruct PlatformCommon.PComPerformanceCaptureBase.PComPerformanceCaptureStatsPerNode
-// 0x185B4EDC630
+// 0x0018
 struct FPComPerformanceCaptureStatsPerNode
 {
-	unsigned char                                      UnknownData00[0x185B4EDC630];                             // 0x0000(0x185B4EDC630) MISSED OFFSET
-};
-
-// ScriptStruct PlatformCommon.PComPerformanceCaptureBase.PComPerformanceCaptureStatsPerSkin
-// 0x185B4EDCCF0
-struct FPComPerformanceCaptureStatsPerSkin
-{
-	unsigned char                                      UnknownData00[0x185B4EDCCF0];                             // 0x0000(0x185B4EDCCF0) MISSED OFFSET
-};
-
-// ScriptStruct PlatformCommon.PComPerformanceCaptureGame.PComPerformanceCaptureStatCollection
-// 0x185B4EDF4B0
-struct FPComPerformanceCaptureStatCollection
-{
-	unsigned char                                      UnknownData00[0x185B4EDF4B0];                             // 0x0000(0x185B4EDF4B0) MISSED OFFSET
+	class AActor*                                      Node;                                                     // 0x0000(0x0008)
+	TArray<struct FPComPerformanceCaptureStat>         Stats;                                                    // 0x0008(0x0010) (NeedCtorLink)
 };
 
 // ScriptStruct PlatformCommon.PComPictureInPicture.PComPipViewDesc
-// 0x185B4EDE370
+// 0x01E4
 struct FPComPipViewDesc
 {
-	unsigned char                                      UnknownData00[0x185B4EDE370];                             // 0x0000(0x185B4EDE370) MISSED OFFSET
+	struct FName                                       ViewName;                                                 // 0x0000(0x0008)
+	struct FVector                                     ViewLocation;                                             // 0x0008(0x000C)
+	struct FRotator                                    ViewRotation;                                             // 0x0014(0x000C)
+	struct FBox                                        Viewport;                                                 // 0x0020(0x001C)
+	class UPostProcessChain*                           PostProcessChain;                                         // 0x003C(0x0008)
+	struct FPostProcessSettings                        PostProcessSettings;                                      // 0x0044(0x0180) (NeedCtorLink)
+	float                                              FOV;                                                      // 0x01C4(0x0004)
+	struct FColor                                      ClearColor;                                               // 0x01C8(0x0004)
+	unsigned long                                      bDebugRenderTranslucent : 1;                              // 0x01CC(0x0004)
+	unsigned long                                      bAlwaysRender : 1;                                        // 0x01CC(0x0004)
+	struct FDouble                                     RequestRenderTime;                                        // 0x01D0(0x0008)
+	struct FDouble                                     LastRenderedTime;                                         // 0x01D8(0x0008)
+	int                                                NumFramesSinceRender;                                     // 0x01E0(0x0004)
 };
 
 // ScriptStruct PlatformCommon.PComPlayerProfile.BadgeStruct
-// 0x185BADEA6D0
+// 0x003C
 struct FBadgeStruct
 {
-	unsigned char                                      UnknownData00[0x185BADEA6D0];                             // 0x0000(0x185BADEA6D0) MISSED OFFSET
+	int                                                BadgeId;                                                  // 0x0000(0x0004)
+	int                                                ActivityId;                                               // 0x0004(0x0004)
+	int                                                Icon;                                                     // 0x0008(0x0004)
+	int                                                Tier;                                                     // 0x000C(0x0004)
+	int                                                Progress;                                                 // 0x0010(0x0004)
+	int                                                MaxValue;                                                 // 0x0014(0x0004)
+	int                                                Category;                                                 // 0x0018(0x0004)
+	struct FString                                     Title;                                                    // 0x001C(0x0010) (AlwaysInit, NeedCtorLink)
+	struct FString                                     Description;                                              // 0x002C(0x0010) (AlwaysInit, NeedCtorLink)
 };
 
 // ScriptStruct PlatformCommon.PComPlayerProfile.PropertyPair
-// 0x185BADE73D0
+// 0x0008
 struct FPropertyPair
 {
-	unsigned char                                      UnknownData00[0x185BADE73D0];                             // 0x0000(0x185BADE73D0) MISSED OFFSET
+	int                                                PropertyId;                                               // 0x0000(0x0004)
+	int                                                Value;                                                    // 0x0004(0x0004)
 };
 
 // ScriptStruct PlatformCommon.PComPlayerProfile.AccoladeStruct
-// 0x185BADEAFD0
+// 0x0010
 struct FAccoladeStruct
 {
-	unsigned char                                      UnknownData00[0x185BADEAFD0];                             // 0x0000(0x185BADEAFD0) MISSED OFFSET
+	int                                                AccoladeId;                                               // 0x0000(0x0004)
+	int                                                ActivityId;                                               // 0x0004(0x0004)
+	int                                                Type;                                                     // 0x0008(0x0004)
+	int                                                Value;                                                    // 0x000C(0x0004)
 };
 
 // ScriptStruct PlatformCommon.PComPositionHistoryServerComponent.PComPositionHistoryData
-// 0x185BADE9D10
+// 0x002C
 struct FPComPositionHistoryData
 {
-	unsigned char                                      UnknownData00[0x185BADE9D10];                             // 0x0000(0x185BADE9D10) MISSED OFFSET
-};
-
-// ScriptStruct PlatformCommon.PComStructures.CombatMessageInfo
-// 0x185BADEC650
-struct FCombatMessageInfo
-{
-	unsigned char                                      UnknownData00[0x185BADEC650];                             // 0x0000(0x185BADEC650) MISSED OFFSET
+	struct FVector                                     Location;                                                 // 0x0000(0x000C)
+	struct FRotator                                    Rotation;                                                 // 0x000C(0x000C)
+	struct FVector                                     Velocity;                                                 // 0x0018(0x000C)
+	TEnumAsByte<EPhysics>                              Physics;                                                  // 0x0024(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0025(0x0003) MISSED OFFSET
+	unsigned long                                      bWasFalling : 1;                                          // 0x0028(0x0004)
+	unsigned long                                      bCollideActors : 1;                                       // 0x0028(0x0004)
+	unsigned long                                      bBlockActors : 1;                                         // 0x0028(0x0004)
 };
 
 // ScriptStruct PlatformCommon.PComUIManagerBase.ManagerImage
-// 0x185BADEF7D0
+// 0x0018
 struct FManagerImage
 {
-	unsigned char                                      UnknownData00[0x185BADEF7D0];                             // 0x0000(0x185BADEF7D0) MISSED OFFSET
+	struct FString                                     strImageName;                                             // 0x0000(0x0010) (AlwaysInit, NeedCtorLink)
+	class UTexture2DDynamic*                           pTexture;                                                 // 0x0010(0x0008)
+};
+
+// ScriptStruct PlatformCommon.PComMusicTheme.MusicEvent
+// 0x0038
+struct FMusicEvent
+{
+	struct FName                                       EventName;                                                // 0x0000(0x0008) (Edit)
+	struct FMusicTrackStruct                           EventTrack;                                               // 0x0008(0x002C) (Edit, NeedCtorLink)
+	float                                              EventDuration;                                            // 0x0034(0x0004) (Edit)
+};
+
+// ScriptStruct PlatformCommon.PComPerformanceCaptureBase.PComPerformanceCaptureStatsPerSkin
+// 0x0070
+struct FPComPerformanceCaptureStatsPerSkin
+{
+	struct FString                                     CharacterName;                                            // 0x0000(0x0010) (NeedCtorLink)
+	struct FString                                     SkinName;                                                 // 0x0010(0x0010) (NeedCtorLink)
+	struct FString                                     SkeletalMeshPathName;                                     // 0x0020(0x0010) (NeedCtorLink)
+	struct FString                                     SkeletalMeshPathNameHead;                                 // 0x0030(0x0010) (NeedCtorLink)
+	struct FString                                     SkeletalMeshPathNameBody;                                 // 0x0040(0x0010) (NeedCtorLink)
+	struct FString                                     SkeletalMeshPathNameWeapon;                               // 0x0050(0x0010) (NeedCtorLink)
+	TArray<struct FPComPerformanceCaptureStat>         Stats;                                                    // 0x0060(0x0010) (NeedCtorLink)
+};
+
+// ScriptStruct PlatformCommon.PComPerformanceCaptureGame.PComPerformanceCaptureStatCollection
+// 0x0018
+struct FPComPerformanceCaptureStatCollection
+{
+	struct FName                                       ProfileName;                                              // 0x0000(0x0008)
+	TArray<struct FPComPerformanceCaptureStat>         Stats;                                                    // 0x0008(0x0010) (NeedCtorLink)
+};
+
+// ScriptStruct PlatformCommon.PComStructures.CombatMessageInfo
+// 0x0040
+struct FCombatMessageInfo
+{
+	int                                                nMsgId;                                                   // 0x0000(0x0004)
+	int                                                nSourceId;                                                // 0x0004(0x0004)
+	TEnumAsByte<ECMTargetType>                         eSourceType;                                              // 0x0008(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0009(0x0003) MISSED OFFSET
+	int                                                nSourceOwnerId;                                           // 0x000C(0x0004)
+	int                                                nTargetId;                                                // 0x0010(0x0004)
+	int                                                nTargetOwnerId;                                           // 0x0014(0x0004)
+	TEnumAsByte<ECMTargetType>                         eTargetType;                                              // 0x0018(0x0001)
+	unsigned char                                      UnknownData01[0x3];                                       // 0x0019(0x0003) MISSED OFFSET
+	int                                                nAmount1;                                                 // 0x001C(0x0004)
+	int                                                nAmount2;                                                 // 0x0020(0x0004)
+	int                                                nSourceItemId;                                            // 0x0024(0x0004)
+	int                                                nDamageTypeId;                                            // 0x0028(0x0004)
+	unsigned char                                      nFireModeIndex;                                           // 0x002C(0x0001)
+	unsigned char                                      UnknownData02[0x3];                                       // 0x002D(0x0003) MISSED OFFSET
+	int                                                nLocationId;                                              // 0x0030(0x0004)
+	int                                                nEventIndex;                                              // 0x0034(0x0004)
+	int                                                nLocationX;                                               // 0x0038(0x0004)
+	int                                                nLocationY;                                               // 0x003C(0x0004)
 };
 
 }

@@ -8,7 +8,7 @@
 
 #include "PL_OnlineSubsystemDiscord_classes.hpp"
 
-namespace Classes
+namespace SDK
 {
 //---------------------------------------------------------------------------
 //Parameters

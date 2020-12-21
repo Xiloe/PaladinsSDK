@@ -10,7 +10,7 @@
 #include "PL_Core_classes.hpp"
 #include "PL_Engine_classes.hpp"
 
-namespace Classes
+namespace SDK
 {
 //---------------------------------------------------------------------------
 //Constants
@@ -186,381 +186,525 @@ enum class ETextDrawMethod : uint8_t
 //Script Structs
 //---------------------------------------------------------------------------
 
-// ScriptStruct GameFramework.GameTypes.CrowdSpawnInfoItem
-// 0x185BA808F60
-struct FCrowdSpawnInfoItem
+// ScriptStruct GameFramework.FrameworkGame.RequiredMobileInputConfig
+// 0x0024
+struct FRequiredMobileInputConfig
 {
-	unsigned char                                      UnknownData00[0x185BA808F60];                             // 0x0000(0x185BA808F60) MISSED OFFSET
-};
-
-// ScriptStruct GameFramework.GameTypes.AgentArchetypeInfo
-// 0x185BA808BA0
-struct FAgentArchetypeInfo
-{
-	unsigned char                                      UnknownData00[0x185BA808BA0];                             // 0x0000(0x185BA808BA0) MISSED OFFSET
-};
-
-// ScriptStruct GameFramework.GameTypes.CrowdSpawnerPlayerInfo
-// 0x185BA80B2A0
-struct FCrowdSpawnerPlayerInfo
-{
-	unsigned char                                      UnknownData00[0x185BA80B2A0];                             // 0x0000(0x185BA80B2A0) MISSED OFFSET
-};
-
-// ScriptStruct GameFramework.GameTypes.NearbyDynamicItem
-// 0x185BA80DA60
-struct FNearbyDynamicItem
-{
-	unsigned char                                      UnknownData00[0x185BA80DA60];                             // 0x0000(0x185BA80DA60) MISSED OFFSET
+	struct FString                                     GroupName;                                                // 0x0000(0x0010) (Config, NeedCtorLink)
+	TArray<struct FString>                             RequireZoneNames;                                         // 0x0010(0x0010) (Config, AlwaysInit, NeedCtorLink)
+	unsigned long                                      bIsAttractModeGroup : 1;                                  // 0x0020(0x0004) (Config)
 };
 
 // ScriptStruct GameFramework.GameTypes.AICmdHistoryItem
-// 0x185BC24A450
+// 0x001C
 struct FAICmdHistoryItem
 {
-	unsigned char                                      UnknownData00[0x185BC24A450];                             // 0x0000(0x185BC24A450) MISSED OFFSET
+	class UClass*                                      CmdClass;                                                 // 0x0000(0x0008)
+	float                                              TimeStamp;                                                // 0x0008(0x0004)
+	struct FString                                     VerboseString;                                            // 0x000C(0x0010) (NeedCtorLink)
 };
 
-// ScriptStruct GameFramework.GameTypes.SpecialMoveStruct
-// 0x185BA80BD20
-struct FSpecialMoveStruct
+// ScriptStruct GameFramework.GameTypes.CrowdSpawnerPlayerInfo
+// 0x002C
+struct FCrowdSpawnerPlayerInfo
 {
-	unsigned char                                      UnknownData00[0x185BA80BD20];                             // 0x0000(0x185BA80BD20) MISSED OFFSET
-};
-
-// ScriptStruct GameFramework.GameTypes.GameSpecialMoveInfo
-// 0x185BA80B4E0
-struct FGameSpecialMoveInfo
-{
-	unsigned char                                      UnknownData00[0x185BA80B4E0];                             // 0x0000(0x185BA80B4E0) MISSED OFFSET
-};
-
-// ScriptStruct GameFramework.GameTypes.TakeHitInfo
-// 0x185BA80B1E0
-struct FTakeHitInfo
-{
-	unsigned char                                      UnknownData00[0x185BA80B1E0];                             // 0x0000(0x185BA80B1E0) MISSED OFFSET
-};
-
-// ScriptStruct GameFramework.GameTypes.ScreenShakeStruct
-// 0x185BA80C020
-struct FScreenShakeStruct
-{
-	unsigned char                                      UnknownData00[0x185BA80C020];                             // 0x0000(0x185BA80C020) MISSED OFFSET
-};
-
-// ScriptStruct GameFramework.GameTypes.ShakeParams
-// 0x185BA80CAA0
-struct FShakeParams
-{
-	unsigned char                                      UnknownData00[0x185BA80CAA0];                             // 0x0000(0x185BA80CAA0) MISSED OFFSET
-};
-
-// ScriptStruct GameFramework.GameTypes.ScreenShakeAnimStruct
-// 0x185BA80C1A0
-struct FScreenShakeAnimStruct
-{
-	unsigned char                                      UnknownData00[0x185BA80C1A0];                             // 0x0000(0x185BA80C1A0) MISSED OFFSET
-};
-
-// ScriptStruct GameFramework.GameCrowdAgent.AvoidOtherSampleItem
-// 0x185BA811BA0
-struct FAvoidOtherSampleItem
-{
-	unsigned char                                      UnknownData00[0x185BA811BA0];                             // 0x0000(0x185BA811BA0) MISSED OFFSET
-};
-
-// ScriptStruct GameFramework.GameCrowdAgent.RecentInteraction
-// 0x185BA811660
-struct FRecentInteraction
-{
-	unsigned char                                      UnknownData00[0x185BA811660];                             // 0x0000(0x185BA811660) MISSED OFFSET
+	struct FVector                                     ViewLocation;                                             // 0x0000(0x000C)
+	struct FRotator                                    ViewRotation;                                             // 0x000C(0x000C)
+	struct FVector                                     PredictLocation;                                          // 0x0018(0x000C)
+	class APlayerController*                           PC;                                                       // 0x0024(0x0008)
 };
 
 // ScriptStruct GameFramework.GameCrowdAgent.BehaviorEntry
-// 0x185BA812F20
+// 0x0018
 struct FBehaviorEntry
 {
-	unsigned char                                      UnknownData00[0x185BA812F20];                             // 0x0000(0x185BA812F20) MISSED OFFSET
+	class UGameCrowdAgentBehavior*                     BehaviorArchetype;                                        // 0x0000(0x0008) (Edit)
+	class AActor*                                      LookAtActor;                                              // 0x0008(0x0008) (Edit)
+	float                                              BehaviorFrequency;                                        // 0x0010(0x0004) (Edit)
+	unsigned long                                      bNeverRepeat : 1;                                         // 0x0014(0x0004) (Edit)
+	unsigned long                                      bHasBeenUsed : 1;                                         // 0x0014(0x0004)
+	unsigned long                                      bCanBeUsed : 1;                                           // 0x0014(0x0004)
 };
 
-// ScriptStruct GameFramework.FrameworkGame.RequiredMobileInputConfig
-// 0x185BA819160
-struct FRequiredMobileInputConfig
+// ScriptStruct GameFramework.GameTypes.NearbyDynamicItem
+// 0x0008
+struct FNearbyDynamicItem
 {
-	unsigned char                                      UnknownData00[0x185BA819160];                             // 0x0000(0x185BA819160) MISSED OFFSET
+	class AActor*                                      Dynamic;                                                  // 0x0000(0x0008) (Edit)
 };
 
-// ScriptStruct GameFramework.GameCrowdAgentSkeletal.GameCrowdAttachmentList
-// 0x185BA82DC20
-struct FGameCrowdAttachmentList
+// ScriptStruct GameFramework.GameCrowdAgent.AvoidOtherSampleItem
+// 0x000C
+struct FAvoidOtherSampleItem
 {
-	unsigned char                                      UnknownData00[0x185BA82DC20];                             // 0x0000(0x185BA82DC20) MISSED OFFSET
+	int                                                RotOffset;                                                // 0x0000(0x0004) (Edit)
+	unsigned char                                      NumMagSamples;                                            // 0x0004(0x0001) (Edit)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0005(0x0003) MISSED OFFSET
+	unsigned long                                      bFallbackOnly : 1;                                        // 0x0008(0x0004) (Edit)
+};
+
+// ScriptStruct GameFramework.GameCrowdAgent.RecentInteraction
+// 0x000C
+struct FRecentInteraction
+{
+	struct FName                                       InteractionTag;                                           // 0x0000(0x0008)
+	float                                              InteractionDelay;                                         // 0x0008(0x0004)
 };
 
 // ScriptStruct GameFramework.GameCrowdAgentSkeletal.GameCrowdAttachmentInfo
-// 0x185BA82CF60
+// 0x0018
 struct FGameCrowdAttachmentInfo
 {
-	unsigned char                                      UnknownData00[0x185BA82CF60];                             // 0x0000(0x185BA82CF60) MISSED OFFSET
+	class UStaticMesh*                                 StaticMesh;                                               // 0x0000(0x0008) (Edit)
+	float                                              Chance;                                                   // 0x0008(0x0004) (Edit)
+	struct FVector                                     Scale3D;                                                  // 0x000C(0x000C) (Edit)
 };
 
-// ScriptStruct GameFramework.GameSkelCtrl_Recoil.RecoilParams
-// 0x185B6243E30
-struct FRecoilParams
+// ScriptStruct GameFramework.GameCrowdAgentSkeletal.GameCrowdAttachmentList
+// 0x0018
+struct FGameCrowdAttachmentList
 {
-	unsigned char                                      UnknownData00[0x185B6243E30];                             // 0x0000(0x185B6243E30) MISSED OFFSET
+	struct FName                                       SocketName;                                               // 0x0000(0x0008) (Edit)
+	TArray<struct FGameCrowdAttachmentInfo>            List;                                                     // 0x0008(0x0010) (Edit, NeedCtorLink)
 };
 
-// ScriptStruct GameFramework.GameSkelCtrl_Recoil.RecoilDef
-// 0x185B6244670
-struct FRecoilDef
+// ScriptStruct GameFramework.GameTypes.AgentArchetypeInfo
+// 0x0024
+struct FAgentArchetypeInfo
 {
-	unsigned char                                      UnknownData00[0x185B6244670];                             // 0x0000(0x185B6244670) MISSED OFFSET
+	class UObject*                                     AgentArchetype;                                           // 0x0000(0x0008) (Edit)
+	float                                              FrequencyModifier;                                        // 0x0008(0x0004) (Edit)
+	int                                                MaxAllowed;                                               // 0x000C(0x0004) (Edit)
+	int                                                CurrSpawned;                                              // 0x0010(0x0004) (Transient)
+	TArray<class UObject*>                             GroupMembers;                                             // 0x0014(0x0010) (Edit, NeedCtorLink)
 };
 
-// ScriptStruct GameFramework.GameStateObject.TeamState
-// 0x185BADBCFB0
-struct FTeamState
+// ScriptStruct GameFramework.GameTypes.CrowdSpawnInfoItem
+// 0x0090
+struct FCrowdSpawnInfoItem
 {
-	unsigned char                                      UnknownData00[0x185BADBCFB0];                             // 0x0000(0x185BADBCFB0) MISSED OFFSET
-};
-
-// ScriptStruct GameFramework.GameStateObject.PlayerState
-// 0x185BADBA970
-struct FPlayerState
-{
-	unsigned char                                      UnknownData00[0x185BADBA970];                             // 0x0000(0x185BADBA970) MISSED OFFSET
-};
-
-// ScriptStruct GameFramework.GameStatsAggregator.AggregateEventMapping
-// 0x185BB67D680
-struct FAggregateEventMapping
-{
-	unsigned char                                      UnknownData00[0x185BB67D680];                             // 0x0000(0x185BB67D680) MISSED OFFSET
-};
-
-// ScriptStruct GameFramework.GameStatsAggregator.TeamEvents
-// 0x185BB67D8C0
-struct FTeamEvents
-{
-	unsigned char                                      UnknownData00[0x185BB67D8C0];                             // 0x0000(0x185BB67D8C0) MISSED OFFSET
-};
-
-// ScriptStruct GameFramework.GameStatsAggregator.PlayerEvents
-// 0x185BB67E640
-struct FPlayerEvents
-{
-	unsigned char                                      UnknownData00[0x185BB67E640];                             // 0x0000(0x185BB67E640) MISSED OFFSET
-};
-
-// ScriptStruct GameFramework.GameStatsAggregator.GameEvents
-// 0x185BADBDC70
-struct FGameEvents
-{
-	unsigned char                                      UnknownData00[0x185BADBDC70];                             // 0x0000(0x185BADBDC70) MISSED OFFSET
-};
-
-// ScriptStruct GameFramework.GameStatsAggregator.DamageEvents
-// 0x0000
-struct FDamageEvents
-{
-	unsigned char                                      UnknownData00[0x88];                                      // 0x0000(0x0088) MISSED OFFSET
-	class GameStateObject*                             GameState;                                                // 0x0088(0x0008)
-	TArray<struct FAggregateEventMapping>              AggregatesList;                                           // 0x0090(0x0010) (NeedCtorLink)
-	struct FMap_Mirror                                 AggregateEventsMapping;                                   // 0x00A0(0x0048) (Const, Native, Transient)
-	TArray<struct FGameplayEventMetaData>              AggregateEvents;                                          // 0x00E8(0x0010) (NeedCtorLink)
-	TArray<int>                                        AggregatesFound;                                          // 0x00F8(0x0010) (Const, NeedCtorLink)
-	struct FGameEvents                                 AllGameEvents;                                            // 0x0108(0x0048)
-	TArray<struct FTeamEvents>                         AllTeamEvents;                                            // 0x0150(0x0010) (Const, NeedCtorLink)
-	TArray<struct FPlayerEvents>                       AllPlayerEvents;                                          // 0x0160(0x0010) (Const, NeedCtorLink)
-	struct FWeaponEvents                               AllWeaponEvents;                                          // 0x0170(0x0058) (Const, NeedCtorLink)
-	struct FProjectileEvents                           AllProjectileEvents;                                      // 0x01C8(0x0058) (Const, NeedCtorLink)
-	struct FPawnEvents                                 AllPawnEvents;                                            // 0x0220(0x0058) (Const, NeedCtorLink)
-	struct FDamageEvents                               AllDamageEvents;                                          // 0x0278(0x0058) (Const, NeedCtorLink)
-};
-
-// ScriptStruct GameFramework.GameStatsAggregator.PawnEvents
-// 0x0000
-struct FPawnEvents
-{
-	unsigned char                                      UnknownData00[0x88];                                      // 0x0000(0x0088) MISSED OFFSET
-	class GameStateObject*                             GameState;                                                // 0x0088(0x0008)
-	TArray<struct FAggregateEventMapping>              AggregatesList;                                           // 0x0090(0x0010) (NeedCtorLink)
-	struct FMap_Mirror                                 AggregateEventsMapping;                                   // 0x00A0(0x0048) (Const, Native, Transient)
-	TArray<struct FGameplayEventMetaData>              AggregateEvents;                                          // 0x00E8(0x0010) (NeedCtorLink)
-	TArray<int>                                        AggregatesFound;                                          // 0x00F8(0x0010) (Const, NeedCtorLink)
-	struct FGameEvents                                 AllGameEvents;                                            // 0x0108(0x0048)
-	TArray<struct FTeamEvents>                         AllTeamEvents;                                            // 0x0150(0x0010) (Const, NeedCtorLink)
-	TArray<struct FPlayerEvents>                       AllPlayerEvents;                                          // 0x0160(0x0010) (Const, NeedCtorLink)
-	struct FWeaponEvents                               AllWeaponEvents;                                          // 0x0170(0x0058) (Const, NeedCtorLink)
-	struct FProjectileEvents                           AllProjectileEvents;                                      // 0x01C8(0x0058) (Const, NeedCtorLink)
-	struct FPawnEvents                                 AllPawnEvents;                                            // 0x0220(0x0058) (Const, NeedCtorLink)
-	struct FDamageEvents                               AllDamageEvents;                                          // 0x0278(0x0058) (Const, NeedCtorLink)
-};
-
-// ScriptStruct GameFramework.GameStatsAggregator.ProjectileEvents
-// 0x0000
-struct FProjectileEvents
-{
-	unsigned char                                      UnknownData00[0x88];                                      // 0x0000(0x0088) MISSED OFFSET
-	class GameStateObject*                             GameState;                                                // 0x0088(0x0008)
-	TArray<struct FAggregateEventMapping>              AggregatesList;                                           // 0x0090(0x0010) (NeedCtorLink)
-	struct FMap_Mirror                                 AggregateEventsMapping;                                   // 0x00A0(0x0048) (Const, Native, Transient)
-	TArray<struct FGameplayEventMetaData>              AggregateEvents;                                          // 0x00E8(0x0010) (NeedCtorLink)
-	TArray<int>                                        AggregatesFound;                                          // 0x00F8(0x0010) (Const, NeedCtorLink)
-	struct FGameEvents                                 AllGameEvents;                                            // 0x0108(0x0048)
-	TArray<struct FTeamEvents>                         AllTeamEvents;                                            // 0x0150(0x0010) (Const, NeedCtorLink)
-	TArray<struct FPlayerEvents>                       AllPlayerEvents;                                          // 0x0160(0x0010) (Const, NeedCtorLink)
-	struct FWeaponEvents                               AllWeaponEvents;                                          // 0x0170(0x0058) (Const, NeedCtorLink)
-	struct FProjectileEvents                           AllProjectileEvents;                                      // 0x01C8(0x0058) (Const, NeedCtorLink)
-	struct FPawnEvents                                 AllPawnEvents;                                            // 0x0220(0x0058) (Const, NeedCtorLink)
-	struct FDamageEvents                               AllDamageEvents;                                          // 0x0278(0x0058) (Const, NeedCtorLink)
-};
-
-// ScriptStruct GameFramework.GameStatsAggregator.WeaponEvents
-// 0x0000
-struct FWeaponEvents
-{
-	unsigned char                                      UnknownData00[0x88];                                      // 0x0000(0x0088) MISSED OFFSET
-	class GameStateObject*                             GameState;                                                // 0x0088(0x0008)
-	TArray<struct FAggregateEventMapping>              AggregatesList;                                           // 0x0090(0x0010) (NeedCtorLink)
-	struct FMap_Mirror                                 AggregateEventsMapping;                                   // 0x00A0(0x0048) (Const, Native, Transient)
-	TArray<struct FGameplayEventMetaData>              AggregateEvents;                                          // 0x00E8(0x0010) (NeedCtorLink)
-	TArray<int>                                        AggregatesFound;                                          // 0x00F8(0x0010) (Const, NeedCtorLink)
-	struct FGameEvents                                 AllGameEvents;                                            // 0x0108(0x0048)
-	TArray<struct FTeamEvents>                         AllTeamEvents;                                            // 0x0150(0x0010) (Const, NeedCtorLink)
-	TArray<struct FPlayerEvents>                       AllPlayerEvents;                                          // 0x0160(0x0010) (Const, NeedCtorLink)
-	struct FWeaponEvents                               AllWeaponEvents;                                          // 0x0170(0x0058) (Const, NeedCtorLink)
-	struct FProjectileEvents                           AllProjectileEvents;                                      // 0x01C8(0x0058) (Const, NeedCtorLink)
-	struct FPawnEvents                                 AllPawnEvents;                                            // 0x0220(0x0058) (Const, NeedCtorLink)
-	struct FDamageEvents                               AllDamageEvents;                                          // 0x0278(0x0058) (Const, NeedCtorLink)
-};
-
-// ScriptStruct GameFramework.GameStatsAggregator.EventsBase
-// 0x185BADBD7F0
-struct FEventsBase
-{
-	unsigned char                                      UnknownData00[0x185BADBD7F0];                             // 0x0000(0x185BADBD7F0) MISSED OFFSET
-};
-
-// ScriptStruct GameFramework.GameStatsAggregator.GameEvent
-// 0x185BADBD430
-struct FGameEvent
-{
-	unsigned char                                      UnknownData00[0x185BADBD430];                             // 0x0000(0x185BADBD430) MISSED OFFSET
-};
-
-// ScriptStruct GameFramework.GameThirdPersonCamera.PenetrationAvoidanceFeeler
-// 0x185BB681150
-struct FPenetrationAvoidanceFeeler
-{
-	unsigned char                                      UnknownData00[0x185BB681150];                             // 0x0000(0x185BB681150) MISSED OFFSET
-};
-
-// ScriptStruct GameFramework.GameThirdPersonCamera.CamFocusPointParams
-// 0x185BB680500
-struct FCamFocusPointParams
-{
-	unsigned char                                      UnknownData00[0x185BB680500];                             // 0x0000(0x185BB680500) MISSED OFFSET
-};
-
-// ScriptStruct GameFramework.GameThirdPersonCameraMode.ViewOffsetData
-// 0x185BB2E7B70
-struct FViewOffsetData
-{
-	unsigned char                                      UnknownData00[0x185BB2E7B70];                             // 0x0000(0x185BB2E7B70) MISSED OFFSET
+	class USeqAct_GameCrowdPopulationManagerToggle*    SeqSpawner;                                               // 0x0000(0x0008)
+	unsigned long                                      bSpawningActive : 1;                                      // 0x0008(0x0004)
+	float                                              SpawnRate;                                                // 0x000C(0x0004)
+	int                                                SpawnNum;                                                 // 0x0010(0x0004)
+	float                                              Remainder;                                                // 0x0014(0x0004)
+	TArray<class AGameCrowdAgent*>                     ActiveAgents;                                             // 0x0018(0x0010) (NeedCtorLink)
+	TArray<struct FAgentArchetypeInfo>                 AgentArchetypes;                                          // 0x0028(0x0010) (NeedCtorLink)
+	float                                              AgentFrequencySum;                                        // 0x0038(0x0004)
+	float                                              MaxSpawnDist;                                             // 0x003C(0x0004)
+	float                                              MaxSpawnDistSq;                                           // 0x0040(0x0004)
+	float                                              MinBehindSpawnDist;                                       // 0x0044(0x0004)
+	float                                              MinBehindSpawnDistSq;                                     // 0x0048(0x0004)
+	float                                              AgentWarmupTime;                                          // 0x004C(0x0004)
+	unsigned long                                      bForceObstacleChecking : 1;                               // 0x0050(0x0004)
+	unsigned long                                      bForceNavMeshPathing : 1;                                 // 0x0050(0x0004)
+	unsigned long                                      bEnableCrowdLightEnvironment : 1;                         // 0x0050(0x0004)
+	unsigned long                                      bCastShadows : 1;                                         // 0x0050(0x0004)
+	struct FLightingChannelContainer                   AgentLightingChannel;                                     // 0x0054(0x0004)
+	int                                                NumAgentsToTickPerFrame;                                  // 0x0058(0x0004) (Edit)
+	int                                                LastAgentTickedIndex;                                     // 0x005C(0x0004)
+	TArray<class AGameCrowdDestination*>               PotentialSpawnPoints;                                     // 0x0060(0x0010) (NeedCtorLink)
+	float                                              SpawnPrioritizationInterval;                              // 0x0070(0x0004)
+	int                                                PrioritizationIndex;                                      // 0x0074(0x0004)
+	int                                                PrioritizationUpdateIndex;                                // 0x0078(0x0004)
+	TArray<class AGameCrowdDestination*>               PrioritizedSpawnPoints;                                   // 0x007C(0x0010) (NeedCtorLink)
+	float                                              PlayerPositionPredictionTime;                             // 0x008C(0x0004)
 };
 
 // ScriptStruct GameFramework.MobileInputZone.TextureUVs
-// 0x185BB2ED6F0
+// 0x0010
 struct FTextureUVs
 {
-	unsigned char                                      UnknownData00[0x185BB2ED6F0];                             // 0x0000(0x185BB2ED6F0) MISSED OFFSET
-};
-
-// ScriptStruct GameFramework.MobilePlayerInput.TouchData
-// 0x185BB2ED030
-struct FTouchData
-{
-	unsigned char                                      UnknownData00[0x185BB2ED030];                             // 0x0000(0x185BB2ED030) MISSED OFFSET
-};
-
-// ScriptStruct GameFramework.MobilePlayerInput.MobileInputGroup
-// 0x185BB2ADEC0
-struct FMobileInputGroup
-{
-	unsigned char                                      UnknownData00[0x185BB2ADEC0];                             // 0x0000(0x185BB2ADEC0) MISSED OFFSET
-};
-
-// ScriptStruct GameFramework.MobilePlayerInput.MobileInputZoneClassMap
-// 0x185BB2AF240
-struct FMobileInputZoneClassMap
-{
-	unsigned char                                      UnknownData00[0x185BB2AF240];                             // 0x0000(0x185BB2AF240) MISSED OFFSET
-};
-
-// ScriptStruct GameFramework.MobilePlayerInput.TouchDataEvent
-// 0x185BB2B4280
-struct FTouchDataEvent
-{
-	unsigned char                                      UnknownData00[0x185BB2B4280];                             // 0x0000(0x185BB2B4280) MISSED OFFSET
+	float                                              U;                                                        // 0x0000(0x0004) (Edit)
+	float                                              V;                                                        // 0x0004(0x0004) (Edit)
+	float                                              UL;                                                       // 0x0008(0x0004) (Edit)
+	float                                              VL;                                                       // 0x000C(0x0004) (Edit)
 };
 
 // ScriptStruct GameFramework.MobileMenuObject.UVCoords
-// 0x185BB2B5E10
+// 0x0014
 struct FUVCoords
 {
-	unsigned char                                      UnknownData00[0x185BB2B5E10];                             // 0x0000(0x185BB2B5E10) MISSED OFFSET
+	unsigned long                                      bCustomCoords : 1;                                        // 0x0000(0x0004) (Edit)
+	float                                              U;                                                        // 0x0004(0x0004) (Edit)
+	float                                              V;                                                        // 0x0008(0x0004) (Edit)
+	float                                              UL;                                                       // 0x000C(0x0004) (Edit)
+	float                                              VL;                                                       // 0x0010(0x0004) (Edit)
 };
 
-// ScriptStruct GameFramework.MobileMenuInventory.RenderElementInfo
-// 0x185BB27CEC0
-struct FRenderElementInfo
+// ScriptStruct GameFramework.MobilePlayerInput.TouchDataEvent
+// 0x0014
+struct FTouchDataEvent
 {
-	unsigned char                                      UnknownData00[0x185BB27CEC0];                             // 0x0000(0x185BB27CEC0) MISSED OFFSET
+	TEnumAsByte<ETouchType>                            EventType;                                                // 0x0000(0x0001)
+	unsigned char                                      TouchpadIndex;                                            // 0x0001(0x0001)
+	unsigned char                                      UnknownData00[0x2];                                       // 0x0002(0x0002) MISSED OFFSET
+	struct FVector2D                                   Location;                                                 // 0x0004(0x0008)
+	struct FDouble                                     DeviceTime;                                               // 0x000C(0x0008)
 };
 
-// ScriptStruct GameFramework.MobileMenuInventory.DragElementInfo
-// 0x185BB27E0C0
-struct FDragElementInfo
+// ScriptStruct GameFramework.MobilePlayerInput.TouchData
+// 0x0050
+struct FTouchData
 {
-	unsigned char                                      UnknownData00[0x185BB27E0C0];                             // 0x0000(0x185BB27E0C0) MISSED OFFSET
+	int                                                Handle;                                                   // 0x0000(0x0004)
+	unsigned char                                      TouchpadIndex;                                            // 0x0004(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0005(0x0003) MISSED OFFSET
+	struct FVector2D                                   Location;                                                 // 0x0008(0x0008)
+	float                                              TotalMoveDistance;                                        // 0x0010(0x0004)
+	struct FDouble                                     InitialDeviceTime;                                        // 0x0014(0x0008)
+	float                                              TouchDuration;                                            // 0x001C(0x0004)
+	struct FDouble                                     MoveEventDeviceTime;                                      // 0x0020(0x0008)
+	float                                              MoveDeltaTime;                                            // 0x0028(0x0004)
+	unsigned long                                      bInUse : 1;                                               // 0x002C(0x0004)
+	class UMobileInputZone*                            Zone;                                                     // 0x0030(0x0008)
+	TEnumAsByte<ETouchType>                            State;                                                    // 0x0038(0x0001)
+	unsigned char                                      UnknownData01[0x3];                                       // 0x0039(0x0003) MISSED OFFSET
+	TArray<struct FTouchDataEvent>                     Events;                                                   // 0x003C(0x0010) (NeedCtorLink)
+	float                                              LastActiveTime;                                           // 0x004C(0x0004)
 };
 
-// ScriptStruct GameFramework.MobileMenuList.SelectedMenuItem
-// 0x185BB1A35C0
-struct FSelectedMenuItem
+// ScriptStruct GameFramework.MobilePlayerInput.MobileInputGroup
+// 0x0020
+struct FMobileInputGroup
 {
-	unsigned char                                      UnknownData00[0x185BB1A35C0];                             // 0x0000(0x185BB1A35C0) MISSED OFFSET
+	struct FString                                     GroupName;                                                // 0x0000(0x0010) (NeedCtorLink)
+	TArray<class UMobileInputZone*>                    AssociatedZones;                                          // 0x0010(0x0010) (NeedCtorLink, EditInline)
 };
 
-// ScriptStruct GameFramework.MobileMenuList.DragHistoryData
-// 0x185BB1A5F00
-struct FDragHistoryData
+// ScriptStruct GameFramework.MobilePlayerInput.MobileInputZoneClassMap
+// 0x0018
+struct FMobileInputZoneClassMap
 {
-	unsigned char                                      UnknownData00[0x185BB1A5F00];                             // 0x0000(0x185BB1A5F00) MISSED OFFSET
-};
-
-// ScriptStruct GameFramework.MobileMenuList.MenuListDragInfo
-// 0x185BB1A56C0
-struct FMenuListDragInfo
-{
-	unsigned char                                      UnknownData00[0x185BB1A56C0];                             // 0x0000(0x185BB1A56C0) MISSED OFFSET
-};
-
-// ScriptStruct GameFramework.MobileMenuList.MenuListMovementInfo
-// 0x185BB1A4E80
-struct FMenuListMovementInfo
-{
-	unsigned char                                      UnknownData00[0x185BB1A4E80];                             // 0x0000(0x185BB1A4E80) MISSED OFFSET
+	struct FString                                     Name;                                                     // 0x0000(0x0010) (NeedCtorLink)
+	class UClass*                                      ClassType;                                                // 0x0010(0x0008)
 };
 
 // ScriptStruct GameFramework.SeqAct_ModifyProperty.PropertyInfo
-// 0x185BAF4D1D0
+// 0x001C
 struct FPropertyInfo
 {
-	unsigned char                                      UnknownData00[0x185BAF4D1D0];                             // 0x0000(0x185BAF4D1D0) MISSED OFFSET
+	struct FName                                       PropertyName;                                             // 0x0000(0x0008) (Edit)
+	unsigned long                                      bModifyProperty : 1;                                      // 0x0008(0x0004) (Edit)
+	struct FString                                     PropertyValue;                                            // 0x000C(0x0010) (Edit, NeedCtorLink)
+};
+
+// ScriptStruct GameFramework.GameSkelCtrl_Recoil.RecoilParams
+// 0x0004
+struct FRecoilParams
+{
+	TEnumAsByte<ERecoilStart>                          X;                                                        // 0x0000(0x0001) (Edit)
+	TEnumAsByte<ERecoilStart>                          Y;                                                        // 0x0001(0x0001) (Edit)
+	TEnumAsByte<ERecoilStart>                          Z;                                                        // 0x0002(0x0001) (Edit)
+	unsigned char                                      Padding;                                                  // 0x0003(0x0001) (Const, Transient)
+};
+
+// ScriptStruct GameFramework.GameSkelCtrl_Recoil.RecoilDef
+// 0x0070
+struct FRecoilDef
+{
+	float                                              TimeToGo;                                                 // 0x0000(0x0004) (Transient)
+	float                                              TimeDuration;                                             // 0x0004(0x0004) (Edit)
+	struct FVector                                     RotAmplitude;                                             // 0x0008(0x000C) (Edit)
+	struct FVector                                     RotFrequency;                                             // 0x0014(0x000C) (Edit)
+	struct FVector                                     RotSinOffset;                                             // 0x0020(0x000C)
+	struct FRecoilParams                               RotParams;                                                // 0x002C(0x0004) (Edit)
+	struct FRotator                                    RotOffset;                                                // 0x0030(0x000C) (Transient)
+	struct FVector                                     LocAmplitude;                                             // 0x003C(0x000C) (Edit)
+	struct FVector                                     LocFrequency;                                             // 0x0048(0x000C) (Edit)
+	struct FVector                                     LocSinOffset;                                             // 0x0054(0x000C)
+	struct FRecoilParams                               LocParams;                                                // 0x0060(0x0004) (Edit)
+	struct FVector                                     LocOffset;                                                // 0x0064(0x000C) (Transient)
+};
+
+// ScriptStruct GameFramework.GameThirdPersonCamera.CamFocusPointParams
+// 0x0038
+struct FCamFocusPointParams
+{
+	class AActor*                                      FocusActor;                                               // 0x0000(0x0008) (Edit)
+	struct FName                                       FocusBoneName;                                            // 0x0008(0x0008) (Edit)
+	struct FVector                                     FocusWorldLoc;                                            // 0x0010(0x000C) (Edit)
+	float                                              CameraFOV;                                                // 0x001C(0x0004) (Edit)
+	struct FVector2D                                   InterpSpeedRange;                                         // 0x0020(0x0008) (Edit)
+	struct FVector2D                                   InFocusFOV;                                               // 0x0028(0x0008) (Edit)
+	unsigned long                                      bAlwaysFocus : 1;                                         // 0x0030(0x0004) (Edit)
+	unsigned long                                      bAdjustCamera : 1;                                        // 0x0030(0x0004) (Edit)
+	unsigned long                                      bIgnoreTrace : 1;                                         // 0x0030(0x0004) (Edit)
+	float                                              FocusPitchOffsetDeg;                                      // 0x0034(0x0004) (Edit)
+};
+
+// ScriptStruct GameFramework.GameThirdPersonCamera.PenetrationAvoidanceFeeler
+// 0x0028
+struct FPenetrationAvoidanceFeeler
+{
+	struct FRotator                                    AdjustmentRot;                                            // 0x0000(0x000C) (Edit)
+	float                                              WorldWeight;                                              // 0x000C(0x0004) (Edit)
+	float                                              PawnWeight;                                               // 0x0010(0x0004) (Edit)
+	struct FVector                                     Extent;                                                   // 0x0014(0x000C) (Edit)
+	int                                                TraceInterval;                                            // 0x0020(0x0004) (Edit)
+	int                                                FramesUntilNextTrace;                                     // 0x0024(0x0004) (Transient)
+};
+
+// ScriptStruct GameFramework.GameThirdPersonCameraMode.ViewOffsetData
+// 0x0024
+struct FViewOffsetData
+{
+	struct FVector                                     OffsetHigh;                                               // 0x0000(0x000C) (Edit)
+	struct FVector                                     OffsetMid;                                                // 0x000C(0x000C) (Edit)
+	struct FVector                                     OffsetLow;                                                // 0x0018(0x000C) (Edit)
+};
+
+// ScriptStruct GameFramework.GameStatsAggregator.AggregateEventMapping
+// 0x000C
+struct FAggregateEventMapping
+{
+	int                                                EventID;                                                  // 0x0000(0x0004)
+	int                                                AggregateID;                                              // 0x0004(0x0004)
+	int                                                TargetAggregateID;                                        // 0x0008(0x0004)
+};
+
+// ScriptStruct GameFramework.GameStatsAggregator.GameEvents
+// 0x0048
+struct FGameEvents
+{
+	struct FMap_Mirror                                 Events;                                                   // 0x0000(0x0048) (Const, Native, Transient)
+};
+
+// ScriptStruct GameFramework.GameStatsAggregator.EventsBase
+// 0x0058
+struct FEventsBase
+{
+	struct FGameEvents                                 TotalEvents;                                              // 0x0000(0x0048)
+	TArray<struct FGameEvents>                         EventsByClass;                                            // 0x0048(0x0010) (NeedCtorLink)
+};
+
+// ScriptStruct GameFramework.GameStatsAggregator.WeaponEvents
+// 0x0000 (0x0058 - 0x0058)
+struct FWeaponEvents : public FEventsBase
+{
+
+};
+
+// ScriptStruct GameFramework.GameStatsAggregator.DamageEvents
+// 0x0000 (0x0058 - 0x0058)
+struct FDamageEvents : public FEventsBase
+{
+
+};
+
+// ScriptStruct GameFramework.GameStatsAggregator.ProjectileEvents
+// 0x0000 (0x0058 - 0x0058)
+struct FProjectileEvents : public FEventsBase
+{
+
+};
+
+// ScriptStruct GameFramework.GameStatsAggregator.PawnEvents
+// 0x0000 (0x0058 - 0x0058)
+struct FPawnEvents : public FEventsBase
+{
+
+};
+
+// ScriptStruct GameFramework.GameStatsAggregator.TeamEvents
+// 0x0200
+struct FTeamEvents
+{
+	struct FGameEvents                                 TotalEvents;                                              // 0x0000(0x0048)
+	struct FWeaponEvents                               WeaponEvents;                                             // 0x0048(0x0058) (NeedCtorLink)
+	struct FDamageEvents                               DamageAsPlayerEvents;                                     // 0x00A0(0x0058) (NeedCtorLink)
+	struct FDamageEvents                               DamageAsTargetEvents;                                     // 0x00F8(0x0058) (NeedCtorLink)
+	struct FProjectileEvents                           ProjectileEvents;                                         // 0x0150(0x0058) (NeedCtorLink)
+	struct FPawnEvents                                 PawnEvents;                                               // 0x01A8(0x0058) (NeedCtorLink)
+};
+
+// ScriptStruct GameFramework.GameStatsAggregator.PlayerEvents
+// 0x0200
+struct FPlayerEvents
+{
+	struct FGameEvents                                 TotalEvents;                                              // 0x0000(0x0048)
+	struct FWeaponEvents                               WeaponEvents;                                             // 0x0048(0x0058) (NeedCtorLink)
+	struct FDamageEvents                               DamageAsPlayerEvents;                                     // 0x00A0(0x0058) (NeedCtorLink)
+	struct FDamageEvents                               DamageAsTargetEvents;                                     // 0x00F8(0x0058) (NeedCtorLink)
+	struct FProjectileEvents                           ProjectileEvents;                                         // 0x0150(0x0058) (NeedCtorLink)
+	struct FPawnEvents                                 PawnEvents;                                               // 0x01A8(0x0058) (NeedCtorLink)
+};
+
+// ScriptStruct GameFramework.GameTypes.SpecialMoveStruct
+// 0x001C
+struct FSpecialMoveStruct
+{
+	struct FName                                       SpecialMoveName;                                          // 0x0000(0x0008)
+	class AGamePawn*                                   InteractionPawn;                                          // 0x0008(0x0008)
+	class AActor*                                      InteractionActor;                                         // 0x0010(0x0008)
+	int                                                Flags;                                                    // 0x0018(0x0004)
+};
+
+// ScriptStruct GameFramework.GameTypes.GameSpecialMoveInfo
+// 0x0018
+struct FGameSpecialMoveInfo
+{
+	struct FName                                       SpecialMoveName;                                          // 0x0000(0x0008) (Edit)
+	class UClass*                                      SpecialMoveClass;                                         // 0x0008(0x0008) (Edit)
+	class UGameSpecialMove*                            SpecialMoveInstance;                                      // 0x0010(0x0008) (Edit)
+};
+
+// ScriptStruct GameFramework.GameTypes.TakeHitInfo
+// 0x0044
+struct FTakeHitInfo
+{
+	struct FVector                                     HitLocation;                                              // 0x0000(0x000C)
+	struct FVector                                     Momentum;                                                 // 0x000C(0x000C)
+	class UClass*                                      DamageType;                                               // 0x0018(0x0008)
+	class APawn*                                       InstigatedBy;                                             // 0x0020(0x0008)
+	unsigned char                                      HitBoneIndex;                                             // 0x0028(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0029(0x0003) MISSED OFFSET
+	class UPhysicalMaterial*                           PhysicalMaterial;                                         // 0x002C(0x0008)
+	float                                              Damage;                                                   // 0x0034(0x0004)
+	struct FVector                                     RadialDamageOrigin;                                       // 0x0038(0x000C)
+};
+
+// ScriptStruct GameFramework.GameTypes.ShakeParams
+// 0x0004
+struct FShakeParams
+{
+	TEnumAsByte<EShakeParam>                           X;                                                        // 0x0000(0x0001)
+	TEnumAsByte<EShakeParam>                           Y;                                                        // 0x0001(0x0001)
+	TEnumAsByte<EShakeParam>                           Z;                                                        // 0x0002(0x0001)
+	unsigned char                                      Padding;                                                  // 0x0003(0x0001) (Const, Transient)
+};
+
+// ScriptStruct GameFramework.GameTypes.ScreenShakeStruct
+// 0x0078
+struct FScreenShakeStruct
+{
+	float                                              TimeToGo;                                                 // 0x0000(0x0004)
+	float                                              TimeDuration;                                             // 0x0004(0x0004)
+	struct FVector                                     RotAmplitude;                                             // 0x0008(0x000C)
+	struct FVector                                     RotFrequency;                                             // 0x0014(0x000C)
+	struct FVector                                     RotSinOffset;                                             // 0x0020(0x000C)
+	struct FShakeParams                                RotParam;                                                 // 0x002C(0x0004)
+	struct FVector                                     LocAmplitude;                                             // 0x0030(0x000C)
+	struct FVector                                     LocFrequency;                                             // 0x003C(0x000C)
+	struct FVector                                     LocSinOffset;                                             // 0x0048(0x000C)
+	struct FShakeParams                                LocParam;                                                 // 0x0054(0x0004)
+	float                                              FOVAmplitude;                                             // 0x0058(0x0004)
+	float                                              FOVFrequency;                                             // 0x005C(0x0004)
+	float                                              FOVSinOffset;                                             // 0x0060(0x0004)
+	TEnumAsByte<EShakeParam>                           FOVParam;                                                 // 0x0064(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0065(0x0003) MISSED OFFSET
+	struct FName                                       ShakeName;                                                // 0x0068(0x0008)
+	unsigned long                                      bOverrideTargetingDampening : 1;                          // 0x0070(0x0004)
+	float                                              TargetingDampening;                                       // 0x0074(0x0004)
+};
+
+// ScriptStruct GameFramework.GameTypes.ScreenShakeAnimStruct
+// 0x0040
+struct FScreenShakeAnimStruct
+{
+	class UCameraAnim*                                 Anim;                                                     // 0x0000(0x0008)
+	unsigned long                                      bUseDirectionalAnimVariants : 1;                          // 0x0008(0x0004)
+	class UCameraAnim*                                 Anim_Left;                                                // 0x000C(0x0008)
+	class UCameraAnim*                                 Anim_Right;                                               // 0x0014(0x0008)
+	class UCameraAnim*                                 Anim_Rear;                                                // 0x001C(0x0008)
+	float                                              AnimPlayRate;                                             // 0x0024(0x0004)
+	float                                              AnimScale;                                                // 0x0028(0x0004)
+	float                                              AnimBlendInTime;                                          // 0x002C(0x0004)
+	float                                              AnimBlendOutTime;                                         // 0x0030(0x0004)
+	unsigned long                                      bRandomSegment : 1;                                       // 0x0034(0x0004)
+	float                                              RandomSegmentDuration;                                    // 0x0038(0x0004)
+	unsigned long                                      bSingleInstance : 1;                                      // 0x003C(0x0004)
+};
+
+// ScriptStruct GameFramework.GameStateObject.TeamState
+// 0x0014
+struct FTeamState
+{
+	int                                                TeamIndex;                                                // 0x0000(0x0004)
+	TArray<int>                                        PlayerIndices;                                            // 0x0004(0x0010) (AlwaysInit, NeedCtorLink)
+};
+
+// ScriptStruct GameFramework.GameStateObject.PlayerState
+// 0x0010
+struct FPlayerState
+{
+	int                                                PlayerIndex;                                              // 0x0000(0x0004)
+	int                                                CurrentTeamIndex;                                         // 0x0004(0x0004)
+	float                                              TimeSpawned;                                              // 0x0008(0x0004)
+	float                                              TimeAliveSinceLastDeath;                                  // 0x000C(0x0004)
+};
+
+// ScriptStruct GameFramework.GameStatsAggregator.GameEvent
+// 0x0010
+struct FGameEvent
+{
+	TArray<float>                                      EventCountByTimePeriod;                                   // 0x0000(0x0010) (AlwaysInit, NeedCtorLink)
+};
+
+// ScriptStruct GameFramework.MobileMenuInventory.DragElementInfo
+// 0x0025
+struct FDragElementInfo
+{
+	unsigned long                                      bIsDragging : 1;                                          // 0x0000(0x0004)
+	int                                                IndexFrom;                                                // 0x0004(0x0004)
+	unsigned long                                      bIsOver : 1;                                              // 0x0008(0x0004)
+	int                                                IndexOver;                                                // 0x000C(0x0004)
+	unsigned long                                      bCanDropInOver : 1;                                       // 0x0010(0x0004)
+	struct FVector2D                                   OrigTouch;                                                // 0x0014(0x0008)
+	struct FVector2D                                   CurTouch;                                                 // 0x001C(0x0008)
+	TEnumAsByte<ETouchType>                            EventType;                                                // 0x0024(0x0001)
+};
+
+// ScriptStruct GameFramework.MobileMenuInventory.RenderElementInfo
+// 0x0008
+struct FRenderElementInfo
+{
+	unsigned long                                      bIsDragItem : 1;                                          // 0x0000(0x0004)
+	int                                                Index;                                                    // 0x0004(0x0004)
+};
+
+// ScriptStruct GameFramework.MobileMenuList.SelectedMenuItem
+// 0x000C
+struct FSelectedMenuItem
+{
+	int                                                Index;                                                    // 0x0000(0x0004)
+	float                                              Offset;                                                   // 0x0004(0x0004)
+	unsigned long                                      bEndOfList : 1;                                           // 0x0008(0x0004)
+};
+
+// ScriptStruct GameFramework.MobileMenuList.DragHistoryData
+// 0x0008
+struct FDragHistoryData
+{
+	float                                              TouchTime;                                                // 0x0000(0x0004)
+	float                                              TouchCoord;                                               // 0x0004(0x0004)
+};
+
+// ScriptStruct GameFramework.MobileMenuList.MenuListDragInfo
+// 0x0054
+struct FMenuListDragInfo
+{
+	unsigned long                                      bIsDragging : 1;                                          // 0x0000(0x0004)
+	class UMobileMenuListItem*                         TouchedItem;                                              // 0x0004(0x0008)
+	struct FSelectedMenuItem                           OrigSelectedItem;                                         // 0x000C(0x000C)
+	struct FVector2D                                   StartTouch;                                               // 0x0018(0x0008)
+	float                                              TouchTime;                                                // 0x0020(0x0004)
+	float                                              ScrollAmount;                                             // 0x0024(0x0004)
+	float                                              AbsScrollAmount;                                          // 0x0028(0x0004)
+	struct FDragHistoryData                            UpdateHistory[0x4];                                       // 0x002C(0x0008)
+	int                                                NumUpdates;                                               // 0x004C(0x0004)
+	unsigned long                                      bHasSelectedChanged : 1;                                  // 0x0050(0x0004)
+};
+
+// ScriptStruct GameFramework.MobileMenuList.MenuListMovementInfo
+// 0x001C
+struct FMenuListMovementInfo
+{
+	unsigned long                                      bIsMoving : 1;                                            // 0x0000(0x0004)
+	struct FSelectedMenuItem                           OrigSelectedItem;                                         // 0x0004(0x000C)
+	float                                              FullMovement;                                             // 0x0010(0x0004)
+	float                                              TotalTime;                                                // 0x0014(0x0004)
+	float                                              CurrentTime;                                              // 0x0018(0x0004)
 };
 
 }

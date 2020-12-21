@@ -7,13 +7,21 @@
 #endif
 
 #include "PL_Basic.hpp"
+#include "PL_GFxUI_classes.hpp"
+#include "PL_PlatformCommon_classes.hpp"
+#include "PL_Engine_classes.hpp"
+#include "PL_Core_classes.hpp"
+#include "PL_TgGame_classes.hpp"
 
-namespace Classes
+namespace SDK
 {
 //---------------------------------------------------------------------------
 //Constants
 //---------------------------------------------------------------------------
 
+#define CONST_PROCESS_MESSAGE_SECS                               2.0f
+#define CONST_NUM_ABILITYPOINTPOOL_SKILLS                        4
+#define CONST_URGENT_POPUP                                       100
 #define CONST_MAX_ITEM_STAT_CATEGORY                             7
 #define CONST_UIHUDSKILLS3P_COUNT                                5
 #define CONST_UISAFEFRAME_STEPCOUNT                              20
@@ -32,10 +40,8 @@ namespace Classes
 #define CONST_UICOMPONENT_GENERICTITLEBUTTONS_BUTTONCOUNT        8
 #define CONST_GFXSETTINGS_BUTTONS                                7
 #define CONST_TGDATA_EOM_TEAMCOUNT                               2
-#define CONST_EMBLEM_ROULETTE_SCALE_START                        90.0f
 #define CONST_NUM_UI_DEVICES                                     25
 #define CONST_FIRST_BLOOD_MESSAGE_ID                             109234
-#define CONST_PROCESS_MESSAGE_SECS                               2.0f
 #define CONST_DCTEAM_MAX_MEMBERS                                 5
 #define CONST_DCTEAM_MAX_TOWERS                                  9
 #define CONST_DEFAULT_AVATAR_ID                                  23120
@@ -74,7 +80,6 @@ namespace Classes
 #define CONST_HIDDEN_CHALLENGE_ACTIVITY                          2214
 #define CONST_UIBACKGROUND_TYPES                                 8
 #define CONST_CHAT_OUTPUT_COUNT                                  4
-#define CONST_NUM_ABILITYPOINTPOOL_SKILLS                        4
 #define CONST_UIPROFILE_CHAMPION_DATA                            5
 #define CONST_EMBLEM_ROULETTE_POSX                               960.0f
 #define CONST_MAX_BOOSTER_BENEFITS                               3
@@ -111,6 +116,7 @@ namespace Classes
 #define CONST_EMBLEM_SCALEDOWN_TIME                              0.17f
 #define CONST_UIHOME_NUM_USED_HOME_SCREEN_PANELS                 7
 #define CONST_EMBLEM_ROULETTE_POSY                               747.20f
+#define CONST_EMBLEM_ROULETTE_SCALE_START                        90.0f
 #define CONST_TOAST_DELAY                                        0.50f
 #define CONST_UIHUD_SCENE_PARTY                                  0
 #define CONST_BOUNTY_OFFSETX                                     31.0f
@@ -2367,778 +2373,1357 @@ enum class EUIWINTER_STATE : uint8_t
 //Script Structs
 //---------------------------------------------------------------------------
 
-// ScriptStruct TgClient.InputAction.InputKeyEvent
-// 0x185B86B92C0
-struct FInputKeyEvent
-{
-	unsigned char                                      UnknownData00[0x185B86B92C0];                             // 0x0000(0x185B86B92C0) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.InputGroup.UIGroupObject
-// 0x185B86BB480
-struct FUIGroupObject
-{
-	unsigned char                                      UnknownData00[0x185B86BB480];                             // 0x0000(0x185B86BB480) MISSED OFFSET
-};
-
 // ScriptStruct TgClient.TgClientHUD.SceneInfo
-// 0x185B86BDE80
+// 0x001C
 struct FSceneInfo
 {
-	unsigned char                                      UnknownData00[0x185B86BDE80];                             // 0x0000(0x185B86BDE80) MISSED OFFSET
+	int                                                nDepth;                                                   // 0x0000(0x0004)
+	struct FName                                       nmName;                                                   // 0x0004(0x0008)
+	struct FString                                     sPath;                                                    // 0x000C(0x0010) (AlwaysInit, NeedCtorLink)
 };
 
 // ScriptStruct TgClient.TgClientHUD.MessageRedirect
-// 0x185B59B0390
+// 0x0014
 struct FMessageRedirect
 {
-	unsigned char                                      UnknownData00[0x185B59B0390];                             // 0x0000(0x185B59B0390) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.TgDataObject.UIDataValue
-// 0x185B59B0A50
-struct FUIDataValue
-{
-	unsigned char                                      UnknownData00[0x185B59B0A50];                             // 0x0000(0x185B59B0A50) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.TgData_EOM.UIMVPDATA
-// 0x185B59B3690
-struct FUIMVPDATA
-{
-	unsigned char                                      UnknownData00[0x185B59B3690];                             // 0x0000(0x185B59B3690) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.TgData_EOM.AccoladeData
-// 0x185B59B2490
-struct FAccoladeData
-{
-	unsigned char                                      UnknownData00[0x185B59B2490];                             // 0x0000(0x185B59B2490) MISSED OFFSET
+	int                                                nMsgId;                                                   // 0x0000(0x0004)
+	struct FString                                     sKey;                                                     // 0x0004(0x0010) (NeedCtorLink)
 };
 
 // ScriptStruct TgClient.TgDataChunk.DataField
-// 0x185B59B7A10
+// 0x0054
 struct FDataField
 {
-	unsigned char                                      UnknownData00[0x185B59B7A10];                             // 0x0000(0x185B59B7A10) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.TgGameDC_Chat.QueueMessage
-// 0x185B59BA7D0
-struct FQueueMessage
-{
-	unsigned char                                      UnknownData00[0x185B59BA7D0];                             // 0x0000(0x185B59BA7D0) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.TgGameDC_Chat.MessageToken
-// 0x185B59BE490
-struct FMessageToken
-{
-	unsigned char                                      UnknownData00[0x185B59BE490];                             // 0x0000(0x185B59BE490) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.TgGfxScene.UIDisplayData
-// 0x185B59CB750
-struct FUIDisplayData
-{
-	unsigned char                                      UnknownData00[0x185B59CB750];                             // 0x0000(0x185B59CB750) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.TgGfxScene.UIITEM_CLIP
-// 0x185B59CD790
-struct FUIITEM_CLIP
-{
-	unsigned char                                      UnknownData00[0x185B59CD790];                             // 0x0000(0x185B59CD790) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.UILandingPanelManager.JsonFeatureData
-// 0x185B59D9010
-struct FJsonFeatureData
-{
-	unsigned char                                      UnknownData00[0x185B59D9010];                             // 0x0000(0x185B59D9010) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.TgLobbyHUD.MapDetails
-// 0x185B59D8110
-struct FMapDetails
-{
-	unsigned char                                      UnknownData00[0x185B59D8110];                             // 0x0000(0x185B59D8110) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.TgLobbyHUD.LobbyTransitionPlayer
-// 0x185B59D6790
-struct FLobbyTransitionPlayer
-{
-	unsigned char                                      UnknownData00[0x185B59D6790];                             // 0x0000(0x185B59D6790) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.TgLobbyHUD.LobbyTransitionData
-// 0x185B59D7990
-struct FLobbyTransitionData
-{
-	unsigned char                                      UnknownData00[0x185B59D7990];                             // 0x0000(0x185B59D7990) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.TgMiniMap.LayerIndex
-// 0x185B59E0E10
-struct FLayerIndex
-{
-	unsigned char                                      UnknownData00[0x185B59E0E10];                             // 0x0000(0x185B59E0E10) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.TgMiniMap.MiniMapPingInfo
-// 0x185B59DE350
-struct FMiniMapPingInfo
-{
-	unsigned char                                      UnknownData00[0x185B59DE350];                             // 0x0000(0x185B59DE350) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.TgMiniMap.FogMaskData
-// 0x185B59DCCD0
-struct FFogMaskData
-{
-	unsigned char                                      UnknownData00[0x185B59DCCD0];                             // 0x0000(0x185B59DCCD0) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.TgMiniMap.MiniMapEntity
-// 0x185B59DEF50
-struct FMiniMapEntity
-{
-	unsigned char                                      UnknownData00[0x185B59DEF50];                             // 0x0000(0x185B59DEF50) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.TgMiniMap.BuffMonsterMIC
-// 0x185B59E2190
-struct FBuffMonsterMIC
-{
-	unsigned char                                      UnknownData00[0x185B59E2190];                             // 0x0000(0x185B59E2190) MISSED OFFSET
+	struct FString                                     FieldName;                                                // 0x0000(0x0010) (AlwaysInit, NeedCtorLink)
+	struct FASValue                                    Value;                                                    // 0x0010(0x0020) (NeedCtorLink)
+	struct FASValue                                    Last;                                                     // 0x0030(0x0020) (NeedCtorLink)
+	unsigned long                                      bDirty : 1;                                               // 0x0050(0x0004)
 };
 
 // ScriptStruct TgClient.UIData_Quest.GoalRewardItem
-// 0x185B59E1590
+// 0x0010
 struct FGoalRewardItem
 {
-	unsigned char                                      UnknownData00[0x185B59E1590];                             // 0x0000(0x185B59E1590) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.TgSetting.OptionData
-// 0x185B59E4710
-struct FOptionData
-{
-	unsigned char                                      UnknownData00[0x185B59E4710];                             // 0x0000(0x185B59E4710) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.TgSettingsManager.TgKeyCommand
-// 0x185B59E35D0
-struct FTgKeyCommand
-{
-	unsigned char                                      UnknownData00[0x185B59E35D0];                             // 0x0000(0x185B59E35D0) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.TgSettingsManager.TgKeyBind
-// 0x185B59E44D0
-struct FTgKeyBind
-{
-	unsigned char                                      UnknownData00[0x185B59E44D0];                             // 0x0000(0x185B59E44D0) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.TgSettingsManager.TgSettingsSet
-// 0x185B59E2910
-struct FTgSettingsSet
-{
-	unsigned char                                      UnknownData00[0x185B59E2910];                             // 0x0000(0x185B59E2910) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.TgSettingsManager.TgSettingPropMapping
-// 0x185B59E38D0
-struct FTgSettingPropMapping
-{
-	unsigned char                                      UnknownData00[0x185B59E38D0];                             // 0x0000(0x185B59E38D0) MISSED OFFSET
+	int                                                nItemId;                                                  // 0x0000(0x0004)
+	int                                                nQuantity;                                                // 0x0004(0x0004)
+	int                                                nLootId;                                                  // 0x0008(0x0004)
+	unsigned long                                      bRental : 1;                                              // 0x000C(0x0004)
 };
 
 // ScriptStruct TgClient.TgStreamManager.GameStream
-// 0x185B59E7650
+// 0x0058
 struct FGameStream
 {
-	unsigned char                                      UnknownData00[0x185B59E7650];                             // 0x0000(0x185B59E7650) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.UIAcademy.AcademyVideoButton
-// 0x185B59EDAD0
-struct FAcademyVideoButton
-{
-	unsigned char                                      UnknownData00[0x185B59EDAD0];                             // 0x0000(0x185B59EDAD0) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.UIAchievementPopups.AchievementProgressData
-// 0x185B59EDE90
-struct FAchievementProgressData
-{
-	unsigned char                                      UnknownData00[0x185B59EDE90];                             // 0x0000(0x185B59EDE90) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.UIScene_UIEOMLAcquisition.AcquiredItem
-// 0x185B59EC210
-struct FAcquiredItem
-{
-	unsigned char                                      UnknownData00[0x185B59EC210];                             // 0x0000(0x185B59EC210) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.UIScene_UIAcquisition.UIAcquiredItem
-// 0x185B59EFED0
-struct FUIAcquiredItem
-{
-	unsigned char                                      UnknownData00[0x185B59EFED0];                             // 0x0000(0x185B59EFED0) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.UIChatScene.ChannelData
-// 0x185B9CABDF0
-struct FChannelData
-{
-	unsigned char                                      UnknownData00[0x185B9CABDF0];                             // 0x0000(0x185B9CABDF0) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.UIChatScene.ChatMessage
-// 0x185B9CABEB0
-struct FChatMessage
-{
-	unsigned char                                      UnknownData00[0x185B9CABEB0];                             // 0x0000(0x185B9CABEB0) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.UIComponent_AcquisitionCarousel.AcquisitionCarouselItem
-// 0x185B9CB2330
-struct FAcquisitionCarouselItem
-{
-	unsigned char                                      UnknownData00[0x185B9CB2330];                             // 0x0000(0x185B9CB2330) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.UIComponent_List.UICListEntry
-// 0x185B9CC5BF0
-struct FUICListEntry
-{
-	unsigned char                                      UnknownData00[0x185B9CC5BF0];                             // 0x0000(0x185B9CC5BF0) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.UIComponent_List.SmoothScrollingAxis
-// 0x185B9CCC430
-struct FSmoothScrollingAxis
-{
-	unsigned char                                      UnknownData00[0x185B9CCC430];                             // 0x0000(0x185B9CCC430) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.UIComponent_HealFeed.HealSource
-// 0x185B9CD0E70
-struct FHealSource
-{
-	unsigned char                                      UnknownData00[0x185B9CD0E70];                             // 0x0000(0x185B9CD0E70) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.UIComponent_HealFeed.HealAccumulator
-// 0x185B9CD1470
-struct FHealAccumulator
-{
-	unsigned char                                      UnknownData00[0x185B9CD1470];                             // 0x0000(0x185B9CD1470) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.UIComponent_HealthBar.BarTickTypes
-// 0x185B9CD4770
-struct FBarTickTypes
-{
-	unsigned char                                      UnknownData00[0x185B9CD4770];                             // 0x0000(0x185B9CD4770) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.UIComponent_PopupManager.SceneData
-// 0x185B98FEE30
-struct FSceneData
-{
-	unsigned char                                      UnknownData00[0x185B98FEE30];                             // 0x0000(0x185B98FEE30) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.UIComponent_RewardPanel.ProgressInfo
-// 0x185B9903C30
-struct FProgressInfo
-{
-	unsigned char                                      UnknownData00[0x185B9903C30];                             // 0x0000(0x185B9903C30) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.UIData_MatchMember.MatchLobbyPlayerCustomize
-// 0x185B991D430
-struct FMatchLobbyPlayerCustomize
-{
-	unsigned char                                      UnknownData00[0x185B991D430];                             // 0x0000(0x185B991D430) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.UIDataChatManager.ChannelChatData
-// 0x185B992AAB0
-struct FChannelChatData
-{
-	unsigned char                                      UnknownData00[0x185B992AAB0];                             // 0x0000(0x185B992AAB0) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.UIDataGoals.ActivityGoal
-// 0x185B992C730
-struct FActivityGoal
-{
-	unsigned char                                      UnknownData00[0x185B992C730];                             // 0x0000(0x185B992C730) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.UIDataGoals.ActivityGoalIds
-// 0x185B992C430
-struct FActivityGoalIds
-{
-	unsigned char                                      UnknownData00[0x185B992C430];                             // 0x0000(0x185B992C430) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.UIDataLoadouts.PendingImportRequest
-// 0x185B992FA30
-struct FPendingImportRequest
-{
-	unsigned char                                      UnknownData00[0x185B992FA30];                             // 0x0000(0x185B992FA30) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.UIHudBinoculars.UIBinocArrowPositions
-// 0x185B2B550E0
-struct FUIBinocArrowPositions
-{
-	unsigned char                                      UnknownData00[0x185B2B550E0];                             // 0x0000(0x185B2B550E0) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.UIHudBurns.UIITEMRANK
-// 0x185B2B56220
-struct FUIITEMRANK
-{
-	unsigned char                                      UnknownData00[0x185B2B56220];                             // 0x0000(0x185B2B56220) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.UIHudBurns.UIITEMDATA
-// 0x185B2B59460
-struct FUIITEMDATA
-{
-	unsigned char                                      UnknownData00[0x185B2B59460];                             // 0x0000(0x185B2B59460) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.UIHudBurns.UIITEMGROUP
-// 0x185B2B598E0
-struct FUIITEMGROUP
-{
-	unsigned char                                      UnknownData00[0x185B2B598E0];                             // 0x0000(0x185B2B598E0) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.UIHudCards.UICardDisplayGroup
-// 0x185B2B5B3E0
-struct FUICardDisplayGroup
-{
-	unsigned char                                      UnknownData00[0x185B2B5B3E0];                             // 0x0000(0x185B2B5B3E0) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.UIHudCards.UICardDisplayEntry
-// 0x185B2B5BDA0
-struct FUICardDisplayEntry
-{
-	unsigned char                                      UnknownData00[0x185B2B5BDA0];                             // 0x0000(0x185B2B5BDA0) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.UIHudCenter.HudMarker
-// 0x185B2B5B860
-struct FHudMarker
-{
-	unsigned char                                      UnknownData00[0x185B2B5B860];                             // 0x0000(0x185B2B5B860) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.UIHudCenter.MessageClip
-// 0x185B2B5A660
-struct FMessageClip
-{
-	unsigned char                                      UnknownData00[0x185B2B5A660];                             // 0x0000(0x185B2B5A660) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.UIHudCenter.DamageInstance
-// 0x185B2B62520
-struct FDamageInstance
-{
-	unsigned char                                      UnknownData00[0x185B2B62520];                             // 0x0000(0x185B2B62520) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.UIHudCenter.HudProjectile
-// 0x185B2B5E7A0
-struct FHudProjectile
-{
-	unsigned char                                      UnknownData00[0x185B2B5E7A0];                             // 0x0000(0x185B2B5E7A0) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.UIHudCenter.CastingInfo
-// 0x185B2B5F9A0
-struct FCastingInfo
-{
-	unsigned char                                      UnknownData00[0x185B2B5F9A0];                             // 0x0000(0x185B2B5F9A0) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.UIHudCenter.HitMarkerInfo
-// 0x185B2B60D20
-struct FHitMarkerInfo
-{
-	unsigned char                                      UnknownData00[0x185B2B60D20];                             // 0x0000(0x185B2B60D20) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.UIHudCredits.UIRewardInfo
-// 0x185B2B659A0
-struct FUIRewardInfo
-{
-	unsigned char                                      UnknownData00[0x185B2B659A0];                             // 0x0000(0x185B2B659A0) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.UIHudDebuff.HudDebuffEffect
-// 0x185B2B65220
-struct FHudDebuffEffect
-{
-	unsigned char                                      UnknownData00[0x185B2B65220];                             // 0x0000(0x185B2B65220) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.UIHudTeam.TEAMPLAYER_INFO
-// 0x185B2B67920
-struct FTEAMPLAYER_INFO
-{
-	unsigned char                                      UnknownData00[0x185B2B67920];                             // 0x0000(0x185B2B67920) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.UIHudTeam.TEAMPLAYER_INFO_EXTENDED
-// 0x185B2B6A320
-struct FTEAMPLAYER_INFO_EXTENDED
-{
-	unsigned char                                      UnknownData00[0x185B2B6A320];                             // 0x0000(0x185B2B6A320) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.UIHudTeam.TEAMSTAT_INFO
-// 0x185B2B6A860
-struct FTEAMSTAT_INFO
-{
-	unsigned char                                      UnknownData00[0x185B2B6A860];                             // 0x0000(0x185B2B6A860) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.UIHudKillFeed.UIKILLFEED_DATA
-// 0x185B2B6D260
-struct FUIKILLFEED_DATA
-{
-	unsigned char                                      UnknownData00[0x185B2B6D260];                             // 0x0000(0x185B2B6D260) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.UIHudMinimap.UIPING_DATA
-// 0x185B2B6D4A0
-struct FUIPING_DATA
-{
-	unsigned char                                      UnknownData00[0x185B2B6D4A0];                             // 0x0000(0x185B2B6D4A0) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.UIHudMap.BGTEAM_PLAYER
-// 0x185B2B6F420
-struct FBGTEAM_PLAYER
-{
-	unsigned char                                      UnknownData00[0x185B2B6F420];                             // 0x0000(0x185B2B6F420) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.UIHudNotify.NotifyData
-// 0x185B2B72DE0
-struct FNotifyData
-{
-	unsigned char                                      UnknownData00[0x185B2B72DE0];                             // 0x0000(0x185B2B72DE0) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.UIHudScore.PayloadStatus
-// 0x185B2B7C920
-struct FPayloadStatus
-{
-	unsigned char                                      UnknownData00[0x185B2B7C920];                             // 0x0000(0x185B2B7C920) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.UIHudScoreboard.ScoreInfo
-// 0x185B2B7EBA0
-struct FScoreInfo
-{
-	unsigned char                                      UnknownData00[0x185B2B7EBA0];                             // 0x0000(0x185B2B7EBA0) MISSED OFFSET
+	unsigned long                                      bLive : 1;                                                // 0x0000(0x0004)
+	unsigned long                                      bFeatured : 1;                                            // 0x0000(0x0004)
+	unsigned long                                      bSpecial : 1;                                             // 0x0000(0x0004)
+	TEnumAsByte<ESTREAMTYPE>                           Type;                                                     // 0x0004(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0005(0x0003) MISSED OFFSET
+	struct FString                                     Title;                                                    // 0x0008(0x0010) (AlwaysInit, NeedCtorLink)
+	struct FString                                     StreamURL;                                                // 0x0018(0x0010) (AlwaysInit, NeedCtorLink)
+	struct FString                                     ChannelName;                                              // 0x0028(0x0010) (AlwaysInit, NeedCtorLink)
+	struct FString                                     Description;                                              // 0x0038(0x0010) (AlwaysInit, NeedCtorLink)
+	struct FString                                     Viewers;                                                  // 0x0048(0x0010) (AlwaysInit, NeedCtorLink)
 };
 
 // ScriptStruct TgClient.UIHudSpectator.BotLifeData
-// 0x185B2B820E0
+// 0x001C
 struct FBotLifeData
 {
-	unsigned char                                      UnknownData00[0x185B2B820E0];                             // 0x0000(0x185B2B820E0) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.UIHudWaypoint.WaypointObjective
-// 0x185B2B84AE0
-struct FWaypointObjective
-{
-	unsigned char                                      UnknownData00[0x185B2B84AE0];                             // 0x0000(0x185B2B84AE0) MISSED OFFSET
+	unsigned long                                      bAlive : 1;                                               // 0x0000(0x0004)
+	int                                                nSpawnTime;                                               // 0x0004(0x0004)
+	int                                                nRespawnTime;                                             // 0x0008(0x0004)
+	TArray<int>                                        m_DeathTimes;                                             // 0x000C(0x0010) (NeedCtorLink)
 };
 
 // ScriptStruct TgClient.UILandingPanelManager.JsonHomeFeatureData
-// 0x185B2B89460
+// 0x0044
 struct FJsonHomeFeatureData
 {
-	unsigned char                                      UnknownData00[0x185B2B89460];                             // 0x0000(0x185B2B89460) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.UILobbyChat.ChannelCloseTimeOverride
-// 0x185B2B8B860
-struct FChannelCloseTimeOverride
-{
-	unsigned char                                      UnknownData00[0x185B2B8B860];                             // 0x0000(0x185B2B8B860) MISSED OFFSET
+	struct FString                                     sStartDate;                                               // 0x0000(0x0010) (AlwaysInit, NeedCtorLink)
+	struct FString                                     sEndDate;                                                 // 0x0010(0x0010) (AlwaysInit, NeedCtorLink)
+	unsigned char                                      eFeatureType;                                             // 0x0020(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0021(0x0003) MISSED OFFSET
+	int                                                nBotId;                                                   // 0x0024(0x0004)
+	int                                                nFeaturedItemId;                                          // 0x0028(0x0004)
+	int                                                nSkinId;                                                  // 0x002C(0x0004)
+	int                                                nWepSkinId;                                               // 0x0030(0x0004)
+	unsigned char                                      eLobbyCam;                                                // 0x0034(0x0001)
+	unsigned char                                      UnknownData01[0x3];                                       // 0x0035(0x0003) MISSED OFFSET
+	float                                              fChanceToShow;                                            // 0x0038(0x0004)
+	float                                              fRotationOffset;                                          // 0x003C(0x0004)
+	int                                                nLocationId;                                              // 0x0040(0x0004)
 };
 
 // ScriptStruct TgClient.UINotificationCenterJsonManager.TabInfo
-// 0x185B2B4B4E0
+// 0x0020
 struct FTabInfo
 {
-	unsigned char                                      UnknownData00[0x185B2B4B4E0];                             // 0x0000(0x185B2B4B4E0) MISSED OFFSET
-};
-
-// ScriptStruct TgClient.UIPatchNotesJsonManager.PatchNotesData
-// 0x185B2B4DD60
-struct FPatchNotesData
-{
-	unsigned char                                      UnknownData00[0x185B2B4DD60];                             // 0x0000(0x185B2B4DD60) MISSED OFFSET
+	struct FString                                     sTitle;                                                   // 0x0000(0x0010) (AlwaysInit, NeedCtorLink)
+	struct FString                                     sURL;                                                     // 0x0010(0x0010) (AlwaysInit, NeedCtorLink)
 };
 
 // ScriptStruct TgClient.UIPatchNotesJsonManager.PatchVersionNumber
-// 0x185B2B4B720
+// 0x0010
 struct FPatchVersionNumber
 {
-	unsigned char                                      UnknownData00[0x185B2B4B720];                             // 0x0000(0x185B2B4B720) MISSED OFFSET
+	int                                                nVersionMajor;                                            // 0x0000(0x0004)
+	int                                                nVersionMinor;                                            // 0x0004(0x0004)
+	int                                                nVersionPatch;                                            // 0x0008(0x0004)
+	int                                                nVersionBuild;                                            // 0x000C(0x0004)
 };
 
-// ScriptStruct TgClient.UIProfile.UIAwardData
-// 0x185B5E02660
-struct FUIAwardData
+// ScriptStruct TgClient.UILandingPanelManager.JsonFeatureData
+// 0x0098
+struct FJsonFeatureData
 {
-	unsigned char                                      UnknownData00[0x185B5E02660];                             // 0x0000(0x185B5E02660) MISSED OFFSET
+	struct FString                                     sId;                                                      // 0x0000(0x0010) (AlwaysInit, NeedCtorLink)
+	struct FString                                     sHeader;                                                  // 0x0010(0x0010) (AlwaysInit, NeedCtorLink)
+	struct FString                                     sSubheader;                                               // 0x0020(0x0010) (AlwaysInit, NeedCtorLink)
+	struct FString                                     sDesc;                                                    // 0x0030(0x0010) (AlwaysInit, NeedCtorLink)
+	struct FString                                     sData;                                                    // 0x0040(0x0010) (AlwaysInit, NeedCtorLink)
+	struct FString                                     sData2;                                                   // 0x0050(0x0010) (AlwaysInit, NeedCtorLink)
+	int                                                nMinLevel;                                                // 0x0060(0x0004)
+	int                                                nMaxLevel;                                                // 0x0064(0x0004)
+	int                                                nProbability;                                             // 0x0068(0x0004)
+	int                                                nVersion;                                                 // 0x006C(0x0004)
+	int                                                nNumForcedPresentations;                                  // 0x0070(0x0004)
+	int                                                nType;                                                    // 0x0074(0x0004)
+	int                                                nXpos;                                                    // 0x0078(0x0004)
+	int                                                nYpos;                                                    // 0x007C(0x0004)
+	int                                                nWidth;                                                   // 0x0080(0x0004)
+	int                                                nHeight;                                                  // 0x0084(0x0004)
+	unsigned long                                      bIsUsed : 1;                                              // 0x0088(0x0004)
+	unsigned long                                      bIsLive : 1;                                              // 0x0088(0x0004)
+	class UTexture2DDynamic*                           Texture;                                                  // 0x008C(0x0008)
+	int                                                nLocationId;                                              // 0x0094(0x0004)
 };
 
-// ScriptStruct TgClient.UIProfile.UIGoalData
-// 0x185B5E04D60
-struct FUIGoalData
+// ScriptStruct TgClient.UIPatchNotesJsonManager.PatchNotesData
+// 0x0040
+struct FPatchNotesData
 {
-	unsigned char                                      UnknownData00[0x185B5E04D60];                             // 0x0000(0x185B5E04D60) MISSED OFFSET
+	struct FString                                     sPatchIdentifier;                                         // 0x0000(0x0010) (NeedCtorLink)
+	struct FPatchVersionNumber                         PatchVersion;                                             // 0x0010(0x0010)
+	struct FPatchVersionNumber                         PatchRelevantVersion;                                     // 0x0020(0x0010)
+	TArray<struct FJsonFeatureData>                    vPatchDetails;                                            // 0x0030(0x0010) (NeedCtorLink)
 };
 
-// ScriptStruct TgClient.UIProfile.UIHistoryData
-// 0x185B5E02720
-struct FUIHistoryData
+// ScriptStruct TgClient.TgData_EOM.UIMVPDATA
+// 0x0028
+struct FUIMVPDATA
 {
-	unsigned char                                      UnknownData00[0x185B5E02720];                             // 0x0000(0x185B5E02720) MISSED OFFSET
+	int                                                nBot;                                                     // 0x0000(0x0004)
+	int                                                nBody;                                                    // 0x0004(0x0004)
+	int                                                nPedestal;                                                // 0x0008(0x0004)
+	int                                                nMVPType;                                                 // 0x000C(0x0004)
+	int                                                nFrame;                                                   // 0x0010(0x0004)
+	int                                                nLevel;                                                   // 0x0014(0x0004)
+	int                                                nValue;                                                   // 0x0018(0x0004)
+	int                                                nWeapon;                                                  // 0x001C(0x0004)
+	class UUIData_PlayerMatchRecord*                   pPlayer;                                                  // 0x0020(0x0008)
 };
 
-// ScriptStruct TgClient.UIPurchaseGems.UIDurablePack
-// 0x185B5E0BF60
-struct FUIDurablePack
+// ScriptStruct TgClient.TgData_EOM.AccoladeData
+// 0x000C
+struct FAccoladeData
 {
-	unsigned char                                      UnknownData00[0x185B5E0BF60];                             // 0x0000(0x185B5E0BF60) MISSED OFFSET
+	int                                                nMsgId;                                                   // 0x0000(0x0004)
+	int                                                nPlace;                                                   // 0x0004(0x0004)
+	int                                                nValue;                                                   // 0x0008(0x0004)
 };
 
-// ScriptStruct TgClient.UIPurchaseGems.UIConsumablePack
-// 0x185B5E0DBE0
-struct FUIConsumablePack
+// ScriptStruct TgClient.UIData_MatchMember.MatchLobbyPlayerCustomize
+// 0x0020
+struct FMatchLobbyPlayerCustomize
 {
-	unsigned char                                      UnknownData00[0x185B5E0DBE0];                             // 0x0000(0x185B5E0DBE0) MISSED OFFSET
+	int                                                nBotId;                                                   // 0x0000(0x0004)
+	int                                                nSkinId;                                                  // 0x0004(0x0004)
+	int                                                nWeaponDeviceId;                                          // 0x0008(0x0004)
+	int                                                nWeaponSkinId;                                            // 0x000C(0x0004)
+	int                                                nVoiceId;                                                 // 0x0010(0x0004)
+	int                                                nEmoteId;                                                 // 0x0014(0x0004)
+	int                                                nMVPPoseId;                                               // 0x0018(0x0004)
+	int                                                nSprayId;                                                 // 0x001C(0x0004)
 };
 
-// ScriptStruct TgClient.UIScene.UIAnimData
-// 0x185B5E0F320
-struct FUIAnimData
+// ScriptStruct TgClient.UIDataChatManager.ChannelChatData
+// 0x0010
+struct FChannelChatData
 {
-	unsigned char                                      UnknownData00[0x185B5E0F320];                             // 0x0000(0x185B5E0F320) MISSED OFFSET
+	TArray<class UTgChatData*>                         ChatData;                                                 // 0x0000(0x0010) (NeedCtorLink)
 };
 
-// ScriptStruct TgClient.UIScene.UIQueuedSounds
-// 0x185B5E0FAA0
-struct FUIQueuedSounds
+// ScriptStruct TgClient.UIDataLoadouts.PendingImportRequest
+// 0x0018
+struct FPendingImportRequest
 {
-	unsigned char                                      UnknownData00[0x185B5E0FAA0];                             // 0x0000(0x185B5E0FAA0) MISSED OFFSET
+	struct FString                                     sPlayerName;                                              // 0x0000(0x0010) (AlwaysInit, NeedCtorLink)
+	struct Fdword                                      dwBotId;                                                  // 0x0010(0x0004)
+	float                                              fTTL;                                                     // 0x0014(0x0004)
 };
 
-// ScriptStruct TgClient.UIScene_UIFooterGamepad.FooterOption
-// 0x185B5E1D8A0
-struct FFooterOption
+// ScriptStruct TgClient.InputGroup.UIGroupObject
+// 0x0028
+struct FUIGroupObject
 {
-	unsigned char                                      UnknownData00[0x185B5E1D8A0];                             // 0x0000(0x185B5E1D8A0) MISSED OFFSET
+	int                                                nLocX;                                                    // 0x0000(0x0004)
+	int                                                nLocY;                                                    // 0x0004(0x0004)
+	int                                                nWidth;                                                   // 0x0008(0x0004)
+	int                                                nHeight;                                                  // 0x000C(0x0004)
+	class UInputGroup*                                 pGroup;                                                   // 0x0010(0x0008)
+	class UGFxObject*                                  pObj;                                                     // 0x0018(0x0008)
+	class UGFxObject*                                  pCursorHoverObj;                                          // 0x0020(0x0008)
 };
 
-// ScriptStruct TgClient.UIScene_UIQuests.EmptyPanel
-// 0x185B5E2CDE0
-struct FEmptyPanel
+// ScriptStruct TgClient.InputAction.InputKeyEvent
+// 0x001C
+struct FInputKeyEvent
 {
-	unsigned char                                      UnknownData00[0x185B5E2CDE0];                             // 0x0000(0x185B5E2CDE0) MISSED OFFSET
+	struct FName                                       nmKey;                                                    // 0x0000(0x0008)
+	TEnumAsByte<EInputEvent>                           eEvent;                                                   // 0x0008(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0009(0x0003) MISSED OFFSET
+	struct FString                                     sDisplayName;                                             // 0x000C(0x0010) (NeedCtorLink)
 };
 
-// ScriptStruct TgClient.UISettings.KeybindOption
-// 0x185B5E35A20
-struct FKeybindOption
+// ScriptStruct TgClient.TgGameDC_Chat.QueueMessage
+// 0x0030
+struct FQueueMessage
 {
-	unsigned char                                      UnknownData00[0x185B5E35A20];                             // 0x0000(0x185B5E35A20) MISSED OFFSET
+	int                                                Id;                                                       // 0x0000(0x0004)
+	TEnumAsByte<ETG_CHAT_PRIORITY>                     Priority;                                                 // 0x0004(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0005(0x0003) MISSED OFFSET
+	unsigned long                                      bHasPlayedSound : 1;                                      // 0x0008(0x0004)
+	int                                                VoicePackId;                                              // 0x000C(0x0004)
+	int                                                VoiceBotId;                                               // 0x0010(0x0004)
+	int                                                VoiceSkinId;                                              // 0x0014(0x0004)
+	struct FString                                     VoicePackCustomSuffix;                                    // 0x0018(0x0010) (AlwaysInit, NeedCtorLink)
+	class UAkBaseSoundObject*                          SoundObject;                                              // 0x0028(0x0008)
 };
 
-// ScriptStruct TgClient.UISettings.SettingOption
-// 0x185B5E366E0
-struct FSettingOption
+// ScriptStruct TgClient.TgGameDC_Chat.MessageToken
+// 0x001C
+struct FMessageToken
 {
-	unsigned char                                      UnknownData00[0x185B5E366E0];                             // 0x0000(0x185B5E366E0) MISSED OFFSET
+	int                                                msgId;                                                    // 0x0000(0x0004)
+	int                                                MsgIdRed;                                                 // 0x0004(0x0004)
+	int                                                MsgIdBlue;                                                // 0x0008(0x0004)
+	struct FString                                     Token;                                                    // 0x000C(0x0010) (AlwaysInit, NeedCtorLink)
 };
 
-// ScriptStruct TgClient.UIWorldOverlay.QueuedDamageNumber
-// 0x185B5E3D520
-struct FQueuedDamageNumber
+// ScriptStruct TgClient.TgMiniMap.BuffMonsterMIC
+// 0x0018
+struct FBuffMonsterMIC
 {
-	unsigned char                                      UnknownData00[0x185B5E3D520];                             // 0x0000(0x185B5E3D520) MISSED OFFSET
+	class UMaterialInstanceConstant*                   SpawnedMIC;                                               // 0x0000(0x0008)
+	class UMaterialInstanceConstant*                   DroppedMIC;                                               // 0x0008(0x0008)
+	class UMaterialInstanceConstant*                   TimerMIC;                                                 // 0x0010(0x0008)
 };
 
-// ScriptStruct TgClient.UIWorldOverlay.UITargetableOverlay
-// 0x185B5E3A160
-struct FUITargetableOverlay
+// ScriptStruct TgClient.TgMiniMap.LayerIndex
+// 0x0010
+struct FLayerIndex
 {
-	unsigned char                                      UnknownData00[0x185B5E3A160];                             // 0x0000(0x185B5E3A160) MISSED OFFSET
+	TArray<int>                                        Entries;                                                  // 0x0000(0x0010) (AlwaysInit, NeedCtorLink)
 };
 
-// ScriptStruct TgClient.UIWorldOverlay.UIPooledOverlayData
-// 0x185B5E3D9A0
-struct FUIPooledOverlayData
+// ScriptStruct TgClient.TgMiniMap.MiniMapPingInfo
+// 0x0048
+struct FMiniMapPingInfo
 {
-	unsigned char                                      UnknownData00[0x185B5E3D9A0];                             // 0x0000(0x185B5E3D9A0) MISSED OFFSET
+	float                                              fServerStartTime;                                         // 0x0000(0x0004)
+	float                                              fClientStartTime;                                         // 0x0004(0x0004)
+	class ATgRepInfo_Player*                           pingedPri;                                                // 0x0008(0x0008)
+	struct FVector                                     vPingedLoc;                                               // 0x0010(0x000C)
+	unsigned long                                      bIsPinging : 1;                                           // 0x001C(0x0004)
+	TEnumAsByte<EPING_TYPE>                            eType;                                                    // 0x0020(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0021(0x0003) MISSED OFFSET
+	int                                                nIconSize;                                                // 0x0024(0x0004)
+	class UMaterialInstanceConstant*                   pingMIC;                                                  // 0x0028(0x0008)
+	class ATgRepInfo_Player*                           sourcePRI;                                                // 0x0030(0x0008)
+	int                                                SourceIndex;                                              // 0x0038(0x0004)
+	struct FVector                                     vSourceWorldLocation;                                     // 0x003C(0x000C)
 };
 
-// ScriptStruct TgClient.UIWorldOverlay.OverlayData
-// 0x185B5E3B360
-struct FOverlayData
+// ScriptStruct TgClient.TgLobbyHUD.MapDetails
+// 0x005C
+struct FMapDetails
 {
-	unsigned char                                      UnknownData00[0x185B5E3B360];                             // 0x0000(0x185B5E3B360) MISSED OFFSET
+	unsigned long                                      bProcessed : 1;                                           // 0x0000(0x0004)
+	int                                                nMapId;                                                   // 0x0004(0x0004)
+	struct FString                                     sMapName;                                                 // 0x0008(0x0010) (NeedCtorLink)
+	struct FString                                     sGameMode;                                                // 0x0018(0x0010) (NeedCtorLink)
+	int                                                nMapIconFrame;                                            // 0x0028(0x0004)
+	struct FString                                     sLoadingTexture;                                          // 0x002C(0x0010) (NeedCtorLink)
+	struct FString                                     sLoadingTip;                                              // 0x003C(0x0010) (NeedCtorLink)
+	struct FString                                     sLoadingTipMessage;                                       // 0x004C(0x0010) (NeedCtorLink)
 };
 
-// ScriptStruct TgClient.UIWorldOverlay.UIDeployableOverlay
-// 0x185B5E397A0
-struct FUIDeployableOverlay
+// ScriptStruct TgClient.TgSetting.OptionData
+// 0x0018
+struct FOptionData
 {
-	unsigned char                                      UnknownData00[0x1EC];                                     // 0x0000(0x01EC) MISSED OFFSET
-	unsigned long                                      ShowAllTeamAsParty : 1;                                   // 0x01EC(0x0004) (Config)
-	unsigned long                                      m_bDamageReturnOnScaleIn : 1;                             // 0x01EC(0x0004)
-	unsigned long                                      m_bBringToFrontProcessed : 1;                             // 0x01EC(0x0004)
-	unsigned long                                      m_bSpectatorShowPlayerIcons : 1;                          // 0x01EC(0x0004)
-	int                                                m_nDepth;                                                 // 0x01F0(0x0004)
-	int                                                m_nCritCount;                                             // 0x01F4(0x0004)
-	int                                                m_nLastValue;                                             // 0x01F8(0x0004)
-	int                                                m_nLastTargetId;                                          // 0x01FC(0x0004)
-	int                                                m_nDamageNumberType;                                      // 0x0200(0x0004)
-	int                                                m_nMaxDamageTicksPerDevice;                               // 0x0204(0x0004)
-	unsigned char                                      m_eLastTargetType;                                        // 0x0208(0x0001)
-	unsigned char                                      UnknownData01[0x3];                                       // 0x0209(0x0003) MISSED OFFSET
-	float                                              m_fDelta;                                                 // 0x020C(0x0004)
-	float                                              m_fInterp;                                                // 0x0210(0x0004)
-	float                                              m_fCritScaleInDuration;                                   // 0x0214(0x0004)
-	float                                              m_fCritScaleMin;                                          // 0x0218(0x0004)
-	float                                              m_fCritScaleMax;                                          // 0x021C(0x0004)
-	float                                              m_fCritMaxWorldOffset;                                    // 0x0220(0x0004)
-	float                                              m_fCritMaxInitialSpeed;                                   // 0x0224(0x0004)
-	float                                              m_fCritGravityCoeff;                                      // 0x0228(0x0004)
-	float                                              m_fCritVerticalOffset;                                    // 0x022C(0x0004)
-	float                                              m_fCritTimer;                                             // 0x0230(0x0004)
-	float                                              m_fDamageScaleInDuration;                                 // 0x0234(0x0004)
-	float                                              m_fDamageSustainDuration;                                 // 0x0238(0x0004)
-	float                                              m_fDamageInitialSpeedRandomness;                          // 0x023C(0x0004)
-	float                                              m_fDamageScaleMin;                                        // 0x0240(0x0004)
-	float                                              m_fDamageScaleMax;                                        // 0x0244(0x0004)
-	float                                              m_fDamageMaxWorldOffset;                                  // 0x0248(0x0004)
-	float                                              m_fDamageWorldOffsetConeAngle;                            // 0x024C(0x0004)
-	float                                              m_fDamageMaxInitialSpeed;                                 // 0x0250(0x0004)
-	float                                              m_fDamageGravityCoeff;                                    // 0x0254(0x0004)
-	float                                              m_fDamageVerticalOffset;                                  // 0x0258(0x0004)
-	float                                              m_fDamageTimer;                                           // 0x025C(0x0004)
-	float                                              m_fHealingSpeed;                                          // 0x0260(0x0004)
-	float                                              m_fHealingBloom;                                          // 0x0264(0x0004)
-	float                                              m_fHealingTimer;                                          // 0x0268(0x0004)
-	float                                              m_fResolutionModX;                                        // 0x026C(0x0004)
-	float                                              m_fResolutionModY;                                        // 0x0270(0x0004)
-	float                                              m_fDamageNumbersOffsetScale;                              // 0x0274(0x0004)
-	TArray<struct FUIPooledOverlayData>                m_PooledCritData;                                         // 0x0278(0x0010) (NeedCtorLink)
-	TArray<struct FUIPooledOverlayData>                m_PooledDamageData;                                       // 0x0288(0x0010) (NeedCtorLink)
-	TArray<struct FUIPooledOverlayData>                m_PooledHealingData;                                      // 0x0298(0x0010) (NeedCtorLink)
-	TArray<struct FOverlayData>                        m_CritData;                                               // 0x02A8(0x0010) (NeedCtorLink)
-	TArray<struct FOverlayData>                        m_DamageData;                                             // 0x02B8(0x0010) (NeedCtorLink)
-	TArray<struct FOverlayData>                        m_HealingData;                                            // 0x02C8(0x0010) (NeedCtorLink)
-	TArray<struct FUIPlayerOverlay>                    m_PlayerOverlays;                                         // 0x02D8(0x0010) (NeedCtorLink)
-	TArray<struct FUIDeployableOverlay>                m_DeployableOverlays;                                     // 0x02E8(0x0010) (NeedCtorLink)
-	TArray<struct FUIDeployableOverlay>                m_DeployableOverlayPool;                                  // 0x02F8(0x0010) (NeedCtorLink)
-	unsigned char                                      UnknownData02[0x48];                                      // 0x0308(0x0048) UNKNOWN PROPERTY: MapProperty TgClient.UIWorldOverlay.m_nActiveDamageNumbers
-	TArray<struct FQueuedDamageNumber>                 m_QueuedDamageNumbers;                                    // 0x0350(0x0010) (AlwaysInit, NeedCtorLink)
-	unsigned char                                      UnknownData03[0x185B5E39440];                             // 0x0360(0x185B5E39440) MISSED OFFSET
+	float                                              fValue;                                                   // 0x0000(0x0004)
+	float                                              fOther;                                                   // 0x0004(0x0004)
+	struct FString                                     sName;                                                    // 0x0008(0x0010) (AlwaysInit, NeedCtorLink)
 };
 
-// ScriptStruct TgClient.UIWorldOverlay.UIPlayerOverlay
-// 0x185B5E3A520
-struct FUIPlayerOverlay
+// ScriptStruct TgClient.TgSettingsManager.TgKeyCommand
+// 0x0048
+struct FTgKeyCommand
 {
-	unsigned char                                      UnknownData00[0x1EC];                                     // 0x0000(0x01EC) MISSED OFFSET
-	unsigned long                                      ShowAllTeamAsParty : 1;                                   // 0x01EC(0x0004) (Config)
-	unsigned long                                      m_bDamageReturnOnScaleIn : 1;                             // 0x01EC(0x0004)
-	unsigned long                                      m_bBringToFrontProcessed : 1;                             // 0x01EC(0x0004)
-	unsigned long                                      m_bSpectatorShowPlayerIcons : 1;                          // 0x01EC(0x0004)
-	int                                                m_nDepth;                                                 // 0x01F0(0x0004)
-	int                                                m_nCritCount;                                             // 0x01F4(0x0004)
-	int                                                m_nLastValue;                                             // 0x01F8(0x0004)
-	int                                                m_nLastTargetId;                                          // 0x01FC(0x0004)
-	int                                                m_nDamageNumberType;                                      // 0x0200(0x0004)
-	int                                                m_nMaxDamageTicksPerDevice;                               // 0x0204(0x0004)
-	unsigned char                                      m_eLastTargetType;                                        // 0x0208(0x0001)
-	unsigned char                                      UnknownData01[0x3];                                       // 0x0209(0x0003) MISSED OFFSET
-	float                                              m_fDelta;                                                 // 0x020C(0x0004)
-	float                                              m_fInterp;                                                // 0x0210(0x0004)
-	float                                              m_fCritScaleInDuration;                                   // 0x0214(0x0004)
-	float                                              m_fCritScaleMin;                                          // 0x0218(0x0004)
-	float                                              m_fCritScaleMax;                                          // 0x021C(0x0004)
-	float                                              m_fCritMaxWorldOffset;                                    // 0x0220(0x0004)
-	float                                              m_fCritMaxInitialSpeed;                                   // 0x0224(0x0004)
-	float                                              m_fCritGravityCoeff;                                      // 0x0228(0x0004)
-	float                                              m_fCritVerticalOffset;                                    // 0x022C(0x0004)
-	float                                              m_fCritTimer;                                             // 0x0230(0x0004)
-	float                                              m_fDamageScaleInDuration;                                 // 0x0234(0x0004)
-	float                                              m_fDamageSustainDuration;                                 // 0x0238(0x0004)
-	float                                              m_fDamageInitialSpeedRandomness;                          // 0x023C(0x0004)
-	float                                              m_fDamageScaleMin;                                        // 0x0240(0x0004)
-	float                                              m_fDamageScaleMax;                                        // 0x0244(0x0004)
-	float                                              m_fDamageMaxWorldOffset;                                  // 0x0248(0x0004)
-	float                                              m_fDamageWorldOffsetConeAngle;                            // 0x024C(0x0004)
-	float                                              m_fDamageMaxInitialSpeed;                                 // 0x0250(0x0004)
-	float                                              m_fDamageGravityCoeff;                                    // 0x0254(0x0004)
-	float                                              m_fDamageVerticalOffset;                                  // 0x0258(0x0004)
-	float                                              m_fDamageTimer;                                           // 0x025C(0x0004)
-	float                                              m_fHealingSpeed;                                          // 0x0260(0x0004)
-	float                                              m_fHealingBloom;                                          // 0x0264(0x0004)
-	float                                              m_fHealingTimer;                                          // 0x0268(0x0004)
-	float                                              m_fResolutionModX;                                        // 0x026C(0x0004)
-	float                                              m_fResolutionModY;                                        // 0x0270(0x0004)
-	float                                              m_fDamageNumbersOffsetScale;                              // 0x0274(0x0004)
-	TArray<struct FUIPooledOverlayData>                m_PooledCritData;                                         // 0x0278(0x0010) (NeedCtorLink)
-	TArray<struct FUIPooledOverlayData>                m_PooledDamageData;                                       // 0x0288(0x0010) (NeedCtorLink)
-	TArray<struct FUIPooledOverlayData>                m_PooledHealingData;                                      // 0x0298(0x0010) (NeedCtorLink)
-	TArray<struct FOverlayData>                        m_CritData;                                               // 0x02A8(0x0010) (NeedCtorLink)
-	TArray<struct FOverlayData>                        m_DamageData;                                             // 0x02B8(0x0010) (NeedCtorLink)
-	TArray<struct FOverlayData>                        m_HealingData;                                            // 0x02C8(0x0010) (NeedCtorLink)
-	TArray<struct FUIPlayerOverlay>                    m_PlayerOverlays;                                         // 0x02D8(0x0010) (NeedCtorLink)
-	TArray<struct FUIDeployableOverlay>                m_DeployableOverlays;                                     // 0x02E8(0x0010) (NeedCtorLink)
-	TArray<struct FUIDeployableOverlay>                m_DeployableOverlayPool;                                  // 0x02F8(0x0010) (NeedCtorLink)
-	unsigned char                                      UnknownData02[0x48];                                      // 0x0308(0x0048) UNKNOWN PROPERTY: MapProperty TgClient.UIWorldOverlay.m_nActiveDamageNumbers
-	TArray<struct FQueuedDamageNumber>                 m_QueuedDamageNumbers;                                    // 0x0350(0x0010) (AlwaysInit, NeedCtorLink)
-	unsigned char                                      UnknownData03[0x185B5E3A1C0];                             // 0x0360(0x185B5E3A1C0) MISSED OFFSET
+	unsigned long                                      bAllowGamepadAxis : 1;                                    // 0x0000(0x0004)
+	int                                                nPropId;                                                  // 0x0004(0x0004)
+	struct FString                                     sKeyCommand;                                              // 0x0008(0x0010) (AlwaysInit, NeedCtorLink)
+	struct FString                                     sMirroredCommand;                                         // 0x0018(0x0010) (AlwaysInit, NeedCtorLink)
+	TArray<struct FString>                             sDefaultKeys;                                             // 0x0028(0x0010) (AlwaysInit, NeedCtorLink)
+	TArray<struct FString>                             sDefaultGamepad;                                          // 0x0038(0x0010) (AlwaysInit, NeedCtorLink)
+};
+
+// ScriptStruct TgClient.TgSettingsManager.TgSettingPropMapping
+// 0x000C
+struct FTgSettingPropMapping
+{
+	int                                                nSettingId;                                               // 0x0000(0x0004)
+	int                                                nPropId;                                                  // 0x0004(0x0004)
+	int                                                nPlayerFlag;                                              // 0x0008(0x0004)
 };
 
 // ScriptStruct TgClient.UIComponent_AnimSet.UICompAnimSetAnim
-// 0x185B8264780
+// 0x0014
 struct FUICompAnimSetAnim
 {
-	unsigned char                                      UnknownData00[0x185B8264780];                             // 0x0000(0x185B8264780) MISSED OFFSET
+	float                                              fAnimTimeInSequence;                                      // 0x0000(0x0004)
+	TEnumAsByte<EUIANIMTYPE>                           eAnimType;                                                // 0x0004(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0005(0x0003) MISSED OFFSET
+	float                                              fValue;                                                   // 0x0008(0x0004)
+	unsigned char                                      eQuad;                                                    // 0x000C(0x0001)
+	unsigned char                                      UnknownData01[0x3];                                       // 0x000D(0x0003) MISSED OFFSET
+	float                                              fDuration;                                                // 0x0010(0x0004)
+};
+
+// ScriptStruct TgClient.UIComponent_HealFeed.HealSource
+// 0x0034
+struct FHealSource
+{
+	int                                                nPawnId;                                                  // 0x0000(0x0004)
+	class UGFxObject*                                  mcIconParent;                                             // 0x0004(0x0008)
+	class UGFxObject*                                  mcIcon;                                                   // 0x000C(0x0008)
+	class UGFxObject*                                  mcGlow;                                                   // 0x0014(0x0008)
+	float                                              fHideTimer;                                               // 0x001C(0x0004)
+	float                                              fGlowTimer;                                               // 0x0020(0x0004)
+	TArray<class UUIComponent_HealFeedEntry*>          ActiveEntries;                                            // 0x0024(0x0010) (NeedCtorLink)
+};
+
+// ScriptStruct TgClient.UIComponent_HealthBar.BarTickTypes
+// 0x0040
+struct FBarTickTypes
+{
+	struct FString                                     sMaskName;                                                // 0x0000(0x0010) (Const, NeedCtorLink)
+	struct FString                                     sContainerName;                                           // 0x0010(0x0010) (Const, NeedCtorLink)
+	float                                              fWidth;                                                   // 0x0020(0x0004)
+	TEnumAsByte<EHealthTickType>                       eBorderTickType;                                          // 0x0024(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0025(0x0003) MISSED OFFSET
+	class UGFxObject*                                  mcBorderTickMask;                                         // 0x0028(0x0008)
+	class UGFxObject*                                  mcLeftBorderTick;                                         // 0x0030(0x0008)
+	class UGFxObject*                                  mcRightBorderTick;                                        // 0x0038(0x0008)
+};
+
+// ScriptStruct TgClient.UIComponent_RewardPanel.ProgressInfo
+// 0x0010
+struct FProgressInfo
+{
+	int                                                nLevel;                                                   // 0x0000(0x0004)
+	int                                                nCurrentXP;                                               // 0x0004(0x0004)
+	int                                                nRequiredXP;                                              // 0x0008(0x0004)
+	int                                                nXPFloor;                                                 // 0x000C(0x0004)
+};
+
+// ScriptStruct TgClient.UIScene.UIQueuedSounds
+// 0x000C
+struct FUIQueuedSounds
+{
+	float                                              fStartTime;                                               // 0x0000(0x0004)
+	class UAkBaseSoundObject*                          akSound;                                                  // 0x0004(0x0008)
+};
+
+// ScriptStruct TgClient.UIScene_UIFooterGamepad.FooterOption
+// 0x0044
+struct FFooterOption
+{
+	int                                                nOption;                                                  // 0x0000(0x0004)
+	class UGFxObject*                                  pObj;                                                     // 0x0004(0x0008)
+	class UGFxObject*                                  pKey;                                                     // 0x000C(0x0008)
+	class UGFxObject*                                  pKeyTF;                                                   // 0x0014(0x0008)
+	class UGFxObject*                                  pGlow;                                                    // 0x001C(0x0008)
+	class UGFxObject*                                  pGlowTF;                                                  // 0x0024(0x0008)
+	class UGFxObject*                                  pTitle;                                                   // 0x002C(0x0008)
+	class UGFxObject*                                  pTitleTF;                                                 // 0x0034(0x0008)
+	class UGFxObject*                                  pFrame;                                                   // 0x003C(0x0008)
+};
+
+// ScriptStruct TgClient.UIScene_UIQuests.EmptyPanel
+// 0x0018
+struct FEmptyPanel
+{
+	class UGFxObject*                                  mcRoot;                                                   // 0x0000(0x0008)
+	class UGFxObject*                                  mcTF0;                                                    // 0x0008(0x0008)
+	class UGFxObject*                                  mcTF1;                                                    // 0x0010(0x0008)
+};
+
+// ScriptStruct TgClient.UIScene_UIAcquisition.UIAcquiredItem
+// 0x0108
+struct FUIAcquiredItem
+{
+	class UUIInteractable_Item*                        Card;                                                     // 0x0000(0x0008)
+	class UUIComponent_Avatar*                         Avatar;                                                   // 0x0008(0x0008)
+	class UGFxObject*                                  mcEquipButton;                                            // 0x0010(0x0008)
+	class UGFxObject*                                  mcEquippedText;                                           // 0x0018(0x0008)
+	class UGFxObject*                                  mcEquipPrompt;                                            // 0x0020(0x0008)
+	class UGFxObject*                                  mcStoreItemContainer;                                     // 0x0028(0x0008)
+	class UGFxObject*                                  mcItemContainer;                                          // 0x0030(0x0008)
+	class UGFxObject*                                  mcBoostContainer;                                         // 0x0038(0x0008)
+	class UGFxObject*                                  mcBoostQuantity;                                          // 0x0040(0x0008)
+	class UGFxObject*                                  mcChestContainer;                                         // 0x0048(0x0008)
+	class UGFxObject*                                  mcChestQuantityText;                                      // 0x0050(0x0008)
+	class UGFxObject*                                  mcChestChampionPortrait;                                  // 0x0058(0x0008)
+	class UGFxObject*                                  mcChestChampionPortraitTexture;                           // 0x0060(0x0008)
+	class UGFxObject*                                  mcChestCardQuantity;                                      // 0x0068(0x0008)
+	class UGFxObject*                                  mcChampionIcon;                                           // 0x0070(0x0008)
+	class UGFxObject*                                  mcChampionImage;                                          // 0x0078(0x0008)
+	class UGFxObject*                                  mcChampionTitle;                                          // 0x0080(0x0008)
+	class UGFxObject*                                  mcItemIcon;                                               // 0x0088(0x0008)
+	class UGFxObject*                                  mcCardIcon;                                               // 0x0090(0x0008)
+	class UGFxObject*                                  mcLoadingFrame;                                           // 0x0098(0x0008)
+	class UGFxObject*                                  mcDeathCard;                                              // 0x00A0(0x0008)
+	class UGFxObject*                                  mcCurrency;                                               // 0x00A8(0x0008)
+	class UGFxObject*                                  mcTexture;                                                // 0x00B0(0x0008)
+	class UGFxObject*                                  mcRarityFrame;                                            // 0x00B8(0x0008)
+	class UGFxObject*                                  mcRarityText;                                             // 0x00C0(0x0008)
+	class UGFxObject*                                  mcItemTitle;                                              // 0x00C8(0x0008)
+	class UGFxObject*                                  mcItemAudio;                                              // 0x00D0(0x0008)
+	class UGFxObject*                                  mcItemChampion;                                           // 0x00D8(0x0008)
+	class UGFxObject*                                  mcItemChampionIcon;                                       // 0x00E0(0x0008)
+	class UGFxObject*                                  mcItemQuantityText;                                       // 0x00E8(0x0008)
+	class UGFxObject*                                  mcOwnedText;                                              // 0x00F0(0x0008)
+	class UGFxObject*                                  mcOwnedCheckmark;                                         // 0x00F8(0x0008)
+	class UGFxObject*                                  mcQuestIcon;                                              // 0x0100(0x0008)
 };
 
 // ScriptStruct TgClient.UIComponent_OptionEntryPaged.PagedEntry
-// 0x185B8279D80
+// 0x0014
 struct FPagedEntry
 {
-	unsigned char                                      UnknownData00[0x185B8279D80];                             // 0x0000(0x185B8279D80) MISSED OFFSET
+	int                                                nValue;                                                   // 0x0000(0x0004)
+	struct FString                                     sText;                                                    // 0x0004(0x0010) (AlwaysInit, NeedCtorLink)
+};
+
+// ScriptStruct TgClient.UIComponent_PopupManager.SceneData
+// 0x0010
+struct FSceneData
+{
+	struct FName                                       nmSceneName;                                              // 0x0000(0x0008)
+	class UUIData*                                     pData;                                                    // 0x0008(0x0008)
+};
+
+// ScriptStruct TgClient.UIComponent_List.UICListEntry
+// 0x0048
+struct FUICListEntry
+{
+	class UUIComponent_Display*                        pDisplay;                                                 // 0x0000(0x0008)
+	class UUIComponent_Interactable*                   pInteractable;                                            // 0x0008(0x0008)
+	float                                              fOrigX;                                                   // 0x0010(0x0004)
+	float                                              fOrigY;                                                   // 0x0014(0x0004)
+	float                                              fOrigAlpha;                                               // 0x0018(0x0004)
+	float                                              fOrigWidth;                                               // 0x001C(0x0004)
+	float                                              fOrigHeight;                                              // 0x0020(0x0004)
+	float                                              fOrigXScale;                                              // 0x0024(0x0004)
+	float                                              fOrigYScale;                                              // 0x0028(0x0004)
+	float                                              fOrigRotation;                                            // 0x002C(0x0004)
+	float                                              fDisplayWidth;                                            // 0x0030(0x0004)
+	float                                              fDisplayHeight;                                           // 0x0034(0x0004)
+	int                                                nNavPosX;                                                 // 0x0038(0x0004)
+	int                                                nNavPosY;                                                 // 0x003C(0x0004)
+	int                                                nNavWidth;                                                // 0x0040(0x0004)
+	int                                                nNavHeight;                                               // 0x0044(0x0004)
+};
+
+// ScriptStruct TgClient.UIComponent_List.SmoothScrollingAxis
+// 0x0020
+struct FSmoothScrollingAxis
+{
+	unsigned long                                      bEnable : 1;                                              // 0x0000(0x0004)
+	float                                              fDelay;                                                   // 0x0004(0x0004)
+	float                                              fMargin;                                                  // 0x0008(0x0004)
+	int                                                nTarget;                                                  // 0x000C(0x0004)
+	int                                                nVelocity;                                                // 0x0010(0x0004)
+	float                                              fBufferPos;                                               // 0x0014(0x0004)
+	float                                              fSpan;                                                    // 0x0018(0x0004)
+	float                                              fAnimTime;                                                // 0x001C(0x0004)
+};
+
+// ScriptStruct TgClient.TgGfxScene.UIDisplayData
+// 0x000C
+struct FUIDisplayData
+{
+	unsigned char                                      eType;                                                    // 0x0000(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0001(0x0003) MISSED OFFSET
+	class UGFxObject*                                  pObj;                                                     // 0x0004(0x0008)
+};
+
+// ScriptStruct TgClient.UIAcademy.AcademyVideoButton
+// 0x0040
+struct FAcademyVideoButton
+{
+	struct FString                                     sImagePath;                                               // 0x0000(0x0010) (NeedCtorLink)
+	struct FString                                     sVideoURL;                                                // 0x0010(0x0010) (NeedCtorLink)
+	class UGFxObject*                                  pClip;                                                    // 0x0020(0x0008)
+	class UGFxObject*                                  pImage;                                                   // 0x0028(0x0008)
+	class UGFxObject*                                  pTitle;                                                   // 0x0030(0x0008)
+	class UGFxObject*                                  pSubtitle;                                                // 0x0038(0x0008)
+};
+
+// ScriptStruct TgClient.UIAchievementPopups.AchievementProgressData
+// 0x003C
+struct FAchievementProgressData
+{
+	unsigned long                                      hasBeenProcessed : 1;                                     // 0x0000(0x0004)
+	unsigned long                                      isCompleted : 1;                                          // 0x0000(0x0004)
+	int                                                ActivityId;                                               // 0x0004(0x0004)
+	int                                                goalId;                                                   // 0x0008(0x0004)
+	int                                                goalGroupType;                                            // 0x000C(0x0004)
+	int                                                numGoalsInGroup;                                          // 0x0010(0x0004)
+	int                                                descMsgId;                                                // 0x0014(0x0004)
+	int                                                activityMsgId;                                            // 0x0018(0x0004)
+	int                                                goalMsgId;                                                // 0x001C(0x0004)
+	int                                                activationValueId;                                        // 0x0020(0x0004)
+	int                                                countToComplete;                                          // 0x0024(0x0004)
+	int                                                currentCount;                                             // 0x0028(0x0004)
+	int                                                countDelta;                                               // 0x002C(0x0004)
+	int                                                titleMsgId;                                               // 0x0030(0x0004)
+	int                                                IconId;                                                   // 0x0034(0x0004)
+	int                                                pointValue;                                               // 0x0038(0x0004)
+};
+
+// ScriptStruct TgClient.UIScene_UIEOMLAcquisition.AcquiredItem
+// 0x0018
+struct FAcquiredItem
+{
+	struct Fdword                                      dwLocalAcquisitionId;                                     // 0x0000(0x0004)
+	struct Fdword                                      eItemType;                                                // 0x0004(0x0004)
+	int                                                nItemId;                                                  // 0x0008(0x0004)
+	int                                                nQuantity;                                                // 0x000C(0x0004)
+	unsigned long                                      bIsRental : 1;                                            // 0x0010(0x0004)
+	int                                                eQuestOrigin;                                             // 0x0014(0x0004)
+};
+
+// ScriptStruct TgClient.UIChatScene.ChatMessage
+// 0x0020
+struct FChatMessage
+{
+	struct FString                                     sMessage;                                                 // 0x0000(0x0010) (AlwaysInit, NeedCtorLink)
+	unsigned long                                      bIsPaidBattlePass : 1;                                    // 0x0010(0x0004)
+	unsigned long                                      bIsVerifiedPlayer : 1;                                    // 0x0010(0x0004)
+	struct Fdword                                      dwBattlePassXp;                                           // 0x0014(0x0004)
+	struct Fdword                                      dwSenderId;                                               // 0x0018(0x0004)
+	struct Fdword                                      dwSenderPortalId;                                         // 0x001C(0x0004)
+};
+
+// ScriptStruct TgClient.UIChatScene.ChannelData
+// 0x0014
+struct FChannelData
+{
+	int                                                nChannel;                                                 // 0x0000(0x0004)
+	struct FString                                     sName;                                                    // 0x0004(0x0010) (NeedCtorLink)
+};
+
+// ScriptStruct TgClient.UIHudBinoculars.UIBinocArrowPositions
+// 0x0020
+struct FUIBinocArrowPositions
+{
+	struct FVector2D                                   vInnerArrowStart;                                         // 0x0000(0x0008)
+	struct FVector2D                                   vInnerArrowEnd;                                           // 0x0008(0x0008)
+	struct FVector2D                                   vOuterArrowStart;                                         // 0x0010(0x0008)
+	struct FVector2D                                   vOuterArrowEnd;                                           // 0x0018(0x0008)
+};
+
+// ScriptStruct TgClient.UIHudBurns.UIITEMRANK
+// 0x000C
+struct FUIITEMRANK
+{
+	int                                                nId;                                                      // 0x0000(0x0004)
+	int                                                nRank;                                                    // 0x0004(0x0004)
+	int                                                nCost;                                                    // 0x0008(0x0004)
+};
+
+// ScriptStruct TgClient.UIHudBurns.UIITEMDATA
+// 0x0040
+struct FUIITEMDATA
+{
+	class UGFxObject*                                  Obj;                                                      // 0x0000(0x0008)
+	class UGFxObject*                                  Icon;                                                     // 0x0008(0x0008)
+	class UGFxObject*                                  frame;                                                    // 0x0010(0x0008)
+	class UGFxObject*                                  Title;                                                    // 0x0018(0x0008)
+	class UGFxObject*                                  Price;                                                    // 0x0020(0x0008)
+	class UGFxObject*                                  Button;                                                   // 0x0028(0x0008)
+	class UGFxObject*                                  Selected;                                                 // 0x0030(0x0008)
+	class UGFxObject*                                  SubTitle;                                                 // 0x0038(0x0008)
+};
+
+// ScriptStruct TgClient.UIHudBurns.UIITEMGROUP
+// 0x0160
+struct FUIITEMGROUP
+{
+	class UGFxObject*                                  Obj;                                                      // 0x0000(0x0008)
+	class UGFxObject*                                  Title;                                                    // 0x0008(0x0008)
+	class UGFxObject*                                  Items;                                                    // 0x0010(0x0008)
+	class UGFxObject*                                  frame;                                                    // 0x0018(0x0008)
+	struct FUIITEMDATA                                 Item[0x5];                                                // 0x0020(0x0040)
+};
+
+// ScriptStruct TgClient.UIHudCards.UICardDisplayEntry
+// 0x002C
+struct FUICardDisplayEntry
+{
+	class UGFxObject*                                  Obj;                                                      // 0x0000(0x0008)
+	class UGFxObject*                                  Card;                                                     // 0x0008(0x0008)
+	class UGFxObject*                                  Icon;                                                     // 0x0010(0x0008)
+	class UGFxObject*                                  PowerLevel;                                               // 0x0018(0x0008)
+	class UGFxObject*                                  CardLevel;                                                // 0x0020(0x0008)
+	int                                                DeviceID;                                                 // 0x0028(0x0004)
+};
+
+// ScriptStruct TgClient.UIHudCards.UICardDisplayGroup
+// 0x0190
+struct FUICardDisplayGroup
+{
+	struct FUICardDisplayEntry                         Items[0x4];                                               // 0x0000(0x002C)
+	struct FUICardDisplayEntry                         Cards[0x5];                                               // 0x00B0(0x002C)
+	int                                                LastCardsPawnId;                                          // 0x018C(0x0004)
+};
+
+// ScriptStruct TgClient.UIHudCenter.HudProjectile
+// 0x0040
+struct FHudProjectile
+{
+	int                                                nId;                                                      // 0x0000(0x0004)
+	unsigned long                                      bIsActive : 1;                                            // 0x0004(0x0004)
+	unsigned long                                      bInRange : 1;                                             // 0x0004(0x0004)
+	struct FVector                                     vProjLoc;                                                 // 0x0008(0x000C)
+	float                                              fScaleMult;                                               // 0x0014(0x0004)
+	class UGFxObject*                                  pObj;                                                     // 0x0018(0x0008)
+	class UGFxObject*                                  pPointer;                                                 // 0x0020(0x0008)
+	class UGFxObject*                                  pIconTinted;                                              // 0x0028(0x0008)
+	class UGFxObject*                                  pIcon;                                                    // 0x0030(0x0008)
+	class UGFxObject*                                  pArrow;                                                   // 0x0038(0x0008)
+};
+
+// ScriptStruct TgClient.UIHudCenter.HudMarker
+// 0x004C
+struct FHudMarker
+{
+	float                                              fOrigBotY;                                                // 0x0000(0x0004)
+	float                                              fOrigTopY;                                                // 0x0004(0x0004)
+	float                                              fValue;                                                   // 0x0008(0x0004)
+	float                                              fTime;                                                    // 0x000C(0x0004)
+	float                                              fAngle;                                                   // 0x0010(0x0004)
+	float                                              fOffset;                                                  // 0x0014(0x0004)
+	unsigned long                                      bActive : 1;                                              // 0x0018(0x0004)
+	struct FVector                                     vHitLoc;                                                  // 0x001C(0x000C)
+	struct FVector                                     vPawnLoc;                                                 // 0x0028(0x000C)
+	class UGFxObject*                                  pObj;                                                     // 0x0034(0x0008)
+	class UGFxObject*                                  pTop;                                                     // 0x003C(0x0008)
+	class UGFxObject*                                  pBot;                                                     // 0x0044(0x0008)
+};
+
+// ScriptStruct TgClient.UIHudCenter.MessageClip
+// 0x002C
+struct FMessageClip
+{
+	int                                                nIcon;                                                    // 0x0000(0x0004)
+	int                                                nType;                                                    // 0x0004(0x0004)
+	int                                                nValue;                                                   // 0x0008(0x0004)
+	float                                              fTimer;                                                   // 0x000C(0x0004)
+	float                                              fDuration;                                                // 0x0010(0x0004)
+	class UGFxObject*                                  pMovie;                                                   // 0x0014(0x0008)
+	class UGFxObject*                                  pTimer;                                                   // 0x001C(0x0008)
+	class UGFxObject*                                  pTimerBar;                                                // 0x0024(0x0008)
+};
+
+// ScriptStruct TgClient.UIHudCenter.HitMarkerInfo
+// 0x0028
+struct FHitMarkerInfo
+{
+	unsigned long                                      bPlayed : 1;                                              // 0x0000(0x0004)
+	float                                              DamageAmount;                                             // 0x0004(0x0004)
+	float                                              fMaxDamageAmount;                                         // 0x0008(0x0004)
+	TArray<struct FString>                             HitActors;                                                // 0x000C(0x0010) (NeedCtorLink)
+	unsigned long                                      bIsShieldHit : 1;                                         // 0x001C(0x0004)
+	struct FExtraDamageInfo                            ExtraInfo;                                                // 0x0020(0x0004)
+	float                                              fAccumulatedDamage;                                       // 0x0024(0x0004)
+};
+
+// ScriptStruct TgClient.UIHudCenter.DamageInstance
+// 0x0008
+struct FDamageInstance
+{
+	float                                              fDamage;                                                  // 0x0000(0x0004)
+	float                                              fTimestamp;                                               // 0x0004(0x0004)
+};
+
+// ScriptStruct TgClient.UIHudCredits.UIRewardInfo
+// 0x0034
+struct FUIRewardInfo
+{
+	unsigned long                                      bIsCombo : 1;                                             // 0x0000(0x0004)
+	float                                              fAlpha;                                                   // 0x0004(0x0004)
+	float                                              fTimer;                                                   // 0x0008(0x0004)
+	class UGFxObject*                                  pClip;                                                    // 0x000C(0x0008)
+	class UGFxObject*                                  pCredits;                                                 // 0x0014(0x0008)
+	class UGFxObject*                                  pAmount;                                                  // 0x001C(0x0008)
+	class UGFxObject*                                  pTitle;                                                   // 0x0024(0x0008)
+	class UGFxObject*                                  pSubtitle;                                                // 0x002C(0x0008)
+};
+
+// ScriptStruct TgClient.UIHudDebuff.HudDebuffEffect
+// 0x001C
+struct FHudDebuffEffect
+{
+	int                                                nGroup;                                                   // 0x0000(0x0004)
+	float                                              fPercent;                                                 // 0x0004(0x0004)
+	int                                                nIcon;                                                    // 0x0008(0x0004)
+	struct FString                                     sName;                                                    // 0x000C(0x0010) (AlwaysInit, NeedCtorLink)
+};
+
+// ScriptStruct TgClient.UIHudKillFeed.UIKILLFEED_DATA
+// 0x0080
+struct FUIKILLFEED_DATA
+{
+	TEnumAsByte<EKillFeedEntryType>                    eType;                                                    // 0x0000(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0001(0x0003) MISSED OFFSET
+	class UGFxObject*                                  pKillEntry;                                               // 0x0004(0x0008)
+	class UGFxObject*                                  pPlayer0;                                                 // 0x000C(0x0008)
+	class UGFxObject*                                  pPlayer0Name;                                             // 0x0014(0x0008)
+	class UGFxObject*                                  pChampion0;                                               // 0x001C(0x0008)
+	class UGFxObject*                                  pChampion0Icon;                                           // 0x0024(0x0008)
+	class UGFxObject*                                  pPlayer1;                                                 // 0x002C(0x0008)
+	class UGFxObject*                                  pPlayer1Name;                                             // 0x0034(0x0008)
+	class UGFxObject*                                  pChampion1;                                               // 0x003C(0x0008)
+	class UGFxObject*                                  pChampion1Icon;                                           // 0x0044(0x0008)
+	class UGFxObject*                                  pKill;                                                    // 0x004C(0x0008)
+	class UGFxObject*                                  pHHPickupEntry;                                           // 0x0054(0x0008)
+	class UGFxObject*                                  pHHPickupPlayer;                                          // 0x005C(0x0008)
+	class UGFxObject*                                  pHHPickupPlayerName;                                      // 0x0064(0x0008)
+	class UGFxObject*                                  pHHPickupChampion;                                        // 0x006C(0x0008)
+	class UGFxObject*                                  pHHPickupChampionIcon;                                    // 0x0074(0x0008)
+	float                                              fTimer;                                                   // 0x007C(0x0004)
+};
+
+// ScriptStruct TgClient.UIHudMinimap.UIPING_DATA
+// 0x0018
+struct FUIPING_DATA
+{
+	float                                              fTimer;                                                   // 0x0000(0x0004)
+	struct FVector                                     vLocation;                                                // 0x0004(0x000C)
+	class UGFxObject*                                  pObj;                                                     // 0x0010(0x0008)
+};
+
+// ScriptStruct TgClient.UIHudMap.BGTEAM_PLAYER
+// 0x0050
+struct FBGTEAM_PLAYER
+{
+	int                                                nBotId;                                                   // 0x0000(0x0004)
+	int                                                nLives;                                                   // 0x0004(0x0004)
+	unsigned char                                      eMorph;                                                   // 0x0008(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0009(0x0003) MISSED OFFSET
+	float                                              fHealth;                                                  // 0x000C(0x0004)
+	class UGFxObject*                                  pObj;                                                     // 0x0010(0x0008)
+	class UGFxObject*                                  pIcon;                                                    // 0x0018(0x0008)
+	class UGFxObject*                                  pDead;                                                    // 0x0020(0x0008)
+	class UGFxObject*                                  pName;                                                    // 0x0028(0x0008)
+	class UGFxObject*                                  pLives;                                                   // 0x0030(0x0008)
+	class UGFxObject*                                  pHealth;                                                  // 0x0038(0x0008)
+	class UGFxObject*                                  pHealthBar;                                               // 0x0040(0x0008)
+	class UGFxObject*                                  pHealthTip;                                               // 0x0048(0x0008)
+};
+
+// ScriptStruct TgClient.UIHudNotify.NotifyData
+// 0x0044
+struct FNotifyData
+{
+	int                                                nIcon;                                                    // 0x0000(0x0004)
+	int                                                nMsgId;                                                   // 0x0004(0x0004)
+	int                                                nSound;                                                   // 0x0008(0x0004)
+	int                                                nTaskForce;                                               // 0x000C(0x0004)
+	unsigned long                                      bLocal : 1;                                               // 0x0010(0x0004)
+	unsigned long                                      bFriend : 1;                                              // 0x0010(0x0004)
+	struct FString                                     sSource;                                                  // 0x0014(0x0010) (AlwaysInit, NeedCtorLink)
+	struct FString                                     sTarget;                                                  // 0x0024(0x0010) (AlwaysInit, NeedCtorLink)
+	struct FString                                     sMessage;                                                 // 0x0034(0x0010) (AlwaysInit, NeedCtorLink)
+};
+
+// ScriptStruct TgClient.UIHudScore.PayloadStatus
+// 0x005C
+struct FPayloadStatus
+{
+	class UGFxObject*                                  PayloadStatusCon;                                         // 0x0000(0x0008)
+	class UGFxObject*                                  Diamond;                                                  // 0x0008(0x0008)
+	class UGFxObject*                                  DiamondTint;                                              // 0x0010(0x0008)
+	class UGFxObject*                                  DashForward;                                              // 0x0018(0x0008)
+	class UGFxObject*                                  DashBackward;                                             // 0x0020(0x0008)
+	float                                              fTargetDashFAlpha;                                        // 0x0028(0x0004)
+	float                                              fTargetDashBAlpha;                                        // 0x002C(0x0004)
+	float                                              fTargetTintAlpha;                                         // 0x0030(0x0004)
+	int                                                nTargetTintFrame;                                         // 0x0034(0x0004)
+	class UGFxObject*                                  PayloadContestedCon;                                      // 0x0038(0x0008)
+	class UGFxObject*                                  ContestedTF;                                              // 0x0040(0x0008)
+	class UGFxObject*                                  ContestedLeft;                                            // 0x0048(0x0008)
+	class UGFxObject*                                  ContestedRight;                                           // 0x0050(0x0008)
+	float                                              fTargetContestedAlpha;                                    // 0x0058(0x0004)
+};
+
+// ScriptStruct TgClient.UIHudScoreboard.ScoreInfo
+// 0x01C0
+struct FScoreInfo
+{
+	int                                                nCard[0x5];                                               // 0x0000(0x0004)
+	int                                                nCardLevel[0x5];                                          // 0x0014(0x0004)
+	int                                                nItem[0x4];                                               // 0x0028(0x0004)
+	int                                                nItemLevel[0x4];                                          // 0x0038(0x0004)
+	int                                                nTalent;                                                  // 0x0048(0x0004)
+	int                                                nTalentLevel;                                             // 0x004C(0x0004)
+	int                                                nTalentXPos;                                              // 0x0050(0x0004)
+	int                                                nTalentYPos;                                              // 0x0054(0x0004)
+	int                                                nPlayerId;                                                // 0x0058(0x0004)
+	struct FUniqueNetId                                ConsoleUniqueId;                                          // 0x005C(0x0008)
+	struct Fdword                                      PortalId;                                                 // 0x0064(0x0004)
+	class UGFxObject*                                  pObj;                                                     // 0x0068(0x0008)
+	class UGFxObject*                                  Name;                                                     // 0x0070(0x0008)
+	class UUIComponent_PlayerName*                     pName;                                                    // 0x0078(0x0008)
+	class UUIComponent_CrossPlayIcon*                  pCrossPlayIcon;                                           // 0x0080(0x0008)
+	class UGFxObject*                                  EquipableTitle;                                           // 0x0088(0x0008)
+	class UGFxObject*                                  Icon;                                                     // 0x0090(0x0008)
+	class UGFxObject*                                  Mute;                                                     // 0x0098(0x0008)
+	class UGFxObject*                                  Bounds;                                                   // 0x00A0(0x0008)
+	class UGFxObject*                                  Charge;                                                   // 0x00A8(0x0008)
+	class UGFxObject*                                  Killstreak;                                               // 0x00B0(0x0008)
+	class UGFxObject*                                  Respawn;                                                  // 0x00B8(0x0008)
+	class UGFxObject*                                  Champion;                                                 // 0x00C0(0x0008)
+	class UGFxObject*                                  TalentButton;                                             // 0x00C8(0x0008)
+	class UGFxObject*                                  TalentIcon;                                               // 0x00D0(0x0008)
+	class UGFxObject*                                  ItemBacks;                                                // 0x00D8(0x0008)
+	class UGFxObject*                                  Card[0x5];                                                // 0x00E0(0x0008)
+	class UGFxObject*                                  CardIcon[0x5];                                            // 0x0108(0x0008)
+	class UGFxObject*                                  Item[0x4];                                                // 0x0130(0x0008)
+	class UGFxObject*                                  ItemBase[0x4];                                            // 0x0150(0x0008)
+	class UGFxObject*                                  ItemIcon[0x4];                                            // 0x0170(0x0008)
+	int                                                nItemXPos[0x4];                                           // 0x0190(0x0004)
+	int                                                nItemYPos[0x4];                                           // 0x01A0(0x0004)
+	class UGFxObject*                                  KDA;                                                      // 0x01B0(0x0008)
+	class UGFxObject*                                  MuteVoice;                                                // 0x01B8(0x0008)
+};
+
+// ScriptStruct TgClient.UIHudCenter.CastingInfo
+// 0x0024
+struct FCastingInfo
+{
+	int                                                nWidth;                                                   // 0x0000(0x0004)
+	unsigned long                                      bActive : 1;                                              // 0x0004(0x0004)
+	float                                              fPercent;                                                 // 0x0008(0x0004)
+	class UGFxObject*                                  pObj;                                                     // 0x000C(0x0008)
+	class UGFxObject*                                  pText;                                                    // 0x0014(0x0008)
+	class UGFxObject*                                  pAnim;                                                    // 0x001C(0x0008)
+};
+
+// ScriptStruct TgClient.UIHudTeam.TEAMPLAYER_INFO
+// 0x00C0
+struct FTEAMPLAYER_INFO
+{
+	int                                                nRespawn;                                                 // 0x0000(0x0004)
+	unsigned long                                      bHealth : 1;                                              // 0x0004(0x0004)
+	unsigned long                                      bRespawn : 1;                                             // 0x0004(0x0004)
+	unsigned long                                      bVisible : 1;                                             // 0x0004(0x0004)
+	float                                              fHealth;                                                  // 0x0008(0x0004)
+	float                                              fRespawn;                                                 // 0x000C(0x0004)
+	int                                                nUlt;                                                     // 0x0010(0x0004)
+	int                                                nUltReq;                                                  // 0x0014(0x0004)
+	unsigned long                                      bSelected : 1;                                            // 0x0018(0x0004)
+	struct FString                                     sIcon;                                                    // 0x001C(0x0010) (AlwaysInit, NeedCtorLink)
+	float                                              fUltIconScale;                                            // 0x002C(0x0004)
+	unsigned long                                      bCorvusMark : 1;                                          // 0x0030(0x0004)
+	class UGFxObject*                                  pObj;                                                     // 0x0034(0x0008)
+	class UGFxObject*                                  pIcon;                                                    // 0x003C(0x0008)
+	class UGFxObject*                                  pIconDead;                                                // 0x0044(0x0008)
+	class UGFxObject*                                  pHealth;                                                  // 0x004C(0x0008)
+	class UGFxObject*                                  pHealthTip;                                               // 0x0054(0x0008)
+	class UGFxObject*                                  pHealthBG;                                                // 0x005C(0x0008)
+	float                                              fHealthBarWidth;                                          // 0x0064(0x0004)
+	class UGFxObject*                                  pRespawn;                                                 // 0x0068(0x0008)
+	class UGFxObject*                                  pDeadX;                                                   // 0x0070(0x0008)
+	class UGFxObject*                                  pUlt;                                                     // 0x0078(0x0008)
+	class UGFxObject*                                  pUltReady;                                                // 0x0080(0x0008)
+	class UGFxObject*                                  pSelected;                                                // 0x0088(0x0008)
+	class UGFxObject*                                  pCorvusMark;                                              // 0x0090(0x0008)
+	int                                                nStreak;                                                  // 0x0098(0x0004)
+	float                                              fStreakAnimOffset;                                        // 0x009C(0x0004)
+	class UGFxObject*                                  pStreak;                                                  // 0x00A0(0x0008)
+	class UGFxObject*                                  pStreakAdd1;                                              // 0x00A8(0x0008)
+	class UGFxObject*                                  pStreakAdd2;                                              // 0x00B0(0x0008)
+	class UGFxObject*                                  pStreakCount;                                             // 0x00B8(0x0008)
+};
+
+// ScriptStruct TgClient.UIHudTeam.TEAMPLAYER_INFO_EXTENDED
+// 0x01CC (0x028C - 0x00C0)
+struct FTEAMPLAYER_INFO_EXTENDED : public FTEAMPLAYER_INFO
+{
+	unsigned long                                      bItemsVisible : 1;                                        // 0x00C0(0x0004)
+	unsigned long                                      bCardsVisible : 1;                                        // 0x00C0(0x0004)
+	struct FUICardDisplayGroup                         CardDisplayGroup;                                         // 0x00C4(0x0190)
+	struct FString                                     sPlayerName;                                              // 0x0254(0x0010) (AlwaysInit, NeedCtorLink)
+	class UGFxObject*                                  pPlayerName;                                              // 0x0264(0x0008)
+	int                                                nCredits;                                                 // 0x026C(0x0004)
+	class UGFxObject*                                  pCredits;                                                 // 0x0270(0x0008)
+	int                                                nKills;                                                   // 0x0278(0x0004)
+	int                                                nDeaths;                                                  // 0x027C(0x0004)
+	int                                                nAssists;                                                 // 0x0280(0x0004)
+	class UGFxObject*                                  pKDA;                                                     // 0x0284(0x0008)
+};
+
+// ScriptStruct TgClient.UIHudTeam.TEAMSTAT_INFO
+// 0x004C
+struct FTEAMSTAT_INFO
+{
+	class UGFxObject*                                  pObj;                                                     // 0x0000(0x0008)
+	class UGFxObject*                                  pIcon;                                                    // 0x0008(0x0008)
+	class UGFxObject*                                  pText;                                                    // 0x0010(0x0008)
+	class UGFxObject*                                  pTip;                                                     // 0x0018(0x0008)
+	class UGFxObject*                                  pBar;                                                     // 0x0020(0x0008)
+	class UGFxObject*                                  pBackground;                                              // 0x0028(0x0008)
+	class UGFxObject*                                  pMask;                                                    // 0x0030(0x0008)
+	struct FString                                     sIcon;                                                    // 0x0038(0x0010) (AlwaysInit, NeedCtorLink)
+	float                                              fMaskBaseWidth;                                           // 0x0048(0x0004)
+};
+
+// ScriptStruct TgClient.UIHudWaypoint.WaypointObjective
+// 0x002C
+struct FWaypointObjective
+{
+	class UGFxObject*                                  pClip;                                                    // 0x0000(0x0008)
+	class UGFxObject*                                  pIcon;                                                    // 0x0008(0x0008)
+	class UGFxObject*                                  pDist;                                                    // 0x0010(0x0008)
+	class UGFxObject*                                  pPulse;                                                   // 0x0018(0x0008)
+	class UGFxObject*                                  pTitle;                                                   // 0x0020(0x0008)
+	unsigned long                                      bVisible : 1;                                             // 0x0028(0x0004)
+};
+
+// ScriptStruct TgClient.UILobbyChat.ChannelCloseTimeOverride
+// 0x0008
+struct FChannelCloseTimeOverride
+{
+	int                                                Channel;                                                  // 0x0000(0x0004)
+	int                                                AutoCloseTime;                                            // 0x0004(0x0004)
+};
+
+// ScriptStruct TgClient.UIProfile.UIGoalData
+// 0x0070
+struct FUIGoalData
+{
+	int                                                nDate;                                                    // 0x0000(0x0004)
+	int                                                nGoal;                                                    // 0x0004(0x0004)
+	int                                                nValue;                                                   // 0x0008(0x0004)
+	int                                                nProgress;                                                // 0x000C(0x0004)
+	int                                                nDisplayId;                                               // 0x0010(0x0004)
+	int                                                nLootId;                                                  // 0x0014(0x0004)
+	int                                                nGoalProgress;                                            // 0x0018(0x0004)
+	unsigned long                                      bCompleted : 1;                                           // 0x001C(0x0004)
+	struct FString                                     sDate;                                                    // 0x0020(0x0010) (AlwaysInit, NeedCtorLink)
+	struct FString                                     sDesc;                                                    // 0x0030(0x0010) (AlwaysInit, NeedCtorLink)
+	struct FString                                     sTier;                                                    // 0x0040(0x0010) (AlwaysInit, NeedCtorLink)
+	struct FString                                     sTitle;                                                   // 0x0050(0x0010) (AlwaysInit, NeedCtorLink)
+	struct FString                                     sSource;                                                  // 0x0060(0x0010) (AlwaysInit, NeedCtorLink)
+};
+
+// ScriptStruct TgClient.UIProfile.UIAwardData
+// 0x0470
+struct FUIAwardData
+{
+	int                                                nType;                                                    // 0x0000(0x0004)
+	int                                                nActivity;                                                // 0x0004(0x0004)
+	int                                                nGoalCount;                                               // 0x0008(0x0004)
+	int                                                nGoalGroup;                                               // 0x000C(0x0004)
+	struct FUIGoalData                                 Goals[0xA];                                               // 0x0010(0x0070) (NeedCtorLink)
+};
+
+// ScriptStruct TgClient.UIProfile.UIHistoryData
+// 0x0054
+struct FUIHistoryData
+{
+	int                                                nId;                                                      // 0x0000(0x0004)
+	int                                                nClass;                                                   // 0x0004(0x0004)
+	struct FString                                     sDate;                                                    // 0x0008(0x0010) (AlwaysInit, NeedCtorLink)
+	struct FString                                     sMode;                                                    // 0x0018(0x0010) (AlwaysInit, NeedCtorLink)
+	struct FString                                     sScore;                                                   // 0x0028(0x0010) (AlwaysInit, NeedCtorLink)
+	TEnumAsByte<EHistoryResult>                        eResult;                                                  // 0x0038(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0039(0x0003) MISSED OFFSET
+	struct FString                                     sDuration;                                                // 0x003C(0x0010) (AlwaysInit, NeedCtorLink)
+	struct FDateTimeWrapper                            dtEvent;                                                  // 0x004C(0x0008)
+};
+
+// ScriptStruct TgClient.UIPurchaseGems.UIConsumablePack
+// 0x0038
+struct FUIConsumablePack
+{
+	class UGFxObject*                                  Obj;                                                      // 0x0000(0x0008)
+	class UGFxObject*                                  Title;                                                    // 0x0008(0x0008)
+	class UGFxObject*                                  Icon;                                                     // 0x0010(0x0008)
+	class UGFxObject*                                  Price;                                                    // 0x0018(0x0008)
+	class UGFxObject*                                  PurchaseButton;                                           // 0x0020(0x0008)
+	class UGFxObject*                                  Highlight;                                                // 0x0028(0x0008)
+	class UGFxObject*                                  SaleBanner;                                               // 0x0030(0x0008)
+};
+
+// ScriptStruct TgClient.UISettings.SettingOption
+// 0x0058
+struct FSettingOption
+{
+	class UGFxObject*                                  Obj;                                                      // 0x0000(0x0008)
+	class UGFxObject*                                  Base;                                                     // 0x0008(0x0008)
+	class UGFxObject*                                  Type;                                                     // 0x0010(0x0008)
+	class UGFxObject*                                  TypeTF;                                                   // 0x0018(0x0008)
+	class UGFxObject*                                  Left;                                                     // 0x0020(0x0008)
+	class UGFxObject*                                  Right;                                                    // 0x0028(0x0008)
+	class UGFxObject*                                  Focus;                                                    // 0x0030(0x0008)
+	class UGFxObject*                                  Color;                                                    // 0x0038(0x0008)
+	class UGFxObject*                                  Slider;                                                   // 0x0040(0x0008)
+	class UGFxObject*                                  SliderTF;                                                 // 0x0048(0x0008)
+	class UGFxObject*                                  SliderTitle;                                              // 0x0050(0x0008)
+};
+
+// ScriptStruct TgClient.UISettings.KeybindOption
+// 0x0040
+struct FKeybindOption
+{
+	class UGFxObject*                                  Obj;                                                      // 0x0000(0x0008)
+	class UGFxObject*                                  Base;                                                     // 0x0008(0x0008)
+	class UGFxObject*                                  Focus;                                                    // 0x0010(0x0008)
+	class UGFxObject*                                  Command;                                                  // 0x0018(0x0008)
+	class UGFxObject*                                  Key[0x2];                                                 // 0x0020(0x0008)
+	class UGFxObject*                                  KeyButton[0x2];                                           // 0x0030(0x0008)
+};
+
+// ScriptStruct TgClient.UIWorldOverlay.UIPooledOverlayData
+// 0x0029
+struct FUIPooledOverlayData
+{
+	class UGFxObject*                                  pClip;                                                    // 0x0000(0x0008)
+	class UGFxObject*                                  pAnim;                                                    // 0x0008(0x0008)
+	class UGFxObject*                                  pText;                                                    // 0x0010(0x0008)
+	class UGFxObject*                                  pTF;                                                      // 0x0018(0x0008)
+	class UGFxObject*                                  pTF2;                                                     // 0x0020(0x0008)
+	TEnumAsByte<EOverlayPoolType>                      PoolType;                                                 // 0x0028(0x0001)
+};
+
+// ScriptStruct TgClient.UIWorldOverlay.OverlayData
+// 0x0074
+struct FOverlayData
+{
+	struct Fdword                                      dwDeviceTarget;                                           // 0x0000(0x0004)
+	unsigned long                                      bInit : 1;                                                // 0x0004(0x0004)
+	float                                              fRoll;                                                    // 0x0008(0x0004)
+	float                                              fScale;                                                   // 0x000C(0x0004)
+	float                                              fTimer;                                                   // 0x0010(0x0004)
+	float                                              fAnimX;                                                   // 0x0014(0x0004)
+	float                                              fAnimY;                                                   // 0x0018(0x0004)
+	float                                              fStartX;                                                  // 0x001C(0x0004)
+	float                                              fStartY;                                                  // 0x0020(0x0004)
+	struct FVector                                     vWorldLoc;                                                // 0x0024(0x000C)
+	struct FVector                                     vWorldVel;                                                // 0x0030(0x000C)
+	struct FVector                                     vScreenLoc;                                               // 0x003C(0x000C)
+	struct FUIPooledOverlayData                        PooledOverlayData;                                        // 0x0048(0x002C)
+};
+
+// ScriptStruct TgClient.UIWorldOverlay.UITargetableOverlay
+// 0x0084
+struct FUITargetableOverlay
+{
+	int                                                nLastColorFrame;                                          // 0x0000(0x0004)
+	int                                                nTargetId;                                                // 0x0004(0x0004)
+	unsigned long                                      bInit : 1;                                                // 0x0008(0x0004)
+	unsigned long                                      bVisible : 1;                                             // 0x0008(0x0004)
+	unsigned long                                      bOnEdge : 1;                                              // 0x0008(0x0004)
+	unsigned long                                      bHighlight : 1;                                           // 0x0008(0x0004)
+	unsigned long                                      bTraceResult : 1;                                         // 0x0008(0x0004)
+	float                                              fAlpha;                                                   // 0x000C(0x0004)
+	float                                              fScale;                                                   // 0x0010(0x0004)
+	float                                              fTraceTimer;                                              // 0x0014(0x0004)
+	float                                              fHighlightTimer;                                          // 0x0018(0x0004)
+	struct FVector                                     vWorldLoc;                                                // 0x001C(0x000C)
+	struct FVector                                     vScreenLoc;                                               // 0x0028(0x000C)
+	struct FString                                     CachedName;                                               // 0x0034(0x0010) (NeedCtorLink)
+	class UGFxObject*                                  pClip;                                                    // 0x0044(0x0008)
+	class UGFxObject*                                  pName;                                                    // 0x004C(0x0008)
+	class UGFxObject*                                  pCarat;                                                   // 0x0054(0x0008)
+	class UGFxObject*                                  pHealingIndicator;                                        // 0x005C(0x0008)
+	class UGFxObject*                                  pIcon;                                                    // 0x0064(0x0008)
+	class UGFxObject*                                  pHealthBarParent;                                         // 0x006C(0x0008)
+	class UUIComponent_HealthBar_Overlay*              pHealthBar;                                               // 0x0074(0x0008)
+	TEnumAsByte<EDeployableOverlayType>                eType;                                                    // 0x007C(0x0001)
+	TEnumAsByte<EDeployableOverlayOwnershipType>       eOwnership;                                               // 0x007D(0x0001)
+	unsigned char                                      UnknownData00[0x2];                                       // 0x007E(0x0002) MISSED OFFSET
+	int                                                nDepth;                                                   // 0x0080(0x0004)
+};
+
+// ScriptStruct TgClient.UIWorldOverlay.UIPlayerOverlay
+// 0x00A8 (0x012C - 0x0084)
+struct FUIPlayerOverlay : public FUITargetableOverlay
+{
+	int                                                nMarked;                                                  // 0x0084(0x0004)
+	int                                                nStreak;                                                  // 0x0088(0x0004)
+	int                                                nUltCharge;                                               // 0x008C(0x0004)
+	float                                              fBarragePercent;                                          // 0x0090(0x0004)
+	class UGFxObject*                                  pMarked;                                                  // 0x0094(0x0008)
+	class UGFxObject*                                  pStreak;                                                  // 0x009C(0x0008)
+	class UGFxObject*                                  pUltimatePercent;                                         // 0x00A4(0x0008)
+	class UGFxObject*                                  pBarrageFrame;                                            // 0x00AC(0x0008)
+	class UGFxObject*                                  pBarrageMeter;                                            // 0x00B4(0x0008)
+	class UGFxObject*                                  pHuntersMark;                                             // 0x00BC(0x0008)
+	class UGFxObject*                                  pLexExecuteMark;                                          // 0x00C4(0x0008)
+	class UGFxObject*                                  pLexTargetMark;                                           // 0x00CC(0x0008)
+	class UGFxObject*                                  pLexVengeanceMark;                                        // 0x00D4(0x0008)
+	class UGFxObject*                                  pLexExecuteGuide;                                         // 0x00DC(0x0008)
+	class UGFxObject*                                  pAstroLotus;                                              // 0x00E4(0x0008)
+	class UGFxObject*                                  pCorvusMark;                                              // 0x00EC(0x0008)
+	class UGFxObject*                                  pRespawnMask;                                             // 0x00F4(0x0008)
+	class UUIComponent_OracleSoulCharges*              pSoulCharges;                                             // 0x00FC(0x0008)
+	class UUIComponent_TelepunchTarget*                pTelepunch;                                               // 0x0104(0x0008)
+	class UUIComponent_MojiCounter*                    pMojiCounter;                                             // 0x010C(0x0008)
+	class UUIComponent_CorrupterCorruptionUI*          pCorrupterUI;                                             // 0x0114(0x0008)
+	float                                              fHideTimer;                                               // 0x011C(0x0004)
+	unsigned long                                      bInParty : 1;                                             // 0x0120(0x0004)
+	TEnumAsByte<EPlayerIconState>                      eIconState;                                               // 0x0124(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0125(0x0003) MISSED OFFSET
+	unsigned long                                      bShowPlayerName : 1;                                      // 0x0128(0x0004)
+};
+
+// ScriptStruct TgClient.UIWorldOverlay.UIDeployableOverlay
+// 0x0060 (0x00E4 - 0x0084)
+struct FUIDeployableOverlay : public FUITargetableOverlay
+{
+	class UGFxObject*                                  pIconParent;                                              // 0x0084(0x0008)
+	class UGFxObject*                                  pLeftArc;                                                 // 0x008C(0x0008)
+	class UGFxObject*                                  pRightArc;                                                // 0x0094(0x0008)
+	class UGFxObject*                                  pTopArc;                                                  // 0x009C(0x0008)
+	class UGFxObject*                                  pPointer;                                                 // 0x00A4(0x0008)
+	class UGFxObject*                                  pDynamicIcon;                                             // 0x00AC(0x0008)
+	class UGFxObject*                                  pDynamicIconTexture;                                      // 0x00B4(0x0008)
+	class UGFxObject*                                  pBarrageFrame;                                            // 0x00BC(0x0008)
+	class UGFxObject*                                  pBarrageMeter;                                            // 0x00C4(0x0008)
+	float                                              fAnimTime;                                                // 0x00CC(0x0004)
+	TEnumAsByte<EDeployableOverlayInternalState>       eState;                                                   // 0x00D0(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x00D1(0x0003) MISSED OFFSET
+	float                                              fDamagePulseTimer;                                        // 0x00D4(0x0004)
+	int                                                nCurrentIcon;                                             // 0x00D8(0x0004)
+	int                                                nDynamicIconProfileId;                                    // 0x00DC(0x0004)
+	int                                                nDynamicIconSkinId;                                       // 0x00E0(0x0004)
+};
+
+// ScriptStruct TgClient.UIWorldOverlay.QueuedDamageNumber
+// 0x0018
+struct FQueuedDamageNumber
+{
+	int                                                nTargetId;                                                // 0x0000(0x0004)
+	int                                                nValue;                                                   // 0x0004(0x0004)
+	int                                                nSourceItemId;                                            // 0x0008(0x0004)
+	struct Fdword                                      dwDeviceTarget;                                           // 0x000C(0x0004)
+	unsigned char                                      eTargetType;                                              // 0x0010(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0011(0x0003) MISSED OFFSET
+	unsigned long                                      bCrit : 1;                                                // 0x0014(0x0004)
+	unsigned long                                      bHeadShot : 1;                                            // 0x0014(0x0004)
+	unsigned long                                      bShield : 1;                                              // 0x0014(0x0004)
+};
+
+// ScriptStruct TgClient.TgDataObject.UIDataValue
+// 0x001C
+struct FUIDataValue
+{
+	TEnumAsByte<EUIID>                                 eType;                                                    // 0x0000(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0001(0x0003) MISSED OFFSET
+	unsigned long                                      bDirty : 1;                                               // 0x0004(0x0004)
+	float                                              fValue;                                                   // 0x0008(0x0004)
+	struct FString                                     sValue;                                                   // 0x000C(0x0010) (AlwaysInit, NeedCtorLink)
+};
+
+// ScriptStruct TgClient.TgGfxScene.UIITEM_CLIP
+// 0x0020
+struct FUIITEM_CLIP
+{
+	class UGFxObject*                                  pObj;                                                     // 0x0000(0x0008)
+	class UGFxObject*                                  pSelected;                                                // 0x0008(0x0008)
+	class UGFxObject*                                  pButton;                                                  // 0x0010(0x0008)
+	class UGFxObject*                                  pSaleBanner;                                              // 0x0018(0x0008)
+};
+
+// ScriptStruct TgClient.TgLobbyHUD.LobbyTransitionPlayer
+// 0x0024
+struct FLobbyTransitionPlayer
+{
+	int                                                nClassId;                                                 // 0x0000(0x0004)
+	struct FString                                     sPlayerName;                                              // 0x0004(0x0010) (AlwaysInit, NeedCtorLink)
+	struct FString                                     sClassName;                                               // 0x0014(0x0010) (AlwaysInit, NeedCtorLink)
+};
+
+// ScriptStruct TgClient.TgLobbyHUD.LobbyTransitionData
+// 0x02D0
+struct FLobbyTransitionData
+{
+	struct FLobbyTransitionPlayer                      FriendlyTeam[0xA];                                        // 0x0000(0x0024) (NeedCtorLink)
+	struct FLobbyTransitionPlayer                      EnemyTeam[0xA];                                           // 0x0168(0x0024) (NeedCtorLink)
+};
+
+// ScriptStruct TgClient.TgMiniMap.FogMaskData
+// 0x0030
+struct FFogMaskData
+{
+	int                                                nSize;                                                    // 0x0000(0x0004)
+	int                                                nMapDrawLocationX;                                        // 0x0004(0x0004)
+	int                                                nMapDrawLocationY;                                        // 0x0008(0x0004)
+	unsigned long                                      bLocationChanged : 1;                                     // 0x000C(0x0004)
+	unsigned long                                      bVisionRangeChanged : 1;                                  // 0x000C(0x0004)
+	struct FBitArray_Mirror                            m_MaskPoints;                                             // 0x0010(0x0020) (Const, Native, Transient)
+};
+
+// ScriptStruct TgClient.TgMiniMap.MiniMapEntity
+// 0x0090
+struct FMiniMapEntity
+{
+	struct FVector                                     vLocation;                                                // 0x0000(0x000C)
+	TEnumAsByte<EMiniMapEntityType>                    eType;                                                    // 0x000C(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x000D(0x0003) MISSED OFFSET
+	int                                                nSubType;                                                 // 0x0010(0x0004)
+	int                                                nProfileId;                                               // 0x0014(0x0004)
+	TEnumAsByte<ETgMapTeam>                            Team;                                                     // 0x0018(0x0001)
+	unsigned char                                      UnknownData01[0x3];                                       // 0x0019(0x0003) MISSED OFFSET
+	int                                                nVisionRange;                                             // 0x001C(0x0004)
+	unsigned long                                      bIsDead : 1;                                              // 0x0020(0x0004)
+	class AReplicationInfo*                            RepInfo;                                                  // 0x0024(0x0008)
+	int                                                GenericState;                                             // 0x002C(0x0004)
+	int                                                nIdx;                                                     // 0x0030(0x0004)
+	unsigned long                                      bMarked : 1;                                              // 0x0034(0x0004)
+	unsigned long                                      bVisibleOnMap : 1;                                        // 0x0034(0x0004)
+	unsigned long                                      bValidTarget : 1;                                         // 0x0034(0x0004)
+	unsigned long                                      bHovered : 1;                                             // 0x0034(0x0004)
+	unsigned long                                      bFlashHighlight : 1;                                      // 0x0034(0x0004)
+	unsigned long                                      bVisible : 1;                                             // 0x0034(0x0004)
+	float                                              fAlpha;                                                   // 0x0038(0x0004)
+	float                                              fHealthPCT;                                               // 0x003C(0x0004)
+	class UMaterialInstanceConstant*                   MIC;                                                      // 0x0040(0x0008)
+	unsigned long                                      bHasNoIcon : 1;                                           // 0x0048(0x0004)
+	int                                                nDrawSize;                                                // 0x004C(0x0004)
+	int                                                nHitSize;                                                 // 0x0050(0x0004)
+	struct FVector                                     vRect;                                                    // 0x0054(0x000C)
+	struct FFogMaskData                                FogMaskData;                                              // 0x0060(0x0030)
+};
+
+// ScriptStruct TgClient.TgSettingsManager.TgKeyBind
+// 0x0028
+struct FTgKeyBind
+{
+	int                                                nCommandIndex;                                            // 0x0000(0x0004)
+	unsigned long                                      bOverridesKeys : 1;                                       // 0x0004(0x0004)
+	unsigned long                                      bOverridesGamepad : 1;                                    // 0x0004(0x0004)
+	TArray<struct FString>                             sKeys;                                                    // 0x0008(0x0010) (AlwaysInit, NeedCtorLink)
+	TArray<struct FString>                             sGamepadKeys;                                             // 0x0018(0x0010) (AlwaysInit, NeedCtorLink)
+};
+
+// ScriptStruct TgClient.TgSettingsManager.TgSettingsSet
+// 0x0014
+struct FTgSettingsSet
+{
+	TArray<struct FTgKeyBind>                          Keybinds;                                                 // 0x0000(0x0010) (AlwaysInit, NeedCtorLink)
+	int                                                nCharacterId;                                             // 0x0010(0x0004)
+};
+
+// ScriptStruct TgClient.UIComponent_AcquisitionCarousel.AcquisitionCarouselItem
+// 0x0090
+struct FAcquisitionCarouselItem
+{
+	class UGFxObject*                                  mcPurchaseItem;                                           // 0x0000(0x0008)
+	class UGFxObject*                                  mcPurchaseChest;                                          // 0x0008(0x0008)
+	class UUIInteractable_Item*                        mcPurchaseCard;                                           // 0x0010(0x0008)
+	class UGFxObject*                                  mcPurchaseItemDisplay;                                    // 0x0018(0x0008)
+	class UGFxObject*                                  mcPurchaseItemIcon;                                       // 0x0020(0x0008)
+	class UGFxObject*                                  mcPurchaseItemCardIcon;                                   // 0x0028(0x0008)
+	class UGFxObject*                                  mcPurchaseItemCurrency;                                   // 0x0030(0x0008)
+	class UGFxObject*                                  mcPurchaseItemRarityFrame;                                // 0x0038(0x0008)
+	class UGFxObject*                                  mcPurchaseItemRarityText;                                 // 0x0040(0x0008)
+	class UGFxObject*                                  mcPurchaseItemTypeIcon;                                   // 0x0048(0x0008)
+	class UGFxObject*                                  mcPurchaseItemTitle;                                      // 0x0050(0x0008)
+	class UGFxObject*                                  mcPurchaseItemSubtitle;                                   // 0x0058(0x0008)
+	class UGFxObject*                                  mcPurchaseItemChampion;                                   // 0x0060(0x0008)
+	class UGFxObject*                                  mcPurchaseItemChampionIcon;                               // 0x0068(0x0008)
+	class UGFxObject*                                  mcPurchaseItemChampionLarge;                              // 0x0070(0x0008)
+	class UGFxObject*                                  mcPurchaseItemChampionTitle;                              // 0x0078(0x0008)
+	class UGFxObject*                                  mcPurchaseItemChampionImage;                              // 0x0080(0x0008)
+	class UGFxObject*                                  mcPurchaseItemAudio;                                      // 0x0088(0x0008)
+};
+
+// ScriptStruct TgClient.UIComponent_HealFeed.HealAccumulator
+// 0x0018
+struct FHealAccumulator
+{
+	int                                                nProfileId;                                               // 0x0000(0x0004)
+	int                                                nSkinId;                                                  // 0x0004(0x0004)
+	int                                                nIconOverrideId;                                          // 0x0008(0x0004)
+	float                                              fRawAmount;                                               // 0x000C(0x0004)
+	float                                              fChangeAmount;                                            // 0x0010(0x0004)
+	unsigned long                                      bHealingReduced : 1;                                      // 0x0014(0x0004)
+};
+
+// ScriptStruct TgClient.UIDataGoals.ActivityGoal
+// 0x0040
+struct FActivityGoal
+{
+	int                                                nTargetValue;                                             // 0x0000(0x0004)
+	int                                                nProgressValue;                                           // 0x0004(0x0004)
+	struct FString                                     sDescription;                                             // 0x0008(0x0010) (AlwaysInit, NeedCtorLink)
+	struct FString                                     sName;                                                    // 0x0018(0x0010) (AlwaysInit, NeedCtorLink)
+	unsigned long                                      bClaimed : 1;                                             // 0x0028(0x0004)
+	int                                                nGoalId;                                                  // 0x002C(0x0004)
+	TArray<struct FGoalRewardItem>                     pLootItems;                                               // 0x0030(0x0010) (AlwaysInit, NeedCtorLink)
+};
+
+// ScriptStruct TgClient.UIDataGoals.ActivityGoalIds
+// 0x0008
+struct FActivityGoalIds
+{
+	struct Fdword                                      dwActivityId;                                             // 0x0000(0x0004)
+	struct Fdword                                      dwGoalId;                                                 // 0x0004(0x0004)
+};
+
+// ScriptStruct TgClient.UIPurchaseGems.UIDurablePack
+// 0x0030
+struct FUIDurablePack
+{
+	class UGFxObject*                                  Obj;                                                      // 0x0000(0x0008)
+	class UGFxObject*                                  Price;                                                    // 0x0008(0x0008)
+	class UGFxObject*                                  PurchaseButton;                                           // 0x0010(0x0008)
+	class UGFxObject*                                  Highlight;                                                // 0x0018(0x0008)
+	class UGFxObject*                                  Refund;                                                   // 0x0020(0x0008)
+	class UGFxObject*                                  SaleBanner;                                               // 0x0028(0x0008)
+};
+
+// ScriptStruct TgClient.UIScene.UIAnimData
+// 0x0018
+struct FUIAnimData
+{
+	float                                              fStartTime;                                               // 0x0000(0x0004)
+	float                                              fEndTime;                                                 // 0x0004(0x0004)
+	unsigned char                                      eType;                                                    // 0x0008(0x0001)
+	unsigned char                                      eQuad;                                                    // 0x0009(0x0001)
+	unsigned char                                      UnknownData00[0x2];                                       // 0x000A(0x0002) MISSED OFFSET
+	float                                              fOrig;                                                    // 0x000C(0x0004)
+	float                                              fTarget;                                                  // 0x0010(0x0004)
+	unsigned long                                      bAnimating : 1;                                           // 0x0014(0x0004)
 };
 
 }

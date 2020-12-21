@@ -8,17 +8,18 @@
 
 #include "PL_XAudio2_structs.hpp"
 
-namespace Classes
+namespace SDK
 {
 //---------------------------------------------------------------------------
 //Classes
 //---------------------------------------------------------------------------
 
 // Class XAudio2.XAudio2Device
-// 0x0000
-class XAudio2Device
+// 0x00B4 (0x0460 - 0x03AC)
+class UXAudio2Device : public UAudioDevice
 {
 public:
+	unsigned char                                      UnknownData00[0xB4];                                      // 0x03AC(0x00B4) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{

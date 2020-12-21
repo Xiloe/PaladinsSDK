@@ -8,11 +8,21 @@
 
 #include "PL_AkAudio_classes.hpp"
 
-namespace Classes
+namespace SDK
 {
 //---------------------------------------------------------------------------
 //Parameters
 //---------------------------------------------------------------------------
+
+// Function AkAudio.AkAmbientSound.StopPlayback
+struct AAkAmbientSound_StopPlayback_Params
+{
+};
+
+// Function AkAudio.AkAmbientSound.StartPlayback
+struct AAkAmbientSound_StartPlayback_Params
+{
+};
 
 }
 

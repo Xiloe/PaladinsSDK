@@ -8,11 +8,16 @@
 
 #include "PL_BattleClient_classes.hpp"
 
-namespace Classes
+namespace SDK
 {
 //---------------------------------------------------------------------------
 //Parameters
 //---------------------------------------------------------------------------
+
+// Function BattleClient.BattleHUD.BattleHUDFunction
+struct ABattleHUD_BattleHUDFunction_Params
+{
+};
 
 }
 

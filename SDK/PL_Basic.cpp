@@ -6,7 +6,7 @@
 
 #include "../SDK.hpp"
 
-namespace Classes
+namespace SDK
 {
 TArray<FNameEntry*>* FName::GNames = nullptr;
 TArray<UObject*>* UObject::GObjects = nullptr;

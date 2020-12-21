@@ -8,15 +8,15 @@
 
 #include "PL_TgGameContent_structs.hpp"
 
-namespace Classes
+namespace SDK
 {
 //---------------------------------------------------------------------------
 //Classes
 //---------------------------------------------------------------------------
 
 // Class TgGameContent.TgMenuContentData_Content
-// 0x0000
-class TgMenuContentData_Content
+// 0x0000 (0x0070 - 0x0070)
+class UTgMenuContentData_Content : public UTgMenuContentData
 {
 public:
 

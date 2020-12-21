@@ -9,7 +9,7 @@
 #include <unordered_set>
 #include <string>
 
-namespace Classes
+namespace SDK
 {
 template<typename Fn>
 inline Fn GetVFunction(const void *instance, std::size_t index)

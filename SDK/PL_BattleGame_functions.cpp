@@ -6,11 +6,28 @@
 
 #include "PL_BattleGame_parameters.hpp"
 
-namespace Classes
+namespace SDK
 {
 //---------------------------------------------------------------------------
 //Functions
 //---------------------------------------------------------------------------
+
+// Function BattleGame.BattlePlayerController.BattlePlayerControllerFunction
+// (Final, Iterator, PreOperator, Singular, Net, NetReliable, Operator, HasOptionalParms, Const)
+
+void ABattlePlayerController::BattlePlayerControllerFunction()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function BattleGame.BattlePlayerController.BattlePlayerControllerFunction");
+
+	ABattlePlayerController_BattlePlayerControllerFunction_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
 
 }
 

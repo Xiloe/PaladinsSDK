@@ -8,17 +8,18 @@
 
 #include "PL_OnlineSubsystemEpic_structs.hpp"
 
-namespace Classes
+namespace SDK
 {
 //---------------------------------------------------------------------------
 //Classes
 //---------------------------------------------------------------------------
 
 // Class OnlineSubsystemEpic.OnlineGameInterfaceEpic
-// 0x0000
-class OnlineGameInterfaceEpic
+// 0x0060 (0x03A8 - 0x0348)
+class UOnlineGameInterfaceEpic : public UOnlineGameInterfaceImpl
 {
 public:
+	unsigned char                                      UnknownData00[0x60];                                      // 0x0348(0x0060) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -30,10 +31,11 @@ public:
 
 
 // Class OnlineSubsystemEpic.OnlineSubsystemEpic
-// 0x0000
-class OnlineSubsystemEpic
+// 0x07B8 (0x0A40 - 0x0288)
+class UOnlineSubsystemEpic : public UOnlineSubsystemCommonImpl
 {
 public:
+	unsigned char                                      UnknownData00[0x7B8];                                     // 0x0288(0x07B8) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -45,10 +47,11 @@ public:
 
 
 // Class OnlineSubsystemEpic.OnlineMarketplaceInterfaceEpic
-// 0x0000
-class OnlineMarketplaceInterfaceEpic
+// 0x00C8 (0x0128 - 0x0060)
+class UOnlineMarketplaceInterfaceEpic : public UObject
 {
 public:
+	unsigned char                                      UnknownData00[0xC8];                                      // 0x0060(0x00C8) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{

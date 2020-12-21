@@ -7,8 +7,9 @@
 #endif
 
 #include "PL_Basic.hpp"
+#include "PL_TgGame_classes.hpp"
 
-namespace Classes
+namespace SDK
 {
 }
 

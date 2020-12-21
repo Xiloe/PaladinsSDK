@@ -8,18 +8,17 @@
 
 #include "PL_BattleClient_structs.hpp"
 
-namespace Classes
+namespace SDK
 {
 //---------------------------------------------------------------------------
 //Classes
 //---------------------------------------------------------------------------
 
 // Class BattleClient.BattleHUD
-// 0x185B665C370
-class BattleHUD
+// 0x0000 (0x0684 - 0x0684)
+class ABattleHUD : public ATgClientHUD
 {
 public:
-	unsigned char                                      UnknownData00[0x185B665C370];                             // 0x0000(0x185B665C370) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -27,12 +26,14 @@ public:
 		return ptr;
 	}
 
+
+	void BattleHUDFunction();
 };
 
 
 // Class BattleClient.BattleLaunch
-// 0x0000
-class BattleLaunch
+// 0x0000 (0x04F0 - 0x04F0)
+class ABattleLaunch : public ATgGameLaunch
 {
 public:
 

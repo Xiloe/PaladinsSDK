@@ -8,18 +8,20 @@
 
 #include "PL_Vivox_structs.hpp"
 
-namespace Classes
+namespace SDK
 {
 //---------------------------------------------------------------------------
 //Classes
 //---------------------------------------------------------------------------
 
 // Class Vivox.VivoxOSSConnectors
-// 0x185BB48BF70
-class VivoxOSSConnectors
+// 0x0020 (0x0080 - 0x0060)
+class UVivoxOSSConnectors : public UObject
 {
 public:
-	unsigned char                                      UnknownData00[0x185BB48BF70];                             // 0x0000(0x185BB48BF70) MISSED OFFSET
+	class UOnlineSubsystem*                            m_OnlineSub;                                              // 0x0060(0x0008)
+	TArray<class UVivoxClosure*>                       Closures;                                                 // 0x0068(0x0010) (NeedCtorLink)
+	struct FPointer                                    m_VivoxInterface;                                         // 0x0078(0x0008) (Native)
 
 	static UClass* StaticClass()
 	{
@@ -27,15 +29,27 @@ public:
 		return ptr;
 	}
 
+
+	void STATIC_OnGameChatBlockedChanged(bool bIsActive);
+	bool STATIC_IsGameChatBlocked();
+	void STATIC_SignalGameChatStopping();
+	void STATIC_SignalGameChatAttempting();
+	void STATIC_OnPrivilegeCheckedForUsersByUniqueNetIds(unsigned char LocalUserNum, TEnumAsByte<EFeaturePrivilege> Privilege, TArray<struct FPermissionsResultByUniqueNetId> Results);
+	bool STATIC_CanCommunicateVoiceWithUsersByUniqueNetIds(TArray<struct FUniqueNetId> Users);
+	bool STATIC_OnPrivilegeLevelChecked(int ChannelJoinCount, unsigned char LocalUserNum, TEnumAsByte<EFeaturePrivilege> Privilege, TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevel, bool bDiffersFromHint);
+	bool STATIC_CanCommunicateVoice(int ChannelJoinCount, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
+	void RemoveClosure(class UVivoxClosure* Closure);
+	void STATIC_RegisterOnlineDelegates();
 };
 
 
 // Class Vivox.VivoxClosure
-// 0x185BB48AA10
-class VivoxClosure
+// 0x0010 (0x0070 - 0x0060)
+class UVivoxClosure : public UObject
 {
 public:
-	unsigned char                                      UnknownData00[0x185BB48AA10];                             // 0x0000(0x185BB48AA10) MISSED OFFSET
+	class UVivoxOSSConnectors*                         m_Connector;                                              // 0x0060(0x0008)
+	class UOnlineSubsystem*                            m_OnlineSub;                                              // 0x0068(0x0008)
 
 	static UClass* StaticClass()
 	{
@@ -43,15 +57,19 @@ public:
 		return ptr;
 	}
 
+
+	void ClearOnlineDelegates();
+	void STATIC_RegisterOnlineDelegates(class UOnlineSubsystem* OnlineSub);
+	void Init(class UVivoxOSSConnectors* ParamConnector);
 };
 
 
 // Class Vivox.VivoxClosureOnPrivilegeLevelChecked
-// 0x185BB48E490
-class VivoxClosureOnPrivilegeLevelChecked
+// 0x0004 (0x0074 - 0x0070)
+class UVivoxClosureOnPrivilegeLevelChecked : public UVivoxClosure
 {
 public:
-	unsigned char                                      UnknownData00[0x185BB48E490];                             // 0x0000(0x185BB48E490) MISSED OFFSET
+	int                                                m_ChannelJoinCount;                                       // 0x0070(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -59,6 +77,11 @@ public:
 		return ptr;
 	}
 
+
+	void STATIC_OnPrivilegeLevelChecked(unsigned char LocalUserNum, TEnumAsByte<EFeaturePrivilege> Privilege, TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevel, bool bDiffersFromHint);
+	void ClearOnlineDelegates();
+	void STATIC_RegisterOnlineDelegates(class UOnlineSubsystem* OnlineSub);
+	void InitClosure(int ChannelJoinCount, class UVivoxOSSConnectors* Connector);
 };
 
 

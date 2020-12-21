@@ -6,7 +6,7 @@
 
 #include "PL_OnlineSubsystemSteamworks_parameters.hpp"
 
-namespace Classes
+namespace SDK
 {
 //---------------------------------------------------------------------------
 //Functions

@@ -7,8 +7,13 @@
 #endif
 
 #include "PL_Basic.hpp"
+#include "PL_GameFramework_classes.hpp"
+#include "PL_Engine_classes.hpp"
+#include "PL_Core_classes.hpp"
+#include "PL_PlatformCommon_classes.hpp"
+#include "PL_AkAudio_classes.hpp"
 
-namespace Classes
+namespace SDK
 {
 //---------------------------------------------------------------------------
 //Constants
@@ -5952,1985 +5957,3008 @@ enum class EMOONSHARD_WITHIN_RANGE : uint8_t
 //Script Structs
 //---------------------------------------------------------------------------
 
-// ScriptStruct TgGame.TgAchievement_FastDamage.FastDamageEntry
-// 0x185BB739750
-struct FFastDamageEntry
+// ScriptStruct TgGame.TgAIDirector.SkillLevelRawData
+// 0x0028
+struct FSkillLevelRawData
 {
-	unsigned char                                      UnknownData00[0x185BB739750];                             // 0x0000(0x185BB739750) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAchievement_FastHealDifferentPlayers.FastHealDifferentPlayersEntry
-// 0x185BB73B910
-struct FFastHealDifferentPlayersEntry
-{
-	unsigned char                                      UnknownData00[0x185BB73B910];                             // 0x0000(0x185BB73B910) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAchievement_KillWithCombo.KillWithComboEntry
-// 0x185BB73C690
-struct FKillWithComboEntry
-{
-	unsigned char                                      UnknownData00[0x185BB73C690];                             // 0x0000(0x185BB73C690) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAchievement_MaldambaSpecificChallenge.MaldambaSpecificChallengeEntry
-// 0x185BB73C090
-struct FMaldambaSpecificChallengeEntry
-{
-	unsigned char                                      UnknownData00[0x185BB73C090];                             // 0x0000(0x185BB73C090) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgObject.LootData
-// 0x185BB73D890
-struct FLootData
-{
-	unsigned char                                      UnknownData00[0x185BB73D890];                             // 0x0000(0x185BB73D890) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgObject.WeaponMeshSwapStrategy
-// 0x185BB73D7D0
-struct FWeaponMeshSwapStrategy
-{
-	unsigned char                                      UnknownData00[0x185BB73D7D0];                             // 0x0000(0x185BB73D7D0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgObject.SavedRewindVals
-// 0x185BB740050
-struct FSavedRewindVals
-{
-	unsigned char                                      UnknownData00[0x185BB740050];                             // 0x0000(0x185BB740050) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgObject.CardInfo
-// 0x185BB740DD0
-struct FCardInfo
-{
-	unsigned char                                      UnknownData00[0x185BB740DD0];                             // 0x0000(0x185BB740DD0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgObject.TgAbilityInfo
-// 0x185BB73F510
-struct FTgAbilityInfo
-{
-	unsigned char                                      UnknownData00[0x185BB73F510];                             // 0x0000(0x185BB73F510) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgObject.ChargeHitInfo
-// 0x185BB73E0D0
-struct FChargeHitInfo
-{
-	unsigned char                                      UnknownData00[0x185BB73E0D0];                             // 0x0000(0x185BB73E0D0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgObject.DiminishedEffectInfo
-// 0x185BB73E6D0
-struct FDiminishedEffectInfo
-{
-	unsigned char                                      UnknownData00[0x185BB73E6D0];                             // 0x0000(0x185BB73E6D0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgObject.AdjustHealParams
-// 0x185BB740590
-struct FAdjustHealParams
-{
-	unsigned char                                      UnknownData00[0x185BB740590];                             // 0x0000(0x185BB740590) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgObject.AdjustDamageParams
-// 0x185BB73FED0
-struct FAdjustDamageParams
-{
-	unsigned char                                      UnknownData00[0x185BB73FED0];                             // 0x0000(0x185BB73FED0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgObject.OnHealedParams
-// 0x185BB740A10
-struct FOnHealedParams
-{
-	unsigned char                                      UnknownData00[0x185BB740A10];                             // 0x0000(0x185BB740A10) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgObject.ExtraDamageInfo
-// 0x185BB7401D0
-struct FExtraDamageInfo
-{
-	unsigned char                                      UnknownData00[0x185BB7401D0];                             // 0x0000(0x185BB7401D0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgObject.sPingInfo
-// 0x185BB7419D0
-struct FsPingInfo
-{
-	unsigned char                                      UnknownData00[0x185BB7419D0];                             // 0x0000(0x185BB7419D0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgObject.OnDamagedParams
-// 0x185BB741490
-struct FOnDamagedParams
-{
-	unsigned char                                      UnknownData00[0x185BB741490];                             // 0x0000(0x185BB741490) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgObject.OffhandAnimation
-// 0x185BB743950
-struct FOffhandAnimation
-{
-	unsigned char                                      UnknownData00[0x185BB743950];                             // 0x0000(0x185BB743950) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgObject.ScoreKillData
-// 0x185BB741CD0
-struct FScoreKillData
-{
-	unsigned char                                      UnknownData00[0x185BB741CD0];                             // 0x0000(0x185BB741CD0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgObject.TG_HUD_INFO
-// 0x185BB743290
-struct FTG_HUD_INFO
-{
-	unsigned char                                      UnknownData00[0x185BB743290];                             // 0x0000(0x185BB743290) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgObject.DateTimeWrapper
-// 0x185BB7434D0
-struct FDateTimeWrapper
-{
-	unsigned char                                      UnknownData00[0x185BB7434D0];                             // 0x0000(0x185BB7434D0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgObject.RewardInfo
-// 0x185BB741B50
-struct FRewardInfo
-{
-	unsigned char                                      UnknownData00[0x185BB741B50];                             // 0x0000(0x185BB741B50) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgObject.MeshAssets
-// 0x185BB741C10
-struct FMeshAssets
-{
-	unsigned char                                      UnknownData00[0x185BB741C10];                             // 0x0000(0x185BB741C10) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgObject.ObjectiveMICInfo
-// 0x185BB742690
-struct FObjectiveMICInfo
-{
-	unsigned char                                      UnknownData00[0x185BB742690];                             // 0x0000(0x185BB742690) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgObject.AimData
-// 0x185BB745990
-struct FAimData
-{
-	unsigned char                                      UnknownData00[0x185BB745990];                             // 0x0000(0x185BB745990) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgObject.EquipDeviceInfo
-// 0x185BB744B50
-struct FEquipDeviceInfo
-{
-	unsigned char                                      UnknownData00[0x185BB744B50];                             // 0x0000(0x185BB744B50) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAIController.ThreatStruct
-// 0x185BB7281D0
-struct FThreatStruct
-{
-	unsigned char                                      UnknownData00[0x185BB7281D0];                             // 0x0000(0x185BB7281D0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAIBehaviorNode.BehaviorStateData
-// 0x185BB3DDA50
-struct FBehaviorStateData
-{
-	unsigned char                                      UnknownData00[0x185BB3DDA50];                             // 0x0000(0x185BB3DDA50) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAIController_Behavior.DeferredNode
-// 0x185BB3DD2D0
-struct FDeferredNode
-{
-	unsigned char                                      UnknownData00[0x185BB3DD2D0];                             // 0x0000(0x185BB3DD2D0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAIController_Behavior.IncomingDamageEntry
-// 0x185BB3E3150
-struct FIncomingDamageEntry
-{
-	unsigned char                                      UnknownData00[0x185BB3E3150];                             // 0x0000(0x185BB3E3150) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAIController_Behavior.FollowLaneState
-// 0x185BB3E32D0
-struct FFollowLaneState
-{
-	unsigned char                                      UnknownData00[0x185BB3E32D0];                             // 0x0000(0x185BB3E32D0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAIController_Behavior.NavigationQueueEntry
-// 0x185BB3E44D0
-struct FNavigationQueueEntry
-{
-	unsigned char                                      UnknownData00[0x185BB3E44D0];                             // 0x0000(0x185BB3E44D0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgPawn.DeathInfo
-// 0x185C0A35150
-struct FDeathInfo
-{
-	unsigned char                                      UnknownData00[0x185C0A35150];                             // 0x0000(0x185C0A35150) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgPawn.EEmoteAbilityChance
-// 0x185BD1B51E0
-struct FEEmoteAbilityChance
-{
-	unsigned char                                      UnknownData00[0x185BD1B51E0];                             // 0x0000(0x185BD1B51E0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgPawn.RigidBodyImpactInfo
-// 0x185BB3F2990
-struct FRigidBodyImpactInfo
-{
-	unsigned char                                      UnknownData00[0x185BB3F2990];                             // 0x0000(0x185BB3F2990) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgProperty.TgPropertyInstance
-// 0x185BB3F5390
-struct FTgPropertyInstance
-{
-	unsigned char                                      UnknownData00[0x185BB3F5390];                             // 0x0000(0x185BB3F5390) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgPawn.PostureStack
-// 0x185C0A202D0
-struct FPostureStack
-{
-	unsigned char                                      UnknownData00[0x185C0A202D0];                             // 0x0000(0x185C0A202D0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgPawn.OverlayInfo
-// 0x185C0A2DF50
-struct FOverlayInfo
-{
-	unsigned char                                      UnknownData00[0x185C0A2DF50];                             // 0x0000(0x185C0A2DF50) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgSpecialFx.Fx_Sound
-// 0x185B5A4B210
-struct FFx_Sound
-{
-	unsigned char                                      UnknownData00[0x185B5A4B210];                             // 0x0000(0x185B5A4B210) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgSpecialFx.Fx_PSC
-// 0x185B5A4C410
-struct FFx_PSC
-{
-	unsigned char                                      UnknownData00[0x185B5A4C410];                             // 0x0000(0x185B5A4C410) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgPawn.EEmoteCategoryChance
-// 0x185BD1B5420
-struct FEEmoteCategoryChance
-{
-	unsigned char                                      UnknownData00[0x185BD1B5420];                             // 0x0000(0x185BD1B5420) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgRepInfo_Player.TrackedProjectileInitData
-// 0x185BD1C7360
-struct FTrackedProjectileInitData
-{
-	unsigned char                                      UnknownData00[0x185BD1C7360];                             // 0x0000(0x185BD1C7360) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgRepInfo_Player.TrackedProjectileUpdateData
-// 0x185BD1C7420
-struct FTrackedProjectileUpdateData
-{
-	unsigned char                                      UnknownData00[0x185BD1C7420];                             // 0x0000(0x185BD1C7420) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgPawn.HealingInfo
-// 0x185BD1D0F60
-struct FHealingInfo
-{
-	unsigned char                                      UnknownData00[0x185BD1D0F60];                             // 0x0000(0x185BD1D0F60) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgPawn.SilhouetteInfo
-// 0x185BD1D1620
-struct FSilhouetteInfo
-{
-	unsigned char                                      UnknownData00[0x185BD1D1620];                             // 0x0000(0x185BD1D1620) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgPawn.OverlayMICList
-// 0x185BD1D04E0
-struct FOverlayMICList
-{
-	unsigned char                                      UnknownData00[0x185BD1D04E0];                             // 0x0000(0x185BD1D04E0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgPawn.PawnDamagerStruct
-// 0x185BD1D1860
-struct FPawnDamagerStruct
-{
-	unsigned char                                      UnknownData00[0x185BD1D1860];                             // 0x0000(0x185BD1D1860) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgPawn.TGEQUIP_SLOTS_STRUCT
-// 0x185BD1D1E60
-struct FTGEQUIP_SLOTS_STRUCT
-{
-	unsigned char                                      UnknownData00[0x185BD1D1E60];                             // 0x0000(0x185BD1D1E60) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgPawn.DebugPropertyMod
-// 0x185BD1D58E0
-struct FDebugPropertyMod
-{
-	unsigned char                                      UnknownData00[0x185BD1D58E0];                             // 0x0000(0x185BD1D58E0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgCustomCharacterComponent.CompositeTextureType
-// 0x185B4775250
-struct FCompositeTextureType
-{
-	unsigned char                                      UnknownData00[0x185B4775250];                             // 0x0000(0x185B4775250) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgCustomCharacterComponent.CompositePartInfo
-// 0x185B4777B90
-struct FCompositePartInfo
-{
-	unsigned char                                      UnknownData00[0x185B4777B90];                             // 0x0000(0x185B4777B90) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgPawn_Character.ForceFaceTargetActor
-// 0x185B477C990
-struct FForceFaceTargetActor
-{
-	unsigned char                                      UnknownData00[0x185B477C990];                             // 0x0000(0x185B477C990) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgPawn_Character.WeaponDOF
-// 0x185B477DD10
-struct FWeaponDOF
-{
-	unsigned char                                      UnknownData00[0x185B477DD10];                             // 0x0000(0x185B477DD10) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgPawn_Character.TeleportParams
-// 0x185B477D1D0
-struct FTeleportParams
-{
-	unsigned char                                      UnknownData00[0x185B477D1D0];                             // 0x0000(0x185B477D1D0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAIController_BehaviorMapNpc.ThreatEntry
-// 0x185B4793610
-struct FThreatEntry
-{
-	unsigned char                                      UnknownData00[0x185B4793610];                             // 0x0000(0x185B4793610) MISSED OFFSET
+	float                                              NumDeaths;                                                // 0x0000(0x0004)
+	float                                              Damage;                                                   // 0x0004(0x0004)
+	float                                              Kills;                                                    // 0x0008(0x0004)
+	float                                              SoloKills;                                                // 0x000C(0x0004)
+	float                                              Assists;                                                  // 0x0010(0x0004)
+	float                                              Healing;                                                  // 0x0014(0x0004)
+	float                                              Credits;                                                  // 0x0018(0x0004)
+	float                                              Killstreak;                                               // 0x001C(0x0004)
+	float                                              ObjectiveTime;                                            // 0x0020(0x0004)
+	float                                              Shielding;                                                // 0x0024(0x0004)
 };
 
 // ScriptStruct TgGame.TgAIDirector.SkillLevelPercentageData
-// 0x185B479D510
+// 0x0028
 struct FSkillLevelPercentageData
 {
-	unsigned char                                      UnknownData00[0x185B479D510];                             // 0x0000(0x185B479D510) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAIDirector.SkillLevelRawData
-// 0x185B479D150
-struct FSkillLevelRawData
-{
-	unsigned char                                      UnknownData00[0x185B479D150];                             // 0x0000(0x185B479D150) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgGame_Paladins.TeamDifficultyData
-// 0x185B479E590
-struct FTeamDifficultyData
-{
-	unsigned char                                      UnknownData00[0x185B479E590];                             // 0x0000(0x185B479E590) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgRepInfo_Game.BotDifficultyDebugData
-// 0x185BD48F260
-struct FBotDifficultyDebugData
-{
-	unsigned char                                      UnknownData00[0x185BD48F260];                             // 0x0000(0x185BD48F260) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAILocalPositionSolver.DefaultRepulsorData
-// 0x185BD48E4E0
-struct FDefaultRepulsorData
-{
-	unsigned char                                      UnknownData00[0x185BD48E4E0];                             // 0x0000(0x185BD48E4E0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAimAssistKeyframe.AimAssistKeyframeData
-// 0x185B48CD1F0
-struct FAimAssistKeyframeData
-{
-	unsigned char                                      UnknownData00[0x185B48CD1F0];                             // 0x0000(0x185B48CD1F0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAIObstacleAvoidance.ObstacleQueryCache
-// 0x185B48CEC30
-struct FObstacleQueryCache
-{
-	unsigned char                                      UnknownData00[0x185B48CEC30];                             // 0x0000(0x185B48CEC30) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAIUtilityHandle.UtilityFunctionList
-// 0x185B48D0F70
-struct FUtilityFunctionList
-{
-	unsigned char                                      UnknownData00[0x185B48D0F70];                             // 0x0000(0x185B48D0F70) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAIUtilityHandle.UtilityPair
-// 0x185BC25D6A0
-struct FUtilityPair
-{
-	unsigned char                                      UnknownData00[0x185BC25D6A0];                             // 0x0000(0x185BC25D6A0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAIUtilityHandle.UtilitySet
-// 0x185B48D23B0
-struct FUtilitySet
-{
-	unsigned char                                      UnknownData00[0x185B48D23B0];                             // 0x0000(0x185B48D23B0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAkAudioManagement.AkMeterCallbackState
-// 0x185B48D28F0
-struct FAkMeterCallbackState
-{
-	unsigned char                                      UnknownData00[0x185B48D28F0];                             // 0x0000(0x185B48D28F0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAnimNodeBlendList.ChildBlendParam
-// 0x185B48D5170
-struct FChildBlendParam
-{
-	unsigned char                                      UnknownData00[0x185B48D5170];                             // 0x0000(0x185B48D5170) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAnimBlendByAmmo.AmmoBlendParams
-// 0x185B48D2770
-struct FAmmoBlendParams
-{
-	unsigned char                                      UnknownData00[0x185B48D2770];                             // 0x0000(0x185B48D2770) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAnimBlendByFire.DeviceParameters
-// 0x185B48D7C30
-struct FDeviceParameters
-{
-	unsigned char                                      UnknownData00[0x185B48D7C30];                             // 0x0000(0x185B48D7C30) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAnimBlendByHeadSkin.HeadSkinChildInfo
-// 0x185B48D71B0
-struct FHeadSkinChildInfo
-{
-	unsigned char                                      UnknownData00[0x185B48D71B0];                             // 0x0000(0x185B48D71B0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAnimBlendByMountSkin.MountSkinChildInfo
-// 0x185B48D6D30
-struct FMountSkinChildInfo
-{
-	unsigned char                                      UnknownData00[0x185B48D6D30];                             // 0x0000(0x185B48D6D30) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAnimBlendByNodeName.NodeNameToChildIndex
-// 0x185B48D97F0
-struct FNodeNameToChildIndex
-{
-	unsigned char                                      UnknownData00[0x185B48D97F0];                             // 0x0000(0x185B48D97F0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAnimBlendByNodeName.RelevantNodeNameNodes
-// 0x185B48DB230
-struct FRelevantNodeNameNodes
-{
-	unsigned char                                      UnknownData00[0x185B48DB230];                             // 0x0000(0x185B48DB230) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAnimBlendByPaladinsCharacter.ChildAnimParameters
-// 0x185B48D95B0
-struct FChildAnimParameters
-{
-	unsigned char                                      UnknownData00[0x185B48D95B0];                             // 0x0000(0x185B48D95B0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAnimBlendByPercent.BlendByPercentValues
-// 0x185B48DD930
-struct FBlendByPercentValues
-{
-	unsigned char                                      UnknownData00[0x185B48DD930];                             // 0x0000(0x185B48DD930) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAnimBlendByPhase.m_PhaseProfile
-// 0x185B8500CE0
-struct Fm_PhaseProfile
-{
-	unsigned char                                      UnknownData00[0x185B8500CE0];                             // 0x0000(0x185B8500CE0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAnimBlendByPhase.m_PhaseTransitionAnimSet
-// 0x185B8501220
-struct Fm_PhaseTransitionAnimSet
-{
-	unsigned char                                      UnknownData00[0x185B8501220];                             // 0x0000(0x185B8501220) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAnimBlendByPosture.m_PostureProfile
-// 0x185B85040A0
-struct Fm_PostureProfile
-{
-	unsigned char                                      UnknownData00[0x185B85040A0];                             // 0x0000(0x185B85040A0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAnimBlendByPosture.m_TransitionAnimSet
-// 0x185B85016A0
-struct Fm_TransitionAnimSet
-{
-	unsigned char                                      UnknownData00[0x185B85016A0];                             // 0x0000(0x185B85016A0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAnimBlendBySkin.SkinChildInfo
-// 0x185B8503CE0
-struct FSkinChildInfo
-{
-	unsigned char                                      UnknownData00[0x185B8503CE0];                             // 0x0000(0x185B8503CE0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAnimBlendBySpeed.ResetSynchGroup
-// 0x185B8504220
-struct FResetSynchGroup
-{
-	unsigned char                                      UnknownData00[0x185B8504220];                             // 0x0000(0x185B8504220) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAnimBlendByWeaponSkin.WeaponSkinChildInfo
-// 0x185B8505F60
-struct FWeaponSkinChildInfo
-{
-	unsigned char                                      UnknownData00[0x185B8505F60];                             // 0x0000(0x185B8505F60) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAnimMetaData_Keyframed.MetaDataKeyFrame
-// 0x185B85057E0
-struct FMetaDataKeyFrame
-{
-	unsigned char                                      UnknownData00[0x185B85057E0];                             // 0x0000(0x185B85057E0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAnimMetaData_MICScalarParameterExtended.AlternateMaterialOverride
-// 0x185B8509AA0
-struct FAlternateMaterialOverride
-{
-	unsigned char                                      UnknownData00[0x185B8509AA0];                             // 0x0000(0x185B8509AA0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAnimMetaData_MeshAccessory.MeshPlacement
-// 0x185B8508BA0
-struct FMeshPlacement
-{
-	unsigned char                                      UnknownData00[0x185B8508BA0];                             // 0x0000(0x185B8508BA0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgDevice.TrackedFiringAmmoConsumption
-// 0x185B3F03AA0
-struct FTrackedFiringAmmoConsumption
-{
-	unsigned char                                      UnknownData00[0x185B3F03AA0];                             // 0x0000(0x185B3F03AA0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgTimerManager.TgTimerData
-// 0x185B84CC960
-struct FTgTimerData
-{
-	unsigned char                                      UnknownData00[0x185B84CC960];                             // 0x0000(0x185B84CC960) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgTimerManager.TGT_REG_LINK
-// 0x185B3EEB4A0
-struct FTGT_REG_LINK
-{
-	unsigned char                                      UnknownData00[0x185B3EEB4A0];                             // 0x0000(0x185B3EEB4A0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgDevice.TgQueuedSimulatedProjectileSpawn
-// 0x185B3EF35A0
-struct FTgQueuedSimulatedProjectileSpawn
-{
-	unsigned char                                      UnknownData00[0x185B3EF35A0];                             // 0x0000(0x185B3EF35A0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgDevice.TgQueuedProjectileExplosion
-// 0x185B3EF50A0
-struct FTgQueuedProjectileExplosion
-{
-	unsigned char                                      UnknownData00[0x185B3EF50A0];                             // 0x0000(0x185B3EF50A0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgDevice.ImpactToValidate
-// 0x185B3EF22E0
-struct FImpactToValidate
-{
-	unsigned char                                      UnknownData00[0x185B3EF22E0];                             // 0x0000(0x185B3EF22E0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgDevice.TgQueuedRefire
-// 0x185B3EF2CA0
-struct FTgQueuedRefire
-{
-	unsigned char                                      UnknownData00[0x185B3EF2CA0];                             // 0x0000(0x185B3EF2CA0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgDevice.TgQueuedInstantFireShot
-// 0x185B3EF3120
-struct FTgQueuedInstantFireShot
-{
-	unsigned char                                      UnknownData00[0x185B3EF3120];                             // 0x0000(0x185B3EF3120) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgDevice.AccuracySettings
-// 0x185B3EF3D20
-struct FAccuracySettings
-{
-	unsigned char                                      UnknownData00[0x185B3EF3D20];                             // 0x0000(0x185B3EF3D20) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgDevice.RecoilSettings
-// 0x185B3EF5820
-struct FRecoilSettings
-{
-	unsigned char                                      UnknownData00[0x185B3EF5820];                             // 0x0000(0x185B3EF5820) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgDevice.AttackSpeedModifier
-// 0x185B3EF7620
-struct FAttackSpeedModifier
-{
-	unsigned char                                      UnknownData00[0x185B3EF7620];                             // 0x0000(0x185B3EF7620) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgDeviceFire.WeaponFireResults
-// 0x185BA5C39A0
-struct FWeaponFireResults
-{
-	unsigned char                                      UnknownData00[0x185BA5C39A0];                             // 0x0000(0x185BA5C39A0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgProjectile.TrackingSettings
-// 0x185B3F16820
-struct FTrackingSettings
-{
-	unsigned char                                      UnknownData00[0x185B3F16820];                             // 0x0000(0x185B3F16820) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgDevice.AmmoTransaction
-// 0x185B3F22760
-struct FAmmoTransaction
-{
-	unsigned char                                      UnknownData00[0x185B3F22760];                             // 0x0000(0x185B3F22760) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgDevice_Charge.TimestampedActor
-// 0x185BBA60080
-struct FTimestampedActor
-{
-	unsigned char                                      UnknownData00[0x185BBA60080];                             // 0x0000(0x185BBA60080) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAnimNodeBlendByAndroxusDrift.DriftInfo
-// 0x185BBA64040
-struct FDriftInfo
-{
-	unsigned char                                      UnknownData00[0x185BBA64040];                             // 0x0000(0x185BBA64040) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAnimNodeBlendByDrogozFlying.BoosterFlightInfo
-// 0x185BBA68000
-struct FBoosterFlightInfo
-{
-	unsigned char                                      UnknownData00[0x185BBA68000];                             // 0x0000(0x185BBA68000) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAnimNodeBlendByPhysics.ChildrenBlendInfo
-// 0x185BBA67B80
-struct FChildrenBlendInfo
-{
-	unsigned char                                      UnknownData00[0x185BBA67B80];                             // 0x0000(0x185BBA67B80) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAnimNodeBlendByPhysics.ChildBlendInfo
-// 0x185BBA66200
-struct FChildBlendInfo
-{
-	unsigned char                                      UnknownData00[0x185BBA66200];                             // 0x0000(0x185BBA66200) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAnimNodeEmoteSequence.EmoteAnimInfo
-// 0x185BBA73580
-struct FEmoteAnimInfo
-{
-	unsigned char                                      UnknownData00[0x185BBA73580];                             // 0x0000(0x185BBA73580) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAnimNodeHitReactionOffset.HitReactionInfo
-// 0x185BBA74180
-struct FHitReactionInfo
-{
-	unsigned char                                      UnknownData00[0x185BBA74180];                             // 0x0000(0x185BBA74180) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAnimNodeRandom.TgRandomAnimInfo
-// 0x185BBA776C0
-struct FTgRandomAnimInfo
-{
-	unsigned char                                      UnknownData00[0x185BBA776C0];                             // 0x0000(0x185BBA776C0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAnimNodeSequenceByBoneRotation.AnimByRotation
-// 0x185BBA75C80
-struct FAnimByRotation
-{
-	unsigned char                                      UnknownData00[0x185BBA75C80];                             // 0x0000(0x185BBA75C80) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAnimNodeStanceTransitionerSynchronized.StanceTransitionParam
-// 0x185BBA79700
-struct FStanceTransitionParam
-{
-	unsigned char                                      UnknownData00[0x185BBA79700];                             // 0x0000(0x185BBA79700) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAnimNodeStanceTransitioner.CachedTgAnimNodeStanceInfo
-// 0x185BBA7D9C0
-struct FCachedTgAnimNodeStanceInfo
-{
-	unsigned char                                      UnknownData00[0x185BBA7D9C0];                             // 0x0000(0x185BBA7D9C0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAnimNodeStanceTransitioner.CachedTgAnimNodeStanceTransitionInfo
-// 0x185BBA7BBC0
-struct FCachedTgAnimNodeStanceTransitionInfo
-{
-	unsigned char                                      UnknownData00[0x185BBA7BBC0];                             // 0x0000(0x185BBA7BBC0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAnimNotify_AkEvent.PSE_SkinAk
-// 0x185BBA7CDC0
-struct FPSE_SkinAk
-{
-	unsigned char                                      UnknownData00[0x185BBA7CDC0];                             // 0x0000(0x185BBA7CDC0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAnimNotify_PlayParticleEffect_Skinned.PPE_Skin
-// 0x185BBA7FAC0
-struct FPPE_Skin
-{
-	unsigned char                                      UnknownData00[0x185BBA7FAC0];                             // 0x0000(0x185BBA7FAC0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAnimNotify_Sound.PSE_Skin
-// 0x185BBA7E2C0
-struct FPSE_Skin
-{
-	unsigned char                                      UnknownData00[0x185BBA7E2C0];                             // 0x0000(0x185BBA7E2C0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAnimTurnInPlace.RotTransitionInfo
-// 0x185BBA86A80
-struct FRotTransitionInfo
-{
-	unsigned char                                      UnknownData00[0x185BBA86A80];                             // 0x0000(0x185BBA86A80) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAnimTurnInPlace_Player.TIP_Transition
-// 0x185BBA85F40
-struct FTIP_Transition
-{
-	unsigned char                                      UnknownData00[0x185BBA85F40];                             // 0x0000(0x185BBA85F40) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAudioConversations.VoxConversation
-// 0x185BBA85700
-struct FVoxConversation
-{
-	unsigned char                                      UnknownData00[0x185BBA85700];                             // 0x0000(0x185BBA85700) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAudioPawnDialogue.ChatterEvent
-// 0x185BBA84500
-struct FChatterEvent
-{
-	unsigned char                                      UnknownData00[0x185BBA84500];                             // 0x0000(0x185BBA84500) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgAudioPawnDialogue.DialogueEvent
-// 0x185BBA85940
-struct FDialogueEvent
-{
-	unsigned char                                      UnknownData00[0x185BBA85940];                             // 0x0000(0x185BBA85940) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgPlayerInput.AimAssistTargetWeightVars
-// 0x185BBA8D140
-struct FAimAssistTargetWeightVars
-{
-	unsigned char                                      UnknownData00[0x185BBA8D140];                             // 0x0000(0x185BBA8D140) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgSpecialFx.Fx_Decal
-// 0x185B5A48510
-struct FFx_Decal
-{
-	unsigned char                                      UnknownData00[0x185B5A48510];                             // 0x0000(0x185B5A48510) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgSpecialFx.AppliedMaterialHandle
-// 0x185B5A4BB10
-struct FAppliedMaterialHandle
-{
-	unsigned char                                      UnknownData00[0x185B5A4BB10];                             // 0x0000(0x185B5A4BB10) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgSpecialFx.Fx_AssemblyData
-// 0x185B5A4C290
-struct FFx_AssemblyData
-{
-	unsigned char                                      UnknownData00[0x185B5A4C290];                             // 0x0000(0x185B5A4C290) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgSpecialFx.Fx_Material
-// 0x185B5A4A9D0
-struct FFx_Material
-{
-	unsigned char                                      UnknownData00[0x185B5A4A9D0];                             // 0x0000(0x185B5A4A9D0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgMaterialStack.MaterialStackInstance
-// 0x185B9661290
-struct FMaterialStackInstance
-{
-	unsigned char                                      UnknownData00[0x185B9661290];                             // 0x0000(0x185B9661290) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgBotFactory.SpawnQueueEntry
-// 0x185B5A50550
-struct FSpawnQueueEntry
-{
-	unsigned char                                      UnknownData00[0x185B5A50550];                             // 0x0000(0x185B5A50550) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgCallbackContainer.FunctionWrapperInfo
-// 0x185B5A58F50
-struct FFunctionWrapperInfo
-{
-	unsigned char                                      UnknownData00[0x185B5A58F50];                             // 0x0000(0x185B5A58F50) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgCameraModule_ThirdPerson.ServerCorrectionSmoothingParams
-// 0x185B5A5E410
-struct FServerCorrectionSmoothingParams
-{
-	unsigned char                                      UnknownData00[0x185B5A5E410];                             // 0x0000(0x185B5A5E410) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgCameraModule_SpectatorOverview.CameraPitchInfo
-// 0x185B5A67F50
-struct FCameraPitchInfo
-{
-	unsigned char                                      UnknownData00[0x185B5A67F50];                             // 0x0000(0x185B5A67F50) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgChampionTickManager.ChampionEntry
-// 0x185B5A6EC10
-struct FChampionEntry
-{
-	unsigned char                                      UnknownData00[0x185B5A6EC10];                             // 0x0000(0x185B5A6EC10) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgGame.PlayOfTheGameEventConfig
-// 0x185B94C1900
-struct FPlayOfTheGameEventConfig
-{
-	unsigned char                                      UnknownData00[0x185B94C1900];                             // 0x0000(0x185B94C1900) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgGame.PlayOfTheGameInfo
-// 0x185B94BFA40
-struct FPlayOfTheGameInfo
-{
-	unsigned char                                      UnknownData00[0x185B94BFA40];                             // 0x0000(0x185B94BFA40) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgGame.TgAIBotPlayersToSpawn
-// 0x185B94BF740
-struct FTgAIBotPlayersToSpawn
-{
-	unsigned char                                      UnknownData00[0x185B94BF740];                             // 0x0000(0x185B94BF740) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgCharacterPerformance.DeviceToCharacterID
-// 0x185B94CBA40
-struct FDeviceToCharacterID
-{
-	unsigned char                                      UnknownData00[0x185B94CBA40];                             // 0x0000(0x185B94CBA40) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgPlayerController.DefaultAudioSwitch
-// 0x185B8327BC0
-struct FDefaultAudioSwitch
-{
-	unsigned char                                      UnknownData00[0x185B8327BC0];                             // 0x0000(0x185B8327BC0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgPlayerController.CameraStackInfo
-// 0x185B8303680
-struct FCameraStackInfo
-{
-	unsigned char                                      UnknownData00[0x185B8303680];                             // 0x0000(0x185B8303680) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgPlayerController.sSimProjectileFireInfo
-// 0x185B8327080
-struct FsSimProjectileFireInfo
-{
-	unsigned char                                      UnknownData00[0x185B8327080];                             // 0x0000(0x185B8327080) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgPlayerController.SZombieInfo
-// 0x185B8325AC0
-struct FSZombieInfo
-{
-	unsigned char                                      UnknownData00[0x185B8325AC0];                             // 0x0000(0x185B8325AC0) MISSED OFFSET
+	float                                              NumDeathsPercentage;                                      // 0x0000(0x0004)
+	float                                              DamagePercentage;                                         // 0x0004(0x0004)
+	float                                              KillsPercentage;                                          // 0x0008(0x0004)
+	float                                              SoloKillsPercentage;                                      // 0x000C(0x0004)
+	float                                              AssistsPercentage;                                        // 0x0010(0x0004)
+	float                                              HealingPercentage;                                        // 0x0014(0x0004)
+	float                                              CreditsPercentage;                                        // 0x0018(0x0004)
+	float                                              ObjectiveTimePercentage;                                  // 0x001C(0x0004)
+	float                                              ShieldingPercentage;                                      // 0x0020(0x0004)
+	float                                              KillstreakMultiplier;                                     // 0x0024(0x0004)
+};
+
+// ScriptStruct TgGame.TgObject.ExtraDamageInfo
+// 0x0004
+struct FExtraDamageInfo
+{
+	unsigned long                                      bCritical : 1;                                            // 0x0000(0x0004)
+	unsigned long                                      bHeadShot : 1;                                            // 0x0000(0x0004)
+	unsigned long                                      bKillingBlow : 1;                                         // 0x0000(0x0004)
+	unsigned long                                      bCombo : 1;                                               // 0x0000(0x0004)
+	unsigned long                                      bLatent : 1;                                              // 0x0000(0x0004)
+	unsigned long                                      bMarked : 1;                                              // 0x0000(0x0004)
+	unsigned long                                      bNoInstigator : 1;                                        // 0x0000(0x0004)
+};
+
+// ScriptStruct TgGame.TgObject.WeaponMeshSwapStrategy
+// 0x000C
+struct FWeaponMeshSwapStrategy
+{
+	unsigned long                                      bPlayPutAway : 1;                                         // 0x0000(0x0004)
+	TEnumAsByte<EWeaponMeshSwapRetrieveStrategy>       RetrieveStrategy;                                         // 0x0004(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0005(0x0003) MISSED OFFSET
+	unsigned long                                      bClearEquipPoint : 1;                                     // 0x0008(0x0004)
 };
 
 // ScriptStruct TgGame.TgPlayerController.BinocularSettings
-// 0x185B94DFCC0
+// 0x002C
 struct FBinocularSettings
 {
-	unsigned char                                      UnknownData00[0x185B94DFCC0];                             // 0x0000(0x185B94DFCC0) MISSED OFFSET
+	int                                                nTargets;                                                 // 0x0000(0x0004)
+	struct FRotator                                    rHeading;                                                 // 0x0004(0x000C)
+	float                                              fRange;                                                   // 0x0010(0x0004)
+	float                                              fTimer1;                                                  // 0x0014(0x0004)
+	float                                              fTimer2;                                                  // 0x0018(0x0004)
+	float                                              fTimer3;                                                  // 0x001C(0x0004)
+	float                                              fTimerDuration;                                           // 0x0020(0x0004)
+	float                                              fRefireTimerPercent;                                      // 0x0024(0x0004)
+	float                                              fDurationPercent;                                         // 0x0028(0x0004)
 };
 
-// ScriptStruct TgGame.TgGameTipManager.GameTipInfo
-// 0x185B830D700
-struct FGameTipInfo
+// ScriptStruct TgGame.TgPlayerController.SZombieInfo
+// 0x0054
+struct FSZombieInfo
 {
-	unsigned char                                      UnknownData00[0x185B830D700];                             // 0x0000(0x185B830D700) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgDeployable.CollisionSettingsDeployable
-// 0x185B831A240
-struct FCollisionSettingsDeployable
-{
-	unsigned char                                      UnknownData00[0x185B831A240];                             // 0x0000(0x185B831A240) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgPlayerController.InventoryChangeFlags
-// 0x185B8326540
-struct FInventoryChangeFlags
-{
-	unsigned char                                      UnknownData00[0x185B8326540];                             // 0x0000(0x185B8326540) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgPlayerController.AnnouncerEvent
-// 0x185B8328280
-struct FAnnouncerEvent
-{
-	unsigned char                                      UnknownData00[0x185B8328280];                             // 0x0000(0x185B8328280) MISSED OFFSET
+	unsigned long                                      bEnabled : 1;                                             // 0x0000(0x0004)
+	int                                                Mode;                                                     // 0x0004(0x0004)
+	unsigned long                                      RemoveNextTime : 1;                                       // 0x0008(0x0004)
+	int                                                TicksUntilCheckLocation;                                  // 0x000C(0x0004)
+	struct FVector                                     LastLocation;                                             // 0x0010(0x000C)
+	float                                              VelocityCap;                                              // 0x001C(0x0004)
+	struct FRotator                                    Rotation;                                                 // 0x0020(0x000C)
+	float                                              fLastMoveTime;                                            // 0x002C(0x0004)
+	float                                              fSecondsUntilInhandFireStateChange;                       // 0x0030(0x0004)
+	unsigned long                                      bFiringInhand : 1;                                        // 0x0034(0x0004)
+	float                                              fSecondsUntilAbility1FireStateChange;                     // 0x0038(0x0004)
+	unsigned long                                      bFiringAbility1 : 1;                                      // 0x003C(0x0004)
+	float                                              fSecondsUntilAbility2FireStateChange;                     // 0x0040(0x0004)
+	unsigned long                                      bFiringAbility2 : 1;                                      // 0x0044(0x0004)
+	float                                              fSecondsUntilAltFireFireStateChange;                      // 0x0048(0x0004)
+	unsigned long                                      bFiringAltFire : 1;                                       // 0x004C(0x0004)
+	float                                              fSecondsUntilChangeMove;                                  // 0x0050(0x0004)
 };
 
 // ScriptStruct TgGame.TgPlayerController.FLOOD
-// 0x185B83278C0
+// 0x0008
 struct FFLOOD
 {
-	unsigned char                                      UnknownData00[0x185B83278C0];                             // 0x0000(0x185B83278C0) MISSED OFFSET
+	int                                                m_nCount;                                                 // 0x0000(0x0004)
+	float                                              m_fLastUpdate;                                            // 0x0004(0x0004)
 };
 
 // ScriptStruct TgGame.TgPlayerController.TG_LAST_PURCHASE
-// 0x185B8329600
+// 0x0008
 struct FTG_LAST_PURCHASE
 {
-	unsigned char                                      UnknownData00[0x185B8329600];                             // 0x0000(0x185B8329600) MISSED OFFSET
+	int                                                nItemId;                                                  // 0x0000(0x0004)
+	int                                                nCount;                                                   // 0x0004(0x0004)
 };
 
-// ScriptStruct TgGame.TgSpectatorController.BroadcastChannel
-// 0x185B8333680
-struct FBroadcastChannel
+// ScriptStruct TgGame.TgPlayerController.CameraStackInfo
+// 0x0008
+struct FCameraStackInfo
 {
-	unsigned char                                      UnknownData00[0x185B8333680];                             // 0x0000(0x185B8333680) MISSED OFFSET
+	TEnumAsByte<ETG_CAMERAPOSTURE>                     ePosture;                                                 // 0x0000(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0001(0x0003) MISSED OFFSET
+	int                                                nStackId;                                                 // 0x0004(0x0004)
 };
 
-// ScriptStruct TgGame.TgSpectatorController.SpectatorBookmark
-// 0x185B8330A40
-struct FSpectatorBookmark
+// ScriptStruct TgGame.TgPlayerController.sSimProjectileFireInfo
+// 0x0040
+struct FsSimProjectileFireInfo
 {
-	unsigned char                                      UnknownData00[0x185B8330A40];                             // 0x0000(0x185B8330A40) MISSED OFFSET
+	int                                                nOwnerFireModeId;                                         // 0x0000(0x0004)
+	struct FVector                                     vLocation;                                                // 0x0004(0x000C)
+	struct FVector                                     vVelocity;                                                // 0x0010(0x000C)
+	struct FVector                                     vDirectionMunged;                                         // 0x001C(0x000C)
+	int                                                nActorID;                                                 // 0x0028(0x0004)
+	int                                                nClientFireRequestId;                                     // 0x002C(0x0004)
+	TEnumAsByte<ECMTargetType>                         ActorType;                                                // 0x0030(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0031(0x0003) MISSED OFFSET
+	float                                              fGeneric1;                                                // 0x0034(0x0004)
+	float                                              fGeneric2;                                                // 0x0038(0x0004)
+	float                                              fTimeDilation;                                            // 0x003C(0x0004)
 };
 
-// ScriptStruct TgGame.TgDemoRecSpectator.SpectatorCommand
-// 0x185B83353C0
-struct FSpectatorCommand
+// ScriptStruct TgGame.TgPlayerController.DefaultAudioSwitch
+// 0x0020
+struct FDefaultAudioSwitch
 {
-	unsigned char                                      UnknownData00[0x185B83353C0];                             // 0x0000(0x185B83353C0) MISSED OFFSET
+	struct FString                                     sSwitchName;                                              // 0x0000(0x0010) (Config, AlwaysInit, NeedCtorLink)
+	struct FString                                     sSwitchValue;                                             // 0x0010(0x0010) (Config, AlwaysInit, NeedCtorLink)
 };
 
-// ScriptStruct TgGame.TgDemoRecSpectator.DilationData
-// 0x185B8333500
-struct FDilationData
+// ScriptStruct TgGame.TgPlayerController.AnnouncerEvent
+// 0x0008
+struct FAnnouncerEvent
 {
-	unsigned char                                      UnknownData00[0x185B8333500];                             // 0x0000(0x185B8333500) MISSED OFFSET
+	class UAkEvent*                                    akSound;                                                  // 0x0000(0x0008)
 };
 
-// ScriptStruct TgGame.TgDeploy_DarkConvergence.PullData
-// 0x185BB816BE0
-struct FPullData
+// ScriptStruct TgGame.TgProperty.TgPropertyInstance
+// 0x001C
+struct FTgPropertyInstance
 {
-	unsigned char                                      UnknownData00[0x185BB816BE0];                             // 0x0000(0x185BB816BE0) MISSED OFFSET
+	int                                                m_nPropIndex;                                             // 0x0000(0x0004)
+	int                                                m_nPropertyId;                                            // 0x0004(0x0004)
+	float                                              m_fBase;                                                  // 0x0008(0x0004)
+	float                                              m_fRaw;                                                   // 0x000C(0x0004)
+	float                                              m_fMinimum;                                               // 0x0010(0x0004)
+	float                                              m_fMaximum;                                               // 0x0014(0x0004)
+	float                                              m_fScalingFactor;                                         // 0x0018(0x0004)
 };
 
-// ScriptStruct TgGame.TgDeploy_DredgeF.TargetToTeleport
-// 0x185BB81C5E0
-struct FTargetToTeleport
+// ScriptStruct TgGame.TgAimAssistKeyframe.AimAssistKeyframeData
+// 0x000C
+struct FAimAssistKeyframeData
 {
-	unsigned char                                      UnknownData00[0x185BB81C5E0];                             // 0x0000(0x185BB81C5E0) MISSED OFFSET
+	struct FName                                       KeyframeName;                                             // 0x0000(0x0008)
+	float                                              Distance;                                                 // 0x0008(0x0004)
 };
 
-// ScriptStruct TgGame.TgDeploy_EffectSpots.EffectSpotTarget
-// 0x185BB81F760
-struct FEffectSpotTarget
+// ScriptStruct TgGame.TgCustomCharacterComponent.CompositeTextureType
+// 0x0010
+struct FCompositeTextureType
 {
-	unsigned char                                      UnknownData00[0x185BB81F760];                             // 0x0000(0x185BB81F760) MISSED OFFSET
+	class UTexture2DComposite*                         CompTexture;                                              // 0x0000(0x0008)
+	struct FName                                       TextureParamName;                                         // 0x0008(0x0008)
 };
 
-// ScriptStruct TgGame.TgDeploy_EffectSpots.EffectSpotInfo
-// 0x185BB81E860
-struct FEffectSpotInfo
+// ScriptStruct TgGame.TgCustomCharacterComponent.CompositePartInfo
+// 0x0014
+struct FCompositePartInfo
 {
-	unsigned char                                      UnknownData00[0x185BB81E860];                             // 0x0000(0x185BB81E860) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgDeploy_EffectSpots.EffectSpotFXInfo
-// 0x185BB81F160
-struct FEffectSpotFXInfo
-{
-	unsigned char                                      UnknownData00[0x185BB81F160];                             // 0x0000(0x185BB81F160) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgDeploy_Molotov.MolotovPointInfo
-// 0x185BB82E460
-struct FMolotovPointInfo
-{
-	unsigned char                                      UnknownData00[0x185BB82E460];                             // 0x0000(0x185BB82E460) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgDeploy_Molotov.MolotovTriangleInfo
-// 0x185BB82CEA0
-struct FMolotovTriangleInfo
-{
-	unsigned char                                      UnknownData00[0x185BB82CEA0];                             // 0x0000(0x185BB82CEA0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgDeploy_Molotov.MolotovStrandInfo
-// 0x185BB82D9E0
-struct FMolotovStrandInfo
-{
-	unsigned char                                      UnknownData00[0x185BB82D9E0];                             // 0x0000(0x185BB82D9E0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgDeploy_Molotov.MolotovGeneralSettings
-// 0x185BB82EB20
-struct FMolotovGeneralSettings
-{
-	unsigned char                                      UnknownData00[0x185BB82EB20];                             // 0x0000(0x185BB82EB20) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgDeploy_Molotov.MolotovGrowthInfo
-// 0x185BB82C360
-struct FMolotovGrowthInfo
-{
-	unsigned char                                      UnknownData00[0x185BB82C360];                             // 0x0000(0x185BB82C360) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgDeploy_Molotov.MolotovCenterInfo
-// 0x185BB82C420
-struct FMolotovCenterInfo
-{
-	unsigned char                                      UnknownData00[0x185BB82C420];                             // 0x0000(0x185BB82C420) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgDeploy_Molotov.MolotovEligibilityRecord
-// 0x185BB82C720
-struct FMolotovEligibilityRecord
-{
-	unsigned char                                      UnknownData00[0x185BB82C720];                             // 0x0000(0x185BB82C720) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgDevice_ArcingBeam.ArcingInfo
-// 0x185BC2C0630
-struct FArcingInfo
-{
-	unsigned char                                      UnknownData00[0x185BC2C0630];                             // 0x0000(0x185BC2C0630) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgDevice_ArcingBeam.PotentialTargetInfo
-// 0x185BC2C0F30
-struct FPotentialTargetInfo
-{
-	unsigned char                                      UnknownData00[0x185BC2C0F30];                             // 0x0000(0x185BC2C0F30) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgDevice_BombKingInhand.StickyBombPendingDetonate
-// 0x185BC2CFB70
-struct FStickyBombPendingDetonate
-{
-	unsigned char                                      UnknownData00[0x185BC2CFB70];                             // 0x0000(0x185BC2CFB70) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgDevice_DimensionalLink.DLTeleportTargets
-// 0x185BC2E6070
-struct FDLTeleportTargets
-{
-	unsigned char                                      UnknownData00[0x185BC2E6070];                             // 0x0000(0x185BC2E6070) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgDevice_DimensionalLink.DLDeadTeleportTargets
-// 0x185BC2E53B0
-struct FDLDeadTeleportTargets
-{
-	unsigned char                                      UnknownData00[0x185BC2E53B0];                             // 0x0000(0x185BC2E53B0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgDevice_DimensionalLink.DLRewindTargets
-// 0x185BC2E40F0
-struct FDLRewindTargets
-{
-	unsigned char                                      UnknownData00[0x185BC2E40F0];                             // 0x0000(0x185BC2E40F0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgDevice_LazarusInhand.HitSoundData
-// 0x185B9EE39E0
-struct FHitSoundData
-{
-	unsigned char                                      UnknownData00[0x185B9EE39E0];                             // 0x0000(0x185B9EE39E0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgDevice_LongReach.NuggetPullVals
-// 0x185B9EE8060
-struct FNuggetPullVals
-{
-	unsigned char                                      UnknownData00[0x185B9EE8060];                             // 0x0000(0x185B9EE8060) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgPawn_Lazarus.BloodStoneTarget
-// 0x185B9F0DDA0
-struct FBloodStoneTarget
-{
-	unsigned char                                      UnknownData00[0x185B9F0DDA0];                             // 0x0000(0x185B9F0DDA0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgDevice_Vengeance_Lex.TargetScoreInfo
-// 0x185BA5BAA60
-struct FTargetScoreInfo
-{
-	unsigned char                                      UnknownData00[0x185BA5BAA60];                             // 0x0000(0x185BA5BAA60) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgDeviceFire.AoeActorInRangeData
-// 0x185BA5C7060
-struct FAoeActorInRangeData
-{
-	unsigned char                                      UnknownData00[0x185BA5C7060];                             // 0x0000(0x185BA5C7060) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgDeviceFire_SnakeToss.RecentStunnedTarget
-// 0x185B8B207F0
-struct FRecentStunnedTarget
-{
-	unsigned char                                      UnknownData00[0x185B8B207F0];                             // 0x0000(0x185B8B207F0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgDeviceForm.ModeData
-// 0x185B8B27630
-struct FModeData
-{
-	unsigned char                                      UnknownData00[0x185B8B27630];                             // 0x0000(0x185B8B27630) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgDeviceForm.SyntheticImpactEffectArgs
-// 0x185B8B2C130
-struct FSyntheticImpactEffectArgs
-{
-	unsigned char                                      UnknownData00[0x185B8B2C130];                             // 0x0000(0x185B8B2C130) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgDeviceForm_ArcingBeam.ArcingFXInfo
-// 0x185B8B348F0
-struct FArcingFXInfo
-{
-	unsigned char                                      UnknownData00[0x185B8B348F0];                             // 0x0000(0x185B8B348F0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgDeviceForm_LazarusInhand.HitPawn
-// 0x185B8B4ECF0
-struct FHitPawn
-{
-	unsigned char                                      UnknownData00[0x185B8B4ECF0];                             // 0x0000(0x185B8B4ECF0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgDeviceForm_Spray.SpraySetup
-// 0x185B9DF7F30
-struct FSpraySetup
-{
-	unsigned char                                      UnknownData00[0x185B9DF7F30];                             // 0x0000(0x185B9DF7F30) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgDistributionFloatSoundAttenuation.AttenuationGroup
-// 0x185B9E087F0
-struct FAttenuationGroup
-{
-	unsigned char                                      UnknownData00[0x185B9E087F0];                             // 0x0000(0x185B9E087F0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgEffectDamage_AstroDOT.EffectInstanceInfo
-// 0x185B9E11A30
-struct FEffectInstanceInfo
-{
-	unsigned char                                      UnknownData00[0x185B9E11A30];                             // 0x0000(0x185B9E11A30) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgEffectDamage_PresenceDoT.PresenceDoTInstanceInfo
-// 0x185B9E115B0
-struct FPresenceDoTInstanceInfo
-{
-	unsigned char                                      UnknownData00[0x185B9E115B0];                             // 0x0000(0x185B9E115B0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgEffectForm_WithMeshes.EffectMeshInfo
-// 0x185B9E14430
-struct FEffectMeshInfo
-{
-	unsigned char                                      UnknownData00[0x185B9E14430];                             // 0x0000(0x185B9E14430) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgEffectGroup.LifeTimeCalcInfo
-// 0x185B9E18270
-struct FLifeTimeCalcInfo
-{
-	unsigned char                                      UnknownData00[0x185B9E18270];                             // 0x0000(0x185B9E18270) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgEffectManager.ReduceActiveCooldownEntry
-// 0x185B9E220B0
-struct FReduceActiveCooldownEntry
-{
-	unsigned char                                      UnknownData00[0x185B9E220B0];                             // 0x0000(0x185B9E220B0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgEffectManager.DiminishingReturnsStackInfo
-// 0x185B9E1AC70
-struct FDiminishingReturnsStackInfo
-{
-	unsigned char                                      UnknownData00[0x185B9E1AC70];                             // 0x0000(0x185B9E1AC70) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgEffectManager.EnergyStunStackEntry
-// 0x185B9E21030
-struct FEnergyStunStackEntry
-{
-	unsigned char                                      UnknownData00[0x185B9E21030];                             // 0x0000(0x185B9E21030) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgEffectManager.StunStackEntry
-// 0x185B9E225F0
-struct FStunStackEntry
-{
-	unsigned char                                      UnknownData00[0x185B9E225F0];                             // 0x0000(0x185B9E225F0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgEffectManager.EffectListEntry
-// 0x185B9E25B30
-struct FEffectListEntry
-{
-	unsigned char                                      UnknownData00[0x185B9E25B30];                             // 0x0000(0x185B9E25B30) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgEffectManager.EffectQueueEntry
-// 0x185B9E23A30
-struct FEffectQueueEntry
-{
-	unsigned char                                      UnknownData00[0x185B9E23A30];                             // 0x0000(0x185B9E23A30) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgExplosionLight.LightValues
-// 0x185B9E2ADB0
-struct FLightValues
-{
-	unsigned char                                      UnknownData00[0x185B9E2ADB0];                             // 0x0000(0x185B9E2ADB0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgSkeletalMeshComponent.MeshAccessoryStorage
-// 0x185B9E29D30
-struct FMeshAccessoryStorage
-{
-	unsigned char                                      UnknownData00[0x185B9E29D30];                             // 0x0000(0x185B9E29D30) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgSkeletalMeshComponent.AnimNotifyParticleCacheEntry
-// 0x185B609E820
-struct FAnimNotifyParticleCacheEntry
-{
-	unsigned char                                      UnknownData00[0x185B609E820];                             // 0x0000(0x185B609E820) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgSkeletalMeshComponent.SwappedMeshResetInfo
-// 0x185B9E2CBB0
-struct FSwappedMeshResetInfo
-{
-	unsigned char                                      UnknownData00[0x185B9E2CBB0];                             // 0x0000(0x185B9E2CBB0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgSkeletalMeshComponent.MICScalarParamMetaDataStorage
-// 0x185B9E2D570
-struct FMICScalarParamMetaDataStorage
-{
-	unsigned char                                      UnknownData00[0x185B9E2D570];                             // 0x0000(0x185B9E2D570) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgSkeletalMeshComponent.MICStateParamInterpData
-// 0x185B609F2A0
-struct FMICStateParamInterpData
-{
-	unsigned char                                      UnknownData00[0x185B609F2A0];                             // 0x0000(0x185B609F2A0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgProjectile.CollisionSettingsProjectile
-// 0x185B60A30E0
-struct FCollisionSettingsProjectile
-{
-	unsigned char                                      UnknownData00[0x185B60A30E0];                             // 0x0000(0x185B60A30E0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgImpactFx.IMPACT_FX
-// 0x185B60AB120
-struct FIMPACT_FX
-{
-	unsigned char                                      UnknownData00[0x185B60AB120];                             // 0x0000(0x185B60AB120) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgSilhouetteComponentPaladins.SilhouetteColorSettings
-// 0x185B60BC160
-struct FSilhouetteColorSettings
-{
-	unsigned char                                      UnknownData00[0x185B60BC160];                             // 0x0000(0x185B60BC160) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgSilhouetteComponentPaladins.SilhouettePulseSettings
-// 0x185B60BF2E0
-struct FSilhouettePulseSettings
-{
-	unsigned char                                      UnknownData00[0x185B60BF2E0];                             // 0x0000(0x185B60BF2E0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgSilhouetteComponentPaladins.SilhouetteFadeSettings
-// 0x185B60BAC60
-struct FSilhouetteFadeSettings
-{
-	unsigned char                                      UnknownData00[0x185B60BAC60];                             // 0x0000(0x185B60BAC60) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgFlagContentData.FlagMeshData
-// 0x185B60C29A0
-struct FFlagMeshData
-{
-	unsigned char                                      UnknownData00[0x185B60C29A0];                             // 0x0000(0x185B60C29A0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgRepInfo_Game.GraphData
-// 0x185B60C28E0
-struct FGraphData
-{
-	unsigned char                                      UnknownData00[0x185B60C28E0];                             // 0x0000(0x185B60C28E0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgGame_Mission.SurrenderVote
-// 0x185B60CCA20
-struct FSurrenderVote
-{
-	unsigned char                                      UnknownData00[0x185B60CCA20];                             // 0x0000(0x185B60CCA20) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgGame_Mission.SurrenderData
-// 0x185B60CD3E0
-struct FSurrenderData
-{
-	unsigned char                                      UnknownData00[0x185B60CD3E0];                             // 0x0000(0x185B60CD3E0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgGame_Mission.TimeDilationWindow
-// 0x185B60D3C20
-struct FTimeDilationWindow
-{
-	unsigned char                                      UnknownData00[0x185B60D3C20];                             // 0x0000(0x185B60D3C20) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgGame_Paladins.CurrencyEntry
-// 0x185BC6F8F50
-struct FCurrencyEntry
-{
-	unsigned char                                      UnknownData00[0x185BC6F8F50];                             // 0x0000(0x185BC6F8F50) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgGame_Paladins.CurrencyBonus
-// 0x185BC6FC550
-struct FCurrencyBonus
-{
-	unsigned char                                      UnknownData00[0x185BC6FC550];                             // 0x0000(0x185BC6FC550) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgGameplayCurvesSet_TargetAimTracking.TargetAimTrackingDebugVals
-// 0x185B6342C80
-struct FTargetAimTrackingDebugVals
-{
-	unsigned char                                      UnknownData00[0x185B6342C80];                             // 0x0000(0x185B6342C80) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgGameTipManager.TipSavedState
-// 0x185B6347CC0
-struct FTipSavedState
-{
-	unsigned char                                      UnknownData00[0x185B6347CC0];                             // 0x0000(0x185B6347CC0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgInterpolatingCameraActor.InterpolatingCameraInfo
-// 0x185B634DF00
-struct FInterpolatingCameraInfo
-{
-	unsigned char                                      UnknownData00[0x185B634DF00];                             // 0x0000(0x185B634DF00) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgInventoryManager.InventoryData
-// 0x185B634B380
-struct FInventoryData
-{
-	unsigned char                                      UnknownData00[0x185B634B380];                             // 0x0000(0x185B634B380) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgInventoryObject.sInventoryReq
-// 0x185B6350540
-struct FsInventoryReq
-{
-	unsigned char                                      UnknownData00[0x185B6350540];                             // 0x0000(0x185B6350540) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgInventoryObject_Listen_Combo_Barik.ComboInfo
-// 0x185B6354500
-struct FComboInfo
-{
-	unsigned char                                      UnknownData00[0x185B6354500];                             // 0x0000(0x185B6354500) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgInventoryObject_Listen_Combo_Barik.UIMarkInfo
-// 0x185B6355B80
-struct FUIMarkInfo
-{
-	unsigned char                                      UnknownData00[0x185B6355B80];                             // 0x0000(0x185B6355B80) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgInventoryObject_Listen_Combo_Barik.BurningMarkInfo
-// 0x185B63569C0
-struct FBurningMarkInfo
-{
-	unsigned char                                      UnknownData00[0x185B63569C0];                             // 0x0000(0x185B63569C0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgInventoryObject_Listen_Combo_BombKing.StickyHitInfo
-// 0x185B6354B00
-struct FStickyHitInfo
-{
-	unsigned char                                      UnknownData00[0x185B6354B00];                             // 0x0000(0x185B6354B00) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgInventoryObject_Listen_Combo_Makoa.MarkedTargetHook
-// 0x185B6355F40
-struct FMarkedTargetHook
-{
-	unsigned char                                      UnknownData00[0x185B6355F40];                             // 0x0000(0x185B6355F40) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgInventoryObject_Listen_Combo_Viktor.TimedMarkedTarget
-// 0x185B63551C0
-struct FTimedMarkedTarget
-{
-	unsigned char                                      UnknownData00[0x185B63551C0];                             // 0x0000(0x185B63551C0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgInventoryObject_Listen_PoisonBolts.PoisonBoltInfo
-// 0x185B635BB80
-struct FPoisonBoltInfo
-{
-	unsigned char                                      UnknownData00[0x185B635BB80];                             // 0x0000(0x185B635BB80) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgInvListener_ConsecutiveInhandHits.CIHStack
-// 0x185B635C840
-struct FCIHStack
-{
-	unsigned char                                      UnknownData00[0x185B635C840];                             // 0x0000(0x185B635C840) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgInvListener_CrackShot.CrackShotBonusDamageTarget
-// 0x185B635A140
-struct FCrackShotBonusDamageTarget
-{
-	unsigned char                                      UnknownData00[0x185B635A140];                             // 0x0000(0x185B635A140) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgInvListener_RiderShield.RiderShieldPerTargetHistory
-// 0x185B635E580
-struct FRiderShieldPerTargetHistory
-{
-	unsigned char                                      UnknownData00[0x185B635E580];                             // 0x0000(0x185B635E580) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgInvListener_TargetOverHealed.TOHInfo
-// 0x185B635EDC0
-struct FTOHInfo
-{
-	unsigned char                                      UnknownData00[0x185B635EDC0];                             // 0x0000(0x185B635EDC0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgMarkComponent.TargetMark
-// 0x185B6367B80
-struct FTargetMark
-{
-	unsigned char                                      UnknownData00[0x185B6367B80];                             // 0x0000(0x185B6367B80) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgMenuContentData.MeshData
-// 0x185B6366740
-struct FMeshData
-{
-	unsigned char                                      UnknownData00[0x185B6366740];                             // 0x0000(0x185B6366740) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgMenuMeshInfo.ParticleSystemInfo
-// 0x185B636A280
-struct FParticleSystemInfo
-{
-	unsigned char                                      UnknownData00[0x185B636A280];                             // 0x0000(0x185B636A280) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgMenuMeshInfo.LobbyMeshInfo
-// 0x185B636A7C0
-struct FLobbyMeshInfo
-{
-	unsigned char                                      UnknownData00[0x185B636A7C0];                             // 0x0000(0x185B636A7C0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgMinimapManager.MiniMapServerEntity
-// 0x185B636DA00
-struct FMiniMapServerEntity
-{
-	unsigned char                                      UnknownData00[0x185B636DA00];                             // 0x0000(0x185B636DA00) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgPawn_BarrierTank.WallPlacementInfo
-// 0x185BA552640
-struct FWallPlacementInfo
-{
-	unsigned char                                      UnknownData00[0x185BA552640];                             // 0x0000(0x185BA552640) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgPawn_Blades.DjBladesFaceConfig
-// 0x185BA5515C0
-struct FDjBladesFaceConfig
-{
-	unsigned char                                      UnknownData00[0x185BA5515C0];                             // 0x0000(0x185BA5515C0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgPawn_Blades.DjBladesVGSFace
-// 0x185BA551BC0
-struct FDjBladesVGSFace
-{
-	unsigned char                                      UnknownData00[0x185BA551BC0];                             // 0x0000(0x185BA551BC0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgPawn_LanePusherBase.ServerSplineSync
-// 0x185BA564880
-struct FServerSplineSync
-{
-	unsigned char                                      UnknownData00[0x185BA564880];                             // 0x0000(0x185BA564880) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgPawn_Rider.RiderMarkedTargetInfo
-// 0x185BA578F80
-struct FRiderMarkedTargetInfo
-{
-	unsigned char                                      UnknownData00[0x185BA578F80];                             // 0x0000(0x185BA578F80) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgPawn_TowerBase.NavMeshBorderEdges
-// 0x185BA57EA40
-struct FNavMeshBorderEdges
-{
-	unsigned char                                      UnknownData00[0x185BA57EA40];                             // 0x0000(0x185BA57EA40) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgPlayerCamera.PropertyDecayParams
-// 0x185B62CB9B0
-struct FPropertyDecayParams
-{
-	unsigned char                                      UnknownData00[0x185B62CB9B0];                             // 0x0000(0x185B62CB9B0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgPlayerCamera.PropertyDecayState
-// 0x185B62D1830
-struct FPropertyDecayState
-{
-	unsigned char                                      UnknownData00[0x185B62D1830];                             // 0x0000(0x185B62D1830) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgPlayerInput.AimAssistTargetWeight
-// 0x185B62D3CF0
-struct FAimAssistTargetWeight
-{
-	unsigned char                                      UnknownData00[0x185B62D3CF0];                             // 0x0000(0x185B62D3CF0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgProj_ExtraColliders.TrackedCollision
-// 0x185B62DBAF0
-struct FTrackedCollision
-{
-	unsigned char                                      UnknownData00[0x185B62DBAF0];                             // 0x0000(0x185B62DBAF0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgProj_FuriaF.FuriaFTrackingTargets
-// 0x185B62E23F0
-struct FFuriaFTrackingTargets
-{
-	unsigned char                                      UnknownData00[0x185B62E23F0];                             // 0x0000(0x185B62E23F0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgRepInfo_Player.DeckCardData
-// 0x185B62FA4B0
-struct FDeckCardData
-{
-	unsigned char                                      UnknownData00[0x185B62FA4B0];                             // 0x0000(0x185B62FA4B0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgRepInfo_Player.PlayOfTheGameEventData
-// 0x185B62FA270
-struct FPlayOfTheGameEventData
-{
-	unsigned char                                      UnknownData00[0x185B62FA270];                             // 0x0000(0x185B62FA270) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgRepInfo_Player.PlayOfTheGameEventCounter
-// 0x185B62FAC30
-struct FPlayOfTheGameEventCounter
-{
-	unsigned char                                      UnknownData00[0x185B62FAC30];                             // 0x0000(0x185B62FAC30) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgRepInfo_Player.MarkedTargetInfo
-// 0x185B62FA630
-struct FMarkedTargetInfo
-{
-	unsigned char                                      UnknownData00[0x185B62FA630];                             // 0x0000(0x185B62FA630) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgRepInfo_Player.DeviceTeamInfo
-// 0x185B62F64F0
-struct FDeviceTeamInfo
-{
-	unsigned char                                      UnknownData00[0x185B62F64F0];                             // 0x0000(0x185B62F64F0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgRepInfo_Player.SimulatedProjectileOverrides
-// 0x185B62F8170
-struct FSimulatedProjectileOverrides
-{
-	unsigned char                                      UnknownData00[0x185B62F8170];                             // 0x0000(0x185B62F8170) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgRepInfo_TaskForce.TGTEAM_ENTRY
-// 0x185B62BF770
-struct FTGTEAM_ENTRY
-{
-	unsigned char                                      UnknownData00[0x185B62BF770];                             // 0x0000(0x185B62BF770) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgRepInfo_TaskForce.TEAMTIMEMANAGER_ENTRY
-// 0x185B62BDAF0
-struct FTEAMTIMEMANAGER_ENTRY
-{
-	unsigned char                                      UnknownData00[0x185B62BDAF0];                             // 0x0000(0x185B62BDAF0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgRepInfo_TaskForce.GLOBALEFFECT_ENTRY
-// 0x185B62BF230
-struct FGLOBALEFFECT_ENTRY
-{
-	unsigned char                                      UnknownData00[0x185B62BF230];                             // 0x0000(0x185B62BF230) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgRepInfo_TaskForce.sPredefinedLevelDeployInfo
-// 0x185B62BECF0
-struct FsPredefinedLevelDeployInfo
-{
-	unsigned char                                      UnknownData00[0x185B62BECF0];                             // 0x0000(0x185B62BECF0) MISSED OFFSET
+	int                                                MeshAsmId;                                                // 0x0000(0x0004)
+	int                                                DestOffsetX;                                              // 0x0004(0x0004)
+	int                                                DestOffsetY;                                              // 0x0008(0x0004)
+	int                                                RegionSizeX;                                              // 0x000C(0x0004)
+	int                                                RegionSizeY;                                              // 0x0010(0x0004)
 };
 
 // ScriptStruct TgGame.TgRespawnBeaconEntrance.PendingTeleportInfo
-// 0x185BA13D4B0
+// 0x0010
 struct FPendingTeleportInfo
 {
-	unsigned char                                      UnknownData00[0x185BA13D4B0];                             // 0x0000(0x185BA13D4B0) MISSED OFFSET
+	class AActor*                                      PendingActor;                                             // 0x0000(0x0008)
+	float                                              TouchTimestamp;                                           // 0x0008(0x0004)
+	unsigned long                                      HasPlayedPreTeleport : 1;                                 // 0x000C(0x0004)
 };
 
-// ScriptStruct TgGame.TgSpawnTeleporterEntrance.ExitInfo
-// 0x185BA14A530
-struct FExitInfo
+// ScriptStruct TgGame.TgDistributionFloatSoundAttenuation.AttenuationGroup
+// 0x000C
+struct FAttenuationGroup
 {
-	unsigned char                                      UnknownData00[0x185BA14A530];                             // 0x0000(0x185BA14A530) MISSED OFFSET
+	struct FName                                       GroupName;                                                // 0x0000(0x0008)
+	float                                              AttenuationDistance;                                      // 0x0008(0x0004)
 };
 
-// ScriptStruct TgGame.TgSilhouetteManager.TgSilhouetteInfo
-// 0x185BA1562F0
-struct FTgSilhouetteInfo
+// ScriptStruct TgGame.TgExplosionLight.LightValues
+// 0x0018
+struct FLightValues
 {
-	unsigned char                                      UnknownData00[0x185BA1562F0];                             // 0x0000(0x185BA1562F0) MISSED OFFSET
+	float                                              StartTime;                                                // 0x0000(0x0004)
+	float                                              Radius;                                                   // 0x0004(0x0004)
+	float                                              Brightness;                                               // 0x0008(0x0004)
+	struct FColor                                      LightColor;                                               // 0x000C(0x0004)
+	struct FColor                                      EnemyLightColor;                                          // 0x0010(0x0004)
+	struct FColor                                      LocalLightColor;                                          // 0x0014(0x0004)
 };
 
-// ScriptStruct TgGame.TgSkelCon_CCD_IK_FootPlacement.JointConstraintInformation
-// 0x185BA156EF0
-struct FJointConstraintInformation
+// ScriptStruct TgGame.TgFlagContentData.FlagMeshData
+// 0x000C
+struct FFlagMeshData
 {
-	unsigned char                                      UnknownData00[0x185BA156EF0];                             // 0x0000(0x185BA156EF0) MISSED OFFSET
+	TEnumAsByte<EFlagContentDataType>                  ContentDataType;                                          // 0x0000(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0001(0x0003) MISSED OFFSET
+	class UTgMenuMeshInfo*                             MainMeshInfo;                                             // 0x0004(0x0008)
 };
 
-// ScriptStruct TgGame.TgSkelCon_Gate.SkelControlGateChild
-// 0x185BA158B70
-struct FSkelControlGateChild
+// ScriptStruct TgGame.TgMarkComponent.TargetMark
+// 0x0020
+struct FTargetMark
 {
-	unsigned char                                      UnknownData00[0x185BA158B70];                             // 0x0000(0x185BA158B70) MISSED OFFSET
+	class AActor*                                      Target;                                                   // 0x0000(0x0008)
+	float                                              fTimeLeft;                                                // 0x0008(0x0004)
+	int                                                nNumMarks;                                                // 0x000C(0x0004)
+	TArray<class UTgEffectGroup*>                      AppliedEffects;                                           // 0x0010(0x0010) (AlwaysInit, NeedCtorLink)
 };
 
-// ScriptStruct TgGame.TgSkelCon_HitReaction.RecoilInfo
-// 0x185BA159230
-struct FRecoilInfo
+// ScriptStruct TgGame.TgMenuContentData.MeshData
+// 0x0018
+struct FMeshData
 {
-	unsigned char                                      UnknownData00[0x185BA159230];                             // 0x0000(0x185BA159230) MISSED OFFSET
+	TEnumAsByte<EMenuContentDataType>                  ContentDataType;                                          // 0x0000(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0001(0x0003) MISSED OFFSET
+	class UTgMenuMeshInfo*                             MainMeshInfo;                                             // 0x0004(0x0008)
+	int                                                nBotId;                                                   // 0x000C(0x0004)
+	int                                                nSkinId;                                                  // 0x0010(0x0004)
+	int                                                nDeviceSkinId;                                            // 0x0014(0x0004)
 };
 
-// ScriptStruct TgGame.TgSkelCon_SkinGate.SkelControlSkinGateChild
-// 0x185BA15CD70
-struct FSkelControlSkinGateChild
+// ScriptStruct TgGame.TgMenuMeshInfo.LobbyMeshInfo
+// 0x006C
+struct FLobbyMeshInfo
 {
-	unsigned char                                      UnknownData00[0x185BA15CD70];                             // 0x0000(0x185BA15CD70) MISSED OFFSET
+	struct FVector                                     Translation;                                              // 0x0000(0x000C) (Edit)
+	struct FRotator                                    Rotation;                                                 // 0x000C(0x000C) (Edit)
+	float                                              Scale;                                                    // 0x0018(0x0004) (Edit)
+	class USkeletalMesh*                               SkelMesh;                                                 // 0x001C(0x0008) (Edit)
+	class UPhysicsAsset*                               PhysAsset;                                                // 0x0024(0x0008) (Edit)
+	class UAnimTree*                                   AnimTreeTemplate;                                         // 0x002C(0x0008) (Edit)
+	TArray<class UAnimSet*>                            AnimSets;                                                 // 0x0034(0x0010) (Edit, NeedCtorLink)
+	class UMorphTargetSet*                             MorphTargetSet;                                           // 0x0044(0x0008) (Edit)
+	unsigned long                                      bOnlySelfShadow : 1;                                      // 0x004C(0x0004) (Edit)
+	unsigned long                                      bUseParentAnimComponent : 1;                              // 0x004C(0x0004) (Edit)
+	unsigned long                                      bUseBoundsFromParentAnimComponent : 1;                    // 0x004C(0x0004) (Edit)
+	struct FName                                       AttachSocketName;                                         // 0x0050(0x0008) (Edit)
+	TArray<class UMaterialInterface*>                  MaterialOverrides;                                        // 0x0058(0x0010) (Edit, NeedCtorLink)
+	unsigned long                                      bUseIndividualLightEnvironment : 1;                       // 0x0068(0x0004) (Edit)
+	unsigned long                                      bUseOverlayMesh : 1;                                      // 0x0068(0x0004) (Edit)
 };
 
-// ScriptStruct TgGame.TgSkelControlSingleBone_DisplayGroup.DisplayGroupInfo
-// 0x185BA15AEB0
-struct FDisplayGroupInfo
+// ScriptStruct TgGame.TgMenuMeshInfo.ParticleSystemInfo
+// 0x0010
+struct FParticleSystemInfo
 {
-	unsigned char                                      UnknownData00[0x185BA15AEB0];                             // 0x0000(0x185BA15AEB0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgSkelControlSingleBone_Skinned.SkinStrengthOverride
-// 0x185BA15C770
-struct FSkinStrengthOverride
-{
-	unsigned char                                      UnknownData00[0x185BA15C770];                             // 0x0000(0x185BA15C770) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgSkeletalMeshActor_Loader.LobbySMAMeterBus
-// 0x185BA15E0F0
-struct FLobbySMAMeterBus
-{
-	unsigned char                                      UnknownData00[0x185BA15E0F0];                             // 0x0000(0x185BA15E0F0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgSkeletalMeshActor_Loader.CharacterSpecificData_Maeve
-// 0x185BA15EC30
-struct FCharacterSpecificData_Maeve
-{
-	unsigned char                                      UnknownData00[0x185BA15EC30];                             // 0x0000(0x185BA15EC30) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgSkeletalMeshActor_Loader.CharacterSpecificData
-// 0x185BA15EB70
-struct FCharacterSpecificData
-{
-	unsigned char                                      UnknownData00[0x185BA15EB70];                             // 0x0000(0x185BA15EB70) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgSoundEventsManager.TimestampedGameObjectId
-// 0x185BA167C30
-struct FTimestampedGameObjectId
-{
-	unsigned char                                      UnknownData00[0x185BA167C30];                             // 0x0000(0x185BA167C30) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgSoundEventsManager.QueuedSoundEvent
-// 0x185BA167CF0
-struct FQueuedSoundEvent
-{
-	unsigned char                                      UnknownData00[0x185BA167CF0];                             // 0x0000(0x185BA167CF0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgSoundGroup.FootstepSoundInfo
-// 0x185BA16A030
-struct FFootstepSoundInfo
-{
-	unsigned char                                      UnknownData00[0x185BA16A030];                             // 0x0000(0x185BA16A030) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgSpecialFxLightManager.TgFxLight
-// 0x185BA16D330
-struct FTgFxLight
-{
-	unsigned char                                      UnknownData00[0x185BA16D330];                             // 0x0000(0x185BA16D330) MISSED OFFSET
+	class UParticleSystem*                             ParticleSystem;                                           // 0x0000(0x0008) (Edit)
+	struct FName                                       SocketName;                                               // 0x0008(0x0008) (Edit)
 };
 
 // ScriptStruct TgGame.TgSpectatorDirector.ViewTargetInfo
-// 0x185BA16D630
+// 0x002C
 struct FViewTargetInfo
 {
-	unsigned char                                      UnknownData00[0x185BA16D630];                             // 0x0000(0x185BA16D630) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgSubtitledMessages.QueuedSubtitle
-// 0x185BA1745F0
-struct FQueuedSubtitle
-{
-	unsigned char                                      UnknownData00[0x185BA1745F0];                             // 0x0000(0x185BA1745F0) MISSED OFFSET
-};
-
-// ScriptStruct TgGame.TgWeaponMeshActor.QueuedImpactEffect
-// 0x185B60FDAA0
-struct FQueuedImpactEffect
-{
-	unsigned char                                      UnknownData00[0x185B60FDAA0];                             // 0x0000(0x185B60FDAA0) MISSED OFFSET
+	class ATgPawn*                                     Pawn;                                                     // 0x0000(0x0008)
+	class ATgPawn_Tower*                               ClosestEnemyTower;                                        // 0x0008(0x0008)
+	int                                                Rating;                                                   // 0x0010(0x0004)
+	float                                              DistSqToClosestEnemy;                                     // 0x0014(0x0004)
+	float                                              DistSqToClosestFriend;                                    // 0x0018(0x0004)
+	float                                              DistSqToGoldFury;                                         // 0x001C(0x0004)
+	float                                              DistSqToEnemyTower;                                       // 0x0020(0x0004)
+	int                                                NumCloseEnemies;                                          // 0x0024(0x0004)
+	int                                                NumCloseFriends;                                          // 0x0028(0x0004)
 };
 
 // ScriptStruct TgGame.TgWeaponMeshActor.QueuedImpactDecal
-// 0x185B60FDB60
+// 0x0020
 struct FQueuedImpactDecal
 {
-	unsigned char                                      UnknownData00[0x185B60FDB60];                             // 0x0000(0x185B60FDB60) MISSED OFFSET
+	class UTgSpecialFx*                                ImpactFx;                                                 // 0x0000(0x0008)
+	struct FVector                                     HitLocation;                                              // 0x0008(0x000C)
+	struct FVector                                     HitNormal;                                                // 0x0014(0x000C)
 };
 
-// ScriptStruct TgGame.TgAchievement_DeviceHitCombo.DeviceHitComboEntry
-// 0x185B9657990
-struct FDeviceHitComboEntry
+// ScriptStruct TgGame.TgWeaponMeshActor.QueuedImpactEffect
+// 0x0034
+struct FQueuedImpactEffect
 {
-	unsigned char                                      UnknownData00[0x185B9657990];                             // 0x0000(0x185B9657990) MISSED OFFSET
+	struct FVector                                     HitLocation;                                              // 0x0000(0x000C)
+	unsigned long                                      bSuccessfulHit : 1;                                       // 0x000C(0x0004)
+	class AActor*                                      HitActor;                                                 // 0x0010(0x0008)
+	struct FVector                                     HitNormal;                                                // 0x0018(0x000C)
+	struct FVector                                     FireOrigin;                                               // 0x0024(0x000C)
+	int                                                nEquipSlot;                                               // 0x0030(0x0004)
+};
+
+// ScriptStruct TgGame.TgObject.AimData
+// 0x0034
+struct FAimData
+{
+	struct FVector                                     StartTrace;                                               // 0x0000(0x000C)
+	struct FVector                                     EndTrace;                                                 // 0x000C(0x000C)
+	struct FVector                                     AimVector;                                                // 0x0018(0x000C)
+	class AActor*                                      HitActor;                                                 // 0x0024(0x0008)
+	float                                              ClientMovementTimeStamp;                                  // 0x002C(0x0004)
+	unsigned long                                      bResult : 1;                                              // 0x0030(0x0004)
+};
+
+// ScriptStruct TgGame.TgAnimBlendBySpeed.ResetSynchGroup
+// 0x0028
+struct FResetSynchGroup
+{
+	struct FName                                       AnimNodeSynchName;                                        // 0x0000(0x0008) (Edit)
+	class UAnimNodeSynch*                              SynchNode;                                                // 0x0008(0x0008)
+	struct FName                                       GroupName;                                                // 0x0010(0x0008) (Edit)
+	TArray<int>                                        ResetChannels;                                            // 0x0018(0x0010) (Edit, NeedCtorLink)
+};
+
+// ScriptStruct TgGame.TgAnimMetaData_Keyframed.MetaDataKeyFrame
+// 0x0008
+struct FMetaDataKeyFrame
+{
+	float                                              Time;                                                     // 0x0000(0x0004) (Edit)
+	float                                              TargetValue;                                              // 0x0004(0x0004) (Edit)
+};
+
+// ScriptStruct TgGame.TgAnimMetaData_MICScalarParameterExtended.AlternateMaterialOverride
+// 0x0010
+struct FAlternateMaterialOverride
+{
+	class UMaterialInstanceConstant*                   MaterialToFind;                                           // 0x0000(0x0008) (Edit, Const)
+	class UMaterialInstanceConstant*                   MaterialToReplace;                                        // 0x0008(0x0008) (Edit, Const)
+};
+
+// ScriptStruct TgGame.TgAnimMetaData_MeshAccessory.MeshPlacement
+// 0x0010
+struct FMeshPlacement
+{
+	int                                                nSkinId;                                                  // 0x0000(0x0004) (Edit)
+	int                                                nMeshId;                                                  // 0x0004(0x0004) (Edit)
+	struct FName                                       SocketName;                                               // 0x0008(0x0008) (Edit)
+};
+
+// ScriptStruct TgGame.TgAnimNodeHitReactionOffset.HitReactionInfo
+// 0x000C
+struct FHitReactionInfo
+{
+	struct FVector2D                                   vDesiredAngle;                                            // 0x0000(0x0008)
+	float                                              fHitTime;                                                 // 0x0008(0x0004)
+};
+
+// ScriptStruct TgGame.TgAnimNodeBlendByPhysics.ChildBlendInfo
+// 0x0008
+struct FChildBlendInfo
+{
+	TEnumAsByte<EPhysics>                              m_PhysicsState;                                           // 0x0000(0x0001) (Edit)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0001(0x0003) MISSED OFFSET
+	float                                              m_fBlendTime;                                             // 0x0004(0x0004) (Edit)
+};
+
+// ScriptStruct TgGame.TgAnimNodeBlendByPhysics.ChildrenBlendInfo
+// 0x0014
+struct FChildrenBlendInfo
+{
+	TEnumAsByte<EPhysics>                              m_PhysicsState;                                           // 0x0000(0x0001) (Edit)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0001(0x0003) MISSED OFFSET
+	TArray<struct FChildBlendInfo>                     m_ChildBlendInfo;                                         // 0x0004(0x0010) (Edit, NeedCtorLink)
+};
+
+// ScriptStruct TgGame.TgAnimNodeBlendList.ChildBlendParam
+// 0x0010
+struct FChildBlendParam
+{
+	int                                                FromChild;                                                // 0x0000(0x0004) (Edit)
+	int                                                ToChild;                                                  // 0x0004(0x0004) (Edit)
+	float                                              BlendTime;                                                // 0x0008(0x0004) (Edit)
+	float                                              MaxBlendTime;                                             // 0x000C(0x0004) (Edit)
+};
+
+// ScriptStruct TgGame.TgAnimBlendByAmmo.AmmoBlendParams
+// 0x000C
+struct FAmmoBlendParams
+{
+	int                                                MinAmmo;                                                  // 0x0000(0x0004) (Edit)
+	int                                                MaxAmmo;                                                  // 0x0004(0x0004) (Edit)
+	int                                                ChildNum;                                                 // 0x0008(0x0004) (Edit)
 };
 
 // ScriptStruct TgGame.TgAnimBlendByEmote.EmoteChildAnimInfo
-// 0x185B9657B10
+// 0x0008
 struct FEmoteChildAnimInfo
 {
-	unsigned char                                      UnknownData00[0x185B9657B10];                             // 0x0000(0x185B9657B10) MISSED OFFSET
+	int                                                nDeviceId;                                                // 0x0000(0x0004)
+	int                                                nChildIndex;                                              // 0x0004(0x0004)
 };
 
-// ScriptStruct TgGame.TgDeploy_MoonShardTween.AffectedPawn
-// 0x185B9664E90
-struct FAffectedPawn
+// ScriptStruct TgGame.TgAnimBlendByFire.DeviceParameters
+// 0x0014
+struct FDeviceParameters
 {
-	unsigned char                                      UnknownData00[0x185B9664E90];                             // 0x0000(0x185B9664E90) MISSED OFFSET
+	struct FString                                     SlotName;                                                 // 0x0000(0x0010) (NeedCtorLink)
+	unsigned long                                      bShouldInterruptIfStopped : 1;                            // 0x0010(0x0004) (Edit)
+	unsigned long                                      bShouldInterruptIfInterrupted : 1;                        // 0x0010(0x0004) (Edit)
+	unsigned long                                      bShouldInterruptIfJumping : 1;                            // 0x0010(0x0004) (Edit)
 };
 
-// ScriptStruct TgGame.TgDevice_AtlasRMB.QueuedRewind
-// 0x185B966DA10
-struct FQueuedRewind
+// ScriptStruct TgGame.TgAnimBlendByHeadSkin.HeadSkinChildInfo
+// 0x0008
+struct FHeadSkinChildInfo
 {
-	unsigned char                                      UnknownData00[0x185B966DA10];                             // 0x0000(0x185B966DA10) MISSED OFFSET
+	int                                                nHeadSkinId;                                              // 0x0000(0x0004) (Edit)
+	int                                                nChildIndex;                                              // 0x0004(0x0004) (Edit)
 };
 
-// ScriptStruct TgGame.TgPawn_Corvus.BeaconInfo
-// 0x185B9677D90
-struct FBeaconInfo
+// ScriptStruct TgGame.TgAnimBlendByMountSkin.MountSkinChildInfo
+// 0x0008
+struct FMountSkinChildInfo
 {
-	unsigned char                                      UnknownData00[0x185B9677D90];                             // 0x0000(0x185B9677D90) MISSED OFFSET
+	int                                                nMountSkinId;                                             // 0x0000(0x0004) (Edit)
+	int                                                nChildIndex;                                              // 0x0004(0x0004) (Edit)
 };
 
-// ScriptStruct TgGame.TgDevice_DruidRMB.DelayedImpactInfo
-// 0x185B963D7D0
-struct FDelayedImpactInfo
+// ScriptStruct TgGame.TgAnimBlendByNodeName.NodeNameToChildIndex
+// 0x000C
+struct FNodeNameToChildIndex
 {
-	unsigned char                                      UnknownData00[0x185B963D7D0];                             // 0x0000(0x185B963D7D0) MISSED OFFSET
+	struct FName                                       NodeName;                                                 // 0x0000(0x0008) (Edit)
+	int                                                ChildIndex;                                               // 0x0008(0x0004) (Edit)
 };
 
-// ScriptStruct TgGame.TgDeviceForm_DruidRMB.DruidHealBeam
-// 0x185B471E8D0
-struct FDruidHealBeam
+// ScriptStruct TgGame.TgAnimBlendByNodeName.RelevantNodeNameNodes
+// 0x000C
+struct FRelevantNodeNameNodes
 {
-	unsigned char                                      UnknownData00[0x185B471E8D0];                             // 0x0000(0x185B471E8D0) MISSED OFFSET
+	class UAnimNode*                                   CachedNode;                                               // 0x0000(0x0008)
+	int                                                ChildIndex;                                               // 0x0008(0x0004)
 };
 
-// ScriptStruct TgGame.TgPawn_Atlas.RewindingPawn
-// 0x185B868C5C0
-struct FRewindingPawn
+// ScriptStruct TgGame.TgAnimBlendByPaladinsCharacter.ChildAnimParameters
+// 0x0038
+struct FChildAnimParameters
 {
-	unsigned char                                      UnknownData00[0x185B868C5C0];                             // 0x0000(0x185B868C5C0) MISSED OFFSET
+	struct FString                                     SlotName;                                                 // 0x0000(0x0010) (Edit, Const, EditConst, NeedCtorLink)
+	TEnumAsByte<ETG_EQUIP_POINT>                       EquipSlot;                                                // 0x0010(0x0001) (Edit, Const, EditConst)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0011(0x0003) MISSED OFFSET
+	int                                                ChildIndex;                                               // 0x0014(0x0004) (Edit, Const, EditConst)
+	unsigned long                                      bBlendInOnTargeting : 1;                                  // 0x0018(0x0004) (Edit)
+	unsigned long                                      bBlendInOnBuildup : 1;                                    // 0x0018(0x0004) (Edit)
+	unsigned long                                      bBlendInOnStartFire : 1;                                  // 0x0018(0x0004) (Edit)
+	unsigned long                                      bBlendInOnFire : 1;                                       // 0x0018(0x0004) (Edit)
+	unsigned long                                      bBlendOutIfStopped : 1;                                   // 0x0018(0x0004) (Edit)
+	unsigned long                                      bBlendOutOnAnimEnd : 1;                                   // 0x0018(0x0004) (Edit)
+	unsigned long                                      bBlendOutOnChildNotification : 1;                         // 0x0018(0x0004) (Edit)
+	unsigned long                                      bEndCurrentAnimIfNoChild : 1;                             // 0x0018(0x0004) (Edit)
+	unsigned long                                      bAddToStackIfOtherAnimInterrupted : 1;                    // 0x0018(0x0004) (Edit)
+	unsigned long                                      bAddToStackOnCeaseRelevant : 1;                           // 0x0018(0x0004) (Edit)
+	unsigned long                                      bIgnoreSwapLogicIfNotRelevant : 1;                        // 0x0018(0x0004) (Edit)
+	unsigned long                                      bReplayIfActivatedFromStack : 1;                          // 0x0018(0x0004) (Edit)
+	unsigned long                                      bReplayIfActive : 1;                                      // 0x0018(0x0004) (Edit)
+	unsigned long                                      bAutoScaleByDuration : 1;                                 // 0x0018(0x0004) (Edit)
+	float                                              fAutoScaledPlayRateMultiplier;                            // 0x001C(0x0004) (Edit)
+	unsigned long                                      bInterruptOtherAnims : 1;                                 // 0x0020(0x0004) (Edit)
+	TArray<int>                                        nInterruptExceptionsByChildIndex;                         // 0x0024(0x0010) (Edit, NeedCtorLink)
+	int                                                nCustomRetrieveIndex;                                     // 0x0034(0x0004) (Edit)
 };
 
-// ScriptStruct TgGame.TgPawn_Raum.RaumShard
-// 0x185B869A3C0
-struct FRaumShard
+// ScriptStruct TgGame.TgAnimBlendByPercent.BlendByPercentValues
+// 0x0004
+struct FBlendByPercentValues
 {
-	unsigned char                                      UnknownData00[0x185B869A3C0];                             // 0x0000(0x185B869A3C0) MISSED OFFSET
+	float                                              fPercent;                                                 // 0x0000(0x0004) (Edit)
 };
 
-// ScriptStruct TgGame.TgPawnMod_FxAudio.ModFxAudioValues
-// 0x185B86A18C0
-struct FModFxAudioValues
+// ScriptStruct TgGame.TgAnimBlendByPhase.m_PhaseTransitionAnimSet
+// 0x000C
+struct Fm_PhaseTransitionAnimSet
 {
-	unsigned char                                      UnknownData00[0x185B86A18C0];                             // 0x0000(0x185B86A18C0) MISSED OFFSET
+	int                                                m_TransitionToPhase;                                      // 0x0000(0x0004) (Edit)
+	struct FName                                       m_TransitionAnimName;                                     // 0x0004(0x0008) (Edit)
 };
 
-// ScriptStruct TgGame.TgProj_MoonShard.MoonShardPawnRecord
-// 0x185B86A5340
-struct FMoonShardPawnRecord
+// ScriptStruct TgGame.TgAnimBlendByPhase.m_PhaseProfile
+// 0x0014
+struct Fm_PhaseProfile
 {
-	unsigned char                                      UnknownData00[0x185B86A5340];                             // 0x0000(0x185B86A5340) MISSED OFFSET
+	int                                                m_Phase;                                                  // 0x0000(0x0004) (Edit)
+	TArray<struct Fm_PhaseTransitionAnimSet>           m_TransitionAnimSets;                                     // 0x0004(0x0010) (Edit, NeedCtorLink)
+};
+
+// ScriptStruct TgGame.TgAnimBlendByPosture.m_TransitionAnimSet
+// 0x000C
+struct Fm_TransitionAnimSet
+{
+	TEnumAsByte<ETG_POSTURE>                           m_TransitionToPosture;                                    // 0x0000(0x0001) (Edit)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0001(0x0003) MISSED OFFSET
+	struct FName                                       m_TransitionAnimName;                                     // 0x0004(0x0008) (Edit)
+};
+
+// ScriptStruct TgGame.TgAnimBlendByPosture.m_PostureProfile
+// 0x0034
+struct Fm_PostureProfile
+{
+	TEnumAsByte<ETG_POSTURE>                           m_Posture;                                                // 0x0000(0x0001) (Edit)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0001(0x0003) MISSED OFFSET
+	TArray<struct Fm_TransitionAnimSet>                m_TransitionAnimSets;                                     // 0x0004(0x0010) (Edit, NeedCtorLink)
+	class UCameraAnim*                                 m_CameraAnim;                                             // 0x0014(0x0008) (Edit)
+	float                                              m_fCameraAnimBlendInTime;                                 // 0x001C(0x0004) (Edit)
+	float                                              m_fCameraAnimBlendOutTime;                                // 0x0020(0x0004) (Edit)
+	unsigned long                                      m_bCameraAnimBlendInOnTransitionIn : 1;                   // 0x0024(0x0004) (Edit)
+	unsigned long                                      m_bCameraAnimBlendOutAfterTransitionOut : 1;              // 0x0024(0x0004) (Edit)
+	class UCameraAnimInst*                             m_CameraAnimInst;                                         // 0x0028(0x0008)
+	unsigned long                                      m_bPlayingCameraAnim : 1;                                 // 0x0030(0x0004)
+	unsigned long                                      m_bResetBlendByFireToIdleOnTransition : 1;                // 0x0030(0x0004) (Edit)
+};
+
+// ScriptStruct TgGame.TgAnimBlendBySkin.SkinChildInfo
+// 0x0008
+struct FSkinChildInfo
+{
+	int                                                nSkinId;                                                  // 0x0000(0x0004) (Edit)
+	int                                                nChildIndex;                                              // 0x0004(0x0004) (Edit)
+};
+
+// ScriptStruct TgGame.TgAnimBlendByWeaponSkin.WeaponSkinChildInfo
+// 0x0008
+struct FWeaponSkinChildInfo
+{
+	int                                                nWeaponSkinId;                                            // 0x0000(0x0004) (Edit)
+	int                                                nChildIndex;                                              // 0x0004(0x0004) (Edit)
+};
+
+// ScriptStruct TgGame.TgAnimNodeBlendByAndroxusDrift.DriftInfo
+// 0x0008
+struct FDriftInfo
+{
+	float                                              fStartTime;                                               // 0x0000(0x0004)
+	float                                              fEndTime;                                                 // 0x0004(0x0004)
+};
+
+// ScriptStruct TgGame.TgAnimNodeBlendByDrogozFlying.BoosterFlightInfo
+// 0x0008
+struct FBoosterFlightInfo
+{
+	float                                              fStartTime;                                               // 0x0000(0x0004)
+	float                                              fEndTime;                                                 // 0x0004(0x0004)
+};
+
+// ScriptStruct TgGame.TgAnimNodeRandom.TgRandomAnimInfo
+// 0x0020
+struct FTgRandomAnimInfo
+{
+	float                                              Chance;                                                   // 0x0000(0x0004) (Edit)
+	unsigned char                                      LoopCountMin;                                             // 0x0004(0x0001) (Edit)
+	unsigned char                                      LoopCountMax;                                             // 0x0005(0x0001) (Edit)
+	unsigned char                                      UnknownData00[0x2];                                       // 0x0006(0x0002) MISSED OFFSET
+	float                                              BlendInTime;                                              // 0x0008(0x0004) (Edit)
+	unsigned long                                      bCanRepeat : 1;                                           // 0x000C(0x0004) (Edit)
+	unsigned char                                      LoopCount;                                                // 0x0010(0x0001)
+	unsigned char                                      UnknownData01[0x3];                                       // 0x0011(0x0003) MISSED OFFSET
+	unsigned long                                      bCallOnAnimEndOnParent : 1;                               // 0x0014(0x0004) (Edit)
+	unsigned long                                      m_bChooseNewNodeOnAnimEnd : 1;                            // 0x0014(0x0004) (Edit)
+	struct FVector2D                                   m_ChildActiveTime;                                        // 0x0018(0x0008) (Edit)
+};
+
+// ScriptStruct TgGame.TgAnimNodeStanceTransitionerSynchronized.StanceTransitionParam
+// 0x0008
+struct FStanceTransitionParam
+{
+	int                                                FromChild;                                                // 0x0000(0x0004) (Edit)
+	int                                                ToChild;                                                  // 0x0004(0x0004) (Edit)
+};
+
+// ScriptStruct TgGame.TgAnimNodeEmoteSequence.EmoteAnimInfo
+// 0x0008
+struct FEmoteAnimInfo
+{
+	int                                                nDeviceId;                                                // 0x0000(0x0004)
+	int                                                nAnimArrayIndex;                                          // 0x0004(0x0004)
+};
+
+// ScriptStruct TgGame.TgAnimNodeStanceTransitioner.CachedTgAnimNodeStanceInfo
+// 0x000C
+struct FCachedTgAnimNodeStanceInfo
+{
+	int                                                Index;                                                    // 0x0000(0x0004)
+	class UTgAnimNodeStance*                           Node;                                                     // 0x0004(0x0008)
+};
+
+// ScriptStruct TgGame.TgAnimNodeStanceTransitioner.CachedTgAnimNodeStanceTransitionInfo
+// 0x000C
+struct FCachedTgAnimNodeStanceTransitionInfo
+{
+	int                                                Index;                                                    // 0x0000(0x0004)
+	class UTgAnimNodeStanceTransition*                 Node;                                                     // 0x0004(0x0008)
+};
+
+// ScriptStruct TgGame.TgAnimNotify_AkEvent.PSE_SkinAk
+// 0x000C
+struct FPSE_SkinAk
+{
+	int                                                nSkinId;                                                  // 0x0000(0x0004) (Edit)
+	class UAkEvent*                                    AkEvent;                                                  // 0x0004(0x0008) (Edit)
+};
+
+// ScriptStruct TgGame.TgAnimNotify_PlayParticleEffect_Skinned.PPE_Skin
+// 0x000C
+struct FPPE_Skin
+{
+	int                                                nSkinId;                                                  // 0x0000(0x0004) (Edit)
+	class UParticleSystem*                             PSTemplate;                                               // 0x0004(0x0008) (Edit)
+};
+
+// ScriptStruct TgGame.TgAnimNotify_Sound.PSE_Skin
+// 0x000C
+struct FPSE_Skin
+{
+	int                                                nSkinId;                                                  // 0x0000(0x0004) (Edit)
+	class USoundCue*                                   SoundCue;                                                 // 0x0004(0x0008) (Edit)
+};
+
+// ScriptStruct TgGame.TgAnimTurnInPlace.RotTransitionInfo
+// 0x000C
+struct FRotTransitionInfo
+{
+	float                                              RotationOffset;                                           // 0x0000(0x0004) (Edit)
+	struct FName                                       TransName;                                                // 0x0004(0x0008) (Edit)
+};
+
+// ScriptStruct TgGame.TgAnimTurnInPlace_Player.TIP_Transition
+// 0x0010
+struct FTIP_Transition
+{
+	struct FName                                       TransName;                                                // 0x0000(0x0008)
+	struct FName                                       AnimName;                                                 // 0x0008(0x0008) (Edit)
+};
+
+// ScriptStruct TgGame.TgSkelCon_CCD_IK_FootPlacement.JointConstraintInformation
+// 0x0008
+struct FJointConstraintInformation
+{
+	float                                              AngleConstraint;                                          // 0x0000(0x0004) (Edit)
+	float                                              StretchConstraint;                                        // 0x0004(0x0004) (Edit)
+};
+
+// ScriptStruct TgGame.TgSkelCon_Gate.SkelControlGateChild
+// 0x000C
+struct FSkelControlGateChild
+{
+	class USkelControlBase*                            SkelControl;                                              // 0x0000(0x0008)
+	float                                              DrawY;                                                    // 0x0008(0x0004) (Transient, EditConst)
+};
+
+// ScriptStruct TgGame.TgSkelCon_HitReaction.RecoilInfo
+// 0x00E0
+struct FRecoilInfo
+{
+	struct FRecoilDef                                  Min;                                                      // 0x0000(0x0070) (Edit)
+	struct FRecoilDef                                  Max;                                                      // 0x0070(0x0070) (Edit)
+};
+
+// ScriptStruct TgGame.TgSkelCon_SkinGate.SkelControlSkinGateChild
+// 0x0014
+struct FSkelControlSkinGateChild
+{
+	class USkelControlBase*                            SkelControl;                                              // 0x0000(0x0008)
+	int                                                nSkinId;                                                  // 0x0008(0x0004) (Edit)
+	int                                                nSkinLevel;                                               // 0x000C(0x0004) (Edit)
+	float                                              DrawY;                                                    // 0x0010(0x0004) (Transient, EditConst)
+};
+
+// ScriptStruct TgGame.TgSkelControlSingleBone_DisplayGroup.DisplayGroupInfo
+// 0x0014
+struct FDisplayGroupInfo
+{
+	struct FName                                       DisplayGroupName;                                         // 0x0000(0x0008) (Edit)
+	TEnumAsByte<EDisplayGroupOnType>                   WhenDisplayGroupOn;                                       // 0x0008(0x0001) (Edit)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0009(0x0003) MISSED OFFSET
+	float                                              Strength;                                                 // 0x000C(0x0004) (Edit)
+	unsigned long                                      bOn : 1;                                                  // 0x0010(0x0004) (Transient)
+	unsigned long                                      ForceOffIfMeshHidden : 1;                                 // 0x0010(0x0004) (Edit)
+};
+
+// ScriptStruct TgGame.TgSkelControlSingleBone_Skinned.SkinStrengthOverride
+// 0x0008
+struct FSkinStrengthOverride
+{
+	int                                                nSkinId;                                                  // 0x0000(0x0004) (Edit)
+	float                                              fDesiredStrength;                                         // 0x0004(0x0004) (Edit)
+};
+
+// ScriptStruct TgGame.TgDevice.AttackSpeedModifier
+// 0x0010
+struct FAttackSpeedModifier
+{
+	int                                                nSourceId;                                                // 0x0000(0x0004)
+	float                                              fPercChange;                                              // 0x0004(0x0004)
+	float                                              fExpirationTime;                                          // 0x0008(0x0004)
+	unsigned long                                      bReplicated : 1;                                          // 0x000C(0x0004)
+	unsigned long                                      bHasLeniencyApplied : 1;                                  // 0x000C(0x0004)
+};
+
+// ScriptStruct TgGame.TgDevice.AmmoTransaction
+// 0x0010
+struct FAmmoTransaction
+{
+	float                                              TransactionTimestamp;                                     // 0x0000(0x0004)
+	int                                                TransactionId;                                            // 0x0004(0x0004)
+	int                                                AmmoAmountChanged;                                        // 0x0008(0x0004)
+	unsigned long                                      FilledClip : 1;                                           // 0x000C(0x0004)
+};
+
+// ScriptStruct TgGame.TgDevice.ImpactToValidate
+// 0x0088
+struct FImpactToValidate
+{
+	int                                                PackedAssociatedShotIDs;                                  // 0x0000(0x0004)
+	float                                              ImpactTimeStamp;                                          // 0x0004(0x0004)
+	struct FImpactInfo                                 Impact;                                                   // 0x0008(0x007C) (Component)
+	unsigned char                                      byPackedExtraInfo;                                        // 0x0084(0x0001)
+	unsigned char                                      byOffsetX;                                                // 0x0085(0x0001)
+	unsigned char                                      byOffsetY;                                                // 0x0086(0x0001)
+	unsigned char                                      byOffsetZ;                                                // 0x0087(0x0001)
+};
+
+// ScriptStruct TgGame.TgDevice.TgQueuedSimulatedProjectileSpawn
+// 0x0058
+struct FTgQueuedSimulatedProjectileSpawn
+{
+	float                                              TimeStampToSpawn;                                         // 0x0000(0x0004)
+	int                                                FireRequestId;                                            // 0x0004(0x0004)
+	class UTgDeviceFire*                               FireMode;                                                 // 0x0008(0x0008)
+	struct FVector                                     ProjectileSpawnLocation;                                  // 0x0010(0x000C)
+	struct FVector                                     ProjectileSpawnDir;                                       // 0x001C(0x000C)
+	int                                                ProjectileIndex;                                          // 0x0028(0x0004)
+	int                                                ProjectileIdOverride;                                     // 0x002C(0x0004)
+	float                                              Range;                                                    // 0x0030(0x0004)
+	class AActor*                                      trackingTarget;                                           // 0x0034(0x0008)
+	struct FVector                                     EndTrace;                                                 // 0x003C(0x000C)
+	float                                              ClientMovementTimeStamp;                                  // 0x0048(0x0004)
+	float                                              AccuracyRandomValue1;                                     // 0x004C(0x0004)
+	float                                              AccuracyRandomValue2;                                     // 0x0050(0x0004)
+	float                                              AccuracyValue;                                            // 0x0054(0x0004)
+};
+
+// ScriptStruct TgGame.TgDevice.TgQueuedInstantFireShot
+// 0x00E0
+struct FTgQueuedInstantFireShot
+{
+	int                                                FireRequestId;                                            // 0x0000(0x0004)
+	struct FAimData                                    Aim;                                                      // 0x0004(0x0034)
+	struct FImpactToValidate                           PrimaryImpact;                                            // 0x0038(0x0088) (Component)
+	TArray<struct FImpactToValidate>                   Impacts;                                                  // 0x00C0(0x0010) (Component, NeedCtorLink)
+	int                                                AmmoToConsume;                                            // 0x00D0(0x0004)
+	float                                              AccuracyRandomValue1;                                     // 0x00D4(0x0004)
+	float                                              AccuracyRandomValue2;                                     // 0x00D8(0x0004)
+	float                                              AccuracyValue;                                            // 0x00DC(0x0004)
+};
+
+// ScriptStruct TgGame.TgDevice.TgQueuedRefire
+// 0x0040
+struct FTgQueuedRefire
+{
+	int                                                ClientFireRequestId;                                      // 0x0000(0x0004)
+	unsigned char                                      DesiredFireMode;                                          // 0x0004(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0005(0x0003) MISSED OFFSET
+	float                                              AttackSpeedPercChange;                                    // 0x0008(0x0004)
+	struct FAimData                                    Aim;                                                      // 0x000C(0x0034)
+};
+
+// ScriptStruct TgGame.TgDevice.TgQueuedProjectileExplosion
+// 0x0030
+struct FTgQueuedProjectileExplosion
+{
+	int                                                ClientFireRequestId;                                      // 0x0000(0x0004)
+	class AActor*                                      Target;                                                   // 0x0004(0x0008)
+	struct FVector                                     HitLocation;                                              // 0x000C(0x000C)
+	struct FVector                                     HitNormal;                                                // 0x0018(0x000C)
+	float                                              ProjectileAliveTime;                                      // 0x0024(0x0004)
+	float                                              MovementTimeStamp;                                        // 0x0028(0x0004)
+	float                                              AoeRewindTimeStamp;                                       // 0x002C(0x0004)
+};
+
+// ScriptStruct TgGame.TgDevice.TrackedFiringAmmoConsumption
+// 0x0008
+struct FTrackedFiringAmmoConsumption
+{
+	int                                                FiringRequestID;                                          // 0x0000(0x0004)
+	int                                                AmmoConsumed;                                             // 0x0004(0x0004)
+};
+
+// ScriptStruct TgGame.TgDevice.AccuracySettings
+// 0x001C
+struct FAccuracySettings
+{
+	unsigned long                                      bUsesAdvancedAccuracy : 1;                                // 0x0000(0x0004)
+	float                                              fMaxAccuracy;                                             // 0x0004(0x0004)
+	float                                              fMinAccuracy;                                             // 0x0008(0x0004)
+	float                                              fAccuracyLossPerShot;                                     // 0x000C(0x0004)
+	float                                              fAccuracyGainPerSec;                                      // 0x0010(0x0004)
+	float                                              fAccuracyGainDelay;                                       // 0x0014(0x0004)
+	int                                                nNumFreeShots;                                            // 0x0018(0x0004)
+};
+
+// ScriptStruct TgGame.TgDevice.RecoilSettings
+// 0x0010
+struct FRecoilSettings
+{
+	unsigned long                                      bUsesRecoil : 1;                                          // 0x0000(0x0004)
+	float                                              fRecoilReductionPerSec;                                   // 0x0004(0x0004)
+	float                                              fRecoilCenterDelay;                                       // 0x0008(0x0004)
+	float                                              fRecoilSmoothRate;                                        // 0x000C(0x0004)
+};
+
+// ScriptStruct TgGame.TgDevice_ArcingBeam.ArcingInfo
+// 0x002C
+struct FArcingInfo
+{
+	float                                              ArcTime;                                                  // 0x0000(0x0004)
+	float                                              RemainingArcTime;                                         // 0x0004(0x0004)
+	int                                                JumpsRemaining;                                           // 0x0008(0x0004)
+	class AActor*                                      PreviousArcTarget;                                        // 0x000C(0x0008)
+	TArray<class AActor*>                              PreviousTargets;                                          // 0x0014(0x0010) (AlwaysInit, NeedCtorLink)
+	class UTgDeviceFire*                               ArcFiremode;                                              // 0x0024(0x0008)
+};
+
+// ScriptStruct TgGame.TgDevice_Charge.TimestampedActor
+// 0x000C
+struct FTimestampedActor
+{
+	float                                              fTimestamp;                                               // 0x0000(0x0004)
+	class AActor*                                      pActor;                                                   // 0x0004(0x0008)
+};
+
+// ScriptStruct TgGame.TgDevice_LongReach.NuggetPullVals
+// 0x0010
+struct FNuggetPullVals
+{
+	class AActor*                                      nugget;                                                   // 0x0000(0x0008)
+	float                                              fPullTime;                                                // 0x0008(0x0004)
+	float                                              fCheckTime;                                               // 0x000C(0x0004)
+};
+
+// ScriptStruct TgGame.TgDeviceFire.WeaponFireResults
+// 0x0080
+struct FWeaponFireResults
+{
+	unsigned long                                      bDidServerValidation : 1;                                 // 0x0000(0x0004)
+	struct FImpactInfo                                 Impact;                                                   // 0x0004(0x007C) (Component)
+};
+
+// ScriptStruct TgGame.TgObject.EquipDeviceInfo
+// 0x000C
+struct FEquipDeviceInfo
+{
+	int                                                nDeviceId;                                                // 0x0000(0x0004)
+	int                                                nDeviceInstanceId;                                        // 0x0004(0x0004)
+	int                                                nMode;                                                    // 0x0008(0x0004)
+};
+
+// ScriptStruct TgGame.TgDeviceForm.ModeData
+// 0x0028
+struct FModeData
+{
+	float                                              c_fBuildupTime;                                           // 0x0000(0x0004) (AlwaysInit)
+	unsigned long                                      c_bContinuousFire : 1;                                    // 0x0004(0x0004) (AlwaysInit)
+	unsigned long                                      c_FxInstantFire : 1;                                      // 0x0004(0x0004) (AlwaysInit)
+	struct FName                                       c_nmOffhandAnimationType;                                 // 0x0008(0x0008) (AlwaysInit)
+	unsigned long                                      c_bScaleFireAnimsWithRefire : 1;                          // 0x0010(0x0004) (AlwaysInit)
+	unsigned long                                      c_bInterruptAnimOnRefire : 1;                             // 0x0010(0x0004) (AlwaysInit)
+	float                                              c_fEffectRadius;                                          // 0x0014(0x0004) (AlwaysInit)
+	float                                              c_fMaxRange;                                              // 0x0018(0x0004) (AlwaysInit)
+	int                                                c_nDamageOverrideDeviceId;                                // 0x001C(0x0004) (AlwaysInit)
+	class UCameraAnim*                                 c_WhileFiringCameraAnim;                                  // 0x0020(0x0008) (AlwaysInit)
+};
+
+// ScriptStruct TgGame.TgDeviceForm.SyntheticImpactEffectArgs
+// 0x0018
+struct FSyntheticImpactEffectArgs
+{
+	struct FVector                                     vHitLocation;                                             // 0x0000(0x000C)
+	int                                                nEquipSlot;                                               // 0x000C(0x0004)
+	int                                                nSocketIndex;                                             // 0x0010(0x0004)
+	unsigned long                                      bSuccessfulHit : 1;                                       // 0x0014(0x0004)
+};
+
+// ScriptStruct TgGame.TgDeviceForm_Spray.SpraySetup
+// 0x0015
+struct FSpraySetup
+{
+	int                                                nDeviceId;                                                // 0x0000(0x0004)
+	class UTexture*                                    Texture;                                                  // 0x0004(0x0008)
+	int                                                nMaterialIndex;                                           // 0x000C(0x0004)
+	unsigned long                                      bInitializedSprayParams : 1;                              // 0x0010(0x0004)
+	TEnumAsByte<ESprayDisplayBehavior>                 Behavior;                                                 // 0x0014(0x0001)
+};
+
+// ScriptStruct TgGame.TgObject.DiminishedEffectInfo
+// 0x0010
+struct FDiminishedEffectInfo
+{
+	float                                              fMaxPosValue;                                             // 0x0000(0x0004)
+	float                                              fPosTotal;                                                // 0x0004(0x0004)
+	float                                              fMaxNegValue;                                             // 0x0008(0x0004)
+	float                                              fNegTotal;                                                // 0x000C(0x0004)
+};
+
+// ScriptStruct TgGame.TgDeployable.CollisionSettingsDeployable
+// 0x0014
+struct FCollisionSettingsDeployable
+{
+	TEnumAsByte<EAdvancedCollisionMode>                mCollisionMode;                                           // 0x0000(0x0001) (Const)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0001(0x0003) MISSED OFFSET
+	unsigned long                                      bUseMeshForCollision : 1;                                 // 0x0004(0x0004) (Const)
+	unsigned long                                      bPawnsCanBaseOnMe : 1;                                    // 0x0004(0x0004) (Const)
+	unsigned long                                      bAutoRegisterObstacle : 1;                                // 0x0004(0x0004)
+	unsigned long                                      bHasRegisteredObstacle : 1;                               // 0x0004(0x0004)
+	unsigned long                                      bOnlyBlockShotsFromFront : 1;                             // 0x0004(0x0004)
+	unsigned long                                      bBlockFriendlyFire : 1;                                   // 0x0004(0x0004)
+	unsigned long                                      bBlockEnemyFire : 1;                                      // 0x0004(0x0004)
+	float                                              fProjectileAllowanceRadius;                               // 0x0008(0x0004)
+	float                                              fExplosionAllowanceRadius;                                // 0x000C(0x0004)
+	unsigned long                                      bProjectilesPassThrough : 1;                              // 0x0010(0x0004)
+};
+
+// ScriptStruct TgGame.TgDeploy_EffectSpots.EffectSpotInfo
+// 0x002C
+struct FEffectSpotInfo
+{
+	unsigned long                                      bIsActive : 1;                                            // 0x0000(0x0004)
+	struct FVector                                     vLocation;                                                // 0x0004(0x000C)
+	struct FRotator                                    rRotation;                                                // 0x0010(0x000C)
+	float                                              fRadius;                                                  // 0x001C(0x0004)
+	float                                              fHeight;                                                  // 0x0020(0x0004)
+	int                                                nFXIndex;                                                 // 0x0024(0x0004)
+	int                                                nIntensityLevel;                                          // 0x0028(0x0004)
+};
+
+// ScriptStruct TgGame.TgDeploy_EffectSpots.EffectSpotTarget
+// 0x000C
+struct FEffectSpotTarget
+{
+	class AActor*                                      Target;                                                   // 0x0000(0x0008)
+	unsigned long                                      bNeedsRefresh : 1;                                        // 0x0008(0x0004)
+};
+
+// ScriptStruct TgGame.TgDeploy_EffectSpots.EffectSpotFXInfo
+// 0x000C
+struct FEffectSpotFXInfo
+{
+	class UTgSpecialFx*                                Fx;                                                       // 0x0000(0x0008)
+	int                                                nFXIndex;                                                 // 0x0008(0x0004)
+};
+
+// ScriptStruct TgGame.TgImpactFx.IMPACT_FX
+// 0x0034
+struct FIMPACT_FX
+{
+	struct FName                                       nmMaterialType;                                           // 0x0000(0x0008)
+	class USoundCue*                                   Sound;                                                    // 0x0008(0x0008)
+	class UMaterialInterface*                          DecalMaterial;                                            // 0x0010(0x0008)
+	float                                              fDecalWidth;                                              // 0x0018(0x0004)
+	float                                              fDecalHeight;                                             // 0x001C(0x0004)
+	unsigned long                                      bRandomRotation : 1;                                      // 0x0020(0x0004)
+	class UParticleSystem*                             Particles;                                                // 0x0024(0x0008)
+	class UTgSpecialFx*                                SpecialFx;                                                // 0x002C(0x0008)
+};
+
+// ScriptStruct TgGame.TgProjectile.CollisionSettingsProjectile
+// 0x0004
+struct FCollisionSettingsProjectile
+{
+	unsigned long                                      bPassThroughFriends : 1;                                  // 0x0000(0x0004)
+	unsigned long                                      bPassThroughEnemies : 1;                                  // 0x0000(0x0004)
+	unsigned long                                      bPassThroughShieldsEnemies : 1;                           // 0x0000(0x0004)
+	unsigned long                                      bPassThroughShieldsFriends : 1;                           // 0x0000(0x0004)
+	unsigned long                                      bPassThroughBlocker : 1;                                  // 0x0000(0x0004)
+	unsigned long                                      bExplodeOnShields : 1;                                    // 0x0000(0x0004)
+	unsigned long                                      bExplodeOnBlockers : 1;                                   // 0x0000(0x0004)
+	unsigned long                                      bHitAndPassThrough : 1;                                   // 0x0000(0x0004)
+	unsigned long                                      bHitOnTick : 1;                                           // 0x0000(0x0004)
+	unsigned long                                      bOnlyHitOnceOnPassThrough : 1;                            // 0x0000(0x0004)
+};
+
+// ScriptStruct TgGame.TgProjectile.TrackingSettings
+// 0x0018
+struct FTrackingSettings
+{
+	unsigned long                                      bUsesTracking : 1;                                        // 0x0000(0x0004) (Const)
+	class AActor*                                      mTarget;                                                  // 0x0004(0x0008)
+	float                                              fTurnStrength;                                            // 0x000C(0x0004)
+	float                                              fVertTurnStrength;                                        // 0x0010(0x0004)
+	unsigned long                                      bIgnoreNonTargets : 1;                                    // 0x0014(0x0004)
+	unsigned long                                      bIgnoreWorldIfSeeking : 1;                                // 0x0014(0x0004)
+	unsigned long                                      bIgnoreWorldIfNotSeeking : 1;                             // 0x0014(0x0004)
+	unsigned long                                      bInfiniteRangeWhileTracking : 1;                          // 0x0014(0x0004)
+	unsigned long                                      bDestroyIfTargetDied : 1;                                 // 0x0014(0x0004)
 };
 
 // ScriptStruct TgGame.TgProj_NonSimulated.LagCompedQueuedHitInfo
-// 0x185B86A72C0
+// 0x0020
 struct FLagCompedQueuedHitInfo
 {
-	unsigned char                                      UnknownData00[0x185B86A72C0];                             // 0x0000(0x185B86A72C0) MISSED OFFSET
+	class AActor*                                      HitActor;                                                 // 0x0000(0x0008)
+	struct FVector                                     HitLocation;                                              // 0x0008(0x000C)
+	struct FVector                                     HitNormal;                                                // 0x0014(0x000C)
+};
+
+// ScriptStruct TgGame.TgProj_ExtraColliders.TrackedCollision
+// 0x0018
+struct FTrackedCollision
+{
+	unsigned long                                      IsColliding : 1;                                          // 0x0000(0x0004)
+	class AActor*                                      Target;                                                   // 0x0004(0x0008)
+	class UPrimitiveComponent*                         TargetComp;                                               // 0x000C(0x0008) (ExportObject, Component, EditInline)
+	int                                                NumTouches;                                               // 0x0014(0x0004)
+};
+
+// ScriptStruct TgGame.TgSpecialFx.Fx_Sound
+// 0x0020
+struct FFx_Sound
+{
+	int                                                c_nId;                                                    // 0x0000(0x0004)
+	class UAkBaseSoundObject*                          c_SoundObject;                                            // 0x0004(0x0008)
+	class UAudioComponent*                             c_acSound;                                                // 0x000C(0x0008) (ExportObject, Component, EditInline)
+	unsigned long                                      c_bAllowSoundToFinishFlag : 1;                            // 0x0014(0x0004)
+	unsigned long                                      c_bCanHearThroughStealth : 1;                             // 0x0014(0x0004)
+	unsigned long                                      c_bForceAudioComponent : 1;                               // 0x0014(0x0004)
+	class UAkEvent*                                    c_AkEvent;                                                // 0x0018(0x0008)
+};
+
+// ScriptStruct TgGame.TgSilhouetteComponentPaladins.SilhouetteColorSettings
+// 0x0024
+struct FSilhouetteColorSettings
+{
+	unsigned long                                      bUsesMultipleColors : 1;                                  // 0x0000(0x0004)
+	unsigned long                                      bUsesEnemyRangeColorVariance : 1;                         // 0x0000(0x0004)
+	struct FColor                                      BlueColor;                                                // 0x0004(0x0004) (Const)
+	struct FColor                                      EnemyColor;                                               // 0x0008(0x0004) (Const)
+	struct FColor                                      PurpleColor;                                              // 0x000C(0x0004) (Const)
+	struct FColor                                      OrangeColor;                                              // 0x0010(0x0004) (Const)
+	struct FColor                                      EnemyTargetedEffectiveRangeColor;                         // 0x0014(0x0004) (Const)
+	struct FColor                                      EnemyTargetedMaxRangeColor;                               // 0x0018(0x0004) (Const)
+	struct FColor                                      RedColor;                                                 // 0x001C(0x0004) (Const)
+	struct FColor                                      AbyssalEchoColor;                                         // 0x0020(0x0004) (Const)
+};
+
+// ScriptStruct TgGame.TgSilhouetteComponentPaladins.SilhouetteFadeSettings
+// 0x0014
+struct FSilhouetteFadeSettings
+{
+	unsigned long                                      bUsesDistanceFade : 1;                                    // 0x0000(0x0004)
+	float                                              fAlphaFadeNearDist;                                       // 0x0004(0x0004) (Const)
+	float                                              fAlphaFadeNear;                                           // 0x0008(0x0004) (Const)
+	float                                              fAlphaFadeFarDist;                                        // 0x000C(0x0004) (Const)
+	float                                              fAlphaFadeFar;                                            // 0x0010(0x0004) (Const)
+};
+
+// ScriptStruct TgGame.TgSilhouetteComponentPaladins.SilhouettePulseSettings
+// 0x002C
+struct FSilhouettePulseSettings
+{
+	unsigned long                                      bUsesPulse : 1;                                           // 0x0000(0x0004)
+	unsigned long                                      bUsePulseAlpha : 1;                                       // 0x0000(0x0004)
+	unsigned long                                      bPulseMaintainsDistanceDimming : 1;                       // 0x0000(0x0004)
+	struct FVector2D                                   vPulseAlpha;                                              // 0x0004(0x0008)
+	unsigned long                                      bPulseUseCustomColor : 1;                                 // 0x000C(0x0004)
+	struct FColor                                      PulseCustomColor;                                         // 0x0010(0x0004)
+	unsigned long                                      bUsePulseThicknessMultiplier : 1;                         // 0x0014(0x0004)
+	struct FVector2D                                   vPulseThicknessMultiplier;                                // 0x0018(0x0008)
+	float                                              fPulseElapsedTime;                                        // 0x0020(0x0004)
+	float                                              fPulseDuration;                                           // 0x0024(0x0004)
+	float                                              fPulseWaveTime;                                           // 0x0028(0x0004)
+};
+
+// ScriptStruct TgGame.TgSilhouetteManager.TgSilhouetteInfo
+// 0x0014
+struct FTgSilhouetteInfo
+{
+	class UTgSilhouetteComponent*                      Silhouette;                                               // 0x0000(0x0008) (ExportObject, Component)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0000(0x0004) FIX WRONG TYPE SIZE OF PREVIOUS PROPERTY
+	class UMeshComponent*                              ParentMesh;                                               // 0x000C(0x0008) (ExportObject, Component, EditInline)
+};
+
+// ScriptStruct TgGame.TgSoundGroup.FootstepSoundInfo
+// 0x0010
+struct FFootstepSoundInfo
+{
+	struct FName                                       MaterialType;                                             // 0x0000(0x0008)
+	class USoundCue*                                   Sound;                                                    // 0x0008(0x0008)
+};
+
+// ScriptStruct TgGame.TgSpecialFx.Fx_Decal
+// 0x0034
+struct FFx_Decal
+{
+	int                                                c_nId;                                                    // 0x0000(0x0004)
+	class UMaterialInstanceTimeVarying*                c_MITV;                                                   // 0x0004(0x0008)
+	float                                              c_fWidth;                                                 // 0x000C(0x0004)
+	float                                              c_fHeight;                                                // 0x0010(0x0004)
+	float                                              c_fThickness;                                             // 0x0014(0x0004)
+	unsigned long                                      c_bNoClip : 1;                                            // 0x0018(0x0004)
+	unsigned long                                      c_bAttach : 1;                                            // 0x0018(0x0004)
+	class UDecalComponent*                             c_Decal;                                                  // 0x001C(0x0008) (ExportObject, Component, EditInline)
+	float                                              c_fLifetime;                                              // 0x0024(0x0004)
+	float                                              c_fFadeOutTime;                                           // 0x0028(0x0004)
+	TEnumAsByte<EManagedDecalState>                    c_eState;                                                 // 0x002C(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x002D(0x0003) MISSED OFFSET
+	float                                              c_fHideAtTimeSeconds;                                     // 0x0030(0x0004)
+};
+
+// ScriptStruct TgGame.TgSpecialFx.Fx_PSC
+// 0x0038
+struct FFx_PSC
+{
+	int                                                c_nId;                                                    // 0x0000(0x0004)
+	class UParticleSystemComponent*                    c_PSC;                                                    // 0x0004(0x0008) (ExportObject, Component, EditInline)
+	class UParticleSystem*                             c_PSCTemplate;                                            // 0x000C(0x0008) (Const)
+	float                                              c_fScale;                                                 // 0x0014(0x0004)
+	int                                                c_nScaleType;                                             // 0x0018(0x0004)
+	unsigned long                                      c_bRunning : 1;                                           // 0x001C(0x0004)
+	struct FName                                       c_nmSocketDisplayGrp;                                     // 0x0020(0x0008)
+	struct FName                                       c_nmSocket;                                               // 0x0028(0x0008)
+	class ATgEmitter_CameraEffect*                     c_pCameraEffect;                                          // 0x0030(0x0008)
+};
+
+// ScriptStruct TgGame.TgSpecialFx.Fx_Material
+// 0x001C
+struct FFx_Material
+{
+	int                                                nFxMatId;                                                 // 0x0000(0x0004)
+	class UMaterialInstanceTimeVarying*                c_MITV;                                                   // 0x0004(0x0008)
+	int                                                nFxMatTypeCode;                                           // 0x000C(0x0004)
+	struct FName                                       nmMIC;                                                    // 0x0010(0x0008)
+	unsigned long                                      bApplyIfSameTeam : 1;                                     // 0x0018(0x0004)
+};
+
+// ScriptStruct TgGame.TgSpecialFx.AppliedMaterialHandle
+// 0x0014
+struct FAppliedMaterialHandle
+{
+	int                                                nHandle;                                                  // 0x0000(0x0004)
+	TScriptInterface<class UTgMeshCompInterface_MaterialStack> pAppliedMesh;                                             // 0x0004(0x0010)
+};
+
+// ScriptStruct TgGame.TgEffectForm_WithMeshes.EffectMeshInfo
+// 0x0034
+struct FEffectMeshInfo
+{
+	class UMeshComponent*                              Mesh;                                                     // 0x0000(0x0008) (ExportObject, Component, EditInline)
+	int                                                nMeshId;                                                  // 0x0008(0x0004)
+	struct FName                                       DisplayGroup;                                             // 0x000C(0x0008)
+	unsigned long                                      AbsoluteTranslation : 1;                                  // 0x0014(0x0004)
+	unsigned long                                      AbsoluteRotation : 1;                                     // 0x0014(0x0004)
+	unsigned long                                      AbsoluteScale : 1;                                        // 0x0014(0x0004)
+	unsigned long                                      bWillSelfDestruct : 1;                                    // 0x0014(0x0004)
+	struct FVector                                     vAdditiveTranslation;                                     // 0x0018(0x000C)
+	struct FRotator                                    rAdditiveRotation;                                        // 0x0024(0x000C)
+	float                                              fScaleMultipler;                                          // 0x0030(0x0004)
+};
+
+// ScriptStruct TgGame.TgEffectGroup.LifeTimeCalcInfo
+// 0x0020
+struct FLifeTimeCalcInfo
+{
+	unsigned long                                      bInitialized : 1;                                         // 0x0000(0x0004)
+	float                                              fReductionFromPawnProtections;                            // 0x0004(0x0004)
+	float                                              fReductionFromCCProtectionsPerc;                          // 0x0008(0x0004)
+	float                                              fReductionFromDoTProtections;                             // 0x000C(0x0004)
+	float                                              fReductionFromDoTProtectionsPerc;                         // 0x0010(0x0004)
+	int                                                nCrowdControlCount;                                       // 0x0014(0x0004)
+	unsigned long                                      bCrowdControlImmune : 1;                                  // 0x0018(0x0004)
+	float                                              m_fCalculatedLifeTime;                                    // 0x001C(0x0004)
+};
+
+// ScriptStruct TgGame.TgEffectManager.ReduceActiveCooldownEntry
+// 0x0018
+struct FReduceActiveCooldownEntry
+{
+	int                                                nDeviceId;                                                // 0x0000(0x0004)
+	int                                                nFireMode;                                                // 0x0004(0x0004)
+	float                                              fValue;                                                   // 0x0008(0x0004)
+	unsigned long                                      bPercent : 1;                                             // 0x000C(0x0004)
+	float                                              fApplicationTime;                                         // 0x0010(0x0004)
+	float                                              fCooldownFloor;                                           // 0x0014(0x0004)
+};
+
+// ScriptStruct TgGame.TgEffectManager.EffectListEntry
+// 0x0010
+struct FEffectListEntry
+{
+	int                                                nEffectGroupID;                                           // 0x0000(0x0004)
+	unsigned char                                      byNumStacks;                                              // 0x0004(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0005(0x0003) MISSED OFFSET
+	float                                              fInitTimeRemaining;                                       // 0x0008(0x0004)
+	int                                                nExtraInfo;                                               // 0x000C(0x0004)
+};
+
+// ScriptStruct TgGame.TgEffectManager.EffectQueueEntry
+// 0x0020
+struct FEffectQueueEntry
+{
+	int                                                nEffectGroupID;                                           // 0x0000(0x0004)
+	int                                                nExtraInfo;                                               // 0x0004(0x0004)
+	struct FVector                                     vHitLocation;                                             // 0x0008(0x000C)
+	struct FRotator                                    rHitNormal;                                               // 0x0014(0x000C)
+};
+
+// ScriptStruct TgGame.TgEffectManager.StunStackEntry
+// 0x0009
+struct FStunStackEntry
+{
+	class UTgEffect*                                   Effect;                                                   // 0x0000(0x0008)
+	TEnumAsByte<EStunType>                             StunType;                                                 // 0x0008(0x0001)
+};
+
+// ScriptStruct TgGame.TgEffectManager.EnergyStunStackEntry
+// 0x0008
+struct FEnergyStunStackEntry
+{
+	class UTgEffect*                                   Effect;                                                   // 0x0000(0x0008)
+};
+
+// ScriptStruct TgGame.TgEffectManager.DiminishingReturnsStackInfo
+// 0x002C
+struct FDiminishingReturnsStackInfo
+{
+	TEnumAsByte<EDiminshingReturnsStackType>           StackType;                                                // 0x0000(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0001(0x0003) MISSED OFFSET
+	TArray<int>                                        DevicesApplyingThisTick;                                  // 0x0004(0x0010) (AlwaysInit, NeedCtorLink)
+	TArray<float>                                      Timestamps;                                               // 0x0014(0x0010) (AlwaysInit, NeedCtorLink)
+	int                                                nStackCount;                                              // 0x0024(0x0004)
+	float                                              fRelevancyTime;                                           // 0x0028(0x0004)
+};
+
+// ScriptStruct TgGame.TgBotFactory.SpawnQueueEntry
+// 0x001C
+struct FSpawnQueueEntry
+{
+	float                                              fSpawnTime;                                               // 0x0000(0x0004)
+	int                                                nBotId;                                                   // 0x0004(0x0004)
+	int                                                nSkinId;                                                  // 0x0008(0x0004)
+	int                                                nWeaponSkinId;                                            // 0x000C(0x0004)
+	int                                                nSpawnTableDetailId;                                      // 0x0010(0x0004)
+	struct FName                                       BehaviorTreeOverride;                                     // 0x0014(0x0008)
+};
+
+// ScriptStruct TgGame.TgAkAudioManagement.AkMeterCallbackState
+// 0x0010
+struct FAkMeterCallbackState
+{
+	struct Fdword                                      dwBusID;                                                  // 0x0000(0x0004)
+	unsigned long                                      bActive : 1;                                              // 0x0004(0x0004)
+	float                                              fLevel;                                                   // 0x0008(0x0004)
+	float                                              fTimestamp;                                               // 0x000C(0x0004)
+};
+
+// ScriptStruct TgGame.TgSoundEventsManager.TimestampedGameObjectId
+// 0x000C
+struct FTimestampedGameObjectId
+{
+	float                                              fTimestamp;                                               // 0x0000(0x0004)
+	struct FQWord                                      qwGameObjectId;                                           // 0x0004(0x0008)
+};
+
+// ScriptStruct TgGame.TgSoundEventsManager.QueuedSoundEvent
+// 0x0015
+struct FQueuedSoundEvent
+{
+	float                                              fDelay;                                                   // 0x0000(0x0004)
+	TScriptInterface<class UTgSoundNotifyActorInterface> SNActor;                                                  // 0x0004(0x0010)
+	TEnumAsByte<ENotifySound>                          eSound;                                                   // 0x0014(0x0001)
+};
+
+// ScriptStruct TgGame.TgInventoryManager.InventoryData
+// 0x0024
+struct FInventoryData
+{
+	struct FQWord                                      nInvId;                                                   // 0x0000(0x0008) (AlwaysInit)
+	int                                                nItemId;                                                  // 0x0008(0x0004) (AlwaysInit)
+	int                                                nPower;                                                   // 0x000C(0x0004) (AlwaysInit)
+	int                                                nLevel;                                                   // 0x0010(0x0004) (AlwaysInit)
+	int                                                nInstanceCount;                                           // 0x0014(0x0004) (AlwaysInit)
+	unsigned long                                      bBoundFlag : 1;                                           // 0x0018(0x0004) (AlwaysInit)
+	float                                              fAcquiredDatetime;                                        // 0x001C(0x0004) (AlwaysInit)
+	int                                                nEquipSlotValueId;                                        // 0x0020(0x0004) (AlwaysInit)
+};
+
+// ScriptStruct TgGame.TgInventoryObject_Listen_Combo_Barik.ComboInfo
+// 0x0014
+struct FComboInfo
+{
+	class AActor*                                      Target;                                                   // 0x0000(0x0008)
+	class AActor*                                      Instigator;                                               // 0x0008(0x0008)
+	float                                              fMarkTime;                                                // 0x0010(0x0004)
+};
+
+// ScriptStruct TgGame.TgInventoryObject_Listen_Combo_Barik.UIMarkInfo
+// 0x000C
+struct FUIMarkInfo
+{
+	class AActor*                                      Target;                                                   // 0x0000(0x0008)
+	int                                                nUIMarkCount;                                             // 0x0008(0x0004)
+};
+
+// ScriptStruct TgGame.TgInventoryObject_Listen_Combo_Barik.BurningMarkInfo
+// 0x000C
+struct FBurningMarkInfo
+{
+	class AActor*                                      Target;                                                   // 0x0000(0x0008)
+	int                                                nMarkCount;                                               // 0x0008(0x0004)
+};
+
+// ScriptStruct TgGame.TgInventoryObject_Listen_Combo_BombKing.StickyHitInfo
+// 0x000C
+struct FStickyHitInfo
+{
+	class AActor*                                      HitActor;                                                 // 0x0000(0x0008)
+	int                                                NumHits;                                                  // 0x0008(0x0004)
+};
+
+// ScriptStruct TgGame.TgInventoryObject_Listen_Combo_Makoa.MarkedTargetHook
+// 0x0010
+struct FMarkedTargetHook
+{
+	class AActor*                                      aActor;                                                   // 0x0000(0x0008)
+	float                                              fTime;                                                    // 0x0008(0x0004)
+	unsigned long                                      bFiredSince : 1;                                          // 0x000C(0x0004)
+};
+
+// ScriptStruct TgGame.TgInventoryObject_Listen_Combo_Viktor.TimedMarkedTarget
+// 0x000C
+struct FTimedMarkedTarget
+{
+	class AActor*                                      Target;                                                   // 0x0000(0x0008)
+	float                                              EndTimestamp;                                             // 0x0008(0x0004)
+};
+
+// ScriptStruct TgGame.TgInventoryObject_Listen_PoisonBolts.PoisonBoltInfo
+// 0x0014
+struct FPoisonBoltInfo
+{
+	class ATgPawn*                                     pawnTarget;                                               // 0x0000(0x0008)
+	class ATgDeployable*                               DeployableTarget;                                         // 0x0008(0x0008)
+	unsigned long                                      bEffectActive : 1;                                        // 0x0010(0x0004)
+};
+
+// ScriptStruct TgGame.TgInvListener_TargetOverHealed.TOHInfo
+// 0x0010
+struct FTOHInfo
+{
+	class AActor*                                      pTarget;                                                  // 0x0000(0x0008)
+	int                                                fAccumulator;                                             // 0x0008(0x0004)
+	float                                              fResetTimer;                                              // 0x000C(0x0004)
+};
+
+// ScriptStruct TgGame.TgInvListener_ConsecutiveInhandHits.CIHStack
+// 0x0010
+struct FCIHStack
+{
+	class ATgPawn*                                     pTarget;                                                  // 0x0000(0x0008)
+	int                                                nStackCount;                                              // 0x0008(0x0004)
+	float                                              fLifetime;                                                // 0x000C(0x0004)
+};
+
+// ScriptStruct TgGame.TgObject.MeshAssets
+// 0x0040
+struct FMeshAssets
+{
+	struct FString                                     m_sSkeletalMesh;                                          // 0x0000(0x0010) (Edit, NeedCtorLink)
+	struct FString                                     m_sPhysicsAsset;                                          // 0x0010(0x0010) (Edit, NeedCtorLink)
+	struct FString                                     m_sAnimTreeTemplate;                                      // 0x0020(0x0010) (Edit, NeedCtorLink)
+	struct FString                                     m_sAnimSets;                                              // 0x0030(0x0010) (Edit, NeedCtorLink)
+};
+
+// ScriptStruct TgGame.TgAudioPawnDialogue.ChatterEvent
+// 0x0008
+struct FChatterEvent
+{
+	int                                                nChatterTypeId;                                           // 0x0000(0x0004)
+	int                                                nAkEventSuffixId;                                         // 0x0004(0x0004)
+};
+
+// ScriptStruct TgGame.TgAudioPawnDialogue.DialogueEvent
+// 0x0016
+struct FDialogueEvent
+{
+	float                                              fRequestTime;                                             // 0x0000(0x0004)
+	int                                                nPriority;                                                // 0x0004(0x0004)
+	float                                              fRelevance;                                               // 0x0008(0x0004)
+	int                                                ExtraInfo;                                                // 0x000C(0x0004)
+	float                                              fPause;                                                   // 0x0010(0x0004)
+	TEnumAsByte<EEmote>                                EEmote;                                                   // 0x0014(0x0001)
+	TEnumAsByte<EEmoteCategory>                        eCat;                                                     // 0x0015(0x0001)
+};
+
+// ScriptStruct TgGame.TgMaterialStack.MaterialStackInstance
+// 0x001C
+struct FMaterialStackInstance
+{
+	int                                                nId;                                                      // 0x0000(0x0004)
+	int                                                nPriority;                                                // 0x0004(0x0004)
+	TArray<class UMaterialInstanceConstant*>           MICs;                                                     // 0x0008(0x0010) (NeedCtorLink)
+	unsigned long                                      bTimelapse : 1;                                           // 0x0018(0x0004)
+};
+
+// ScriptStruct TgGame.TgObject.AdjustHealParams
+// 0x008C
+struct FAdjustHealParams
+{
+	class ATgDevice*                                   Dev;                                                      // 0x0000(0x0008)
+	struct FImpactInfo                                 Impact;                                                   // 0x0008(0x007C) (Component)
+	float                                              fBaseHeal;                                                // 0x0084(0x0004)
+	int                                                nPropertyId;                                              // 0x0088(0x0004)
+};
+
+// ScriptStruct TgGame.TgObject.AdjustDamageParams
+// 0x0094
+struct FAdjustDamageParams
+{
+	class ATgDevice*                                   Dev;                                                      // 0x0000(0x0008)
+	struct FImpactInfo                                 Impact;                                                   // 0x0008(0x007C) (Component)
+	float                                              fBaseDamage;                                              // 0x0084(0x0004)
+	int                                                nPropertyId;                                              // 0x0088(0x0004)
+	unsigned long                                      bCritical : 1;                                            // 0x008C(0x0004)
+	struct FExtraDamageInfo                            ExtraInfo;                                                // 0x0090(0x0004)
+};
+
+// ScriptStruct TgGame.TgObject.OnHealedParams
+// 0x00A4
+struct FOnHealedParams
+{
+	class ATgPawn*                                     Healer;                                                   // 0x0000(0x0008)
+	class ATgDevice*                                   Dev;                                                      // 0x0008(0x0008)
+	class UTgEffectGroup*                              eg;                                                       // 0x0010(0x0008)
+	struct FImpactInfo                                 Impact;                                                   // 0x0018(0x007C) (Component)
+	float                                              fHealAmount;                                              // 0x0094(0x0004)
+	float                                              fHealthChange;                                            // 0x0098(0x0004)
+	int                                                nPropertyId;                                              // 0x009C(0x0004)
+	unsigned long                                      bPlayCameraHealEffect : 1;                                // 0x00A0(0x0004)
+};
+
+// ScriptStruct TgGame.TgObject.OnDamagedParams
+// 0x00AC
+struct FOnDamagedParams
+{
+	class ATgPawn*                                     attacker;                                                 // 0x0000(0x0008)
+	class ATgDevice*                                   Dev;                                                      // 0x0008(0x0008)
+	class UTgEffectGroup*                              eg;                                                       // 0x0010(0x0008)
+	struct FImpactInfo                                 Impact;                                                   // 0x0018(0x007C) (Component)
+	float                                              fBuffedDamage;                                            // 0x0094(0x0004)
+	float                                              fMitigatedDamage;                                         // 0x0098(0x0004)
+	float                                              fPreDamageHealth;                                         // 0x009C(0x0004)
+	float                                              fShieldDamage;                                            // 0x00A0(0x0004)
+	struct FExtraDamageInfo                            ExtraInfo;                                                // 0x00A4(0x0004)
+	int                                                nPropertyId;                                              // 0x00A8(0x0004)
+};
+
+// ScriptStruct TgGame.TgPawn.DebugPropertyMod
+// 0x0020
+struct FDebugPropertyMod
+{
+	struct FString                                     sProperty;                                                // 0x0000(0x0010) (NeedCtorLink)
+	float                                              fModifier;                                                // 0x0010(0x0004)
+	unsigned long                                      bPercent : 1;                                             // 0x0014(0x0004)
+	class UTgEffectPermanent*                          pEffect;                                                  // 0x0018(0x0008)
+};
+
+// ScriptStruct TgGame.TgPawn.EEmoteCategoryChance
+// 0x002C
+struct FEEmoteCategoryChance
+{
+	float                                              fDefault;                                                 // 0x0000(0x0004)
+	float                                              fPlayerVGS;                                               // 0x0004(0x0004)
+	float                                              fAbilityOnCooldown;                                       // 0x0008(0x0004)
+	float                                              fTakingDamage;                                            // 0x000C(0x0004)
+	float                                              fCelebration;                                             // 0x0010(0x0004)
+	float                                              fKills;                                                   // 0x0014(0x0004)
+	float                                              fAction;                                                  // 0x0018(0x0004)
+	float                                              fContext;                                                 // 0x001C(0x0004)
+	float                                              fUltimate;                                                // 0x0020(0x0004)
+	float                                              fOverride;                                                // 0x0024(0x0004)
+	float                                              fMovement;                                                // 0x0028(0x0004)
+};
+
+// ScriptStruct TgGame.TgPawn.EEmoteAbilityChance
+// 0x0014
+struct FEEmoteAbilityChance
+{
+	float                                              fDefault;                                                 // 0x0000(0x0004)
+	float                                              fAbility1;                                                // 0x0004(0x0004)
+	float                                              fAbility2;                                                // 0x0008(0x0004)
+	float                                              fAbility3;                                                // 0x000C(0x0004)
+	float                                              fMount;                                                   // 0x0010(0x0004)
+};
+
+// ScriptStruct TgGame.TgPawn.DeathInfo
+// 0x0024
+struct FDeathInfo
+{
+	unsigned long                                      bDead : 1;                                                // 0x0000(0x0004)
+	struct FVector                                     Momentum;                                                 // 0x0004(0x000C)
+	class UClass*                                      dmgType;                                                  // 0x0010(0x0008)
+	struct FVector                                     HitLoc;                                                   // 0x0018(0x000C)
+};
+
+// ScriptStruct TgGame.TgPawn.PostureStack
+// 0x0024
+struct FPostureStack
+{
+	TArray<int>                                        GUIDs;                                                    // 0x0000(0x0010) (NeedCtorLink)
+	TArray<TEnumAsByte<ETG_POSTURE>>                   Postures;                                                 // 0x0010(0x0010) (NeedCtorLink)
+	int                                                NewPostureGUID;                                           // 0x0020(0x0004)
+};
+
+// ScriptStruct TgGame.TgPawn.PawnDamagerStruct
+// 0x000C
+struct FPawnDamagerStruct
+{
+	class ATgPawn*                                     DamagerPawn;                                              // 0x0000(0x0008)
+	float                                              fTimestamp;                                               // 0x0008(0x0004)
+};
+
+// ScriptStruct TgGame.TgPawn.OverlayMICList
+// 0x0010
+struct FOverlayMICList
+{
+	TArray<class UMaterialInstanceConstant*>           MICs;                                                     // 0x0000(0x0010) (AlwaysInit, NeedCtorLink)
+};
+
+// ScriptStruct TgGame.TgPawn.OverlayInfo
+// 0x0074
+struct FOverlayInfo
+{
+	class UTgSkeletalMeshComponent*                    OverlayMesh;                                              // 0x0000(0x0008) (ExportObject, Component, EditInline)
+	class USkeletalMeshComponent*                      ParentMesh;                                               // 0x0008(0x0008) (ExportObject, Component, EditInline)
+	unsigned long                                      bIs1POverlay : 1;                                         // 0x0010(0x0004)
+	unsigned long                                      bIsVisible : 1;                                           // 0x0010(0x0004)
+	struct FOverlayMICList                             OverlayMICInstances[0x6];                                 // 0x0014(0x0010) (NeedCtorLink)
+};
+
+// ScriptStruct TgGame.TgPawn.SilhouetteInfo
+// 0x0015
+struct FSilhouetteInfo
+{
+	class UTgSilhouetteComponent*                      Silhouette;                                               // 0x0000(0x0008) (ExportObject, Component)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0000(0x0004) FIX WRONG TYPE SIZE OF PREVIOUS PROPERTY
+	class UMeshComponent*                              ParentMesh;                                               // 0x000C(0x0008) (ExportObject, Component, EditInline)
+	TEnumAsByte<EOverlayState>                         CurrentState;                                             // 0x0014(0x0001)
+};
+
+// ScriptStruct TgGame.TgPawn.HealingInfo
+// 0x0010
+struct FHealingInfo
+{
+	class ATgPawn*                                     HealerPawn;                                               // 0x0000(0x0008)
+	float                                              HealAmount;                                               // 0x0008(0x0004)
+	float                                              TimeStamp;                                                // 0x000C(0x0004)
+};
+
+// ScriptStruct TgGame.TgPawn.RigidBodyImpactInfo
+// 0x000C
+struct FRigidBodyImpactInfo
+{
+	float                                              LastImpactTime;                                           // 0x0000(0x0004)
+	class UPhysicalMaterial*                           PhysMat;                                                  // 0x0004(0x0008)
+};
+
+// ScriptStruct TgGame.TgPawn_Character.TeleportParams
+// 0x0050
+struct FTeleportParams
+{
+	struct FVector                                     vTargetLocation;                                          // 0x0000(0x000C)
+	struct FRotator                                    rTargetRotation;                                          // 0x000C(0x000C)
+	unsigned long                                      bPlayFx : 1;                                              // 0x0018(0x0004)
+	unsigned long                                      bDoBackTrace : 1;                                         // 0x0018(0x0004)
+	struct FVector                                     vBackTraceDir;                                            // 0x001C(0x000C)
+	float                                              fBackTraceIncrement;                                      // 0x0028(0x0004)
+	float                                              fBackTraceMaxDist;                                        // 0x002C(0x0004)
+	unsigned long                                      bLookForGround : 1;                                       // 0x0030(0x0004)
+	float                                              fGroundSearchHeight;                                      // 0x0034(0x0004)
+	float                                              fGroundSearchRayRadius;                                   // 0x0038(0x0004)
+	unsigned long                                      bCheckLineOfSight : 1;                                    // 0x003C(0x0004)
+	float                                              fMovementCorrectionDisableTime;                           // 0x0040(0x0004)
+	int                                                nTeleportEnterState;                                      // 0x0044(0x0004)
+	int                                                nTeleportExitState;                                       // 0x0048(0x0004)
+	unsigned long                                      bFakeTeleport : 1;                                        // 0x004C(0x0004)
+};
+
+// ScriptStruct TgGame.TgPawn_Character.ForceFaceTargetActor
+// 0x0049
+struct FForceFaceTargetActor
+{
+	class AActor*                                      TargetActor;                                              // 0x0000(0x0008)
+	float                                              HeightOffset;                                             // 0x0008(0x0004)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x000C(0x0004) MISSED OFFSET
+	struct FQuat                                       InitialQuat;                                              // 0x0010(0x0010)
+	float                                              InterpTime;                                               // 0x0020(0x0004)
+	float                                              StartTime;                                                // 0x0024(0x0004)
+	float                                              Duration;                                                 // 0x0028(0x0004)
+	class UObject*                                     ForceRotationInstigator;                                  // 0x002C(0x0008)
+	struct FName                                       ViewSocketName;                                           // 0x0034(0x0008)
+	struct FRotator                                    rLastForcedViewRot;                                       // 0x003C(0x000C)
+	TEnumAsByte<EForceFaceActorReason>                 eReason;                                                  // 0x0048(0x0001)
+};
+
+// ScriptStruct TgGame.TgPawn_Character.WeaponDOF
+// 0x0028
+struct FWeaponDOF
+{
+	unsigned long                                      IsActive : 1;                                             // 0x0000(0x0004)
+	TEnumAsByte<EDOFType>                              DOFType;                                                  // 0x0004(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0005(0x0003) MISSED OFFSET
+	float                                              Falloff;                                                  // 0x0008(0x0004)
+	float                                              BlurKernelSize;                                           // 0x000C(0x0004)
+	TEnumAsByte<EFocusType>                            FocusType;                                                // 0x0010(0x0001)
+	unsigned char                                      UnknownData01[0x3];                                       // 0x0011(0x0003) MISSED OFFSET
+	float                                              FocusInnerRadius;                                         // 0x0014(0x0004)
+	float                                              FocusDistance;                                            // 0x0018(0x0004)
+	float                                              MaxNearBlurAmount;                                        // 0x001C(0x0004)
+	float                                              MinBlurAmount;                                            // 0x0020(0x0004)
+	float                                              MaxFarBlurAmount;                                         // 0x0024(0x0004)
+};
+
+// ScriptStruct TgGame.TgPawn_LanePusherBase.ServerSplineSync
+// 0x0008
+struct FServerSplineSync
+{
+	float                                              SplineDist;                                               // 0x0000(0x0004)
+	unsigned long                                      bMoving : 1;                                              // 0x0004(0x0004)
+};
+
+// ScriptStruct TgGame.TgPawn_TowerBase.NavMeshBorderEdges
+// 0x0018
+struct FNavMeshBorderEdges
+{
+	struct FVector                                     P1;                                                       // 0x0000(0x000C)
+	struct FVector                                     P2;                                                       // 0x000C(0x000C)
+};
+
+// ScriptStruct TgGame.TgPawnMod_FxAudio.ModFxAudioValues
+// 0x002C
+struct FModFxAudioValues
+{
+	unsigned long                                      bApplyToBodyParam : 1;                                    // 0x0000(0x0004)
+	struct FName                                       nmParamName;                                              // 0x0004(0x0008)
+	float                                              fOnBeatMultiplier;                                        // 0x000C(0x0004)
+	float                                              fOffBeatMultiplier;                                       // 0x0010(0x0004)
+	float                                              fTarget;                                                  // 0x0014(0x0004)
+	float                                              fActual;                                                  // 0x0018(0x0004)
+	float                                              fLambda;                                                  // 0x001C(0x0004)
+	float                                              fDecay;                                                   // 0x0020(0x0004)
+	float                                              fRaw;                                                     // 0x0024(0x0004)
+	float                                              fDampenAmt;                                               // 0x0028(0x0004)
+};
+
+// ScriptStruct TgGame.TgSpectatorController.SpectatorBookmark
+// 0x0030
+struct FSpectatorBookmark
+{
+	class AActor*                                      ViewTarget;                                               // 0x0000(0x0008) (Transient)
+	TEnumAsByte<ESpectatorCameraMode>                  ViewMode;                                                 // 0x0008(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0009(0x0003) MISSED OFFSET
+	struct FTPOV                                       POV;                                                      // 0x000C(0x0024)
+};
+
+// ScriptStruct TgGame.TgSpectatorController.BroadcastChannel
+// 0x0008
+struct FBroadcastChannel
+{
+	TEnumAsByte<ESpectatorMode>                        Channel;                                                  // 0x0000(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0001(0x0003) MISSED OFFSET
+	int                                                PlayerID;                                                 // 0x0004(0x0004)
+};
+
+// ScriptStruct TgGame.TgDemoRecSpectator.SpectatorCommand
+// 0x000C
+struct FSpectatorCommand
+{
+	int                                                nFrame;                                                   // 0x0000(0x0004)
+	unsigned long                                      bUseIndex : 1;                                            // 0x0004(0x0004)
+	float                                              fSpeed;                                                   // 0x0008(0x0004)
+};
+
+// ScriptStruct TgGame.TgDemoRecSpectator.DilationData
+// 0x0014
+struct FDilationData
+{
+	float                                              fValue;                                                   // 0x0000(0x0004)
+	struct FString                                     sName;                                                    // 0x0004(0x0010) (NeedCtorLink)
+};
+
+// ScriptStruct TgGame.TgPlayerInput.AimAssistTargetWeight
+// 0x0020
+struct FAimAssistTargetWeight
+{
+	TScriptInterface<class UTgCombatActor>             Target;                                                   // 0x0000(0x0010)
+	float                                              Weight;                                                   // 0x0010(0x0004)
+	float                                              horizAssistVal;                                           // 0x0014(0x0004)
+	float                                              vertAssistVal;                                            // 0x0018(0x0004)
+	float                                              lastUpdateTimestamp;                                      // 0x001C(0x0004)
+};
+
+// ScriptStruct TgGame.TgPlayerInput.AimAssistTargetWeightVars
+// 0x001C
+struct FAimAssistTargetWeightVars
+{
+	float                                              CurrentTargetBonus;                                       // 0x0000(0x0004)
+	float                                              NotCurrentTargetPenalty;                                  // 0x0004(0x0004)
+	float                                              MinAccuracyBonus;                                         // 0x0008(0x0004)
+	float                                              MaxAccuracyBonus;                                         // 0x000C(0x0004)
+	float                                              MinInaccuracyPenalty;                                     // 0x0010(0x0004)
+	float                                              MaxInaccuracyPenalty;                                     // 0x0014(0x0004)
+	float                                              MaxWeight;                                                // 0x0018(0x0004)
+};
+
+// ScriptStruct TgGame.TgSkeletalMeshActor_Loader.LobbySMAMeterBus
+// 0x0010
+struct FLobbySMAMeterBus
+{
+	struct Fdword                                      dwBusID;                                                  // 0x0000(0x0004)
+	TEnumAsByte<ELobbyMeterBusIntent>                  eIntent;                                                  // 0x0004(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0005(0x0003) MISSED OFFSET
+	class UAkEvent*                                    akOnStop;                                                 // 0x0008(0x0008)
+};
+
+// ScriptStruct TgGame.TgSkeletalMeshActor_Loader.CharacterSpecificData_Maeve
+// 0x0019
+struct FCharacterSpecificData_Maeve
+{
+	float                                              fMaterialAnimationValue;                                  // 0x0000(0x0004) (Transient)
+	float                                              fMaterialAnimationTarget;                                 // 0x0004(0x0004) (Transient)
+	float                                              fMaterialAnimationTimer;                                  // 0x0008(0x0004) (Transient)
+	float                                              fDjSwapDelayTimer;                                        // 0x000C(0x0004) (Transient)
+	float                                              fDjSwapHoldTimer;                                         // 0x0010(0x0004) (Transient)
+	float                                              fDjSwapChompTimer;                                        // 0x0014(0x0004) (Transient)
+	TEnumAsByte<EDjBladesFace>                         eDjCurrentFace;                                           // 0x0018(0x0001) (Transient)
+};
+
+// ScriptStruct TgGame.TgSkeletalMeshActor_Loader.CharacterSpecificData
+// 0x001C
+struct FCharacterSpecificData
+{
+	struct FCharacterSpecificData_Maeve                MaeveData;                                                // 0x0000(0x001C)
+};
+
+// ScriptStruct TgGame.TgSkeletalMeshComponent.AnimNotifyParticleCacheEntry
+// 0x0014
+struct FAnimNotifyParticleCacheEntry
+{
+	unsigned long                                      bCached : 1;                                              // 0x0000(0x0004)
+	class UAnimNotify_PlayParticleEffect*              Notify;                                                   // 0x0004(0x0008)
+	class UParticleSystemComponent*                    PSC;                                                      // 0x000C(0x0008) (ExportObject, Component, EditInline)
+};
+
+// ScriptStruct TgGame.TgSkeletalMeshComponent.MeshAccessoryStorage
+// 0x0010
+struct FMeshAccessoryStorage
+{
+	class UTgSkeletalMeshComponent*                    m_Accessory;                                              // 0x0000(0x0008) (ExportObject, Component, EditInline)
+	class UTgAnimMetaData_MeshAccessory*               m_Source;                                                 // 0x0008(0x0008)
+};
+
+// ScriptStruct TgGame.TgSkeletalMeshComponent.SwappedMeshResetInfo
+// 0x0014
+struct FSwappedMeshResetInfo
+{
+	class USkeletalMeshComponent*                      SkelMeshComp;                                             // 0x0000(0x0008) (ExportObject, Component, EditInline)
+	int                                                MaterialIndex;                                            // 0x0008(0x0004)
+	class UMaterialInstanceConstant*                   OrigMatInst;                                              // 0x000C(0x0008)
+};
+
+// ScriptStruct TgGame.TgSkeletalMeshComponent.MICScalarParamMetaDataStorage
+// 0x002C
+struct FMICScalarParamMetaDataStorage
+{
+	class UTgAnimMetaData_MICScalarParameterExtended*  m_Source;                                                 // 0x0000(0x0008)
+	TArray<struct FSwappedMeshResetInfo>               MaterialsToReset;                                         // 0x0008(0x0010) (Component, AlwaysInit, NeedCtorLink)
+	TArray<class UMaterialInstanceConstant*>           CurrentModifiedMICs;                                      // 0x0018(0x0010) (AlwaysInit, NeedCtorLink)
+	unsigned long                                      bHasSetMICs : 1;                                          // 0x0028(0x0004)
+};
+
+// ScriptStruct TgGame.TgSkeletalMeshComponent.MICStateParamInterpData
+// 0x0044
+struct FMICStateParamInterpData
+{
+	int                                                nMaterialIndex;                                           // 0x0000(0x0004)
+	struct FName                                       nmToStateName;                                            // 0x0004(0x0008)
+	struct FName                                       nmFromStateName;                                          // 0x000C(0x0008)
+	float                                              fStartTime;                                               // 0x0014(0x0004)
+	float                                              fEndTime;                                                 // 0x0018(0x0004)
+	struct FMICStateParams                             SavedState;                                               // 0x001C(0x0028) (NeedCtorLink)
+};
+
+// ScriptStruct TgGame.TgSpecialFx.Fx_AssemblyData
+// 0x0024
+struct FFx_AssemblyData
+{
+	struct FName                                       m_nmSocketName;                                           // 0x0000(0x0008)
+	struct FName                                       m_nmDisplayGroup;                                         // 0x0008(0x0008)
+	int                                                m_nDisplayMode;                                           // 0x0010(0x0004)
+	int                                                m_nSpecialFxId;                                           // 0x0014(0x0004)
+	int                                                m_nIndex;                                                 // 0x0018(0x0004)
+	int                                                m_nEquipmentSlot;                                         // 0x001C(0x0004)
+	unsigned long                                      m_bAppliesToAllModes : 1;                                 // 0x0020(0x0004)
+	unsigned long                                      m_bAttachToGround : 1;                                    // 0x0020(0x0004)
+};
+
+// ScriptStruct TgGame.TgSubtitledMessages.QueuedSubtitle
+// 0x0024
+struct FQueuedSubtitle
+{
+	unsigned long                                      CurrentlyPlaying : 1;                                     // 0x0000(0x0004)
+	int                                                SubtitleMessageId;                                        // 0x0004(0x0004)
+	struct FString                                     SubtitleText;                                             // 0x0008(0x0010) (NeedCtorLink)
+	class UAkBaseSoundObject*                          SubtitleSound;                                            // 0x0018(0x0008)
+	int                                                AkId;                                                     // 0x0020(0x0004)
+};
+
+// ScriptStruct TgGame.TgAIController_Behavior.DeferredNode
+// 0x0024
+struct FDeferredNode
+{
+	float                                              WorldTime;                                                // 0x0000(0x0004)
+	struct FPointer                                    CurrentNode;                                              // 0x0004(0x0008) (Native)
+	struct FPointer                                    CachedStatus;                                             // 0x000C(0x0008) (Native)
+	struct FPointer                                    StorageMemory;                                            // 0x0014(0x0008) (Native)
+	struct FPointer                                    WorkingMemory;                                            // 0x001C(0x0008) (Native)
+};
+
+// ScriptStruct TgGame.TgAIBehaviorNode.BehaviorStateData
+// 0x0009
+struct FBehaviorStateData
+{
+	float                                              LastTickTime;                                             // 0x0000(0x0004)
+	int                                                NodeToken;                                                // 0x0004(0x0004)
+	TEnumAsByte<EBehaviorStatus>                       Status;                                                   // 0x0008(0x0001)
+};
+
+// ScriptStruct TgGame.TgAIController_Behavior.NavigationQueueEntry
+// 0x002C
+struct FNavigationQueueEntry
+{
+	class ATgPawn*                                     TargetPawn;                                               // 0x0000(0x0008)
+	class AActor*                                      TargetActor;                                              // 0x0008(0x0008)
+	struct FVector                                     TargetLocation;                                           // 0x0010(0x000C)
+	unsigned long                                      bNewEntry : 1;                                            // 0x001C(0x0004)
+	unsigned long                                      bCanCacheLOS : 1;                                         // 0x001C(0x0004)
+	unsigned long                                      bCachedLOS : 1;                                           // 0x001C(0x0004)
+	unsigned long                                      bLookAtTarget : 1;                                        // 0x001C(0x0004)
+	unsigned long                                      bMustHaveLOS : 1;                                         // 0x001C(0x0004)
+	unsigned long                                      bStopNavOnReachedDestination : 1;                         // 0x001C(0x0004)
+	float                                              DistanceTolerance;                                        // 0x0020(0x0004)
+	int                                                NodeToken;                                                // 0x0024(0x0004)
+	int                                                TeleportIndex;                                            // 0x0028(0x0004)
+};
+
+// ScriptStruct TgGame.TgAIController_Behavior.FollowLaneState
+// 0x0008
+struct FFollowLaneState
+{
+	int                                                LastLaneIndex;                                            // 0x0000(0x0004)
+	unsigned long                                      bFinalApproach : 1;                                       // 0x0004(0x0004)
+	unsigned long                                      bLockedToMarker : 1;                                      // 0x0004(0x0004)
+};
+
+// ScriptStruct TgGame.TgAIController_Behavior.IncomingDamageEntry
+// 0x0030
+struct FIncomingDamageEntry
+{
+	class ATgPawn*                                     attacker;                                                 // 0x0000(0x0008)
+	TEnumAsByte<ETG_EQUIP_POINT>                       DeviceSlot;                                               // 0x0008(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0009(0x0003) MISSED OFFSET
+	struct FVector                                     SourceInitialLocation;                                    // 0x000C(0x000C)
+	struct FRotator                                    SourceInitialAim;                                         // 0x0018(0x000C)
+	float                                              ExpireTime;                                               // 0x0024(0x0004)
+	float                                              RemovalTime;                                              // 0x0028(0x0004)
+	float                                              Weight;                                                   // 0x002C(0x0004)
+};
+
+// ScriptStruct TgGame.TgAIController_BehaviorMapNpc.ThreatEntry
+// 0x000C
+struct FThreatEntry
+{
+	class ATgPawn*                                     attacker;                                                 // 0x0000(0x0008)
+	float                                              ThreatLevel;                                              // 0x0008(0x0004)
+};
+
+// ScriptStruct TgGame.TgAILocalPositionSolver.DefaultRepulsorData
+// 0x000D
+struct FDefaultRepulsorData
+{
+	unsigned char                                      TargetType;                                               // 0x0000(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0001(0x0003) MISSED OFFSET
+	float                                              MaxEnemyWeight;                                           // 0x0004(0x0004)
+	float                                              MaxFriendlyWeight;                                        // 0x0008(0x0004)
+	TEnumAsByte<ERepulsorWeightMethod>                 SolverType;                                               // 0x000C(0x0001)
+};
+
+// ScriptStruct TgGame.TgAIObstacleAvoidance.ObstacleQueryCache
+// 0x0029
+struct FObstacleQueryCache
+{
+	struct FVector                                     RealGoalPos;                                              // 0x0000(0x000C)
+	struct FVector                                     ModifiedGoalPos;                                          // 0x000C(0x000C)
+	TArray<struct FVector>                             IntermediatePoints;                                       // 0x0018(0x0010) (AlwaysInit, NeedCtorLink)
+	TEnumAsByte<EObstacleAvoidanceStatus>              PathStatus;                                               // 0x0028(0x0001)
+};
+
+// ScriptStruct TgGame.TgAIUtilityHandle.UtilityFunctionList
+// 0x0024
+struct FUtilityFunctionList
+{
+	struct FPointer                                    UtilityFunctionList;                                      // 0x0000(0x0008) (Native)
+	int                                                UtilityFunctionListCount;                                 // 0x0008(0x0004)
+	struct FPointer                                    StaticMemory;                                             // 0x000C(0x0008) (Native)
+	struct FPointer                                    CachedUtilities;                                          // 0x0014(0x0008) (Native, Transient)
+	struct FPointer                                    DynamicStorageMemory;                                     // 0x001C(0x0008) (Native, Transient)
+};
+
+// ScriptStruct TgGame.TgAIUtilityHandle.UtilitySet
+// 0x0048
+struct FUtilitySet
+{
+	struct FUtilityFunctionList                        Functions;                                                // 0x0000(0x0024)
+	struct FUtilityFunctionList                        Filters;                                                  // 0x0024(0x0024)
+};
+
+// ScriptStruct TgGame.TgAIUtilityHandle.UtilityPair
+// 0x0048
+struct FUtilityPair
+{
+	unsigned char                                      UnknownData00[0x48];                                      // 0x0000(0x0048) UNKNOWN PROPERTY: MapProperty TgGame.TgAIUtilityHandle.UtilityPair.FilteredAnnotationPoints
+};
+
+// ScriptStruct TgGame.TgCameraModule_SpectatorOverview.CameraPitchInfo
+// 0x0008
+struct FCameraPitchInfo
+{
+	float                                              ZHeight;                                                  // 0x0000(0x0004)
+	float                                              Pitch;                                                    // 0x0004(0x0004)
+};
+
+// ScriptStruct TgGame.TgCameraModule_ThirdPerson.ServerCorrectionSmoothingParams
+// 0x0020
+struct FServerCorrectionSmoothingParams
+{
+	float                                              fServerCorrectSnapDist;                                   // 0x0000(0x0004)
+	float                                              fMinBaseSpeed;                                            // 0x0004(0x0004)
+	float                                              fMaxBaseSpeed;                                            // 0x0008(0x0004)
+	float                                              fBaseSpeedMultiplier;                                     // 0x000C(0x0004)
+	float                                              fNewInfoWeight;                                           // 0x0010(0x0004)
+	float                                              fMinCorrectionModifier;                                   // 0x0014(0x0004)
+	float                                              fMaxCorrectionModifier;                                   // 0x0018(0x0004)
+	float                                              fCorrectionModifierMultiplier;                            // 0x001C(0x0004)
+};
+
+// ScriptStruct TgGame.TgPlayerCamera.PropertyDecayState
+// 0x000C
+struct FPropertyDecayState
+{
+	float                                              PropertyLevel;                                            // 0x0000(0x0004)
+	float                                              PropertyMax;                                              // 0x0004(0x0004)
+	float                                              LastDecayTimestamp;                                       // 0x0008(0x0004)
+};
+
+// ScriptStruct TgGame.TgPlayerCamera.PropertyDecayParams
+// 0x0014
+struct FPropertyDecayParams
+{
+	float                                              LambdaImpulse;                                            // 0x0000(0x0004)
+	float                                              LambdaAccumulation;                                       // 0x0004(0x0004)
+	float                                              DecayImpulse;                                             // 0x0008(0x0004)
+	float                                              DecayAccumulation;                                        // 0x000C(0x0004)
+	float                                              AccumulationImpulseMix;                                   // 0x0010(0x0004)
+};
+
+// ScriptStruct TgGame.TgSpawnTeleporterEntrance.ExitInfo
+// 0x0010
+struct FExitInfo
+{
+	class ATgSpawnTeleporterExit*                      Exit;                                                     // 0x0000(0x0008)
+	float                                              Rating;                                                   // 0x0008(0x0004)
+	unsigned long                                      bEnemyHasLOS : 1;                                         // 0x000C(0x0004)
+	unsigned long                                      bIsOpenSpot : 1;                                          // 0x000C(0x0004)
+};
+
+// ScriptStruct TgGame.TgAudioConversations.VoxConversation
+// 0x0028
+struct FVoxConversation
+{
+	struct FString                                     sTypeSpokenFirst;                                         // 0x0000(0x0010) (Config, NeedCtorLink)
+	struct FString                                     sTypeSpokenSecond;                                        // 0x0010(0x0010) (Config, NeedCtorLink)
+	int                                                nTypeSpokenFirst;                                         // 0x0020(0x0004)
+	int                                                nTypeSpokenSecond;                                        // 0x0024(0x0004)
+};
+
+// ScriptStruct TgGame.TgObject.ScoreKillData
+// 0x0084
+struct FScoreKillData
+{
+	class AController*                                 Killer;                                                   // 0x0000(0x0008)
+	class ATgRepInfo_Player*                           KillerPRI;                                                // 0x0008(0x0008)
+	class ATgPawn*                                     KillerPawn;                                               // 0x0010(0x0008)
+	struct FPointer                                    KillerBotAssembly;                                        // 0x0018(0x0008) (Native)
+	unsigned long                                      bKillerIsGod : 1;                                         // 0x0020(0x0004)
+	unsigned long                                      bKillerIsMinion : 1;                                      // 0x0020(0x0004)
+	unsigned long                                      bKillerIsTower : 1;                                       // 0x0020(0x0004)
+	class AController*                                 Victim;                                                   // 0x0024(0x0008)
+	class ATgPawn*                                     VictimPawn;                                               // 0x002C(0x0008)
+	class ATgRepInfo_Player*                           VictimPRI;                                                // 0x0034(0x0008)
+	class ATgRepInfo_TaskForce*                        VictimTaskForce;                                          // 0x003C(0x0008)
+	struct FPointer                                    VictimBotAssembly;                                        // 0x0044(0x0008) (Native)
+	unsigned long                                      VictimCanScore : 1;                                       // 0x004C(0x0004)
+	unsigned long                                      bVictimIsGod : 1;                                         // 0x004C(0x0004)
+	unsigned long                                      bVictimIsMinion : 1;                                      // 0x004C(0x0004)
+	unsigned long                                      bVictimIsTower : 1;                                       // 0x004C(0x0004)
+	class AController*                                 Scorer;                                                   // 0x0050(0x0008)
+	class ATgPawn*                                     ScorerPawn;                                               // 0x0058(0x0008)
+	class ATgRepInfo_Player*                           ScorerPRI;                                                // 0x0060(0x0008)
+	class ATgRepInfo_TaskForce*                        ScorerTaskForce;                                          // 0x0068(0x0008)
+	unsigned long                                      ScorerCanScore : 1;                                       // 0x0070(0x0004)
+	unsigned long                                      bSuicide : 1;                                             // 0x0070(0x0004)
+	unsigned long                                      bFakeDeath : 1;                                           // 0x0070(0x0004)
+	TArray<class ATgRepInfo_Player*>                   AssistingPlayers;                                         // 0x0074(0x0010) (AlwaysInit, NeedCtorLink)
+};
+
+// ScriptStruct TgGame.TgGame.TgAIBotPlayersToSpawn
+// 0x0020
+struct FTgAIBotPlayersToSpawn
+{
+	struct FString                                     fsName;                                                   // 0x0000(0x0010) (AlwaysInit, NeedCtorLink)
+	int                                                nBotId;                                                   // 0x0010(0x0004)
+	struct Fdword                                      dwPlayerId;                                               // 0x0014(0x0004)
+	int                                                nTaskForceId;                                             // 0x0018(0x0004)
+	int                                                nSpawnTableDetailId;                                      // 0x001C(0x0004)
+};
+
+// ScriptStruct TgGame.TgGame.PlayOfTheGameInfo
+// 0x000C
+struct FPlayOfTheGameInfo
+{
+	class ATgRepInfo_Player*                           PRI;                                                      // 0x0000(0x0008)
+	float                                              Rating;                                                   // 0x0008(0x0004)
+};
+
+// ScriptStruct TgGame.TgGame.PlayOfTheGameEventConfig
+// 0x0020
+struct FPlayOfTheGameEventConfig
+{
+	TEnumAsByte<EPlayOfTheGameEventType>               EventType;                                                // 0x0000(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0001(0x0003) MISSED OFFSET
+	float                                              BaseRating;                                               // 0x0004(0x0004)
+	float                                              MultMod;                                                  // 0x0008(0x0004)
+	float                                              MaxTimeDiff;                                              // 0x000C(0x0004)
+	unsigned long                                      ScaleByTimeDiff : 1;                                      // 0x0010(0x0004)
+	int                                                MaxMultInstances;                                         // 0x0014(0x0004)
+	float                                              Threshold;                                                // 0x0018(0x0004)
+	float                                              ThresholdTimeOut;                                         // 0x001C(0x0004)
+};
+
+// ScriptStruct TgGame.TgCharacterPerformance.DeviceToCharacterID
+// 0x0008
+struct FDeviceToCharacterID
+{
+	int                                                CharacterID;                                              // 0x0000(0x0004)
+	int                                                DeviceID;                                                 // 0x0004(0x0004)
+};
+
+// ScriptStruct TgGame.TgGame_Mission.SurrenderVote
+// 0x0008
+struct FSurrenderVote
+{
+	int                                                nPlayerId;                                                // 0x0000(0x0004)
+	unsigned long                                      bSurrender : 1;                                           // 0x0004(0x0004)
+};
+
+// ScriptStruct TgGame.TgGame_Mission.SurrenderData
+// 0x0024
+struct FSurrenderData
+{
+	float                                              fLastSurrenderTime;                                       // 0x0000(0x0004)
+	TArray<struct FSurrenderVote>                      SurrenderVotes;                                           // 0x0004(0x0010) (NeedCtorLink)
+	int                                                nSurrenderTotal;                                          // 0x0014(0x0004)
+	int                                                nSurrenderNeeded;                                         // 0x0018(0x0004)
+	int                                                nSurrenderVoteCount;                                      // 0x001C(0x0004)
+	int                                                nNoSurrenderVoteCount;                                    // 0x0020(0x0004)
+};
+
+// ScriptStruct TgGame.TgGame_Mission.TimeDilationWindow
+// 0x001C
+struct FTimeDilationWindow
+{
+	int                                                nWindowId;                                                // 0x0000(0x0004)
+	float                                              fRampUpTime;                                              // 0x0004(0x0004)
+	float                                              fRampDownTime;                                            // 0x0008(0x0004)
+	float                                              fWindowLength;                                            // 0x000C(0x0004)
+	float                                              fIntendedTimeDilation;                                    // 0x0010(0x0004)
+	float                                              fCurrentTimeDilation;                                     // 0x0014(0x0004)
+	float                                              fTimeLeft;                                                // 0x0018(0x0004)
+};
+
+// ScriptStruct TgGame.TgGame_Paladins.TeamDifficultyData
+// 0x0008
+struct FTeamDifficultyData
+{
+	TEnumAsByte<EBotDifficultyLevel>                   CurrentBotDifficultyLevel;                                // 0x0000(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0001(0x0003) MISSED OFFSET
+	float                                              TeamSkillLevel;                                           // 0x0004(0x0004)
+};
+
+// ScriptStruct TgGame.TgObject.CardInfo
+// 0x001C
+struct FCardInfo
+{
+	int                                                Id;                                                       // 0x0000(0x0004)
+	int                                                Count;                                                    // 0x0004(0x0004)
+	int                                                Owner;                                                    // 0x0008(0x0004)
+	struct FString                                     sOwner;                                                   // 0x000C(0x0010) (AlwaysInit, NeedCtorLink)
+};
+
+// ScriptStruct TgGame.TgGameTipManager.GameTipInfo
+// 0x0034
+struct FGameTipInfo
+{
+	int                                                nTipId;                                                   // 0x0000(0x0004)
+	int                                                nPriority;                                                // 0x0004(0x0004)
+	unsigned long                                      bSelfSuppress : 1;                                        // 0x0008(0x0004)
+	float                                              fDuration;                                                // 0x000C(0x0004)
+	float                                              fRemainingTime;                                           // 0x0010(0x0004)
+	float                                              fTimeOnTop;                                               // 0x0014(0x0004)
+	float                                              fMinSecondsBetweenVisible;                                // 0x0018(0x0004)
+	unsigned long                                      bRemoveOnTimer : 1;                                       // 0x001C(0x0004)
+	unsigned long                                      bDismissed : 1;                                           // 0x001C(0x0004)
+	unsigned long                                      bWaitForDismiss : 1;                                      // 0x001C(0x0004)
+	unsigned long                                      bDisplayAlways : 1;                                       // 0x001C(0x0004)
+	unsigned long                                      bPopupDisplay : 1;                                        // 0x001C(0x0004)
+	class USoundCue*                                   PopupSoundCue;                                            // 0x0020(0x0008)
+	class ATgHelpTipActor*                             HelpTipActor;                                             // 0x0028(0x0008)
+	int                                                PropertyId;                                               // 0x0030(0x0004)
+};
+
+// ScriptStruct TgGame.TgGameTipManager.TipSavedState
+// 0x0014
+struct FTipSavedState
+{
+	int                                                nTipId;                                                   // 0x0000(0x0004)
+	int                                                nMatchVisibleCount;                                       // 0x0004(0x0004)
+	int                                                nTotalVisibleCount;                                       // 0x0008(0x0004)
+	float                                              fLastVisibleTime;                                         // 0x000C(0x0004)
+	unsigned long                                      nCompletedCount : 1;                                      // 0x0010(0x0004)
+	unsigned long                                      bSuppressed : 1;                                          // 0x0010(0x0004)
+};
+
+// ScriptStruct TgGame.TgObject.TG_HUD_INFO
+// 0x0004
+struct FTG_HUD_INFO
+{
+	unsigned long                                      bEnemy : 1;                                               // 0x0000(0x0004)
+	unsigned long                                      bShowNameplate : 1;                                       // 0x0000(0x0004)
+	unsigned long                                      bShowOverlays : 1;                                        // 0x0000(0x0004)
+	unsigned long                                      bIsTargeted : 1;                                          // 0x0000(0x0004)
+	unsigned long                                      bLocalPlayerHasLOS : 1;                                   // 0x0000(0x0004)
+};
+
+// ScriptStruct TgGame.TgRepInfo_Game.GraphData
+// 0x000C
+struct FGraphData
+{
+	int                                                XP;                                                       // 0x0000(0x0004)
+	int                                                Gold;                                                     // 0x0004(0x0004)
+	int                                                Time;                                                     // 0x0008(0x0004)
+};
+
+// ScriptStruct TgGame.TgRepInfo_Game.BotDifficultyDebugData
+// 0x0064
+struct FBotDifficultyDebugData
+{
+	unsigned long                                      CurrentlyActive : 1;                                      // 0x0000(0x0004)
+	unsigned long                                      DisparityDetected : 1;                                    // 0x0000(0x0004)
+	unsigned long                                      ChangesLockedOut : 1;                                     // 0x0000(0x0004)
+	int                                                TimeBeforeTrigger;                                        // 0x0004(0x0004)
+	TEnumAsByte<EBotDifficultyLevel>                   TaskForce1BotDifficulty;                                  // 0x0008(0x0001)
+	TEnumAsByte<EBotDifficultyLevel>                   TaskForce2BotDifficulty;                                  // 0x0009(0x0001)
+	unsigned char                                      UnknownData00[0x2];                                       // 0x000A(0x0002) MISSED OFFSET
+	float                                              TaskForce1Skill;                                          // 0x000C(0x0004)
+	float                                              TaskForce2Skill;                                          // 0x0010(0x0004)
+	struct FSkillLevelPercentageData                   SkillPercentages[0x2];                                    // 0x0014(0x0028)
+};
+
+// ScriptStruct TgGame.TgRepInfo_Player.SimulatedProjectileOverrides
+// 0x0018
+struct FSimulatedProjectileOverrides
+{
+	int                                                FireModeID;                                               // 0x0000(0x0004)
+	float                                              RemoteProximityDist;                                      // 0x0004(0x0004)
+	float                                              Range;                                                    // 0x0008(0x0004)
+	float                                              Speed;                                                    // 0x000C(0x0004)
+	float                                              GravityScale;                                             // 0x0010(0x0004)
+	float                                              FireAngle;                                                // 0x0014(0x0004)
+};
+
+// ScriptStruct TgGame.TgRepInfo_Player.DeviceTeamInfo
+// 0x0028
+struct FDeviceTeamInfo
+{
+	int                                                Power;                                                    // 0x0000(0x0004)
+	int                                                Level;                                                    // 0x0004(0x0004)
+	int                                                CurrentDeviceId;                                          // 0x0008(0x0004)
+	int                                                LastKnownDeviceId[0x3];                                   // 0x000C(0x0004)
+	int                                                CurrentDeviceCount;                                       // 0x0018(0x0004)
+	int                                                LastKnownDeviceCount[0x3];                                // 0x001C(0x0004)
+};
+
+// ScriptStruct TgGame.TgRepInfo_Player.MarkedTargetInfo
+// 0x0008
+struct FMarkedTargetInfo
+{
+	int                                                PawnId;                                                   // 0x0000(0x0004)
+	int                                                Count;                                                    // 0x0004(0x0004)
+};
+
+// ScriptStruct TgGame.TgObject.sPingInfo
+// 0x0019
+struct FsPingInfo
+{
+	int                                                nPlayerId;                                                // 0x0000(0x0004)
+	float                                              fStartTime;                                               // 0x0004(0x0004)
+	struct FVector                                     vPingedLoc;                                               // 0x0008(0x000C)
+	unsigned long                                      bPinging : 1;                                             // 0x0014(0x0004)
+	TEnumAsByte<EPING_TYPE>                            eType;                                                    // 0x0018(0x0001)
+};
+
+// ScriptStruct TgGame.TgRepInfo_Player.DeckCardData
+// 0x0008
+struct FDeckCardData
+{
+	int                                                nDeviceId;                                                // 0x0000(0x0004)
+	int                                                nPlayerId;                                                // 0x0004(0x0004)
+};
+
+// ScriptStruct TgGame.TgObject.TgAbilityInfo
+// 0x0044
+struct FTgAbilityInfo
+{
+	int                                                DeviceIds[0x11];                                          // 0x0000(0x0004)
+};
+
+// ScriptStruct TgGame.TgRepInfo_Player.PlayOfTheGameEventData
+// 0x000C
+struct FPlayOfTheGameEventData
+{
+	TEnumAsByte<EPlayOfTheGameEventType>               EventType;                                                // 0x0000(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0001(0x0003) MISSED OFFSET
+	float                                              TimeStamp;                                                // 0x0004(0x0004)
+	float                                              WeightedRating;                                           // 0x0008(0x0004)
+};
+
+// ScriptStruct TgGame.TgRepInfo_Player.PlayOfTheGameEventCounter
+// 0x0014
+struct FPlayOfTheGameEventCounter
+{
+	TEnumAsByte<EPlayOfTheGameEventType>               EventType;                                                // 0x0000(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0001(0x0003) MISSED OFFSET
+	float                                              Threshold;                                                // 0x0004(0x0004)
+	float                                              Counter;                                                  // 0x0008(0x0004)
+	float                                              TimeOut;                                                  // 0x000C(0x0004)
+	float                                              Timer;                                                    // 0x0010(0x0004)
+};
+
+// ScriptStruct TgGame.TgRepInfo_Player.TrackedProjectileInitData
+// 0x0030
+struct FTrackedProjectileInitData
+{
+	int                                                FireModeID;                                               // 0x0000(0x0004)
+	int                                                ProjectileId;                                             // 0x0004(0x0004)
+	struct FVector                                     SpawnLocation;                                            // 0x0008(0x000C)
+	struct FVector                                     SpawnRotation;                                            // 0x0014(0x000C)
+	struct FVector                                     SpawnVelocity;                                            // 0x0020(0x000C)
+	float                                              SpawnServerTime;                                          // 0x002C(0x0004)
+};
+
+// ScriptStruct TgGame.TgRepInfo_Player.TrackedProjectileUpdateData
+// 0x001C
+struct FTrackedProjectileUpdateData
+{
+	struct FVector                                     Location;                                                 // 0x0000(0x000C)
+	struct FVector                                     Velocity;                                                 // 0x000C(0x000C)
+	float                                              UpdateServerTime;                                         // 0x0018(0x0004)
+};
+
+// ScriptStruct TgGame.TgRepInfo_TaskForce.TGTEAM_ENTRY
+// 0x0034
+struct FTGTEAM_ENTRY
+{
+	struct FString                                     fsName;                                                   // 0x0000(0x0010) (NeedCtorLink)
+	struct FString                                     fsMapName;                                                // 0x0010(0x0010) (NeedCtorLink)
+	int                                                nHealth;                                                  // 0x0020(0x0004)
+	int                                                nMaxHealth;                                               // 0x0024(0x0004)
+	unsigned long                                      bLeader : 1;                                              // 0x0028(0x0004)
+	class ATgRepInfo_Player*                           pPrep;                                                    // 0x002C(0x0008)
+};
+
+// ScriptStruct TgGame.TgRepInfo_TaskForce.TEAMTIMEMANAGER_ENTRY
+// 0x000C
+struct FTEAMTIMEMANAGER_ENTRY
+{
+	class UTgTimerManager*                             m_TimerManager;                                           // 0x0000(0x0008)
+	int                                                m_nDeviceId;                                              // 0x0008(0x0004)
+};
+
+// ScriptStruct TgGame.TgRepInfo_TaskForce.GLOBALEFFECT_ENTRY
+// 0x0010
+struct FGLOBALEFFECT_ENTRY
+{
+	class UTgEffectGroup*                              eg;                                                       // 0x0000(0x0008)
+	class ATgPawn*                                     pawnInstigator;                                           // 0x0008(0x0008)
+};
+
+// ScriptStruct TgGame.TgAchievement_DeviceHitCombo.DeviceHitComboEntry
+// 0x000C
+struct FDeviceHitComboEntry
+{
+	class ATgPawn_Character*                           pTarget;                                                  // 0x0000(0x0008)
+	float                                              fTime;                                                    // 0x0008(0x0004)
+};
+
+// ScriptStruct TgGame.TgAchievement_FastDamage.FastDamageEntry
+// 0x0008
+struct FFastDamageEntry
+{
+	int                                                nDamage;                                                  // 0x0000(0x0004)
+	float                                              fTime;                                                    // 0x0004(0x0004)
+};
+
+// ScriptStruct TgGame.TgAchievement_FastHealDifferentPlayers.FastHealDifferentPlayersEntry
+// 0x000C
+struct FFastHealDifferentPlayersEntry
+{
+	class ATgPawn_Character*                           pTarget;                                                  // 0x0000(0x0008)
+	float                                              fTime;                                                    // 0x0008(0x0004)
+};
+
+// ScriptStruct TgGame.TgAchievement_KillWithCombo.KillWithComboEntry
+// 0x000C
+struct FKillWithComboEntry
+{
+	class ATgPawn_Character*                           pTarget;                                                  // 0x0000(0x0008)
+	float                                              fTime;                                                    // 0x0008(0x0004)
+};
+
+// ScriptStruct TgGame.TgAchievement_MaldambaSpecificChallenge.MaldambaSpecificChallengeEntry
+// 0x0008
+struct FMaldambaSpecificChallengeEntry
+{
+	TEnumAsByte<EMaldambaSpecificChallengeEntryType>   Type;                                                     // 0x0000(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0001(0x0003) MISSED OFFSET
+	float                                              fTime;                                                    // 0x0004(0x0004)
+};
+
+// ScriptStruct TgGame.TgPawn_BarrierTank.WallPlacementInfo
+// 0x0010
+struct FWallPlacementInfo
+{
+	unsigned long                                      bIsValidLocation : 1;                                     // 0x0000(0x0004)
+	struct FVector                                     vSpawnLocation;                                           // 0x0004(0x000C)
+};
+
+// ScriptStruct TgGame.TgPawn_Blades.DjBladesFaceConfig
+// 0x0008
+struct FDjBladesFaceConfig
+{
+	float                                              fShiftX;                                                  // 0x0000(0x0004)
+	float                                              fShiftY;                                                  // 0x0004(0x0004)
+};
+
+// ScriptStruct TgGame.TgPawn_Blades.DjBladesVGSFace
+// 0x0005
+struct FDjBladesVGSFace
+{
+	int                                                nVgsId;                                                   // 0x0000(0x0004)
+	TEnumAsByte<EDjBladesFace>                         eFace;                                                    // 0x0004(0x0001)
+};
+
+// ScriptStruct TgGame.TgDevice_BombKingInhand.StickyBombPendingDetonate
+// 0x0014
+struct FStickyBombPendingDetonate
+{
+	int                                                nProjID;                                                  // 0x0000(0x0004)
+	int                                                nDeployID;                                                // 0x0004(0x0004)
+	struct FVector                                     vExplodeLocation;                                         // 0x0008(0x000C)
+};
+
+// ScriptStruct TgGame.TgPawn_Corvus.BeaconInfo
+// 0x008C
+struct FBeaconInfo
+{
+	class ATgRepInfo_Player*                           BeaconTarget;                                             // 0x0000(0x0008)
+	class ATgPawn*                                     BeaconPawn;                                               // 0x0008(0x0008)
+	struct FImpactInfo                                 BeaconImpactInfo;                                         // 0x0010(0x007C) (Component)
+};
+
+// ScriptStruct TgGame.TgDeviceForm_ArcingBeam.ArcingFXInfo
+// 0x001C
+struct FArcingFXInfo
+{
+	class AActor*                                      Source;                                                   // 0x0000(0x0008)
+	class AActor*                                      Target;                                                   // 0x0008(0x0008)
+	class UTgSpecialFx*                                ArcingFX;                                                 // 0x0010(0x0008)
+	float                                              fRemainingActiveTime;                                     // 0x0018(0x0004)
+};
+
+// ScriptStruct TgGame.TgDeploy_MoonShardTween.AffectedPawn
+// 0x001C
+struct FAffectedPawn
+{
+	class ATgPawn_Character*                           pPawn;                                                    // 0x0000(0x0008)
+	struct FVector                                     vRelativeOffsetAtGrab;                                    // 0x0008(0x000C)
+	float                                              fInvPullInTimeTotal;                                      // 0x0014(0x0004)
+	float                                              fPullInTimeLeft;                                          // 0x0018(0x0004)
+};
+
+// ScriptStruct TgGame.TgDevice_DruidRMB.DelayedImpactInfo
+// 0x0080
+struct FDelayedImpactInfo
+{
+	float                                              fDeliveryDelayRemaining;                                  // 0x0000(0x0004) (AlwaysInit)
+	struct FImpactInfo                                 Impact;                                                   // 0x0004(0x007C) (Component, AlwaysInit)
+};
+
+// ScriptStruct TgGame.TgDeviceForm_DruidRMB.DruidHealBeam
+// 0x000C
+struct FDruidHealBeam
+{
+	float                                              fDeliveryDelayRemaining;                                  // 0x0000(0x0004) (AlwaysInit)
+	class UTgBeamHelper*                               Beam;                                                     // 0x0004(0x0008) (AlwaysInit)
+};
+
+// ScriptStruct TgGame.TgProj_MoonShard.MoonShardPawnRecord
+// 0x0009
+struct FMoonShardPawnRecord
+{
+	class ATgPawn_Character*                           pCharacter;                                               // 0x0000(0x0008)
+	TEnumAsByte<EMOONSHARD_WITHIN_RANGE>               eWithin;                                                  // 0x0008(0x0001)
+};
+
+// ScriptStruct TgGame.TgPawn_Raum.RaumShard
+// 0x0018
+struct FRaumShard
+{
+	unsigned char                                      nNonce;                                                   // 0x0000(0x0001)
+	unsigned char                                      nId;                                                      // 0x0001(0x0001)
+	unsigned char                                      UnknownData00[0x2];                                       // 0x0002(0x0002) MISSED OFFSET
+	unsigned long                                      bIsActive : 1;                                            // 0x0004(0x0004)
+	unsigned long                                      bIsSucking : 1;                                           // 0x0004(0x0004)
+	float                                              fCurrentSpeed;                                            // 0x0008(0x0004)
+	float                                              fTTL;                                                     // 0x000C(0x0004)
+	class ATgRaumShard*                                aShardActor;                                              // 0x0010(0x0008)
 };
 
 // ScriptStruct TgGame.TgProj_RaumStomp.StompElement
-// 0x185B86AA800
+// 0x000C
 struct FStompElement
 {
-	unsigned char                                      UnknownData00[0x185B86AA800];                             // 0x0000(0x185B86AA800) MISSED OFFSET
+	float                                              fTangentToVelocity;                                       // 0x0000(0x0004)
+	class ATgPropActor*                                pStompRep;                                                // 0x0004(0x0008)
 };
 
 // ScriptStruct TgGame.TgProj_TigronChakram.HistoricPosition
-// 0x185B86AA980
+// 0x0010
 struct FHistoricPosition
 {
-	unsigned char                                      UnknownData00[0x185B86AA980];                             // 0x0000(0x185B86AA980) MISSED OFFSET
+	float                                              fTimestamp;                                               // 0x0000(0x0004)
+	struct FVector                                     vPosition;                                                // 0x0004(0x000C)
+};
+
+// ScriptStruct TgGame.TgDeploy_DarkConvergence.PullData
+// 0x0020
+struct FPullData
+{
+	class ATgPawn_Character*                           Character;                                                // 0x0000(0x0008)
+	struct FVector                                     SourceLocation;                                           // 0x0008(0x000C)
+	struct FVector                                     TargetLocation;                                           // 0x0014(0x000C)
+};
+
+// ScriptStruct TgGame.TgDeploy_Molotov.MolotovStrandInfo
+// 0x0028
+struct FMolotovStrandInfo
+{
+	struct FVector                                     vStartDirection;                                          // 0x0000(0x000C)
+	float                                              fAllowanceWeight;                                         // 0x000C(0x0004)
+	int                                                nHeadIndex;                                               // 0x0010(0x0004)
+	int                                                nAllowableSize;                                           // 0x0014(0x0004)
+	TArray<int>                                        nStrandTrace;                                             // 0x0018(0x0010) (NeedCtorLink)
+};
+
+// ScriptStruct TgGame.TgDeploy_Molotov.MolotovTriangleInfo
+// 0x0038
+struct FMolotovTriangleInfo
+{
+	int                                                index1;                                                   // 0x0000(0x0004)
+	int                                                index2;                                                   // 0x0004(0x0004)
+	int                                                index3;                                                   // 0x0008(0x0004)
+	int                                                neighborIndex1;                                           // 0x000C(0x0004)
+	int                                                neighborIndex2;                                           // 0x0010(0x0004)
+	int                                                neighborIndex3;                                           // 0x0014(0x0004)
+	int                                                nRank;                                                    // 0x0018(0x0004)
+	float                                              fHeatLevel;                                               // 0x001C(0x0004)
+	struct FVector                                     vTriCenter;                                               // 0x0020(0x000C)
+	struct FVector                                     vCenterDirection;                                         // 0x002C(0x000C)
+};
+
+// ScriptStruct TgGame.TgDeploy_Molotov.MolotovEligibilityRecord
+// 0x001C
+struct FMolotovEligibilityRecord
+{
+	unsigned long                                      bIsEligible : 1;                                          // 0x0000(0x0004)
+	struct FVector                                     vLocation;                                                // 0x0004(0x000C)
+	struct FVector                                     vHitNormal;                                               // 0x0010(0x000C)
+};
+
+// ScriptStruct TgGame.TgDeploy_Molotov.MolotovPointInfo
+// 0x0030
+struct FMolotovPointInfo
+{
+	struct FVector                                     vLocation;                                                // 0x0000(0x000C)
+	struct FRotator                                    rRotation;                                                // 0x000C(0x000C)
+	int                                                nEffectSpotIndex;                                         // 0x0018(0x0004)
+	float                                              fHeatLevel;                                               // 0x001C(0x0004)
+	TArray<int>                                        nTriNeighbors;                                            // 0x0020(0x0010) (NeedCtorLink)
+};
+
+// ScriptStruct TgGame.TgDeploy_Molotov.MolotovCenterInfo
+// 0x0048
+struct FMolotovCenterInfo
+{
+	int                                                ChildrenFront[0x3];                                       // 0x0000(0x0004)
+	int                                                ChildrenFrontLeft[0x3];                                   // 0x000C(0x0004)
+	int                                                ChildrenFrontRight[0x3];                                  // 0x0018(0x0004)
+	int                                                ChildrenBack[0x3];                                        // 0x0024(0x0004)
+	int                                                ChildrenBackLeft[0x3];                                    // 0x0030(0x0004)
+	int                                                ChildrenBackRight[0x3];                                   // 0x003C(0x0004)
+};
+
+// ScriptStruct TgGame.TgDeploy_Molotov.MolotovGrowthInfo
+// 0x001C
+struct FMolotovGrowthInfo
+{
+	int                                                nStrandAllotment;                                         // 0x0000(0x0004)
+	int                                                nMaxSpots;                                                // 0x0004(0x0004)
+	int                                                nMaxInitialStrands;                                       // 0x0008(0x0004)
+	float                                              fStrandGrowthFraction;                                    // 0x000C(0x0004)
+	unsigned long                                      bStrandsAreSaturated : 1;                                 // 0x0010(0x0004)
+	int                                                nCenterGrowthVariance;                                    // 0x0014(0x0004)
+	int                                                nSpreadsPerTick;                                          // 0x0018(0x0004)
+};
+
+// ScriptStruct TgGame.TgDeploy_Molotov.MolotovGeneralSettings
+// 0x0018
+struct FMolotovGeneralSettings
+{
+	struct FVector                                     vBiasDirection;                                           // 0x0000(0x000C)
+	float                                              fUpFactor;                                                // 0x000C(0x0004)
+	float                                              fSpotRadius;                                              // 0x0010(0x0004) (Const)
+	float                                              fSpotHeight;                                              // 0x0014(0x0004) (Const)
+};
+
+// ScriptStruct TgGame.TgDeviceFire_SnakeToss.RecentStunnedTarget
+// 0x000C
+struct FRecentStunnedTarget
+{
+	class AActor*                                      Target;                                                   // 0x0000(0x0008)
+	float                                              fTimestamp;                                               // 0x0008(0x0004)
+};
+
+// ScriptStruct TgGame.TgDevice_DimensionalLink.DLTeleportTargets
+// 0x0020
+struct FDLTeleportTargets
+{
+	struct FVector                                     TargetPosition;                                           // 0x0000(0x000C)
+	struct FRotator                                    TargetRotation;                                           // 0x000C(0x000C)
+	class AActor*                                      TargetIllusion;                                           // 0x0018(0x0008)
+};
+
+// ScriptStruct TgGame.TgDevice_DimensionalLink.DLDeadTeleportTargets
+// 0x001C
+struct FDLDeadTeleportTargets
+{
+	struct FVector                                     TargetPosition;                                           // 0x0000(0x000C)
+	struct FRotator                                    TargetRotation;                                           // 0x000C(0x000C)
+	float                                              ValidTimeRemaining;                                       // 0x0018(0x0004)
+};
+
+// ScriptStruct TgGame.TgDevice_DimensionalLink.DLRewindTargets
+// 0x0018
+struct FDLRewindTargets
+{
+	struct FVector                                     RewindPosition;                                           // 0x0000(0x000C)
+	struct FRotator                                    RewindRotation;                                           // 0x000C(0x000C)
+};
+
+// ScriptStruct TgGame.TgInvListener_CrackShot.CrackShotBonusDamageTarget
+// 0x000C
+struct FCrackShotBonusDamageTarget
+{
+	class AActor*                                      pTarget;                                                  // 0x0000(0x0008)
+	float                                              fBonusDamageEndTime;                                      // 0x0008(0x0004)
+};
+
+// ScriptStruct TgGame.TgDevice_LazarusInhand.HitSoundData
+// 0x000C
+struct FHitSoundData
+{
+	float                                              fAngle;                                                   // 0x0000(0x0004)
+	class AActor*                                      pHitActor;                                                // 0x0004(0x0008)
+};
+
+// ScriptStruct TgGame.TgPawn_Lazarus.BloodStoneTarget
+// 0x000C
+struct FBloodStoneTarget
+{
+	class ATgPawn*                                     pTarget;                                                  // 0x0000(0x0008)
+	float                                              fTime;                                                    // 0x0008(0x0004)
+};
+
+// ScriptStruct TgGame.TgDeviceForm_LazarusInhand.HitPawn
+// 0x0008
+struct FHitPawn
+{
+	int                                                nPawnId;                                                  // 0x0000(0x0004)
+	float                                              fTimeHit;                                                 // 0x0004(0x0004)
+};
+
+// ScriptStruct TgGame.TgInvListener_RiderShield.RiderShieldPerTargetHistory
+// 0x000C
+struct FRiderShieldPerTargetHistory
+{
+	class AActor*                                      HitTarget;                                                // 0x0000(0x0008)
+	float                                              fLockOutTime;                                             // 0x0008(0x0004)
+};
+
+// ScriptStruct TgGame.TgPawn_Rider.RiderMarkedTargetInfo
+// 0x0008
+struct FRiderMarkedTargetInfo
+{
+	int                                                nTargetPawnId;                                            // 0x0000(0x0004)
+	int                                                nMarkedCount;                                             // 0x0004(0x0004)
+};
+
+// ScriptStruct TgGame.TgDeploy_DredgeF.TargetToTeleport
+// 0x000C
+struct FTargetToTeleport
+{
+	float                                              fTime;                                                    // 0x0000(0x0004)
+	class ATgPawn*                                     pTarget;                                                  // 0x0004(0x0008)
+};
+
+// ScriptStruct TgGame.TgDevice_AtlasRMB.QueuedRewind
+// 0x0014
+struct FQueuedRewind
+{
+	class ATgPawn*                                     pTarget;                                                  // 0x0000(0x0008)
+	float                                              fDelay;                                                   // 0x0008(0x0004)
+	float                                              fDuration;                                                // 0x000C(0x0004)
+	float                                              fRate;                                                    // 0x0010(0x0004)
+};
+
+// ScriptStruct TgGame.TgPawn_Atlas.RewindingPawn
+// 0x0018
+struct FRewindingPawn
+{
+	class ATgPawn*                                     pPawn;                                                    // 0x0000(0x0008)
+	int                                                nRMBFireMode;                                             // 0x0008(0x0004)
+	float                                              fStartTime;                                               // 0x000C(0x0004)
+	float                                              fFailsafeTTL;                                             // 0x0010(0x0004)
+	int                                                nCallbackHandle;                                          // 0x0014(0x0004)
+};
+
+// ScriptStruct TgGame.TgObject.SavedRewindVals
+// 0x0024
+struct FSavedRewindVals
+{
+	float                                              fHealth;                                                  // 0x0000(0x0004)
+	struct FVector                                     vLocation;                                                // 0x0004(0x000C)
+	struct FRotator                                    rRotation;                                                // 0x0010(0x000C)
+	float                                              fTime;                                                    // 0x001C(0x0004)
+	unsigned long                                      bCollideWorld : 1;                                        // 0x0020(0x0004)
+};
+
+// ScriptStruct TgGame.TgGameplayCurvesSet_TargetAimTracking.TargetAimTrackingDebugVals
+// 0x003C
+struct FTargetAimTrackingDebugVals
+{
+	int                                                DebugState;                                               // 0x0000(0x0004)
+	struct FName                                       trackingCurveSetName;                                     // 0x0004(0x0008)
+	float                                              strengthMultiplier[0x2];                                  // 0x000C(0x0004)
+	float                                              strengthByAccuracy[0x2];                                  // 0x0014(0x0004)
+	float                                              strengthByDesiredAngle[0x2];                              // 0x001C(0x0004)
+	float                                              strengthFinal[0x2];                                       // 0x0024(0x0004)
+	float                                              rawDesiredTurnAmt[0x2];                                   // 0x002C(0x0004)
+	float                                              rawDesiredTurnAmtPerSec[0x2];                             // 0x0034(0x0004)
+};
+
+// ScriptStruct TgGame.TgCallbackContainer.FunctionWrapperInfo
+// 0x0014
+struct FFunctionWrapperInfo
+{
+	struct FPointer                                    FunctionWrapper;                                          // 0x0000(0x0008) (Native)
+	unsigned char                                      CallbackType;                                             // 0x0008(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0009(0x0003) MISSED OFFSET
+	class UTgCallbackContainer*                        HandleOwner;                                              // 0x000C(0x0008)
+};
+
+// ScriptStruct TgGame.TgObject.LootData
+// 0x0010
+struct FLootData
+{
+	int                                                nBot;                                                     // 0x0000(0x0004)
+	int                                                nTier;                                                    // 0x0004(0x0004)
+	int                                                nType;                                                    // 0x0008(0x0004)
+	int                                                nDevice;                                                  // 0x000C(0x0004)
+};
+
+// ScriptStruct TgGame.TgObject.ChargeHitInfo
+// 0x000C
+struct FChargeHitInfo
+{
+	class AActor*                                      HitActor;                                                 // 0x0000(0x0008)
+	float                                              TimeStamp;                                                // 0x0008(0x0004)
+};
+
+// ScriptStruct TgGame.TgObject.OffhandAnimation
+// 0x0014
+struct FOffhandAnimation
+{
+	struct FName                                       m_OffhandUseType;                                         // 0x0000(0x0008)
+	struct FName                                       m_AnimName;                                               // 0x0008(0x0008) (Edit)
+	unsigned long                                      m_bFullBody : 1;                                          // 0x0010(0x0004) (Edit)
+};
+
+// ScriptStruct TgGame.TgObject.DateTimeWrapper
+// 0x0008
+struct FDateTimeWrapper
+{
+	struct FQWord                                      qTime;                                                    // 0x0000(0x0008)
+};
+
+// ScriptStruct TgGame.TgObject.RewardInfo
+// 0x0018
+struct FRewardInfo
+{
+	int                                                RequestedReward;                                          // 0x0000(0x0004) (Const)
+	int                                                BoostReward;                                              // 0x0004(0x0004)
+	int                                                ActualReward;                                             // 0x0008(0x0004)
+	int                                                ActualRewardAccum;                                        // 0x000C(0x0004)
+	int                                                BoostRewardAccum;                                         // 0x0010(0x0004)
+	int                                                ErrorMessage;                                             // 0x0014(0x0004)
+};
+
+// ScriptStruct TgGame.TgObject.ObjectiveMICInfo
+// 0x0014
+struct FObjectiveMICInfo
+{
+	int                                                MyTeam;                                                   // 0x0000(0x0004)
+	float                                              AmountFilled;                                             // 0x0004(0x0004)
+	int                                                ObjStatus;                                                // 0x0008(0x0004)
+	int                                                IsContested;                                              // 0x000C(0x0004)
+	int                                                Flip;                                                     // 0x0010(0x0004)
+};
+
+// ScriptStruct TgGame.TgAIController.ThreatStruct
+// 0x000C
+struct FThreatStruct
+{
+	class AActor*                                      Threatener;                                               // 0x0000(0x0008)
+	float                                              fThreat;                                                  // 0x0008(0x0004)
+};
+
+// ScriptStruct TgGame.TgPawn.TGEQUIP_SLOTS_STRUCT
+// 0x0188
+struct FTGEQUIP_SLOTS_STRUCT
+{
+	int                                                SlotIndices[0x31];                                        // 0x0000(0x0004)
+	int                                                MiscItems[0x31];                                          // 0x00C4(0x0004)
+};
+
+// ScriptStruct TgGame.TgTimerManager.TGT_REG_LINK
+// 0x0018
+struct FTGT_REG_LINK
+{
+	struct FPointer                                    NextLink;                                                 // 0x0000(0x0008)
+	class UObject*                                     RegObject;                                                // 0x0008(0x0008)
+	class UFunction*                                   RegFunction;                                              // 0x0010(0x0008)
+};
+
+// ScriptStruct TgGame.TgTimerManager.TgTimerData
+// 0x0030
+struct FTgTimerData
+{
+	int                                                nIndex;                                                   // 0x0000(0x0004)
+	unsigned char                                      byTimer;                                                  // 0x0004(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0005(0x0003) MISSED OFFSET
+	float                                              fStartTime;                                               // 0x0008(0x0004)
+	float                                              fRemaining;                                               // 0x000C(0x0004)
+	unsigned long                                      bRepeat : 1;                                              // 0x0010(0x0004)
+	unsigned long                                      bPausedByGame : 1;                                        // 0x0010(0x0004)
+	float                                              Rate;                                                     // 0x0014(0x0004)
+	struct FTGT_REG_LINK                               CallbackRegistry;                                         // 0x0018(0x0018)
+};
+
+// ScriptStruct TgGame.TgAnimNodeSequenceByBoneRotation.AnimByRotation
+// 0x0014
+struct FAnimByRotation
+{
+	struct FRotator                                    DesiredRotation;                                          // 0x0000(0x000C) (Edit)
+	struct FName                                       AnimName;                                                 // 0x000C(0x0008) (Edit)
+};
+
+// ScriptStruct TgGame.TgChampionTickManager.ChampionEntry
+// 0x0008
+struct FChampionEntry
+{
+	int                                                m_nId;                                                    // 0x0000(0x0004)
+	float                                              m_fLastDeltaTime;                                         // 0x0004(0x0004)
+};
+
+// ScriptStruct TgGame.TgPlayerController.InventoryChangeFlags
+// 0x0004
+struct FInventoryChangeFlags
+{
+	unsigned long                                      bDevice : 1;                                              // 0x0000(0x0004)
+	unsigned long                                      bComponent : 1;                                           // 0x0000(0x0004)
+	unsigned long                                      bEquipped : 1;                                            // 0x0000(0x0004)
+	unsigned long                                      bDeviceFailed : 1;                                        // 0x0000(0x0004)
+};
+
+// ScriptStruct TgGame.TgDevice_ArcingBeam.PotentialTargetInfo
+// 0x0010
+struct FPotentialTargetInfo
+{
+	class AActor*                                      Target;                                                   // 0x0000(0x0008)
+	int                                                NumHits;                                                  // 0x0008(0x0004)
+	float                                              Dist;                                                     // 0x000C(0x0004)
+};
+
+// ScriptStruct TgGame.TgDevice_Vengeance_Lex.TargetScoreInfo
+// 0x0008
+struct FTargetScoreInfo
+{
+	int                                                Score;                                                    // 0x0000(0x0004)
+	int                                                Index;                                                    // 0x0004(0x0004)
+};
+
+// ScriptStruct TgGame.TgDeviceFire.AoeActorInRangeData
+// 0x0014
+struct FAoeActorInRangeData
+{
+	class AActor*                                      Actor;                                                    // 0x0000(0x0008)
+	struct FVector                                     Location;                                                 // 0x0008(0x000C)
+};
+
+// ScriptStruct TgGame.TgEffectDamage_AstroDOT.EffectInstanceInfo
+// 0x0008
+struct FEffectInstanceInfo
+{
+	float                                              fTimestamp;                                               // 0x0000(0x0004)
+	float                                              fDamageValue;                                             // 0x0004(0x0004)
+};
+
+// ScriptStruct TgGame.TgEffectDamage_PresenceDoT.PresenceDoTInstanceInfo
+// 0x0008
+struct FPresenceDoTInstanceInfo
+{
+	float                                              fTimestamp;                                               // 0x0000(0x0004)
+	float                                              fDamageValue;                                             // 0x0004(0x0004)
+};
+
+// ScriptStruct TgGame.TgGame_Paladins.CurrencyBonus
+// 0x000C
+struct FCurrencyBonus
+{
+	unsigned char                                      m_BonusSourceType;                                        // 0x0000(0x0001)
+	unsigned char                                      m_BonusType;                                              // 0x0001(0x0001)
+	unsigned char                                      UnknownData00[0x2];                                       // 0x0002(0x0002) MISSED OFFSET
+	float                                              m_fBonusValue;                                            // 0x0004(0x0004)
+	float                                              m_fBonusTotal;                                            // 0x0008(0x0004)
+};
+
+// ScriptStruct TgGame.TgGame_Paladins.CurrencyEntry
+// 0x0030
+struct FCurrencyEntry
+{
+	struct Fdword                                      m_dwCurrencyId;                                           // 0x0000(0x0004)
+	struct Fdword                                      m_dwCharacterId;                                          // 0x0004(0x0004)
+	float                                              m_fBaseValue;                                             // 0x0008(0x0004)
+	float                                              m_fTotal;                                                 // 0x000C(0x0004)
+	TArray<struct FCurrencyBonus>                      m_vCurrencyBonuses;                                       // 0x0010(0x0010) (AlwaysInit, NeedCtorLink)
+	unsigned char                                      m_CurrencyType;                                           // 0x0020(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0021(0x0003) MISSED OFFSET
+	struct FCurrencyBonus                              m_NullBonus;                                              // 0x0024(0x000C)
+};
+
+// ScriptStruct TgGame.TgInterpolatingCameraActor.InterpolatingCameraInfo
+// 0x0040
+struct FInterpolatingCameraInfo
+{
+	unsigned long                                      m_bInterpLocation : 1;                                    // 0x0000(0x0004) (Edit)
+	unsigned long                                      m_bInterpRotation : 1;                                    // 0x0000(0x0004) (Edit)
+	unsigned long                                      m_bInterpFOVAngle : 1;                                    // 0x0000(0x0004) (Edit)
+	struct FVector                                     m_BaseLocation;                                           // 0x0004(0x000C) (Edit)
+	struct FVector                                     m_TargetLocation;                                         // 0x0010(0x000C) (Edit)
+	struct FRotator                                    m_BaseRotation;                                           // 0x001C(0x000C) (Edit)
+	struct FRotator                                    m_TargetRotation;                                         // 0x0028(0x000C) (Edit)
+	float                                              m_fBaseFOVAngle;                                          // 0x0034(0x0004) (Edit)
+	float                                              m_fTargetFOVAngle;                                        // 0x0038(0x0004) (Edit)
+	float                                              m_fInterpSpeed;                                           // 0x003C(0x0004) (Edit)
+};
+
+// ScriptStruct TgGame.TgInventoryObject.sInventoryReq
+// 0x0010
+struct FsInventoryReq
+{
+	unsigned long                                      m_bLevelFail : 1;                                         // 0x0000(0x0004)
+	unsigned long                                      m_bSkillFail : 1;                                         // 0x0000(0x0004)
+	int                                                m_nSkillLevelReq;                                         // 0x0004(0x0004)
+	int                                                m_nSkillIdReq;                                            // 0x0008(0x0004)
+	unsigned long                                      m_bFlairFail : 1;                                         // 0x000C(0x0004)
+	unsigned long                                      m_bLocationFail : 1;                                      // 0x000C(0x0004)
+};
+
+// ScriptStruct TgGame.TgMinimapManager.MiniMapServerEntity
+// 0x0058
+struct FMiniMapServerEntity
+{
+	struct FVector                                     vLocation;                                                // 0x0000(0x000C)
+	TEnumAsByte<EMiniMapEntityType>                    eType;                                                    // 0x000C(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x000D(0x0003) MISSED OFFSET
+	int                                                nSubType;                                                 // 0x0010(0x0004)
+	int                                                nProfileId;                                               // 0x0014(0x0004)
+	TEnumAsByte<ETgMapTeam>                            Team;                                                     // 0x0018(0x0001)
+	unsigned char                                      UnknownData01[0x3];                                       // 0x0019(0x0003) MISSED OFFSET
+	int                                                nVisionRange;                                             // 0x001C(0x0004)
+	unsigned long                                      bIsDead : 1;                                              // 0x0020(0x0004)
+	class AReplicationInfo*                            RepInfo;                                                  // 0x0024(0x0008)
+	int                                                nIdx;                                                     // 0x002C(0x0004)
+	unsigned long                                      bMarked : 1;                                              // 0x0030(0x0004)
+	unsigned char                                      bVisibleOnMap;                                            // 0x0034(0x0001)
+	unsigned char                                      bVisibleBySentinel;                                       // 0x0035(0x0001)
+	unsigned char                                      UnknownData02[0x2];                                       // 0x0036(0x0002) MISSED OFFSET
+	unsigned long                                      bVisibleByDetector : 1;                                   // 0x0038(0x0004)
+	float                                              fLastPingTime;                                            // 0x003C(0x0004)
+	unsigned long                                      bRequireLOS : 1;                                          // 0x0040(0x0004)
+	unsigned long                                      bDetector : 1;                                            // 0x0040(0x0004)
+	unsigned long                                      bSentinel : 1;                                            // 0x0040(0x0004)
+	unsigned char                                      byVisionMask;                                             // 0x0044(0x0001)
+	unsigned char                                      UnknownData03[0x3];                                       // 0x0045(0x0003) MISSED OFFSET
+	float                                              fHealthPCT;                                               // 0x0048(0x0004)
+	class AActor*                                      FogOfWarArea;                                             // 0x004C(0x0008)
+	unsigned long                                      FogOfWarAreaRevealed : 1;                                 // 0x0054(0x0004)
+};
+
+// ScriptStruct TgGame.TgProj_FuriaF.FuriaFTrackingTargets
+// 0x000C
+struct FFuriaFTrackingTargets
+{
+	class AActor*                                      PotentialTarget;                                          // 0x0000(0x0008)
+	float                                              fScore;                                                   // 0x0008(0x0004)
+};
+
+// ScriptStruct TgGame.TgRepInfo_TaskForce.sPredefinedLevelDeployInfo
+// 0x0010
+struct FsPredefinedLevelDeployInfo
+{
+	int                                                m_Id;                                                     // 0x0000(0x0004)
+	struct FVector                                     m_Location;                                               // 0x0004(0x000C)
+};
+
+// ScriptStruct TgGame.TgSpecialFxLightManager.TgFxLight
+// 0x0014
+struct FTgFxLight
+{
+	struct FPointer                                    m_FxEmitter;                                              // 0x0000(0x0008)
+	class UTgSpecialFx*                                m_OwnerSpecialFx;                                         // 0x0008(0x0008)
+	float                                              m_Score;                                                  // 0x0010(0x0004)
 };
 
 }

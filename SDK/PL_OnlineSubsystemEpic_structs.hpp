@@ -7,8 +7,10 @@
 #endif
 
 #include "PL_Basic.hpp"
+#include "PL_IpDrv_classes.hpp"
+#include "PL_Core_classes.hpp"
 
-namespace Classes
+namespace SDK
 {
 }
 

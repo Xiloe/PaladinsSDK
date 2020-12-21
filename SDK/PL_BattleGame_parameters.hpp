@@ -8,11 +8,16 @@
 
 #include "PL_BattleGame_classes.hpp"
 
-namespace Classes
+namespace SDK
 {
 //---------------------------------------------------------------------------
 //Parameters
 //---------------------------------------------------------------------------
+
+// Function BattleGame.BattlePlayerController.BattlePlayerControllerFunction
+struct ABattlePlayerController_BattlePlayerControllerFunction_Params
+{
+};
 
 }
 

@@ -8,7 +8,7 @@
 
 #include "PL_XAudio2_classes.hpp"
 
-namespace Classes
+namespace SDK
 {
 //---------------------------------------------------------------------------
 //Parameters

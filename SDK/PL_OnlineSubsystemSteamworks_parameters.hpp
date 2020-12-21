@@ -8,7 +8,7 @@
 
 #include "PL_OnlineSubsystemSteamworks_classes.hpp"
 
-namespace Classes
+namespace SDK
 {
 //---------------------------------------------------------------------------
 //Parameters

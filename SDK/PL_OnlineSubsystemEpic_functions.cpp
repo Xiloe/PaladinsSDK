@@ -6,7 +6,7 @@
 
 #include "PL_OnlineSubsystemEpic_parameters.hpp"
 
-namespace Classes
+namespace SDK
 {
 //---------------------------------------------------------------------------
 //Functions

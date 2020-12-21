@@ -8,15 +8,15 @@
 
 #include "PL_OnlineSubsystemSteamworks_structs.hpp"
 
-namespace Classes
+namespace SDK
 {
 //---------------------------------------------------------------------------
 //Classes
 //---------------------------------------------------------------------------
 
 // Class OnlineSubsystemSteamworks.OnlineAuthInterfaceSteamworks
-// 0x0000
-class OnlineAuthInterfaceSteamworks
+// 0x0000 (0x0324 - 0x0324)
+class UOnlineAuthInterfaceSteamworks : public UOnlineAuthInterfaceImpl
 {
 public:
 
@@ -30,10 +30,11 @@ public:
 
 
 // Class OnlineSubsystemSteamworks.OnlineGameInterfaceSteamworks
-// 0x0000
-class OnlineGameInterfaceSteamworks
+// 0x0060 (0x03A8 - 0x0348)
+class UOnlineGameInterfaceSteamworks : public UOnlineGameInterfaceImpl
 {
 public:
+	unsigned char                                      UnknownData00[0x60];                                      // 0x0348(0x0060) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -45,10 +46,11 @@ public:
 
 
 // Class OnlineSubsystemSteamworks.OnlineSubsystemSteamworks
-// 0x0000
-class OnlineSubsystemSteamworks
+// 0x094C (0x0BD4 - 0x0288)
+class UOnlineSubsystemSteamworks : public UOnlineSubsystemCommonImpl
 {
 public:
+	unsigned char                                      UnknownData00[0x94C];                                     // 0x0288(0x094C) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -60,11 +62,12 @@ public:
 
 
 // Class OnlineSubsystemSteamworks.IpNetDriverSteamworks
-// 0x185ABC2A9C0
-class IpNetDriverSteamworks
+// 0x0014 (0x023C - 0x0228)
+class UIpNetDriverSteamworks : public UTcpNetDriver
 {
 public:
-	unsigned char                                      UnknownData00[0x185ABC2A9C0];                             // 0x0000(0x185ABC2A9C0) MISSED OFFSET
+	unsigned long                                      bSteamSocketsOnly : 1;                                    // 0x0228(0x0004) (Config)
+	unsigned char                                      UnknownData00[0x10];                                      // 0x022C(0x0010) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -76,8 +79,8 @@ public:
 
 
 // Class OnlineSubsystemSteamworks.IpNetConnectionSteamworks
-// 0x0000
-class IpNetConnectionSteamworks
+// 0x0000 (0xB130 - 0xB130)
+class UIpNetConnectionSteamworks : public UTcpipConnection
 {
 public:
 

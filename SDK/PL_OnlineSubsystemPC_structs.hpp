@@ -7,8 +7,11 @@
 #endif
 
 #include "PL_Basic.hpp"
+#include "PL_IpDrv_classes.hpp"
+#include "PL_Core_classes.hpp"
+#include "PL_Engine_classes.hpp"
 
-namespace Classes
+namespace SDK
 {
 //---------------------------------------------------------------------------
 //Enums
@@ -30,10 +33,16 @@ enum class EMuteType : uint8_t
 //---------------------------------------------------------------------------
 
 // ScriptStruct OnlineSubsystemPC.OnlineVoiceInterfacePC.LocalTalkerPC
-// 0x185BB731890
+// 0x0005
 struct FLocalTalkerPC
 {
-	unsigned char                                      UnknownData00[0x185BB731890];                             // 0x0000(0x185BB731890) MISSED OFFSET
+	unsigned long                                      bHasVoice : 1;                                            // 0x0000(0x0004)
+	unsigned long                                      bHasNetworkedVoice : 1;                                   // 0x0000(0x0004)
+	unsigned long                                      bIsRecognizingSpeech : 1;                                 // 0x0000(0x0004)
+	unsigned long                                      bWasTalking : 1;                                          // 0x0000(0x0004)
+	unsigned long                                      bIsTalking : 1;                                           // 0x0000(0x0004)
+	unsigned long                                      bIsRegistered : 1;                                        // 0x0000(0x0004)
+	TEnumAsByte<EMuteType>                             MuteType;                                                 // 0x0004(0x0001)
 };
 
 }

@@ -7,18 +7,21 @@
 #endif
 
 #include "PL_Basic.hpp"
+#include "PL_Core_classes.hpp"
+#include "PL_Engine_classes.hpp"
 
-namespace Classes
+namespace SDK
 {
 //---------------------------------------------------------------------------
 //Script Structs
 //---------------------------------------------------------------------------
 
 // ScriptStruct AkAudio.InterpTrackAkEvent.AkEventTrackKey
-// 0x185BB734950
+// 0x000C
 struct FAkEventTrackKey
 {
-	unsigned char                                      UnknownData00[0x185BB734950];                             // 0x0000(0x185BB734950) MISSED OFFSET
+	float                                              Time;                                                     // 0x0000(0x0004)
+	class UAkEvent*                                    Event;                                                    // 0x0004(0x0008) (Edit)
 };
 
 }

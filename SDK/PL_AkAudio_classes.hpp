@@ -8,18 +8,18 @@
 
 #include "PL_AkAudio_structs.hpp"
 
-namespace Classes
+namespace SDK
 {
 //---------------------------------------------------------------------------
 //Classes
 //---------------------------------------------------------------------------
 
 // Class AkAudio.ActorFactoryAkAmbientSound
-// 0x185BB734D10
-class ActorFactoryAkAmbientSound
+// 0x0008 (0x00A4 - 0x009C)
+class UActorFactoryAkAmbientSound : public UActorFactory
 {
 public:
-	unsigned char                                      UnknownData00[0x185BB734D10];                             // 0x0000(0x185BB734D10) MISSED OFFSET
+	class UAkEvent*                                    AmbientEvent;                                             // 0x009C(0x0008) (Edit)
 
 	static UClass* StaticClass()
 	{
@@ -31,11 +31,14 @@ public:
 
 
 // Class AkAudio.AkAmbientSound
-// 0x185BB49F950
-class AkAmbientSound
+// 0x000C (0x0294 - 0x0288)
+class AAkAmbientSound : public AKeypoint
 {
 public:
-	unsigned char                                      UnknownData00[0x185BB49F950];                             // 0x0000(0x185BB49F950) MISSED OFFSET
+	unsigned long                                      bAutoPlay : 1;                                            // 0x0288(0x0004)
+	unsigned long                                      StopWhenOwnerIsDestroyed : 1;                             // 0x0288(0x0004) (Edit)
+	unsigned long                                      bIsPlaying : 1;                                           // 0x0288(0x0004) (Transient)
+	class UAkEvent*                                    PlayEvent;                                                // 0x028C(0x0008) (Edit)
 
 	static UClass* StaticClass()
 	{
@@ -43,15 +46,22 @@ public:
 		return ptr;
 	}
 
+
+	void StopPlayback();
+	void StartPlayback();
 };
 
 
 // Class AkAudio.AkComponent
-// 0x185BB734890
-class AkComponent
+// 0x0017 (0x009C - 0x0085)
+class UAkComponent : public UActorComponent
 {
 public:
-	unsigned char                                      UnknownData00[0x185BB734890];                             // 0x0000(0x185BB734890) MISSED OFFSET
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0085(0x0003) MISSED OFFSET
+	struct FName                                       BoneName;                                                 // 0x0088(0x0008) (Edit)
+	class UAkEvent*                                    AutoPlayEvent;                                            // 0x0090(0x0008)
+	unsigned long                                      bStopWhenOwnerDestroyed : 1;                              // 0x0098(0x0004)
+	unsigned long                                      bRegisteredWithWwise : 1;                                 // 0x0098(0x0004) (Transient)
 
 	static UClass* StaticClass()
 	{
@@ -63,11 +73,11 @@ public:
 
 
 // Class AkAudio.InterpTrackAkEvent
-// 0x185BB733ED0
-class InterpTrackAkEvent
+// 0x0010 (0x00B0 - 0x00A0)
+class UInterpTrackAkEvent : public UInterpTrack
 {
 public:
-	unsigned char                                      UnknownData00[0x185BB733ED0];                             // 0x0000(0x185BB733ED0) MISSED OFFSET
+	TArray<struct FAkEventTrackKey>                    AkEvents;                                                 // 0x00A0(0x0010) (NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -79,11 +89,11 @@ public:
 
 
 // Class AkAudio.InterpTrackAkRTPC
-// 0x185BB732E50
-class InterpTrackAkRTPC
+// 0x0010 (0x00C8 - 0x00B8)
+class UInterpTrackAkRTPC : public UInterpTrackFloatBase
 {
 public:
-	unsigned char                                      UnknownData00[0x185BB732E50];                             // 0x0000(0x185BB732E50) MISSED OFFSET
+	struct FString                                     Param;                                                    // 0x00B8(0x0010) (Edit, NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -95,11 +105,11 @@ public:
 
 
 // Class AkAudio.InterpTrackInstAkEvent
-// 0x185BB732310
-class InterpTrackInstAkEvent
+// 0x0004 (0x0064 - 0x0060)
+class UInterpTrackInstAkEvent : public UInterpTrackInst
 {
 public:
-	unsigned char                                      UnknownData00[0x185BB732310];                             // 0x0000(0x185BB732310) MISSED OFFSET
+	float                                              LastUpdatePosition;                                       // 0x0060(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -111,8 +121,8 @@ public:
 
 
 // Class AkAudio.InterpTrackInstAkRTPC
-// 0x0000
-class InterpTrackInstAkRTPC
+// 0x0000 (0x0060 - 0x0060)
+class UInterpTrackInstAkRTPC : public UInterpTrackInst
 {
 public:
 
@@ -126,8 +136,8 @@ public:
 
 
 // Class AkAudio.SeqAct_AkClearBanks
-// 0x0000
-class SeqAct_AkClearBanks
+// 0x0000 (0x0108 - 0x0108)
+class USeqAct_AkClearBanks : public USequenceAction
 {
 public:
 
@@ -141,11 +151,14 @@ public:
 
 
 // Class AkAudio.SeqAct_AkLoadBank
-// 0x185BB734A10
-class SeqAct_AkLoadBank
+// 0x0010 (0x0130 - 0x0120)
+class USeqAct_AkLoadBank : public USeqAct_Latent
 {
 public:
-	unsigned char                                      UnknownData00[0x185BB734A10];                             // 0x0000(0x185BB734A10) MISSED OFFSET
+	unsigned long                                      Async : 1;                                                // 0x0120(0x0004) (Edit)
+	unsigned long                                      bWaitingCallback : 1;                                     // 0x0120(0x0004) (Transient)
+	class UAkBank*                                     Bank;                                                     // 0x0124(0x0008) (Edit)
+	int                                                Signal;                                                   // 0x012C(0x0004) (Transient)
 
 	static UClass* StaticClass()
 	{
@@ -157,11 +170,12 @@ public:
 
 
 // Class AkAudio.SeqAct_AkPostEvent
-// 0x185BB7326D0
-class SeqAct_AkPostEvent
+// 0x000C (0x012C - 0x0120)
+class USeqAct_AkPostEvent : public USeqAct_Latent
 {
 public:
-	unsigned char                                      UnknownData00[0x185BB7326D0];                             // 0x0000(0x185BB7326D0) MISSED OFFSET
+	int                                                Signal;                                                   // 0x0120(0x0004) (Transient)
+	class UAkEvent*                                    Event;                                                    // 0x0124(0x0008) (Edit)
 
 	static UClass* StaticClass()
 	{
@@ -173,11 +187,11 @@ public:
 
 
 // Class AkAudio.SeqAct_AkPostTrigger
-// 0x185BB732850
-class SeqAct_AkPostTrigger
+// 0x0010 (0x0118 - 0x0108)
+class USeqAct_AkPostTrigger : public USequenceAction
 {
 public:
-	unsigned char                                      UnknownData00[0x185BB732850];                             // 0x0000(0x185BB732850) MISSED OFFSET
+	struct FString                                     Trigger;                                                  // 0x0108(0x0010) (Edit, NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -189,11 +203,13 @@ public:
 
 
 // Class AkAudio.SeqAct_AkSetRTPCValue
-// 0x185BB733510
-class SeqAct_AkSetRTPCValue
+// 0x0018 (0x0138 - 0x0120)
+class USeqAct_AkSetRTPCValue : public USeqAct_Latent
 {
 public:
-	unsigned char                                      UnknownData00[0x185BB733510];                             // 0x0000(0x185BB733510) MISSED OFFSET
+	struct FString                                     Param;                                                    // 0x0120(0x0010) (Edit, NeedCtorLink)
+	float                                              Value;                                                    // 0x0130(0x0004) (Edit)
+	unsigned long                                      Running : 1;                                              // 0x0134(0x0004) (Transient)
 
 	static UClass* StaticClass()
 	{
@@ -205,11 +221,12 @@ public:
 
 
 // Class AkAudio.SeqAct_AkSetState
-// 0x185BB734410
-class SeqAct_AkSetState
+// 0x0020 (0x0128 - 0x0108)
+class USeqAct_AkSetState : public USequenceAction
 {
 public:
-	unsigned char                                      UnknownData00[0x185BB734410];                             // 0x0000(0x185BB734410) MISSED OFFSET
+	struct FString                                     StateGroup;                                               // 0x0108(0x0010) (Edit, NeedCtorLink)
+	struct FString                                     State;                                                    // 0x0118(0x0010) (Edit, NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -221,11 +238,12 @@ public:
 
 
 // Class AkAudio.SeqAct_AkSetSwitch
-// 0x185BB733990
-class SeqAct_AkSetSwitch
+// 0x0020 (0x0128 - 0x0108)
+class USeqAct_AkSetSwitch : public USequenceAction
 {
 public:
-	unsigned char                                      UnknownData00[0x185BB733990];                             // 0x0000(0x185BB733990) MISSED OFFSET
+	struct FString                                     SwitchGroup;                                              // 0x0108(0x0010) (Edit, NeedCtorLink)
+	struct FString                                     Switch;                                                   // 0x0118(0x0010) (Edit, NeedCtorLink)
 
 	static UClass* StaticClass()
 	{
@@ -237,8 +255,8 @@ public:
 
 
 // Class AkAudio.SeqAct_AkStartAmbientSound
-// 0x0000
-class SeqAct_AkStartAmbientSound
+// 0x0000 (0x0108 - 0x0108)
+class USeqAct_AkStartAmbientSound : public USequenceAction
 {
 public:
 
@@ -252,8 +270,8 @@ public:
 
 
 // Class AkAudio.SeqAct_AkStopAll
-// 0x0000
-class SeqAct_AkStopAll
+// 0x0000 (0x0108 - 0x0108)
+class USeqAct_AkStopAll : public USequenceAction
 {
 public:
 
@@ -267,10 +285,11 @@ public:
 
 
 // Class AkAudio.AkAudioDevice
-// 0x0000
-class AkAudioDevice
+// 0x0018 (0x0080 - 0x0068)
+class UAkAudioDevice : public USubsystem
 {
 public:
+	unsigned char                                      UnknownData00[0x18];                                      // 0x0068(0x0018) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{

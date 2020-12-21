@@ -8,15 +8,15 @@
 
 #include "PL_BattleGame_structs.hpp"
 
-namespace Classes
+namespace SDK
 {
 //---------------------------------------------------------------------------
 //Classes
 //---------------------------------------------------------------------------
 
 // Class BattleGame.BattleObject
-// 0x0000
-class BattleObject
+// 0x0000 (0x0060 - 0x0060)
+class UBattleObject : public UTgObject
 {
 public:
 
@@ -30,11 +30,10 @@ public:
 
 
 // Class BattleGame.BattlePlayerController
-// 0x185B665C250
-class BattlePlayerController
+// 0x0000 (0x1624 - 0x1624)
+class ABattlePlayerController : public ATgPlayerController
 {
 public:
-	unsigned char                                      UnknownData00[0x185B665C250];                             // 0x0000(0x185B665C250) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -42,6 +41,8 @@ public:
 		return ptr;
 	}
 
+
+	void BattlePlayerControllerFunction();
 };
 
 
