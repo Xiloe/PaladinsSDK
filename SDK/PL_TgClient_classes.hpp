@@ -1,6 +1,6 @@
 #pragma once
 
-// Paladins (3.05) SDK
+// Paladins (4.1.3942.2) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -72,11 +72,11 @@ public:
 	void Alert();
 	void STATIC_SetContainer(class UUIWebBrowser* pContainer);
 	void STATIC_ResizeView();
-	void Close();
+	void STATIC_Close();
 	void STATIC_OpenVideo(const struct FString& URL, bool bAddName);
-	void OpenURL(const struct FString& URL, bool bShowNavButtons, bool bSetFocus);
-	void STATIC_ExternalOpenURL(const struct FString& URL, bool bAddLang);
-	bool STATIC_IsBrowserLoaded();
+	void STATIC_OpenURL(const struct FString& URL, bool bShowNavButtons, bool bSetFocus);
+	void ExternalOpenURL(const struct FString& URL, bool bAddLang);
+	bool IsBrowserLoaded();
 };
 
 
@@ -145,8 +145,8 @@ public:
 
 
 	void STATIC_TestShowCursor(bool bShow);
-	void STATIC_DebugPictureInPicture();
-	void STATIC_CreateTestPortraits(class UPComPictureInPictureScene* Scene, const struct FVector& ViewOffset, const struct FVector& LookAtOffset, float FOV, struct FString* BotName);
+	void DebugPictureInPicture();
+	void CreateTestPortraits(class UPComPictureInPictureScene* Scene, const struct FVector& ViewOffset, const struct FVector& LookAtOffset, float FOV, struct FString* BotName);
 	void STATIC_TestPictureInPicturePortraits(const struct FString& BotName);
 	void STATIC_TestPictureInPictureBasic();
 	void PostRender();
@@ -155,22 +155,22 @@ public:
 	void STATIC_SetGamepadForced(bool bEnabled);
 	void STATIC_TogglePushToTalk(bool bEnable);
 	void STATIC_ToggleDevMenu();
-	void STATIC_LogLTIPrices(int nLTI);
-	void STATIC_LogItemPrices(int nItemId);
-	void STATIC_DumpScenesToLog();
+	void LogLTIPrices(int nLTI);
+	void LogItemPrices(int nItemId);
+	void DumpScenesToLog();
 	void STATIC_TestDidIt(int nActivityId, int nCount);
 	void STATIC_ResetViewCenterPoint();
-	void STATIC_ShowHUD();
+	void ShowHUD();
 	void HideHUD();
 	void STATIC_ToggleHUD();
 	bool STATIC_TryToBack();
-	void ShowHit(class AActor* Target, float fDamageAmount, bool bIsShieldHit, struct FExtraDamageInfo* ExtraInfo);
-	void ShowCursor(bool bShow);
-	void EndDoubleClick();
+	void STATIC_ShowHit(class AActor* Target, float fDamageAmount, bool bIsShieldHit, struct FExtraDamageInfo* ExtraInfo);
+	void STATIC_ShowCursor(bool bShow);
+	void STATIC_EndDoubleClick();
 	bool IsLoggedIn();
-	bool IsInGame();
+	bool STATIC_IsInGame();
 	bool STATIC_RemoveSceneFromStack(class UTgGfxScene* pScene, bool bPopAll);
-	void STATIC_ClearScenes(unsigned char ePreviousState, unsigned char eTargetState);
+	void ClearScenes(unsigned char ePreviousState, unsigned char eTargetState);
 	bool STATIC_PopScene(int nIndex);
 	bool STATIC_PushScene(const struct FString& sName, bool bSkipPrivilegeCheck);
 	void Initialize();
@@ -219,24 +219,24 @@ public:
 	}
 
 
-	void usc_Unsubscribe();
-	void usc_Subscribe();
+	void STATIC_usc_Unsubscribe();
+	void STATIC_usc_Subscribe();
 	void usc_Unsubscribe_Delegate();
 	void usc_Subscribe_Delegate();
-	class ATgPlayerController* STATIC_GetPlayerController();
+	class ATgPlayerController* GetPlayerController();
 	void STATIC_NotifyMapChange();
-	bool STATIC_IsSubscribed();
-	void SetDirty();
-	bool STATIC_GetField(const struct FString& FieldName, struct FASValue* NewValue);
+	bool IsSubscribed();
+	void STATIC_SetDirty();
+	bool GetField(const struct FString& FieldName, struct FASValue* NewValue);
 	bool STATIC_SetField(const struct FString& FieldName, bool bCreateIfMissing, struct FASValue* NewValue);
-	void STATIC_AddField(const struct FString& FieldName, struct FASValue* NewValue);
-	void ClearDelegates();
+	void AddField(const struct FString& FieldName, struct FASValue* NewValue);
+	void STATIC_ClearDelegates();
 	void STATIC_SetDelegates();
 	void STATIC_RemoveChild(class UTgDataChunk* Child, bool bClearDelegates);
-	void STATIC_AddChild(class UTgDataChunk* Child);
-	void STATIC_DataUpdateEvent();
+	void AddChild(class UTgDataChunk* Child);
+	void DataUpdateEvent();
 	void Update(float DeltaTime, bool bSkipCallback);
-	void STATIC_InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk);
+	void InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk);
 };
 
 
@@ -257,7 +257,7 @@ public:
 
 	void STATIC_NotifyMapChange();
 	void Update(float DeltaTime);
-	void STATIC_InitializeDataHandler(class UUIMoviePlayer* mp);
+	void InitializeDataHandler(class UUIMoviePlayer* mp);
 };
 
 
@@ -326,10 +326,10 @@ public:
 	void GetSubtitleRegion(struct FVector2D* MinPos, struct FVector2D* MaxPos);
 	void PostRender(class UCanvas* Canvas);
 	void GameSessionEnded();
-	void STATIC_InitTgGameViewportClient();
-	bool STATIC_IsGfxMovieCapturingMouseInput();
+	void InitTgGameViewportClient();
+	bool IsGfxMovieCapturingMouseInput();
 	void STATIC_NativeGameSessionEnded();
-	void DrawTransition(class UCanvas* Canvas);
+	void STATIC_DrawTransition(class UCanvas* Canvas);
 };
 
 
@@ -407,36 +407,36 @@ public:
 
 
 	void Reinit();
-	void STATIC_ASC_Reinit();
+	void ASC_Reinit();
 	void ErrorFeedback(const struct FString& ErrMsg);
-	void STATIC_ASC_ErrorFeedback(const struct FString& ErrMsg);
-	void USC_Resize(class UGFxObject* pObj);
-	void USC_ToggleDND();
-	void USC_UpdateStatusMessage(const struct FString& sStatus);
-	void USC_InviteToClan(const struct FString& sPlayerName);
-	void USC_BlockByString(const struct FString& sPlayerName);
-	void USC_InviteFriendByString(const struct FString& sPlayerName);
-	void USC_AddPlayerNote(int nPlayerId, const struct FString& sPlayerNote);
-	void USC_RemoveBlocked(int nPlayerId);
-	void USC_PartyKick(int nPlayerId);
-	void USC_PartyInvite(int nPlayerId);
-	void USC_WatchFriend(int nPlayerId);
-	void USC_SpectatePlayer(int nPlayerId);
-	void USC_ViewPlayerClan();
-	void USC_ViewPlayerProfile(const struct FString& sPlayerName);
-	void USC_CancelAllFriendRequests();
-	void USC_CancelFriendRequest(int nPlayerId);
-	void USC_AcceptAllFriendRequests();
-	void USC_AcceptFriendRequest(int nPlayerId);
-	void USC_CancelClanInvite(int nClanId);
-	void USC_AcceptClanInvite(int nClanId);
-	void USC_CancelInvite(int nPlayerId);
-	void USC_InviteFriend(int nPlayerId);
-	void USC_GetListData(int nId);
-	void USC_SearchByString(const struct FString& PlayerName);
-	void USC_MessageFriend(int nPlayerId, const struct FString& sPlayerName);
-	void USC_RemoveFriend(int nPlayerId);
-	void USC_GetFriendsData();
+	void ASC_ErrorFeedback(const struct FString& ErrMsg);
+	void STATIC_USC_Resize(class UGFxObject* pObj);
+	void STATIC_USC_ToggleDND();
+	void STATIC_USC_UpdateStatusMessage(const struct FString& sStatus);
+	void STATIC_USC_InviteToClan(const struct FString& sPlayerName);
+	void STATIC_USC_BlockByString(const struct FString& sPlayerName);
+	void STATIC_USC_InviteFriendByString(const struct FString& sPlayerName);
+	void STATIC_USC_AddPlayerNote(int nPlayerId, const struct FString& sPlayerNote);
+	void STATIC_USC_RemoveBlocked(int nPlayerId);
+	void STATIC_USC_PartyKick(int nPlayerId);
+	void STATIC_USC_PartyInvite(int nPlayerId);
+	void STATIC_USC_WatchFriend(int nPlayerId);
+	void STATIC_USC_SpectatePlayer(int nPlayerId);
+	void STATIC_USC_ViewPlayerClan();
+	void STATIC_USC_ViewPlayerProfile(const struct FString& sPlayerName);
+	void STATIC_USC_CancelAllFriendRequests();
+	void STATIC_USC_CancelFriendRequest(int nPlayerId);
+	void STATIC_USC_AcceptAllFriendRequests();
+	void STATIC_USC_AcceptFriendRequest(int nPlayerId);
+	void STATIC_USC_CancelClanInvite(int nClanId);
+	void STATIC_USC_AcceptClanInvite(int nClanId);
+	void STATIC_USC_CancelInvite(int nPlayerId);
+	void STATIC_USC_InviteFriend(int nPlayerId);
+	void STATIC_USC_GetListData(int nId);
+	void STATIC_USC_SearchByString(const struct FString& PlayerName);
+	void STATIC_USC_MessageFriend(int nPlayerId, const struct FString& sPlayerName);
+	void STATIC_USC_RemoveFriend(int nPlayerId);
+	void STATIC_USC_GetFriendsData();
 	void USC_Resize_Delegate(class UGFxObject* pObj);
 	void USC_ToggleDND_Delegate();
 	void USC_UpdateStatusMessage_Delegate(const struct FString& sStatus);
@@ -513,26 +513,26 @@ public:
 	}
 
 
-	struct FString STATIC_GetFeatureDescription(int Count);
-	struct FString STATIC_GetFeatureName(int Count);
-	bool STATIC_HaveFeature();
-	bool STATIC_IsLiveAtIndex(int Index);
-	struct FString STATIC_GetDescriptionAtIndex(int Index);
-	struct FString STATIC_GetViewersAtIndex(int Index);
-	struct FString STATIC_GetTitleAtIndex(int Index);
-	bool STATIC_IsStream(int Index);
-	int STATIC_GetTypeCountWatching(TEnumAsByte<ESTREAMTYPE> Type);
-	int STATIC_GetTypeCount(TEnumAsByte<ESTREAMTYPE> Type);
+	struct FString GetFeatureDescription(int Count);
+	struct FString GetFeatureName(int Count);
+	bool HaveFeature();
+	bool IsLiveAtIndex(int Index);
+	struct FString GetDescriptionAtIndex(int Index);
+	struct FString GetViewersAtIndex(int Index);
+	struct FString GetTitleAtIndex(int Index);
+	bool IsStream(int Index);
+	int GetTypeCountWatching(TEnumAsByte<ESTREAMTYPE> Type);
+	int GetTypeCount(TEnumAsByte<ESTREAMTYPE> Type);
 	int LiveSort(const struct FGameStream& A, const struct FGameStream& B);
 	int FeaturedSort(const struct FGameStream& A, const struct FGameStream& B);
 	int ViewerSort(const struct FGameStream& A, const struct FGameStream& B);
 	void ResolveChannelName(const struct FString& sChannel);
 	void CompleteUpdate();
 	bool ViewStreamIndex(int surfaceId, int Index, bool external, float X, float Y, float Width, float Height, float widthReal, float heightReal, bool joinChat);
-	bool STATIC_HasSpecialStreams();
+	bool HasSpecialStreams();
 	bool STATIC_OpenPlayerStream(int nPlayerId, bool external, float X, float Y, float Width, float Height, float widthReal, float heightReal);
 	bool STATIC_OpenStream(int surfaceId, const struct FString& URL, bool external, float X, float Y, float Width, float Height, float widthReal, float heightReal, bool joinChat);
-	void STATIC_LoadStreams();
+	void LoadStreams();
 };
 
 
@@ -556,11 +556,11 @@ public:
 
 
 	bool IsPaused();
-	bool STATIC_IsRunning();
-	void STATIC_EventCallback(int nTimerId, TEnumAsByte<ETGT_EVENT> eEvent);
-	void STATIC_ExpireTimer(bool bFromCallback);
-	void UpdateTimer(float fElapsed, float fTotal, bool bPaused, bool bFromCallback);
-	void STATIC_StartTimer(float fSeconds);
+	bool IsRunning();
+	void EventCallback(int nTimerId, TEnumAsByte<ETGT_EVENT> eEvent);
+	void ExpireTimer(bool bFromCallback);
+	void STATIC_UpdateTimer(float fElapsed, float fTotal, bool bPaused, bool bFromCallback);
+	void StartTimer(float fSeconds);
 };
 
 
@@ -621,7 +621,7 @@ public:
 
 
 	void SendGraphData(class UGFxObject* Obj);
-	void UpdateGraph();
+	void STATIC_UpdateGraph();
 	void Initialize(class UUIGameMoviePlayer* pParentMovie);
 };
 
@@ -676,30 +676,30 @@ public:
 
 
 	void SetMarketplaceVisibility(bool Visible, unsigned char IconPosition);
-	void usc_ClipboardCopy(const struct FString& Str);
-	struct FString usc_ClipboardPaste();
-	void STATIC_InitOSSRef();
+	void STATIC_usc_ClipboardCopy(const struct FString& Str);
+	struct FString STATIC_usc_ClipboardPaste();
+	void InitOSSRef();
 	void Init(class ULocalPlayer* LocPlay);
-	bool usc_IME_Exists();
-	bool usc_IME_SetEnabled(bool bEnabled);
-	struct FString usc_TranslateMsg(const struct FString& Identifier, const struct FString& SectionName);
-	struct FString usc_TranslateMsgId(int nId);
+	bool STATIC_usc_IME_Exists();
+	bool STATIC_usc_IME_SetEnabled(bool bEnabled);
+	struct FString STATIC_usc_TranslateMsg(const struct FString& Identifier, const struct FString& SectionName);
+	struct FString STATIC_usc_TranslateMsgId(int nId);
 	void STATIC_ShowTransitionScene(bool bShow);
-	void usc_toggle_key_capture(bool bCapture);
-	void usc_toggle_cursor(bool bShow);
-	void usc_Console_Command(const struct FString& Cmd);
-	void usc_Data_Handler_Created();
+	void STATIC_usc_toggle_key_capture(bool bCapture);
+	void STATIC_usc_toggle_cursor(bool bShow);
+	void STATIC_usc_Console_Command(const struct FString& Cmd);
+	void STATIC_usc_Data_Handler_Created();
 	void STATIC_QuitGame();
 	void UnregisterEngineCallbacks();
-	void RegisterEngineCallbacks();
-	struct FString STATIC_GetTranslatedKeyBind(const struct FString& Command, int nAlternate, bool bLocalizeKB, bool bLocalizeMouse, bool bLocalizeGamepad);
-	void UpdateViewportForSafeAreas();
+	void STATIC_RegisterEngineCallbacks();
+	struct FString GetTranslatedKeyBind(const struct FString& Command, int nAlternate, bool bLocalizeKB, bool bLocalizeMouse, bool bLocalizeGamepad);
+	void STATIC_UpdateViewportForSafeAreas();
 	void STATIC_NativeTick(float DeltaTime);
-	void STATIC_InitializeDataHandler();
+	void InitializeDataHandler();
 	void PostInit();
 	void OnClose();
 	class ATgPlayerController* GetPlayerOwner();
-	class ATgClientHUD* STATIC_GetHUD();
+	class ATgClientHUD* GetHUD();
 };
 
 
@@ -720,11 +720,11 @@ public:
 	bool FilterButtonInput(int ControllerId, const struct FName& ButtonName, TEnumAsByte<EInputEvent> Event);
 	void OnClose();
 	void PostInit();
-	void usc_FillCommands(const struct FString& MenuName);
-	void STATIC_AddSubMenu(const struct FString& Section, const struct FString& submenuname, const struct FString& DisplayName);
-	void STATIC_AddCommand(const struct FString& Section, const struct FString& Command, const struct FString& DisplayName);
-	void STATIC_FillSubMenuCommands(const struct FString& submenuname);
-	void STATIC_FillMenuCommands();
+	void STATIC_usc_FillCommands(const struct FString& MenuName);
+	void AddSubMenu(const struct FString& Section, const struct FString& submenuname, const struct FString& DisplayName);
+	void AddCommand(const struct FString& Section, const struct FString& Command, const struct FString& DisplayName);
+	void FillSubMenuCommands(const struct FString& submenuname);
+	void FillMenuCommands();
 };
 
 
@@ -747,7 +747,7 @@ public:
 
 	void OnClose();
 	void PostInit();
-	void UpdateViewportForSafeAreas();
+	void STATIC_UpdateViewportForSafeAreas();
 };
 
 
@@ -2946,13 +2946,13 @@ public:
 	}
 
 
-	struct Fdword STATIC_GetLoreCompleteCount();
-	struct Fdword STATIC_GetLoreProgress();
-	int STATIC_GetDailyLoginBonusDay();
-	int STATIC_GetDailyLoginsCount();
-	class UUIData_Quest* STATIC_GetLoreQuest();
-	class UUIData_Quest* STATIC_GetDailyLoginsQuest();
-	class UUIData_Quest* STATIC_GetChampionQuest();
+	struct Fdword GetLoreCompleteCount();
+	struct Fdword GetLoreProgress();
+	int GetDailyLoginBonusDay();
+	int GetDailyLoginsCount();
+	class UUIData_Quest* GetLoreQuest();
+	class UUIData_Quest* GetDailyLoginsQuest();
+	class UUIData_Quest* GetChampionQuest();
 };
 
 
@@ -3019,7 +3019,7 @@ public:
 	}
 
 
-	void StoreOfflineData();
+	void STATIC_StoreOfflineData();
 };
 
 
@@ -3354,7 +3354,7 @@ public:
 	}
 
 
-	void STATIC_Draw(class UCanvas* DestinationCanvas, float BlindnessFactor);
+	void Draw(class UCanvas* DestinationCanvas, float BlindnessFactor);
 };
 
 
@@ -3393,29 +3393,29 @@ public:
 
 
 	void AddNamedAreas();
-	void PlayDeviceFailResponse(TEnumAsByte<EDeviceFailType> failType, bool IsAbility);
-	void ShowTargetingMap(bool bShow);
-	void STATIC_HoverMap(float X, float Y, const struct FString& MapName);
-	void PingMap(float X, float Y, const struct FString& Type, const struct FString& MapName);
-	class UTgMiniMap* STATIC_GetMapByName(const struct FString& MapName);
-	void UpdateMMTimer(float fNew);
+	void STATIC_PlayDeviceFailResponse(TEnumAsByte<EDeviceFailType> failType, bool IsAbility);
+	void STATIC_ShowTargetingMap(bool bShow);
+	void HoverMap(float X, float Y, const struct FString& MapName);
+	void STATIC_PingMap(float X, float Y, const struct FString& Type, const struct FString& MapName);
+	class UTgMiniMap* GetMapByName(const struct FString& MapName);
+	void STATIC_UpdateMMTimer(float fNew);
 	void STATIC_SetCosmeticWheelVarsMouse(float fSelectionDelay, bool bAllowInnerSelection, float fDeselectionDelay);
 	void STATIC_SetCosmeticWheelVarsGamepad(float fSelectionDelay, bool bAllowInnerSelection, float fDeselectionDelay);
-	void STATIC_DrawMiniMap(class UCanvas* theCanvas);
+	void DrawMiniMap(class UCanvas* theCanvas);
 	void PreDemoRewind();
 	void PostRender();
 	void PostBeginPlay();
-	void STATIC_AddNamedArea(class ATgNamedPOIActor* pPOI, int nCount);
+	void AddNamedArea(class ATgNamedPOIActor* pPOI, int nCount);
 	void STATIC_PrecacheSpray(int nSprayId);
 	void STATIC_PrecacheMountSkin(int nMountSkinId);
 	void STATIC_PrecacheVoicePack(int nVoicePackId);
-	void STATIC_CleanupPotGClassModel();
-	void STATIC_ChangePotGCameraTransform(float fXOffset, float fYOffset, float fZOffset, float fYawOffset, float fPitchOffset, float fRollOffset);
-	void STATIC_EnablePotGCamera(bool bEnabled);
-	void STATIC_ChangePotGClassModel(int nIndex, int nClassId, int nSkinId, int nDeviceId, int nDeviceSkinId, TEnumAsByte<ELobbyAnimPose> pose, bool bAsync);
+	void CleanupPotGClassModel();
+	void ChangePotGCameraTransform(float fXOffset, float fYOffset, float fZOffset, float fYawOffset, float fPitchOffset, float fRollOffset);
+	void EnablePotGCamera(bool bEnabled);
+	void ChangePotGClassModel(int nIndex, int nClassId, int nSkinId, int nDeviceId, int nDeviceSkinId, TEnumAsByte<ELobbyAnimPose> pose, bool bAsync);
 	void STATIC_ToggleDeathRecap();
 	void STATIC_ToggleScoreBoard(bool bAcceptsInput);
-	void ViewScoreboard(bool bShow, bool bAcceptsInput, class UTgGfxScene* pScene);
+	void STATIC_ViewScoreboard(bool bShow, bool bAcceptsInput, class UTgGfxScene* pScene);
 	void STATIC_ToggleMinimap();
 	void STATIC_ToggleVGS();
 	void STATIC_PurchaseCard(int nId);
@@ -3423,20 +3423,20 @@ public:
 	void STATIC_OpenBurnMenu();
 	void STATIC_ToggleCosmeticWheel();
 	void STATIC_OpenCosmeticWheel(bool bShouldOpen);
-	void OnRoundSetupStarted();
+	void STATIC_OnRoundSetupStarted();
 	void UpdateRoundSetupTimer(float SetupTimeRemaining, float TimeStamp);
 	void EndMission(bool bPlayerAttacker, TEnumAsByte<EGAME_WIN_STATE> finalWinState);
-	void PingWorldLocation(const struct FVector& PingLocation, TEnumAsByte<EPING_TYPE> Type);
+	void STATIC_PingWorldLocation(const struct FVector& PingLocation, TEnumAsByte<EPING_TYPE> Type);
 	void UpdateReleaseTimeRemaining(float fTimeRemaining);
 	void UpdatePlayerReady(class ATgRepInfo_Player* PRI);
 	bool UpdatePlayerStatUI(class ATgPawn* changedPawn);
-	void UpdateHoverTarget();
-	void UpdateDebugDraws();
+	void STATIC_UpdateHoverTarget();
+	void STATIC_UpdateDebugDraws();
 	void UpdateOverlay();
-	void STATIC_InitOverlayMoviePlayer();
+	void InitOverlayMoviePlayer();
 	void STATIC_PostRenderDebugDraws();
-	bool STATIC_FinishIntro();
-	void PlayIntro();
+	bool FinishIntro();
+	void STATIC_PlayIntro();
 };
 
 
@@ -3459,7 +3459,7 @@ public:
 
 
 	void STATIC_ToggleCursor(bool bEnabled);
-	bool ValidateSceneForSpectate(const struct FString& SceneName);
+	bool STATIC_ValidateSceneForSpectate(const struct FString& SceneName);
 	void STATIC_ToggleHUD();
 	void Tick(float DeltaTime);
 	void STATIC_SetVisibilityMode(unsigned char Mode);
@@ -3470,8 +3470,8 @@ public:
 	void STATIC_SetSpectatorSkillsMode(int nNum);
 	void STATIC_ToggleBans();
 	void EndMission(bool bPlayerAttacker, TEnumAsByte<EGAME_WIN_STATE> finalWinState);
-	void UpdateSpectatorViewMode(unsigned char Mode);
-	void UpdateSpectatorViewTarget(class AActor* Target);
+	void STATIC_UpdateSpectatorViewMode(unsigned char Mode);
+	void STATIC_UpdateSpectatorViewTarget(class AActor* Target);
 };
 
 
@@ -3495,7 +3495,7 @@ public:
 
 
 	void STATIC_NotifyMapChange();
-	void STATIC_InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk);
+	void InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk);
 };
 
 
@@ -3520,20 +3520,20 @@ public:
 	}
 
 
-	void usc_set_cast_mode(int nCastMode);
+	void STATIC_usc_set_cast_mode(int nCastMode);
 	void usc_set_cast_mode_delegate();
-	void usc_get_mode_tooltip(int nRank);
+	void STATIC_usc_get_mode_tooltip(int nRank);
 	void usc_get_mode_tooltip_delegate();
 	void STATIC_NotifyMapChange();
-	void UpdateCastMode();
-	void UpdateInstanceCount(class ATgDevice* Dev);
-	void UpdatePtsAlloc(class ATgDevice* Dev);
-	void UpdateCooldown(class ATgDevice* Dev);
-	void UpdateCanFire(class ATgDevice* Dev);
-	void UpdateSelected(bool bSelected);
-	void UpdateValues(class ATgDevice* Dev);
+	void STATIC_UpdateCastMode();
+	void STATIC_UpdateInstanceCount(class ATgDevice* Dev);
+	void STATIC_UpdatePtsAlloc(class ATgDevice* Dev);
+	void STATIC_UpdateCooldown(class ATgDevice* Dev);
+	void STATIC_UpdateCanFire(class ATgDevice* Dev);
+	void STATIC_UpdateSelected(bool bSelected);
+	void STATIC_UpdateValues(class ATgDevice* Dev);
 	void DeviceChangeEvent(class ATgDevice* Dev, TEnumAsByte<EDeviceChangeEvent> Event);
-	void STATIC_InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk);
+	void InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk);
 };
 
 
@@ -3552,12 +3552,12 @@ public:
 
 
 	void STATIC_SetEmpty(TEnumAsByte<ETG_EQUIP_POINT> eSlot);
-	void UpdatePtsAlloc(class ATgDevice* Dev);
-	void UpdateSelected(class ATgDevice* Dev);
-	void UpdateDevice(class ATgDevice* Dev);
+	void STATIC_UpdatePtsAlloc(class ATgDevice* Dev);
+	void STATIC_UpdateSelected(class ATgDevice* Dev);
+	void STATIC_UpdateDevice(class ATgDevice* Dev);
 	void DeviceChangeEvent(class ATgDevice* Dev, TEnumAsByte<EDeviceChangeEvent> Event);
-	class UTgGameDC_Device* STATIC_GetDeviceChunk(class ATgDevice* Dev);
-	void STATIC_InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk);
+	class UTgGameDC_Device* GetDeviceChunk(class ATgDevice* Dev);
+	void InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk);
 };
 
 
@@ -3585,7 +3585,7 @@ public:
 
 
 	void STATIC_NotifyMapChange();
-	void STATIC_InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk);
+	void InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk);
 };
 
 
@@ -3603,8 +3603,8 @@ public:
 	}
 
 
-	void UpdateEffects(class ATgEffectManager* effectManager, int indexChanged);
-	void STATIC_InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk);
+	void STATIC_UpdateEffects(class ATgEffectManager* effectManager, int indexChanged);
+	void InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk);
 };
 
 
@@ -3626,10 +3626,10 @@ public:
 	}
 
 
-	void UpdateGameCapturePoint(int Index, int Taskforce);
-	void UpdateGameClock();
+	void STATIC_UpdateGameCapturePoint(int Index, int Taskforce);
+	void STATIC_UpdateGameClock();
 	void STATIC_NotifyMapChange();
-	void STATIC_InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk);
+	void InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk);
 };
 
 
@@ -3648,9 +3648,9 @@ public:
 
 
 	void STATIC_NotifyMapChange();
-	void UpdateMapPosition(const struct FVector& Location, const struct FRotator& Rotation);
-	void UpdateActorMapPosition(class AActor* gameActor);
-	void STATIC_InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk);
+	void STATIC_UpdateMapPosition(const struct FVector& Location, const struct FRotator& Rotation);
+	void STATIC_UpdateActorMapPosition(class AActor* gameActor);
+	void InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk);
 };
 
 
@@ -3692,14 +3692,14 @@ public:
 	}
 
 
-	void USC_ForceStatsUpdate();
+	void STATIC_USC_ForceStatsUpdate();
 	void USC_ForceStatsUpdate_Delegate();
 	void STATIC_NotifyMapChange();
 	void UpdateItemStoreItems(class ATgRepInfo_Player* PRI);
-	void UpdateStats(class ATgPawn* changedPawn);
-	void UpdatePlayer(class ATgRepInfo_Player* PRI);
-	void SetDirty();
-	void STATIC_InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk);
+	void STATIC_UpdateStats(class ATgPawn* changedPawn);
+	void STATIC_UpdatePlayer(class ATgRepInfo_Player* PRI);
+	void STATIC_SetDirty();
+	void InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk);
 };
 
 
@@ -3716,9 +3716,9 @@ public:
 	}
 
 
-	void UpdateSpectatorViewTarget(class UTgGameDC_MapEntity* entity);
+	void STATIC_UpdateSpectatorViewTarget(class UTgGameDC_MapEntity* entity);
 	void STATIC_SetVendorItemList(TArray<int> nItemIds);
-	void STATIC_InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk);
+	void InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk);
 };
 
 
@@ -3782,10 +3782,10 @@ public:
 	}
 
 
-	void UpdateCoreStats();
-	void UpdateDamageDone();
+	void STATIC_UpdateCoreStats();
+	void STATIC_UpdateDamageDone();
 	void STATIC_NotifyMapChange();
-	void STATIC_InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk);
+	void InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk);
 };
 
 
@@ -3817,7 +3817,7 @@ public:
 	}
 
 
-	void STATIC_InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk);
+	void InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk);
 };
 
 
@@ -3834,8 +3834,8 @@ public:
 	}
 
 
-	bool STATIC_UpdateTarget(class AActor* NewTarget, bool bHovered);
-	void STATIC_InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk);
+	bool UpdateTarget(class AActor* NewTarget, bool bHovered);
+	void InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk);
 };
 
 
@@ -3858,12 +3858,12 @@ public:
 	}
 
 
-	bool UpdatePlayerSurrender(class ATgRepInfo_Player* PRI);
-	bool UpdatePlayerItemStoreItems(class ATgRepInfo_Player* PRI);
-	void UpdatePlayerStat(class ATgPawn* changedPawn);
-	void UpdateMembers(class ATgRepInfo_TaskForce* tfri);
+	bool STATIC_UpdatePlayerSurrender(class ATgRepInfo_Player* PRI);
+	bool STATIC_UpdatePlayerItemStoreItems(class ATgRepInfo_Player* PRI);
+	void STATIC_UpdatePlayerStat(class ATgPawn* changedPawn);
+	void STATIC_UpdateMembers(class ATgRepInfo_TaskForce* tfri);
 	void STATIC_NotifyMapChange();
-	void STATIC_InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk);
+	void InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk);
 };
 
 
@@ -3881,7 +3881,7 @@ public:
 	}
 
 
-	void STATIC_InitializeDataHandler(class UUIMoviePlayer* mp);
+	void InitializeDataHandler(class UUIMoviePlayer* mp);
 };
 
 
@@ -3914,14 +3914,14 @@ public:
 	void STATIC_PlayVGSPOTG(const struct Fdword& ePref, const struct Fdword& dwBotId, const struct Fdword& dwSkinId, const struct FString& customSuffix);
 	void STATIC_PlayVGSSound(int nMsgId, const struct Fdword& ePref, const struct Fdword& dwBotId, const struct Fdword& dwSkinId, const struct FString& customSuffix, int nSourcePlayerId);
 	void STATIC_PlayMessageSound(int nMsgId, TEnumAsByte<ETG_CHAT_PRIORITY> ePriority);
-	void STATIC_AddAlert(const struct FString& Message);
-	void UpdateMessageSoundQueue();
+	void AddAlert(const struct FString& Message);
+	void STATIC_UpdateMessageSoundQueue();
 	void Update(float DeltaTime, bool bSkipCallback);
-	void STATIC_AddPopupMsg(const struct FString& msg);
-	void STATIC_AddCombatMsg(const struct FString& msg);
-	void STATIC_AddLocalChatMsg(const struct FString& msg, const struct FString& senderName);
-	void STATIC_AddChatMsg(const struct FString& msg, const struct FString& senderName, const struct Fdword& dwSenderId, int nChannel, bool bIsFeedback, bool bIsVGS, int nMsgId);
-	void STATIC_InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk);
+	void AddPopupMsg(const struct FString& msg);
+	void AddCombatMsg(const struct FString& msg);
+	void AddLocalChatMsg(const struct FString& msg, const struct FString& senderName);
+	void AddChatMsg(const struct FString& msg, const struct FString& senderName, const struct Fdword& dwSenderId, int nChannel, bool bIsFeedback, bool bIsVGS, int nMsgId);
+	void InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk);
 };
 
 
@@ -3992,22 +3992,22 @@ public:
 
 
 	bool CheckSpectatorState();
-	void UpdateMapSize(int newX);
-	void UpdateMiniMapTexture();
-	void STATIC_CreateMiniMapTexture();
+	void STATIC_UpdateMapSize(int newX);
+	void STATIC_UpdateMiniMapTexture();
+	void CreateMiniMapTexture();
 	void Clear();
-	void RemoveAllEntities();
-	bool VerifyMapLocation(float X, float Y);
-	void STATIC_GetRepInfosForLocation(const struct FVector& mapLoc, TArray<class AReplicationInfo*>* repInfos);
-	struct FVector WorldToMap(const struct FVector& Loc);
+	void STATIC_RemoveAllEntities();
+	bool STATIC_VerifyMapLocation(float X, float Y);
+	void GetRepInfosForLocation(const struct FVector& mapLoc, TArray<class AReplicationInfo*>* repInfos);
+	struct FVector STATIC_WorldToMap(const struct FVector& Loc);
 	struct FVector STATIC_MapToWorld(const struct FVector& Loc);
-	void STATIC_ClearHover();
-	void STATIC_HoverMap(float X, float Y);
-	void PingMap(float X, float Y, TEnumAsByte<EPING_TYPE> Pt);
+	void ClearHover();
+	void HoverMap(float X, float Y);
+	void STATIC_PingMap(float X, float Y, TEnumAsByte<EPING_TYPE> Pt);
 	bool STATIC_ShouldRender();
-	void PingWorldLocation(const struct FVector& PingLocation, TEnumAsByte<EPING_TYPE> Pt);
+	void STATIC_PingWorldLocation(const struct FVector& PingLocation, TEnumAsByte<EPING_TYPE> Pt);
 	void Init(class ATgPlayerController* PC);
-	void STATIC_Draw(class UCanvas* theCanvas);
+	void Draw(class UCanvas* theCanvas);
 };
 
 
@@ -4123,7 +4123,7 @@ public:
 	void usc_ShowGameDetailsUI();
 	void usc_ShowContentMarketPlaceUIForProduct(int ParentProductType, int RequestedProductTypes, const struct FString& ProductID);
 	void usc_ShowContentMarketPlaceUI(int ParentProductType, int RequestedProductTypes);
-	void updatePlayerMute(bool bWasSuccessful);
+	void STATIC_updatePlayerMute(bool bWasSuccessful);
 	void ShowGamercard(const struct FUniqueNetId& PlayerID);
 	void ShowGamerCardByUserName(const struct FString& UserName, const struct FUniqueNetId& PlayerID);
 	bool IsPlayerMuted(const struct FUniqueNetId& ConsoleId);
@@ -4135,16 +4135,16 @@ public:
 	bool WidgetUnloaded(const struct FName& WidgetName, const struct FName& WidgetPath, class UGFxObject* Widget);
 	bool WidgetInitialized(const struct FName& WidgetName, const struct FName& WidgetPath, class UGFxObject* Widget);
 	bool CheckControllerConnected();
-	void OnComponentKeyboardInputComplete(bool bWasSuccessful);
-	void OnTextFieldKeyboardInputComplete(bool bWasSuccessful);
+	void STATIC_OnComponentKeyboardInputComplete(bool bWasSuccessful);
+	void STATIC_OnTextFieldKeyboardInputComplete(bool bWasSuccessful);
 	void ShowComponentKeyboardUI(class UUIComponent* CallingComponent, const struct FString& TitleText, const struct FString& DescriptionText, bool bIsPassword, bool bShouldValidate, const struct FString& DefaultText, int MaxResultLength);
 	void ShowKeyboardUI(class UGFxObject* FocusedTextField, const struct FString& TitleText, const struct FString& DescriptionText, bool bIsPassword, bool bShouldValidate, const struct FString& DefaultText, int MaxResultLength);
 	void STATIC_OnAccountPickerCancelledWrapper();
 	void OnClose();
-	void STATIC_InitOSSRef();
+	void InitOSSRef();
 	void Init(class ULocalPlayer* LocPlay);
-	class UUIScene* STATIC_FindUIScene(struct FName* sName);
-	class UTgGfxScene* STATIC_FindScene(struct FName* sName);
+	class UUIScene* FindUIScene(struct FName* sName);
+	class UTgGfxScene* FindScene(struct FName* sName);
 	bool STATIC_NativeAllowButtonInput(int ControllerId, const struct FName& ButtonName, TEnumAsByte<EInputEvent> InputEvent);
 	bool STATIC_ShowErrorMessage(const struct FString& sTitle, const struct FString& sError);
 	void STATIC_OnAccountPickerCancelled();
@@ -4153,59 +4153,59 @@ public:
 	void UnloadScene(const struct FString& sName);
 	void LoadScene(const struct FString& sName, const struct FString& sPath, int nDepth);
 	void STATIC_OnSuccessfulUserAccountInfoRetrieved(const struct FUserAccountInfo& AccountInfo);
-	class UTgGameDataHandler* STATIC_GetDataHandler();
-	class UTgDataGroup_Game* STATIC_GetGameData();
-	void STATIC_HideSubtitle();
+	class UTgGameDataHandler* GetDataHandler();
+	class UTgDataGroup_Game* GetGameData();
+	void HideSubtitle();
 	void STATIC_SwitchSubtitleText(const struct FString& sValue);
 	void STATIC_ShowSubtitle(const struct FString& sValue, float fTime);
 	bool STATIC_NativeWidgetInitialized(const struct FName& WidgetName, const struct FName& WidgetPath, class UGFxObject* Widget);
 	bool STATIC_NativeWidgetUnloaded(const struct FName& WidgetName, const struct FName& WidgetPath, class UGFxObject* Widget);
 	void STATIC_OnReadOnlinePlayerDataComplete(bool bWasSuccessful, TArray<struct FString> PlayerIDs, TArray<struct FOnlineProfile> OnlineProfiles);
-	bool STATIC_HasPlayerDisplayName(const struct FString& OnlineID);
-	struct FString STATIC_GetPlayerDisplayName(const struct FString& PlayerName, const struct FString& OnlineID);
-	int STATIC_GetGamepadValueForKeyBind(const struct FString& KeyBind);
+	bool HasPlayerDisplayName(const struct FString& OnlineID);
+	struct FString GetPlayerDisplayName(const struct FString& PlayerName, const struct FString& OnlineID);
+	int GetGamepadValueForKeyBind(const struct FString& KeyBind);
 	void UIFadeEndOfRound(bool bFade, float fTime, float fDelay, float fFailSafeTime);
 	void UIFade(bool bFade, float fTime, float fDelay, float fFailSafeTime);
 	void STATIC_NativeTick(float DeltaTime);
-	void STATIC_ForceDirty();
+	void ForceDirty();
 	void PostInit();
-	void STATIC_InitAnnouncer();
+	void InitAnnouncer();
 	void STATIC_OnVoicePackLoaded();
 	void STATIC_OnAnnouncerLoaded();
 	void STATIC_ShowCardTutorial(bool bForce, bool bReset);
 	void STATIC_SetSpecTeamName(bool bEnemy, const struct FString& TeamName);
-	struct FString STATIC_GetHUDTeamName(bool bEnemy);
+	struct FString GetHUDTeamName(bool bEnemy);
 	void STATIC_SetLoginReady();
-	void UpdateGamepadIcons();
-	void STATIC_CheckControllerDisconnected();
-	void STATIC_AddInitialChatMessages();
-	void STATIC_CloseChatTab(int nChannel, const struct FString& sSender);
+	void STATIC_UpdateGamepadIcons();
+	void CheckControllerDisconnected();
+	void AddInitialChatMessages();
+	void CloseChatTab(int nChannel, const struct FString& sSender);
 	void STATIC_OpenChatTab(int nChannel, const struct FString& sName, bool bOpenWindow);
-	void STATIC_AttemptAutoReplayDemoRecording();
-	void UpdateViewportForSafeAreas();
-	void STATIC_AttemptAutoLogin();
+	void AttemptAutoReplayDemoRecording();
+	void STATIC_UpdateViewportForSafeAreas();
+	void AttemptAutoLogin();
 	void STATIC_QuitGame();
 	void STATIC_PromptToQuit(bool bAllowLogout);
 	bool STATIC_SetRenderTargetEnabled(bool bEnabled, int surfaceId);
-	bool usc_resize_browser(int surfaceId, float X, float Y, float Width, float Height, float widthReal, float heightReal);
-	void usc_enable_browser_input(bool bEnable);
-	void usc_chat_close_tab(int nChannel, const struct FString& Sender);
-	void usc_resend_private_messages();
-	void usc_vgs_command(int nId, bool bSubMenu);
-	void usc_toggle_player_mute(const struct FString& sPlayerName);
-	void ViewStatsOnline(const struct FString& sInstanceId);
-	void WatchReplay(const struct FString& sInstanceId, const struct FString& sSpectatePassword);
+	bool STATIC_usc_resize_browser(int surfaceId, float X, float Y, float Width, float Height, float widthReal, float heightReal);
+	void STATIC_usc_enable_browser_input(bool bEnable);
+	void STATIC_usc_chat_close_tab(int nChannel, const struct FString& Sender);
+	void STATIC_usc_resend_private_messages();
+	void STATIC_usc_vgs_command(int nId, bool bSubMenu);
+	void STATIC_usc_toggle_player_mute(const struct FString& sPlayerName);
+	void STATIC_ViewStatsOnline(const struct FString& sInstanceId);
+	void STATIC_WatchReplay(const struct FString& sInstanceId, const struct FString& sSpectatePassword);
 	void STATIC_Replay(int nInstanceId, const struct FString& sSpectatePassword);
 	void STATIC_ToggleSkillScreen(bool bShow, int nBotIdOverride);
-	void STATIC_EndLobbyPlayback();
-	void STATIC_CancelPlayback();
+	void EndLobbyPlayback();
+	void CancelPlayback();
 	void STATIC_OnDemoReady(bool bDemoRecorded);
-	void STATIC_DumpMctsEventProfiling();
+	void DumpMctsEventProfiling();
 };
 
 
 // Class TgClient.TgLobbyHUD
-// 0x00C5 (0x0749 - 0x0684)
+// 0x00D5 (0x0759 - 0x0684)
 class ATgLobbyHUD : public ATgClientHUD
 {
 public:
@@ -4232,7 +4232,8 @@ public:
 	TArray<int>                                        m_TransientItemsAcquired;                                 // 0x0718(0x0010) (Config, GlobalConfig, NeedCtorLink)
 	struct FString                                     m_PlayerCTAName;                                          // 0x0728(0x0010) (Config, GlobalConfig, NeedCtorLink)
 	TArray<struct FMapDetails>                         m_MapDetails;                                             // 0x0738(0x0010) (Config, NeedCtorLink)
-	TEnumAsByte<ELobbyCameraTag>                       c_ePrevCameraTag;                                         // 0x0748(0x0001)
+	TArray<struct FCameraSprayPreviewOffset>           m_SprayPreviewOffsets;                                    // 0x0748(0x0010) (NeedCtorLink)
+	TEnumAsByte<ELobbyCameraTag>                       c_ePrevCameraTag;                                         // 0x0758(0x0001)
 
 	static UClass* StaticClass()
 	{
@@ -4241,13 +4242,13 @@ public:
 	}
 
 
-	void STATIC_ChangePedestalModel(TEnumAsByte<EPedestalType> PedestalType, int BotId, int SkinId, int DeviceID, int DeviceSkinId, int MVPId, int CharacterMastery);
+	void ChangePedestalModel(TEnumAsByte<EPedestalType> PedestalType, int BotId, int SkinId, int DeviceID, int DeviceSkinId, int MVPId, int CharacterMastery);
 	void STATIC_TestDailyDealItems(int nItemId0, int nItemId1, int nItemId2);
-	void StopMVP();
-	void PlayMVP(int nDeviceId);
-	void StopEmote();
-	void PlayEmote(int nDeviceId);
-	void STATIC_ChangeModel(int BotId, int SkinId, int DeviceID, int DeviceSkinId, int PedestalSkinId, unsigned char pose, TEnumAsByte<ELobbyCameraTag> CameraTag, float BlendTime, TEnumAsByte<EViewTargetBlendFunction> BlendFunction, float BlendExp, TEnumAsByte<EModelHighlightType> HighlightType, int MVPDeviceId);
+	void STATIC_StopMVP();
+	void STATIC_PlayMVP(int nDeviceId);
+	void STATIC_StopEmote();
+	void STATIC_PlayEmote(int nDeviceId);
+	void ChangeModel(int BotId, int SkinId, int DeviceID, int DeviceSkinId, int PedestalSkinId, unsigned char pose, TEnumAsByte<ELobbyCameraTag> CameraTag, float BlendTime, TEnumAsByte<EViewTargetBlendFunction> BlendFunction, float BlendExp, TEnumAsByte<EModelHighlightType> HighlightType, int MVPDeviceId);
 	void STATIC_SwitchToCards(bool bEnabled);
 	void CheckBoostedTextureStaticMeshActors();
 	void PostBeginPlay();
@@ -4255,20 +4256,21 @@ public:
 	void STATIC_TriggerLazyPrecache();
 	void STATIC_ResetSplashVersion();
 	void STATIC_TestDynamicFeature();
-	void STATIC_DisplayCharacter();
-	void TestBattlePassCloseup(int nItemId1, int nItemId2, int nItemId3, int nItemId4, int nItemId5);
-	void TestItemPreview(TEnumAsByte<ELobbyCameraTag> CamTag, float fIntroTime, int nItemIdToPreview, int nTargetIndex);
+	void DisplayCharacter();
+	void STATIC_TestBattlePassCloseup(int nItemId1, int nItemId2, int nItemId3, int nItemId4, int nItemId5);
+	void STATIC_TestItemPreview(TEnumAsByte<ELobbyCameraTag> CamTag, float fIntroTime, int nItemIdToPreview, int nTargetIndex);
+	struct FVector STATIC_GetCurrentSprayPreviewOffset();
 	class ATgLobbyCamera* STATIC_SwitchToCamera(TEnumAsByte<ELobbyCameraTag> CamTag, TEnumAsByte<ECameraTransType> camDirection, bool bForce, bool bForceCameraReset, const struct FViewTargetTransitionParams& BlendParams);
-	class ATgLobbyCamera* STATIC_GetCamera(TEnumAsByte<ELobbyCameraTag> CamTag);
+	class ATgLobbyCamera* GetCamera(TEnumAsByte<ELobbyCameraTag> CamTag);
 	void STATIC_PlayTeamEmote(bool bFriendly, int nIndex, int nEmoteId);
-	void STATIC_CleanupPedestalModels();
-	void STATIC_ChangeMenuModel(TEnumAsByte<EMenuContentDataType> Type, struct FMeshData* Data);
-	void STATIC_ChangeTeamModel(bool bFriendly, int nIndex, int nClassId, int nSkinId, int nDeviceId, int nDeviceSkinId, int nPedestalSkinId, TEnumAsByte<ELobbyAnimPose> pose, bool bAsync, TEnumAsByte<EModelHighlightType> HighlightType, int MVPDeviceId, int nCharacterXP, const struct FScriptDelegate& MeshUpdatedDelegate);
-	bool SetModelRotation(float fRotationDegrees);
-	bool RotateModel(float fValue);
-	void STATIC_ChangeClassModel(int nClassId, int nSkinId, int nDeviceId, int nDeviceSkinId, int nPedestalSkinId, TEnumAsByte<ELobbyAnimPose> pose, TEnumAsByte<ECameraTransType> camDirection, bool bAsync, TEnumAsByte<EModelHighlightType> HighlightType, int MVPDeviceId);
+	void CleanupPedestalModels();
+	void ChangeMenuModel(TEnumAsByte<EMenuContentDataType> Type, struct FMeshData* Data);
+	void ChangeTeamModel(bool bFriendly, int nIndex, int nClassId, int nSkinId, int nDeviceId, int nDeviceSkinId, int nPedestalSkinId, TEnumAsByte<ELobbyAnimPose> pose, bool bAsync, TEnumAsByte<EModelHighlightType> HighlightType, int MVPDeviceId, int nCharacterXP, const struct FScriptDelegate& MeshUpdatedDelegate);
+	bool STATIC_SetModelRotation(float fRotationDegrees);
+	bool STATIC_RotateModel(float fValue);
+	void ChangeClassModel(int nClassId, int nSkinId, int nDeviceId, int nDeviceSkinId, int nPedestalSkinId, TEnumAsByte<ELobbyAnimPose> pose, TEnumAsByte<ECameraTransType> camDirection, bool bAsync, TEnumAsByte<EModelHighlightType> HighlightType, int MVPDeviceId);
 	void STATIC_SetUpEOMLobby();
-	bool STATIC_HaveEOMLobbyData();
+	bool HaveEOMLobbyData();
 	void Initialize();
 };
 
@@ -4318,7 +4320,7 @@ public:
 	}
 
 
-	struct FString STATIC_GetKeybindExtended(const struct FString& sCommand, bool bGamepad, int nAlt, int nBotId);
+	struct FString GetKeybindExtended(const struct FString& sCommand, bool bGamepad, int nAlt, int nBotId);
 };
 
 
@@ -4387,23 +4389,23 @@ public:
 	}
 
 
-	void OnKeyboardUIComplete(const struct FString& sResult, unsigned char bCanceled);
-	float STATIC_GetYMouse();
-	float STATIC_GetXMouse();
+	void STATIC_OnKeyboardUIComplete(const struct FString& sResult, unsigned char bCanceled);
+	float GetYMouse();
+	float GetXMouse();
 	float HandleAnimEvent(int nEventType, TArray<float> fExtraData);
-	void STATIC_ClearQueuedSounds(class UAkBaseSoundObject* akSound);
+	void ClearQueuedSounds(class UAkBaseSoundObject* akSound);
 	void STATIC_QueueSound(class UAkBaseSoundObject* akSound, float fDelay);
-	bool STATIC_IsSoundQueued(class UAkBaseSoundObject* akSound);
-	void STATIC_EndAnim(class UGFxObject* pObj, TEnumAsByte<EUIANIMTYPE> eType);
-	float STATIC_GetAnimationTarget(class UGFxObject* pObj, TEnumAsByte<EUIANIMTYPE> eType);
-	bool STATIC_IsAnimating(class UGFxObject* pObj, TEnumAsByte<EUIANIMTYPE> eType);
+	bool IsSoundQueued(class UAkBaseSoundObject* akSound);
+	void EndAnim(class UGFxObject* pObj, TEnumAsByte<EUIANIMTYPE> eType);
+	float GetAnimationTarget(class UGFxObject* pObj, TEnumAsByte<EUIANIMTYPE> eType);
+	bool IsAnimating(class UGFxObject* pObj, TEnumAsByte<EUIANIMTYPE> eType);
 	void STATIC_QueueAnim(class UGFxObject* pObj, float fTime, TEnumAsByte<EUIANIMTYPE> eType, float fValue, unsigned char eQuad);
-	void STATIC_Animate(class UGFxObject* pObj, float fTime, TEnumAsByte<EUIANIMTYPE> eType, float fValue, float fDelay, unsigned char eQuad, bool bEndCurrentAnim);
-	void FadeOut(class UGFxObject* pObj, float fTime, float fDelay);
-	void FadeIn(class UGFxObject* pObj, float fTime, float fDelay);
-	void STATIC_AnimateAsWell(class UGFxObject* pObj, float fTime, TEnumAsByte<EUIANIMTYPE> eType, float fValue, float fDelay, unsigned char eQuad);
-	void STATIC_FadeOutAsWell(class UGFxObject* pObj, float fTime, float fDelay);
-	void STATIC_FadeInAsWell(class UGFxObject* pObj, float fTime, float fDelay);
+	void Animate(class UGFxObject* pObj, float fTime, TEnumAsByte<EUIANIMTYPE> eType, float fValue, float fDelay, unsigned char eQuad, bool bEndCurrentAnim);
+	void STATIC_FadeOut(class UGFxObject* pObj, float fTime, float fDelay);
+	void STATIC_FadeIn(class UGFxObject* pObj, float fTime, float fDelay);
+	void AnimateAsWell(class UGFxObject* pObj, float fTime, TEnumAsByte<EUIANIMTYPE> eType, float fValue, float fDelay, unsigned char eQuad);
+	void FadeOutAsWell(class UGFxObject* pObj, float fTime, float fDelay);
+	void FadeInAsWell(class UGFxObject* pObj, float fTime, float fDelay);
 };
 
 
@@ -6032,7 +6034,7 @@ public:
 
 	void STATIC_OnCardArtLoaded();
 	void STATIC_PreviewCardArt();
-	void STATIC_InitCardArtManifest();
+	void InitCardArtManifest();
 };
 
 
@@ -6119,7 +6121,7 @@ public:
 
 
 // Class TgClient.UIComponent_GemPack
-// 0x0024 (0x0148 - 0x0124)
+// 0x0028 (0x014C - 0x0124)
 class UUIComponent_GemPack : public UUIComponent_Display
 {
 public:
@@ -6128,6 +6130,7 @@ public:
 	class UUIComponent_Currency*                       m_pButtonPrice;                                           // 0x0134(0x0008)
 	class UUIComponent_DualButtonPanel*                m_pBuyNowButton;                                          // 0x013C(0x0008)
 	int                                                m_nPackId;                                                // 0x0144(0x0004)
+	float                                              m_fSeasonPassCrystalMultiplier;                           // 0x0148(0x0004) (Const)
 
 	static UClass* StaticClass()
 	{
@@ -6359,6 +6362,7 @@ public:
 	unsigned long                                      m_bInRange : 1;                                           // 0x0234(0x0004)
 	unsigned long                                      m_bColorDirty : 1;                                        // 0x0234(0x0004)
 	unsigned long                                      m_bHealingReduced : 1;                                    // 0x0234(0x0004)
+	unsigned long                                      m_bSpecialHealth : 1;                                     // 0x0234(0x0004)
 	int                                                m_nTaskForce;                                             // 0x0238(0x0004)
 	float                                              m_fDisplayedDamagePct;                                    // 0x023C(0x0004)
 	float                                              m_fDamageInterpSpeed;                                     // 0x0240(0x0004)
@@ -8472,7 +8476,7 @@ public:
 
 
 // Class TgClient.UIComponent_StoreBountyItems
-// 0x0064 (0x0188 - 0x0124)
+// 0x0068 (0x018C - 0x0124)
 class UUIComponent_StoreBountyItems : public UUIComponent_Display
 {
 public:
@@ -8490,6 +8494,7 @@ public:
 	struct Fdword                                      m_dwCurrentItem;                                          // 0x017C(0x0004)
 	struct Fdword                                      m_dwCurrentPrice;                                         // 0x0180(0x0004)
 	struct Fdword                                      m_dwQuantityRemaining;                                    // 0x0184(0x0004)
+	float                                              m_fLastPortalClaimUpdateTimestamp;                        // 0x0188(0x0004)
 
 	static UClass* StaticClass()
 	{
@@ -9101,6 +9106,21 @@ public:
 };
 
 
+// Class TgClient.UIComponent_Targeter_YagorathUlt
+// 0x0000 (0x0184 - 0x0184)
+class UUIComponent_Targeter_YagorathUlt : public UUIComponent_Targeter_PointTargeter
+{
+public:
+
+	static UClass* StaticClass()
+	{
+		static auto ptr = UObject::FindClass("Class TgClient.UIComponent_Targeter_YagorathUlt");
+		return ptr;
+	}
+
+};
+
+
 // Class TgClient.UIComponent_TargeterManager
 // 0x0024 (0x0148 - 0x0124)
 class UUIComponent_TargeterManager : public UUIComponent_Display
@@ -9215,8 +9235,8 @@ public:
 	}
 
 
-	void FadeOut(class UGFxObject* pObj, float fTime, float fDelay);
-	void FadeIn(class UGFxObject* pObj, float fTime, float fDelay);
+	void STATIC_FadeOut(class UGFxObject* pObj, float fTime, float fDelay);
+	void STATIC_FadeIn(class UGFxObject* pObj, float fTime, float fDelay);
 };
 
 
@@ -9456,18 +9476,18 @@ public:
 	}
 
 
-	void STATIC_ClearQueuedSounds(class UAkBaseSoundObject* akSound);
+	void ClearQueuedSounds(class UAkBaseSoundObject* akSound);
 	void STATIC_QueueSound(class UAkBaseSoundObject* akSound, float fDelay);
-	bool STATIC_IsSoundQueued(class UAkBaseSoundObject* akSound);
-	void STATIC_EndAnim(class UGFxObject* pObj, TEnumAsByte<EUIANIMTYPE> eType);
-	float STATIC_GetAnimationTarget(class UGFxObject* pObj, TEnumAsByte<EUIANIMTYPE> eType);
-	bool STATIC_IsAnimating(class UGFxObject* pObj, TEnumAsByte<EUIANIMTYPE> eType);
+	bool IsSoundQueued(class UAkBaseSoundObject* akSound);
+	void EndAnim(class UGFxObject* pObj, TEnumAsByte<EUIANIMTYPE> eType);
+	float GetAnimationTarget(class UGFxObject* pObj, TEnumAsByte<EUIANIMTYPE> eType);
+	bool IsAnimating(class UGFxObject* pObj, TEnumAsByte<EUIANIMTYPE> eType);
 	void STATIC_QueueAnim(class UGFxObject* pObj, float fTime, TEnumAsByte<EUIANIMTYPE> eType, float fValue, unsigned char eQuad);
-	void STATIC_Animate(class UGFxObject* pObj, float fTime, TEnumAsByte<EUIANIMTYPE> eType, float fValue, float fDelay, unsigned char eQuad, bool bEndCurrentAnim);
-	void STATIC_FadeOutAsWell(class UGFxObject* pObj, float fTime, float fDelay);
-	void STATIC_FadeInAsWell(class UGFxObject* pObj, float fTime, float fDelay);
-	void FadeOut(class UGFxObject* pObj, float fTime, float fDelay);
-	void FadeIn(class UGFxObject* pObj, float fTime, float fDelay);
+	void Animate(class UGFxObject* pObj, float fTime, TEnumAsByte<EUIANIMTYPE> eType, float fValue, float fDelay, unsigned char eQuad, bool bEndCurrentAnim);
+	void FadeOutAsWell(class UGFxObject* pObj, float fTime, float fDelay);
+	void FadeInAsWell(class UGFxObject* pObj, float fTime, float fDelay);
+	void STATIC_FadeOut(class UGFxObject* pObj, float fTime, float fDelay);
+	void STATIC_FadeIn(class UGFxObject* pObj, float fTime, float fDelay);
 };
 
 
@@ -10157,7 +10177,7 @@ public:
 
 
 	void STATIC_Thaw();
-	void STATIC_Freeze();
+	void Freeze();
 };
 
 
@@ -10895,7 +10915,7 @@ public:
 	}
 
 
-	void OnKeyboardUIComplete(const struct FString& sResult, unsigned char bCanceled);
+	void STATIC_OnKeyboardUIComplete(const struct FString& sResult, unsigned char bCanceled);
 };
 
 
@@ -11688,10 +11708,10 @@ public:
 
 	void STATIC_OnDeathStampLoaded(int nTargetIndex);
 	void STATIC_PreviewDeathStamp(int nItemId, int nTargetIndex);
-	void STATIC_InitDeathStampManifest();
+	void InitDeathStampManifest();
 	void STATIC_OnSprayLoaded(int nTargetIndex);
 	void STATIC_PreviewSpray(int nItemId, int nTargetIndex);
-	void STATIC_InitSpraysManifest();
+	void InitSpraysManifest();
 };
 
 
@@ -12343,13 +12363,13 @@ public:
 	}
 
 
-	void TriggerDailyDealWait();
+	void STATIC_TriggerDailyDealWait();
 	void OnLeaveStorefront();
 	void UnregisterLeaveStorefrontDelegate();
 	void RegisterLeaveStorefrontDelegate();
 	void STATIC_OnCardArtLoaded();
-	void STATIC_ClearTextures();
-	void STATIC_InitCardArtManifest();
+	void ClearTextures();
+	void InitCardArtManifest();
 };
 
 
@@ -14863,17 +14883,17 @@ public:
 	void HandleAnimState(int nAnimState, int nAnimGroup);
 	void STATIC_SlamOutAnim(class UGFxObject* pObj, float fDelay);
 	void STATIC_SlamInAnim(class UGFxObject* pObj, float fDelay);
-	void STATIC_Highlight(class UGFxObject* pObj, bool bShow, float fTime);
-	void FadeOut(class UGFxObject* pObj, float fTime, float fDelay);
-	void FadeIn(class UGFxObject* pObj, float fTime, float fDelay);
-	void STATIC_ClearQueuedSounds(class UAkBaseSoundObject* akSound);
+	void Highlight(class UGFxObject* pObj, bool bShow, float fTime);
+	void STATIC_FadeOut(class UGFxObject* pObj, float fTime, float fDelay);
+	void STATIC_FadeIn(class UGFxObject* pObj, float fTime, float fDelay);
+	void ClearQueuedSounds(class UAkBaseSoundObject* akSound);
 	void STATIC_QueueSound(class UAkBaseSoundObject* akSound, float fDelay);
-	bool STATIC_IsSoundQueued(class UAkBaseSoundObject* akSound);
-	bool STATIC_IsAnimatingType(class UGFxObject* pObj, TEnumAsByte<EUIANIMTYPE> eType);
-	bool STATIC_IsAnimating(class UGFxObject* pObj);
-	void STATIC_EndAnim(class UGFxObject* pObj, TEnumAsByte<EUIANIMTYPE> eType);
-	void STATIC_CancelAnim(class UGFxObject* pObj);
-	void STATIC_Animate(class UGFxObject* pObj, float fTime, TEnumAsByte<EUIANIMTYPE> eType, float fValue, float fDelay, unsigned char eQuad, bool bEndCurrentAnim);
+	bool IsSoundQueued(class UAkBaseSoundObject* akSound);
+	bool IsAnimatingType(class UGFxObject* pObj, TEnumAsByte<EUIANIMTYPE> eType);
+	bool IsAnimating(class UGFxObject* pObj);
+	void EndAnim(class UGFxObject* pObj, TEnumAsByte<EUIANIMTYPE> eType);
+	void CancelAnim(class UGFxObject* pObj);
+	void Animate(class UGFxObject* pObj, float fTime, TEnumAsByte<EUIANIMTYPE> eType, float fValue, float fDelay, unsigned char eQuad, bool bEndCurrentAnim);
 	void Click(class UGFxObject* pObj);
 	void Rollout(class UGFxObject* pObj);
 	void Rollover(class UGFxObject* pObj);
@@ -16111,7 +16131,7 @@ public:
 	}
 
 
-	struct FUIRewardInfo STATIC_CreateRewardInfo(bool bIsCombo);
+	struct FUIRewardInfo CreateRewardInfo(bool bIsCombo);
 };
 
 
@@ -16235,9 +16255,9 @@ public:
 	}
 
 
-	void RemoveEntry(int nNdx);
-	struct FUIKILLFEED_DATA PrepareEntry(bool bIncludeHHPickupElements);
-	struct FUIKILLFEED_DATA STATIC_CreateEntry(bool bIncludeHHPickupElements);
+	void STATIC_RemoveEntry(int nNdx);
+	struct FUIKILLFEED_DATA STATIC_PrepareEntry(bool bIncludeHHPickupElements);
+	struct FUIKILLFEED_DATA CreateEntry(bool bIncludeHHPickupElements);
 };
 
 
@@ -16332,7 +16352,7 @@ public:
 	}
 
 
-	void STATIC_AddNamedArea(class ATgNamedPOIActor* pPOI);
+	void AddNamedArea(class ATgNamedPOIActor* pPOI);
 };
 
 
@@ -16395,7 +16415,7 @@ public:
 	}
 
 
-	void STATIC_AddNamedArea(class ATgNamedPOIActor* pPOI);
+	void AddNamedArea(class ATgNamedPOIActor* pPOI);
 };
 
 

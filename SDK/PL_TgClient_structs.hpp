@@ -1,17 +1,17 @@
 #pragma once
 
-// Paladins (3.05) SDK
+// Paladins (4.1.3942.2) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
 #endif
 
 #include "PL_Basic.hpp"
-#include "PL_GFxUI_classes.hpp"
 #include "PL_PlatformCommon_classes.hpp"
-#include "PL_Engine_classes.hpp"
 #include "PL_Core_classes.hpp"
+#include "PL_Engine_classes.hpp"
 #include "PL_TgGame_classes.hpp"
+#include "PL_GFxUI_classes.hpp"
 
 namespace SDK
 {
@@ -2657,6 +2657,15 @@ struct FMapDetails
 	struct FString                                     sLoadingTexture;                                          // 0x002C(0x0010) (NeedCtorLink)
 	struct FString                                     sLoadingTip;                                              // 0x003C(0x0010) (NeedCtorLink)
 	struct FString                                     sLoadingTipMessage;                                       // 0x004C(0x0010) (NeedCtorLink)
+};
+
+// ScriptStruct TgClient.TgLobbyHUD.CameraSprayPreviewOffset
+// 0x0010
+struct FCameraSprayPreviewOffset
+{
+	TEnumAsByte<ELobbyCameraTag>                       eCameraTag;                                               // 0x0000(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0001(0x0003) MISSED OFFSET
+	struct FVector                                     vOffset;                                                  // 0x0004(0x000C)
 };
 
 // ScriptStruct TgClient.TgSetting.OptionData

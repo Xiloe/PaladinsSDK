@@ -1,6 +1,6 @@
 #pragma once
 
-// Paladins (3.05) SDK
+// Paladins (4.1.3942.2) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -47,8 +47,8 @@ public:
 	}
 
 
-	void StopPlayback();
-	void StartPlayback();
+	void STATIC_StopPlayback();
+	void STATIC_StartPlayback();
 };
 
 

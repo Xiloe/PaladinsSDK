@@ -1,4 +1,4 @@
-// Paladins (3.05) SDK
+// Paladins (4.1.3942.2) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -13,7 +13,7 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // Function BattleClient.BattleHUD.BattleHUDFunction
-// (Defined, Iterator, PreOperator, Singular, Net, NetReliable, Operator, HasOptionalParms, Const)
+// (Final, Defined, Iterator, Latent, PreOperator, HasOptionalParms, Const)
 
 void ABattleHUD::BattleHUDFunction()
 {

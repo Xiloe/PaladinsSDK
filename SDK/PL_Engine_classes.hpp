@@ -1,6 +1,6 @@
 #pragma once
 
-// Paladins (3.05) SDK
+// Paladins (4.1.3942.2) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -217,12 +217,12 @@ public:
 
 
 	void STATIC_UpdateReverbVolume(const struct FVector& WorldLocation, class AReverbVolume* VolumeTouched);
-	void STATIC_SetAux(const struct FName& AuxBusName, float Level);
+	void SetAux(const struct FName& AuxBusName, float Level);
 	class USpriteComponent* GetActorSpriteComponent();
 	int GetActorMetrics(TEnumAsByte<EActorMetricsType> MetricsType);
 	bool OnMobileTouch(class APlayerController* InPC, const struct FVector2D& TouchLocation);
 	bool IsMobileTouchEnabled();
-	bool STATIC_ShouldBeHiddenBySHOW_NavigationNodes();
+	bool ShouldBeHiddenBySHOW_NavigationNodes();
 	bool STATIC_WillOverlap(const struct FVector& PosA, const struct FVector& VelA, const struct FVector& PosB, const struct FVector& VelB, float StepSize, float Radius, float* Time);
 	struct FVector GetAvoidanceVector(const struct FVector& GoalLocation, float CollisionRadius, float MaxSpeed, int NumSamples, float VelocityStepRate, float MaxTimeTilOverlap, TArray<class AActor*>* Obstacles);
 	void ReplicationEnded();
@@ -249,7 +249,7 @@ public:
 	void RootMotionModeChanged(class USkeletalMeshComponent* SkelComp);
 	void PostRenderFor(class APlayerController* PC, class UCanvas* Canvas, const struct FVector& CameraPosition, const struct FVector& CameraDir);
 	void NativePostRenderFor(class APlayerController* PC, class UCanvas* Canvas, const struct FVector& CameraPosition, const struct FVector& CameraDir);
-	void STATIC_SetHUDLocation(const struct FVector& NewHUDLocation);
+	void SetHUDLocation(const struct FVector& NewHUDLocation);
 	void OnRanOver(class ASVehicle* Vehicle, class UPrimitiveComponent* RunOverComponent, int WheelIndex);
 	void RigidBodyCollision(class UPrimitiveComponent* HitComponent, class UPrimitiveComponent* OtherComponent, int ContactIndex, struct FCollisionImpactData* RigidCollisionData);
 	void InterpolationChanged(class USeqAct_Interp* InterpAction);
@@ -257,16 +257,16 @@ public:
 	void InterpolationStarted(class USeqAct_Interp* InterpAction, class UInterpGroupInst* GroupInst);
 	void SpawnedByKismet();
 	struct FVector GetTargetLocation(class AActor* RequestedBy, bool bRequestAlternateLoc);
-	void FindGoodEndView(class APlayerController* PC, struct FRotator* GoodRotation);
-	void STATIC_NotifyLocalPlayerTeamReceived();
+	void STATIC_FindGoodEndView(class APlayerController* PC, struct FRotator* GoodRotation);
+	void NotifyLocalPlayerTeamReceived();
 	unsigned char ScriptGetTeamNum();
 	unsigned char GetTeamNum();
-	void STATIC_PawnBaseDied();
+	void PawnBaseDied();
 	bool IsPlayerOwned();
 	void GetActorEyesViewPoint(struct FVector* out_Location, struct FRotator* out_Rotation);
 	bool IsStationary();
 	class UFaceFXAsset* GetActorFaceFXAsset();
-	bool CanActorPlayFaceFXAnim();
+	bool STATIC_CanActorPlayFaceFXAnim();
 	bool IsActorPlayingFaceFXAnim();
 	void TickSkelControl(float DeltaTime, class USkeletalMeshComponent* SkelComp, class USkelControlBase* SkelCtrl);
 	void SetSkelControlScale(const struct FName& SkelControlName, float Scale);
@@ -278,22 +278,22 @@ public:
 	void BeginAnimControl(class UInterpGroup* InInterpGroup);
 	void OnAnimPlay(class UAnimNodeSequence* SeqNode);
 	void OnAnimEnd(class UAnimNodeSequence* SeqNode, float PlayedTime, float ExcessTime);
-	void DoKismetAttachment(class AActor* Attachment, class USeqAct_AttachToActor* Action);
-	void STATIC_OnAttachToActor(class USeqAct_AttachToActor* Action);
-	void STATIC_OnToggleHidden(class USeqAct_ToggleHidden* Action);
-	void STATIC_OnChangeCollision(class USeqAct_ChangeCollision* Action);
-	void STATIC_OnSetPhysics(class USeqAct_SetPhysics* Action);
-	void STATIC_OnSetBlockRigidBody(class USeqAct_SetBlockRigidBody* Action);
-	void STATIC_OnSetVelocity(class USeqAct_SetVelocity* Action);
-	void STATIC_OnTeleport(class USeqAct_Teleport* Action);
-	void STATIC_OnModifyHealth(class USeqAct_ModifyHealth* Action);
-	void STATIC_PrestreamTextures(float Seconds, bool bEnableStreaming, TArray<unsigned char> CinematicTextureGroups);
+	void STATIC_DoKismetAttachment(class AActor* Attachment, class USeqAct_AttachToActor* Action);
+	void OnAttachToActor(class USeqAct_AttachToActor* Action);
+	void OnToggleHidden(class USeqAct_ToggleHidden* Action);
+	void OnChangeCollision(class USeqAct_ChangeCollision* Action);
+	void OnSetPhysics(class USeqAct_SetPhysics* Action);
+	void OnSetBlockRigidBody(class USeqAct_SetBlockRigidBody* Action);
+	void OnSetVelocity(class USeqAct_SetVelocity* Action);
+	void OnTeleport(class USeqAct_Teleport* Action);
+	void OnModifyHealth(class USeqAct_ModifyHealth* Action);
+	void PrestreamTextures(float Seconds, bool bEnableStreaming, TArray<unsigned char> CinematicTextureGroups);
 	void ShutDown();
-	void STATIC_SetNetUpdateTime(float NewUpdateTime);
+	void SetNetUpdateTime(float NewUpdateTime);
 	void ForceNetRelevant();
-	void STATIC_OnDestroy(class USeqAct_Destroy* Action);
-	void ClearLatentAction(class UClass* actionClass, bool bAborted, class USeqAct_Latent* exceptionAction);
-	bool FindEventsOfClass(class UClass* EventClass, bool bIncludeDisabled, TArray<class USequenceEvent*>* out_EventList);
+	void OnDestroy(class USeqAct_Destroy* Action);
+	void STATIC_ClearLatentAction(class UClass* actionClass, bool bAborted, class USeqAct_Latent* exceptionAction);
+	bool STATIC_FindEventsOfClass(class UClass* EventClass, bool bIncludeDisabled, TArray<class USequenceEvent*>* out_EventList);
 	bool STATIC_ActivateEventClass(class UClass* InClass, class AActor* InInstigator, bool bTest, TArray<class USequenceEvent*>* EventList, TArray<int>* ActivateIndices, TArray<class USequenceEvent*>* ActivatedEvents);
 	bool STATIC_TriggerGlobalEventClass(class UClass* InEventClass, class AActor* InInstigator, int ActivateIndex);
 	void ReceivedNewEvent(class USequenceEvent* Evt);
@@ -301,35 +301,35 @@ public:
 	void DebugMessagePlayer(const struct FString& msg);
 	bool ImpactEffectIsRelevant(class APawn* EffectInstigator, const struct FVector& SpawnLocation, bool bForceDedicated, float VisibleCullDistance, float HiddenCullDistance, bool bSkipLOSCheck);
 	bool STATIC_ActorEffectIsRelevant(class APawn* EffectInstigator, bool bForceDedicated, float VisibleCullDistance, float HiddenCullDistance);
-	bool EffectIsRelevant(const struct FVector& SpawnLocation, bool bForceDedicated, float VisibleCullDistance, float HiddenCullDistance);
+	bool STATIC_EffectIsRelevant(const struct FVector& SpawnLocation, bool bForceDedicated, float VisibleCullDistance, float HiddenCullDistance);
 	void STATIC_ApplyFluidSurfaceImpact(class AFluidSurfaceActor* Fluid, const struct FVector& HitLocation);
-	bool CanSplash();
-	void STATIC_PlayTeleportEffect(bool bOut, bool bSound);
+	bool STATIC_CanSplash();
+	void PlayTeleportEffect(bool bOut, bool bSound);
 	bool IsInPain();
 	void Reset();
 	class UAudioComponent* GetFaceFXAudioComponent();
 	void ModifyHearSoundComponent(class UAudioComponent* AC);
 	struct FString GetPhysicsName();
-	void DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos);
+	void STATIC_DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos);
 	struct FString GetDebugName();
 	void MatchStarting();
 	struct FString GetLocalString(int Switch, class APlayerReplicationInfo* RelatedPRI_2, class APlayerReplicationInfo* RelatedPRI_3);
-	void STATIC_ReplaceText(const struct FString& Replace, const struct FString& With, struct FString* Text);
+	void ReplaceText(const struct FString& Replace, const struct FString& With, struct FString* Text);
 	struct FString GetHumanReadableName();
 	struct FString GetItemName(const struct FString& FullName);
-	bool CalcCamera(float fDeltaTime, struct FVector* out_CamLoc, struct FRotator* out_CamRot, float* out_FOV);
+	bool STATIC_CalcCamera(float fDeltaTime, struct FVector* out_CamLoc, struct FRotator* out_CamRot, float* out_FOV);
 	void EndViewTarget(class APlayerController* PC);
 	void BecomeViewTarget(class APlayerController* PC);
-	bool CheckForErrors();
+	bool STATIC_CheckForErrors();
 	void DebugFreezeGame(class AActor* ActorToLookAt);
 	float GetGravityZ();
-	void CheckHitInfo(class UPrimitiveComponent* FallBackComponent, const struct FVector& Dir, struct FTraceHitInfo* HitInfo, struct FVector* out_HitLocation);
+	void STATIC_CheckHitInfo(class UPrimitiveComponent* FallBackComponent, const struct FVector& Dir, struct FTraceHitInfo* HitInfo, struct FVector* out_HitLocation);
 	void STATIC_TakeRadiusDamage(class AController* InstigatedBy, float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, bool bFullDamage, class AActor* DamageCauser, float DamageFalloffExponent);
 	bool HealDamage(int Amount, class AController* Healer, class UClass* DamageType);
 	void TakeDamage(int DamageAmount, class AController* EventInstigator, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser);
 	void KilledBy(class APawn* EventInstigator);
 	bool HurtRadius(float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, class AActor* IgnoredActor, class AController* InstigatedByController, bool bDoFullDamage);
-	bool STATIC_StopsProjectile(class AProjectile* P);
+	bool StopsProjectile(class AProjectile* P);
 	void NotifySkelControlBeyondLimit(class USkelControlLookAt* LookAt);
 	void ConstraintBrokenNotify(class AActor* ConOwner, class URB_ConstraintSetup* ConSetup, class URB_ConstraintInstance* ConInstance);
 	void SetInitialState();
@@ -338,71 +338,71 @@ public:
 	void BroadcastLocalizedMessage(class UClass* InMessageClass, int Switch, class APlayerReplicationInfo* RelatedPRI_2, class APlayerReplicationInfo* RelatedPRI_3, class UObject* OptionalObject);
 	void PreBeginPlay();
 	bool GetTeleportDestination(struct FVector* Destination);
-	void STATIC_RecalculateMaterial(bool bIsFriendlyWithLocalPawn, bool bForce);
-	void ForceRecalculateMaterial();
+	void RecalculateMaterial(bool bIsFriendlyWithLocalPawn, bool bForce);
+	void STATIC_ForceRecalculateMaterial();
 	bool IsEnemy(class AActor* pOther);
-	bool ForceNetIrrelevant();
+	bool STATIC_ForceNetIrrelevant();
 	class APlayerController* GetALocalPlayerController();
 	void LocalPlayerControllers(class UClass* BaseClass, class APlayerController** PC);
 	void STATIC_AllOwnedComponents(class UClass* BaseClass, class UActorComponent** OutComponent);
-	void ComponentList(class UClass* BaseClass, class UActorComponent** out_Component);
-	void STATIC_OverlappingActors(class UClass* BaseClass, float Radius, const struct FVector& Loc, bool bIgnoreHidden, class AActor** out_Actor);
-	void CollidingActors(class UClass* BaseClass, float Radius, const struct FVector& Loc, bool bUseOverlapCheck, class UClass* InterfaceClass, class AActor** Actor, struct FTraceHitInfo* HitInfo);
+	void STATIC_ComponentList(class UClass* BaseClass, class UActorComponent** out_Component);
+	void OverlappingActors(class UClass* BaseClass, float Radius, const struct FVector& Loc, bool bIgnoreHidden, class AActor** out_Actor);
+	void STATIC_CollidingActors(class UClass* BaseClass, float Radius, const struct FVector& Loc, bool bUseOverlapCheck, class UClass* InterfaceClass, class AActor** Actor, struct FTraceHitInfo* HitInfo);
 	void STATIC_VisibleCollidingActors(class UClass* BaseClass, float Radius, const struct FVector& Loc, bool bIgnoreHidden, const struct FVector& Extent, bool bTraceActors, class UClass* InterfaceClass, class AActor** Actor, struct FTraceHitInfo* HitInfo);
 	void STATIC_VisibleActors(class UClass* BaseClass, float Radius, const struct FVector& Loc, class AActor** Actor);
 	void STATIC_TraceActors(class UClass* BaseClass, const struct FVector& End, const struct FVector& Start, const struct FVector& Extent, int ExtraTraceFlags, class AActor** Actor, struct FVector* HitLoc, struct FVector* HitNorm, struct FTraceHitInfo* HitInfo);
 	void STATIC_TouchingActors(class UClass* BaseClass, class AActor** Actor);
 	void STATIC_BasedActors(class UClass* BaseClass, class AActor** Actor);
-	void ChildActors(class UClass* BaseClass, class AActor** Actor);
-	void DynamicActors(class UClass* BaseClass, class UClass* InterfaceClass, class AActor** Actor);
+	void STATIC_ChildActors(class UClass* BaseClass, class AActor** Actor);
+	void STATIC_DynamicActors(class UClass* BaseClass, class UClass* InterfaceClass, class AActor** Actor);
 	void STATIC_AllActors(class UClass* BaseClass, class UClass* InterfaceClass, class AActor** Actor);
 	struct FString GetURLMap();
-	void STATIC_PostTeleport(class ATeleporter* OutTeleporter);
-	bool STATIC_PreTeleport(class ATeleporter* InTeleporter);
+	void PostTeleport(class ATeleporter* OutTeleporter);
+	bool PreTeleport(class ATeleporter* InTeleporter);
 	struct FVector GetDestination(class AController* C);
-	bool CalculateMinSpeedTrajectory(const struct FVector& End, const struct FVector& Start, float MaxTossSpeed, float MinTossSpeed, const struct FVector& CollisionSize, float TerminalVelocity, float GravityZ, bool bOnlyTraceUp, struct FVector* out_Velocity);
+	bool STATIC_CalculateMinSpeedTrajectory(const struct FVector& End, const struct FVector& Start, float MaxTossSpeed, float MinTossSpeed, const struct FVector& CollisionSize, float TerminalVelocity, float GravityZ, bool bOnlyTraceUp, struct FVector* out_Velocity);
 	bool STATIC_SuggestTossVelocity(const struct FVector& Destination, const struct FVector& Start, float TossSpeed, float BaseTossZ, float DesiredZPct, const struct FVector& CollisionSize, float TerminalVelocity, float OverrideGravityZ, bool bOnlyTraceUp, struct FVector* TossVelocity);
-	bool STATIC_PlayerCanSeeMe(bool bForceLOSCheck);
+	bool PlayerCanSeeMe(bool bForceLOSCheck);
 	void MakeNoise(float Loudness, const struct FName& NoiseType);
-	float CheckOcclusion();
-	void STATIC_StopAllAkEvents();
+	float STATIC_CheckOcclusion();
+	void StopAllAkEvents();
 	void STATIC_ActivateOcclusion(bool bInActivate);
-	void STATIC_PostTrigger(const struct FName& InTrigger);
-	void STATIC_SetAkSwitch(const struct FName& InSwitchGroup, const struct FName& InSwitch);
-	void STATIC_SetAkState(const struct FName& InStateGroup, const struct FName& InState);
+	void PostTrigger(const struct FName& InTrigger);
+	void SetAkSwitch(const struct FName& InSwitchGroup, const struct FName& InSwitch);
+	void SetAkState(const struct FName& InStateGroup, const struct FName& InState);
 	bool STATIC_GetRTPCValue(const struct FString& InRTPC, float* OutValue);
-	void STATIC_SetRTPCValue(const struct FString& InRTPC, float TargetValue);
-	void STATIC_PostAkEventOnBone(class UAkEvent* InAkEvent, const struct FName& BoneName);
-	void STATIC_PostAkEvent(class UAkEvent* InAkEvent);
-	void STATIC_PlaySoundBase(class UAkBaseSoundObject* InSoundCue, bool bNotReplicated, bool bNoRepToOwner, bool bStopWhenOwnerDestroyed, const struct FVector& SoundLocation, bool bNoRepToRelevant);
-	void STATIC_PlayAkEvent(class UAkEvent* InSoundCue, bool bNotReplicated, bool bNoRepToOwner, bool bStopWhenOwnerDestroyed, const struct FVector& SoundLocation, bool bNoRepToRelevant);
+	void SetRTPCValue(const struct FString& InRTPC, float TargetValue);
+	void PostAkEventOnBone(class UAkEvent* InAkEvent, const struct FName& BoneName);
+	void PostAkEvent(class UAkEvent* InAkEvent);
+	void PlaySoundBase(class UAkBaseSoundObject* InSoundCue, bool bNotReplicated, bool bNoRepToOwner, bool bStopWhenOwnerDestroyed, const struct FVector& SoundLocation, bool bNoRepToRelevant);
+	void PlayAkEvent(class UAkEvent* InSoundCue, bool bNotReplicated, bool bNoRepToOwner, bool bStopWhenOwnerDestroyed, const struct FVector& SoundLocation, bool bNoRepToRelevant);
 	void PlaySound(class USoundCue* InSoundCue, bool bNotReplicated, bool bNoRepToOwner, bool bStopWhenOwnerDestroyed, const struct FVector& SoundLocation, bool bNoRepToRelevant);
 	void AudioComponentAttached(class UAudioComponent* AC, int DatabaseID, int LoopIndex);
-	class UAudioComponent* CreateAudioComponent(class USoundCue* InSoundCue, bool bPlay, bool bStopWhenOwnerDestroyed, bool bUseLocation, const struct FVector& SourceLocation, bool bAttachToSelf);
-	void STATIC_ResetTimerTimeDilation(const struct FName& TimerName, class UObject* inObj);
+	class UAudioComponent* STATIC_CreateAudioComponent(class USoundCue* InSoundCue, bool bPlay, bool bStopWhenOwnerDestroyed, bool bUseLocation, const struct FVector& SourceLocation, bool bAttachToSelf);
+	void ResetTimerTimeDilation(const struct FName& TimerName, class UObject* inObj);
 	void ModifyTimerTimeDilation(const struct FName& TimerName, float InTimerTimeDilation, class UObject* inObj);
 	float GetTimerPercent(const struct FName& TimerFuncName, class UObject* inObj);
 	float GetRemainingTimeForTimer(const struct FName& TimerFuncName, class UObject* inObj);
 	float GetTimerRate(const struct FName& TimerFuncName, class UObject* inObj);
 	float GetTimerCount(const struct FName& inTimerFunc, class UObject* inObj);
 	bool IsTimerActive(const struct FName& inTimerFunc, class UObject* inObj);
-	void STATIC_PauseTimer(bool bPause, const struct FName& inTimerFunc, class UObject* inObj);
-	void ClearAllTimers(class UObject* inObj);
-	void ClearTimer(const struct FName& inTimerFunc, class UObject* inObj);
-	void STATIC_SetTimer(float InRate, bool inbLoop, const struct FName& inTimerFunc, class UObject* inObj);
+	void PauseTimer(bool bPause, const struct FName& inTimerFunc, class UObject* inObj);
+	void STATIC_ClearAllTimers(class UObject* inObj);
+	void STATIC_ClearTimer(const struct FName& inTimerFunc, class UObject* inObj);
+	void SetTimer(float InRate, bool inbLoop, const struct FName& inTimerFunc, class UObject* inObj);
 	void TornOff();
-	bool Destroy();
+	bool STATIC_Destroy();
 	class AActor* Spawn(class UClass* SpawnClass, class AActor* SpawnOwner, const struct FName& SpawnTag, const struct FVector& SpawnLocation, const struct FRotator& SpawnRotation, class AActor* ActorTemplate, bool bNoCollisionFail);
 	bool IsBlockedBy(class AActor* Other);
 	bool STATIC_BoxCircleTest(const struct FVector& CircleCenter, float CircleRadius, const struct FVector& BoxCenter, const struct FVector& BoxExtent);
 	void GetBoundingCylinder(float* CollisionRadius, float* CollisionHeight);
 	void GetComponentsBoundingBox(struct FBox* ActorBox);
 	bool IsOverlapping(class AActor* A);
-	bool ContainsPoint(const struct FVector& Spot);
-	bool FindSpot(const struct FVector& BoxExtent, struct FVector* SpotLocation);
+	bool STATIC_ContainsPoint(const struct FVector& Spot);
+	bool STATIC_FindSpot(const struct FVector& BoxExtent, struct FVector* SpotLocation);
 	bool STATIC_TraceAllPhysicsAssetInteractions(class USkeletalMeshComponent* SkelMeshComp, const struct FVector& EndTrace, const struct FVector& StartTrace, const struct FVector& Extent, TArray<struct FImpactInfo>* out_Hits);
-	bool FastTrace(const struct FVector& TraceEnd, const struct FVector& TraceStart, const struct FVector& BoxExtent, bool bTraceBullet);
-	bool STATIC_PointCheckComponent(class UPrimitiveComponent* InComponent, const struct FVector& PointLocation, const struct FVector& PointExtent);
+	bool STATIC_FastTrace(const struct FVector& TraceEnd, const struct FVector& TraceStart, const struct FVector& BoxExtent, bool bTraceBullet);
+	bool PointCheckComponent(class UPrimitiveComponent* InComponent, const struct FVector& PointLocation, const struct FVector& PointExtent);
 	bool STATIC_TraceComponent(class UPrimitiveComponent* InComponent, const struct FVector& TraceEnd, const struct FVector& TraceStart, const struct FVector& Extent, bool bComplexCollision, struct FVector* HitLocation, struct FVector* HitNormal, struct FTraceHitInfo* HitInfo);
 	class AActor* STATIC_Trace(const struct FVector& TraceEnd, const struct FVector& TraceStart, bool bTraceActors, const struct FVector& Extent, int ExtraTraceFlags, struct FVector* HitLocation, struct FVector* HitNormal, struct FTraceHitInfo* HitInfo);
 	void STATIC_VolumeBasedDestroy(class APhysicsVolume* PV);
@@ -410,7 +410,7 @@ public:
 	void FellOutOfWorld(class UClass* dmgType);
 	bool STATIC_UsedBy(class APawn* User);
 	bool OverRotated(struct FRotator* out_Desired, struct FRotator* out_Actual);
-	bool ClampRotation(const struct FRotator& rBase, const struct FRotator& rUpperLimits, const struct FRotator& rLowerLimits, struct FRotator* out_Rot);
+	bool STATIC_ClampRotation(const struct FRotator& rBase, const struct FRotator& rUpperLimits, const struct FRotator& rLowerLimits, struct FRotator* out_Rot);
 	void OnSleepRBPhysics();
 	void OnWakeRBPhysics();
 	void RanInto(class AActor* Other);
@@ -434,66 +434,66 @@ public:
 	void LostChild(class AActor* Other);
 	void GainedChild(class AActor* Other);
 	void Destroyed();
-	void STATIC_SetTickIsDisabled(bool bInDisabled);
-	void STATIC_SetTickGroup(TEnumAsByte<ETickingGroup> NewTickGroup);
-	void STATIC_ReattachComponent(class UActorComponent* ComponentToReattach);
-	void DetachComponent(class UActorComponent* ExComponent);
+	void SetTickIsDisabled(bool bInDisabled);
+	void SetTickGroup(TEnumAsByte<ETickingGroup> NewTickGroup);
+	void ReattachComponent(class UActorComponent* ComponentToReattach);
+	void STATIC_DetachComponent(class UActorComponent* ExComponent);
 	void STATIC_AttachComponent(class UActorComponent* NewComponent);
 	void STATIC_UnClock(float* Time);
-	void Clock(float* Time);
-	void STATIC_SetPhysics(TEnumAsByte<EPhysics> newPhysics);
-	void STATIC_SetOnlyOwnerSee(bool bNewOnlyOwnerSee);
-	void STATIC_SetHidden(bool bNewHidden);
-	void ChartData(const struct FString& DataName, float DataValue);
-	void FlushDebugStrings();
-	void DrawDebugFrustrum(unsigned char R, unsigned char G, unsigned char B, bool bPersistentLines, struct FMatrix* FrustumToWorld);
-	void DrawDebugString(const struct FVector& TextLocation, const struct FString& Text, class AActor* TestBaseActor, const struct FColor& TextColor, float Duration);
-	void DrawDebugCone(const struct FVector& Origin, const struct FVector& Direction, float Length, float AngleWidth, float AngleHeight, int NumSides, const struct FColor& DrawColor, bool bPersistentLines);
-	void DrawDebugCylinder(const struct FVector& Start, const struct FVector& End, float Radius, int Segments, unsigned char R, unsigned char G, unsigned char B, bool bPersistentLines);
-	void DrawDebugSphere(const struct FVector& Center, float Radius, int Segments, unsigned char R, unsigned char G, unsigned char B, bool bPersistentLines);
-	void DrawDebugCoordinateSystem(const struct FVector& AxisLoc, const struct FRotator& AxisRot, float Scale, bool bPersistentLines);
-	void DrawDebugStar(const struct FVector& Position, float Size, unsigned char R, unsigned char G, unsigned char B, bool bPersistentLines);
-	void DrawDebugBox(const struct FVector& Center, const struct FVector& Extent, unsigned char R, unsigned char G, unsigned char B, bool bPersistentLines);
-	void DrawDebugPoint(const struct FVector& Position, float Size, const struct FLinearColor& PointColor, bool bPersistentLines);
-	void DrawDebugLine(const struct FVector& LineStart, const struct FVector& LineEnd, unsigned char R, unsigned char G, unsigned char B, bool bPersistentLines);
-	void FlushPersistentDebugLines();
-	void STATIC_SetBotRankId(int RankId);
+	void STATIC_Clock(float* Time);
+	void SetPhysics(TEnumAsByte<EPhysics> newPhysics);
+	void SetOnlyOwnerSee(bool bNewOnlyOwnerSee);
+	void SetHidden(bool bNewHidden);
+	void STATIC_ChartData(const struct FString& DataName, float DataValue);
+	void STATIC_FlushDebugStrings();
+	void STATIC_DrawDebugFrustrum(unsigned char R, unsigned char G, unsigned char B, bool bPersistentLines, struct FMatrix* FrustumToWorld);
+	void STATIC_DrawDebugString(const struct FVector& TextLocation, const struct FString& Text, class AActor* TestBaseActor, const struct FColor& TextColor, float Duration);
+	void STATIC_DrawDebugCone(const struct FVector& Origin, const struct FVector& Direction, float Length, float AngleWidth, float AngleHeight, int NumSides, const struct FColor& DrawColor, bool bPersistentLines);
+	void STATIC_DrawDebugCylinder(const struct FVector& Start, const struct FVector& End, float Radius, int Segments, unsigned char R, unsigned char G, unsigned char B, bool bPersistentLines);
+	void STATIC_DrawDebugSphere(const struct FVector& Center, float Radius, int Segments, unsigned char R, unsigned char G, unsigned char B, bool bPersistentLines);
+	void STATIC_DrawDebugCoordinateSystem(const struct FVector& AxisLoc, const struct FRotator& AxisRot, float Scale, bool bPersistentLines);
+	void STATIC_DrawDebugStar(const struct FVector& Position, float Size, unsigned char R, unsigned char G, unsigned char B, bool bPersistentLines);
+	void STATIC_DrawDebugBox(const struct FVector& Center, const struct FVector& Extent, unsigned char R, unsigned char G, unsigned char B, bool bPersistentLines);
+	void STATIC_DrawDebugPoint(const struct FVector& Position, float Size, const struct FLinearColor& PointColor, bool bPersistentLines);
+	void STATIC_DrawDebugLine(const struct FVector& LineStart, const struct FVector& LineEnd, unsigned char R, unsigned char G, unsigned char B, bool bPersistentLines);
+	void STATIC_FlushPersistentDebugLines();
+	void SetBotRankId(int RankId);
 	struct FVector GetBasedPosition(const struct FBasedPosition& BP);
-	void STATIC_SetBasedPosition(const struct FVector& pos, class AActor* ForcedBase, struct FBasedPosition* BP);
+	void SetBasedPosition(const struct FVector& pos, class AActor* ForcedBase, struct FBasedPosition* BP);
 	struct FVector STATIC_BP2Vect(const struct FBasedPosition& BP);
 	void STATIC_Vect2BP(const struct FVector& pos, class AActor* ForcedBase, struct FBasedPosition* BP);
-	void STATIC_SetForcedInitialReplicatedProperty(class UProperty* PropToReplicate, bool bAdd);
+	void SetForcedInitialReplicatedProperty(class UProperty* PropToReplicate, bool bAdd);
 	void ReplicatedEvent(const struct FName& VarName);
 	struct FVector GetAggregateBaseVelocity(class AActor* TestBase);
 	bool IsOwnedBy(class AActor* TestActor);
 	class AActor* GetBaseMost();
 	bool IsBasedOn(class AActor* TestActor);
-	void STATIC_SearchForBaseBelow(float HeightBelow, class AActor** NewBase, struct FVector* HitNormal);
-	void FindBase();
-	void STATIC_SetOwner(class AActor* NewOwner);
-	void STATIC_SetBase(class AActor* NewBase, const struct FVector& NewFloor, class USkeletalMeshComponent* SkelComp, const struct FName& AttachName);
+	void SearchForBaseBelow(float HeightBelow, class AActor** NewBase, struct FVector* HitNormal);
+	void STATIC_FindBase();
+	void SetOwner(class AActor* NewOwner);
+	void SetBase(class AActor* NewBase, const struct FVector& NewFloor, class USkeletalMeshComponent* SkelComp, const struct FName& AttachName);
 	float GetTerminalVelocity();
 	void STATIC_AutonomousPhysics(float DeltaSeconds);
 	bool MoveSmooth(const struct FVector& Delta);
-	int fixedTurn(int Current, int Desired, int DeltaRate);
-	void STATIC_SetShadowParentOnAllAttachedComponents(class UPrimitiveComponent* MyPrimComp, class ULightEnvironmentComponent* MyLightEnv);
-	void STATIC_SetHardAttach(bool bNewHardAttach);
-	bool STATIC_SetRelativeLocation(const struct FVector& NewLocation);
-	bool STATIC_SetRelativeRotation(const struct FRotator& NewRotation);
-	void STATIC_SetZone(bool bForceRefresh);
+	int STATIC_fixedTurn(int Current, int Desired, int DeltaRate);
+	void SetShadowParentOnAllAttachedComponents(class UPrimitiveComponent* MyPrimComp, class ULightEnvironmentComponent* MyLightEnv);
+	void SetHardAttach(bool bNewHardAttach);
+	bool SetRelativeLocation(const struct FVector& NewLocation);
+	bool SetRelativeRotation(const struct FRotator& NewRotation);
+	void SetZone(bool bForceRefresh);
 	TEnumAsByte<EMoveDir> MovingWhichWay(float* Amount);
-	bool STATIC_SetRotation(const struct FRotator& NewRotation);
-	bool STATIC_SetLocation(const struct FVector& NewLocation);
+	bool SetRotation(const struct FRotator& NewRotation);
+	bool SetLocation(const struct FVector& NewLocation);
 	bool Move(const struct FVector& Delta);
-	void STATIC_SetDrawScale3D(const struct FVector& NewScale3D);
-	void STATIC_SetDrawScale(float NewScale);
-	void STATIC_SetCollisionType(TEnumAsByte<ECollisionType> NewCollisionType);
-	void STATIC_SetCollisionSize(float NewRadius, float NewHeight);
+	void SetDrawScale3D(const struct FVector& NewScale3D);
+	void SetDrawScale(float NewScale);
+	void SetCollisionType(TEnumAsByte<ECollisionType> NewCollisionType);
+	void SetCollisionSize(float NewRadius, float NewHeight);
 	void SetCollision(bool bNewColActors, bool bNewBlockActors, bool bNewIgnoreEncroachers);
-	void FinishAnim(class UAnimNodeSequence* SeqNode, bool bFinishOnBlendOut);
-	void STATIC_Sleep(float Seconds);
-	struct FString ConsoleCommand(const struct FString& Command, bool bWriteToLog);
-	void ForceUpdateComponents(bool bCollisionUpdate, bool bTransformOnly);
+	void STATIC_FinishAnim(class UAnimNodeSequence* SeqNode, bool bFinishOnBlendOut);
+	void Sleep(float Seconds);
+	struct FString STATIC_ConsoleCommand(const struct FString& Command, bool bWriteToLog);
+	void STATIC_ForceUpdateComponents(bool bCollisionUpdate, bool bTransformOnly);
 };
 
 
@@ -718,37 +718,37 @@ public:
 	bool IsRecordingTimelapse();
 	bool IsTimelapsePlayOfTheGame();
 	bool IsPlayingTimelapse();
-	void ClearObjectPools();
+	void STATIC_ClearObjectPools();
 	void STATIC_ToggleHostMigration(bool bEnabled);
 	void NotifyHostMigrationStateChanged(TEnumAsByte<EHostMigrationProgress> NewState, TEnumAsByte<EHostMigrationProgress> OldState);
 	bool STATIC_BeginHostMigration();
 	bool CanBeginHostMigration();
-	class AEnvironmentVolume* FindEnvironmentVolume(const struct FVector& TestLocation);
+	class AEnvironmentVolume* STATIC_FindEnvironmentVolume(const struct FVector& TestLocation);
 	class AWorldInfo* GetWorldInfo();
 	struct FWorldFractureSettings GetWorldFractureSettings();
-	void DoMemoryTracking();
+	void STATIC_DoMemoryTracking();
 	bool GetDemoRewindPoints(TArray<int>* OutRewindPoints);
 	void GetDemoFrameInfo(int* CurrentFrame, int* TotalFrames);
 	bool IsPlayingDemo();
 	bool IsRecordingDemo();
 	TEnumAsByte<EDetailMode> GetDetailMode();
 	struct FString GetMapName(bool bIncludePrefix);
-	void STATIC_SetMapInfo(class UMapInfo* NewMapInfo);
+	void SetMapInfo(class UMapInfo* NewMapInfo);
 	class UMapInfo* GetMapInfo();
-	void STATIC_SetSeamlessTravelMidpointPause(bool bNowPaused);
+	void SetSeamlessTravelMidpointPause(bool bNowPaused);
 	bool IsInSeamlessTravel();
-	void STATIC_SeamlessTravel(const struct FString& URL, bool bAbsolute, const struct FGuid& MapPackageGuid);
-	void CommitMapChange();
-	void CancelPendingMapChange();
+	void SeamlessTravel(const struct FString& URL, bool bAbsolute, const struct FGuid& MapPackageGuid);
+	void STATIC_CommitMapChange();
+	void STATIC_CancelPendingMapChange();
 	bool IsMapChangeReady();
 	bool IsPreparingMapChange();
-	void STATIC_PrepareMapChange(TArray<struct FName>* LevelNames);
-	void STATIC_NotifyMatchStarted(bool bShouldActivateLevelStartupEvents, bool bShouldActivateLevelBeginningEvents, bool bShouldActivateLevelLoadedEvents);
+	void PrepareMapChange(TArray<struct FName>* LevelNames);
+	void NotifyMatchStarted(bool bShouldActivateLevelStartupEvents, bool bShouldActivateLevelBeginningEvents, bool bShouldActivateLevelLoadedEvents);
 	void STATIC_AllClientConnections(class UPlayer** ClientConnection, struct FIpAddr* ClientIP, int* ClientPort);
 	void STATIC_AllPawns(class UClass* BaseClass, const struct FVector& TestLocation, float TestRadius, class APawn** P);
 	void STATIC_AllControllers(class UClass* BaseClass, class AController** C);
 	void NavigationPointCheck(const struct FVector& Point, const struct FVector& Extent, TArray<class ANavigationPoint*>* Navs, TArray<class UReachSpec*>* Specs);
-	void STATIC_RadiusNavigationPoints(class UClass* BaseClass, const struct FVector& Point, float Radius, class ANavigationPoint** N);
+	void RadiusNavigationPoints(class UClass* BaseClass, const struct FVector& Point, float Radius, class ANavigationPoint** N);
 	void STATIC_AllNavigationPoints(class UClass* BaseClass, class ANavigationPoint** N);
 	void Reset();
 	void PostBeginPlay();
@@ -758,7 +758,7 @@ public:
 	class UClass* GetGameClass();
 	struct FString GetAddressURL();
 	void STATIC_VerifyNavList();
-	void ForceGarbageCollection(bool bFullPurge);
+	void STATIC_ForceGarbageCollection(bool bFullPurge);
 	bool IsOverridePlatform(TEnumAsByte<EConsoleType> ConsoleType);
 	bool IsPlayInMobilePreview();
 	bool IsPlayInPreview();
@@ -768,18 +768,18 @@ public:
 	bool IsConsoleBuild(TEnumAsByte<EConsoleType> ConsoleType);
 	bool IsDemoBuild();
 	struct FString GetLocalURL();
-	void STATIC_SetLevelRBGravity(const struct FVector& NewGrav);
+	void SetLevelRBGravity(const struct FVector& NewGrav);
 	TArray<class USequence*> GetAllRootSequences();
 	class USequence* GetGameSequence();
 	float GetGravityZ();
 	void STATIC_UpdateMusicTrack(const struct FMusicTrackStruct& NewMusicTrack);
-	void STATIC_SetMusicVolume(float VolumeMultiplier);
+	void SetMusicVolume(float VolumeMultiplier);
 	bool IsMenuLevel(const struct FString& MapName);
 	void STATIC_AddOnScreenDebugMessage(int Key, float TimeToDisplay, const struct FColor& DisplayColor, const struct FString& DebugMessage);
 	void ReplicatedEvent(const struct FName& VarName);
 	class UNavMeshPathGoalEvaluator* GetNavMeshPathGoalEvaluatorFromCache(class UClass* GoalEvalClass, class UNavigationHandle* Requestor);
 	class UNavMeshPathConstraint* GetNavMeshPathConstraintFromCache(class UClass* ConstraintClass, class UNavigationHandle* Requestor);
-	void STATIC_ReleaseCachedConstraintsAndEvaluators();
+	void ReleaseCachedConstraintsAndEvaluators();
 	bool STATIC_IsExperimentOn(const struct FString& sName);
 };
 
@@ -805,11 +805,11 @@ public:
 	void STATIC_TriggerFindDLCDelegates();
 	void InstallDLC(const struct FString& DLCName);
 	void InstallAllDLC();
-	void DeleteDLC(const struct FString& DLCName);
-	void ClearFindDLCDelegate(const struct FScriptDelegate& InDelegate);
+	void STATIC_DeleteDLC(const struct FString& DLCName);
+	void STATIC_ClearFindDLCDelegate(const struct FScriptDelegate& InDelegate);
 	void STATIC_AddFindDLCDelegate(const struct FScriptDelegate& InDelegate);
 	void OnFindDLCComplete();
-	void FindDLC();
+	void STATIC_FindDLC();
 };
 
 
@@ -840,10 +840,10 @@ public:
 
 	void OnRefreshComplete();
 	void STATIC_AddPackagesToFullyLoad(const struct FString& Filename);
-	void STATIC_RefreshDLCEnumComplete();
+	void RefreshDLCEnumComplete();
 	void RefreshDLC();
 	void AuthorizeDLCRefresh();
-	void STATIC_OnContentChange();
+	void OnContentChange();
 	void STATIC_OnStorageDeviceChange();
 	void STATIC_OnLoginChange(unsigned char LocalUserNum);
 	void Init();
@@ -853,7 +853,7 @@ public:
 	void MarkPerObjectConfigPendingKill(const struct FString& Section);
 	void STATIC_AddSectionToObjectList(const struct FString& Section);
 	bool GetDLCNonPackageFilePath(const struct FName& NonPackageFileName, struct FString* Path);
-	void ClearDLC();
+	void STATIC_ClearDLC();
 	void InstallDLCs(TArray<struct FOnlineContent>* DLCBundles);
 	bool InstallDLC(struct FOnlineContent* DLCBundle);
 };
@@ -1132,10 +1132,10 @@ public:
 	bool IsRealDStereoEnabled();
 	void STATIC_AddOverlayWrapped(class UFont* Font, const struct FString& Text, float X, float Y, float ScaleX, float ScaleY, float WrapWidth);
 	void STATIC_AddOverlay(class UFont* Font, const struct FString& Text, float X, float Y, float ScaleX, float ScaleY, bool bIsCentered);
-	void STATIC_RemoveAllOverlays();
-	void STATIC_StopMovie(bool bDelayStopUntilGameHasRendered);
-	bool STATIC_PlayLoadMapMovieByMapName(const struct FString& MovieName);
-	bool STATIC_PlayLoadMapMovie();
+	void RemoveAllOverlays();
+	void StopMovie(bool bDelayStopUntilGameHasRendered);
+	bool PlayLoadMapMovieByMapName(const struct FString& MovieName);
+	bool PlayLoadMapMovie();
 	struct FString GetLastMovieName();
 	class UAudioDevice* GetAudioDevice();
 	bool IsUsingES2Renderer();
@@ -1147,11 +1147,11 @@ public:
 	class UFont* GetMediumFont();
 	class UFont* GetSmallFont();
 	class UFont* GetTinyFont();
-	void STATIC_ResetPeerNetDriver();
-	void CleanUpPeerNetDriver();
-	void CreatePeerNetDriver();
+	void ResetPeerNetDriver();
+	void STATIC_CleanUpPeerNetDriver();
+	void STATIC_CreatePeerNetDriver();
 	bool HasNetworkConnection();
-	struct FString BuildBugSubmissionString(const struct FString& BugField, const struct FString& BugFieldData);
+	struct FString STATIC_BuildBugSubmissionString(const struct FString& BugField, const struct FString& BugFieldData);
 	struct FString GetDevicePushNotificationToken();
 	float GetOSVersion();
 	struct FString GetDeviceUUID();
@@ -1210,14 +1210,14 @@ public:
 	}
 
 
-	void DecodeURLString(struct FString* Str);
-	void EncodeURLString(struct FString* Str);
+	void STATIC_DecodeURLString(struct FString* Str);
+	void STATIC_EncodeURLString(struct FString* Str);
 	bool HasSecondaryScreenActive();
 	class UDownloadableContentManager* GetDLCManager();
 	class UDownloadableContentEnumerator* GetDLCEnumerator();
 	class UOnlineSubsystem* GetOnlineSubsystem();
-	void DestroyNamedNetDriver(const struct FName& NetDriverName);
-	bool CreateNamedNetDriver(const struct FName& NetDriverName);
+	void STATIC_DestroyNamedNetDriver(const struct FName& NetDriverName);
+	bool STATIC_CreateNamedNetDriver(const struct FName& NetDriverName);
 };
 
 
@@ -1298,11 +1298,11 @@ public:
 
 	void ProcessActorSetVolume(class AActor* Other);
 	void CollisionChanged();
-	void STATIC_OnToggle(class USeqAct_Toggle* Action);
-	void DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos);
+	void OnToggle(class USeqAct_Toggle* Action);
+	void STATIC_DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos);
 	void PostBeginPlay();
-	bool EncompassesPoint(const struct FVector& Loc);
-	bool Encompasses(class AActor* Other);
+	bool STATIC_EncompassesPoint(const struct FVector& Loc);
+	bool STATIC_Encompasses(class AActor* Other);
 };
 
 
@@ -1320,7 +1320,7 @@ public:
 	}
 
 
-	void STATIC_OnToggle(class USeqAct_Toggle* Action);
+	void OnToggle(class USeqAct_Toggle* Action);
 };
 
 
@@ -1340,13 +1340,13 @@ public:
 	}
 
 
-	void STATIC_OnChangeCollision(class USeqAct_ChangeCollision* Action);
+	void OnChangeCollision(class USeqAct_ChangeCollision* Action);
 	void CollisionChanged();
 	void STATIC_ApplyCheckpointRecord(struct ADynamicBlockingVolume_FCheckpointRecord* Record);
-	void CreateCheckpointRecord(struct ADynamicBlockingVolume_FCheckpointRecord* Record);
+	void STATIC_CreateCheckpointRecord(struct ADynamicBlockingVolume_FCheckpointRecord* Record);
 	void PostBeginPlay();
 	void STATIC_UnRegisterObstacle();
-	void STATIC_RegisterObstacle();
+	void RegisterObstacle();
 };
 
 
@@ -1411,8 +1411,8 @@ public:
 
 
 	void STATIC_ApplyCheckpointRecord(struct ALevelStreamingVolume_FCheckpointRecord* Record);
-	void CreateCheckpointRecord(struct ALevelStreamingVolume_FCheckpointRecord* Record);
-	void STATIC_OnToggle(class USeqAct_Toggle* Action);
+	void STATIC_CreateCheckpointRecord(struct ALevelStreamingVolume_FCheckpointRecord* Record);
+	void OnToggle(class USeqAct_Toggle* Action);
 };
 
 
@@ -1519,16 +1519,16 @@ public:
 
 
 	void STATIC_ApplyCheckpointRecord(struct APhysicsVolume_FCheckpointRecord* Record);
-	void CreateCheckpointRecord(struct APhysicsVolume_FCheckpointRecord* Record);
-	bool STATIC_ShouldSaveForCheckpoint();
-	void STATIC_OnSetDamageInstigator(class USeqAct_SetDamageInstigator* Action);
-	void STATIC_NotifyPawnBecameViewTarget(class APawn* P, class APlayerController* PC);
+	void STATIC_CreateCheckpointRecord(struct APhysicsVolume_FCheckpointRecord* Record);
+	bool ShouldSaveForCheckpoint();
+	void OnSetDamageInstigator(class USeqAct_SetDamageInstigator* Action);
+	void NotifyPawnBecameViewTarget(class APawn* P, class APlayerController* PC);
 	void ModifyPlayer(class APawn* PlayerPawn);
-	void CausePainTo(class AActor* Other);
+	void STATIC_CausePainTo(class AActor* Other);
 	void Touch(class AActor* Other, class UPrimitiveComponent* OtherComp, const struct FVector& HitLocation, const struct FVector& HitNormal);
 	void STATIC_TimerPop(class AVolumeTimer* T);
 	void CollisionChanged();
-	void STATIC_OnToggle(class USeqAct_Toggle* inAction);
+	void OnToggle(class USeqAct_Toggle* inAction);
 	void PawnLeavingVolume(class APawn* Other);
 	void PawnEnteredVolume(class APawn* Other);
 	void ActorLeavingVolume(class AActor* Other);
@@ -1640,7 +1640,7 @@ public:
 	}
 
 
-	void STATIC_OnToggle(class USeqAct_Toggle* Action);
+	void OnToggle(class USeqAct_Toggle* Action);
 };
 
 
@@ -1717,7 +1717,7 @@ public:
 	}
 
 
-	bool STATIC_StopsProjectile(class AProjectile* P);
+	bool StopsProjectile(class AProjectile* P);
 	void PostBeginPlay();
 };
 
@@ -1763,8 +1763,8 @@ public:
 	}
 
 
-	void STATIC_RecheckValidTouch();
-	void STATIC_PickedUpBy(class APawn* P);
+	void RecheckValidTouch();
+	void PickedUpBy(class APawn* P);
 	void GiveTo(class APawn* P);
 	void Landed(const struct FVector& HitNormal, class AActor* FloorActor);
 	float DetourWeight(class APawn* Other, float PathWeight);
@@ -1774,7 +1774,7 @@ public:
 	void Reset();
 	void ReplicatedEvent(const struct FName& VarName);
 	void Destroyed();
-	void STATIC_RemoveFromNavigation();
+	void RemoveFromNavigation();
 	void STATIC_AddToNavigation();
 };
 
@@ -1805,19 +1805,19 @@ public:
 	}
 
 
-	void STATIC_OnChangeCollision(class USeqAct_ChangeCollision* Action);
+	void OnChangeCollision(class USeqAct_ChangeCollision* Action);
 	void CollisionChanged();
-	void STATIC_SetLightEnvironmentToNotBeDynamic();
+	void SetLightEnvironmentToNotBeDynamic();
 	void Detach(class AActor* Other);
 	void Attach(class AActor* Other);
-	bool CanBasePawn(class APawn* P);
-	void STATIC_SetStaticMesh(class UStaticMesh* NewMesh, const struct FVector& NewTranslation, const struct FRotator& NewRotation, const struct FVector& NewScale3D);
-	void STATIC_OnSetMaterial(class USeqAct_SetMaterial* Action);
+	bool STATIC_CanBasePawn(class APawn* P);
+	void SetStaticMesh(class UStaticMesh* NewMesh, const struct FVector& NewTranslation, const struct FRotator& NewRotation, const struct FVector& NewScale3D);
+	void OnSetMaterial(class USeqAct_SetMaterial* Action);
 	void OnSetMesh(class USeqAct_SetMesh* Action);
 	void ReplicatedEvent(const struct FName& VarName);
 	void PostBeginPlay();
 	void STATIC_UnRegisterObstacle();
-	void STATIC_RegisterObstacle();
+	void RegisterObstacle();
 };
 
 
@@ -1854,15 +1854,15 @@ public:
 
 
 	void STATIC_ApplyCheckpointRecord(struct AInterpActor_FCheckpointRecord* Record);
-	void CreateCheckpointRecord(struct AInterpActor_FCheckpointRecord* Record);
-	bool STATIC_ShouldSaveForCheckpoint();
+	void STATIC_CreateCheckpointRecord(struct AInterpActor_FCheckpointRecord* Record);
+	bool ShouldSaveForCheckpoint();
 	void ShutDown();
 	void InterpolationChanged(class USeqAct_Interp* InterpAction);
 	void InterpolationFinished(class USeqAct_Interp* InterpAction);
 	void InterpolationStarted(class USeqAct_Interp* InterpAction, class UInterpGroupInst* GroupInst);
-	void STATIC_PlayMovingSound(bool bClosing);
-	void FinishedOpen();
-	void STATIC_Restart();
+	void PlayMovingSound(bool bClosing);
+	void STATIC_FinishedOpen();
+	void Restart();
 	void Detach(class AActor* Other);
 	void Attach(class AActor* Other);
 	void RanInto(class AActor* Other);
@@ -1891,19 +1891,19 @@ public:
 
 	void HideSelf();
 	void STATIC_ApplyCheckpointRecord(struct AEmitter_FCheckpointRecord* Record);
-	void CreateCheckpointRecord(struct AEmitter_FCheckpointRecord* Record);
-	bool STATIC_ShouldSaveForCheckpoint();
-	void STATIC_OnSetParticleSysParam(class USeqAct_SetParticleSysParam* Action);
-	void STATIC_SetActorParameter(const struct FName& ParameterName, class AActor* Param);
-	void STATIC_SetExtColorParameter(const struct FName& ParameterName, unsigned char Red, unsigned char Green, unsigned char Blue, unsigned char Alpha);
-	void STATIC_SetColorParameter(const struct FName& ParameterName, const struct FColor& Param);
-	void STATIC_SetVectorParameter(const struct FName& ParameterName, const struct FVector& Param);
-	void STATIC_SetFloatParameter(const struct FName& ParameterName, float Param);
+	void STATIC_CreateCheckpointRecord(struct AEmitter_FCheckpointRecord* Record);
+	bool ShouldSaveForCheckpoint();
+	void OnSetParticleSysParam(class USeqAct_SetParticleSysParam* Action);
+	void SetActorParameter(const struct FName& ParameterName, class AActor* Param);
+	void SetExtColorParameter(const struct FName& ParameterName, unsigned char Red, unsigned char Green, unsigned char Blue, unsigned char Alpha);
+	void SetColorParameter(const struct FName& ParameterName, const struct FColor& Param);
+	void SetVectorParameter(const struct FName& ParameterName, const struct FVector& Param);
+	void SetFloatParameter(const struct FName& ParameterName, float Param);
 	void ShutDown();
-	void STATIC_OnParticleEventGenerator(class USeqAct_ParticleEventGenerator* Action);
-	void Deactivate();
+	void OnParticleEventGenerator(class USeqAct_ParticleEventGenerator* Action);
+	void STATIC_Deactivate();
 	void STATIC_Activate();
-	void STATIC_OnToggle(class USeqAct_Toggle* Action);
+	void OnToggle(class USeqAct_Toggle* Action);
 	void OnParticleSystemFinished(class UParticleSystemComponent* FinishedComponent);
 	void ReplicatedEvent(const struct FName& VarName);
 	void PostBeginPlay();
@@ -1940,17 +1940,17 @@ public:
 
 	void PreBeginPlay();
 	void STATIC_ActivateSpawnedEmitter(class UParticleSystemComponent* PSC);
-	void CreateInitialPooledComponents();
-	class UParticleSystemComponent* STATIC_SpawnEmitterCustomLifetime(class UParticleSystem* EmitterTemplate, bool bSkipAutoActivate);
-	class UParticleSystemComponent* STATIC_SpawnEmitterMeshAttachment(class UParticleSystem* EmitterTemplate, class USkeletalMeshComponent* Mesh, const struct FName& AttachPointName, bool bAttachToSocket, const struct FVector& RelativeLoc, const struct FRotator& RelativeRot, const struct FParticleChannelContainer& PSysChannels);
-	class UParticleSystemComponent* STATIC_SpawnEmitter(class UParticleSystem* EmitterTemplate, const struct FVector& SpawnLocation, const struct FRotator& SpawnRotation, class AActor* AttachToActor, class AActor* InInstigator, int MaxDLEPooledReuses, bool bInheritScaleFromBase, const struct FParticleChannelContainer& PSysChannels, bool bSkipAutoActivate);
+	void STATIC_CreateInitialPooledComponents();
+	class UParticleSystemComponent* SpawnEmitterCustomLifetime(class UParticleSystem* EmitterTemplate, bool bSkipAutoActivate);
+	class UParticleSystemComponent* SpawnEmitterMeshAttachment(class UParticleSystem* EmitterTemplate, class USkeletalMeshComponent* Mesh, const struct FName& AttachPointName, bool bAttachToSocket, const struct FVector& RelativeLoc, const struct FRotator& RelativeRot, const struct FParticleChannelContainer& PSysChannels);
+	class UParticleSystemComponent* SpawnEmitter(class UParticleSystem* EmitterTemplate, const struct FVector& SpawnLocation, const struct FRotator& SpawnRotation, class AActor* AttachToActor, class AActor* InInstigator, int MaxDLEPooledReuses, bool bInheritScaleFromBase, const struct FParticleChannelContainer& PSysChannels, bool bSkipAutoActivate);
 	class UParticleSystemComponent* GetPooledComponent(class UParticleSystem* EmitterTemplate, bool bAutoActivate);
 	class UMaterialInstanceConstant* GetFreeMatInstConsts(bool bCreateNewObject);
 	void FreeMaterialInstanceConstants(class UStaticMeshComponent* SMC);
 	class UStaticMeshComponent* GetFreeStaticMeshComponent(bool bCreateNewObject);
 	void FreeStaticMeshComponents(class UParticleSystemComponent* PSC);
-	void STATIC_ReturnToPool(class UParticleSystemComponent* PSC);
-	void ClearPoolComponents(bool bClearActive);
+	void ReturnToPool(class UParticleSystemComponent* PSC);
+	void STATIC_ClearPoolComponents(bool bClearActive);
 	void OnParticleSystemFinished(class UParticleSystemComponent* PSC);
 };
 
@@ -2006,43 +2006,43 @@ public:
 
 
 	void OnLostFocusPause(bool bEnable);
-	void STATIC_NotifyBindPostProcessEffects();
-	void STATIC_PlayerOwnerDied();
+	void NotifyBindPostProcessEffects();
+	void PlayerOwnerDied();
 	class UFont* GetFontSizeIndex(int FontSize);
-	void DrawText(const struct FString& Text, const struct FVector2D& Position, class UFont* TextFont, const struct FVector2D& FontScale, const struct FColor& TextColor, struct FFontRenderInfo* RenderInfo);
-	void DisplayKismetMessages();
-	void DisplayLocalMessages();
-	void DrawMessageText(const struct FHudLocalizedMessage& LocalMessage, float ScreenX, float ScreenY);
-	void DrawMessage(int I, float PosY, float* DX, float* DY);
+	void STATIC_DrawText(const struct FString& Text, const struct FVector2D& Position, class UFont* TextFont, const struct FVector2D& FontScale, const struct FColor& TextColor, struct FFontRenderInfo* RenderInfo);
+	void STATIC_DisplayKismetMessages();
+	void STATIC_DisplayLocalMessages();
+	void STATIC_DrawMessageText(const struct FHudLocalizedMessage& LocalMessage, float ScreenX, float ScreenY);
+	void STATIC_DrawMessage(int I, float PosY, float* DX, float* DY);
 	void GetScreenCoords(float PosY, float* ScreenX, float* ScreenY, struct FHudLocalizedMessage* InMessage);
 	void STATIC_AddLocalizedMessage(int Index, class UClass* InMessageClass, const struct FString& CriticalString, int Switch, float Position, float Lifetime, int FontSize, const struct FColor& DrawColor, int MessageCount, class UObject* OptionalObject);
 	void LocalizedMessage(class UClass* InMessageClass, class APlayerReplicationInfo* RelatedPRI_2, class APlayerReplicationInfo* RelatedPRI_3, const struct FString& CriticalString, int Switch, float Position, float Lifetime, int FontSize, const struct FColor& DrawColor, class UObject* OptionalObject);
 	void STATIC_AddConsoleMessage(const struct FString& M, class UClass* InMessageClass, class APlayerReplicationInfo* PRI, float Lifetime);
-	bool STATIC_ShouldShowConsoleMessage(const struct FConsoleMessage& InConsoleMessage);
-	void DisplayConsoleMessages();
+	bool ShouldShowConsoleMessage(const struct FConsoleMessage& InConsoleMessage);
+	void STATIC_DisplayConsoleMessages();
 	void Message(class APlayerReplicationInfo* PRI, const struct FString& msg, const struct FName& MsgType, float Lifetime);
-	void ClearMessage(struct FHudLocalizedMessage* M);
-	void DisplayBadConnectionAlert();
-	void DrawHUD();
+	void STATIC_ClearMessage(struct FHudLocalizedMessage* M);
+	void STATIC_DisplayBadConnectionAlert();
+	void STATIC_DrawHUD();
 	void PostRender();
-	void STATIC_PreCalcValues();
-	void DrawRoute(class APawn* Target);
-	void STATIC_ShowDebugInfo(float* out_YL, float* out_YPos);
+	void PreCalcValues();
+	void STATIC_DrawRoute(class APawn* Target);
+	void ShowDebugInfo(float* out_YL, float* out_YPos);
 	void STATIC_ToggleDirectorInfoDebug();
 	void STATIC_ToggleDirectorInfoHUD();
-	bool STATIC_ShouldDisplayDebug(const struct FName& DebugType);
-	void STATIC_SetShowScores(bool bNewValue);
-	void STATIC_ShowScores();
+	bool ShouldDisplayDebug(const struct FName& DebugType);
+	void SetShowScores(bool bNewValue);
+	void ShowScores();
 	bool IsHidden();
 	void HideHUD();
-	void STATIC_ShowHUD();
+	void ShowHUD();
 	void STATIC_ToggleHUD();
 	void STATIC_AddPostRenderedActor(class AActor* A);
-	void STATIC_RemovePostRenderedActor(class AActor* A);
-	void DrawActorOverlays(const struct FVector& ViewPoint, const struct FRotator& ViewRotation);
+	void RemovePostRenderedActor(class AActor* A);
+	void STATIC_DrawActorOverlays(const struct FVector& ViewPoint, const struct FRotator& ViewRotation);
 	void PostBeginPlay();
-	void Draw2DLine(int X1, int Y1, int X2, int Y2, const struct FColor& LineColor);
-	void Draw3DLine(const struct FVector& Start, const struct FVector& End, const struct FColor& LineColor);
+	void STATIC_Draw2DLine(int X1, int Y1, int X2, int Y2, const struct FColor& LineColor);
+	void STATIC_Draw3DLine(const struct FVector& Start, const struct FVector& End, const struct FColor& LineColor);
 };
 
 
@@ -2093,25 +2093,25 @@ public:
 	}
 
 
-	bool CheckForSentinelRun();
-	void STATIC_StartMatch();
+	bool STATIC_CheckForSentinelRun();
+	void StartMatch();
 	struct FString GetNextAutomatedTestingMap();
 	void IncrementNumberOfMatchesPlayed();
 	void IncrementAutomatedTestingMapIndex();
-	void CloseAutomatedMapTestTimer();
-	void STATIC_StartAutomatedMapTestTimerWorker();
+	void STATIC_CloseAutomatedMapTestTimer();
+	void StartAutomatedMapTestTimerWorker();
 	void StartAutomatedMapTestTimer();
-	void DoMemoryTracking();
-	void EndTimeBasedSentinelStatGatheringAndExit();
-	void DoTimeBasedSentinelStatGathering();
-	void DoSentinel_ViewDependentMemoryAtSpecificLocation(struct FVector* InLocation, struct FRotator* InRotation);
-	void DoSentinel_PerfAtSpecificLocation(struct FVector* InLocation, struct FRotator* InRotation);
-	void DoSentinel_MemoryAtSpecificLocation(const struct FVector& InLocation, const struct FRotator& InRotation);
+	void STATIC_DoMemoryTracking();
+	void STATIC_EndTimeBasedSentinelStatGatheringAndExit();
+	void STATIC_DoTimeBasedSentinelStatGathering();
+	void STATIC_DoSentinel_ViewDependentMemoryAtSpecificLocation(struct FVector* InLocation, struct FRotator* InRotation);
+	void STATIC_DoSentinel_PerfAtSpecificLocation(struct FVector* InLocation, struct FRotator* InRotation);
+	void STATIC_DoSentinel_MemoryAtSpecificLocation(const struct FVector& InLocation, const struct FRotator& InRotation);
 	void GetTravelLocations(const struct FName& LevelName, class APlayerController* PC, TArray<struct FVector>* TravelPoints);
 	void HandlePerLoadedMapAudioStats();
-	void DoSentinelActionPerLoadedMap();
-	void DoTravelTheWorld();
-	void EndSentinelRun(TEnumAsByte<EAutomatedRunResult> RunResult);
+	void STATIC_DoSentinelActionPerLoadedMap();
+	void STATIC_DoTravelTheWorld();
+	void STATIC_EndSentinelRun(TEnumAsByte<EAutomatedRunResult> RunResult);
 	void STATIC_AddSentinelPerTimePeriodStats(const struct FVector& InLocation, const struct FRotator& InRotation);
 	void STATIC_BeginSentinelRun(const struct FString& TaskDescription, const struct FString& TaskParameter, const struct FString& TagDesc);
 	void InitializeOptions(const struct FString& Options);
@@ -2136,10 +2136,10 @@ public:
 	}
 
 
-	void STATIC_OnToggle(class USeqAct_Toggle* Action);
+	void OnToggle(class USeqAct_Toggle* Action);
 	void STATIC_ToggleGroup();
-	void DisableGroup();
-	void EnableGroup();
+	void STATIC_DisableGroup();
+	void STATIC_EnableGroup();
 };
 
 
@@ -2164,8 +2164,8 @@ public:
 
 	void Destroyed();
 	void Logf(const struct FString& logString);
-	void CloseFile();
-	bool STATIC_OpenFile(const struct FString& InFilename, TEnumAsByte<EFWFileType> InFileType, const struct FString& InExtension, bool bUnique, bool bIncludeTimeStamp);
+	void STATIC_CloseFile();
+	bool OpenFile(const struct FString& InFilename, TEnumAsByte<EFWFileType> InFileType, const struct FString& InExtension, bool bUnique, bool bIncludeTimeStamp);
 };
 
 
@@ -2182,8 +2182,8 @@ public:
 	}
 
 
-	void CloseLog();
-	void STATIC_OpenLog(const struct FString& LogFilename, const struct FString& extension, bool bUnique);
+	void STATIC_CloseLog();
+	void OpenLog(const struct FString& LogFilename, const struct FString& extension, bool bUnique);
 };
 
 
@@ -2308,134 +2308,134 @@ public:
 	void OnEngineHasLoaded();
 	void OnDestroyOnlineGameComplete(const struct FName& SessionName, bool bWasSuccessful);
 	void StandbyCheatDetected(TEnumAsByte<EStandbyType> StandbyType);
-	void EnableStandbyCheatDetection(bool bIsEnabled);
+	void STATIC_EnableStandbyCheatDetection(bool bIsEnabled);
 	void InvokeEndSentinelRun();
 	void InvokeStartSentinelRun();
 	void STATIC_BeginBVT(const struct FString& TagDesc);
-	bool EndSentinelRun();
-	bool STATIC_StartSentinelRun(class APlayerController* PC);
-	bool CheckForSentinelRun();
-	bool STATIC_ShouldAutoContinueToNextRound();
+	bool STATIC_EndSentinelRun();
+	bool StartSentinelRun(class APlayerController* PC);
+	bool STATIC_CheckForSentinelRun();
+	bool ShouldAutoContinueToNextRound();
 	bool IsDoingASentinelRun();
 	bool IsCheckingForMemLeaks();
 	bool IsCheckingForFragmentation();
 	bool IsAutomatedPerfTesting();
-	void STATIC_SetBandwidthLimit(float AsyncIOBandwidthLimit);
-	void DoTravelTheWorld();
+	void SetBandwidthLimit(float AsyncIOBandwidthLimit);
+	void STATIC_DoTravelTheWorld();
 	void STATIC_TellClientsToTravelToSession(const struct FName& SessionName, class UClass* SearchClass, unsigned char PlatformSpecificInfo);
 	void STATIC_TellClientsPartyHostIsLeaving(const struct FUniqueNetId& PartyHostPlayerId);
 	void STATIC_TellClientsToReturnToPartyHost();
-	void STATIC_OnServerCreateComplete(const struct FName& SessionName, bool bWasSuccessful);
-	void STATIC_RegisterServer();
+	void OnServerCreateComplete(const struct FName& SessionName, bool bWasSuccessful);
+	void RegisterServer();
 	void STATIC_OnLoginChange(unsigned char LocalUserNum);
 	void STATIC_OnLoginFailed(unsigned char LocalUserNum, TEnumAsByte<EOnlineServerConnectionStatus> ErrorCode);
-	void ClearAutoLoginDelegates();
-	bool STATIC_ProcessServerLogin();
+	void STATIC_ClearAutoLoginDelegates();
+	bool ProcessServerLogin();
 	void MatineeCancelled();
-	void STATIC_RecalculateSkillRating();
+	void RecalculateSkillRating();
 	void STATIC_UpdateGameplayMuteList(class APlayerController* PC);
-	void STATIC_NotifyArbitratedMatchEnd();
+	void NotifyArbitratedMatchEnd();
 	bool MatchIsInProgress();
 	void STATIC_ArbitrationRegistrationComplete(const struct FName& SessionName, bool bWasSuccessful);
-	void STATIC_RegisterServerForArbitration();
-	void STATIC_StartArbitratedMatch();
-	void STATIC_StartArbitrationRegistration();
-	void STATIC_ProcessClientRegistrationCompletion(class APlayerController* PC, bool bWasSuccessful);
+	void RegisterServerForArbitration();
+	void StartArbitratedMatch();
+	void StartArbitrationRegistration();
+	void ProcessClientRegistrationCompletion(class APlayerController* PC, bool bWasSuccessful);
 	void STATIC_UpdateGameSettingsCounts();
-	void STATIC_SetSeamlessTravelViewTarget(class APlayerController* PC);
+	void SetSeamlessTravelViewTarget(class APlayerController* PC);
 	void HandleSeamlessTravelPlayer(class AController** C);
 	void STATIC_UpdateGameSettings();
 	void PostSeamlessTravel();
 	void STATIC_SwapPlayerControllers(class APlayerController* OldPC, class APlayerController* NewPC);
 	void GetSeamlessTravelActorList(bool bToEntry, TArray<class AActor*>* ActorList);
-	void STATIC_OverridePRI(class APlayerController* PC, class APlayerReplicationInfo* OldPRI);
-	bool FindInactivePRI(class APlayerController* PC);
+	void OverridePRI(class APlayerController* PC, class APlayerReplicationInfo* OldPRI);
+	bool STATIC_FindInactivePRI(class APlayerController* PC);
 	void STATIC_AddInactivePRI(class APlayerReplicationInfo* PRI, class APlayerController* PC);
 	void PostCommitMapChange();
 	void PreCommitMapChange(const struct FString& PreviousMapName, const struct FString& NextMapName);
 	bool STATIC_AllowPausing(class APlayerController* PC);
 	bool STATIC_AllowCheats(class APlayerController* P);
 	bool STATIC_AllowMutator(const struct FString& MutatorClassName);
-	bool STATIC_PlayerCanRestart(class APlayerController* aPlayer);
-	bool STATIC_PlayerCanRestartGame(class APlayerController* aPlayer);
-	void DriverLeftVehicle(class AVehicle* V, class APawn* P);
-	bool CanLeaveVehicle(class AVehicle* V, class APawn* P);
-	void DriverEnteredVehicle(class AVehicle* V, class APawn* P);
+	bool PlayerCanRestart(class APlayerController* aPlayer);
+	bool PlayerCanRestartGame(class APlayerController* aPlayer);
+	void STATIC_DriverLeftVehicle(class AVehicle* V, class APawn* P);
+	bool STATIC_CanLeaveVehicle(class AVehicle* V, class APawn* P);
+	void STATIC_DriverEnteredVehicle(class AVehicle* V, class APawn* P);
 	void ModifyScoreKill(class AController* Killer, class AController* Other);
-	void STATIC_ScoreKill(class AController* Killer, class AController* Other, bool bFakeDeath);
-	bool CheckScore(class APlayerReplicationInfo* Scorer);
-	void STATIC_ScoreObjective(class APlayerReplicationInfo* Scorer, int Score);
+	void ScoreKill(class AController* Killer, class AController* Other, bool bFakeDeath);
+	bool STATIC_CheckScore(class APlayerReplicationInfo* Scorer);
+	void ScoreObjective(class APlayerReplicationInfo* Scorer, int Score);
 	void STATIC_AddObjectiveScore(class APlayerReplicationInfo* Scorer, int Score);
-	float STATIC_RatePlayerStart(class APlayerStart* P, unsigned char Team, class AController* Player);
-	class APlayerStart* ChoosePlayerStart(class AController* Player, unsigned char InTeam);
-	class ANavigationPoint* FindPlayerStart(class AController* Player, unsigned char InTeam, const struct FString& IncomingName);
-	bool STATIC_ShouldSpawnAtStartSpot(class AController* Player);
-	void EndLogging(const struct FString& Reason);
+	float RatePlayerStart(class APlayerStart* P, unsigned char Team, class AController* Player);
+	class APlayerStart* STATIC_ChoosePlayerStart(class AController* Player, unsigned char InTeam);
+	class ANavigationPoint* STATIC_FindPlayerStart(class AController* Player, unsigned char InTeam, const struct FString& IncomingName);
+	bool ShouldSpawnAtStartSpot(class AController* Player);
+	void STATIC_EndLogging(const struct FString& Reason);
 	void GameEventsPoll();
-	void EndOnlineGame();
-	void STATIC_PerformEndGameHandling();
-	void EndGame(class APlayerReplicationInfo* Winner, const struct FString& Reason);
+	void STATIC_EndOnlineGame();
+	void PerformEndGameHandling();
+	void STATIC_EndGame(class APlayerReplicationInfo* Winner, const struct FString& Reason);
 	void STATIC_WriteOnlinePlayerScores();
 	void STATIC_WriteOnlineStats();
-	bool CheckEndGame(class APlayerReplicationInfo* Winner, const struct FString& Reason);
-	bool CheckModifiedEndGame(class APlayerReplicationInfo* Winner, const struct FString& Reason);
+	bool STATIC_CheckEndGame(class APlayerReplicationInfo* Winner, const struct FString& Reason);
+	bool STATIC_CheckModifiedEndGame(class APlayerReplicationInfo* Winner, const struct FString& Reason);
 	void BroadcastLocalizedTeam(int TeamIndex, class AActor* Sender, class UClass* Message, int Switch, class APlayerReplicationInfo* RelatedPRI_2, class APlayerReplicationInfo* RelatedPRI_3, class UObject* OptionalObject);
 	void BroadcastLocalized(class AActor* Sender, class UClass* Message, int Switch, class APlayerReplicationInfo* RelatedPRI_2, class APlayerReplicationInfo* RelatedPRI_3, class UObject* OptionalObject);
-	void BroadcastTeam(class AController* Sender, const struct FString& msg, const struct FName& Type);
+	void STATIC_BroadcastTeam(class AController* Sender, const struct FString& msg, const struct FName& Type);
 	void Broadcast(class AActor* Sender, const struct FString& msg, const struct FName& Type);
-	void STATIC_RestartGame();
+	void RestartGame();
 	bool GetTravelType();
 	struct FString GetNextMap();
-	void STATIC_SendPlayer(class APlayerController* aPlayer, const struct FString& URL);
-	unsigned char STATIC_PickTeam(unsigned char Current, class AController* C);
-	bool ChangeTeam(class AController* Other, int N, bool bNewTeam);
-	void ChangeName(class AController* Other, const struct FString& S, bool bNameChange);
+	void SendPlayer(class APlayerController* aPlayer, const struct FString& URL);
+	unsigned char PickTeam(unsigned char Current, class AController* C);
+	bool STATIC_ChangeTeam(class AController* Other, int N, bool bNewTeam);
+	void STATIC_ChangeName(class AController* Other, const struct FString& S, bool bNameChange);
 	void DiscardInventory(class APawn* Other, class AController* Killer);
-	bool STATIC_PickupQuery(class APawn* Other, class UClass* ItemClass, class AActor* Pickup);
-	bool STATIC_ShouldRespawn(class APickupFactory* Other);
-	bool CheckRelevance(class AActor* Other);
-	void STATIC_ReduceDamage(class APawn* injured, class AController* InstigatedBy, const struct FVector& HitLocation, class UClass* DamageType, class AActor* DamageCauser, int* Damage, struct FVector* Momentum);
-	bool CanSpectate(class APlayerController* Viewer, class APlayerReplicationInfo* ViewTarget);
+	bool PickupQuery(class APawn* Other, class UClass* ItemClass, class AActor* Pickup);
+	bool ShouldRespawn(class APickupFactory* Other);
+	bool STATIC_CheckRelevance(class AActor* Other);
+	void ReduceDamage(class APawn* injured, class AController* InstigatedBy, const struct FVector& HitLocation, class UClass* DamageType, class AActor* DamageCauser, int* Damage, struct FVector* Momentum);
+	bool STATIC_CanSpectate(class APlayerController* Viewer, class APlayerReplicationInfo* ViewTarget);
 	void KickBan(const struct FString& S);
 	void Kick(const struct FString& S);
-	void BroadcastDeathMessage(class AController* Killer, class AController* Other, class UClass* DamageType);
-	bool STATIC_PreventDeath(class APawn* KilledPawn, class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation);
+	void STATIC_BroadcastDeathMessage(class AController* Killer, class AController* Other, class UClass* DamageType);
+	bool PreventDeath(class APawn* KilledPawn, class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation);
 	void Killed(class AController* Killer, class AController* KilledPlayer, class APawn* KilledPawn, class UClass* DamageType);
-	void STATIC_NotifyKilled(class AController* Killer, class AController* Killed, class APawn* KilledPawn, class UClass* DamageType);
-	void STATIC_SetPlayerDefaults(class APawn* PlayerPawn);
+	void NotifyKilled(class AController* Killer, class AController* Killed, class APawn* KilledPawn, class UClass* DamageType);
+	void SetPlayerDefaults(class APawn* PlayerPawn);
 	void Mutate(const struct FString& MutateString, class APlayerController* Sender);
 	void AddDefaultInventory(class APawn* P);
 	void AcceptInventory(class APawn* PlayerPawn);
 	void STATIC_UnregisterPlayer(class APlayerController* PC);
 	void Logout(class AController* Exiting);
 	void PreExit();
-	int CalculatedNetSpeed();
+	int STATIC_CalculatedNetSpeed();
 	void STATIC_UpdateNetSpeeds();
 	void PostLogin(class APlayerController* NewPlayer);
 	void STATIC_UpdateBestNextHosts();
 	int STATIC_BestNextHostSort(class APlayerController* A, class APlayerController* B);
 	void GenericPlayerInitialization(class AController* C);
-	void STATIC_ReplicateStreamingStatus(class APlayerController* PC);
+	void ReplicateStreamingStatus(class APlayerController* PC);
 	class UClass* GetDefaultPlayerClass(class AController* C);
-	class APawn* STATIC_SpawnDefaultPawnFor(class AController* NewPlayer, class ANavigationPoint* StartSpot);
-	void STATIC_RestartPlayer(class AController* NewPlayer);
-	void STATIC_StartBots();
-	void STATIC_StartHumans();
+	class APawn* SpawnDefaultPawnFor(class AController* NewPlayer, class ANavigationPoint* StartSpot);
+	void RestartPlayer(class AController* NewPlayer);
+	void StartBots();
+	void StartHumans();
 	void OnStartOnlineGameComplete(const struct FName& SessionName, bool bWasSuccessful);
-	void STATIC_StartOnlineGame();
-	void STATIC_StartMatch();
+	void StartOnlineGame();
+	void StartMatch();
 	class APlayerController* Login(const struct FString& Portal, const struct FString& Options, const struct FUniqueNetId& UniqueId, const struct FUniqueNetId& ConsoleUniqueId, struct FString* ErrorMessage);
-	class APlayerController* STATIC_SpawnPlayerController(const struct FVector& SpawnLocation, const struct FRotator& SpawnRotation);
+	class APlayerController* SpawnPlayerController(const struct FVector& SpawnLocation, const struct FRotator& SpawnRotation);
 	int GetNextPlayerID();
 	bool STATIC_AtCapacity(bool bSpectator);
-	void STATIC_RejectLogin(class UPlayer* InPlayer, const struct FString& Error);
-	void STATIC_ResumeLogin(class UPlayer* InPlayer);
-	class UPlayer* STATIC_PauseLogin();
+	void RejectLogin(class UPlayer* InPlayer, const struct FString& Error);
+	void ResumeLogin(class UPlayer* InPlayer);
+	class UPlayer* PauseLogin();
 	void PreLogin(const struct FString& Options, const struct FString& Address, const struct FUniqueNetId& UniqueId, bool bSupportsAuth, struct FString* ErrorMessage);
-	bool STATIC_RequiresPassword();
-	class APlayerController* STATIC_ProcessClientTravel(const struct FGuid& NextMapGuid, bool bSeamless, bool bAbsolute, struct FString* URL);
-	void STATIC_ProcessServerTravel(const struct FString& URL, bool bAbsolute);
-	void STATIC_RemoveMutator(class AMutator* MutatorToRemove);
+	bool RequiresPassword();
+	class APlayerController* ProcessClientTravel(const struct FGuid& NextMapGuid, bool bSeamless, bool bAbsolute, struct FString* URL);
+	void ProcessServerTravel(const struct FString& URL, bool bAbsolute);
+	void RemoveMutator(class AMutator* MutatorToRemove);
 	void STATIC_AddMutator(const struct FString& mutname, bool bUserAdded);
 	void NotifyPendingConnectionLost();
 	void InitGame(const struct FString& Options, struct FString* ErrorMessage);
@@ -2443,12 +2443,12 @@ public:
 	struct FString GetDefaultGameClassPath(const struct FString& MapName, const struct FString& Options, const struct FString& Portal);
 	int GetIntOption(const struct FString& Options, const struct FString& ParseString, int CurrentValue);
 	bool HasOption(const struct FString& Options, const struct FString& InKey);
-	struct FString STATIC_ParseOption(const struct FString& Options, const struct FString& InKey);
+	struct FString ParseOption(const struct FString& Options, const struct FString& InKey);
 	void GetKeyValue(const struct FString& Pair, struct FString* Key, struct FString* Value);
 	bool GrabOption(struct FString* Options, struct FString* Result);
 	void SetGameSpeed(float T);
-	void DebugPause();
-	void ForceClearUnpauseDelegates(class AActor* PauseActor);
+	void STATIC_DebugPause();
+	void STATIC_ForceClearUnpauseDelegates(class AActor* PauseActor);
 	void ClearPause();
 	bool SetPause(class APlayerController* PC, const struct FScriptDelegate& CanUnpauseDelegate);
 	bool CanUnpause();
@@ -2458,14 +2458,14 @@ public:
 	void ForceKickPlayer(class APlayerController* PC, const struct FString& KickReason);
 	void KickIdler(class APlayerController* PC);
 	void GameEnding();
-	void STATIC_NotifyNavigationChanged(class ANavigationPoint* N);
-	void DoNavFearCostFallOff();
-	bool STATIC_ShouldStartInCinematicMode(int* OutHidePlayer, int* OutHideHud, int* OutDisableMovement, int* OutDisableTurning, int* OutDisableInput);
+	void NotifyNavigationChanged(class ANavigationPoint* N);
+	void STATIC_DoNavFearCostFallOff();
+	bool ShouldStartInCinematicMode(int* OutHidePlayer, int* OutHideHud, int* OutDisableMovement, int* OutDisableTurning, int* OutDisableInput);
 	void Timer();
-	void STATIC_ResetLevel();
-	bool STATIC_ShouldReset(class AActor* ActorToReset);
+	void ResetLevel();
+	bool ShouldReset(class AActor* ActorToReset);
 	void Reset();
-	void DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos);
+	void STATIC_DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos);
 	void PostBeginPlay();
 	class ACoverReplicator* GetCoverReplicator();
 	void PreBeginPlay();
@@ -2491,22 +2491,22 @@ public:
 
 
 	void NetDamage(int OriginalDamage, class APawn* injured, class AController* InstigatedBy, const struct FVector& HitLocation, class UClass* DamageType, class AActor* DamageCauser, int* Damage, struct FVector* Momentum);
-	void STATIC_ScoreKill(class AController* Killer, class AController* Killed, bool bFakeDeath);
-	void STATIC_ScoreObjective(class APlayerReplicationInfo* Scorer, int Score);
-	bool STATIC_PreventDeath(class APawn* Killed, class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation);
-	bool STATIC_OverridePickupQuery(class APawn* Other, class UClass* ItemClass, class AActor* Pickup, unsigned char* bAllowPickup);
-	bool CheckEndGame(class APlayerReplicationInfo* Winner, const struct FString& Reason);
+	void ScoreKill(class AController* Killer, class AController* Killed, bool bFakeDeath);
+	void ScoreObjective(class APlayerReplicationInfo* Scorer, int Score);
+	bool PreventDeath(class APawn* Killed, class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation);
+	bool OverridePickupQuery(class APawn* Other, class UClass* ItemClass, class AActor* Pickup, unsigned char* bAllowPickup);
+	bool STATIC_CheckEndGame(class APlayerReplicationInfo* Winner, const struct FString& Reason);
 	bool HandleRestartGame();
-	class ANavigationPoint* FindPlayerStart(class AController* Player, unsigned char InTeam, const struct FString& IncomingName);
+	class ANavigationPoint* STATIC_FindPlayerStart(class AController* Player, unsigned char InTeam, const struct FString& IncomingName);
 	void GetSeamlessTravelActorList(bool bToEntry, TArray<class AActor*>* ActorList);
 	void InitMutator(const struct FString& Options, struct FString* ErrorMessage);
-	void DriverLeftVehicle(class AVehicle* V, class APawn* P);
-	bool CanLeaveVehicle(class AVehicle* V, class APawn* P);
-	void DriverEnteredVehicle(class AVehicle* V, class APawn* P);
-	void STATIC_NotifyLogin(class AController* NewPlayer);
-	void STATIC_NotifyLogout(class AController* Exiting);
-	bool CheckReplacement(class AActor* Other);
-	bool CheckRelevance(class AActor* Other);
+	void STATIC_DriverLeftVehicle(class AVehicle* V, class APawn* P);
+	bool STATIC_CanLeaveVehicle(class AVehicle* V, class APawn* P);
+	void STATIC_DriverEnteredVehicle(class AVehicle* V, class APawn* P);
+	void NotifyLogin(class AController* NewPlayer);
+	void NotifyLogout(class AController* Exiting);
+	bool STATIC_CheckReplacement(class AActor* Other);
+	bool STATIC_CheckRelevance(class AActor* Other);
 	bool IsRelevant(class AActor* Other);
 	bool STATIC_AlwaysKeep(class AActor* Other);
 	void STATIC_AddMutator(class AMutator* M);
@@ -2556,7 +2556,7 @@ public:
 
 
 	int MoveOntoRoutePath(class APawn* P, TEnumAsByte<ERouteDirection> RouteDirection, float DistFudgeFactor);
-	int STATIC_ResolveRouteIndex(int Idx, TEnumAsByte<ERouteDirection> RouteDirection, unsigned char* out_bComplete, unsigned char* out_bReverse);
+	int ResolveRouteIndex(int Idx, TEnumAsByte<ERouteDirection> RouteDirection, unsigned char* out_bComplete, unsigned char* out_bReverse);
 };
 
 
@@ -2605,10 +2605,10 @@ public:
 
 
 	struct FString GetLocalString(int Switch, class APlayerReplicationInfo* RelatedPRI_2, class APlayerReplicationInfo* RelatedPRI_3);
-	void DropFrom(const struct FVector& StartLocation, const struct FVector& StartVelocity);
-	bool DenyPickupQuery(class UClass* ItemClass, class AActor* Pickup);
+	void STATIC_DropFrom(const struct FVector& StartLocation, const struct FVector& StartVelocity);
+	bool STATIC_DenyPickupQuery(class UClass* ItemClass, class AActor* Pickup);
 	void ItemRemovedFromInvManager();
-	void ClientGivenTo(class APawn* NewOwner, bool bDoNotActivate);
+	void STATIC_ClientGivenTo(class APawn* NewOwner, bool bDoNotActivate);
 	void GivenTo(class APawn* thisPawn, bool bDoNotActivate);
 	void STATIC_AnnouncePickup(class APawn* Other);
 	void GiveTo(class APawn* Other);
@@ -2637,12 +2637,12 @@ public:
 	float GetWeaponRating();
 	bool HasAnyAmmo();
 	bool STATIC_TryPutDown();
-	bool DenyClientWeaponSet();
+	bool STATIC_DenyClientWeaponSet();
 	void HolderDied();
 	void STATIC_Activate();
-	void DumpWeaponDebugToLog();
+	void STATIC_DumpWeaponDebugToLog();
 	bool IsFiring();
-	void STATIC_ServerStopFire();
+	void ServerStopFire();
 	void StopFire();
 	bool StartFire();
 	bool NativeIsFiring();
@@ -2668,19 +2668,19 @@ public:
 
 
 	void STATIC_UpdateController();
-	void ClientWeaponSet(class AWeapon* NewWeapon, bool bOptionalSet, bool bDoNotActivate);
-	void ChangedWeapon();
-	void ClearPendingWeapon();
-	bool CancelWeaponChange();
-	void STATIC_SetPendingWeapon(class AWeapon* DesiredWeapon);
+	void STATIC_ClientWeaponSet(class AWeapon* NewWeapon, bool bOptionalSet, bool bDoNotActivate);
+	void STATIC_ChangedWeapon();
+	void STATIC_ClearPendingWeapon();
+	bool STATIC_CancelWeaponChange();
+	void SetPendingWeapon(class AWeapon* DesiredWeapon);
 	void InternalSetCurrentWeapon(class AWeapon* DesiredWeapon);
-	void STATIC_NextWeapon();
-	void STATIC_PrevWeapon();
+	void NextWeapon();
+	void PrevWeapon();
 	void STATIC_SwitchToBestWeapon(bool bForceADifferentWeapon);
 	class AWeapon* GetBestWeapon(bool bForceADifferentWeapon);
 	float GetWeaponRatingFor(class AWeapon* W);
-	void DrawHUD(class AHUD* H);
-	void STATIC_OwnerDied();
+	void STATIC_DrawHUD(class AHUD* H);
+	void OwnerDied();
 	void DiscardInventory();
 	void RemoveFromInventory(class AInventory* ItemToRemove);
 	bool STATIC_AddInventory(class AInventory* NewItem, bool bDoNotActivate);
@@ -2688,12 +2688,12 @@ public:
 	class AInventory* FindInventoryType(class UClass* DesiredClass, bool bAllowSubclass);
 	bool HandlePickupQuery(class UClass* ItemClass, class AActor* Pickup);
 	void Destroyed();
-	void STATIC_SetupFor(class APawn* P);
+	void SetupFor(class APawn* P);
 	void InventoryActors(class UClass* BaseClass, class AInventory** Inv);
-	void ClearAllPendingFire(class AWeapon* InWeapon);
+	void STATIC_ClearAllPendingFire(class AWeapon* InWeapon);
 	bool IsPendingFire(class AWeapon* InWeapon, int InFiringMode);
-	void ClearPendingFire(class AWeapon* InWeapon, int InFiringMode);
-	void STATIC_SetPendingFire(class AWeapon* InWeapon, int InFiringMode);
+	void STATIC_ClearPendingFire(class AWeapon* InWeapon, int InFiringMode);
+	void SetPendingFire(class AWeapon* InWeapon, int InFiringMode);
 	int GetPendingFireLength(class AWeapon* InWeapon);
 	void PostBeginPlay();
 };
@@ -2771,7 +2771,7 @@ public:
 	}
 
 
-	void CheckPriorityRefresh();
+	void STATIC_CheckPriorityRefresh();
 	void Update();
 	void STATIC_AddAIGroupActor(class UInterpGroupInstAI* AIGroupInst);
 };
@@ -2848,20 +2848,20 @@ public:
 
 	struct FString GetDebugAbbrev();
 	void STATIC_ApplyCheckpointRecord(struct ANavigationPoint_FCheckpointRecord* Record);
-	void CreateCheckpointRecord(struct ANavigationPoint_FCheckpointRecord* Record);
-	bool STATIC_ShouldSaveForCheckpoint();
+	void STATIC_CreateCheckpointRecord(struct ANavigationPoint_FCheckpointRecord* Record);
+	bool ShouldSaveForCheckpoint();
 	void ShutDown();
-	void STATIC_OnToggle(class USeqAct_Toggle* inAction);
+	void OnToggle(class USeqAct_Toggle* inAction);
 	bool IsOnDifferentNetwork(class ANavigationPoint* Nav);
 	bool GetAllNavInRadius(class AActor* ChkActor, const struct FVector& ChkPoint, float Radius, bool bSkipBlocked, int inNetworkID, const struct FCylinder& MinSize, TArray<class ANavigationPoint*>* out_NavList);
 	class ANavigationPoint* GetNearestNavToPoint(class AActor* ChkActor, const struct FVector& ChkPoint, class UClass* RequiredClass, TArray<class ANavigationPoint*> ExcludeList);
 	class ANavigationPoint* GetNearestNavToActor(class AActor* ChkActor, class UClass* RequiredClass, TArray<class ANavigationPoint*> ExcludeList, float MinDist);
-	bool STATIC_ProceedWithMove(class APawn* Other);
+	bool ProceedWithMove(class APawn* Other);
 	bool SuggestMovePreparation(class APawn* Other);
 	float DetourWeight(class APawn* Other, float PathWeight);
 	bool Accept(class AActor* Incoming, class AActor* Source);
 	int SpecialCost(class APawn* Seeker, class UReachSpec* Path);
-	bool CanTeleport(class AActor* A);
+	bool STATIC_CanTeleport(class AActor* A);
 	bool IsUsableAnchorFor(class APawn* P);
 	class UReachSpec* GetReachSpecTo(class ANavigationPoint* Nav, class UClass* SpecClass);
 	void GetBoundingCylinder(float* CollisionRadius, float* CollisionHeight);
@@ -2923,13 +2923,13 @@ public:
 	bool GetSwatTurnTarget(int SlotIdx, int Direction, struct FCoverInfo* out_Info);
 	void ShutDown();
 	void STATIC_ApplyCheckpointRecord(struct ANavigationPoint_FCheckpointRecord* Record);
-	void CreateCheckpointRecord(struct ANavigationPoint_FCheckpointRecord* Record);
-	void STATIC_OnToggle(class USeqAct_Toggle* inAction);
+	void STATIC_CreateCheckpointRecord(struct ANavigationPoint_FCheckpointRecord* Record);
+	void OnToggle(class USeqAct_Toggle* inAction);
 	bool IsEnabled();
 	bool STATIC_AutoAdjustSlot(int SlotIdx, bool bOnlyCheckLeans);
-	void STATIC_OnModifyCover(class USeqAct_ModifyCover* Action);
+	void OnModifyCover(class USeqAct_ModifyCover* Action);
 	void SetSlotPlayerOnly(int SlotIdx, bool bInPlayerOnly);
-	void STATIC_NotifySlotOwnerCoverDisabled(int SlotIdx, bool bAIOnly);
+	void NotifySlotOwnerCoverDisabled(int SlotIdx, bool bAIOnly);
 	void SetSlotEnabled(int SlotIdx, bool bEnable);
 	void SetDisabled(bool bNewDisabled);
 	void GetSlotActions(int SlotIdx, TArray<TEnumAsByte<ECoverAction>>* Actions);
@@ -2942,7 +2942,7 @@ public:
 	bool IsRightEdgeSlot(int SlotIdx, bool bIgnoreLeans);
 	bool IsLeftEdgeSlot(int SlotIdx, bool bIgnoreLeans);
 	bool IsEdgeSlot(int SlotIdx, bool bIgnoreLeans);
-	bool FindSlots(const struct FVector& CheckLocation, float MaxDistance, int* LeftSlotIdx, int* RightSlotIdx);
+	bool STATIC_FindSlots(const struct FVector& CheckLocation, float MaxDistance, int* LeftSlotIdx, int* RightSlotIdx);
 	bool IsStationarySlot(int SlotIdx);
 	bool IsValidClaimBetween(class APawn* ChkClaim, int StartSlotIdx, int EndSlotIdx, bool bSkipTeamCheck, bool bSkipOverlapCheck);
 	bool IsValidClaim(class APawn* ChkClaim, int SlotIdx, bool bSkipTeamCheck, bool bSkipOverlapCheck);
@@ -2954,7 +2954,7 @@ public:
 	struct FRotator GetSlotRotation(int SlotIdx, bool bForceUseOffset);
 	struct FVector GetSlotLocation(int SlotIdx, bool bForceUseOffset);
 	void STATIC_UnPackFireLinkInteractionInfo(unsigned char PackedByte, TEnumAsByte<ECoverType>* SrcType, TEnumAsByte<ECoverAction>* SrcAction, TEnumAsByte<ECoverType>* DestType, TEnumAsByte<ECoverAction>* DestAction);
-	unsigned char STATIC_PackFireLinkInteractionInfo(TEnumAsByte<ECoverType> SrcType, TEnumAsByte<ECoverAction> SrcAction, TEnumAsByte<ECoverType> DestType, TEnumAsByte<ECoverAction> DestAction);
+	unsigned char PackFireLinkInteractionInfo(TEnumAsByte<ECoverType> SrcType, TEnumAsByte<ECoverAction> SrcAction, TEnumAsByte<ECoverType> DestType, TEnumAsByte<ECoverAction> DestAction);
 	bool GetFireLinkTargetCoverInfo(int SlotIdx, int FireLinkIdx, TEnumAsByte<EFireLinkID> ArrayID, struct FCoverInfo* out_Info);
 };
 
@@ -2982,7 +2982,7 @@ public:
 
 
 	bool SuggestMovePreparation(class APawn* Other);
-	bool STATIC_ProceedWithMove(class APawn* Other);
+	bool ProceedWithMove(class APawn* Other);
 	class AActor* SpecialHandling(class APawn* Other);
 	void MoverClosed();
 	void MoverOpened();
@@ -3059,7 +3059,7 @@ public:
 	}
 
 
-	bool STATIC_ProceedWithMove(class APawn* Other);
+	bool ProceedWithMove(class APawn* Other);
 	bool SuggestMovePreparation(class APawn* Other);
 	class AActor* SpecialHandling(class APawn* Other);
 	void PostBeginPlay();
@@ -3083,7 +3083,7 @@ public:
 
 	bool SuggestMovePreparation(class APawn* Other);
 	void STATIC_WaitForLift(class APawn* Other);
-	bool CanBeReachedFromLiftBy(class APawn* Other);
+	bool STATIC_CanBeReachedFromLiftBy(class APawn* Other);
 };
 
 
@@ -3145,21 +3145,21 @@ public:
 	}
 
 
-	bool DelayRespawn();
+	bool STATIC_DelayRespawn();
 	void Destroyed();
-	void STATIC_SetPickupVisible();
-	void STATIC_SetPickupHidden();
-	void STATIC_RespawnEffect();
+	void SetPickupVisible();
+	void SetPickupHidden();
+	void RespawnEffect();
 	float GetRespawnTime();
-	void STATIC_RecheckValidTouch();
-	void STATIC_PickedUpBy(class APawn* P);
+	void RecheckValidTouch();
+	void PickedUpBy(class APawn* P);
 	void GiveTo(class APawn* P);
-	bool STATIC_ReadyToPickup(float MaxWait);
-	void STATIC_SpawnCopyFor(class APawn* Recipient);
+	bool ReadyToPickup(float MaxWait);
+	void SpawnCopyFor(class APawn* Recipient);
 	float DetourWeight(class APawn* Other, float PathWeight);
-	void STATIC_StartSleeping();
-	void STATIC_SetRespawn();
-	bool CheckForErrors();
+	void StartSleeping();
+	void SetRespawn();
+	bool STATIC_CheckForErrors();
 	void Reset();
 	void SetPickupMesh();
 	void ShutDown();
@@ -3190,7 +3190,7 @@ public:
 
 
 	void PostRenderFor(class APlayerController* PC, class UCanvas* Canvas, const struct FVector& CameraPosition, const struct FVector& CameraDir);
-	void STATIC_OnToggle(class USeqAct_Toggle* Action);
+	void OnToggle(class USeqAct_Toggle* Action);
 };
 
 
@@ -3208,7 +3208,7 @@ public:
 	}
 
 
-	bool CanTeleport(class AActor* A);
+	bool STATIC_CanTeleport(class AActor* A);
 };
 
 
@@ -3269,17 +3269,17 @@ public:
 	}
 
 
-	bool CanReachPylon(class APylon* DestPylon, class AController* C);
-	void STATIC_OnToggle(class USeqAct_Toggle* Action);
+	bool STATIC_CanReachPylon(class APylon* DestPylon, class AController* C);
+	void OnToggle(class USeqAct_Toggle* Action);
 	bool IsEnabled();
 	void SetEnabled(bool bEnabled);
 	void PostBeginPlay();
 	void NotifyPathChanged();
 	void STATIC_VerifyTopLevelConnections();
 	struct FVector GetTestPathExtent();
-	void FlushDynamicEdges();
+	void STATIC_FlushDynamicEdges();
 	void STATIC_UpdateMeshForPreExistingNavMeshObstacles();
-	void STATIC_OnPylonStatusChange();
+	void OnPylonStatusChange();
 };
 
 
@@ -3319,8 +3319,8 @@ public:
 
 	void StoppedMoving();
 	void StartedMoving();
-	void FlushDynamicEdges();
-	void STATIC_RebuildDynamicEdges();
+	void STATIC_FlushDynamicEdges();
+	void RebuildDynamicEdges();
 	void PostBeginPlay();
 };
 
@@ -3354,7 +3354,7 @@ public:
 	void Touch(class AActor* Other, class UPrimitiveComponent* OtherComp, const struct FVector& HitLocation, const struct FVector& HitNormal);
 	bool Accept(class AActor* Incoming, class AActor* Source);
 	void PostBeginPlay();
-	bool CanTeleport(class AActor* A);
+	bool STATIC_CanTeleport(class AActor* A);
 };
 
 
@@ -3407,20 +3407,20 @@ public:
 
 	void STATIC_ApplyFluidSurfaceImpact(class AFluidSurfaceActor* Fluid, const struct FVector& HitLocation);
 	float GetRange();
-	float STATIC_StaticGetTimeToLocation(const struct FVector& TargetLoc, const struct FVector& StartLoc, class AController* RequestedBy);
+	float StaticGetTimeToLocation(const struct FVector& TargetLoc, const struct FVector& StartLoc, class AController* RequestedBy);
 	float GetTimeToLocation(const struct FVector& TargetLoc);
 	void FellOutOfWorld(class UClass* dmgType);
 	bool IsStationary();
-	void STATIC_RandSpin(float spinRate);
+	void RandSpin(float spinRate);
 	void Explode(const struct FVector& HitLocation, const struct FVector& HitNormal);
 	void EncroachedBy(class AActor* Other);
 	void HitWall(const struct FVector& HitNormal, class AActor* Wall, class UPrimitiveComponent* WallComp);
-	void STATIC_ProcessTouch(class AActor* Other, const struct FVector& HitLocation, const struct FVector& HitNormal);
+	void ProcessTouch(class AActor* Other, const struct FVector& HitLocation, const struct FVector& HitNormal);
 	void Touch(class AActor* Other, class UPrimitiveComponent* OtherComp, const struct FVector& HitLocation, const struct FVector& HitNormal);
 	bool HurtRadius(float DamageAmount, float InDamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, class AActor* IgnoredActor, class AController* InstigatedByController, bool bDoFullDamage);
-	bool STATIC_ProjectileHurtRadius(const struct FVector& HurtOrigin, const struct FVector& HitNormal);
+	bool ProjectileHurtRadius(const struct FVector& HurtOrigin, const struct FVector& HitNormal);
 	void Reset();
-	bool CanSplash();
+	bool STATIC_CanSplash();
 	unsigned char GetTeamNum();
 	void Init(const struct FVector& Direction);
 	void PostBeginPlay();
@@ -3458,7 +3458,7 @@ public:
 	}
 
 
-	void STATIC_OnToggle(class USeqAct_Toggle* Action);
+	void OnToggle(class USeqAct_Toggle* Action);
 };
 
 
@@ -3547,8 +3547,8 @@ public:
 	}
 
 
-	bool STATIC_StopsProjectile(class AProjectile* P);
-	class UTextureRenderTarget2D* CreatePortalTexture();
+	bool StopsProjectile(class AProjectile* P);
+	class UTextureRenderTarget2D* STATIC_CreatePortalTexture();
 	struct FVector STATIC_TransformHitLocation(const struct FVector& HitLocation);
 	struct FVector STATIC_TransformVectorDir(const struct FVector& V);
 	bool STATIC_TransformActor(class AActor* A);
@@ -3630,7 +3630,7 @@ public:
 	}
 
 
-	void STATIC_SetMaterialBasedOnExtremeContent();
+	void SetMaterialBasedOnExtremeContent();
 	void PostBeginPlay();
 };
 
@@ -3652,11 +3652,11 @@ public:
 
 
 	void STATIC_ApplyCheckpointRecord(struct ATrigger_FCheckpointRecord* Record);
-	void CreateCheckpointRecord(struct ATrigger_FCheckpointRecord* Record);
-	bool STATIC_ShouldSaveForCheckpoint();
-	bool STATIC_StopsProjectile(class AProjectile* P);
+	void STATIC_CreateCheckpointRecord(struct ATrigger_FCheckpointRecord* Record);
+	bool ShouldSaveForCheckpoint();
+	bool StopsProjectile(class AProjectile* P);
 	void STATIC_UnTrigger();
-	void STATIC_NotifyTriggered();
+	void NotifyTriggered();
 	void Touch(class AActor* Other, class UPrimitiveComponent* OtherComp, const struct FVector& HitLocation, const struct FVector& HitNormal);
 	void PostBeginPlay();
 };
@@ -3698,10 +3698,10 @@ public:
 
 
 	class UParticleSystemComponent* GetAParticleSystemComponent();
-	void DetachFromAny();
-	void ForceUpdate(bool bTransformOnly);
-	void STATIC_SetComponentRBFixed(bool bFixed);
-	void STATIC_SetTickGroup(TEnumAsByte<ETickingGroup> NewTickGroup);
+	void STATIC_DetachFromAny();
+	void STATIC_ForceUpdate(bool bTransformOnly);
+	void SetComponentRBFixed(bool bFixed);
+	void SetTickGroup(TEnumAsByte<ETickingGroup> NewTickGroup);
 };
 
 
@@ -3804,16 +3804,16 @@ public:
 	}
 
 
-	void STATIC_OcclusionChanged(bool bNowOccluded);
-	void STATIC_OnQueueSubtitles(TArray<struct FSubtitleCue> Subtitles, float CueDuration);
+	void OcclusionChanged(bool bNowOccluded);
+	void OnQueueSubtitles(TArray<struct FSubtitleCue> Subtitles, float CueDuration);
 	void OnAudioFinishedFX(class UAudioComponent* AC);
 	void OnAudioFinished(class UAudioComponent* AC);
 	void ResetToDefaults();
-	void STATIC_SetWaveParameter(const struct FName& InName, class USoundNodeWave* InWave);
-	void STATIC_SetFloatParameter(const struct FName& InName, float InFloat);
+	void SetWaveParameter(const struct FName& InName, class USoundNodeWave* InWave);
+	void SetFloatParameter(const struct FName& InName, float InFloat);
 	void STATIC_AdjustVolume(float AdjustVolumeDuration, float AdjustVolumeLevel);
-	void FadeOut(float FadeOutDuration, float FadeVolumeLevel, float FadePitchLevel);
-	void FadeIn(float FadeInDuration, float FadeVolumeLevel);
+	void STATIC_FadeOut(float FadeOutDuration, float FadeVolumeLevel, float FadePitchLevel);
+	void STATIC_FadeIn(float FadeInDuration, float FadeVolumeLevel);
 	bool IsFadingOut();
 	bool IsFadingIn();
 	bool IsPlaying();
@@ -4061,45 +4061,45 @@ public:
 	}
 
 
-	TEnumAsByte<EGJKResult> ClosestPointOnComponentToComponent(class UPrimitiveComponent** OtherComponent, struct FVector* PointOnComponentA, struct FVector* PointOnComponentB);
-	TEnumAsByte<EGJKResult> ClosestPointOnComponentToPoint(struct FVector* POI, struct FVector* Extent, struct FVector* OutPointA, struct FVector* OutPointB);
+	TEnumAsByte<EGJKResult> STATIC_ClosestPointOnComponentToComponent(class UPrimitiveComponent** OtherComponent, struct FVector* PointOnComponentA, struct FVector* PointOnComponentB);
+	TEnumAsByte<EGJKResult> STATIC_ClosestPointOnComponentToPoint(struct FVector* POI, struct FVector* Extent, struct FVector* OutPointA, struct FVector* OutPointB);
 	struct FRotator GetRotation();
 	struct FVector GetPosition();
-	void STATIC_SetAbsolute(bool NewAbsoluteTranslation, bool NewAbsoluteRotation, bool NewAbsoluteScale);
-	void STATIC_SetScale3D(const struct FVector& NewScale3D);
-	void STATIC_SetScale(float NewScale);
-	void STATIC_SetRotation(const struct FRotator& NewRotation);
-	void STATIC_SetTranslation(const struct FVector& NewTranslation);
-	void STATIC_SetActorCollision(bool NewCollideActors, bool NewBlockActors, bool NewAlwaysCheckCollision);
-	void STATIC_SetTraceBlocking(bool NewBlockZeroExtent, bool NewBlockNonZeroExtent);
-	void STATIC_SetViewOwnerDepthPriorityGroup(bool bNewUseViewOwnerDepthPriorityGroup, TEnumAsByte<ESceneDepthPriorityGroup> NewViewOwnerDepthPriorityGroup);
+	void SetAbsolute(bool NewAbsoluteTranslation, bool NewAbsoluteRotation, bool NewAbsoluteScale);
+	void SetScale3D(const struct FVector& NewScale3D);
+	void SetScale(float NewScale);
+	void SetRotation(const struct FRotator& NewRotation);
+	void SetTranslation(const struct FVector& NewTranslation);
+	void SetActorCollision(bool NewCollideActors, bool NewBlockActors, bool NewAlwaysCheckCollision);
+	void SetTraceBlocking(bool NewBlockZeroExtent, bool NewBlockNonZeroExtent);
+	void SetViewOwnerDepthPriorityGroup(bool bNewUseViewOwnerDepthPriorityGroup, TEnumAsByte<ESceneDepthPriorityGroup> NewViewOwnerDepthPriorityGroup);
 	void SetDepthPriorityGroup(TEnumAsByte<ESceneDepthPriorityGroup> NewDepthPriorityGroup);
-	void STATIC_SetLightingChannels(const struct FLightingChannelContainer& NewLightingChannels);
-	void STATIC_SetCullDistance(float NewCullDistance);
-	void STATIC_SetLightEnvironment(class ULightEnvironmentComponent* NewLightEnvironment);
-	void STATIC_SetShadowParent(class UPrimitiveComponent* NewShadowParent);
-	void STATIC_SetIgnoreOwnerHidden(bool bNewIgnoreOwnerHidden);
-	void STATIC_SetOnlyOwnerSee(bool bNewOnlyOwnerSee);
-	void STATIC_SetOwnerNoSee(bool bNewOwnerNoSee);
-	void STATIC_SetHidden(bool NewHidden);
-	bool STATIC_ShouldComponentAddToScene();
-	void STATIC_SetRBDominanceGroup(unsigned char InDomGroup);
+	void SetLightingChannels(const struct FLightingChannelContainer& NewLightingChannels);
+	void SetCullDistance(float NewCullDistance);
+	void SetLightEnvironment(class ULightEnvironmentComponent* NewLightEnvironment);
+	void SetShadowParent(class UPrimitiveComponent* NewShadowParent);
+	void SetIgnoreOwnerHidden(bool bNewIgnoreOwnerHidden);
+	void SetOnlyOwnerSee(bool bNewOnlyOwnerSee);
+	void SetOwnerNoSee(bool bNewOwnerNoSee);
+	void SetHidden(bool NewHidden);
+	bool ShouldComponentAddToScene();
+	void SetRBDominanceGroup(unsigned char InDomGroup);
 	class URB_BodyInstance* GetRootBodyInstance();
-	void STATIC_SetPhysMaterialOverride(class UPhysicalMaterial* NewPhysMaterial);
+	void SetPhysMaterialOverride(class UPhysicalMaterial* NewPhysMaterial);
 	void InitRBPhys();
-	void STATIC_SetNotifyRigidBodyCollision(bool bNewNotifyRigidBodyCollision);
-	void STATIC_SetRBChannel(TEnumAsByte<ERBCollisionChannel> Channel);
-	void STATIC_SetRBCollisionChannels(const struct FRBCollisionChannelContainer& Channels);
-	void STATIC_SetRBCollidesWithChannel(TEnumAsByte<ERBCollisionChannel> Channel, bool bNewCollides);
-	void STATIC_SetBlockRigidBody(bool bNewBlockRigidBody);
-	bool STATIC_RigidBodyIsAwake(const struct FName& BoneName);
-	void STATIC_PutRigidBodyToSleep(const struct FName& BoneName);
+	void SetNotifyRigidBodyCollision(bool bNewNotifyRigidBodyCollision);
+	void SetRBChannel(TEnumAsByte<ERBCollisionChannel> Channel);
+	void SetRBCollisionChannels(const struct FRBCollisionChannelContainer& Channels);
+	void SetRBCollidesWithChannel(TEnumAsByte<ERBCollisionChannel> Channel, bool bNewCollides);
+	void SetBlockRigidBody(bool bNewBlockRigidBody);
+	bool RigidBodyIsAwake(const struct FName& BoneName);
+	void PutRigidBodyToSleep(const struct FName& BoneName);
 	void STATIC_WakeRigidBody(const struct FName& BoneName);
-	void STATIC_SetRBRotation(const struct FRotator& NewRot, const struct FName& BoneName);
-	void STATIC_SetRBPosition(const struct FVector& NewPos, const struct FName& BoneName);
-	void STATIC_RetardRBLinearVelocity(const struct FVector& RetardDir, float VelScale);
-	void STATIC_SetRBAngularVelocity(const struct FVector& NewAngVel, bool bAddToCurrent);
-	void STATIC_SetRBLinearVelocity(const struct FVector& NewVel, bool bAddToCurrent);
+	void SetRBRotation(const struct FRotator& NewRot, const struct FName& BoneName);
+	void SetRBPosition(const struct FVector& NewPos, const struct FName& BoneName);
+	void RetardRBLinearVelocity(const struct FVector& RetardDir, float VelScale);
+	void SetRBAngularVelocity(const struct FVector& NewAngVel, bool bAddToCurrent);
+	void SetRBLinearVelocity(const struct FVector& NewVel, bool bAddToCurrent);
 	void STATIC_AddTorque(const struct FVector& Torque, const struct FName& BoneName);
 	void STATIC_AddRadialForce(const struct FVector& Origin, float Radius, float Strength, TEnumAsByte<ERadialImpulseFalloff> Falloff);
 	void STATIC_AddForce(const struct FVector& Force, const struct FVector& Position, const struct FName& BoneName);
@@ -4181,7 +4181,7 @@ public:
 	}
 
 
-	void STATIC_SetCylinderSize(float NewRadius, float NewHeight);
+	void SetCylinderSize(float NewRadius, float NewHeight);
 };
 
 
@@ -4453,9 +4453,9 @@ public:
 	}
 
 
-	void STATIC_SetSpriteAndUV(class UTexture2D* NewSprite, int NewU, int NewUL, int NewV, int NewVL);
-	void STATIC_SetUV(int NewU, int NewUL, int NewV, int NewVL);
-	void STATIC_SetSprite(class UTexture2D* NewSprite);
+	void SetSpriteAndUV(class UTexture2D* NewSprite, int NewU, int NewUL, int NewV, int NewVL);
+	void SetUV(int NewU, int NewUL, int NewV, int NewVL);
+	void SetSprite(class UTexture2D* NewSprite);
 };
 
 
@@ -4490,8 +4490,8 @@ public:
 	}
 
 
-	void STATIC_SetDistance(float InNearDistance, float InFarDistance);
-	void STATIC_SetNegative(bool bNegative);
+	void SetDistance(float InNearDistance, float InFarDistance);
+	void SetNegative(bool bNegative);
 	void SetEnabled(bool bInEnabled);
 };
 
@@ -4522,14 +4522,14 @@ public:
 	}
 
 
-	void STATIC_OnUpdatePropertyBlurOpacity();
-	void STATIC_OnUpdatePropertyBlurFalloffExponent();
-	void STATIC_OnUpdatePropertyBlurScale();
+	void OnUpdatePropertyBlurOpacity();
+	void OnUpdatePropertyBlurFalloffExponent();
+	void OnUpdatePropertyBlurScale();
 	void SetEnabled(bool bInEnabled);
-	void STATIC_SetBlurOpacity(float InBlurOpacity);
-	void STATIC_SetBlurFalloffExponent(float InBlurFalloffExponent);
-	void STATIC_SetBlurScale(float InBlurScale);
-	void STATIC_SetMaterial(class UMaterialInterface* InMaterial);
+	void SetBlurOpacity(float InBlurOpacity);
+	void SetBlurFalloffExponent(float InBlurFalloffExponent);
+	void SetBlurScale(float InBlurScale);
+	void SetMaterial(class UMaterialInterface* InMaterial);
 };
 
 
@@ -4567,7 +4567,7 @@ public:
 
 
 	void SetEnabled(bool bEnable);
-	void STATIC_SetFrameRate(float NewFrameRate);
+	void SetFrameRate(float NewFrameRate);
 };
 
 
@@ -4594,8 +4594,8 @@ public:
 	}
 
 
-	void STATIC_SetView(const struct FVector& NewLocation, const struct FRotator& NewRotation);
-	void STATIC_SetCaptureParameters(class UTextureRenderTarget2D* NewTextureTarget, float NewFOV, float NewNearPlane, float NewFarPlane);
+	void SetView(const struct FVector& NewLocation, const struct FRotator& NewRotation);
+	void SetCaptureParameters(class UTextureRenderTarget2D* NewTextureTarget, float NewFOV, float NewNearPlane, float NewFarPlane);
 };
 
 
@@ -4621,9 +4621,9 @@ public:
 	}
 
 
-	void STATIC_SetFadingStartTimeSinceHit(float InFadingStartTimeSinceHit);
-	void STATIC_SetCaptureParameters(const struct FVector& InMaskPosition, float InMaskRadius, const struct FVector& InStartupPosition, bool bOnlyWhenFacing);
-	void STATIC_SetCaptureTargetTexture(class UTextureRenderTarget2D* InTextureTarget);
+	void SetFadingStartTimeSinceHit(float InFadingStartTimeSinceHit);
+	void SetCaptureParameters(const struct FVector& InMaskPosition, float InMaskRadius, const struct FVector& InStartupPosition, bool bOnlyWhenFacing);
+	void SetCaptureTargetTexture(class UTextureRenderTarget2D* InTextureTarget);
 };
 
 
@@ -4662,7 +4662,7 @@ public:
 	}
 
 
-	void STATIC_SetCaptureParameters(class UTextureRenderTarget2D* NewTextureTarget, float NewScaleFOV, class AActor* NewViewDest);
+	void SetCaptureParameters(class UTextureRenderTarget2D* NewTextureTarget, float NewScaleFOV, class AActor* NewViewDest);
 };
 
 
@@ -5396,42 +5396,42 @@ public:
 	}
 
 
-	void DrawDebugGraph(const struct FString& Title, float ValueX, float ValueY, float UL_X, float UL_Y, float W, float H, const struct FVector2D& RangeX, const struct FVector2D& RangeY);
-	void DrawTextureDoubleLine(const struct FVector& StartPoint, const struct FVector& EndPoint, float Perc, float Spacing, float Width, const struct FColor& LineColor, const struct FColor& AltLineColor, class UTexture* Tex, float U, float V, float UL, float VL);
-	void DrawTextureLine(const struct FVector& StartPoint, const struct FVector& EndPoint, float Perc, float Width, const struct FColor& LineColor, class UTexture* LineTexture, float U, float V, float UL, float VL);
-	void Draw2DLine(float X1, float Y1, float X2, float Y2, const struct FColor& LineColor);
-	void STATIC_SetDrawColorStruct(const struct FColor& C);
-	void STATIC_SetDrawColor(unsigned char R, unsigned char G, unsigned char B, unsigned char A);
-	void DrawBox(float Width, float Height);
-	void DrawRect(float RectX, float RectY, class UTexture* Tex, TEnumAsByte<EDisplayPlane> DisplayPlane);
-	void DrawIcon(const struct FCanvasIcon& Icon, float X, float Y, float Scale, TEnumAsByte<EDisplayPlane> DisplayPlane);
-	void DrawScaledIcon(const struct FCanvasIcon& Icon, float X, float Y, const struct FVector& Scale, TEnumAsByte<EDisplayPlane> DisplayPlane);
+	void STATIC_DrawDebugGraph(const struct FString& Title, float ValueX, float ValueY, float UL_X, float UL_Y, float W, float H, const struct FVector2D& RangeX, const struct FVector2D& RangeY);
+	void STATIC_DrawTextureDoubleLine(const struct FVector& StartPoint, const struct FVector& EndPoint, float Perc, float Spacing, float Width, const struct FColor& LineColor, const struct FColor& AltLineColor, class UTexture* Tex, float U, float V, float UL, float VL);
+	void STATIC_DrawTextureLine(const struct FVector& StartPoint, const struct FVector& EndPoint, float Perc, float Width, const struct FColor& LineColor, class UTexture* LineTexture, float U, float V, float UL, float VL);
+	void STATIC_Draw2DLine(float X1, float Y1, float X2, float Y2, const struct FColor& LineColor);
+	void SetDrawColorStruct(const struct FColor& C);
+	void SetDrawColor(unsigned char R, unsigned char G, unsigned char B, unsigned char A);
+	void STATIC_DrawBox(float Width, float Height);
+	void STATIC_DrawRect(float RectX, float RectY, class UTexture* Tex, TEnumAsByte<EDisplayPlane> DisplayPlane);
+	void STATIC_DrawIcon(const struct FCanvasIcon& Icon, float X, float Y, float Scale, TEnumAsByte<EDisplayPlane> DisplayPlane);
+	void STATIC_DrawScaledIcon(const struct FCanvasIcon& Icon, float X, float Y, const struct FVector& Scale, TEnumAsByte<EDisplayPlane> DisplayPlane);
 	struct FCanvasIcon MakeIcon(class UTexture* Texture, float U, float V, float UL, float VL);
-	void DrawBlendedTile(class UTexture* Tex, float XL, float YL, float U, float V, float UL, float VL, TEnumAsByte<ECanvasBlendMode> Blend, TEnumAsByte<EDisplayPlane> DisplayPlane);
-	void DrawTexture(class UTexture* Tex, float Scale, TEnumAsByte<EDisplayPlane> DisplayPlane);
-	void STATIC_PopMaskRegion();
-	void STATIC_PushMaskRegion(float X, float Y, float XL, float YL);
-	void STATIC_SetClip(float X, float Y);
-	void STATIC_SetOrigin(float X, float Y);
-	void STATIC_SetPos(float PosX, float PosY, float PosZ);
+	void STATIC_DrawBlendedTile(class UTexture* Tex, float XL, float YL, float U, float V, float UL, float VL, TEnumAsByte<ECanvasBlendMode> Blend, TEnumAsByte<EDisplayPlane> DisplayPlane);
+	void STATIC_DrawTexture(class UTexture* Tex, float Scale, TEnumAsByte<EDisplayPlane> DisplayPlane);
+	void PopMaskRegion();
+	void PushMaskRegion(float X, float Y, float XL, float YL);
+	void SetClip(float X, float Y);
+	void SetOrigin(float X, float Y);
+	void SetPos(float PosX, float PosY, float PosZ);
 	class UFont* GetDefaultCanvasFont();
 	void Reset(bool bKeepOrigin);
-	void STATIC_PopTransform();
-	void STATIC_PushTranslationMatrix(const struct FVector& TranslationVector);
-	void DeProject(const struct FVector2D& ScreenPos, struct FVector* WorldOrigin, struct FVector* WorldDirection);
-	struct FVector STATIC_Project(const struct FVector& Location);
-	void DrawText(const struct FString& Text, bool CR, float XScale, float YScale, TEnumAsByte<EDisplayPlane> DisplayPlane, struct FFontRenderInfo* RenderInfo);
+	void PopTransform();
+	void PushTranslationMatrix(const struct FVector& TranslationVector);
+	void STATIC_DeProject(const struct FVector2D& ScreenPos, struct FVector* WorldOrigin, struct FVector* WorldDirection);
+	struct FVector Project(const struct FVector& Location);
+	void STATIC_DrawText(const struct FString& Text, bool CR, float XScale, float YScale, TEnumAsByte<EDisplayPlane> DisplayPlane, struct FFontRenderInfo* RenderInfo);
 	void STATIC_TextSize(const struct FString& String, float XScale, float YScale, float* XL, float* YL);
 	void STATIC_StrLen(const struct FString& String, float* XL, float* YL);
-	struct FFontRenderInfo CreateFontRenderInfo(bool bClipText, bool bEnableShadow, const struct FLinearColor& GlowColor, const struct FVector2D& GlowOuterRadius, const struct FVector2D& GlowInnerRadius);
-	void DrawTris(class UTexture* Tex, TArray<struct FCanvasUVTri> Triangles, const struct FColor& InColor);
-	void DrawTileStretched(class UTexture* Tex, float XL, float YL, float U, float V, float UL, float VL, const struct FLinearColor& LColor, bool bStretchHorizontally, bool bStretchVertically, float ScalingFactor, TEnumAsByte<EDisplayPlane> DisplayPlane);
-	void DrawTimer(class UTexture* Tex, float StartTime, float TotalTime, float XL, float YL, float U, float V, float UL, float VL, const struct FLinearColor& LColor, TEnumAsByte<EBlendMode> Blend);
-	void DrawRotatedMaterialTile(class UMaterialInterface* Mat, const struct FRotator& Rotation, float XL, float YL, float U, float V, float UL, float VL, float AnchorX, float AnchorY, TEnumAsByte<EDisplayPlane> DisplayPlane);
-	void DrawRotatedTile(class UTexture* Tex, const struct FRotator& Rotation, float XL, float YL, float U, float V, float UL, float VL, float AnchorX, float AnchorY, TEnumAsByte<EDisplayPlane> DisplayPlane);
-	void DrawMaterialTile(class UMaterialInterface* Mat, float XL, float YL, float U, float V, float UL, float VL, bool bClipTile);
-	void STATIC_PreOptimizeDrawTiles(int Num, class UTexture* Tex, TEnumAsByte<EBlendMode> Blend);
-	void DrawTile(class UTexture* Tex, float XL, float YL, float U, float V, float UL, float VL, const struct FLinearColor& LColor, bool ClipTile, TEnumAsByte<EBlendMode> Blend, TEnumAsByte<EDisplayPlane> DisplayPlane);
+	struct FFontRenderInfo STATIC_CreateFontRenderInfo(bool bClipText, bool bEnableShadow, const struct FLinearColor& GlowColor, const struct FVector2D& GlowOuterRadius, const struct FVector2D& GlowInnerRadius);
+	void STATIC_DrawTris(class UTexture* Tex, TArray<struct FCanvasUVTri> Triangles, const struct FColor& InColor);
+	void STATIC_DrawTileStretched(class UTexture* Tex, float XL, float YL, float U, float V, float UL, float VL, const struct FLinearColor& LColor, bool bStretchHorizontally, bool bStretchVertically, float ScalingFactor, TEnumAsByte<EDisplayPlane> DisplayPlane);
+	void STATIC_DrawTimer(class UTexture* Tex, float StartTime, float TotalTime, float XL, float YL, float U, float V, float UL, float VL, const struct FLinearColor& LColor, TEnumAsByte<EBlendMode> Blend);
+	void STATIC_DrawRotatedMaterialTile(class UMaterialInterface* Mat, const struct FRotator& Rotation, float XL, float YL, float U, float V, float UL, float VL, float AnchorX, float AnchorY, TEnumAsByte<EDisplayPlane> DisplayPlane);
+	void STATIC_DrawRotatedTile(class UTexture* Tex, const struct FRotator& Rotation, float XL, float YL, float U, float V, float UL, float VL, float AnchorX, float AnchorY, TEnumAsByte<EDisplayPlane> DisplayPlane);
+	void STATIC_DrawMaterialTile(class UMaterialInterface* Mat, float XL, float YL, float U, float V, float UL, float VL, bool bClipTile);
+	void PreOptimizeDrawTiles(int Num, class UTexture* Tex, TEnumAsByte<EBlendMode> Blend);
+	void STATIC_DrawTile(class UTexture* Tex, float XL, float YL, float U, float V, float UL, float VL, const struct FLinearColor& LColor, bool ClipTile, TEnumAsByte<EBlendMode> Blend, TEnumAsByte<EDisplayPlane> DisplayPlane);
 };
 
 
@@ -5600,26 +5600,26 @@ public:
 	void InterpolationStarted(class USeqAct_Interp* InterpAction, class UInterpGroupInst* GroupInst);
 	void InitNavigationHandle();
 	void Stun(bool bStunController, TEnumAsByte<EStunType> eType);
-	void STATIC_ReadyForLift();
-	void STATIC_SendMessage(class APlayerReplicationInfo* Recipient, const struct FName& MessageType, float Wait, class UClass* DamageType);
+	void ReadyForLift();
+	void SendMessage(class APlayerReplicationInfo* Recipient, const struct FName& MessageType, float Wait, class UClass* DamageType);
 	void CurrentLevelUnloaded();
 	bool IsInCombat(bool bForceCheck);
 	bool IsSpectating();
-	void STATIC_OnToggleHidden(class USeqAct_ToggleHidden* Action);
-	void STATIC_NotifyAddInventory(class AInventory* NewItem);
-	void STATIC_OnModifyHealth(class USeqAct_ModifyHealth* Action);
-	bool STATIC_NotifyCoverClaimViolation(class AController* NewClaim, class ACoverLink* Link, int SlotIdx);
+	void OnToggleHidden(class USeqAct_ToggleHidden* Action);
+	void NotifyAddInventory(class AInventory* NewItem);
+	void OnModifyHealth(class USeqAct_ModifyHealth* Action);
+	bool NotifyCoverClaimViolation(class AController* NewClaim, class ACoverLink* Link, int SlotIdx);
 	void NotifyCoverAdjusted();
-	void STATIC_NotifyCoverDisabled(class ACoverLink* Link, int SlotIdx, bool bAdjacentIdx);
-	void STATIC_OnSetVelocity(class USeqAct_SetVelocity* Action);
-	void STATIC_OnSetPhysics(class USeqAct_SetPhysics* Action);
-	void STATIC_OnToggleGodMode(class USeqAct_ToggleGodMode* inAction);
-	void STATIC_OnAttachToActor(class USeqAct_AttachToActor* Action);
-	void STATIC_OnTeleport(class USeqAct_Teleport* Action);
+	void NotifyCoverDisabled(class ACoverLink* Link, int SlotIdx, bool bAdjacentIdx);
+	void OnSetVelocity(class USeqAct_SetVelocity* Action);
+	void OnSetPhysics(class USeqAct_SetPhysics* Action);
+	void OnToggleGodMode(class USeqAct_ToggleGodMode* inAction);
+	void OnAttachToActor(class USeqAct_AttachToActor* Action);
+	void OnTeleport(class USeqAct_Teleport* Action);
 	bool IsDead();
 	struct FString GetHumanReadableName();
-	void DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos);
-	void STATIC_StopLatentExecution();
+	void STATIC_DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos);
+	void StopLatentExecution();
 	bool InLatentExecution(int LatentActionNumber);
 	void ReachedPreciseDestination();
 	void NotifyMissedJump();
@@ -5640,19 +5640,19 @@ public:
 	void STATIC_WaitForMover(class AInterpActor* M);
 	bool AllowDetourTo(class ANavigationPoint* N);
 	void MayFall(bool bFloor, const struct FVector& FloorNormal);
-	void EndClimbLadder();
+	void STATIC_EndClimbLadder();
 	void LongFall();
 	void STATIC_WaitForLanding(float waitDuration);
-	bool STATIC_PickWallAdjust(const struct FVector& HitNormal);
+	bool PickWallAdjust(const struct FVector& HitNormal);
 	void MoveUnreachable(const struct FVector& AttemptedDest, class AActor* AttemptedTarget);
 	bool STATIC_ActorReachable(class AActor* anActor);
-	bool STATIC_PointReachable(const struct FVector& aPoint);
-	class AActor* FindPathToIntercept(class APawn* P, class AActor* InRouteGoal, bool bWeightDetours, int MaxPathLength, bool bReturnPartial);
-	class ANavigationPoint* FindRandomDest();
-	class AActor* FindPathTowardNearest(class UClass* GoalClass, bool bWeightDetours, int MaxPathLength, bool bReturnPartial);
-	class AActor* FindPathToward(class AActor* anActor, bool bWeightDetours, int MaxPathLength, bool bReturnPartial);
-	class AActor* FindPathTo(const struct FVector& aPoint, int MaxPathLength, bool bReturnPartial);
-	void FinishRotation();
+	bool PointReachable(const struct FVector& aPoint);
+	class AActor* STATIC_FindPathToIntercept(class APawn* P, class AActor* InRouteGoal, bool bWeightDetours, int MaxPathLength, bool bReturnPartial);
+	class ANavigationPoint* STATIC_FindRandomDest();
+	class AActor* STATIC_FindPathTowardNearest(class UClass* GoalClass, bool bWeightDetours, int MaxPathLength, bool bReturnPartial);
+	class AActor* STATIC_FindPathToward(class AActor* anActor, bool bWeightDetours, int MaxPathLength, bool bReturnPartial);
+	class AActor* STATIC_FindPathTo(const struct FVector& aPoint, int MaxPathLength, bool bReturnPartial);
+	void STATIC_FinishRotation();
 	void SetupSpecialPathAbilities();
 	void MoveToward(class AActor* NewTarget, class AActor* ViewFocus, float DestinationOffset, bool bUseStrafing, bool bShouldWalk);
 	void MoveToDirectNonPathPos(const struct FVector& NewDestination, class AActor* ViewFocus, float DestinationOffset, bool bShouldWalk);
@@ -5661,47 +5661,47 @@ public:
 	void SeeMonster(class APawn* Seen);
 	void SeePlayer(class APawn* Seen);
 	void HearNoise(float Loudness, class AActor* NoiseMaker, const struct FName& NoiseType);
-	class APawn* STATIC_PickTarget(class UClass* TargetClass, const struct FVector& FireDir, const struct FVector& projStart, float MaxRange, float* bestAim, float* bestDist);
-	bool CanSeeByPoints(const struct FVector& ViewLocation, const struct FVector& TestLocation, const struct FRotator& ViewRotation);
-	bool CanSee(class APawn* Other);
+	class APawn* PickTarget(class UClass* TargetClass, const struct FVector& FireDir, const struct FVector& projStart, float MaxRange, float* bestAim, float* bestDist);
+	bool STATIC_CanSeeByPoints(const struct FVector& ViewLocation, const struct FVector& TestLocation, const struct FRotator& ViewRotation);
+	bool STATIC_CanSee(class APawn* Other);
 	bool LineOfSightTo(class AActor* Other, const struct FVector& chkLocation, bool bTryAlternateTargetLoc);
-	void STATIC_NotifyChangedWeapon(class AWeapon* PrevWeapon, class AWeapon* NewWeapon);
-	void ClientSwitchToBestWeapon(bool bForceNewWeapon);
+	void NotifyChangedWeapon(class AWeapon* PrevWeapon, class AWeapon* NewWeapon);
+	void STATIC_ClientSwitchToBestWeapon(bool bForceNewWeapon);
 	void STATIC_SwitchToBestWeapon(bool bForceNewWeapon);
-	void STATIC_ReceiveProjectileWarning(class AProjectile* Proj);
-	void STATIC_ReceiveWarning(class APawn* shooter, float projSpeed, const struct FVector& FireDir);
+	void ReceiveProjectileWarning(class AProjectile* Proj);
+	void ReceiveWarning(class APawn* shooter, float projSpeed, const struct FVector& FireDir);
 	void InstantWarnTarget(class AActor* InTarget, class AWeapon* FiredWeapon, const struct FVector& FireDir);
 	struct FRotator GetAdjustedAimFor(class AWeapon* W, const struct FVector& StartFireLoc);
 	void HandlePickup(class AInventory* Inv);
-	void STATIC_RoundHasEnded(class AActor* EndRoundFocus);
+	void RoundHasEnded(class AActor* EndRoundFocus);
 	void StopFiring();
-	bool FireWeaponAt(class AActor* inActor);
+	bool STATIC_FireWeaponAt(class AActor* inActor);
 	float RatePickup(class AActor* PickupHolder, class UClass* inPickup);
 	void STATIC_WarnProjExplode(class AProjectile* Proj);
-	void STATIC_NotifyProjLanded(class AProjectile* Proj);
-	void STATIC_NotifyKilled(class AController* Killer, class AController* Killed, class APawn* KilledPawn, class UClass* damageTyp);
+	void NotifyProjLanded(class AProjectile* Proj);
+	void NotifyKilled(class AController* Killer, class AController* Killed, class APawn* KilledPawn, class UClass* damageTyp);
 	void GameHasEnded(class AActor* EndGameFocus, bool bIsWinner);
-	void STATIC_SetCharacter(const struct FString& inCharacter);
-	void STATIC_ServerGivePawn();
-	void STATIC_ServerRestartPlayer();
+	void SetCharacter(const struct FString& inCharacter);
+	void ServerGivePawn();
+	void ServerRestartPlayer();
 	unsigned char GetTeamNum();
 	void CopyPropertiesTo(class AController* C);
 	void InitPlayerReplicationInfo();
-	void STATIC_NotifyTakeHit(class AController* InstigatedBy, const struct FVector& HitLocation, int Damage, class UClass* DamageType, const struct FVector& Momentum);
-	void EnemyJustTeleported();
+	void NotifyTakeHit(class AController* InstigatedBy, const struct FVector& HitLocation, int Damage, class UClass* DamageType, const struct FVector& Momentum);
+	void STATIC_EnemyJustTeleported();
 	bool STATIC_BeyondFogDistance(const struct FVector& ViewPoint, const struct FVector& OtherPoint);
-	void STATIC_Restart(bool bVehicleTransition);
-	void CleanupPRI();
+	void Restart(bool bVehicleTransition);
+	void STATIC_CleanupPRI();
 	void Destroyed();
 	void NotifyPostLanded();
 	bool GamePlayEndedState();
 	void PawnDied(class APawn* inPawn);
 	void UnPossess();
 	void Possess(class APawn* inPawn, bool bVehicleTransition);
-	void STATIC_OnPossess(class USeqAct_Possess* inAction);
+	void OnPossess(class USeqAct_Possess* inAction);
 	void ReplicatedEvent(const struct FName& VarName);
-	void ClientSetRotation(const struct FRotator& NewRotation, bool bResetCamera);
-	void ClientSetLocation(const struct FVector& NewLocation, const struct FRotator& NewRotation);
+	void STATIC_ClientSetRotation(const struct FRotator& NewRotation, bool bResetCamera);
+	void STATIC_ClientSetLocation(const struct FVector& NewLocation, const struct FRotator& NewRotation);
 	struct FRotator LimitViewRotation(const struct FRotator& ViewRotation, float ViewPitchMin, float ViewPitchMax);
 	void Reset();
 	void PostBeginPlay();
@@ -5714,16 +5714,16 @@ public:
 	void BeginAnimControl(class UInterpGroup* InInterpGroup);
 	void NotifyPathChanged();
 	struct FVector GetAdjustLocation();
-	void STATIC_SetAdjustLocation(const struct FVector& NewLoc, bool bAdjust, bool bOffsetFromBase);
+	void SetAdjustLocation(const struct FVector& NewLoc, bool bAdjust, bool bOffsetFromBase);
 	struct FVector GetDestinationPosition();
-	void STATIC_SetDestinationPosition(const struct FVector& Dest, bool bOffsetFromBase);
+	void SetDestinationPosition(const struct FVector& Dest, bool bOffsetFromBase);
 	struct FVector GetFocalPoint();
-	void STATIC_SetFocalPoint(const struct FVector& FP, bool bOffsetFromBase);
-	void STATIC_RouteCache_RemoveIndex(int InIndex, int Count);
-	void STATIC_RouteCache_RemoveItem(class ANavigationPoint* Nav);
-	void STATIC_RouteCache_InsertItem(class ANavigationPoint* Nav, int Idx);
-	void STATIC_RouteCache_AddItem(class ANavigationPoint* Nav);
-	void STATIC_RouteCache_Empty();
+	void SetFocalPoint(const struct FVector& FP, bool bOffsetFromBase);
+	void RouteCache_RemoveIndex(int InIndex, int Count);
+	void RouteCache_RemoveItem(class ANavigationPoint* Nav);
+	void RouteCache_InsertItem(class ANavigationPoint* Nav, int Idx);
+	void RouteCache_AddItem(class ANavigationPoint* Nav);
+	void RouteCache_Empty();
 	bool IsLocalController();
 	bool IsLocalPlayerController();
 };
@@ -5873,32 +5873,32 @@ public:
 	void SetMatineeConstantCameraAnim(bool bOn, unsigned char Type, float Rate);
 	void LostP2PConnection(const struct FUniqueNetId& UniqueId);
 	bool NotifyDisconnect(const struct FString& Command);
-	void STATIC_ReceivedGameClass(class UClass* GameClass);
+	void ReceivedGameClass(class UClass* GameClass);
 	void LogOutBugItAIGoToLogFile(const struct FString& InScreenShotDesc, const struct FString& InGoString, const struct FString& InLocString);
 	void LogOutBugItGoToLogFile(const struct FString& InScreenShotDesc, const struct FString& InGoString, const struct FString& InLocString);
-	void DisableDebugAI();
+	void STATIC_DisableDebugAI();
 	void OnEngineInitialTick();
 	void BugItStringCreator(struct FVector* ViewLocation, struct FRotator* ViewRotation, struct FString* GoString, struct FString* LocString);
 	void BugItAI(const struct FString& ScreenShotDescription);
 	void LogLoc();
 	void BugIt(const struct FString& ScreenShotDescription);
-	void BugItWorker(const struct FVector& TheLocation, const struct FRotator& TheRotation);
-	void BugItGoString(const struct FString& TheLocation, const struct FString& TheRotation);
+	void STATIC_BugItWorker(const struct FVector& TheLocation, const struct FRotator& TheRotation);
+	void STATIC_BugItGoString(const struct FString& TheLocation, const struct FString& TheRotation);
 	bool HasPeerConnection(struct FUniqueNetId* PeerNetId);
-	void STATIC_OnSetSoundMode(class USeqAct_SetSoundMode* Action);
+	void OnSetSoundMode(class USeqAct_SetSoundMode* Action);
 	void ClientSpawnCameraLensEffect(class UClass* LensEffectEmitterClass);
-	void DebugCameraAnims();
+	void STATIC_DebugCameraAnims();
 	void ClientStopCameraAnim(class UCameraAnim* AnimToStop, bool bImmediate);
 	void ClientPlayCameraAnim(class UCameraAnim* AnimToPlay, float Scale, float Rate, float BlendInTime, float BlendOutTime, bool bLoop, bool bRandomStartTime, TEnumAsByte<ECameraAnimPlaySpace> Space, const struct FRotator& CustomPlaySpace);
-	void STATIC_OnCameraShake(class USeqAct_CameraShake* inAction);
-	void ClientStopCameraShake(class UCameraShake* Shake);
-	void ClientPlayCameraShake(class UCameraShake* Shake, float Scale, bool bTryForceFeedback, TEnumAsByte<ECameraAnimPlaySpace> PlaySpace, const struct FRotator& UserPlaySpaceRot);
-	void DoForceFeedbackForScreenShake(class UCameraShake* ShakeData, float ShakeScale);
+	void OnCameraShake(class USeqAct_CameraShake* inAction);
+	void STATIC_ClientStopCameraShake(class UCameraShake* Shake);
+	void STATIC_ClientPlayCameraShake(class UCameraShake* Shake, float Scale, bool bTryForceFeedback, TEnumAsByte<ECameraAnimPlaySpace> PlaySpace, const struct FRotator& UserPlaySpaceRot);
+	void STATIC_DoForceFeedbackForScreenShake(class UCameraShake* ShakeData, float ShakeScale);
 	void InputMatchDelegate();
-	void STATIC_Sentinel_PostAcquireTravelTheWorldPoints();
-	void STATIC_Sentinel_PreAcquireTravelTheWorldPoints();
-	void STATIC_Sentinel_SetupForGamebasedTravelTheWorld();
-	void STATIC_OnFlyThroughHasEnded(class USeqAct_FlyThroughHasEnded* inAction);
+	void Sentinel_PostAcquireTravelTheWorldPoints();
+	void Sentinel_PreAcquireTravelTheWorldPoints();
+	void Sentinel_SetupForGamebasedTravelTheWorld();
+	void OnFlyThroughHasEnded(class USeqAct_FlyThroughHasEnded* inAction);
 	bool GetAchievementProgression(int AchievementId, float* CurrentValue, float* MaxValue);
 	struct FString GetPartyGameTypeName();
 	struct FString GetPartyMapName();
@@ -5906,56 +5906,56 @@ public:
 	void ClientAddTextureStreamingLoc(const struct FVector& InLoc, float Duration, bool bOverrideLocation);
 	void ClientPrestreamTextures(class AActor* ForcedActor, float ForceDuration, bool bEnableStreaming, TArray<unsigned char> CinematicTextureGroups);
 	void ClientSetForceMipLevelsToBeResident(class UMaterialInterface* Material, float ForceDuration, TArray<unsigned char> CinematicTextureGroups);
-	void ClientControlMovieTexture(class UTextureMovie* MovieTexture, TEnumAsByte<EMovieControlType> Mode);
+	void STATIC_ClientControlMovieTexture(class UTextureMovie* MovieTexture, TEnumAsByte<EMovieControlType> Mode);
 	int GetSplitscreenPlayerCount();
 	class APlayerReplicationInfo* GetSplitscreenPlayerByIndex(int PlayerIndex);
 	bool IsSplitscreenPlayer(int* out_SplitscreenPlayerIndex);
 	bool IsPrimaryPlayer();
-	void STATIC_ServerNotifyPartyHostLeaving(const struct FUniqueNetId& PartyHostPlayerId);
-	void ClientNotifyPartyHostLeaving(const struct FUniqueNetId& PartyHostPlayerId);
-	void ClientReturnToParty(const struct FUniqueNetId& RequestingPlayerId);
-	void STATIC_OnJoinTravelToSessionComplete(const struct FName& SessionName, bool bWasSuccessful);
-	void STATIC_PreJoinUpdateGameSettings(const struct FName& SessionName, class UOnlineGameSettings* GameSettings);
-	void ClientTravelToSession(const struct FName& SessionName, class UClass* SearchClass, unsigned char PlatformSpecificInfo);
-	void STATIC_PathClear();
-	void STATIC_PathChild(int Cnt);
-	void STATIC_PathStep(int Cnt);
+	void ServerNotifyPartyHostLeaving(const struct FUniqueNetId& PartyHostPlayerId);
+	void STATIC_ClientNotifyPartyHostLeaving(const struct FUniqueNetId& PartyHostPlayerId);
+	void STATIC_ClientReturnToParty(const struct FUniqueNetId& RequestingPlayerId);
+	void OnJoinTravelToSessionComplete(const struct FName& SessionName, bool bWasSuccessful);
+	void PreJoinUpdateGameSettings(const struct FName& SessionName, class UOnlineGameSettings* GameSettings);
+	void STATIC_ClientTravelToSession(const struct FName& SessionName, class UClass* SearchClass, unsigned char PlatformSpecificInfo);
+	void PathClear();
+	void PathChild(int Cnt);
+	void PathStep(int Cnt);
 	void SoakPause(class APawn* P);
 	void IncrementNumberOfMatchesPlayed();
-	bool CanViewUserCreatedContent();
-	void ClientEndOnlineGame();
-	void ClientStartOnlineGame();
-	void STATIC_ServerRegisterClientStatGuid(const struct FString& StatGuid);
+	bool STATIC_CanViewUserCreatedContent();
+	void STATIC_ClientEndOnlineGame();
+	void STATIC_ClientStartOnlineGame();
+	void ServerRegisterClientStatGuid(const struct FString& StatGuid);
 	void STATIC_OnRegisterHostStatGuidComplete(bool bWasSuccessful);
-	void ClientRegisterHostStatGuid(const struct FString& StatGuid);
+	void STATIC_ClientRegisterHostStatGuid(const struct FString& StatGuid);
 	void RemoveAllDebugStrings();
 	void RemoveDebugText(class AActor* SrcActor);
 	void AddDebugText(const struct FString& DebugText, class AActor* SrcActor, float Duration, const struct FVector& Offset, const struct FVector& DesiredOffset, const struct FColor& TextColor, bool bSkipOverwriteCheck, bool bAbsoluteLocation, bool bKeepAttachedToActor, class UFont* InFont);
-	void DrawDebugTextList(class UCanvas* Canvas, float RenderDelta);
-	void STATIC_OnDestroy(class USeqAct_Destroy* Action);
-	void ClientStartNetworkedVoice();
-	void ClientStopNetworkedVoice();
-	void ClientSetHostUniqueId(const struct FUniqueNetId& InHostId);
-	void ClientWriteLeaderboardStats(class UClass* OnlineStatsWriteClass, bool bIsIncomplete);
-	void ClientWriteOnlinePlayerScores(int LeaderboardId);
-	void ClientArbitratedMatchEnded();
-	void STATIC_NotifyNotEnoughSpaceInInvite();
-	void STATIC_NotifyNotAllPlayersCanJoinInvite();
-	void STATIC_NotifyInviteFailed();
-	void STATIC_OnInviteJoinComplete(const struct FName& SessionName, bool bWasSuccessful);
+	void STATIC_DrawDebugTextList(class UCanvas* Canvas, float RenderDelta);
+	void OnDestroy(class USeqAct_Destroy* Action);
+	void STATIC_ClientStartNetworkedVoice();
+	void STATIC_ClientStopNetworkedVoice();
+	void STATIC_ClientSetHostUniqueId(const struct FUniqueNetId& InHostId);
+	void STATIC_ClientWriteLeaderboardStats(class UClass* OnlineStatsWriteClass, bool bIsIncomplete);
+	void STATIC_ClientWriteOnlinePlayerScores(int LeaderboardId);
+	void STATIC_ClientArbitratedMatchEnded();
+	void NotifyNotEnoughSpaceInInvite();
+	void NotifyNotAllPlayersCanJoinInvite();
+	void NotifyInviteFailed();
+	void OnInviteJoinComplete(const struct FName& SessionName, bool bWasSuccessful);
 	struct FString ModifyClientURL(const struct FString& URL);
-	void STATIC_OnDestroyForInviteComplete(const struct FName& SessionName, bool bWasSuccessful);
-	void STATIC_OnEndForInviteComplete(const struct FName& SessionName, bool bWasSuccessful);
-	void ClearInviteDelegates();
-	bool CanAllPlayersPlayOnline();
+	void OnDestroyForInviteComplete(const struct FName& SessionName, bool bWasSuccessful);
+	void OnEndForInviteComplete(const struct FName& SessionName, bool bWasSuccessful);
+	void STATIC_ClearInviteDelegates();
+	bool STATIC_CanAllPlayersPlayOnline();
 	bool InviteHasEnoughSpace(class UOnlineGameSettings* InviteSettings);
 	void OnGameInviteAccepted(struct FOnlineGameSearchResult* InviteResult);
-	void STATIC_ServerRegisteredForArbitration(bool bWasSuccessful);
-	void STATIC_OnArbitrationRegisterComplete(const struct FName& SessionName, bool bWasSuccessful);
-	void ClientRegisterForArbitration();
+	void ServerRegisteredForArbitration(bool bWasSuccessful);
+	void OnArbitrationRegisterComplete(const struct FName& SessionName, bool bWasSuccessful);
+	void STATIC_ClientRegisterForArbitration();
 	void ClientWasKicked();
 	bool IsShowingSubtitles();
-	void STATIC_SetShowSubtitles(bool bValue);
+	void SetShowSubtitles(bool bValue);
 	void NotifyDirectorControl(bool bNowControlling, class USeqAct_Interp* CurrentMatinee, float fFadeTime);
 	void ServerUnmutePlayer(const struct FUniqueNetId& PlayerNetId);
 	void ServerMutePlayer(const struct FUniqueNetId& PlayerNetId);
@@ -5963,81 +5963,81 @@ public:
 	void GameplayMutePlayer(const struct FUniqueNetId& PlayerNetId);
 	void ClientUnmutePlayer(const struct FUniqueNetId& PlayerNetId);
 	void ClientMutePlayer(const struct FUniqueNetId& PlayerNetId);
-	void ClientVoiceHandshakeComplete();
+	void STATIC_ClientVoiceHandshakeComplete();
 	class APlayerController* GetPlayerControllerFromNetId(const struct FUniqueNetId& PlayerNetId);
 	void ClientSetOnlineStatus();
-	void STATIC_SeamlessTravelFrom(class APlayerController* OldPC);
-	void STATIC_SeamlessTravelTo(class APlayerController* NewPC);
+	void SeamlessTravelFrom(class APlayerController* OldPC);
+	void SeamlessTravelTo(class APlayerController* NewPC);
 	void GetSeamlessTravelActorList(bool bToEntry, TArray<class AActor*>* ActorList);
 	bool IsPlayerMuted(struct FUniqueNetId* Sender);
 	class UUIInteraction* GetUIController();
-	void STATIC_SaveActorConfig(const struct FName& actorName);
-	void STATIC_SaveClassConfig(const struct FString& ClassName);
-	void ClientWaitForLevelsVisible(class USeqAct_WaitForLevelsVisible* inAction);
+	void SaveActorConfig(const struct FName& actorName);
+	void SaveClassConfig(const struct FString& ClassName);
+	void STATIC_ClientWaitForLevelsVisible(class USeqAct_WaitForLevelsVisible* inAction);
 	void ClientSetBlockOnAsyncLoading();
 	void ClientFlushLevelStreaming();
 	void ClientCancelPendingMapChange();
 	void ClientCommitMapChange();
-	void DelayedPrepareMapChange();
+	void STATIC_DelayedPrepareMapChange();
 	void ClientPrepareMapChange(const struct FName& LevelName, bool bFirst, bool bLast);
 	void ServerUpdateLevelVisibility(const struct FName& PackageName, bool bIsVisible);
-	void ClientUpdateLevelStreamingStatus(const struct FName& PackageName, bool bNewShouldBeLoaded, bool bNewShouldBeVisible, bool bNewShouldBlockOnLoad);
+	void STATIC_ClientUpdateLevelStreamingStatus(const struct FName& PackageName, bool bNewShouldBeLoaded, bool bNewShouldBeVisible, bool bNewShouldBlockOnLoad);
 	void LevelStreamingStatusChanged(class ULevelStreaming* LevelObject, bool bNewShouldBeLoaded, bool bNewShouldBeVisible, bool bNewShouldBlockOnLoad);
 	void ClientForceGarbageCollection();
-	void STATIC_OnConsoleCommand(class USeqAct_ConsoleCommand* inAction);
-	void STATIC_ResetPlayerMovementInput();
+	void OnConsoleCommand(class USeqAct_ConsoleCommand* inAction);
+	void ResetPlayerMovementInput();
 	void IgnoreLookInput(bool bNewLookInput);
 	void IgnoreMoveInput(bool bNewMoveInput);
-	void ClientSetCinematicMode(bool bInCinematicMode, bool bAffectsMovement, bool bAffectsTurning, bool bAffectsHUD);
-	void STATIC_SetCinematicMode(bool bInCinematicMode, bool bHidePlayer, bool bAffectsHUD, bool bAffectsMovement, bool bAffectsTurning, bool bAffectsButtons);
-	void STATIC_OnToggleCinematicMode(class USeqAct_ToggleCinematicMode* Action);
+	void STATIC_ClientSetCinematicMode(bool bInCinematicMode, bool bAffectsMovement, bool bAffectsTurning, bool bAffectsHUD);
+	void SetCinematicMode(bool bInCinematicMode, bool bHidePlayer, bool bAffectsHUD, bool bAffectsMovement, bool bAffectsTurning, bool bAffectsButtons);
+	void OnToggleCinematicMode(class USeqAct_ToggleCinematicMode* Action);
 	bool IsForceFeedbackAllowed();
 	void StopForceFeedbackWaveform(class UForceFeedbackWaveform* FFWaveform);
 	void ClientStopForceFeedbackWaveform(class UForceFeedbackWaveform* FFWaveform);
 	void PlayForceFeedbackWaveform(class UForceFeedbackWaveform* FFWaveform, class AActor* FFWaveformInstigator, float fScale, float fScaleDuration, bool bForcePlay);
 	void ClientPlayForceFeedbackWaveform(class UForceFeedbackWaveform* FFWaveform, class AActor* FFWaveformInstigator, float fScale, float fScaleDuration, bool bForcePlay);
 	void PlayRumble(class UAnimNotify_Rumble* TheAnimNotify);
-	void STATIC_OnForceFeedback(class USeqAct_ForceFeedback* Action);
-	void STATIC_NotifyTakeHit(class AController* InstigatedBy, const struct FVector& HitLocation, int Damage, class UClass* DamageType, const struct FVector& Momentum);
-	void STATIC_ShowGameState();
-	void STATIC_ShowPlayerState();
-	void STATIC_ServerRemoteEvent(const struct FName& EventName);
-	void STATIC_RE(const struct FName& EventName);
-	void STATIC_RemoteEvent(const struct FName& EventName);
+	void OnForceFeedback(class USeqAct_ForceFeedback* Action);
+	void NotifyTakeHit(class AController* InstigatedBy, const struct FVector& HitLocation, int Damage, class UClass* DamageType, const struct FVector& Momentum);
+	void ShowGameState();
+	void ShowPlayerState();
+	void ServerRemoteEvent(const struct FName& EventName);
+	void RE(const struct FName& EventName);
+	void RemoteEvent(const struct FName& EventName);
 	void ListCE();
 	void ListConsoleEvents();
-	void CE(const struct FName& EventName);
-	void CauseEvent(const struct FName& EventName);
+	void STATIC_CE(const struct FName& EventName);
+	void STATIC_CauseEvent(const struct FName& EventName);
 	void ServerCauseEvent(const struct FName& EventName);
-	void STATIC_OnToggleHUD(class USeqAct_ToggleHUD* inAction);
-	void STATIC_OnSetCameraTarget(class USeqAct_SetCameraTarget* inAction);
-	void ClientClearKismetText(const struct FVector2D& MessageOffset);
-	void ClientDrawKismetText(const struct FKismetDrawTextInfo& DrawTextInfo, float DisplayTime);
-	void STATIC_OnDrawText(class USeqAct_DrawText* inAction);
-	void DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos);
-	void ClientIgnoreLookInput(bool bIgnore);
-	void ClientIgnoreMoveInput(bool bIgnore);
-	void STATIC_OnToggleInput(class USeqAct_ToggleInput* inAction);
+	void OnToggleHUD(class USeqAct_ToggleHUD* inAction);
+	void OnSetCameraTarget(class USeqAct_SetCameraTarget* inAction);
+	void STATIC_ClientClearKismetText(const struct FVector2D& MessageOffset);
+	void STATIC_ClientDrawKismetText(const struct FKismetDrawTextInfo& DrawTextInfo, float DisplayTime);
+	void OnDrawText(class USeqAct_DrawText* inAction);
+	void STATIC_DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos);
+	void STATIC_ClientIgnoreLookInput(bool bIgnore);
+	void STATIC_ClientIgnoreMoveInput(bool bIgnore);
+	void OnToggleInput(class USeqAct_ToggleInput* inAction);
 	void AdjustHUDRenderSize(int FullScreenSizeX, int FullScreenSizeY, int* X, int* Y, int* SizeX, int* SizeY);
-	void DrawHUD(class AHUD* H);
-	bool CanRestartPlayer();
-	void STATIC_ServerViewSelf(const struct FViewTargetTransitionParams& TransitionParams);
+	void STATIC_DrawHUD(class AHUD* H);
+	bool STATIC_CanRestartPlayer();
+	void ServerViewSelf(const struct FViewTargetTransitionParams& TransitionParams);
 	void STATIC_ViewAPlayer(int Dir);
 	class APlayerReplicationInfo* GetNextViewablePlayer(int Dir);
-	void STATIC_ServerViewPrevPlayer(bool bFriendlyOnly);
-	void STATIC_ServerViewNextPlayer(bool bFriendlyOnly);
+	void ServerViewPrevPlayer(bool bFriendlyOnly);
+	void ServerViewNextPlayer(bool bFriendlyOnly);
 	void ServerSetSpectatorLocation(const struct FVector& NewLoc);
 	void HandleWalking();
-	void CheckJumpOrDuck();
-	void STATIC_ProcessViewRotation(float DeltaTime, const struct FRotator& DeltaRot, struct FRotator* out_ViewRotation);
+	void STATIC_CheckJumpOrDuck();
+	void ProcessViewRotation(float DeltaTime, const struct FRotator& DeltaRot, struct FRotator* out_ViewRotation);
 	void STATIC_UpdateRotation(float DeltaTime);
 	void STATIC_ViewShake(float DeltaTime);
 	void GetPlayerViewPoint(struct FVector* out_Location, struct FRotator* out_Rotation);
 	void SpawnPlayerCamera();
-	void STATIC_ServerVerifyViewTarget();
+	void ServerVerifyViewTarget();
 	class AActor* GetViewTarget();
 	void ClientSetViewTarget(class AActor* A, const struct FViewTargetTransitionParams& TransitionParams);
-	void STATIC_SetViewTargetWithBlend(class AActor* NewViewTarget, float BlendTime, TEnumAsByte<EViewTargetBlendFunction> BlendFunc, float BlendExp, bool bLockOutgoing);
+	void SetViewTargetWithBlend(class AActor* NewViewTarget, float BlendTime, TEnumAsByte<EViewTargetBlendFunction> BlendFunc, float BlendExp, bool bLockOutgoing);
 	void SetViewTarget(class AActor* NewViewTarget, const struct FViewTargetTransitionParams& TransitionParams);
 	bool IsLocalController();
 	bool IsLocalPlayerController();
@@ -6047,133 +6047,133 @@ public:
 	void CameraLookAtFinished(class USeqAct_CameraLookAt* Action);
 	bool STATIC_AimingHelp(bool bInstantHit);
 	void STATIC_PlayerMove(float DeltaTime);
-	void STATIC_NotifyChangedWeapon(class AWeapon* PreviousWeapon, class AWeapon* NewWeapon);
-	void ClientGameEnded(class AActor* EndGameFocus, bool bIsWinner);
+	void NotifyChangedWeapon(class AWeapon* PreviousWeapon, class AWeapon* NewWeapon);
+	void STATIC_ClientGameEnded(class AActor* EndGameFocus, bool bIsWinner);
 	void GameHasEnded(class AActor* EndGameFocus, bool bIsWinner);
 	void ClientRestart(class APawn* NewPawn);
-	void EnterStartState();
-	void ForceSingleNetUpdateFor(class AActor* Target);
+	void STATIC_EnterStartState();
+	void STATIC_ForceSingleNetUpdateFor(class AActor* Target);
 	bool HasClientLoadedCurrentWorld();
 	void NotifyLoadedWorld(const struct FName& WorldPackageName, bool bFinalDest);
 	void ServerNotifyLoadedWorld(const struct FName& WorldPackageName);
-	void STATIC_Restart(bool bVehicleTransition);
+	void Restart(bool bVehicleTransition);
 	void ClientSetProgressMessage(TEnumAsByte<EProgressMessageType> MessageType, const struct FString& Message, const struct FString& Title, bool bIgnoreFutureNetworkMessages);
 	void STATIC_SwitchLevel(const struct FString& URL);
-	void STATIC_ServerChangeTeam(int N);
-	void ChangeTeam(const struct FString& TeamName);
+	void ServerChangeTeam(int N);
+	void STATIC_ChangeTeam(const struct FString& TeamName);
 	void STATIC_SwitchTeam();
-	void STATIC_ServerChangeName(const struct FString& S);
-	void STATIC_SetName(const struct FString& S);
-	void STATIC_ServerSuicide();
+	void ServerChangeName(const struct FString& S);
+	void SetName(const struct FString& S);
+	void ServerSuicide();
 	void Suicide();
 	bool STATIC_TriggerInteracted();
 	bool FindVehicleToDrive();
-	bool STATIC_PerformedUseAction();
-	void STATIC_ServerUse();
+	bool PerformedUseAction();
+	void ServerUse();
 	void Use();
 	void GetTriggerUseList(float interactDistanceToCheck, float crosshairDist, float minDot, bool bUsuableOnly, TArray<class ATrigger*>* out_useList);
-	void STATIC_StopAltFire(unsigned char FireModeNum);
-	void STATIC_StartAltFire(unsigned char FireModeNum);
+	void StopAltFire(unsigned char FireModeNum);
+	void StartAltFire(unsigned char FireModeNum);
 	void StopFire();
 	void StartFire();
-	void STATIC_NextWeapon();
-	void STATIC_PrevWeapon();
+	void NextWeapon();
+	void PrevWeapon();
 	void STATIC_ThrowWeapon();
 	void UTrace();
-	void STATIC_ServerUTrace();
+	void ServerUTrace();
 	void ConditionalPause(bool bDesiredPauseState);
-	void STATIC_ServerPause();
+	void ServerPause();
 	void Pause();
 	bool IsPaused();
 	bool SetPause(bool bPause, const struct FScriptDelegate& CanUnpauseDelegate);
 	bool CanUnpause();
-	void ClientPauseRumble(bool bShouldPauseRumble);
-	void STATIC_PauseRumbleForAllPlayers(bool bShouldPauseRumble);
+	void STATIC_ClientPauseRumble(bool bShouldPauseRumble);
+	void PauseRumbleForAllPlayers(bool bShouldPauseRumble);
 	void LocalTravel(const struct FString& URL);
-	void STATIC_RestartLevel();
-	void STATIC_ServerSpeech(const struct FName& Type, int Index, const struct FString& Callsign);
-	void STATIC_Speech(const struct FName& Type, int Index, const struct FString& Callsign);
-	void STATIC_ServerRestartGame();
-	void STATIC_ServerUpdateCamera(const struct FVector& CamLoc, int CamPitchAndYaw);
+	void RestartLevel();
+	void ServerSpeech(const struct FName& Type, int Index, const struct FString& Callsign);
+	void Speech(const struct FName& Type, int Index, const struct FString& Callsign);
+	void ServerRestartGame();
+	void ServerUpdateCamera(const struct FVector& CamLoc, int CamPitchAndYaw);
 	void CallServerMove(class USavedMove* NewMove, const struct FVector& ClientLoc, unsigned char ClientRoll, int View, class USavedMove* OldMove);
 	float GetNetMoveDelta(float DeltaTime);
-	void STATIC_ReplicateMove(float DeltaTime, const struct FVector& newAccel, TEnumAsByte<EDoubleClickDir> DoubleClickMove, const struct FRotator& DeltaRot);
-	int CompressAccel(int C);
-	void ClearAckedMoves();
-	void STATIC_ServerUpdatePing(int NewPing);
+	void ReplicateMove(float DeltaTime, const struct FVector& newAccel, TEnumAsByte<EDoubleClickDir> DoubleClickMove, const struct FRotator& DeltaRot);
+	int STATIC_CompressAccel(int C);
+	void STATIC_ClearAckedMoves();
+	void ServerUpdatePing(int NewPing);
 	void STATIC_UpdateStateFromAdjustment(const struct FName& NewState);
-	void STATIC_SavePositionForSmoothServerCorrection();
+	void SavePositionForSmoothServerCorrection();
 	void STATIC_UpdateCameraForServerCorrectionSmoothing();
 	void LongClientAdjustPosition(float TimeStamp, const struct FName& NewState, TEnumAsByte<EPhysics> newPhysics, float NewLocX, float NewLocY, float NewLocZ, float NewVelX, float NewVelY, float NewVelZ, class AActor* NewBase, float NewFloorX, float NewFloorY, float NewFloorZ);
 	void LongClientAdjustPositionNoInterp(float TimeStamp, const struct FName& NewState, TEnumAsByte<EPhysics> newPhysics, float NewLocX, float NewLocY, float NewLocZ, float NewVelX, float NewVelY, float NewVelZ, class AActor* NewBase, float NewFloorX, float NewFloorY, float NewFloorZ);
 	void HandleViewTargetOnAdjustPosition();
-	bool STATIC_SkipPositionUpdateForRM();
+	bool SkipPositionUpdateForRM();
 	void STATIC_UpdatePing(float TimeStamp);
-	void ClientAdjustPositionNoInterp(float TimeStamp, const struct FName& NewState, TEnumAsByte<EPhysics> newPhysics, float NewLocX, float NewLocY, float NewLocZ, float NewVelX, float NewVelY, float NewVelZ, class AActor* NewBase);
-	void ClientAdjustPosition(float TimeStamp, const struct FName& NewState, TEnumAsByte<EPhysics> newPhysics, float NewLocX, float NewLocY, float NewLocZ, float NewVelX, float NewVelY, float NewVelZ, class AActor* NewBase);
-	void ClientAckGoodMoveNoInterp(float TimeStamp);
-	void ClientAckGoodMove(float TimeStamp);
-	void ClientCapBandwidth(int Cap);
-	void STATIC_ShortClientAdjustPositionNoInterp(float TimeStamp, const struct FName& NewState, TEnumAsByte<EPhysics> newPhysics, float NewLocX, float NewLocY, float NewLocZ, class AActor* NewBase);
-	void STATIC_ShortClientAdjustPosition(float TimeStamp, const struct FName& NewState, TEnumAsByte<EPhysics> newPhysics, float NewLocX, float NewLocY, float NewLocZ, class AActor* NewBase);
+	void STATIC_ClientAdjustPositionNoInterp(float TimeStamp, const struct FName& NewState, TEnumAsByte<EPhysics> newPhysics, float NewLocX, float NewLocY, float NewLocZ, float NewVelX, float NewVelY, float NewVelZ, class AActor* NewBase);
+	void STATIC_ClientAdjustPosition(float TimeStamp, const struct FName& NewState, TEnumAsByte<EPhysics> newPhysics, float NewLocX, float NewLocY, float NewLocZ, float NewVelX, float NewVelY, float NewVelZ, class AActor* NewBase);
+	void STATIC_ClientAckGoodMoveNoInterp(float TimeStamp);
+	void STATIC_ClientAckGoodMove(float TimeStamp);
+	void STATIC_ClientCapBandwidth(int Cap);
+	void ShortClientAdjustPositionNoInterp(float TimeStamp, const struct FName& NewState, TEnumAsByte<EPhysics> newPhysics, float NewLocX, float NewLocY, float NewLocZ, class AActor* NewBase);
+	void ShortClientAdjustPosition(float TimeStamp, const struct FName& NewState, TEnumAsByte<EPhysics> newPhysics, float NewLocX, float NewLocY, float NewLocZ, class AActor* NewBase);
 	void STATIC_VeryShortClientAdjustPositionNoInterp(float TimeStamp, float NewLocX, float NewLocY, float NewLocZ, class AActor* NewBase);
 	void STATIC_VeryShortClientAdjustPosition(float TimeStamp, float NewLocX, float NewLocY, float NewLocZ, class AActor* NewBase);
 	void STATIC_PostServerMoveUpdate();
-	void STATIC_PostMoveAutonomous(float DeltaTime, unsigned char CompressedFlags, const struct FVector& newAccel, const struct FRotator& DeltaRot);
-	void STATIC_RunAutonomousPhysics(float DeltaTime);
-	bool STATIC_PreMoveAutonomous(float DeltaTime, unsigned char CompressedFlags, const struct FVector& newAccel, const struct FRotator& DeltaRot);
+	void PostMoveAutonomous(float DeltaTime, unsigned char CompressedFlags, const struct FVector& newAccel, const struct FRotator& DeltaRot);
+	void RunAutonomousPhysics(float DeltaTime);
+	bool PreMoveAutonomous(float DeltaTime, unsigned char CompressedFlags, const struct FVector& newAccel, const struct FRotator& DeltaRot);
 	void MoveAutonomous(float DeltaTime, unsigned char CompressedFlags, const struct FVector& newAccel, const struct FRotator& DeltaRot);
-	void STATIC_ProcessMove(float DeltaTime, const struct FVector& newAccel, TEnumAsByte<EDoubleClickDir> DoubleClickMove, const struct FRotator& DeltaRot);
+	void ProcessMove(float DeltaTime, const struct FVector& newAccel, TEnumAsByte<EDoubleClickDir> DoubleClickMove, const struct FRotator& DeltaRot);
 	bool IsLookInputIgnored();
 	bool IsMoveInputIgnored();
 	float GetFOVAngle();
-	void STATIC_ProcessDrive(float InForward, float InStrafe, float InUp, bool InJump);
-	void STATIC_ServerDrive(float InForward, float InStrafe, float aUp, bool InJump, int View);
-	bool STATIC_ShouldInterpolateMovementCorrections();
+	void ProcessDrive(float InForward, float InStrafe, float InUp, bool InJump);
+	void ServerDrive(float InForward, float InStrafe, float aUp, bool InJump, int View);
+	bool ShouldInterpolateMovementCorrections();
 	void SendClientAdjustment();
-	void FlushDeferredMoves();
+	void STATIC_FlushDeferredMoves();
 	void ServerMove(float TimeStamp, const struct FVector& InAccel, const struct FVector& ClientLoc, unsigned char MoveFlags, unsigned char ClientRoll, int View);
-	void STATIC_ServerMoveHandleClientError(float TimeStamp, const struct FVector& Accel, const struct FVector& ClientLoc);
+	void ServerMoveHandleClientError(float TimeStamp, const struct FVector& Accel, const struct FVector& ClientLoc);
 	float GetServerMoveDeltaTime(float TimeStamp);
 	void OldServerMove(float OldTimeStamp, unsigned char OldAccelX, unsigned char OldAccelY, unsigned char OldAccelZ, unsigned char OldMoveFlags);
 	void DualServerMove(float TimeStamp0, const struct FVector& InAccel0, unsigned char PendingFlags, int View0, float TimeStamp, const struct FVector& InAccel, const struct FVector& ClientLoc, unsigned char NewFlags, unsigned char ClientRoll, int View);
-	void ForceDeathUpdate();
+	void STATIC_ForceDeathUpdate();
 	bool STATIC_UsingFirstPersonCamera();
 	void ClientSetCameraFade(bool bEnableFading, const struct FColor& FadeColor, const struct FVector2D& FadeAlpha, float FadeTime, bool bFadeAudio);
 	void ResetCameraMode();
 	void SetCameraMode(const struct FName& NewCamMode);
-	void ClientSetCameraMode(const struct FName& NewCamMode);
-	void STATIC_ServerCamera(const struct FName& NewMode);
+	void STATIC_ClientSetCameraMode(const struct FName& NewCamMode);
+	void ServerCamera(const struct FName& NewMode);
 	void Camera(const struct FName& NewMode);
 	void PreClientTravel(const struct FString& PendingURL, TEnumAsByte<ETravelType> TravelType, bool bIsSeamlessTravel);
-	void STATIC_ServerTeamSay(const struct FString& msg);
+	void ServerTeamSay(const struct FString& msg);
 	void STATIC_TeamSay(const struct FString& msg);
-	void ClientAdminMessage(const struct FString& msg);
-	void STATIC_ServerSay(const struct FString& msg);
-	void STATIC_Say(const struct FString& msg);
+	void STATIC_ClientAdminMessage(const struct FString& msg);
+	void ServerSay(const struct FString& msg);
+	void Say(const struct FString& msg);
 	bool STATIC_AllowTextMessage(const struct FString& msg);
-	void STATIC_ServerMutate(const struct FString& MutateString);
+	void ServerMutate(const struct FString& MutateString);
 	void Mutate(const struct FString& MutateString);
 	void FOV(float F);
-	void STATIC_ResetFOV();
-	void STATIC_SetFOV(float NewFOV);
-	void FixFOV();
+	void ResetFOV();
+	void SetFOV(float NewFOV);
+	void STATIC_FixFOV();
 	void Destroyed();
-	void CleanupPawn();
+	void STATIC_CleanupPawn();
 	void ClearOnlineDelegates();
-	void STATIC_OnPartyMembersInfoChanged(const struct FString& PlayerName, const struct FUniqueNetId& PlayerID, int CustomData1, int CustomData2, int CustomData3, int CustomData4);
-	void STATIC_OnPartyMemberListChanged(bool bJoinedOrLeft, const struct FString& PlayerName, const struct FUniqueNetId& PlayerID);
+	void OnPartyMembersInfoChanged(const struct FString& PlayerName, const struct FUniqueNetId& PlayerID, int CustomData1, int CustomData2, int CustomData3, int CustomData4);
+	void OnPartyMemberListChanged(bool bJoinedOrLeft, const struct FString& PlayerName, const struct FUniqueNetId& PlayerID);
 	void STATIC_RegisterOnlineDelegates();
-	void STATIC_PlayBeepSound();
+	void PlayBeepSound();
 	void TeamMessage(class APlayerReplicationInfo* PRI, const struct FString& S, const struct FName& Type, float MsgLifeTime);
-	void STATIC_SpeakTTS(const struct FString& S, class APlayerReplicationInfo* PRI);
+	void SpeakTTS(const struct FString& S, class APlayerReplicationInfo* PRI);
 	void STATIC_TeamTalk();
 	void STATIC_Talk();
-	class USoundCue* CreateTTSSoundCue(const struct FString& StrToSpeak, class APlayerReplicationInfo* PRI);
+	class USoundCue* STATIC_CreateTTSSoundCue(const struct FString& StrToSpeak, class APlayerReplicationInfo* PRI);
 	bool STATIC_AllowTTSMessageFrom(class APlayerReplicationInfo* PRI);
-	bool CanCommunicate();
+	bool STATIC_CanCommunicate();
 	void ClientMessage(const struct FString& S, const struct FName& Type, float MsgLifeTime);
-	void ClientPlayActorFaceFXAnim(class AActor* SourceActor, class UFaceFXAnimSet* AnimSet, const struct FString& GroupName, const struct FString& SeqName, class USoundCue* SoundCueToPlay, class UAkEvent* AkEventToPlay);
+	void STATIC_ClientPlayActorFaceFXAnim(class AActor* SourceActor, class UFaceFXAnimSet* AnimSet, const struct FString& GroupName, const struct FString& SeqName, class USoundCue* SoundCueToPlay, class UAkEvent* AkEventToPlay);
 	void Kismet_ClientStopSound(class USoundCue* ASound, class AActor* SourceActor, float FadeOutTime);
 	void Kismet_ClientPlaySound(class USoundCue* ASound, class AActor* SourceActor, float VolumeMultiplier, float PitchMultiplier, float FadeInTime, bool bSuppressSubtitles, bool bSuppressSpatialization);
 	bool IsClosestLocalPlayerToActor(class AActor* TheActor);
@@ -6183,10 +6183,10 @@ public:
 	void HearSoundFinished(class UAudioComponent* AC);
 	void ClientPlaySound(class USoundCue* ASound);
 	void ReceiveLocalizedMessage(class UClass* Message, int Switch, class APlayerReplicationInfo* RelatedPRI_2, class APlayerReplicationInfo* RelatedPRI_3, class UObject* OptionalObject);
-	void CleanupPRI();
+	void STATIC_CleanupPRI();
 	void HandlePickup(class AInventory* Inv);
-	void ClientSetSecondaryHUD(class UClass* newHUDType);
-	void ClientSetHUD(class UClass* newHUDType);
+	void STATIC_ClientSetSecondaryHUD(class UClass* newHUDType);
+	void STATIC_ClientSetHUD(class UClass* newHUDType);
 	void PawnDied(class APawn* P);
 	void UnPossess();
 	void ServerAcknowledgePossession(class APawn* P);
@@ -6194,95 +6194,95 @@ public:
 	void Possess(class APawn* aPawn, bool bVehicleTransition);
 	void GivePawn(class APawn* NewPawn);
 	void AskForPawn();
-	void ClientGotoState(const struct FName& NewState, const struct FName& NewLabel);
-	void STATIC_SetMaxSmoothedFrameRate(float fRate);
-	void STATIC_SetTiltActive(bool bActive);
+	void STATIC_ClientGotoState(const struct FName& NewState, const struct FName& NewLabel);
+	void SetMaxSmoothedFrameRate(float fRate);
+	void SetTiltActive(bool bActive);
 	bool IsMouseAvailable();
 	bool IsKeyboardAvailable();
-	void STATIC_SetUseTiltForwardAndBack(bool bActive);
-	void STATIC_SetOnlyUseControllerTiltInput(bool bActive);
-	void STATIC_SetControllerTiltActive(bool bActive);
+	void SetUseTiltForwardAndBack(bool bActive);
+	void SetOnlyUseControllerTiltInput(bool bActive);
+	void SetControllerTiltActive(bool bActive);
 	bool IsControllerTiltActive();
-	void STATIC_SetRumbleScale(float ScaleBy);
-	void STATIC_ReloadProfileSettings();
+	void SetRumbleScale(float ScaleBy);
+	void ReloadProfileSettings();
 	void STATIC_UnregisterStandardPlayerDataStores();
 	void STATIC_UnregisterPlayerDataStores();
-	void STATIC_RegisterStandardPlayerDataStores();
-	void STATIC_RegisterCustomPlayerDataStores();
-	void STATIC_RegisterPlayerDataStores();
-	void ClientInitializeDataStores();
+	void RegisterStandardPlayerDataStores();
+	void RegisterCustomPlayerDataStores();
+	void RegisterPlayerDataStores();
+	void STATIC_ClientInitializeDataStores();
 	void InitInputSystem();
 	class UOnlineSubsystem* GetOnlineSubsystem();
-	void STATIC_PostControllerIdChange();
-	void STATIC_PreControllerIdChange();
-	void CleanOutSavedMoves();
-	void ClientReset();
+	void PostControllerIdChange();
+	void PreControllerIdChange();
+	void STATIC_CleanOutSavedMoves();
+	void STATIC_ClientReset();
 	void Reset();
-	void STATIC_SpawnDefaultHUD();
-	void EnableCheats();
+	void SpawnDefaultHUD();
+	void STATIC_EnableCheats();
 	void STATIC_AddCheats();
 	void KickWarning();
-	void STATIC_ServerGivePawn();
+	void ServerGivePawn();
 	void ServerShortTimeout();
 	void ResetTimeMargin();
 	void PreRender(class UCanvas* Canvas);
-	void STATIC_OnJoinMigratedGame(const struct FName& SessionName, bool bWasSuccessful);
-	void STATIC_PeerDesignatedAsClient(const struct FName& SessionName);
-	void STATIC_OnUnregisterPlayerCompleteForJoinMigrate(const struct FName& SessionName, const struct FUniqueNetId& PlayerID, bool bWasSuccessful);
+	void OnJoinMigratedGame(const struct FName& SessionName, bool bWasSuccessful);
+	void PeerDesignatedAsClient(const struct FName& SessionName);
+	void OnUnregisterPlayerCompleteForJoinMigrate(const struct FName& SessionName, const struct FUniqueNetId& PlayerID, bool bWasSuccessful);
 	void PeerReceivedMigratedSession(const struct FUniqueNetId& FromPeerNetId, const struct FName& SessionName, class UClass* SearchClass, unsigned char PlatformSpecificInfo);
 	void STATIC_TellPeerToTravelToSession(const struct FUniqueNetId& ToPeerNetId, const struct FName& SessionName, class UClass* SearchClass, unsigned char PlatformSpecificInfo, int PlatformSpecificInfoSize);
 	void STATIC_TellPeerToTravel(const struct FUniqueNetId& ToPeerNetId);
-	void STATIC_PeerTravelAsHost(float TravelCountdownTimer, const struct FString& URL);
+	void PeerTravelAsHost(float TravelCountdownTimer, const struct FString& URL);
 	struct FString GetNewPeerHostURL();
-	void STATIC_PeerDesignatedAsHost(const struct FName& SessionName);
+	void PeerDesignatedAsHost(const struct FName& SessionName);
 	class UClass* GetCurrentSearchClass();
-	void STATIC_OnHostMigratedOnlineGame(const struct FName& SessionName, bool bWasSuccessful);
-	void STATIC_OnUnregisterPlayerCompleteForHostMigrate(const struct FName& SessionName, const struct FUniqueNetId& PlayerID, bool bWasSuccessful);
-	bool STATIC_RemoveMissingPeersFromSession(const struct FName& SessionName, const struct FScriptDelegate& UnregisterDelegate);
+	void OnHostMigratedOnlineGame(const struct FName& SessionName, bool bWasSuccessful);
+	void OnUnregisterPlayerCompleteForHostMigrate(const struct FName& SessionName, const struct FUniqueNetId& PlayerID, bool bWasSuccessful);
+	bool RemoveMissingPeersFromSession(const struct FName& SessionName, const struct FScriptDelegate& UnregisterDelegate);
 	class APlayerReplicationInfo* GetPRIFromNetId(const struct FUniqueNetId& PlayerID);
 	void OnMissingPeersUnregistered(const struct FName& SessionName, const struct FUniqueNetId& PlayerID, bool bWasSuccessful);
 	void GetRegisteredPlayersInSession(const struct FName& SessionName, TArray<struct FUniqueNetId>* OutRegisteredPlayers);
-	void STATIC_NotifyHostMigrationStarted();
+	void NotifyHostMigrationStarted();
 	bool MigrateNewHost();
 	bool IsBestHostPeer(const struct FUniqueNetId& PeerNetId);
 	void NotifyPeerDisconnectHost(const struct FUniqueNetId& PeerNetId);
-	void ClientUpdateBestNextHosts(const struct FUniqueNetId& SortedNextHosts, unsigned char NumEntries);
-	void STATIC_ServerRemovePeer(const struct FUniqueNetId& PeerNetId);
-	void STATIC_ServerAddPeer(const struct FUniqueNetId& PeerNetId, TEnumAsByte<ENATType> NatType);
+	void STATIC_ClientUpdateBestNextHosts(const struct FUniqueNetId& SortedNextHosts, unsigned char NumEntries);
+	void ServerRemovePeer(const struct FUniqueNetId& PeerNetId);
+	void ServerAddPeer(const struct FUniqueNetId& PeerNetId, TEnumAsByte<ENATType> NatType);
 	void RemovePeer(const struct FUniqueNetId& PeerNetId);
 	void AddPeer(const struct FUniqueNetId& PeerNetId, TEnumAsByte<ENATType> NatType);
-	int FindConnectedPeerIndex(const struct FUniqueNetId& PeerNetId);
+	int STATIC_FindConnectedPeerIndex(const struct FUniqueNetId& PeerNetId);
 	void ReceivedPlayer();
 	void PostBeginPlay();
-	class ACoverReplicator* STATIC_SpawnCoverReplicator();
-	bool CanUnpauseControllerConnected();
+	class ACoverReplicator* SpawnCoverReplicator();
+	bool STATIC_CanUnpauseControllerConnected();
 	void ControllerChangedUnpause();
 	void ControllerChangedPause();
-	void STATIC_OnControllerChanged(int ControllerId, bool bIsConnected, bool bPauseGame);
-	bool CanUnpauseExternalUI();
-	void STATIC_OnExternalUIChanged(bool bIsOpening);
+	void OnControllerChanged(int ControllerId, bool bIsConnected, bool bPauseGame);
+	bool STATIC_CanUnpauseExternalUI();
+	void OnExternalUIChanged(bool bIsOpening);
 	void STATIC_OnPrivilegeLevelChecked(unsigned char LocalUserNum, TEnumAsByte<EFeaturePrivilege> Privilege, TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevel, bool bDiffersFromHint);
 	void CheckPrivileges();
-	void ForceClearUnpauseDelegates();
-	void DisableActorHeadTracking(class AActor* TargetActor);
-	void EnableActorHeadTracking(class AActor* TargetActor, const struct FName& TrackControllerName, class UClass* ActorClassesToLookAt, bool bLookAtPawns, float MinLookAtTime, float MaxLookAtTime, float MaxInterestTime, float LookAtActorRadius, const struct FName& TargetBoneNames);
+	void STATIC_ForceClearUnpauseDelegates();
+	void STATIC_DisableActorHeadTracking(class AActor* TargetActor);
+	void STATIC_EnableActorHeadTracking(class AActor* TargetActor, const struct FName& TrackControllerName, class UClass* ActorClassesToLookAt, bool bLookAtPawns, float MinLookAtTime, float MaxLookAtTime, float MaxInterestTime, float LookAtActorRadius, const struct FName& TargetBoneNames);
 	void FellOutOfWorld(class UClass* dmgType);
-	void CleanUpAudioComponents();
-	int FindStairRotation(float DeltaTime);
-	bool CheckSpeedHack(float DeltaTime);
+	void STATIC_CleanUpAudioComponents();
+	int STATIC_FindStairRotation(float DeltaTime);
+	bool STATIC_CheckSpeedHack(float DeltaTime);
 	void ServerProcessConvolve(const struct FString& C, int H);
 	void ClientConvolve(const struct FString& C, int H);
-	void STATIC_SetAudioGroupVolume(const struct FName& GroupName, float Volume);
-	void STATIC_SetAllowMatureLanguage(bool bAllowMatureLanguge);
-	struct FString STATIC_PasteFromClipboard();
-	void CopyToClipboard(const struct FString& Text);
+	void SetAudioGroupVolume(const struct FName& GroupName, float Volume);
+	void SetAllowMatureLanguage(bool bAllowMatureLanguge);
+	struct FString PasteFromClipboard();
+	void STATIC_CopyToClipboard(const struct FString& Text);
 	struct FString GetDefaultURL(const struct FString& Option);
 	void STATIC_UpdateURL(const struct FString& NewOption, const struct FString& NewValue, bool bSave1Default);
 	void ClientTravel(const struct FString& URL, TEnumAsByte<ETravelType> TravelType, bool bSeamless, const struct FGuid& MapPackageGuid);
-	struct FString ConsoleCommand(const struct FString& Command, bool bWriteToLog);
+	struct FString STATIC_ConsoleCommand(const struct FString& Command, bool bWriteToLog);
 	struct FString GetServerNetworkAddress();
 	struct FString GetPlayerNetworkAddress();
-	void STATIC_SetNetSpeed(int NewSpeed);
+	void SetNetSpeed(int NewSpeed);
 };
 
 
@@ -6304,44 +6304,44 @@ public:
 	void STATIC_AnalyticsEndSession();
 	void STATIC_AnalyticsStartSession();
 	void GetAnalyticsUserId();
-	void STATIC_SetAnalyticsUserId(const struct FString& UserId);
-	void STATIC_SendAnalyticsCachedEvents();
-	void STATIC_SendAnalyticsCurrencyGivenEvent(const struct FString& GameCurrencyType, int GameCurrencyAmount);
-	void STATIC_SendAnalyticsCurrencyPurchaseEvent(const struct FString& GameCurrencyType, int GameCurrencyAmount, const struct FString& RealCurrencyType, float RealMoneyCost, const struct FString& PaymentProvider);
-	void STATIC_SendAnalyticsItemPurchaseEvent(const struct FString& ItemId, const struct FString& Currency, int PerItemCost, int ItemQuantity);
-	void STATIC_SendAnalyticsUserAttributeEvent(const struct FString& AttributeName, const struct FString& AttributeValue);
-	void STATIC_SendAnalyticsEvent(const struct FString& EventName, const struct FString& AttributeName, const struct FString& AttributeValue);
-	void STATIC_OnRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* Response, bool bDidSucceed);
+	void SetAnalyticsUserId(const struct FString& UserId);
+	void SendAnalyticsCachedEvents();
+	void SendAnalyticsCurrencyGivenEvent(const struct FString& GameCurrencyType, int GameCurrencyAmount);
+	void SendAnalyticsCurrencyPurchaseEvent(const struct FString& GameCurrencyType, int GameCurrencyAmount, const struct FString& RealCurrencyType, float RealMoneyCost, const struct FString& PaymentProvider);
+	void SendAnalyticsItemPurchaseEvent(const struct FString& ItemId, const struct FString& Currency, int PerItemCost, int ItemQuantity);
+	void SendAnalyticsUserAttributeEvent(const struct FString& AttributeName, const struct FString& AttributeValue);
+	void SendAnalyticsEvent(const struct FString& EventName, const struct FString& AttributeName, const struct FString& AttributeValue);
+	void OnRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* Response, bool bDidSucceed);
 	void STATIC_TestHttp(const struct FString& Verb, const struct FString& Payload, const struct FString& URL, bool bSendParallelRequest);
 	void STATIC_OnDeleteUserFileComplete(bool bWasSuccessful, const struct FString& UserId, const struct FString& Filename);
-	void DebugDeleteUserFile(const struct FString& UserId, const struct FString& Filename);
+	void STATIC_DebugDeleteUserFile(const struct FString& UserId, const struct FString& Filename);
 	void STATIC_OnReadUserFileComplete(bool bWasSuccessful, const struct FString& UserId, const struct FString& Filename);
-	void DebugReadUserFile(const struct FString& UserId, const struct FString& Filename);
+	void STATIC_DebugReadUserFile(const struct FString& UserId, const struct FString& Filename);
 	void STATIC_OnWriteUserFileComplete(bool bWasSuccessful, const struct FString& UserId, const struct FString& Filename);
-	void DebugWriteUserFile(const struct FString& UserId, const struct FString& Filename);
+	void STATIC_DebugWriteUserFile(const struct FString& UserId, const struct FString& Filename);
 	void STATIC_OnEnumerateUserFilesComplete(bool bWasSuccessful, const struct FString& UserId);
-	void DebugQueryUserFiles(const struct FString& UserId);
-	void STATIC_OnReceivedLocalNotificationDebug(bool bWasAppActive, struct FNotificationInfo* Notification);
-	void DebugNotification(const struct FString& MessageBody, int SecondsFromNow);
-	void DrawLocationXYZ(float X, float Y, float Z);
-	void DrawLocation(const struct FVector& Loc);
-	void DumpCoverStats();
-	void DebugEmsDownload();
-	void DebugDeleteTitleFiles();
-	void STATIC_OnSaveComplete(bool bWasSuccessful, const struct FString& Filename);
-	void DebugSaveTitleFile(const struct FString& Filename);
-	void STATIC_OnLoadComplete(bool bWasSuccessful, const struct FString& Filename);
-	void STATIC_OnDownloadComplete(bool bWasSuccessful, const struct FString& Filename);
-	void DebugDownloadTitleFile(const struct FString& Filename, bool bFromCache);
-	void DebugIniLocPatcher();
+	void STATIC_DebugQueryUserFiles(const struct FString& UserId);
+	void OnReceivedLocalNotificationDebug(bool bWasAppActive, struct FNotificationInfo* Notification);
+	void STATIC_DebugNotification(const struct FString& MessageBody, int SecondsFromNow);
+	void STATIC_DrawLocationXYZ(float X, float Y, float Z);
+	void STATIC_DrawLocation(const struct FVector& Loc);
+	void STATIC_DumpCoverStats();
+	void STATIC_DebugEmsDownload();
+	void STATIC_DebugDeleteTitleFiles();
+	void OnSaveComplete(bool bWasSuccessful, const struct FString& Filename);
+	void STATIC_DebugSaveTitleFile(const struct FString& Filename);
+	void OnLoadComplete(bool bWasSuccessful, const struct FString& Filename);
+	void OnDownloadComplete(bool bWasSuccessful, const struct FString& Filename);
+	void STATIC_DebugDownloadTitleFile(const struct FString& Filename, bool bFromCache);
+	void STATIC_DebugIniLocPatcher();
 	void STATIC_ToggleAILogging();
 	void STATIC_UnsuppressAILog();
 	void STATIC_SuppressAILog();
 	void STATIC_VerifyNavMeshCoverRefs();
-	void STATIC_PrintNavMeshObstacles();
-	void STATIC_PrintAllPathObjectEdges();
+	void PrintNavMeshObstacles();
+	void PrintAllPathObjectEdges();
 	void NavMeshVerification(float interval);
-	void DrawUnsupportingEdges(const struct FString& PawnClassName);
+	void STATIC_DrawUnsupportingEdges(const struct FString& PawnClassName);
 	void STATIC_VerifyNavMeshObjects();
 	void LogParticleActivateSystemCalls(bool bShouldLog);
 	void LogPlaySoundCalls(bool bShouldLog);
@@ -6349,12 +6349,12 @@ public:
 	void STATIC_VerbosePathDebug();
 	void STATIC_TestPylonConnectivity();
 	void STATIC_TestNavMeshPath(bool bDrawPath);
-	void STATIC_SetOnlineDebugLevel(int DebugLevel);
+	void SetOnlineDebugLevel(int DebugLevel);
 	void STATIC_TestLevel();
 	void STATIC_StreamLevelOut(const struct FName& PackageName);
-	void STATIC_OnlyLoadLevel(const struct FName& PackageName);
+	void OnlyLoadLevel(const struct FName& PackageName);
 	void STATIC_StreamLevelIn(const struct FName& PackageName);
-	void STATIC_SetLevelStreamingStatus(const struct FName& PackageName, bool bShouldBeLoaded, bool bShouldBeVisible);
+	void SetLevelStreamingStatus(const struct FName& PackageName, bool bShouldBeLoaded, bool bShouldBeVisible);
 	void STATIC_AllWeapons();
 	void Loaded();
 	void STATIC_ViewClass(class UClass* aClass);
@@ -6362,12 +6362,12 @@ public:
 	void STATIC_ViewActor(const struct FName& actorName);
 	void STATIC_ViewPlayer(const struct FString& S);
 	void STATIC_ViewSelf(bool bQuiet);
-	void STATIC_RememberSpot();
-	void FractureAllMeshesToMaximizeMemoryUsage();
-	void FractureAllMeshes();
-	void DestroyFractures(float Radius);
+	void RememberSpot();
+	void STATIC_FractureAllMeshesToMaximizeMemoryUsage();
+	void STATIC_FractureAllMeshes();
+	void STATIC_DestroyFractures(float Radius);
 	void STATIC_SuspendAI();
-	void STATIC_PlayersOnly();
+	void PlayersOnly();
 	class AWeapon* GiveWeapon(const struct FString& WeaponClassStr);
 	void STATIC_Summon(const struct FString& ClassName);
 	void STATIC_Avatar(const struct FName& ClassName);
@@ -6375,25 +6375,25 @@ public:
 	void KillAllPawns(class UClass* aClass);
 	void KillAll(class UClass* aClass);
 	void SetSpeed(float F);
-	void STATIC_SetGravity(float F);
-	void STATIC_SetJumpZ(float F);
-	void STATIC_Slomo(float T);
+	void SetGravity(float F);
+	void SetJumpZ(float F);
+	void Slomo(float T);
 	void God();
 	void STATIC_AllAmmo();
 	void Ghost();
 	void STATIC_Walk();
-	void Fly();
+	void STATIC_Fly();
 	void STATIC_Amphibious();
-	void EndPath();
-	void ChangeSize(float F);
+	void STATIC_EndPath();
+	void STATIC_ChangeSize(float F);
 	void Teleport();
 	void KillViewedActor();
 	void STATIC_WriteToLog(const struct FString& Param);
 	void FreezeFrame(float Delay);
 	void ListDynamicActors();
-	void DebugPause();
-	void EditAIByTrace();
-	void DebugAI(const struct FName& Category);
+	void STATIC_DebugPause();
+	void STATIC_EditAIByTrace();
+	void STATIC_DebugAI(const struct FName& Category);
 	void FXStop(class UClass* aClass);
 	void FXPlay(class UClass* aClass, const struct FString& FXAnimPath);
 };
@@ -6463,23 +6463,23 @@ public:
 
 	bool GetKeyValue(int SaveSlot, const struct FString& KeyName, TEnumAsByte<EPlatformInterfaceDataType> Type, struct FPlatformInterfaceDelegateResult* Value);
 	bool GetDataStoreIDAndBlobNameForSaveSlot(int SaveSlot, struct FString* DataStoreID, struct FString* DataBlobName);
-	bool STATIC_SetKeyValue(int SaveSlot, const struct FString& KeyName, struct FPlatformInterfaceData* Value);
+	bool SetKeyValue(int SaveSlot, const struct FString& KeyName, struct FPlatformInterfaceData* Value);
 	bool InternalSetSaveSlotKeyValues(int SaveSlot, const struct FString& DataStoreID, const struct FString& SaveDataBlobName);
-	bool STATIC_SetSaveSlotKeyValues(const struct FString& DataStoreID, const struct FString& SaveDataBlobName, int* SaveSlot);
-	void STATIC_OnDeleteSaveDataComplete(bool bWasSucessfull, const struct FString& StorageID, const struct FString& BlobName, const struct FString& Error);
-	bool DeleteSaveData(int SaveSlot, const struct FScriptDelegate& InDeleteSaveDataCallback);
-	void STATIC_OnSetSaveDataComplete(bool bWasSucessfull, const struct FString& StorageID, const struct FString& BlobName, const struct FString& Error);
-	void STATIC_SetSaveData(int SaveSlot, const struct FScriptDelegate& InSetSaveDataCallback, TArray<unsigned char>* SaveDataBlob);
-	void STATIC_OnGetSaveDataComplete(bool bWasSuccessful, const struct FString& StorageID, const struct FString& BlobName, const struct FString& Error, TArray<unsigned char>* DataBlob);
+	bool SetSaveSlotKeyValues(const struct FString& DataStoreID, const struct FString& SaveDataBlobName, int* SaveSlot);
+	void OnDeleteSaveDataComplete(bool bWasSucessfull, const struct FString& StorageID, const struct FString& BlobName, const struct FString& Error);
+	bool STATIC_DeleteSaveData(int SaveSlot, const struct FScriptDelegate& InDeleteSaveDataCallback);
+	void OnSetSaveDataComplete(bool bWasSucessfull, const struct FString& StorageID, const struct FString& BlobName, const struct FString& Error);
+	void SetSaveData(int SaveSlot, const struct FScriptDelegate& InSetSaveDataCallback, TArray<unsigned char>* SaveDataBlob);
+	void OnGetSaveDataComplete(bool bWasSuccessful, const struct FString& StorageID, const struct FString& BlobName, const struct FString& Error, TArray<unsigned char>* DataBlob);
 	void GetSaveData(int SaveSlot, const struct FScriptDelegate& OnGetSaveDataCallback);
 	void Init(const TScriptInterface<class UCloudSaveSystemKVSInterface>& InKeyValueStore, const TScriptInterface<class UCloudSaveSystemDataBlobStoreInterface>& InDataBlobStore, int VersionNumber);
-	class UObject* DeserializeObject(class UClass* ObjectClass, TEnumAsByte<ESaveDataVersionSupport> VersionSupport, int DataVersion, TArray<unsigned char>* Data);
-	void STATIC_SerializeObject(class UObject* ObjectToSerialize, int DataVersion, TArray<unsigned char>* Data);
+	class UObject* STATIC_DeserializeObject(class UClass* ObjectClass, TEnumAsByte<ESaveDataVersionSupport> VersionSupport, int DataVersion, TArray<unsigned char>* Data);
+	void SerializeObject(class UObject* ObjectToSerialize, int DataVersion, TArray<unsigned char>* Data);
 	bool STATIC_AreAnySlotOperationsActive();
 	bool IsDeleteOperationActive();
 	bool IsOperationActiveForSlot(int SlotIndex);
 	bool STATIC_WriteNumSaveSlots(int NumSaveSlots);
-	int DoesSaveSlotKeyValueDataAlreadyExist(const struct FString& DataStoreID, const struct FString& DataBlobName);
+	int STATIC_DoesSaveSlotKeyValueDataAlreadyExist(const struct FString& DataStoreID, const struct FString& DataBlobName);
 	bool GetNumberOfSaveSlots(int* NumSaveSlots);
 	void SaveSystemCallback(bool bWasSuccessful, int SaveSlot, const struct FString& Error);
 	void OnGetSaveDataCallback(bool bWasSuccessful, int SaveSlot, const struct FString& Error, TArray<unsigned char>* DataBlob);
@@ -7042,7 +7042,7 @@ public:
 	}
 
 
-	void STATIC_PauseWaveform(bool bPause);
+	void PauseWaveform(bool bPause);
 	void StopForceFeedbackWaveform(class UForceFeedbackWaveform* WaveForm);
 	void PlayForceFeedbackWaveform(class UForceFeedbackWaveform* WaveForm, class AActor* WaveInstigator, float fScaleMagnitude, float fScaleRate, bool bForcePlay);
 };
@@ -7092,15 +7092,15 @@ public:
 	}
 
 
-	void STATIC_ResetState();
-	void STATIC_SetPulsingFromDef(const struct FString& InstructionId);
-	void STATIC_SetPulsing(float LerpTime, const struct FColor& Target1, const struct FColor& Target2);
-	void STATIC_SetPadColorAndLerpFromDef(const struct FString& InstructionId);
-	void STATIC_SetPadColorAndLerp(float LerpTime, const struct FColor& NewPadColor, const struct FColor& NewTargetColor);
+	void ResetState();
+	void SetPulsingFromDef(const struct FString& InstructionId);
+	void SetPulsing(float LerpTime, const struct FColor& Target1, const struct FColor& Target2);
+	void SetPadColorAndLerpFromDef(const struct FString& InstructionId);
+	void SetPadColorAndLerp(float LerpTime, const struct FColor& NewPadColor, const struct FColor& NewTargetColor);
 	void STATIC_BeginLerpFromDef(const struct FString& InstructionId);
 	void STATIC_BeginLerp(const struct FColor& NewLerpColor, float LerpTime);
-	void STATIC_SetPadColorFromDef(const struct FString& TheColorId);
-	void STATIC_SetPadColor(const struct FColor& NewPadColor);
+	void SetPadColorFromDef(const struct FString& TheColorId);
+	void SetPadColor(const struct FColor& NewPadColor);
 };
 
 
@@ -7131,8 +7131,8 @@ public:
 
 
 	struct FString GetFilename();
-	void CloseStatsFile();
-	bool STATIC_OpenStatsFile(const struct FString& Filename);
+	void STATIC_CloseStatsFile();
+	bool OpenStatsFile(const struct FString& Filename);
 };
 
 
@@ -7157,14 +7157,14 @@ public:
 	int GetPlatform();
 	int GetTitleID();
 	struct FString GetSessionID();
-	void STATIC_ProcessStreamEnd();
-	void STATIC_ProcessStream();
-	void STATIC_ProcessStreamStart();
+	void ProcessStreamEnd();
+	void ProcessStream();
+	void ProcessStreamStart();
 	void UnregisterHandler(class UGameplayEventsHandler* ExistingHandler);
 	void RegisterHandler(class UGameplayEventsHandler* NewHandler);
-	bool STATIC_SerializeHeader();
-	void CloseStatsFile();
-	bool STATIC_OpenStatsFile(const struct FString& Filename);
+	bool SerializeHeader();
+	void STATIC_CloseStatsFile();
+	bool OpenStatsFile(const struct FString& Filename);
 };
 
 
@@ -7182,8 +7182,8 @@ public:
 	}
 
 
-	int STATIC_RecordCoverLinkFireLinks(class ACoverLink* Link, class AController* Player);
-	void STATIC_RecordAIPathFail(class AController* AI, const struct FString& Reason, const struct FVector& Dest);
+	int RecordCoverLinkFireLinks(class ACoverLink* Link, class AController* Player);
+	void RecordAIPathFail(class AController* AI, const struct FString& Reason, const struct FVector& Dest);
 	void LogSystemPollEvents();
 	void LogProjectileIntEvent(int EventID, class AController* Player, class UClass* Proj, int Value);
 	void LogDamageEvent(int EventID, class AController* Player, class UClass* dmgType, class AController* Target, int Amount);
@@ -7203,12 +7203,12 @@ public:
 	void LogGameFloatEvent(int EventID, float Value);
 	void LogGameStringEvent(int EventID, const struct FString& Value);
 	void LogGameIntEvent(int EventID, int Value);
-	void EndLogging();
-	void STATIC_ResetLogging(float HeartbeatDelta);
-	void STATIC_StartLogging(float HeartbeatDelta);
+	void STATIC_EndLogging();
+	void ResetLogging(float HeartbeatDelta);
+	void StartLogging(float HeartbeatDelta);
 	int GetPlaylistId();
 	int GetGameTypeId();
-	void STATIC_Poll();
+	void Poll();
 	void StopPolling();
 	void StartPolling(float HearbeatDelta);
 	bool IsSessionInProgress();
@@ -7228,8 +7228,8 @@ public:
 	}
 
 
-	int STATIC_RecordCoverLinkFireLinks(class ACoverLink* Link, class AController* Player);
-	void STATIC_RecordAIPathFail(class AController* AI, const struct FString& Reason, const struct FVector& Dest);
+	int RecordCoverLinkFireLinks(class ACoverLink* Link, class AController* Player);
+	void RecordAIPathFail(class AController* AI, const struct FString& Reason, const struct FVector& Dest);
 	class UGenericParamListStatEntry* GetGenericParamListEntry();
 	void LogProjectileIntEvent(int EventID, class AController* Player, class UClass* Proj, int Value);
 	void LogDamageEvent(int EventID, class AController* Player, class UClass* dmgType, class AController* Target, int Amount);
@@ -7249,9 +7249,9 @@ public:
 	void LogGameFloatEvent(int EventID, float Value);
 	void LogGameStringEvent(int EventID, const struct FString& Value);
 	void LogGameIntEvent(int EventID, int Value);
-	void EndLogging();
-	void STATIC_ResetLogging(float HeartbeatDelta);
-	void STATIC_StartLogging(float HeartbeatDelta);
+	void STATIC_EndLogging();
+	void ResetLogging(float HeartbeatDelta);
+	void StartLogging(float HeartbeatDelta);
 };
 
 
@@ -7268,8 +7268,8 @@ public:
 	}
 
 
-	int STATIC_RecordCoverLinkFireLinks(class ACoverLink* Link, class AController* Player);
-	void STATIC_RecordAIPathFail(class AController* AI, const struct FString& Reason, const struct FVector& Dest);
+	int RecordCoverLinkFireLinks(class ACoverLink* Link, class AController* Player);
+	void RecordAIPathFail(class AController* AI, const struct FString& Reason, const struct FVector& Dest);
 	class UGenericParamListStatEntry* GetGenericParamListEntry();
 	void LogSystemPollEvents();
 	void LogProjectileIntEvent(int EventID, class AController* Player, class UClass* Proj, int Value);
@@ -7290,14 +7290,14 @@ public:
 	void LogGameFloatEvent(int EventID, float Value);
 	void LogGameStringEvent(int EventID, const struct FString& Value);
 	void LogGameIntEvent(int EventID, int Value);
-	void EndLogging();
-	void STATIC_ResetLogging(float HeartbeatDelta);
-	void STATIC_StartLogging(float HeartbeatDelta);
-	bool STATIC_SerializeFooter();
-	bool STATIC_SerializeHeader();
-	void CloseStatsFile();
-	bool STATIC_OpenStatsFile(const struct FString& Filename);
-	int STATIC_ResolvePlayerIndex(class AController* Player);
+	void STATIC_EndLogging();
+	void ResetLogging(float HeartbeatDelta);
+	void StartLogging(float HeartbeatDelta);
+	bool SerializeFooter();
+	bool SerializeHeader();
+	void STATIC_CloseStatsFile();
+	bool OpenStatsFile(const struct FString& Filename);
+	int ResolvePlayerIndex(class AController* Player);
 };
 
 
@@ -7317,12 +7317,12 @@ public:
 	}
 
 
-	void STATIC_RemoveFilter(int EventID);
+	void RemoveFilter(int EventID);
 	void STATIC_AddFilter(int EventID);
 	void ResolveGroupFilters();
 	void PostProcessStream();
 	void PreProcessStream();
-	void STATIC_SetReader(class UGameplayEventsReader* NewReader);
+	void SetReader(class UGameplayEventsReader* NewReader);
 };
 
 
@@ -7341,7 +7341,7 @@ public:
 	}
 
 
-	void CommitToDisk();
+	void STATIC_CommitToDisk();
 	bool GetString(const struct FName& ParamName, struct FString* out_string);
 	bool GetVector(const struct FName& ParamName, struct FVector* out_vector);
 	bool GetInt(const struct FName& ParamName, int* out_int);
@@ -7407,14 +7407,14 @@ public:
 	}
 
 
-	class UHttpRequestInterface* STATIC_SetProcessRequestCompleteDelegate(const struct FScriptDelegate& ProcessRequestCompleteDelegate);
+	class UHttpRequestInterface* SetProcessRequestCompleteDelegate(const struct FScriptDelegate& ProcessRequestCompleteDelegate);
 	void OnProcessRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* InHttpResponse, bool bDidSucceed);
-	bool STATIC_ProcessRequest();
-	class UHttpRequestInterface* STATIC_SetHeader(const struct FString& HeaderName, const struct FString& HeaderValue);
-	class UHttpRequestInterface* STATIC_SetContentAsString(const struct FString& ContentString);
-	class UHttpRequestInterface* STATIC_SetContent(TArray<unsigned char>* ContentPayload);
-	class UHttpRequestInterface* STATIC_SetURL(const struct FString& URL);
-	class UHttpRequestInterface* STATIC_SetVerb(const struct FString& Verb);
+	bool ProcessRequest();
+	class UHttpRequestInterface* SetHeader(const struct FString& HeaderName, const struct FString& HeaderValue);
+	class UHttpRequestInterface* SetContentAsString(const struct FString& ContentString);
+	class UHttpRequestInterface* SetContent(TArray<unsigned char>* ContentPayload);
+	class UHttpRequestInterface* SetURL(const struct FString& URL);
+	class UHttpRequestInterface* SetVerb(const struct FString& Verb);
 	struct FString GetVerb();
 };
 
@@ -7461,19 +7461,19 @@ public:
 
 
 	struct FString STATIC_UpdateLocFileName(const struct FString& Filename);
-	void ClearCachedFiles();
-	void ClearReadFileDelegate(const struct FScriptDelegate& ReadTitleFileCompleteDelegate);
+	void STATIC_ClearCachedFiles();
+	void STATIC_ClearReadFileDelegate(const struct FScriptDelegate& ReadTitleFileCompleteDelegate);
 	void STATIC_AddReadFileDelegate(const struct FScriptDelegate& ReadTitleFileCompleteDelegate);
 	void STATIC_AddFileToDownload(const struct FString& Filename);
-	void STATIC_ProcessIniLocFile(const struct FString& Filename, bool bIsUnicode, TArray<unsigned char>* FileData);
-	void CheckForAllFilesComplete();
+	void ProcessIniLocFile(const struct FString& Filename, bool bIsUnicode, TArray<unsigned char>* FileData);
+	void STATIC_CheckForAllFilesComplete();
 	void STATIC_TriggerDownloadCompleteDelegates(bool bSuccess, const struct FString& Filename);
-	void STATIC_OnFileCacheSaveComplete(bool bWasSuccessful, const struct FString& Filename);
-	void STATIC_OnFileCacheLoadComplete(bool bWasSuccessful, const struct FString& Filename);
-	void STATIC_OnDownloadFileComplete(bool bWasSuccessful, const struct FString& Filename);
-	void STATIC_StartLoadingFiles();
+	void OnFileCacheSaveComplete(bool bWasSuccessful, const struct FString& Filename);
+	void OnFileCacheLoadComplete(bool bWasSuccessful, const struct FString& Filename);
+	void OnDownloadFileComplete(bool bWasSuccessful, const struct FString& Filename);
+	void StartLoadingFiles();
 	void OnRequestTitleFileListComplete(bool bWasSuccessful, TArray<struct FString> FilePaths);
-	void DownloadFiles();
+	void STATIC_DownloadFiles();
 	void Init();
 	void OnAllTitleFilesCompleted();
 	void STATIC_OnReadTitleFileComplete(bool bWasSuccessful, const struct FString& Filename);
@@ -7579,13 +7579,13 @@ public:
 	}
 
 
-	class UJsonObject* DecodeJson(const struct FString& Str);
-	struct FString EncodeJson(class UJsonObject* Root);
-	void STATIC_SetBoolValue(const struct FString& Key, bool Value);
-	void STATIC_SetFloatValue(const struct FString& Key, float Value);
-	void STATIC_SetIntValue(const struct FString& Key, int Value);
-	void STATIC_SetStringValue(const struct FString& Key, const struct FString& Value);
-	void STATIC_SetObject(const struct FString& Key, class UJsonObject* Object);
+	class UJsonObject* STATIC_DecodeJson(const struct FString& Str);
+	struct FString STATIC_EncodeJson(class UJsonObject* Root);
+	void SetBoolValue(const struct FString& Key, bool Value);
+	void SetFloatValue(const struct FString& Key, float Value);
+	void SetIntValue(const struct FString& Key, int Value);
+	void SetStringValue(const struct FString& Key, const struct FString& Value);
+	void SetObject(const struct FString& Key, class UJsonObject* Object);
 	bool GetBoolValue(const struct FString& Key);
 	float STATIC_GetFloatValue(const struct FString& Key);
 	int GetIntValue(const struct FString& Key);
@@ -8044,63 +8044,63 @@ public:
 
 	bool GetServerAddr(struct FIpAddr* OutServerIP, int* OutServerPort);
 	bool GetServerUniqueId(struct FUniqueNetId* OutServerUID);
-	bool FindLocalServerAuthSession(class UPlayer* ClientConnection, struct FLocalAuthSession* OutSessionInfo);
-	bool FindServerAuthSession(class UPlayer* ServerConnection, struct FAuthSession* OutSessionInfo);
-	bool FindLocalClientAuthSession(class UPlayer* ServerConnection, struct FLocalAuthSession* OutSessionInfo);
-	bool FindClientAuthSession(class UPlayer* ClientConnection, struct FAuthSession* OutSessionInfo);
+	bool STATIC_FindLocalServerAuthSession(class UPlayer* ClientConnection, struct FLocalAuthSession* OutSessionInfo);
+	bool STATIC_FindServerAuthSession(class UPlayer* ServerConnection, struct FAuthSession* OutSessionInfo);
+	bool STATIC_FindLocalClientAuthSession(class UPlayer* ServerConnection, struct FLocalAuthSession* OutSessionInfo);
+	bool STATIC_FindClientAuthSession(class UPlayer* ClientConnection, struct FAuthSession* OutSessionInfo);
 	void STATIC_AllLocalServerAuthSessions(struct FLocalAuthSession* OutSessionInfo);
 	void STATIC_AllServerAuthSessions(struct FAuthSession* OutSessionInfo);
 	void STATIC_AllLocalClientAuthSessions(struct FLocalAuthSession* OutSessionInfo);
 	void STATIC_AllClientAuthSessions(struct FAuthSession* OutSessionInfo);
-	void EndAllRemoteServerAuthSessions();
-	void EndAllLocalServerAuthSessions();
-	void EndRemoteServerAuthSession(const struct FUniqueNetId& ServerUID, const struct FIpAddr& ServerIP);
-	void EndLocalServerAuthSession(const struct FUniqueNetId& ClientUID, const struct FIpAddr& ClientIP);
+	void STATIC_EndAllRemoteServerAuthSessions();
+	void STATIC_EndAllLocalServerAuthSessions();
+	void STATIC_EndRemoteServerAuthSession(const struct FUniqueNetId& ServerUID, const struct FIpAddr& ServerIP);
+	void STATIC_EndLocalServerAuthSession(const struct FUniqueNetId& ClientUID, const struct FIpAddr& ClientIP);
 	bool STATIC_VerifyServerAuthSession(const struct FUniqueNetId& ServerUID, const struct FIpAddr& ServerIP, int AuthTicketUID);
-	bool CreateServerAuthSession(const struct FUniqueNetId& ClientUID, const struct FIpAddr& ClientIP, int ClientPort, int* OutAuthTicketUID);
-	void EndAllRemoteClientAuthSessions();
-	void EndAllLocalClientAuthSessions();
-	void EndRemoteClientAuthSession(const struct FUniqueNetId& ClientUID, const struct FIpAddr& ClientIP);
-	void EndLocalClientAuthSession(const struct FUniqueNetId& ServerUID, const struct FIpAddr& ServerIP, int ServerPort);
+	bool STATIC_CreateServerAuthSession(const struct FUniqueNetId& ClientUID, const struct FIpAddr& ClientIP, int ClientPort, int* OutAuthTicketUID);
+	void STATIC_EndAllRemoteClientAuthSessions();
+	void STATIC_EndAllLocalClientAuthSessions();
+	void STATIC_EndRemoteClientAuthSession(const struct FUniqueNetId& ClientUID, const struct FIpAddr& ClientIP);
+	void STATIC_EndLocalClientAuthSession(const struct FUniqueNetId& ServerUID, const struct FIpAddr& ServerIP, int ServerPort);
 	bool STATIC_VerifyClientAuthSession(const struct FUniqueNetId& ClientUID, const struct FIpAddr& ClientIP, int ClientPort, int AuthTicketUID);
-	bool CreateClientAuthSession(const struct FUniqueNetId& ServerUID, const struct FIpAddr& ServerIP, int ServerPort, bool bSecure, int* OutAuthTicketUID);
-	bool STATIC_SendServerAuthRetryRequest();
-	bool STATIC_SendClientAuthEndSessionRequest(class UPlayer* ClientConnection);
-	bool STATIC_SendServerAuthResponse(class UPlayer* ClientConnection, int AuthTicketUID);
-	bool STATIC_SendClientAuthResponse(int AuthTicketUID);
-	bool STATIC_SendServerAuthRequest(const struct FUniqueNetId& ServerUID);
-	bool STATIC_SendClientAuthRequest(class UPlayer* ClientConnection, const struct FUniqueNetId& ClientUID);
-	void ClearServerConnectionCloseDelegate(const struct FScriptDelegate& ServerConnectionCloseDelegate);
+	bool STATIC_CreateClientAuthSession(const struct FUniqueNetId& ServerUID, const struct FIpAddr& ServerIP, int ServerPort, bool bSecure, int* OutAuthTicketUID);
+	bool SendServerAuthRetryRequest();
+	bool SendClientAuthEndSessionRequest(class UPlayer* ClientConnection);
+	bool SendServerAuthResponse(class UPlayer* ClientConnection, int AuthTicketUID);
+	bool SendClientAuthResponse(int AuthTicketUID);
+	bool SendServerAuthRequest(const struct FUniqueNetId& ServerUID);
+	bool SendClientAuthRequest(class UPlayer* ClientConnection, const struct FUniqueNetId& ClientUID);
+	void STATIC_ClearServerConnectionCloseDelegate(const struct FScriptDelegate& ServerConnectionCloseDelegate);
 	void STATIC_AddServerConnectionCloseDelegate(const struct FScriptDelegate& ServerConnectionCloseDelegate);
 	void OnServerConnectionClose(class UPlayer* ServerConnection);
-	void ClearClientConnectionCloseDelegate(const struct FScriptDelegate& ClientConnectionCloseDelegate);
+	void STATIC_ClearClientConnectionCloseDelegate(const struct FScriptDelegate& ClientConnectionCloseDelegate);
 	void STATIC_AddClientConnectionCloseDelegate(const struct FScriptDelegate& ClientConnectionCloseDelegate);
 	void OnClientConnectionClose(class UPlayer* ClientConnection);
-	void ClearServerAuthRetryRequestDelegate(const struct FScriptDelegate& ServerAuthRetryRequestDelegate);
+	void STATIC_ClearServerAuthRetryRequestDelegate(const struct FScriptDelegate& ServerAuthRetryRequestDelegate);
 	void STATIC_AddServerAuthRetryRequestDelegate(const struct FScriptDelegate& ServerAuthRetryRequestDelegate);
 	void OnServerAuthRetryRequest(class UPlayer* ClientConnection);
-	void ClearClientAuthEndSessionRequestDelegate(const struct FScriptDelegate& ClientAuthEndSessionRequestDelegate);
+	void STATIC_ClearClientAuthEndSessionRequestDelegate(const struct FScriptDelegate& ClientAuthEndSessionRequestDelegate);
 	void STATIC_AddClientAuthEndSessionRequestDelegate(const struct FScriptDelegate& ClientAuthEndSessionRequestDelegate);
 	void OnClientAuthEndSessionRequest(class UPlayer* ServerConnection);
-	void ClearServerAuthCompleteDelegate(const struct FScriptDelegate& ServerAuthCompleteDelegate);
+	void STATIC_ClearServerAuthCompleteDelegate(const struct FScriptDelegate& ServerAuthCompleteDelegate);
 	void STATIC_AddServerAuthCompleteDelegate(const struct FScriptDelegate& ServerAuthCompleteDelegate);
 	void OnServerAuthComplete(bool bSuccess, const struct FUniqueNetId& ServerUID, class UPlayer* ServerConnection, const struct FString& ExtraInfo);
-	void ClearClientAuthCompleteDelegate(const struct FScriptDelegate& ClientAuthCompleteDelegate);
+	void STATIC_ClearClientAuthCompleteDelegate(const struct FScriptDelegate& ClientAuthCompleteDelegate);
 	void STATIC_AddClientAuthCompleteDelegate(const struct FScriptDelegate& ClientAuthCompleteDelegate);
 	void OnClientAuthComplete(bool bSuccess, const struct FUniqueNetId& ClientUID, class UPlayer* ClientConnection, const struct FString& ExtraInfo);
-	void ClearServerAuthResponseDelegate(const struct FScriptDelegate& ServerAuthResponseDelegate);
+	void STATIC_ClearServerAuthResponseDelegate(const struct FScriptDelegate& ServerAuthResponseDelegate);
 	void STATIC_AddServerAuthResponseDelegate(const struct FScriptDelegate& ServerAuthResponseDelegate);
 	void OnServerAuthResponse(const struct FUniqueNetId& ServerUID, const struct FIpAddr& ServerIP, int AuthTicketUID);
-	void ClearClientAuthResponseDelegate(const struct FScriptDelegate& ClientAuthResponseDelegate);
+	void STATIC_ClearClientAuthResponseDelegate(const struct FScriptDelegate& ClientAuthResponseDelegate);
 	void STATIC_AddClientAuthResponseDelegate(const struct FScriptDelegate& ClientAuthResponseDelegate);
 	void OnClientAuthResponse(const struct FUniqueNetId& ClientUID, const struct FIpAddr& ClientIP, int AuthTicketUID);
-	void ClearServerAuthRequestDelegate(const struct FScriptDelegate& ServerAuthRequestDelegate);
+	void STATIC_ClearServerAuthRequestDelegate(const struct FScriptDelegate& ServerAuthRequestDelegate);
 	void STATIC_AddServerAuthRequestDelegate(const struct FScriptDelegate& ServerAuthRequestDelegate);
 	void OnServerAuthRequest(class UPlayer* ClientConnection, const struct FUniqueNetId& ClientUID, const struct FIpAddr& ClientIP, int ClientPort);
-	void ClearClientAuthRequestDelegate(const struct FScriptDelegate& ClientAuthRequestDelegate);
+	void STATIC_ClearClientAuthRequestDelegate(const struct FScriptDelegate& ClientAuthRequestDelegate);
 	void STATIC_AddClientAuthRequestDelegate(const struct FScriptDelegate& ClientAuthRequestDelegate);
 	void OnClientAuthRequest(const struct FUniqueNetId& ServerUID, const struct FIpAddr& ServerIP, int ServerPort, bool bSecure);
-	void ClearAuthReadyDelegate(const struct FScriptDelegate& AuthReadyDelegate);
+	void STATIC_ClearAuthReadyDelegate(const struct FScriptDelegate& AuthReadyDelegate);
 	void STATIC_AddAuthReadyDelegate(const struct FScriptDelegate& AuthReadyDelegate);
 	void OnAuthReady();
 	bool IsReady();
@@ -8139,8 +8139,8 @@ public:
 	}
 
 
-	void STATIC_StopTimer(struct FMMStats_Timer* Timer);
-	void STATIC_StartTimer(struct FMMStats_Timer* Timer);
+	void StopTimer(struct FMMStats_Timer* Timer);
+	void StartTimer(struct FMMStats_Timer* Timer);
 };
 
 
@@ -8165,35 +8165,35 @@ public:
 	}
 
 
-	void STATIC_SetDefaultVersionNumber();
+	void SetDefaultVersionNumber();
 	int GetVersionNumber();
 	void STATIC_AppendVersionToSettings();
 	void SetToDefaults();
 	void STATIC_AddSettingFloat(int SettingId);
 	void STATIC_AddSettingInt(int SettingId);
 	bool GetRangedProfileSettingValue(int ProfileId, float* OutValue);
-	bool STATIC_SetRangedProfileSettingValue(int ProfileId, float NewValue);
+	bool SetRangedProfileSettingValue(int ProfileId, float NewValue);
 	bool GetProfileSettingRange(int ProfileId, float* OutMinValue, float* OutMaxValue, float* RangeIncrement, unsigned char* bFormatAsInt);
 	bool GetProfileSettingMappingIds(int ProfileId, TArray<int>* Ids);
 	bool GetProfileSettingMappingType(int ProfileId, TEnumAsByte<EPropertyValueMappingType>* OutType);
-	bool STATIC_SetProfileSettingValueFloat(int ProfileSettingId, float Value);
-	bool STATIC_SetProfileSettingValueInt(int ProfileSettingId, int Value);
-	bool STATIC_SetProfileSettingValueId(int ProfileSettingId, int Value);
+	bool SetProfileSettingValueFloat(int ProfileSettingId, float Value);
+	bool SetProfileSettingValueInt(int ProfileSettingId, int Value);
+	bool SetProfileSettingValueId(int ProfileSettingId, int Value);
 	bool GetProfileSettingValueFloat(int ProfileSettingId, float* Value);
 	bool GetProfileSettingValueInt(int ProfileSettingId, int* Value);
 	bool GetProfileSettingValueFromListIndex(int ProfileSettingId, int ListIndex, int* Value);
 	bool GetProfileSettingValueId(int ProfileSettingId, int* ValueId, int* ListIndex);
-	bool STATIC_SetProfileSettingValue(int ProfileSettingId, struct FString* NewValue);
-	bool STATIC_SetProfileSettingValueByName(const struct FName& ProfileSettingName, struct FString* NewValue);
+	bool SetProfileSettingValue(int ProfileSettingId, struct FString* NewValue);
+	bool SetProfileSettingValueByName(const struct FName& ProfileSettingName, struct FString* NewValue);
 	bool GetProfileSettingValueByName(const struct FName& ProfileSettingName, struct FString* Value);
 	bool GetProfileSettingValues(int ProfileSettingId, TArray<struct FName>* Values);
 	struct FName GetProfileSettingValueName(int ProfileSettingId);
 	bool GetProfileSettingValue(int ProfileSettingId, int ValueMapID, struct FString* Value);
 	bool IsProfileSettingIdMapped(int ProfileSettingId);
-	int FindDefaultProfileMappingIndexByName(const struct FName& ProfileSettingName);
-	int FindProfileMappingIndexByName(const struct FName& ProfileSettingName);
-	int FindProfileMappingIndex(int ProfileSettingId);
-	int FindProfileSettingIndex(int ProfileSettingId);
+	int STATIC_FindDefaultProfileMappingIndexByName(const struct FName& ProfileSettingName);
+	int STATIC_FindProfileMappingIndexByName(const struct FName& ProfileSettingName);
+	int STATIC_FindProfileMappingIndex(int ProfileSettingId);
+	int STATIC_FindProfileSettingIndex(int ProfileSettingId);
 	struct FString GetProfileSettingColumnHeader(int ProfileSettingId);
 	struct FName GetProfileSettingName(int ProfileSettingId);
 	bool GetProfileSettingId(const struct FName& ProfileSettingName, int* ProfileSettingId);
@@ -8280,9 +8280,9 @@ public:
 	}
 
 
-	void STATIC_SetStringStat(const struct FString& StatName, struct FString* Value);
-	void STATIC_SetIntStat(const struct FString& StatName, int Value);
-	void STATIC_SetFloatStat(const struct FString& StatName, float Value);
+	void SetStringStat(const struct FString& StatName, struct FString* Value);
+	void SetIntStat(const struct FString& StatName, int Value);
+	void SetFloatStat(const struct FString& StatName, float Value);
 };
 
 
@@ -8341,10 +8341,10 @@ public:
 	void STATIC_AddLeaveStorefrontDelegate(const struct FScriptDelegate& LeaveStorefrontDelegate);
 	void OnLeaveStorefront();
 	bool STATIC_AllowsUserChanging();
-	void STATIC_SetDebugSpewLevel(int DebugSpewLevel);
-	void DumpVoiceRegistration();
-	void DumpSessionState();
-	void DumpGameSettings(class UOnlineGameSettings* GameSettings);
+	void SetDebugSpewLevel(int DebugSpewLevel);
+	void STATIC_DumpVoiceRegistration();
+	void STATIC_DumpSessionState();
+	void STATIC_DumpGameSettings(class UOnlineGameSettings* GameSettings);
 	bool IsInSession(const struct FName& SessionName);
 	int GetNumSupportedLogins();
 	int GetBuildUniqueId();
@@ -8446,7 +8446,7 @@ public:
 	}
 
 
-	void ClearDelegate(int DelegateType, const struct FScriptDelegate& InDelegate);
+	void STATIC_ClearDelegate(int DelegateType, const struct FScriptDelegate& InDelegate);
 	void STATIC_AddDelegate(int DelegateType, const struct FScriptDelegate& InDelegate);
 	class UInAppMessageBase* GetInAppMessageInterface();
 	class UAppNotificationsBase* GetAppNotificationsInterface();
@@ -8457,7 +8457,7 @@ public:
 	class UFacebookIntegration* GetFacebookIntegration();
 	class UCloudStorageBase* GetLocalStorageInterface();
 	class UCloudStorageBase* GetCloudStorageInterface();
-	void CallDelegates(int DelegateType, struct FPlatformInterfaceDelegateResult* DelegateResult);
+	void STATIC_CallDelegates(int DelegateType, struct FPlatformInterfaceDelegateResult* DelegateResult);
 	void PlatformInterfaceDelegate(struct FPlatformInterfaceDelegateResult* Result);
 };
 
@@ -8568,39 +8568,39 @@ public:
 	}
 
 
-	void Cleanup(bool bExit);
+	void STATIC_Cleanup(bool bExit);
 	void Exit();
 	void NotifyServerConnectionClose();
 	void ViewportClosed();
-	void STATIC_StaticOnServerConnectionClose(class UPlayer* ServerConnection);
+	void StaticOnServerConnectionClose(class UPlayer* ServerConnection);
 	void OnServerConnectionClose(class UPlayer* ServerConnection);
-	void STATIC_ServerAuthFailure();
+	void ServerAuthFailure();
 	void ServerAuthTimedOut();
 	void OnServerAuthComplete(bool bSuccess, const struct FUniqueNetId& ServerUID, class UPlayer* ServerConnection, const struct FString& ExtraInfo);
-	void STATIC_ProcessServerAuthResponse(const struct FUniqueNetId& ServerUID, const struct FIpAddr& ServerIP, int AuthTicketUID);
-	void STATIC_ProcessClientAuthEndSessionRequest(class UPlayer* ServerConnection);
-	void STATIC_ProcessClientAuthRequest(const struct FUniqueNetId& ServerUID, const struct FIpAddr& ServerIP, int ServerPort, bool bSecure);
+	void ProcessServerAuthResponse(const struct FUniqueNetId& ServerUID, const struct FIpAddr& ServerIP, int AuthTicketUID);
+	void ProcessClientAuthEndSessionRequest(class UPlayer* ServerConnection);
+	void ProcessClientAuthRequest(const struct FUniqueNetId& ServerUID, const struct FIpAddr& ServerIP, int ServerPort, bool bSecure);
 	void NotifyServerConnectionOpen();
 	struct FString GetNickname();
 	struct FUniqueNetId GetUniqueNetId();
-	struct FVector2D FastProject(const struct FVector& WorldLoc);
-	void FastDeProject(const struct FVector2D& RelativeScreenPos, struct FVector* WorldOrigin, struct FVector* WorldDirection);
-	struct FVector2D STATIC_Project(const struct FVector& WorldLoc);
-	void DeProject(const struct FVector2D& RelativeScreenPos, struct FVector* WorldOrigin, struct FVector* WorldDirection);
+	struct FVector2D STATIC_FastProject(const struct FVector& WorldLoc);
+	void STATIC_FastDeProject(const struct FVector2D& RelativeScreenPos, struct FVector* WorldOrigin, struct FVector* WorldDirection);
+	struct FVector2D Project(const struct FVector& WorldLoc);
+	void STATIC_DeProject(const struct FVector2D& RelativeScreenPos, struct FVector* WorldOrigin, struct FVector* WorldDirection);
 	void STATIC_TouchPlayerPostProcessChain();
 	class UPostProcessChain* GetPostProcessChain(int InIndex);
-	bool STATIC_RemoveAllPostProcessingChains();
-	bool STATIC_RemovePostProcessingChain(int InIndex);
+	bool RemoveAllPostProcessingChains();
+	bool RemovePostProcessingChain(int InIndex);
 	bool InsertPostProcessingChain(class UPostProcessChain* InChain, int InIndex, bool bInClone);
 	void InitPostProcessingChain();
 	class UTranslationContext* GetTranslationContext();
-	void STATIC_SetControllerId(int NewControllerId);
-	void ClearPostProcessSettingsOverride(float BlendOutTime);
-	void STATIC_OverridePostProcessSettingsCurve(const struct FPostProcessSettings& OverrideSettings, struct FInterpCurveFloat* Curve);
-	void STATIC_OverridePostProcessSettings(const struct FPostProcessSettings& OverrideSettings, float BlendInTime);
+	void SetControllerId(int NewControllerId);
+	void STATIC_ClearPostProcessSettingsOverride(float BlendOutTime);
+	void OverridePostProcessSettingsCurve(const struct FPostProcessSettings& OverrideSettings, struct FInterpCurveFloat* Curve);
+	void OverridePostProcessSettings(const struct FPostProcessSettings& OverrideSettings, float BlendInTime);
 	bool GetActorVisibility(class AActor* TestActor);
-	void STATIC_SendSplitJoin();
-	bool STATIC_SpawnPlayActor(const struct FString& URL, struct FString* OutError);
+	void SendSplitJoin();
+	bool SpawnPlayActor(const struct FString& URL, struct FString* OutError);
 };
 
 
@@ -8698,7 +8698,7 @@ public:
 	}
 
 
-	class UPostProcessEffect* FindPostProcessEffect(const struct FName& EffectName);
+	class UPostProcessEffect* STATIC_FindPostProcessEffect(const struct FName& EffectName);
 };
 
 
@@ -9041,7 +9041,7 @@ public:
 	bool IsBlockedFor(class APawn* P);
 	struct FVector GetDirection();
 	class ANavigationPoint* GetEnd();
-	int CostFor(class APawn* P);
+	int STATIC_CostFor(class APawn* P);
 };
 
 
@@ -9274,8 +9274,8 @@ public:
 
 
 	struct FString GetDebugString();
-	unsigned char CompressedFlags();
-	void STATIC_SetInitialPosition(class APawn* P);
+	unsigned char STATIC_CompressedFlags();
+	void SetInitialPosition(class APawn* P);
 	void Clear();
 };
 
@@ -9366,60 +9366,60 @@ public:
 
 
 	void SetHardwareMouseCursorVisibility(bool bIsVisible);
-	void DebugSetUISystemEnabled(bool bOldUISystemActive, bool bGFxUISystemActive);
+	void STATIC_DebugSetUISystemEnabled(bool bOldUISystemActive, bool bGFxUISystemActive);
 	bool IsScaleformEnabled();
-	void DisableScaleform();
-	void EnableScaleform();
+	void STATIC_DisableScaleform();
+	void STATIC_EnableScaleform();
 	void STATIC_BecomePrimaryPlayer(int PlayerIndex);
-	void STATIC_OnPrimaryPlayerSwitch(class ULocalPlayer* OldPrimaryPlayer, class ULocalPlayer* NewPrimaryPlayer);
-	void FixupOwnerReferences(TArray<int> IDMappings);
+	void OnPrimaryPlayerSwitch(class ULocalPlayer* OldPrimaryPlayer, class ULocalPlayer* NewPrimaryPlayer);
+	void STATIC_FixupOwnerReferences(TArray<int> IDMappings);
 	class ULocalPlayer* GetPlayerOwner(int PlayerIndex);
-	void ClearProgressMessages();
+	void STATIC_ClearProgressMessages();
 	void SetProgressTime(float T);
-	void STATIC_NotifyConnectionError(TEnumAsByte<EProgressMessageType> MessageType, const struct FString& Message, const struct FString& Title);
+	void NotifyConnectionError(TEnumAsByte<EProgressMessageType> MessageType, const struct FString& Message, const struct FString& Title);
 	void SetProgressMessage(TEnumAsByte<EProgressMessageType> MessageType, const struct FString& Message, const struct FString& Title, bool bIgnoreFutureNetworkMessages);
-	int STATIC_RemoveLocalPlayer(class ULocalPlayer* ExistingPlayer);
+	int RemoveLocalPlayer(class ULocalPlayer* ExistingPlayer);
 	int STATIC_AddLocalPlayer(class ULocalPlayer* NewPlayer);
-	void STATIC_NotifyPlayerRemoved(int PlayerIndex, class ULocalPlayer* RemovedPlayer);
-	void STATIC_NotifyPlayerAdded(int PlayerIndex, class ULocalPlayer* AddedPlayer);
-	void DrawTransitionMessage(class UCanvas* Canvas, const struct FString& Message);
-	void DrawTransition(class UCanvas* Canvas);
-	void DisplayProgressMessage(class UCanvas* Canvas);
+	void NotifyPlayerRemoved(int PlayerIndex, class ULocalPlayer* RemovedPlayer);
+	void NotifyPlayerAdded(int PlayerIndex, class ULocalPlayer* AddedPlayer);
+	void STATIC_DrawTransitionMessage(class UCanvas* Canvas, const struct FString& Message);
+	void STATIC_DrawTransition(class UCanvas* Canvas);
+	void STATIC_DisplayProgressMessage(class UCanvas* Canvas);
 	void PostRender(class UCanvas* Canvas);
-	void DrawTitleSafeArea(class UCanvas* Canvas);
+	void STATIC_DrawTitleSafeArea(class UCanvas* Canvas);
 	void Tick(float DeltaTime);
-	bool CalculateDeadZoneForAllSides(class ULocalPlayer* LPlayer, class UCanvas* Canvas, bool bUseMaxPercent, float* fTopSafeZone, float* fBottomSafeZone, float* fLeftSafeZone, float* fRightSafeZone);
-	void CalculateSafeZoneValues(class UCanvas* Canvas, int LocalPlayerIndex, bool bUseMaxPercent, float* out_Horizontal, float* out_Vertical);
+	bool STATIC_CalculateDeadZoneForAllSides(class ULocalPlayer* LPlayer, class UCanvas* Canvas, bool bUseMaxPercent, float* fTopSafeZone, float* fBottomSafeZone, float* fLeftSafeZone, float* fRightSafeZone);
+	void STATIC_CalculateSafeZoneValues(class UCanvas* Canvas, int LocalPlayerIndex, bool bUseMaxPercent, float* out_Horizontal, float* out_Vertical);
 	void GetPixelSizeOfScreen(class UCanvas* Canvas, int LocalPlayerIndex, float* out_Width, float* out_Height);
 	bool HasRightSafeZone(int LocalPlayerIndex);
 	bool HasLeftSafeZone(int LocalPlayerIndex);
 	bool HasBottomSafeZone(int LocalPlayerIndex);
 	bool HasTopSafeZone(int LocalPlayerIndex);
-	int ConvertLocalPlayerToGamePlayerIndex(class ULocalPlayer* LPlayer);
+	int STATIC_ConvertLocalPlayerToGamePlayerIndex(class ULocalPlayer* LPlayer);
 	void GetSubtitleRegion(struct FVector2D* MinPos, struct FVector2D* MaxPos);
 	void LayoutPlayers();
 	void STATIC_UpdateActiveSplitscreenType();
 	TEnumAsByte<ESplitScreenType> GetSplitscreenConfiguration();
-	void STATIC_SetSplitscreenConfiguration(TEnumAsByte<ESplitScreenType> SplitType);
+	void SetSplitscreenConfiguration(TEnumAsByte<ESplitScreenType> SplitType);
 	void GameSessionEnded();
 	int InsertInteraction(class UInteraction* NewInteraction, int InIndex);
-	bool CreateInitialPlayer(struct FString* OutError);
+	bool STATIC_CreateInitialPlayer(struct FString* OutError);
 	bool Init(struct FString* OutError);
 	bool IsConsoleEnabled();
 	class ULocalPlayer* FindPlayerByControllerId(int ControllerId);
 	bool RemovePlayer(class ULocalPlayer* ExPlayer);
 	class ULocalPlayer* CreatePlayer(int ControllerId, bool bSpawnActor, struct FString* OutError);
-	void STATIC_SetMouse(int X, int Y);
-	void ForceUpdateMouseCursor(bool bSetCursor);
-	void STATIC_NotifySplitscreenLayoutChanged();
-	void STATIC_SetCustomInteractionObject(class UInteraction* InInteraction);
+	void SetMouse(int X, int Y);
+	void STATIC_ForceUpdateMouseCursor(bool bSetCursor);
+	void NotifySplitscreenLayoutChanged();
+	void SetCustomInteractionObject(class UInteraction* InInteraction);
 	class UClass* GetCustomInteractionClass(int InIndex);
 	int GetNumCustomInteractions();
-	bool STATIC_ShouldForceFullscreenViewport();
+	bool ShouldForceFullscreenViewport();
 	struct FVector2D GetMousePosition();
 	bool IsFullScreenViewport();
 	void GetViewportSize(struct FVector2D* out_ViewportSize);
-	struct FString ConsoleCommand(const struct FString& Command);
+	struct FString STATIC_ConsoleCommand(const struct FString& Command);
 	bool HandleInputChar(int ControllerId, const struct FString& Unicode);
 	bool HandleInputAxis(int ControllerId, const struct FName& Key, float Delta, float DeltaTime, bool bGamepad);
 	bool HandleInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<EInputEvent> EventType, float AmountDepressed, bool bGamepad);
@@ -9475,14 +9475,14 @@ public:
 
 
 	void STATIC_UpdateFromURL(class AGameInfo* Game, struct FString* URL);
-	void BuildURL(struct FString* URL);
+	void STATIC_BuildURL(struct FString* URL);
 	void STATIC_AppendContextsToURL(struct FString* URL);
 	void STATIC_AppendPropertiesToURL(struct FString* URL);
 	void STATIC_AppendDataBindingsToURL(struct FString* URL);
 	void GetQoSAdvertisedStringSettings(TArray<struct FLocalizedStringSetting>* QoSSettings);
 	void GetQoSAdvertisedProperties(TArray<struct FSettingsProperty>* QoSProps);
 	bool GetRangedPropertyValue(int PropertyId, float* OutValue);
-	bool STATIC_SetRangedPropertyValue(int PropertyId, float NewValue);
+	bool SetRangedPropertyValue(int PropertyId, float NewValue);
 	bool GetPropertyRange(int PropertyId, float* OutMinValue, float* OutMaxValue, float* RangeIncrement, unsigned char* bFormatAsInt);
 	bool GetPropertyMappingType(int PropertyId, TEnumAsByte<EPropertyValueMappingType>* OutType);
 	bool HasStringSetting(int SettingId);
@@ -9491,20 +9491,20 @@ public:
 	void STATIC_UpdateStringSettings(bool bShouldAddIfMissing, TArray<struct FLocalizedStringSetting>* Settings);
 	TEnumAsByte<ESettingsDataType> GetPropertyType(int PropertyId);
 	bool GetPropertyValueId(int PropertyId, int* ValueId);
-	bool STATIC_SetPropertyValueId(int PropertyId, int ValueId);
+	bool SetPropertyValueId(int PropertyId, int ValueId);
 	bool GetStringProperty(int PropertyId, struct FString* Value);
-	void STATIC_SetStringProperty(int PropertyId, const struct FString& Value);
+	void SetStringProperty(int PropertyId, const struct FString& Value);
 	bool GetIntProperty(int PropertyId, int* Value);
-	void STATIC_SetIntProperty(int PropertyId, int Value);
+	void SetIntProperty(int PropertyId, int Value);
 	bool GetFloatProperty(int PropertyId, float* Value);
-	void STATIC_SetFloatProperty(int PropertyId, float Value);
-	bool STATIC_SetPropertyFromStringByName(const struct FName& PropertyName, struct FString* NewValue);
+	void SetFloatProperty(int PropertyId, float Value);
+	bool SetPropertyFromStringByName(const struct FName& PropertyName, struct FString* NewValue);
 	struct FString GetPropertyAsStringByName(const struct FName& PropertyName);
 	struct FString GetPropertyAsString(int PropertyId);
 	struct FString GetPropertyColumnHeader(int PropertyId);
 	struct FName GetPropertyName(int PropertyId);
 	bool GetPropertyId(const struct FName& PropertyName, int* PropertyId);
-	bool STATIC_SetStringSettingValueFromStringByName(const struct FName& StringSettingName, struct FString* NewValue);
+	bool SetStringSettingValueFromStringByName(const struct FName& StringSettingName, struct FString* NewValue);
 	struct FName GetStringSettingValueNameByName(const struct FName& StringSettingName);
 	struct FName GetStringSettingValueName(int StringSettingId, int ValueIndex);
 	bool IsWildcardStringSetting(int StringSettingId);
@@ -9512,21 +9512,21 @@ public:
 	struct FName GetStringSettingName(int StringSettingId);
 	bool GetStringSettingId(const struct FName& StringSettingName, int* StringSettingId);
 	bool GetStringSettingValueByName(const struct FName& StringSettingName, int* ValueIndex);
-	void STATIC_SetStringSettingValueByName(const struct FName& StringSettingName, int ValueIndex, bool bShouldAutoAdd);
+	void SetStringSettingValueByName(const struct FName& StringSettingName, int ValueIndex, bool bShouldAutoAdd);
 	bool GetStringSettingValueNames(int StringSettingId, TArray<struct FIdToStringMapping>* Values);
 	bool IncrementStringSettingValue(int StringSettingId, int Direction, bool bShouldWrap);
 	bool GetStringSettingValue(int StringSettingId, int* ValueIndex);
-	void STATIC_SetStringSettingValue(int StringSettingId, int ValueIndex, bool bShouldAutoAdd);
+	void SetStringSettingValue(int StringSettingId, int ValueIndex, bool bShouldAutoAdd);
 	void GetSettingsDataDateTime(struct FSettingsData* Data, int* OutInt1, int* OutInt2);
 	void GetSettingsDataBlob(struct FSettingsData* Data, TArray<unsigned char>* OutBlob);
 	int GetSettingsDataInt(struct FSettingsData* Data);
 	float GetSettingsDataFloat(struct FSettingsData* Data);
-	void EmptySettingsData(struct FSettingsData* Data);
-	void STATIC_SetSettingsData(struct FSettingsData* Data, struct FSettingsData* Data2Copy);
-	void STATIC_SetSettingsDataBlob(struct FSettingsData* Data, TArray<unsigned char>* InBlob);
-	void STATIC_SetSettingsDataDateTime(int InInt1, int InInt2, struct FSettingsData* Data);
-	void STATIC_SetSettingsDataInt(int InInt, struct FSettingsData* Data);
-	void STATIC_SetSettingsDataFloat(float InFloat, struct FSettingsData* Data);
+	void STATIC_EmptySettingsData(struct FSettingsData* Data);
+	void SetSettingsData(struct FSettingsData* Data, struct FSettingsData* Data2Copy);
+	void SetSettingsDataBlob(struct FSettingsData* Data, TArray<unsigned char>* InBlob);
+	void SetSettingsDataDateTime(int InInt1, int InInt2, struct FSettingsData* Data);
+	void SetSettingsDataInt(int InInt, struct FSettingsData* Data);
+	void SetSettingsDataFloat(float InFloat, struct FSettingsData* Data);
 };
 
 
@@ -9561,7 +9561,7 @@ public:
 	bool GetNamedProperty(const struct FName& PropertyName, struct FString* Value);
 	bool SetNamedProperty(const struct FName& PropertyName, const struct FString& Value);
 	void SortSearchResults();
-	void STATIC_SetSkillOverride(int LeaderboardId, TArray<struct FUniqueNetId>* Players);
+	void SetSkillOverride(int LeaderboardId, TArray<struct FUniqueNetId>* Players);
 };
 
 
@@ -9898,7 +9898,7 @@ public:
 	}
 
 
-	void STATIC_SetForceMipLevelsToBeResident(bool OverrideForceMiplevelsToBeResident, bool bForceMiplevelsToBeResidentValue, float ForceDuration, TArray<unsigned char> CinematicTextureGroups);
+	void SetForceMipLevelsToBeResident(bool OverrideForceMiplevelsToBeResident, bool bForceMiplevelsToBeResidentValue, float ForceDuration, TArray<unsigned char> CinematicTextureGroups);
 	bool GetMobileVectorParameterValue(const struct FName& ParameterName, struct FLinearColor* OutValue);
 	bool GetMobileTextureParameterValue(const struct FName& ParameterName, class UTexture** OutValue);
 	bool GetMobileScalarParameterValue(const struct FName& ParameterName, float* OutValue);
@@ -10049,8 +10049,8 @@ public:
 
 	bool HasLocalEmitter();
 	float GetMaxLifespan(float InComponentDelay);
-	bool STATIC_SetLODDistance(int LODLevelIndex, float InDistance);
-	void STATIC_SetCurrentLODMethod(TEnumAsByte<EParticleSystemLODMethod> InMethod);
+	bool SetLODDistance(int LODLevelIndex, float InDistance);
+	void SetCurrentLODMethod(TEnumAsByte<EParticleSystemLODMethod> InMethod);
 	float GetLODDistance(int LODLevelIndex);
 	int GetLODLevelCount();
 	TEnumAsByte<EParticleSystemLODMethod> GetCurrentLODMethod();
@@ -10161,8 +10161,8 @@ public:
 	}
 
 
-	class UTexture2D* Create(int InSizeX, int InSizeY, TEnumAsByte<EPixelFormat> InFormat);
-	void STATIC_SetForceMipLevelsToBeResident(float Seconds, TArray<TEnumAsByte<ETextureGroup>> CinematicTextureGroups);
+	class UTexture2D* STATIC_Create(int InSizeX, int InSizeY, TEnumAsByte<EPixelFormat> InFormat);
+	void SetForceMipLevelsToBeResident(float Seconds, TArray<TEnumAsByte<ETextureGroup>> CinematicTextureGroups);
 };
 
 
@@ -10212,7 +10212,7 @@ public:
 	}
 
 
-	bool STATIC_RegisterTranslatorTag(class UTranslatorTag* InTagHandler);
+	bool RegisterTranslatorTag(class UTranslatorTag* InTagHandler);
 };
 
 
@@ -10230,7 +10230,7 @@ public:
 	}
 
 
-	struct FString Translate(const struct FString& InArgument);
+	struct FString STATIC_Translate(const struct FString& InArgument);
 };
 
 
@@ -10247,7 +10247,7 @@ public:
 	}
 
 
-	struct FString Translate(const struct FString& InArgument);
+	struct FString STATIC_Translate(const struct FString& InArgument);
 };
 
 
@@ -10265,11 +10265,11 @@ public:
 	}
 
 
-	struct FString STATIC_SafeCaps(const struct FString& StringToCap);
+	struct FString SafeCaps(const struct FString& StringToCap);
 	TScriptInterface<class UOnlinePlayerInterfaceEx> GetOnlinePlayerInterfaceEx();
 	TScriptInterface<class UOnlinePlayerInterface> GetOnlinePlayerInterface();
 	TScriptInterface<class UOnlineGameInterface> GetOnlineGameInterface();
-	class UUIDataStore* STATIC_StaticResolveDataStore(const struct FName& DataStoreTag, class ULocalPlayer* InPlayerOwner);
+	class UUIDataStore* StaticResolveDataStore(const struct FName& DataStoreTag, class ULocalPlayer* InPlayerOwner);
 	class UGameUISceneClient* GetSceneClient();
 	class UUIInteraction* GetCurrentUIController();
 	TEnumAsByte<EInputPlatformType> GetInputPlatformType(class ULocalPlayer* OwningPlayer);
@@ -10297,8 +10297,8 @@ public:
 	}
 
 
-	void STATIC_NotifyPlayerRemoved(int PlayerIndex, class ULocalPlayer* RemovedPlayer);
-	void STATIC_NotifyPlayerAdded(int PlayerIndex, class ULocalPlayer* AddedPlayer);
+	void NotifyPlayerRemoved(int PlayerIndex, class ULocalPlayer* RemovedPlayer);
+	void NotifyPlayerAdded(int PlayerIndex, class ULocalPlayer* AddedPlayer);
 	void NotifyGameSessionEnded();
 	void Initialized();
 	void OnInitialize();
@@ -10354,8 +10354,8 @@ public:
 	bool HasLinkConnection();
 	TEnumAsByte<ELoginStatus> GetLowestLoginStatusOfControllers();
 	TEnumAsByte<ELoginStatus> GetLoginStatus(int ControllerId);
-	void STATIC_NotifyPlayerRemoved(int PlayerIndex, class ULocalPlayer* RemovedPlayer);
-	void STATIC_NotifyPlayerAdded(int PlayerIndex, class ULocalPlayer* AddedPlayer);
+	void NotifyPlayerRemoved(int PlayerIndex, class ULocalPlayer* RemovedPlayer);
+	void NotifyPlayerAdded(int PlayerIndex, class ULocalPlayer* AddedPlayer);
 	class ULocalPlayer* GetLocalPlayer(int PlayerIndex);
 	class UDataStoreClient* GetDataStoreClient();
 	int GetPlayerControllerId(int PlayerIndex);
@@ -10377,11 +10377,11 @@ public:
 	}
 
 
-	int FindLocalPlayerIndex(class UPlayer* P);
-	void STATIC_NotifyPlayerRemoved(int PlayerIndex, class ULocalPlayer* RemovedPlayer);
-	void STATIC_NotifyPlayerAdded(int PlayerIndex, class ULocalPlayer* AddedPlayer);
+	int STATIC_FindLocalPlayerIndex(class UPlayer* P);
+	void NotifyPlayerRemoved(int PlayerIndex, class ULocalPlayer* RemovedPlayer);
+	void NotifyPlayerAdded(int PlayerIndex, class ULocalPlayer* AddedPlayer);
 	void PauseGame(bool bDesiredPauseState, int PlayerIndex);
-	bool CanUnpauseInternalUI();
+	bool STATIC_CanUnpauseInternalUI();
 	class UUIManager* GetUIManager();
 };
 
@@ -10434,7 +10434,7 @@ public:
 	}
 
 
-	void STATIC_SetSplitNavMesh(bool bNewValue);
+	void SetSplitNavMesh(bool bNewValue);
 };
 
 
@@ -10474,12 +10474,12 @@ public:
 	}
 
 
-	bool CanFireWeapon(class AWeapon* Wpn, unsigned char FireModeNum);
-	void STATIC_NotifyWeaponFinishedFiring(class AWeapon* W, unsigned char FireMode);
-	void STATIC_NotifyWeaponFired(class AWeapon* W, unsigned char FireMode);
+	bool STATIC_CanFireWeapon(class AWeapon* Wpn, unsigned char FireModeNum);
+	void NotifyWeaponFinishedFiring(class AWeapon* W, unsigned char FireMode);
+	void NotifyWeaponFired(class AWeapon* W, unsigned char FireMode);
 	void GetPlayerViewPoint(struct FVector* out_Location, struct FRotator* out_Rotation);
 	void SetTeam(int inTeamIdx);
-	void DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos);
+	void STATIC_DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos);
 	void Reset();
 	void PreBeginPlay();
 };
@@ -10531,7 +10531,7 @@ public:
 	}
 
 
-	bool STATIC_ShouldBeHiddenBySHOW_NavigationNodes();
+	bool ShouldBeHiddenBySHOW_NavigationNodes();
 };
 
 
@@ -10552,12 +10552,12 @@ public:
 
 
 	void STATIC_ApplyCheckpointRecord(struct ANavMeshObstacle_FCheckpointRecord* Record);
-	void CreateCheckpointRecord(struct ANavMeshObstacle_FCheckpointRecord* Record);
+	void STATIC_CreateCheckpointRecord(struct ANavMeshObstacle_FCheckpointRecord* Record);
 	void SetEnabled(bool bInEnabled);
-	void STATIC_OnToggle(class USeqAct_Toggle* Action);
+	void OnToggle(class USeqAct_Toggle* Action);
 	void PostBeginPlay();
 	void STATIC_UnRegisterObstacle();
-	void STATIC_RegisterObstacle();
+	void RegisterObstacle();
 	bool GetObstacleBoudingShape(TArray<struct FVector>* Shape);
 };
 
@@ -10612,12 +10612,12 @@ public:
 	}
 
 
-	void STATIC_RecalculateFx();
+	void RecalculateFx();
 	void STATIC_ApplyDye(class UMaterialInterface* PrimaryDyeMI, class UMaterialInterface* SecondaryDyeMI, class UMaterialInterface* EmissiveDyeMI);
 	void STATIC_SwapMaterial(class UMaterialInterface* MI, bool bNoParamReaping);
-	void STATIC_OnMeshSetHidden(bool bHidden);
+	void OnMeshSetHidden(bool bHidden);
 	class UMaterialInterface* GetDefaultMaterial(int nIndex);
-	void STATIC_SetDefaultSkin(int nIndex);
+	void SetDefaultSkin(int nIndex);
 	class UObject* FxActivateIndependant(const struct FName& nmGroup, int nMode, const struct FVector& HitLocation, const struct FVector& HitNormal, int nSocketIndex, int nEquipSlot, bool bUseSocketOverride, TArray<struct FParticleSysParam> Params);
 	void FxSpawnSound(const struct FName& nmGroup, int nMode, const struct FVector& SoundLocation, int nSocketIndex, int nEquipSlot);
 	void FxSpawnEmitter(const struct FName& nmGroup, int nMode, const struct FVector& HitLocation, const struct FVector& HitNormal, int nSocketIndex, int nEquipSlot);
@@ -10629,11 +10629,11 @@ public:
 	class UObject* FxGet(const struct FName& nmGroup, int nMode, int nIndex, int nSocketIndex, int nEquipSlot);
 	void FxRemove(class UObject* Fx);
 	void FxAdd(class UObject* Fx);
-	class UMaterialInstanceTimeVarying* CreateAndSetMaterialInstanceTimeVarying(int ElementIndex);
-	class UMaterialInstanceConstant* CreateAndSetMaterialInstanceConstant(int ElementIndex);
-	void STATIC_PrestreamTextures(float Seconds, bool bPrioritizeCharacterTextures, TArray<unsigned char> CinematicTextureGroups);
+	class UMaterialInstanceTimeVarying* STATIC_CreateAndSetMaterialInstanceTimeVarying(int ElementIndex);
+	class UMaterialInstanceConstant* STATIC_CreateAndSetMaterialInstanceConstant(int ElementIndex);
+	void PrestreamTextures(float Seconds, bool bPrioritizeCharacterTextures, TArray<unsigned char> CinematicTextureGroups);
 	int GetNumElements();
-	void STATIC_SetMaterial(int ElementIndex, class UMaterialInterface* Material);
+	void SetMaterial(int ElementIndex, class UMaterialInterface* Material);
 	class UMaterialInterface* GetMaterial(int ElementIndex);
 };
 
@@ -10676,10 +10676,10 @@ public:
 	}
 
 
-	bool CanBecomeDynamic();
-	void STATIC_SetForceStaticDecals(bool bInForceStaticDecals);
-	void DisableRBCollisionWithSMC(class UPrimitiveComponent* OtherSMC, bool bDisabled);
-	bool STATIC_SetStaticMesh(class UStaticMesh* NewMesh, bool bForce);
+	bool STATIC_CanBecomeDynamic();
+	void SetForceStaticDecals(bool bInForceStaticDecals);
+	void STATIC_DisableRBCollisionWithSMC(class UPrimitiveComponent* OtherSMC, bool bDisabled);
+	bool SetStaticMesh(class UStaticMesh* NewMesh, bool bForce);
 };
 
 
@@ -10795,7 +10795,7 @@ public:
 	}
 
 
-	void STATIC_SolveConstraints(const struct FVector& InitialPosition, float MaxDistance, struct FVector* OutDesiredPosition);
+	void SolveConstraints(const struct FVector& InitialPosition, float MaxDistance, struct FVector* OutDesiredPosition);
 };
 
 
@@ -10913,53 +10913,53 @@ public:
 	}
 
 
-	void DrawBreadCrumbs(bool bPersistent);
-	bool STATIC_StaticGetValidatedAnchorPosition(const struct FVector& StartCheckBaseLocation, const struct FVector& Extent, struct FVector* out_NewAnchorLoc);
+	void STATIC_DrawBreadCrumbs(bool bPersistent);
+	bool StaticGetValidatedAnchorPosition(const struct FVector& StartCheckBaseLocation, const struct FVector& Extent, struct FVector* out_NewAnchorLoc);
 	int GetPackedKeyForPosition(int PreviousKey, struct FVector* pos, struct FVector* PrevPos);
 	bool GetValidatedAnchorPosition(const struct FVector& OverrideStartLoc, struct FVector* out_NewAnchorLoc);
 	bool GetAllCoverSlotsInRadius(const struct FVector& FromLoc, float Radius, TArray<struct FCoverInfo>* out_CoverList);
-	bool STATIC_PopulatePathfindingParamCache();
+	bool PopulatePathfindingParamCache();
 	struct FVector MoveToDesiredHeightAboveMesh(const struct FVector& Point, float Height);
-	void CopyMovePointsFromPathCache(const struct FVector& FinalDest, TArray<struct FVector>* out_MovePoints);
-	float CalculatePathDistance(const struct FVector& FinalDest);
+	void STATIC_CopyMovePointsFromPathCache(const struct FVector& FinalDest, TArray<struct FVector>* out_MovePoints);
+	float STATIC_CalculatePathDistance(const struct FVector& FinalDest);
 	struct FVector GetFirstMoveLocation();
 	bool IsAnchorInescapable();
 	void LimitPathCacheDistance(float MaxDist);
 	void GetValidPositionsForBox(const struct FVector& pos, float Radius, const struct FVector& Extent, bool bMustBeReachableFromStartPos, int MaxPositions, float MinRadius, const struct FVector& ValidBoxAroundStartPos, TArray<struct FVector>* out_ValidPositions);
 	void GetAllPolyCentersWithinBounds(const struct FVector& pos, const struct FVector& Extent, TArray<struct FVector>* out_PolyCtrs);
 	TEnumAsByte<ENavMeshEdgeType> GetCurrentEdgeType();
-	void ClearCurrentEdge();
+	void STATIC_ClearCurrentEdge();
 	struct FString GetCurrentEdgeDebugText();
-	void STATIC_PrintPathCacheDebugText();
-	void DrawPathCache(const struct FVector& DrawOffset, bool bPersistent, const struct FColor& DrawColor);
+	void PrintPathCacheDebugText();
+	void STATIC_DrawPathCache(const struct FVector& DrawOffset, bool bPersistent, const struct FColor& DrawColor);
 	bool STATIC_ActorReachable(class AActor* A);
-	bool STATIC_PointReachable(const struct FVector& Point, const struct FVector& OverrideStartPoint, bool bAllowHitsInEndCollisionBox);
-	bool STATIC_PointCheck(const struct FVector& Pt, const struct FVector& Extent);
+	bool PointReachable(const struct FVector& Point, const struct FVector& OverrideStartPoint, bool bAllowHitsInEndCollisionBox);
+	bool PointCheck(const struct FVector& Pt, const struct FVector& Extent);
 	bool LineCheck(const struct FVector& Start, const struct FVector& End, const struct FVector& Extent, struct FVector* out_HitLocation, struct FVector* out_HitNormal);
-	bool STATIC_ObstaclePointCheck(const struct FVector& Pt, const struct FVector& Extent);
-	bool STATIC_ObstacleLineCheck(const struct FVector& Start, const struct FVector& End, const struct FVector& Extent, struct FVector* out_HitLoc, struct FVector* out_HitNorm);
+	bool ObstaclePointCheck(const struct FVector& Pt, const struct FVector& Extent);
+	bool ObstacleLineCheck(const struct FVector& Start, const struct FVector& End, const struct FVector& Extent, struct FVector* out_HitLoc, struct FVector* out_HitNorm);
 	bool SuggestMovePreparation(class AController* C, struct FVector* MovePt);
-	bool FindPath(class AActor** out_DestActor, int* out_DestItem);
-	bool ComputeValidFinalDestination(struct FVector* out_ComputedPosition);
-	bool STATIC_SetFinalDestination(const struct FVector& FinalDest, class AActor* FinalActor);
+	bool STATIC_FindPath(class AActor** out_DestActor, int* out_DestItem);
+	bool STATIC_ComputeValidFinalDestination(struct FVector* out_ComputedPosition);
+	bool SetFinalDestination(const struct FVector& FinalDest, class AActor* FinalActor);
 	bool GetNextMoveLocation(float ArrivalDistance, struct FVector* out_MoveDest);
 	class APylon* GetPylonFromPos(const struct FVector& Position);
-	bool FindPylon();
+	bool STATIC_FindPylon();
 	struct FVector GetBestUnfinishedPathPoint();
-	bool STATIC_PathCache_RemoveIndex(int InIdx, int Count);
-	struct FVector STATIC_PathCache_GetGoalPoint();
-	bool STATIC_PathCache_Empty();
+	bool PathCache_RemoveIndex(int InIdx, int Count);
+	struct FVector PathCache_GetGoalPoint();
+	bool PathCache_Empty();
 	int GetPathCacheLength();
-	class UNavMeshPathGoalEvaluator* CreatePathGoalEvaluator(class UClass* GoalEvalClass);
-	class UNavMeshPathConstraint* CreatePathConstraint(class UClass* ConstraintClass);
-	bool DoesPylonAHaveAPathToPylonB(class APylon* A, class APylon* B);
-	class APylon* BuildFromPylonAToPylonB(class APylon* A, class APylon* B);
+	class UNavMeshPathGoalEvaluator* STATIC_CreatePathGoalEvaluator(class UClass* GoalEvalClass);
+	class UNavMeshPathConstraint* STATIC_CreatePathConstraint(class UClass* ConstraintClass);
+	bool STATIC_DoesPylonAHaveAPathToPylonB(class APylon* A, class APylon* B);
+	class APylon* STATIC_BuildFromPylonAToPylonB(class APylon* A, class APylon* B);
 	void STATIC_AddGoalEvaluator(class UNavMeshPathGoalEvaluator* Evaluator);
 	void STATIC_AddPathConstraint(class UNavMeshPathConstraint* Constraint);
-	void ClearConstraints();
+	void STATIC_ClearConstraints();
 	bool GetNextBreadCrumb(struct FVector* out_BreadCrumbLoc);
 	void STATIC_UpdateBreadCrumbs(const struct FVector& InLocation);
-	void CopyPathStoreToPathCache(struct FPathStore* InStore);
+	void STATIC_CopyPathStoreToPathCache(struct FPathStore* InStore);
 };
 
 
@@ -11015,7 +11015,7 @@ public:
 	}
 
 
-	bool STATIC_NotNearOtherAI(class UNavMeshGoal_GenericFilterContainer* FilterContainer, float InDistanceToCheck);
+	bool NotNearOtherAI(class UNavMeshGoal_GenericFilterContainer* FilterContainer, float InDistanceToCheck);
 };
 
 
@@ -11054,7 +11054,7 @@ public:
 	}
 
 
-	bool STATIC_OutsideOfDotProductWedge(class UNavMeshGoal_GenericFilterContainer* FilterContainer, const struct FVector& InLocation, const struct FRotator& InRotation, float InEpsilon);
+	bool OutsideOfDotProductWedge(class UNavMeshGoal_GenericFilterContainer* FilterContainer, const struct FVector& InLocation, const struct FRotator& InRotation, float InEpsilon);
 };
 
 
@@ -11131,7 +11131,7 @@ public:
 	}
 
 
-	bool EnforceTwoWayEdges(class UNavigationHandle* NavHandle);
+	bool STATIC_EnforceTwoWayEdges(class UNavigationHandle* NavHandle);
 };
 
 
@@ -11154,7 +11154,7 @@ public:
 
 
 	void Recycle();
-	bool EnforceMinDist(class UNavigationHandle* NavHandle, float InMinDist, TEnumAsByte<ENavMeshEdgeType> InEdgeType, const struct FVector& LastLocation, float InPenalty);
+	bool STATIC_EnforceMinDist(class UNavigationHandle* NavHandle, float InMinDist, TEnumAsByte<ENavMeshEdgeType> InEdgeType, const struct FVector& LastLocation, float InPenalty);
 };
 
 
@@ -11173,7 +11173,7 @@ public:
 
 
 	void Recycle();
-	void STATIC_SameCoverLink(class UNavigationHandle* NavHandle, class ACoverLink* InLink);
+	void SameCoverLink(class UNavigationHandle* NavHandle, class ACoverLink* InLink);
 };
 
 
@@ -11220,7 +11220,7 @@ public:
 
 
 	void Recycle();
-	bool STATIC_StayWithinEnvelopeToLoc(class UNavigationHandle* NavHandle, const struct FVector& InEnvelopeTestPoint, float InMaxDistance, float InMinDistance, bool bInSoft, float InSoftStartPenalty, bool bOnlyTossOutSpecsThatLeave);
+	bool StayWithinEnvelopeToLoc(class UNavigationHandle* NavHandle, const struct FVector& InEnvelopeTestPoint, float InMaxDistance, float InMinDistance, bool bInSoft, float InSoftStartPenalty, bool bOnlyTossOutSpecsThatLeave);
 };
 
 
@@ -11241,7 +11241,7 @@ public:
 
 
 	void Recycle();
-	bool DontExceedMaxDist(class UNavigationHandle* NavHandle, float InMaxTraversalDist, bool bInSoft);
+	bool STATIC_DontExceedMaxDist(class UNavigationHandle* NavHandle, float InMaxTraversalDist, bool bInSoft);
 };
 
 
@@ -11294,7 +11294,7 @@ public:
 	void Recycle();
 	bool STATIC_AtLocation(class UNavigationHandle* NavHandle, const struct FVector& GoalLocation, float Dist, bool bReturnPartial, bool bInWeightPartialByDist);
 	bool STATIC_AtActor(class UNavigationHandle* NavHandle, class AActor* GoalActor, float Dist, bool bReturnPartial, bool bInWeightPartialByDist);
-	void STATIC_RecycleNative();
+	void RecycleNative();
 };
 
 
@@ -11316,7 +11316,7 @@ public:
 
 	void RecycleInternal();
 	void Recycle();
-	class UNavMeshGoal_ClosestActorInList* ClosestActorInList(class UNavigationHandle* NavHandle, TArray<struct FBiasedGoalActor>* InGoalList);
+	class UNavMeshGoal_ClosestActorInList* STATIC_ClosestActorInList(class UNavigationHandle* NavHandle, TArray<struct FBiasedGoalActor>* InGoalList);
 };
 
 
@@ -11340,8 +11340,8 @@ public:
 	void Recycle();
 	struct FVector GetGoalPoint();
 	class UNavMeshGoal_Filter* GetFilterOfType(class UClass* Filter_Class);
-	class UNavMeshGoal_GenericFilterContainer* CreateAndAddFilterToNavHandleFromSeedList(class UNavigationHandle* NavHandle, int InMaxPathVisits, TArray<struct FVector>* InSearchSeeds);
-	class UNavMeshGoal_GenericFilterContainer* CreateAndAddFilterToNavHandle(class UNavigationHandle* NavHandle, int InMaxPathVisits);
+	class UNavMeshGoal_GenericFilterContainer* STATIC_CreateAndAddFilterToNavHandleFromSeedList(class UNavigationHandle* NavHandle, int InMaxPathVisits, TArray<struct FVector>* InSearchSeeds);
+	class UNavMeshGoal_GenericFilterContainer* STATIC_CreateAndAddFilterToNavHandle(class UNavigationHandle* NavHandle, int InMaxPathVisits);
 };
 
 
@@ -11360,7 +11360,7 @@ public:
 
 
 	void Recycle();
-	void STATIC_RecycleNative();
+	void RecycleNative();
 	bool GoUntilBust(class UNavigationHandle* NavHandle, int InMaxPathVisits);
 };
 
@@ -11401,8 +11401,8 @@ public:
 
 
 	void Recycle();
-	void STATIC_RecycleNative();
-	bool FindRandom(class UNavigationHandle* NavHandle, int InMinDist, int InMaxPathVisits);
+	void RecycleNative();
+	bool STATIC_FindRandom(class UNavigationHandle* NavHandle, int InMinDist, int InMaxPathVisits);
 };
 
 
@@ -11485,8 +11485,8 @@ public:
 
 
 	void Recycle();
-	bool DontGetStuck(class APawn* P);
-	void CachePawnReacFlags(class APawn* P);
+	bool STATIC_DontGetStuck(class APawn* P);
+	void STATIC_CachePawnReacFlags(class APawn* P);
 };
 
 
@@ -11507,7 +11507,7 @@ public:
 
 
 	void Recycle();
-	bool EnforceMinDist(class APawn* P, float InMinDist, class UClass* InSpecClass, const struct FVector& LastLocation);
+	bool STATIC_EnforceMinDist(class APawn* P, float InMinDist, class UClass* InSpecClass, const struct FVector& LastLocation);
 };
 
 
@@ -11569,7 +11569,7 @@ public:
 
 
 	void Recycle();
-	bool STATIC_StayWithinEnvelopeToLoc(class APawn* P, const struct FVector& InEnvelopeTestPoint, float InMaxDistance, float InMinDistance, bool bInSoft, float InSoftStartPenalty, bool bOnlyTossOutSpecsThatLeave);
+	bool StayWithinEnvelopeToLoc(class APawn* P, const struct FVector& InEnvelopeTestPoint, float InMaxDistance, float InMinDistance, bool bInSoft, float InSoftStartPenalty, bool bOnlyTossOutSpecsThatLeave);
 };
 
 
@@ -11590,7 +11590,7 @@ public:
 
 
 	void Recycle();
-	bool DontExceedMaxDist(class APawn* P, float InMaxTraversalDist, bool bInSoft);
+	bool STATIC_DontExceedMaxDist(class APawn* P, float InMaxTraversalDist, bool bInSoft);
 };
 
 
@@ -11685,19 +11685,19 @@ public:
 
 
 	bool CreateForceField(class UAnimNotify_ForceField* AnimNotifyData);
-	void STATIC_SkelMeshActorOnParticleSystemFinished(class UParticleSystemComponent* PSC);
+	void SkelMeshActorOnParticleSystemFinished(class UParticleSystemComponent* PSC);
 	bool PlayParticleEffect(class UAnimNotify_PlayParticleEffect* AnimNotifyData);
 	void STATIC_ApplyCheckpointRecord(struct ASkeletalMeshActor_FCheckpointRecord* Record);
-	void CreateCheckpointRecord(struct ASkeletalMeshActor_FCheckpointRecord* Record);
-	bool STATIC_ShouldSaveForCheckpoint();
+	void STATIC_CreateCheckpointRecord(struct ASkeletalMeshActor_FCheckpointRecord* Record);
+	bool ShouldSaveForCheckpoint();
 	void TakeDamage(int Damage, class AController* EventInstigator, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser);
-	void DoKismetAttachment(class AActor* Attachment, class USeqAct_AttachToActor* Action);
+	void STATIC_DoKismetAttachment(class AActor* Attachment, class USeqAct_AttachToActor* Action);
 	void OnSetSkelControlTarget(class USeqAct_SetSkelControlTarget* Action);
 	void OnUpdatePhysBonesFromAnim(class USeqAct_UpdatePhysBonesFromAnim* Action);
 	void OnSetMesh(class USeqAct_SetMesh* Action);
 	bool IsActorPlayingFaceFXAnim();
 	class UFaceFXAsset* GetActorFaceFXAsset();
-	void STATIC_OnPlayFaceFXAnim(class USeqAct_PlayFaceFXAnim* inAction);
+	void OnPlayFaceFXAnim(class USeqAct_PlayFaceFXAnim* inAction);
 	class UAudioComponent* GetFaceFXAudioComponent();
 	void StopActorFaceFXAnim();
 	bool PlayActorFaceFXAnim(class UFaceFXAnimSet* AnimSet, const struct FString& GroupName, const struct FString& SeqName, class USoundCue* SoundCueToPlay, class UAkEvent* AkEventToPlay);
@@ -11706,8 +11706,8 @@ public:
 	void SetAnimPosition(const struct FName& SlotName, int ChannelIndex, const struct FName& InAnimSeqName, float InPosition, bool bFireNotifies, bool bLooping, bool bEnableRootMotion);
 	void MAT_BeginAnimControl(class UInterpGroup* InInterpGroup);
 	void BeginAnimControl(class UInterpGroup* InInterpGroup);
-	void STATIC_OnSetMaterial(class USeqAct_SetMaterial* Action);
-	void STATIC_OnToggle(class USeqAct_Toggle* Action);
+	void OnSetMaterial(class USeqAct_SetMaterial* Action);
+	void OnToggle(class USeqAct_Toggle* Action);
 	void ReplicatedEvent(const struct FName& VarName);
 	void STATIC_UpdateAnimSetList();
 	void Destroyed();
@@ -11732,7 +11732,7 @@ public:
 	}
 
 
-	void STATIC_SetMaterialBasedOnExtremeContent();
+	void SetMaterialBasedOnExtremeContent();
 	void PostBeginPlay();
 };
 
@@ -11786,7 +11786,7 @@ public:
 	void FinishAnimControl(class UInterpGroup* InInterpGroup);
 	void MAT_SetAnimPosition(const struct FName& SlotName, int ChannelIndex, const struct FName& InAnimSeqName, float InPosition, bool bFireNotifies, bool bLooping, bool bEnableRootMotion);
 	void SetAnimPosition(const struct FName& SlotName, int ChannelIndex, const struct FName& InAnimSeqName, float InPosition, bool bFireNotifies, bool bLooping, bool bEnableRootMotion);
-	void ClearAnimNodes();
+	void STATIC_ClearAnimNodes();
 	void CacheAnimNodes();
 	void PostInitAnimTree(class USkeletalMeshComponent* SkelComp);
 	void Destroyed();
@@ -12079,7 +12079,7 @@ public:
 
 	void OnAnimNodeSequenceBecomeRelevant(class UAnimNodeSequence* OwningNode);
 	void OnAnimNodeSequenceCeaseRelevant(class UAnimNodeSequence* OwningNode);
-	bool FindNextNotifyOfClass(class UAnimNodeSequence* AnimSeqInstigator, class UClass* NotifyClass, struct FAnimNotifyEvent* OutEvent);
+	bool STATIC_FindNextNotifyOfClass(class UAnimNodeSequence* AnimSeqInstigator, class UClass* NotifyClass, struct FAnimNotifyEvent* OutEvent);
 };
 
 
@@ -12453,11 +12453,11 @@ public:
 	}
 
 
-	void STATIC_ReplayAnim();
-	void STATIC_StopAnim();
-	void STATIC_PlayAnim(bool bLoop, float Rate, float StartTime);
+	void ReplayAnim();
+	void StopAnim();
+	void PlayAnim(bool bLoop, float Rate, float StartTime);
 	void GetNodesByClassWrapper(class UClass* BaseClass, TArray<class UAnimNode*>* Nodes);
-	class UAnimNode* FindAnimNode(const struct FName& InNodeName);
+	class UAnimNode* STATIC_FindAnimNode(const struct FName& InNodeName);
 	void OnCeaseRelevant();
 	void OnBecomeRelevant();
 	void OnInit();
@@ -12481,9 +12481,9 @@ public:
 	}
 
 
-	void STATIC_ReplayAnim();
-	void STATIC_StopAnim();
-	void STATIC_PlayAnim(bool bLoop, float Rate, float StartTime);
+	void ReplayAnim();
+	void StopAnim();
+	void PlayAnim(bool bLoop, float Rate, float StartTime);
 };
 
 
@@ -12504,7 +12504,7 @@ public:
 	}
 
 
-	void STATIC_SetMaskWeight(int MaskIndex, float DesiredWeight, float BlendTime);
+	void SetMaskWeight(int MaskIndex, float DesiredWeight, float BlendTime);
 };
 
 
@@ -12536,8 +12536,8 @@ public:
 	}
 
 
-	void STATIC_SetActiveProfileByIndex(int ProfileIndex);
-	void STATIC_SetActiveProfileByName(const struct FName& ProfileName);
+	void SetActiveProfileByIndex(int ProfileIndex);
+	void SetActiveProfileByName(const struct FName& ProfileName);
 };
 
 
@@ -12559,7 +12559,7 @@ public:
 	}
 
 
-	void STATIC_SetBlendTarget(float BlendTarget, float BlendTime);
+	void SetBlendTarget(float BlendTarget, float BlendTime);
 };
 
 
@@ -12577,7 +12577,7 @@ public:
 	}
 
 
-	void STATIC_SetBlendTarget(float BlendTarget, float BlendTime);
+	void SetBlendTarget(float BlendTarget, float BlendTime);
 };
 
 
@@ -12598,7 +12598,7 @@ public:
 	}
 
 
-	void STATIC_SetBlendTarget(float BlendTarget, float BlendTime);
+	void SetBlendTarget(float BlendTarget, float BlendTime);
 };
 
 
@@ -12621,7 +12621,7 @@ public:
 	class UAnimNodeSequence* GetActiveChild();
 	struct FName GetAnimName();
 	void STATIC_BlendToLoopingAnim(const struct FName& AnimSeqName, float BlendInTime, float Rate);
-	void STATIC_PlayOneShotAnim(const struct FName& AnimSeqName, float BlendInTime, float BlendOutTime, bool bDontBlendOut, float Rate);
+	void PlayOneShotAnim(const struct FName& AnimSeqName, float BlendInTime, float BlendOutTime, bool bDontBlendOut, float Rate);
 };
 
 
@@ -12641,13 +12641,13 @@ public:
 
 
 	void SetPlayRate(float fPlayRate);
-	void STATIC_SetRootBoneAxisOption(TEnumAsByte<ERootBoneAxis> AxisX, TEnumAsByte<ERootBoneAxis> AxisY, TEnumAsByte<ERootBoneAxis> AxisZ);
+	void SetRootBoneAxisOption(TEnumAsByte<ERootBoneAxis> AxisX, TEnumAsByte<ERootBoneAxis> AxisY, TEnumAsByte<ERootBoneAxis> AxisZ);
 	class UAnimNodeSequence* GetCustomAnimNodeSeq();
-	void STATIC_SetActorAnimEndNotification(bool bNewStatus);
-	void STATIC_SetCustomAnim(const struct FName& AnimName);
-	void STATIC_StopCustomAnim(float BlendOutTime);
-	void STATIC_PlayCustomAnimByDuration(const struct FName& AnimName, float Duration, float BlendInTime, float BlendOutTime, bool bLooping, bool bOverride);
-	float STATIC_PlayCustomAnim(const struct FName& AnimName, float Rate, float BlendInTime, float BlendOutTime, bool bLooping, bool bOverride);
+	void SetActorAnimEndNotification(bool bNewStatus);
+	void SetCustomAnim(const struct FName& AnimName);
+	void StopCustomAnim(float BlendOutTime);
+	void PlayCustomAnimByDuration(const struct FName& AnimName, float Duration, float BlendInTime, float BlendOutTime, bool bLooping, bool bOverride);
+	float PlayCustomAnim(const struct FName& AnimName, float Rate, float BlendInTime, float BlendOutTime, bool bLooping, bool bOverride);
 };
 
 
@@ -12694,7 +12694,7 @@ public:
 	}
 
 
-	void STATIC_SetActiveChild(int ChildIndex, float BlendTime);
+	void SetActiveChild(int ChildIndex, float BlendTime);
 };
 
 
@@ -12839,7 +12839,7 @@ public:
 	}
 
 
-	void STATIC_SetTargetStartBone(int TargetIdx, const struct FName& StartBoneName, float PerBoneIncrease);
+	void SetTargetStartBone(int TargetIdx, const struct FName& StartBoneName, float PerBoneIncrease);
 };
 
 
@@ -12920,16 +12920,16 @@ public:
 
 
 	void STATIC_TickChildWeights(float DeltaSeconds);
-	void STATIC_SetRootBoneRotationOption(TEnumAsByte<ERootRotationOption> AxisX, TEnumAsByte<ERootRotationOption> AxisY, TEnumAsByte<ERootRotationOption> AxisZ);
-	void STATIC_SetRootBoneAxisOption(TEnumAsByte<ERootBoneAxis> AxisX, TEnumAsByte<ERootBoneAxis> AxisY, TEnumAsByte<ERootBoneAxis> AxisZ);
+	void SetRootBoneRotationOption(TEnumAsByte<ERootRotationOption> AxisX, TEnumAsByte<ERootRotationOption> AxisY, TEnumAsByte<ERootRotationOption> AxisZ);
+	void SetRootBoneAxisOption(TEnumAsByte<ERootBoneAxis> AxisX, TEnumAsByte<ERootBoneAxis> AxisY, TEnumAsByte<ERootBoneAxis> AxisZ);
 	class UAnimNodeSequence* GetCustomAnimNodeSeq();
-	void STATIC_SetActorAnimEndNotification(bool bNewStatus);
-	void STATIC_SetCustomAnim(const struct FName& AnimName);
-	void STATIC_SetAllowPauseAnims(bool bSet);
-	void STATIC_StopCustomAnim(float BlendOutTime);
+	void SetActorAnimEndNotification(bool bNewStatus);
+	void SetCustomAnim(const struct FName& AnimName);
+	void SetAllowPauseAnims(bool bSet);
+	void StopCustomAnim(float BlendOutTime);
 	struct FName GetPlayedAnimation();
-	bool STATIC_PlayCustomAnimByDuration(const struct FName& AnimName, float Duration, float BlendInTime, float BlendOutTime, bool bLooping, bool bOverride);
-	float STATIC_PlayCustomAnim(const struct FName& AnimName, float Rate, float BlendInTime, float BlendOutTime, bool bLooping, bool bOverride, float StartTime, float EndTime);
+	bool PlayCustomAnimByDuration(const struct FName& AnimName, float Duration, float BlendInTime, float BlendOutTime, bool bLooping, bool bOverride);
+	float PlayCustomAnim(const struct FName& AnimName, float Rate, float BlendInTime, float BlendOutTime, bool bLooping, bool bOverride, float StartTime, float EndTime);
 };
 
 
@@ -12948,11 +12948,11 @@ public:
 	}
 
 
-	void STATIC_SetGroupRateScale(const struct FName& GroupName, float NewRateScale);
+	void SetGroupRateScale(const struct FName& GroupName, float NewRateScale);
 	float GetRelativePosition(const struct FName& GroupName);
-	void ForceRelativePosition(const struct FName& GroupName, float RelativePosition);
+	void STATIC_ForceRelativePosition(const struct FName& GroupName, float RelativePosition);
 	class UAnimNodeSequence* GetMasterNodeOfGroup(const struct FName& GroupName);
-	void STATIC_RemoveNodeFromGroup(class UAnimNodeSequence* SeqNode, const struct FName& GroupName);
+	void RemoveNodeFromGroup(class UAnimNodeSequence* SeqNode, const struct FName& GroupName);
 	void STATIC_AddNodeToGroup(class UAnimNodeSequence* SeqNode, const struct FName& GroupName);
 };
 
@@ -12993,15 +12993,15 @@ public:
 
 	int GetGroupIndex(const struct FName& GroupName);
 	float GetGroupRateScale(const struct FName& GroupName);
-	void STATIC_SetGroupRateScale(const struct FName& GroupName, float NewRateScale);
+	void SetGroupRateScale(const struct FName& GroupName, float NewRateScale);
 	float GetGroupRelativePosition(const struct FName& GroupName);
-	void ForceGroupRelativePosition(const struct FName& GroupName, float RelativePosition);
+	void STATIC_ForceGroupRelativePosition(const struct FName& GroupName, float RelativePosition);
 	class UAnimNodeSequence* GetGroupNotifyMaster(const struct FName& GroupName);
 	class UAnimNodeSequence* GetGroupSynchMaster(const struct FName& GroupName);
-	bool STATIC_SetAnimGroupForNode(class UAnimNodeSequence* SeqNode, const struct FName& GroupName, bool bCreateIfNotFound);
-	void STATIC_SetUseSavedPose(bool bUseSaved);
-	class UMorphNodeBase* FindMorphNode(const struct FName& InNodeName);
-	class USkelControlBase* FindSkelControl(const struct FName& InControlName);
+	bool SetAnimGroupForNode(class UAnimNodeSequence* SeqNode, const struct FName& GroupName, bool bCreateIfNotFound);
+	void SetUseSavedPose(bool bUseSaved);
+	class UMorphNodeBase* STATIC_FindMorphNode(const struct FName& InNodeName);
+	class USkelControlBase* STATIC_FindSkelControl(const struct FName& InControlName);
 };
 
 
@@ -13016,6 +13016,7 @@ public:
 	unsigned long                                      bLooping : 1;                                             // 0x0108(0x0004) (Edit)
 	unsigned long                                      bCauseActorAnimEnd : 1;                                   // 0x0108(0x0004) (Edit)
 	unsigned long                                      bCauseActorAnimPlay : 1;                                  // 0x0108(0x0004) (Edit)
+	unsigned long                                      bCeaseRelevantOnAnimTreeReset : 1;                        // 0x0108(0x0004) (Edit)
 	unsigned long                                      bZeroRootRotation : 1;                                    // 0x0108(0x0004) (Edit)
 	unsigned long                                      bZeroRootTranslation : 1;                                 // 0x0108(0x0004) (Edit)
 	unsigned long                                      bDisableWarningWhenAnimNotFound : 1;                      // 0x0108(0x0004) (Edit)
@@ -13067,20 +13068,20 @@ public:
 	}
 
 
-	void STATIC_SetRootBoneRotationOption(TEnumAsByte<ERootRotationOption> AxisX, TEnumAsByte<ERootRotationOption> AxisY, TEnumAsByte<ERootRotationOption> AxisZ);
-	void STATIC_SetRootBoneAxisOption(TEnumAsByte<ERootBoneAxis> AxisX, TEnumAsByte<ERootBoneAxis> AxisY, TEnumAsByte<ERootBoneAxis> AxisZ);
+	void SetRootBoneRotationOption(TEnumAsByte<ERootRotationOption> AxisX, TEnumAsByte<ERootRotationOption> AxisY, TEnumAsByte<ERootRotationOption> AxisZ);
+	void SetRootBoneAxisOption(TEnumAsByte<ERootBoneAxis> AxisX, TEnumAsByte<ERootBoneAxis> AxisY, TEnumAsByte<ERootBoneAxis> AxisZ);
 	float GetTimeLeft();
 	float GetAnimPlaybackLength();
 	float GetGlobalPlayRate();
 	float GetGroupRelativePosition();
-	float FindGroupPosition(float GroupRelativePosition);
-	float FindGroupRelativePosition(float GroupRelativePosition);
+	float STATIC_FindGroupPosition(float GroupRelativePosition);
+	float STATIC_FindGroupRelativePosition(float GroupRelativePosition);
 	float GetNormalizedPosition();
 	void SetPosition(float NewTime, bool bFireNotifies);
-	void STATIC_ReplayAnim();
-	void STATIC_StopAnim();
-	void STATIC_PlayAnim(bool bLoop, float InRate, float StartTime);
-	void STATIC_SetAnim(const struct FName& Sequence);
+	void ReplayAnim();
+	void StopAnim();
+	void PlayAnim(bool bLoop, float InRate, float StartTime);
+	void SetAnim(const struct FName& Sequence);
 };
 
 
@@ -13127,7 +13128,7 @@ public:
 	}
 
 
-	void CheckAnimsUpToDate();
+	void STATIC_CheckAnimsUpToDate();
 };
 
 
@@ -13187,8 +13188,8 @@ public:
 	}
 
 
-	bool UpdateMorphTarget(class UMorphTarget* Target, float InWeight);
-	void STATIC_RemoveMorphTarget(const struct FName& MorphTargetName);
+	bool STATIC_UpdateMorphTarget(class UMorphTarget* Target, float InWeight);
+	void RemoveMorphTarget(const struct FName& MorphTargetName);
 	bool STATIC_AddMorphTarget(const struct FName& MorphTargetName, float InWeight);
 };
 
@@ -13209,7 +13210,7 @@ public:
 	}
 
 
-	void STATIC_SetMorphTarget(const struct FName& MorphTargetName);
+	void SetMorphTarget(const struct FName& MorphTargetName);
 };
 
 
@@ -13243,7 +13244,7 @@ public:
 	}
 
 
-	void STATIC_SetNodeWeight(float NewWeight);
+	void SetNodeWeight(float NewWeight);
 };
 
 
@@ -13346,8 +13347,8 @@ public:
 
 	float GetControlMetadataWeight();
 	void TickSkelControl(float DeltaTime, class USkeletalMeshComponent* SkelComp);
-	void STATIC_SetSkelControlStrength(float NewStrength, float InBlendTime);
-	void STATIC_SetSkelControlActive(bool bInActive);
+	void SetSkelControlStrength(float NewStrength, float InBlendTime);
+	void SetSkelControlActive(bool bInActive);
 };
 
 
@@ -13524,10 +13525,10 @@ public:
 	}
 
 
-	bool CanLookAtPoint(const struct FVector& PointLoc, bool bDrawDebugInfo, bool bDebugUsePersistentLines, bool bDebugFlushLinesFirst);
-	void STATIC_SetLookAtAlpha(float DesiredAlpha, float DesiredBlendTime);
+	bool STATIC_CanLookAtPoint(const struct FVector& PointLoc, bool bDrawDebugInfo, bool bDebugUsePersistentLines, bool bDebugFlushLinesFirst);
+	void SetLookAtAlpha(float DesiredAlpha, float DesiredBlendTime);
 	void InterpolateTargetLocation(float DeltaTime);
-	void STATIC_SetTargetLocation(const struct FVector& NewTargetLocation);
+	void SetTargetLocation(const struct FVector& NewTargetLocation);
 };
 
 
@@ -13782,7 +13783,7 @@ public:
 	}
 
 
-	class UMorphTarget* FindMorphTarget(const struct FName& MorphTargetName);
+	class UMorphTarget* STATIC_FindMorphTarget(const struct FName& MorphTargetName);
 };
 
 
@@ -13941,10 +13942,10 @@ public:
 	}
 
 
-	void STATIC_SetParentRelativeLocation(const struct FVector& relLoc);
+	void SetParentRelativeLocation(const struct FVector& relLoc);
 	bool IsWaitingForResetToDefaultsToComplete();
 	class UMaterialInterface* GetDecalMaterial();
-	void STATIC_SetDecalMaterial(class UMaterialInterface* NewDecalMaterial);
+	void SetDecalMaterial(class UMaterialInterface* NewDecalMaterial);
 	void ResetToDefaults();
 };
 
@@ -14128,9 +14129,9 @@ public:
 
 
 	void STATIC_ApplyCheckpointRecord(struct AFogVolumeDensityInfo_FCheckpointRecord* Record);
-	void CreateCheckpointRecord(struct AFogVolumeDensityInfo_FCheckpointRecord* Record);
-	bool STATIC_ShouldSaveForCheckpoint();
-	void STATIC_OnToggle(class USeqAct_Toggle* Action);
+	void STATIC_CreateCheckpointRecord(struct AFogVolumeDensityInfo_FCheckpointRecord* Record);
+	bool ShouldSaveForCheckpoint();
+	void OnToggle(class USeqAct_Toggle* Action);
 	void ReplicatedEvent(const struct FName& VarName);
 	void PostBeginPlay();
 };
@@ -14253,7 +14254,7 @@ public:
 	}
 
 
-	void STATIC_SetViewOriginOverride(const struct FVector& InViewOriginOverride, bool bInUsePositionOverride);
+	void SetViewOriginOverride(const struct FVector& InViewOriginOverride, bool bInUsePositionOverride);
 	void SetEnabled(bool bSetEnabled);
 };
 
@@ -14401,11 +14402,11 @@ public:
 	}
 
 
-	void STATIC_OnSetMaterial(class USeqAct_SetMaterial* Action);
+	void OnSetMaterial(class USeqAct_SetMaterial* Action);
 	void STATIC_TakeRadiusDamage(class AController* InstigatedBy, float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, bool bFullDamage, class AActor* DamageCauser, float DamageFalloffExponent);
 	void TakeDamage(int Damage, class AController* EventInstigator, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser);
 	void PostBeginPlay();
-	void CacheFractureEffects();
+	void STATIC_CacheFractureEffects();
 	void SpawnFractureEmitter(class UParticleSystem* EmitterTemplate, const struct FVector& SpawnLocation, const struct FVector& SpawnDirection);
 };
 
@@ -14440,7 +14441,7 @@ public:
 	}
 
 
-	void STATIC_NotifyHitByExplosion(class AController* InstigatorController, float DamageAmount, class UClass* dmgType);
+	void NotifyHitByExplosion(class AController* InstigatorController, float DamageAmount, class UClass* dmgType);
 	void SetLoseChunkReplacementMaterial();
 	void HideFragmentsToMaximizeMemoryUsage();
 	void HideOneFragment();
@@ -14448,18 +14449,18 @@ public:
 	void BreakOffPartsInRadius(const struct FVector& Origin, float Radius, float RBStrength, bool bWantPhysChunksAndParticles);
 	void Explode();
 	void TakeDamage(int Damage, class AController* EventInstigator, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser);
-	void STATIC_RemoveDecals(int IndexToRemoveDecalsFrom);
-	bool FractureEffectIsRelevant(bool bForceDedicated, class APawn* EffectInstigator, unsigned char* bWantPhysChunksAndParticles);
+	void RemoveDecals(int IndexToRemoveDecalsFrom);
+	bool STATIC_FractureEffectIsRelevant(bool bForceDedicated, class APawn* EffectInstigator, unsigned char* bWantPhysChunksAndParticles);
 	bool IsFracturedByDamageType(class UClass* dmgType);
 	bool SpawnDeferredParts();
 	void BreakOffIsolatedIslands(TArray<int> IgnoreFrags, const struct FVector& ChunkDir, TArray<class AFracturedStaticMeshPart*> DisableCollWithPart, bool bWantPhysChunks, TArray<unsigned char>* FragmentVis);
 	void STATIC_ApplyCheckpointRecord(struct AFracturedStaticMeshActor_FCheckpointRecord* Record);
-	void CreateCheckpointRecord(struct AFracturedStaticMeshActor_FCheckpointRecord* Record);
-	bool STATIC_ShouldSaveForCheckpoint();
-	void STATIC_ResetHealth();
+	void STATIC_CreateCheckpointRecord(struct AFracturedStaticMeshActor_FCheckpointRecord* Record);
+	bool ShouldSaveForCheckpoint();
+	void ResetHealth();
 	void PostBeginPlay();
-	class AFracturedStaticMeshPart* STATIC_SpawnPartMulti(TArray<int> ChunkIndices, const struct FVector& InitialVel, const struct FVector& InitialAngVel, float RelativeScale, bool bExplosion);
-	class AFracturedStaticMeshPart* STATIC_SpawnPart(int ChunkIndex, const struct FVector& InitialVel, const struct FVector& InitialAngVel, float RelativeScale, bool bExplosion);
+	class AFracturedStaticMeshPart* SpawnPartMulti(TArray<int> ChunkIndices, const struct FVector& InitialVel, const struct FVector& InitialAngVel, float RelativeScale, bool bExplosion);
+	class AFracturedStaticMeshPart* SpawnPart(int ChunkIndex, const struct FVector& InitialVel, const struct FVector& InitialAngVel, float RelativeScale, bool bExplosion);
 };
 
 
@@ -14494,7 +14495,7 @@ public:
 	void FellOutOfWorld(class UClass* dmgType);
 	void STATIC_TryToCleanUp();
 	void TakeDamage(int Damage, class AController* EventInstigator, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser);
-	void STATIC_RecyclePart(bool bAddToFreePool);
+	void RecyclePart(bool bAddToFreePool);
 	void Initialize();
 };
 
@@ -14525,9 +14526,9 @@ public:
 	void ReturnPartActor(class AFracturedStaticMeshPart* Part);
 	class AFracturedStaticMeshPart* SpawnPartActor(class AFracturedStaticMeshActor* Parent, const struct FVector& SpawnLocation, const struct FRotator& SpawnRotation);
 	class AFracturedStaticMeshPart* GetFSMPart(class AFracturedStaticMeshActor* Parent, const struct FVector& SpawnLocation, const struct FRotator& SpawnRotation);
-	void STATIC_ResetPoolVisibility();
-	void CreateFSMParts();
-	void CleanUpFSMParts();
+	void ResetPoolVisibility();
+	void STATIC_CreateFSMParts();
+	void STATIC_CleanUpFSMParts();
 	void Destroyed();
 	void PreBeginPlay();
 	float GetFSMFractureCullDistanceScale();
@@ -14554,7 +14555,7 @@ public:
 	}
 
 
-	void STATIC_OnToggle(class USeqAct_Toggle* Action);
+	void OnToggle(class USeqAct_Toggle* Action);
 	void ReplicatedEvent(const struct FName& VarName);
 	void PostBeginPlay();
 };
@@ -14592,7 +14593,7 @@ public:
 	}
 
 
-	void STATIC_OnToggle(class USeqAct_Toggle* Action);
+	void OnToggle(class USeqAct_Toggle* Action);
 	void ReplicatedEvent(const struct FName& VarName);
 	void PostBeginPlay();
 };
@@ -14732,7 +14733,7 @@ public:
 	int GetNumFragments();
 	bool IsFragmentVisible(int FragmentIndex);
 	TArray<unsigned char> GetVisibleFragments();
-	bool STATIC_SetStaticMesh(class UStaticMesh* NewMesh, bool bForce);
+	bool SetStaticMesh(class UStaticMesh* NewMesh, bool bForce);
 };
 
 
@@ -14781,7 +14782,7 @@ public:
 
 
 	class UPhysicalMaterial* GetFracturedMeshPhysMaterial();
-	void STATIC_RecreatePhysState();
+	void RecreatePhysState();
 	TArray<int> GetBoundaryHiddenFragments(TArray<int> AdditionalVisibleFragments);
 	TArray<struct FFragmentGroup> GetFragmentGroups(TArray<int> IgnoreFragments, float MinConnectionArea);
 	int GetCoreFragmentIndex();
@@ -14790,7 +14791,7 @@ public:
 	bool IsNoPhysFragment(int FragmentIndex);
 	bool IsRootFragment(int FragmentIndex);
 	bool IsFragmentDestroyable(int FragmentIndex);
-	void STATIC_SetVisibleFragments(TArray<unsigned char> VisibilityFactors);
+	void SetVisibleFragments(TArray<unsigned char> VisibilityFactors);
 };
 
 
@@ -14811,7 +14812,7 @@ public:
 	}
 
 
-	void STATIC_OnUpdatePropertyReflectionColor();
+	void OnUpdatePropertyReflectionColor();
 	void STATIC_UpdateImageReflectionParameters();
 	void SetEnabled(bool bSetEnabled);
 };
@@ -14844,7 +14845,7 @@ public:
 	}
 
 
-	bool STATIC_ShouldStreamInstanceBuffer();
+	bool ShouldStreamInstanceBuffer();
 };
 
 
@@ -18311,14 +18312,14 @@ public:
 
 
 	bool IsInMapOrTransientPackage();
-	void ClearParameterValues();
-	void STATIC_SetFontParameterValue(const struct FName& ParameterName, class UFont* FontValue, int FontPage);
+	void STATIC_ClearParameterValues();
+	void SetFontParameterValue(const struct FName& ParameterName, class UFont* FontValue, int FontPage);
 	bool GetTextureParameterValue(const struct FName& ParameterName, class UTexture** Value);
-	void STATIC_SetTextureParameterValue(const struct FName& ParameterName, class UTexture* Value);
-	void STATIC_SetScalarCurveParameterValue(const struct FName& ParameterName, struct FInterpCurveFloat* Value);
-	void STATIC_SetScalarParameterValue(const struct FName& ParameterName, float Value);
-	void STATIC_SetVectorParameterValue(const struct FName& ParameterName, struct FLinearColor* Value);
-	void STATIC_SetParent(class UMaterialInterface* NewParent);
+	void SetTextureParameterValue(const struct FName& ParameterName, class UTexture* Value);
+	void SetScalarCurveParameterValue(const struct FName& ParameterName, struct FInterpCurveFloat* Value);
+	void SetScalarParameterValue(const struct FName& ParameterName, float Value);
+	void SetVectorParameterValue(const struct FName& ParameterName, struct FLinearColor* Value);
+	void SetParent(class UMaterialInterface* NewParent);
 };
 
 
@@ -18340,15 +18341,15 @@ public:
 	}
 
 
-	void ClearParameterValues();
+	void STATIC_ClearParameterValues();
 	bool GetMobileVectorParameterValue(const struct FName& ParameterName, struct FLinearColor* OutValue);
 	bool GetMobileTextureParameterValue(const struct FName& ParameterName, class UTexture** OutValue);
 	bool GetMobileScalarParameterValue(const struct FName& ParameterName, float* OutValue);
-	void STATIC_SetFontParameterValue(const struct FName& ParameterName, class UFont* FontValue, int FontPage);
-	void STATIC_SetVectorParameterValue(const struct FName& ParameterName, struct FLinearColor* Value);
-	void STATIC_SetTextureParameterValue(const struct FName& ParameterName, class UTexture* Value);
-	void STATIC_SetScalarParameterValue(const struct FName& ParameterName, float Value);
-	void STATIC_SetParent(class UMaterialInterface* NewParent);
+	void SetFontParameterValue(const struct FName& ParameterName, class UFont* FontValue, int FontPage);
+	void SetVectorParameterValue(const struct FName& ParameterName, struct FLinearColor* Value);
+	void SetTextureParameterValue(const struct FName& ParameterName, class UTexture* Value);
+	void SetScalarParameterValue(const struct FName& ParameterName, float Value);
+	void SetParent(class UMaterialInterface* NewParent);
 	void STATIC_SetParameterStateInterp(const struct FName& FromStateName, const struct FName& ToStateName, float fInterpAmt);
 	void STATIC_SetParameterState(const struct FName& StateName);
 	bool STATIC_HasState(const struct FName& StateName);
@@ -18393,21 +18394,21 @@ public:
 	}
 
 
-	bool CheckForVectorParameterConflicts(const struct FName& ParameterName);
+	bool STATIC_CheckForVectorParameterConflicts(const struct FName& ParameterName);
 	float GetMaxDurationFromAllParameters();
-	void ClearParameterValues();
-	void STATIC_SetFontParameterValue(const struct FName& ParameterName, class UFont* FontValue, int FontPage);
-	void STATIC_SetVectorStartTime(const struct FName& ParameterName, float Value);
-	void STATIC_SetLinearColorCurveParameterValue(const struct FName& ParameterName, struct FInterpCurveLinearColor* Value);
-	void STATIC_SetLinearColorParameterValue(const struct FName& ParameterName, struct FLinearColor* Value);
-	void STATIC_SetVectorCurveParameterValue(const struct FName& ParameterName, struct FInterpCurveVector* Value);
-	void STATIC_SetVectorParameterValue(const struct FName& ParameterName, struct FLinearColor* Value);
-	void STATIC_SetTextureParameterValue(const struct FName& ParameterName, class UTexture* Value);
-	void STATIC_SetDuration(float Value);
-	void STATIC_SetScalarStartTime(const struct FName& ParameterName, float Value);
-	void STATIC_SetScalarCurveParameterValue(const struct FName& ParameterName, struct FInterpCurveFloat* Value);
-	void STATIC_SetScalarParameterValue(const struct FName& ParameterName, float Value);
-	void STATIC_SetParent(class UMaterialInterface* NewParent);
+	void STATIC_ClearParameterValues();
+	void SetFontParameterValue(const struct FName& ParameterName, class UFont* FontValue, int FontPage);
+	void SetVectorStartTime(const struct FName& ParameterName, float Value);
+	void SetLinearColorCurveParameterValue(const struct FName& ParameterName, struct FInterpCurveLinearColor* Value);
+	void SetLinearColorParameterValue(const struct FName& ParameterName, struct FLinearColor* Value);
+	void SetVectorCurveParameterValue(const struct FName& ParameterName, struct FInterpCurveVector* Value);
+	void SetVectorParameterValue(const struct FName& ParameterName, struct FLinearColor* Value);
+	void SetTextureParameterValue(const struct FName& ParameterName, class UTexture* Value);
+	void SetDuration(float Value);
+	void SetScalarStartTime(const struct FName& ParameterName, float Value);
+	void SetScalarCurveParameterValue(const struct FName& ParameterName, struct FInterpCurveFloat* Value);
+	void SetScalarParameterValue(const struct FName& ParameterName, float Value);
+	void SetParent(class UMaterialInterface* NewParent);
 };
 
 
@@ -18434,8 +18435,8 @@ public:
 	void STATIC_UpdateLocation(float CamFOVDeg, struct FVector* CamLoc, struct FRotator* CamRot);
 	void STATIC_ActivateLensEffect();
 	void PostBeginPlay();
-	void STATIC_NotifyRetriggered();
-	void STATIC_RegisterCamera(class ACamera* C);
+	void NotifyRetriggered();
+	void RegisterCamera(class ACamera* C);
 	void Destroyed();
 };
 
@@ -18540,56 +18541,56 @@ public:
 	}
 
 
-	void STATIC_SetFOV(float NewFOV);
+	void SetFOV(float NewFOV);
 	void STATIC_UpdateEmitterMasks();
-	void STATIC_SetStopSpawning(int InEmitterIndex, bool bInStopSpawning);
+	void SetStopSpawning(int InEmitterIndex, bool bInStopSpawning);
 	void ResetToDefaults();
-	void STATIC_SetActive(bool bNowActive, bool bFlagAsJustAttached);
-	void ClearParameter(const struct FName& ParameterName, TEnumAsByte<EParticleSysParamType> ParameterType);
+	void SetActive(bool bNowActive, bool bFlagAsJustAttached);
+	void STATIC_ClearParameter(const struct FName& ParameterName, TEnumAsByte<EParticleSysParamType> ParameterType);
 	bool GetValueNameParameter(const struct FName& ParameterName, struct FName* Param);
 	bool GetMaterialParameter(const struct FName& InName, class UMaterialInterface** OutMaterial);
 	bool GetActorParameter(const struct FName& InName, class AActor** OutActor);
 	bool GetColorParameter(const struct FName& InName, struct FColor* OutColor);
 	bool GetVectorParameter(const struct FName& InName, struct FVector* OutVector);
 	bool GetFloatParameter(const struct FName& InName, float* OutFloat);
-	void STATIC_SetValueNameParameter(const struct FName& ParameterName, const struct FName& Param);
-	void STATIC_SetMaterialParameter(const struct FName& ParameterName, class UMaterialInterface* Param);
-	void STATIC_SetActorParameter(const struct FName& ParameterName, class AActor* Param);
-	void STATIC_SetColorParameter(const struct FName& ParameterName, const struct FColor& Param);
-	void STATIC_SetVectorRandParameter(const struct FName& ParameterName, struct FVector* Param, struct FVector* ParamLow);
-	void STATIC_SetVectorParameter(const struct FName& ParameterName, const struct FVector& Param);
-	void STATIC_SetFloatRandParameter(const struct FName& ParameterName, float Param, float ParamLow);
-	void STATIC_SetFloatParameter(const struct FName& ParameterName, float Param);
+	void SetValueNameParameter(const struct FName& ParameterName, const struct FName& Param);
+	void SetMaterialParameter(const struct FName& ParameterName, class UMaterialInterface* Param);
+	void SetActorParameter(const struct FName& ParameterName, class AActor* Param);
+	void SetColorParameter(const struct FName& ParameterName, const struct FColor& Param);
+	void SetVectorRandParameter(const struct FName& ParameterName, struct FVector* Param, struct FVector* ParamLow);
+	void SetVectorParameter(const struct FName& ParameterName, const struct FVector& Param);
+	void SetFloatRandParameter(const struct FName& ParameterName, float Param, float ParamLow);
+	void SetFloatParameter(const struct FName& ParameterName, float Param);
 	int GetEditorLODLevel();
 	int GetLODLevel();
-	void STATIC_SetEditorLODLevel(int InLODLevel);
-	void STATIC_SetLODLevel(int InLODLevel, bool bIgnoreBias);
+	void SetEditorLODLevel(int InLODLevel);
+	void SetLODLevel(int InLODLevel, bool bIgnoreBias);
 	bool STATIC_SystemHasDurationElapsed();
 	bool STATIC_SystemHasCompleted();
 	float GetMaxLifespan();
-	int DetermineDesiredLODLevel();
-	int DetermineLODLevelForLocation(struct FVector* EffectLocation);
-	void STATIC_SetBeamTargetStrength(int EmitterIndex, float NewTargetStrength, int TargetIndex);
-	void STATIC_SetBeamTargetTangent(int EmitterIndex, const struct FVector& NewTangentPoint, int TargetIndex);
-	void STATIC_SetBeamTargetPoint(int EmitterIndex, const struct FVector& NewTargetPoint, int TargetIndex);
-	void STATIC_SetBeamSourceStrength(int EmitterIndex, float NewSourceStrength, int SourceIndex);
-	void STATIC_SetBeamSourceTangent(int EmitterIndex, const struct FVector& NewTangentPoint, int SourceIndex);
-	void STATIC_SetBeamSourcePoint(int EmitterIndex, const struct FVector& NewSourcePoint, int SourceIndex);
-	void STATIC_SetBeamDistance(int EmitterIndex, float Distance);
-	void STATIC_SetBeamEndPoint(int EmitterIndex, const struct FVector& NewEndPoint);
-	void STATIC_SetBeamTessellationFactor(int EmitterIndex, float NewFactor);
-	void STATIC_SetBeamType(int EmitterIndex, int NewMethod);
-	void STATIC_RewindEmitterInstances();
-	void STATIC_RewindEmitterInstance(int EmitterIndex);
-	void STATIC_SetKillOnCompleted(int EmitterIndex, bool bKill);
-	void STATIC_SetKillOnDeactivate(int EmitterIndex, bool bKill);
+	int STATIC_DetermineDesiredLODLevel();
+	int STATIC_DetermineLODLevelForLocation(struct FVector* EffectLocation);
+	void SetBeamTargetStrength(int EmitterIndex, float NewTargetStrength, int TargetIndex);
+	void SetBeamTargetTangent(int EmitterIndex, const struct FVector& NewTangentPoint, int TargetIndex);
+	void SetBeamTargetPoint(int EmitterIndex, const struct FVector& NewTargetPoint, int TargetIndex);
+	void SetBeamSourceStrength(int EmitterIndex, float NewSourceStrength, int SourceIndex);
+	void SetBeamSourceTangent(int EmitterIndex, const struct FVector& NewTangentPoint, int SourceIndex);
+	void SetBeamSourcePoint(int EmitterIndex, const struct FVector& NewSourcePoint, int SourceIndex);
+	void SetBeamDistance(int EmitterIndex, float Distance);
+	void SetBeamEndPoint(int EmitterIndex, const struct FVector& NewEndPoint);
+	void SetBeamTessellationFactor(int EmitterIndex, float NewFactor);
+	void SetBeamType(int EmitterIndex, int NewMethod);
+	void RewindEmitterInstances();
+	void RewindEmitterInstance(int EmitterIndex);
+	void SetKillOnCompleted(int EmitterIndex, bool bKill);
+	void SetKillOnDeactivate(int EmitterIndex, bool bKill);
 	bool GetSkipBoundsUpdate();
-	void STATIC_SetSkipBoundsUpdate(bool bInSkipBoundsUpdate);
+	void SetSkipBoundsUpdate(bool bInSkipBoundsUpdate);
 	bool GetSkipUpdateDynamicDataDuringTick();
-	void STATIC_SetSkipUpdateDynamicDataDuringTick(bool bInSkipUpdateDynamicDataDuringTick);
+	void SetSkipUpdateDynamicDataDuringTick(bool bInSkipUpdateDynamicDataDuringTick);
 	void KillParticlesInEmitter(const struct FName& InEmitterName);
 	void KillParticlesForced();
-	void DeactivateSystem();
+	void STATIC_DeactivateSystem();
 	void STATIC_ActivateSystem(bool bFlagAsJustAttached);
 	void SetTemplate(class UParticleSystem* NewTemplate);
 	void OnSystemDurationElapsed(class UParticleSystemComponent* PSystem);
@@ -21311,7 +21312,7 @@ public:
 	}
 
 
-	void DoEvent(struct FVector* InCollideDirection, struct FVector* InHitLocation, struct FVector* InHitNormal, struct FName* InBoneName);
+	void STATIC_DoEvent(struct FVector* InCollideDirection, struct FVector* InHitLocation, struct FVector* InHitNormal, struct FName* InBoneName);
 };
 
 
@@ -21421,23 +21422,23 @@ public:
 	}
 
 
-	void ClientTouchEffects();
+	void STATIC_ClientTouchEffects();
 	void Touch(class AActor* Other, class UPrimitiveComponent* OtherComp, const struct FVector& HitLocation, const struct FVector& HitNormal);
-	void ClientWeaponHitEffects(const struct FVector& ImpactLocation, const struct FVector& ImpactNormal);
-	void STATIC_OnWeaponHit(const struct FImpactInfo& Impact, float ImpulseScale);
+	void STATIC_ClientWeaponHitEffects(const struct FVector& ImpactLocation, const struct FVector& ImpactNormal);
+	void OnWeaponHit(const struct FImpactInfo& Impact, float ImpulseScale);
 	void Reset();
-	void STATIC_OnTeleport(class USeqAct_Teleport* inAction);
-	void STATIC_OnToggle(class USeqAct_Toggle* Action);
+	void OnTeleport(class USeqAct_Teleport* inAction);
+	void OnToggle(class USeqAct_Toggle* Action);
 	void STATIC_TakeRadiusDamage(class AController* InstigatedBy, float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, bool bFullDamage, class AActor* DamageCauser, float DamageFalloffExponent);
 	void TakeDamage(int Damage, class AController* EventInstigator, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser);
 	void ApplyImpulse(const struct FVector& ImpulseDir, float ImpulseMag, const struct FVector& HitLocation, const struct FTraceHitInfo& HitInfo, class UClass* DamageType);
 	void ReplicatedEvent(const struct FName& VarName);
 	void SpawnedByKismet();
-	void STATIC_SetPhysicalCollisionProperties();
+	void SetPhysicalCollisionProperties();
 	void Destroyed();
 	void FellOutOfWorld(class UClass* dmgType);
 	void PostBeginPlay();
-	void STATIC_ResolveRBState();
+	void ResolveRBState();
 	class UPhysicalMaterial* GetKActorPhysMaterial();
 };
 
@@ -21460,14 +21461,14 @@ public:
 	void STATIC_TakeRadiusDamage(class AController* InstigatedBy, float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, bool bFullDamage, class AActor* DamageCauser, float DamageFalloffExponent);
 	void Touch(class AActor* Other, class UPrimitiveComponent* OtherComp, const struct FVector& HitLocation, const struct FVector& HitNormal);
 	void Bump(class AActor* Other, class UPrimitiveComponent* OtherComp, const struct FVector& HitNormal);
-	void STATIC_ReceiveImpulse(class APawn* Other, const struct FVector& HitLocation, const struct FVector& HitNormal);
+	void ReceiveImpulse(class APawn* Other, const struct FVector& HitLocation, const struct FVector& HitNormal);
 	void ApplyImpulse(const struct FVector& ImpulseDir, float ImpulseMag, const struct FVector& HitLocation, const struct FTraceHitInfo& HitInfo, class UClass* DamageType);
 	class AKActorFromStatic* MakeDynamic(class UStaticMeshComponent* MovableMesh);
 	void MakeStatic();
 	void STATIC_BecomeStatic();
 	void OnWakeRBPhysics();
 	void OnSleepRBPhysics();
-	void DisablePrecomputedLighting();
+	void STATIC_DisablePrecomputedLighting();
 };
 
 
@@ -21486,7 +21487,7 @@ public:
 	}
 
 
-	void STATIC_ResetComponents();
+	void ResetComponents();
 	void RecycleInternal();
 	void Recycle();
 	void Initialize();
@@ -21512,13 +21513,13 @@ public:
 	}
 
 
-	void DoKismetAttachment(class AActor* Attachment, class USeqAct_AttachToActor* Action);
-	void STATIC_OnTeleport(class USeqAct_Teleport* inAction);
-	void STATIC_OnToggle(class USeqAct_Toggle* Action);
+	void STATIC_DoKismetAttachment(class AActor* Attachment, class USeqAct_AttachToActor* Action);
+	void OnTeleport(class USeqAct_Teleport* inAction);
+	void OnToggle(class USeqAct_Toggle* Action);
 	void STATIC_TakeRadiusDamage(class AController* InstigatedBy, float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, bool bFullDamage, class AActor* DamageCauser, float DamageFalloffExponent);
 	void TakeDamage(int Damage, class AController* EventInstigator, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser);
 	void ReplicatedEvent(const struct FName& VarName);
-	void STATIC_SetMeshAndPhysAsset(class USkeletalMesh* NewMesh, class UPhysicsAsset* NewPhysAsset);
+	void SetMeshAndPhysAsset(class USkeletalMesh* NewMesh, class UPhysicsAsset* NewPhysAsset);
 	void PostBeginPlay();
 };
 
@@ -21745,62 +21746,62 @@ public:
 	}
 
 
-	void DisplayDebugProperty(TArray<struct FString>* sPropertyStrings, struct FString* sPropText, struct FString* sValueText);
-	void STATIC_OnSetVelocity(class USeqAct_SetVelocity* Action);
+	void STATIC_DisplayDebugProperty(TArray<struct FString>* sPropertyStrings, struct FString* sPropText, struct FString* sValueText);
+	void OnSetVelocity(class USeqAct_SetVelocity* Action);
 	void Speak(class USoundCue* Cue);
-	void STATIC_SetScalarParameterInterp(struct FScalarParameterInterpStruct* ScalarParameterInterp);
-	void STATIC_SetRootMotionInterpCurrentTime(float inTime, float DeltaTime, bool bUpdateSkelPose);
-	void STATIC_SetCinematicMode(bool bInCinematicMode);
+	void SetScalarParameterInterp(struct FScalarParameterInterpStruct* ScalarParameterInterp);
+	void SetRootMotionInterpCurrentTime(float inTime, float DeltaTime, bool bUpdateSkelPose);
+	void SetCinematicMode(bool bInCinematicMode);
 	void STATIC_ZeroMovementVariables();
-	void ClearPathStep();
-	void DrawPathStep(class UCanvas* C);
+	void STATIC_ClearPathStep();
+	void STATIC_DrawPathStep(class UCanvas* C);
 	void IncrementPathChild(int Cnt, class UCanvas* C);
 	void IncrementPathStep(int Cnt, class UCanvas* C);
-	class UPathGoalEvaluator* CreatePathGoalEvaluator(class UClass* GoalEvalClass);
-	class UPathConstraint* CreatePathConstraint(class UClass* ConstraintClass);
+	class UPathGoalEvaluator* STATIC_CreatePathGoalEvaluator(class UClass* GoalEvalClass);
+	class UPathConstraint* STATIC_CreatePathConstraint(class UClass* ConstraintClass);
 	void STATIC_AddGoalEvaluator(class UPathGoalEvaluator* Evaluator);
 	void STATIC_AddPathConstraint(class UPathConstraint* Constraint);
-	void ClearConstraints();
+	void STATIC_ClearConstraints();
 	void SoakPause();
 	void BecomeViewTarget(class APlayerController* PC);
 	void MessagePlayer(const struct FString& msg);
 	bool HandleTeleport(TArray<class UObject*> DestList, bool bUpdateRotation, bool bCheckOverlap, float TeleportDistance, TArray<class AVolume*> TeleportVolumes, int PreferredDestIndex);
-	void STATIC_OnTeleport(class USeqAct_Teleport* Action);
-	void STATIC_OnSetMaterial(class USeqAct_SetMaterial* Action);
+	void OnTeleport(class USeqAct_Teleport* Action);
+	void OnSetMaterial(class USeqAct_SetMaterial* Action);
 	float GetDamageScaling();
-	void DoKismetAttachment(class AActor* Attachment, class USeqAct_AttachToActor* Action);
+	void STATIC_DoKismetAttachment(class AActor* Attachment, class USeqAct_AttachToActor* Action);
 	void SpawnedByKismet();
 	bool IsStationary();
 	struct FVector GetCollisionExtent();
 	float GetCollisionHeight();
 	float GetCollisionRadius();
 	bool CheatFly();
-	bool CheatGhost();
-	bool CheatWalk();
-	void STATIC_PlayWeaponSwitch(class AWeapon* OldWeapon, class AWeapon* NewWeapon);
+	bool STATIC_CheatGhost();
+	bool STATIC_CheatWalk();
+	void PlayWeaponSwitch(class AWeapon* OldWeapon, class AWeapon* NewWeapon);
 	bool SetActiveWeapon(class AWeapon* NewWeapon, bool bForceFastClear);
 	void STATIC_TossInventory(class AInventory* Inv, const struct FVector& ForceVelocity);
 	void STATIC_ThrowActiveWeapon(bool bDestroyWeap);
-	void DrawHUD(class AHUD* H);
+	void STATIC_DrawHUD(class AHUD* H);
 	class AInventory* FindInventoryType(class UClass* DesiredClass, bool bAllowSubclass);
 	class AInventory* CreateInventory(class UClass* NewInvClass, bool bDoNotActivate);
 	void AddDefaultInventory();
 	void StopDriving(class AVehicle* V);
 	void StartDriving(class AVehicle* V);
-	bool CanThrowWeapon();
+	bool STATIC_CanThrowWeapon();
 	void Suicide();
 	class AVehicle* GetVehicleBase();
-	void STATIC_PlayLanded(float ImpactVel);
+	void PlayLanded(float ImpactVel);
 	bool CannotJumpNow();
 	void PlayFootStepSound(int FootDown, TEnumAsByte<EFootstepTypes> FootStepType);
 	void TornOff();
-	void STATIC_PlayDying(class UClass* DamageType, const struct FVector& HitLoc);
-	void STATIC_SetDyingPhysics();
+	void PlayDying(class UClass* DamageType, const struct FVector& HitLoc);
+	void SetDyingPhysics();
 	void STATIC_TurnOff();
-	void STATIC_PlayHit(float Damage, class AController* InstigatedBy, const struct FVector& HitLocation, class UClass* DamageType, const struct FVector& Momentum, const struct FTraceHitInfo& HitInfo);
-	void STATIC_PlayDyingSound();
+	void PlayHit(float Damage, class AController* InstigatedBy, const struct FVector& HitLocation, class UClass* DamageType, const struct FVector& Momentum, const struct FTraceHitInfo& HitInfo);
+	void PlayDyingSound();
 	bool DoJump(bool bUpdating, float JumpZSpeed);
-	bool CheckWaterJump(struct FVector* WallNormal);
+	bool STATIC_CheckWaterJump(struct FVector* WallNormal);
 	void STATIC_TakeDrowningDamage();
 	void BreathTimer();
 	bool STATIC_TouchingWaterVolume();
@@ -21808,57 +21809,57 @@ public:
 	void TickSpecial(float DeltaTime);
 	void Landed(const struct FVector& HitNormal, class AActor* FloorActor);
 	void Falling();
-	void DelayTriggerDeath();
-	bool Died(class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation);
+	void STATIC_DelayTriggerDeath();
+	bool STATIC_Died(class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation);
 	void STATIC_ThrowWeaponOnDeath();
 	class ATeamInfo* GetTeam();
 	unsigned char GetTeamNum();
 	void TakeDamage(int Damage, class AController* InstigatedBy, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser);
-	class AController* STATIC_SetKillInstigator(class AController* InstigatedBy, class UClass* DamageType);
-	void STATIC_NotifyTakeHit(class AController* InstigatedBy, const struct FVector& HitLocation, int Damage, class UClass* DamageType, const struct FVector& Momentum, class AActor* DamageCauser);
+	class AController* SetKillInstigator(class AController* InstigatedBy, class UClass* DamageType);
+	void NotifyTakeHit(class AController* InstigatedBy, const struct FVector& HitLocation, int Damage, class UClass* DamageType, const struct FVector& Momentum, class AActor* DamageCauser);
 	bool TakeRadiusDamageOnBones(class AController* InstigatedBy, float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, bool bFullDamage, class AActor* DamageCauser, TArray<struct FName> Bones);
-	void STATIC_PruneDamagedBoneList(TArray<struct FName>* Bones);
+	void PruneDamagedBoneList(TArray<struct FName>* Bones);
 	bool HealDamage(int Amount, class AController* Healer, class UClass* DamageType);
 	void STATIC_AdjustDamage(class AController* InstigatedBy, const struct FVector& HitLocation, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser, int* InDamage, struct FVector* Momentum);
-	void STATIC_SetMovementPhysics();
+	void SetMovementPhysics();
 	void Gasp();
-	void STATIC_OnGiveInventory(class USeqAct_GiveInventory* inAction);
-	void STATIC_OnAssignController(class USeqAct_AssignController* inAction);
+	void OnGiveInventory(class USeqAct_GiveInventory* inAction);
+	void OnAssignController(class USeqAct_AssignController* inAction);
 	void ReceivedNewEvent(class USequenceEvent* Evt);
-	void STATIC_SpawnDefaultController();
+	void SpawnDefaultController();
 	void PostBeginPlay();
 	void PreBeginPlay();
 	void Destroyed();
-	void DetachFromController(bool bDestroyController);
-	void CrushedBy(class APawn* OtherPawn);
-	bool CanBeBaseForPawn(class APawn* aPawn);
+	void STATIC_DetachFromController(bool bDestroyController);
+	void STATIC_CrushedBy(class APawn* OtherPawn);
+	bool STATIC_CanBeBaseForPawn(class APawn* aPawn);
 	void BaseChange();
 	void StuckOnPawn(class APawn* OtherPawn);
 	void JumpOffPawn();
 	void gibbedBy(class AActor* Other);
 	void EncroachedBy(class AActor* Other);
 	bool EncroachingOn(class AActor* Other);
-	void FaceRotation(const struct FRotator& NewRotation, float DeltaTime);
+	void STATIC_FaceRotation(const struct FRotator& NewRotation, float DeltaTime);
 	void UpdatePawnRotation(const struct FRotator& NewRotation);
-	void ClientSetRotation(const struct FRotator& NewRotation);
+	void STATIC_ClientSetRotation(const struct FRotator& NewRotation);
 	void ClientRestart();
-	void STATIC_Restart();
+	void Restart();
 	void STATIC_TakeFallingDamage();
 	void KilledBy(class APawn* EventInstigator);
 	void AddVelocity(const struct FVector& NewVelocity, const struct FVector& HitLocation, class UClass* DamageType, const struct FTraceHitInfo& HitInfo);
 	void HandleMomentum(const struct FVector& Momentum, const struct FVector& HitLocation, class UClass* DamageType, const struct FTraceHitInfo& HitInfo);
 	void StartCrouch(float HeightAdjust);
 	void EndCrouch(float HeightAdjust);
-	void STATIC_ShouldCrouch(bool bCrouch);
+	void ShouldCrouch(bool bCrouch);
 	void STATIC_UnCrouch();
 	void OutsideWorldBounds();
 	void FellOutOfWorld(class UClass* dmgType);
 	void ClientMessage(const struct FString& S, const struct FName& Type);
 	void HandlePickup(class AInventory* Inv);
 	bool LineOfSightTo(class AActor* Other);
-	void STATIC_SetMoveTarget(class AActor* NewTarget);
+	void SetMoveTarget(class AActor* NewTarget);
 	bool InGodMode();
-	void STATIC_SetViewRotation(const struct FRotator& NewRotation);
+	void SetViewRotation(const struct FRotator& NewRotation);
 	struct FRotator GetAdjustedAimFor(class AWeapon* W, const struct FVector& StartFireLoc);
 	bool InFreeCam();
 	struct FRotator GetBaseAimRotation(class AWeapon* W, bool bIgnoreAutoLock);
@@ -21869,58 +21870,58 @@ public:
 	bool IsPlayerPawn();
 	bool IsLocallyControlled();
 	bool IsHumanControlled(class AController* PawnController);
-	void DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos);
+	void STATIC_DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos);
 	void ClimbLadder(class ALadderVolume* L);
-	void EndClimbLadder(class ALadderVolume* OldLadder);
-	bool CanSplash();
-	float STATIC_RangedAttackTime();
-	bool STATIC_RecommendLongRangedAttack();
-	bool CanGrabLadder();
-	void DropToGround();
+	void STATIC_EndClimbLadder(class ALadderVolume* OldLadder);
+	bool STATIC_CanSplash();
+	float RangedAttackTime();
+	bool RecommendLongRangedAttack();
+	bool STATIC_CanGrabLadder();
+	void STATIC_DropToGround();
 	struct FName GetDefaultCameraMode(class APlayerController* RequestedBy);
 	void STATIC_UnPossessed();
 	void STATIC_UpdateControllerOnPossess(bool bVehicleTransition);
-	void STATIC_PossessedBy(class AController* C, bool bVehicleTransition);
-	void STATIC_NotifyTeamChanged();
-	void STATIC_PlayTeleportEffect(bool bOut, bool bSound);
+	void PossessedBy(class AController* C, bool bVehicleTransition);
+	void NotifyTeamChanged();
+	void PlayTeleportEffect(bool bOut, bool bSound);
 	struct FString GetHumanReadableName();
 	bool NeedToTurn(const struct FVector& targ);
 	bool IsFiring();
 	bool HasRangedAttack();
-	bool FireOnRelease();
+	bool STATIC_FireOnRelease();
 	bool STATIC_TooCloseToAttack(class AActor* Other);
-	bool CanAttack(class AActor* Other);
+	bool STATIC_CanAttack(class AActor* Other);
 	bool STATIC_BotFire(bool bFinished);
 	void STATIC_WeaponStoppedFiring(class AWeapon* InWeapon, bool bViaReplication);
 	void STATIC_WeaponFired(class AWeapon* InWeapon, bool bViaReplication, const struct FVector& HitLocation);
-	void FlashLocationUpdated(class AWeapon* InWeapon, const struct FVector& InFlashLocation, bool bViaReplication);
-	void ClearFlashLocation(class AWeapon* InWeapon);
-	void ClearFlashCount(class AWeapon* InWeapon);
-	void FlashCountUpdated(class AWeapon* InWeapon, unsigned char InFlashCount, bool bViaReplication);
+	void STATIC_FlashLocationUpdated(class AWeapon* InWeapon, const struct FVector& InFlashLocation, bool bViaReplication);
+	void STATIC_ClearFlashLocation(class AWeapon* InWeapon);
+	void STATIC_ClearFlashCount(class AWeapon* InWeapon);
+	void STATIC_FlashCountUpdated(class AWeapon* InWeapon, unsigned char InFlashCount, bool bViaReplication);
 	void IncrementFlashCount(class AWeapon* InWeapon, unsigned char InFiringMode);
-	void FiringModeUpdated(class AWeapon* InWeapon, unsigned char InFiringMode, bool bViaReplication);
-	void STATIC_SetFiringMode(class AWeapon* InWeapon, unsigned char InFiringMode);
+	void STATIC_FiringModeUpdated(class AWeapon* InWeapon, unsigned char InFiringMode, bool bViaReplication);
+	void SetFiringMode(class AWeapon* InWeapon, unsigned char InFiringMode);
 	unsigned char GetWeaponFiringMode(class AWeapon* InWeapon);
 	void StopFire();
 	void StartFire();
 	bool StopFiring();
 	void Reset();
-	void STATIC_PlayerChangedTeam();
-	void STATIC_SetBaseEyeheight();
+	void PlayerChangedTeam();
+	void SetBaseEyeheight();
 	bool SpecialMoveThruEdge(TEnumAsByte<ENavMeshEdgeType> EdgeType, int Dir, const struct FVector& MoveStart, const struct FVector& MoveDest, class AActor* RelActor, int RelItem, class UNavigationHandle* NavHandle);
-	bool STATIC_SpecialMoveTo(class ANavigationPoint* Start, class ANavigationPoint* End, class AActor* Next);
+	bool SpecialMoveTo(class ANavigationPoint* Start, class ANavigationPoint* End, class AActor* Next);
 	float GetAirControl();
 	bool STATIC_TermRagdoll();
 	bool InitRagdoll();
 	void GetBoundingCylinder(float* CollisionRadius, float* CollisionHeight);
-	bool STATIC_ReachedDesiredRotation();
-	void STATIC_SetPushesRigidBodies(bool NewPush);
-	void ForceCrouch();
-	bool STATIC_ReachedPoint(const struct FVector& Point, class AActor* NewAnchor);
+	bool ReachedDesiredRotation();
+	void SetPushesRigidBodies(bool NewPush);
+	void STATIC_ForceCrouch();
+	bool ReachedPoint(const struct FVector& Point, class AActor* NewAnchor);
 	bool ReachedDestination(class AActor* Goal);
 	class ANavigationPoint* GetBestAnchor(class AActor* TestActor, const struct FVector& TestLocation, bool bStartPoint, bool bOnlyCheckVisible, float* out_Dist);
-	void STATIC_SetAnchor(class ANavigationPoint* NewAnchor);
-	void STATIC_SetRemoteViewPitch(int NewRemoteViewPitch);
+	void SetAnchor(class ANavigationPoint* NewAnchor);
+	void SetRemoteViewPitch(int NewRemoteViewPitch);
 	bool IsInvisibleToAI();
 	bool IsValidEnemyTargetFor(class APlayerReplicationInfo* PRI, bool bNoPRIisEnemy);
 	float GetFallDuration();
@@ -21932,16 +21933,16 @@ public:
 	void SetSkelControlScale(const struct FName& SkelControlName, float Scale);
 	void SetMorphWeight(const struct FName& MorphNodeName, float MorphWeight);
 	class UFaceFXAsset* GetActorFaceFXAsset();
-	void FaceFXAudioFinished(class UAudioComponent* AC);
-	void STATIC_OnPlayFaceFXAnim(class USeqAct_PlayFaceFXAnim* inAction);
-	bool CanActorPlayFaceFXAnim();
+	void STATIC_FaceFXAudioFinished(class UAudioComponent* AC);
+	void OnPlayFaceFXAnim(class USeqAct_PlayFaceFXAnim* inAction);
+	bool STATIC_CanActorPlayFaceFXAnim();
 	bool IsActorPlayingFaceFXAnim();
 	class UAudioComponent* GetFaceFXAudioComponent();
 	void StopActorFaceFXAnim();
 	bool PlayActorFaceFXAnim(class UFaceFXAnimSet* AnimSet, const struct FString& GroupName, const struct FString& SeqName, class USoundCue* SoundCueToPlay, class UAkEvent* AkEventToPlay);
 	void MAT_FinishAIGroup();
 	void MAT_BeginAIGroup(const struct FVector& StartLoc, const struct FRotator& StartRot);
-	void FinishAIGroup();
+	void STATIC_FinishAIGroup();
 	void STATIC_BeginAIGroup();
 	void InterpolationFinished(class USeqAct_Interp* InterpAction);
 	void InterpolationStarted(class USeqAct_Interp* InterpAction, class UInterpGroupInst* GroupInst);
@@ -21960,17 +21961,17 @@ public:
 	void STATIC_AddAnimSets(TArray<class UAnimSet*>* CustomAnimSets);
 	void BuildScriptAnimSetList();
 	void STATIC_UpdateAnimSetList();
-	void ClearAnimNodes();
+	void STATIC_ClearAnimNodes();
 	void CacheAnimNodes();
 	void PostInitAnimTree(class USkeletalMeshComponent* SkelComp);
 	bool IsDesiredRotationLocked();
 	bool IsDesiredRotationInUse();
-	void CheckDesiredRotation();
-	void STATIC_ResetDesiredRotation();
+	void STATIC_CheckDesiredRotation();
+	void ResetDesiredRotation();
 	void LockDesiredRotation(bool Lock, bool InUnlockWhenReached);
-	bool STATIC_SetDesiredRotation(const struct FRotator& TargetDesiredRotation, bool InLockDesiredRotation, bool InUnlockWhenReached, float InterpolationTime, bool bResetRotationRate);
-	void FlushDeferredMoves();
-	bool STATIC_PickWallAdjust(const struct FVector& WallHitNormal, class AActor* HitActor);
+	bool SetDesiredRotation(const struct FRotator& TargetDesiredRotation, bool InLockDesiredRotation, bool InUnlockWhenReached, float InterpolationTime, bool bResetRotationRate);
+	void STATIC_FlushDeferredMoves();
+	bool PickWallAdjust(const struct FVector& WallHitNormal, class AActor* HitActor);
 };
 
 
@@ -22024,57 +22025,57 @@ public:
 
 
 	void STATIC_ZeroMovementVariables();
-	void STATIC_NotifyDriverTakeHit(class AController* InstigatedBy, const struct FVector& HitLocation, int Damage, class UClass* DamageType, const struct FVector& Momentum);
+	void NotifyDriverTakeHit(class AController* InstigatedBy, const struct FVector& HitLocation, int Damage, class UClass* DamageType, const struct FVector& Momentum);
 	void ReplicatedEvent(const struct FName& VarName);
-	void DrivingStatusChanged();
-	void STATIC_SetDriving(bool B);
+	void STATIC_DrivingStatusChanged();
+	void SetDriving(bool B);
 	struct FVector GetEntryLocation();
-	void CrushedBy(class APawn* OtherPawn);
-	void STATIC_PancakeOther(class APawn* Other);
+	void STATIC_CrushedBy(class APawn* OtherPawn);
+	void PancakeOther(class APawn* Other);
 	bool EncroachingOn(class AActor* Other);
 	class AController* GetCollisionDamageInstigator();
 	void EncroachedBy(class AActor* Other);
-	void FaceRotation(const struct FRotator& NewRotation, float DeltaTime);
+	void STATIC_FaceRotation(const struct FRotator& NewRotation, float DeltaTime);
 	struct FName GetDefaultCameraMode(class APlayerController* RequestedBy);
-	void STATIC_PlayDying(class UClass* DamageType, const struct FVector& HitLoc);
-	void DriverDied(class UClass* DamageType);
-	bool Died(class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation);
+	void PlayDying(class UClass* DamageType, const struct FVector& HitLoc);
+	void STATIC_DriverDied(class UClass* DamageType);
+	bool STATIC_Died(class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation);
 	void STATIC_ThrowActiveWeapon(bool bDestroyWeap);
 	void STATIC_AdjustDriverDamage(class AController* InstigatedBy, const struct FVector& HitLocation, class UClass* DamageType, int* Damage, struct FVector* Momentum);
 	void TakeDamage(int Damage, class AController* EventInstigator, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser);
-	class AController* STATIC_SetKillInstigator(class AController* InstigatedBy, class UClass* DamageType);
+	class AController* SetKillInstigator(class AController* InstigatedBy, class UClass* DamageType);
 	void STATIC_UnPossessed();
 	bool STATIC_TryExitPos(class APawn* ExitingDriver, const struct FVector& ExitPos, bool bMustFindGround);
-	bool FindAutoExit(class APawn* ExitingDriver);
-	bool STATIC_PlaceExitingDriver(class APawn* ExitingDriver);
-	void DriverLeft();
-	void STATIC_SetInputs(float InForward, float InStrafe, float InUp);
+	bool STATIC_FindAutoExit(class APawn* ExitingDriver);
+	bool PlaceExitingDriver(class APawn* ExitingDriver);
+	void STATIC_DriverLeft();
+	void SetInputs(float InForward, float InStrafe, float InUp);
 	bool DriverLeave(bool bForceLeave);
 	struct FRotator GetExitRotation(class AController* C);
 	bool ContinueOnFoot();
-	void DetachDriver(class APawn* P);
+	void STATIC_DetachDriver(class APawn* P);
 	void STATIC_AttachDriver(class APawn* P);
-	void EntryAnnouncement(class AController* C);
-	void STATIC_PossessedBy(class AController* C, bool bVehicleTransition);
-	bool DriverEnter(class APawn* P);
+	void STATIC_EntryAnnouncement(class AController* C);
+	void PossessedBy(class AController* C, bool bVehicleTransition);
+	bool STATIC_DriverEnter(class APawn* P);
 	bool STATIC_TryToDrive(class APawn* P);
 	bool STATIC_AnySeatAvailable();
-	bool CanEnterVehicle(class APawn* P);
-	void Destroyed_HandleDriver();
+	bool STATIC_CanEnterVehicle(class APawn* P);
+	void STATIC_Destroyed_HandleDriver();
 	void Destroyed();
 	bool CheatFly();
-	bool CheatGhost();
-	bool CheatWalk();
+	bool STATIC_CheatGhost();
+	bool STATIC_CheatWalk();
 	void PostBeginPlay();
-	void STATIC_SetBaseEyeheight();
-	void STATIC_PlayerChangedTeam();
-	void DriverRadiusDamage(float DamageAmount, float DamageRadius, class AController* EventInstigator, class UClass* DamageType, float Momentum, const struct FVector& HitLocation, class AActor* DamageCauser, float DamageFalloffExponent);
+	void SetBaseEyeheight();
+	void PlayerChangedTeam();
+	void STATIC_DriverRadiusDamage(float DamageAmount, float DamageRadius, class AController* EventInstigator, class UClass* DamageType, float Momentum, const struct FVector& HitLocation, class AActor* DamageCauser, float DamageFalloffExponent);
 	void STATIC_TakeRadiusDamage(class AController* InstigatedBy, float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, bool bFullDamage, class AActor* DamageCauser, float DamageFalloffExponent);
 	struct FVector GetTargetLocation(class AActor* RequestedBy, bool bRequestAlternateLoc);
 	float GetMaxRiseForce();
 	void Suicide();
-	void DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos);
-	void STATIC_NotifyTeamChanged();
+	void STATIC_DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos);
+	void NotifyTeamChanged();
 };
 
 
@@ -22149,32 +22150,32 @@ public:
 
 	void GetSVehicleDebug(TArray<struct FString>* DebugInfo);
 	float HermiteEval(float Slip);
-	void DisplayWheelsDebug(class AHUD* HUD, float YL);
-	void DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos);
-	void STATIC_PostTeleport(class ATeleporter* OutTeleporter);
+	void STATIC_DisplayWheelsDebug(class AHUD* HUD, float YL);
+	void STATIC_DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos);
+	void PostTeleport(class ATeleporter* OutTeleporter);
 	void SuspensionHeavyShift(float Delta);
 	void RigidBodyCollision(class UPrimitiveComponent* HitComponent, class UPrimitiveComponent* OtherComponent, int ContactIndex, struct FCollisionImpactData* RigidCollisionData);
-	void DrivingStatusChanged();
+	void STATIC_DrivingStatusChanged();
 	void STATIC_VehiclePlayExitSound();
 	void STATIC_VehiclePlayEnterSound();
-	void STATIC_StopEngineSoundTimed();
-	void STATIC_StopEngineSound();
-	void STATIC_StartEngineSoundTimed();
-	void STATIC_StartEngineSound();
+	void StopEngineSoundTimed();
+	void StopEngineSound();
+	void StartEngineSoundTimed();
+	void StartEngineSound();
 	bool HasWheelsOnGround();
 	bool STATIC_TryToDrive(class APawn* P);
 	struct FName GetDefaultCameraMode(class APlayerController* RequestedBy);
-	bool CalcCamera(float fDeltaTime, struct FVector* out_CamLoc, struct FRotator* out_CamRot, float* out_FOV);
-	bool Died(class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation);
+	bool STATIC_CalcCamera(float fDeltaTime, struct FVector* out_CamLoc, struct FRotator* out_CamRot, float* out_FOV);
+	bool STATIC_Died(class AController* Killer, class UClass* DamageType, const struct FVector& HitLocation);
 	void AddVelocity(const struct FVector& NewVelocity, const struct FVector& HitLocation, class UClass* DamageType, const struct FTraceHitInfo& HitInfo);
 	void InitVehicleRagdoll(class USkeletalMesh* RagdollMesh, class UPhysicsAsset* RagdollPhysAsset, const struct FVector& ActorMove, bool bClearAnimTree);
 	void STATIC_TakeRadiusDamage(class AController* InstigatedBy, float BaseDamage, float DamageRadius, class UClass* DamageType, float Momentum, const struct FVector& HurtOrigin, bool bFullDamage, class AActor* DamageCauser, float DamageFalloffExponent);
-	void STATIC_StopVehicleSounds();
+	void StopVehicleSounds();
 	void STATIC_TurnOff();
 	void Destroyed();
 	void PostInitAnimTree(class USkeletalMeshComponent* SkelComp);
 	void PostBeginPlay();
-	void STATIC_SetWheelCollision(int WheelNum, bool bCollision);
+	void SetWheelCollision(int WheelNum, bool bCollision);
 	bool IsSleeping();
 	void STATIC_AddTorque(const struct FVector& Torque);
 	void STATIC_AddImpulse(const struct FVector& Impulse);
@@ -22204,12 +22205,12 @@ public:
 	}
 
 
-	void STATIC_OnToggleConstraintDrive(class USeqAct_ToggleConstraintDrive* Action);
-	void STATIC_OnToggle(class USeqAct_Toggle* Action);
-	void STATIC_OnDestroy(class USeqAct_Destroy* Action);
+	void OnToggleConstraintDrive(class USeqAct_ToggleConstraintDrive* Action);
+	void OnToggle(class USeqAct_Toggle* Action);
+	void OnDestroy(class USeqAct_Destroy* Action);
 	void STATIC_TermConstraint();
 	void InitConstraint(class AActor* Actor1, class AActor* Actor2, const struct FName& Actor1Bone, const struct FName& Actor2Bone, float BreakThreshold);
-	void STATIC_SetDisableCollision(bool NewDisableCollision);
+	void SetDisableCollision(bool NewDisableCollision);
 };
 
 
@@ -22234,8 +22235,8 @@ public:
 
 
 	void ReplicatedEvent(const struct FName& VarName);
-	void STATIC_OnToggle(class USeqAct_Toggle* inAction);
-	void FireLineImpulse();
+	void OnToggle(class USeqAct_Toggle* inAction);
+	void STATIC_FireLineImpulse();
 };
 
 
@@ -22256,7 +22257,7 @@ public:
 
 
 	void ReplicatedEvent(const struct FName& VarName);
-	void STATIC_OnToggle(class USeqAct_Toggle* inAction);
+	void OnToggle(class USeqAct_Toggle* inAction);
 };
 
 
@@ -22275,7 +22276,7 @@ public:
 	}
 
 
-	void STATIC_OnToggle(class USeqAct_Toggle* Action);
+	void OnToggle(class USeqAct_Toggle* Action);
 };
 
 
@@ -22303,7 +22304,7 @@ public:
 	}
 
 
-	void STATIC_OnSetWorldAttractorParam(class USeqAct_SetWorldAttractorParam* Action);
+	void OnSetWorldAttractorParam(class USeqAct_SetWorldAttractorParam* Action);
 };
 
 
@@ -22343,7 +22344,7 @@ public:
 	}
 
 
-	void FireImpulse(const struct FVector& Origin);
+	void STATIC_FireImpulse(const struct FVector& Origin);
 };
 
 
@@ -22379,11 +22380,11 @@ public:
 
 
 	struct FQuat GetOrientation();
-	void STATIC_SetOrientation(struct FQuat* NewOrientation);
+	void SetOrientation(struct FQuat* NewOrientation);
 	void STATIC_UpdateSmoothLocation(struct FVector* NewLocation);
-	void STATIC_SetSmoothLocation(const struct FVector& NewLocation, float MoveTime);
-	void STATIC_SetLocation(const struct FVector& NewLocation);
-	void STATIC_ReleaseComponent();
+	void SetSmoothLocation(const struct FVector& NewLocation, float MoveTime);
+	void SetLocation(const struct FVector& NewLocation);
+	void ReleaseComponent();
 	void GrabComponent(class UPrimitiveComponent* Component, const struct FName& InBoneName, const struct FVector& GrabLocation, bool bConstrainRotation);
 };
 
@@ -22419,7 +22420,7 @@ public:
 
 
 	void Clear();
-	void STATIC_SetComponents(class UPrimitiveComponent* InComponent1, const struct FName& InBoneName1, const struct FVector& Position1, class UPrimitiveComponent* InComponent2, const struct FName& InBoneName2, const struct FVector& Position2);
+	void SetComponents(class UPrimitiveComponent* InComponent1, const struct FName& InBoneName1, const struct FVector& Position1, class UPrimitiveComponent* InComponent2, const struct FName& InBoneName2, const struct FVector& Position2);
 };
 
 
@@ -22600,8 +22601,8 @@ public:
 
 
 	class UPhysicalMaterialPropertyBase* GetPhysicalMaterialProperty(class UClass* DesiredClass);
-	void FindFractureSounds(class USoundCue** OutSoundExplosion, class USoundCue** OutSoundSingle);
-	struct FPhysEffectInfo FindPhysEffectInfo(TEnumAsByte<EPhysEffectType> Type);
+	void STATIC_FindFractureSounds(class USoundCue** OutSoundExplosion, class USoundCue** OutSoundSingle);
+	struct FPhysEffectInfo STATIC_FindPhysEffectInfo(TEnumAsByte<EPhysEffectType> Type);
 };
 
 
@@ -22638,7 +22639,7 @@ public:
 	}
 
 
-	int FindBodyIndex(const struct FName& BodyName);
+	int STATIC_FindBodyIndex(const struct FName& BodyName);
 };
 
 
@@ -22668,23 +22669,23 @@ public:
 	}
 
 
-	class URB_ConstraintInstance* FindConstraintInstance(const struct FName& ConName, class UPhysicsAsset* InAsset);
-	class URB_BodyInstance* FindBodyInstance(const struct FName& BodyName, class UPhysicsAsset* InAsset);
-	void STATIC_SetFullAnimWeightBonesFixed(bool bNewFixed, class USkeletalMeshComponent* SkelMesh);
-	void STATIC_SetFullAnimWeightBlockRigidBody(bool bNewBlockRigidBody, class USkeletalMeshComponent* SkelMesh);
-	void STATIC_SetNamedBodiesBlockRigidBody(bool bNewBlockRigidBody, TArray<struct FName> BoneNames, class USkeletalMeshComponent* SkelMesh);
-	void STATIC_SetNamedRBBoneSprings(bool bEnable, TArray<struct FName> BoneNames, float InBoneLinearSpring, float InBoneAngularSpring, class USkeletalMeshComponent* SkelMeshComp);
-	void STATIC_SetNamedMotorsAngularVelocityDrive(bool bEnableSwingDrive, bool bEnableTwistDrive, TArray<struct FName> BoneNames, class USkeletalMeshComponent* SkelMeshComp, bool bSetOtherBodiesToComplement);
-	void STATIC_SetNamedMotorsAngularPositionDrive(bool bEnableSwingDrive, bool bEnableTwistDrive, TArray<struct FName> BoneNames, class USkeletalMeshComponent* SkelMeshComp, bool bSetOtherBodiesToComplement);
-	void STATIC_SetAllMotorsAngularDriveParams(float InSpring, float InDamping, float InForceLimit, class USkeletalMeshComponent* SkelMesh, bool bSkipFullAnimWeightBodies);
-	void STATIC_SetAllMotorsAngularVelocityDrive(bool bEnableSwingDrive, bool bEnableTwistDrive, class USkeletalMeshComponent* SkelMeshComp, bool bSkipFullAnimWeightBodies);
-	void STATIC_SetAllMotorsAngularPositionDrive(bool bEnableSwingDrive, bool bEnableTwistDrive, class USkeletalMeshComponent* SkelMesh, bool bSkipFullAnimWeightBodies);
-	void ForceAllBodiesBelowUnfixed(class UPhysicsAsset* InAsset, class USkeletalMeshComponent* InSkelMesh, bool InbInstanceAlwaysFullAnimWeight, struct FName* InBoneName);
-	void STATIC_SetNamedBodiesFixed(bool bNewFixed, TArray<struct FName> BoneNames, class USkeletalMeshComponent* SkelMesh, bool bSetOtherBodiesToComplement, bool bSkipFullAnimWeightBodies);
-	void STATIC_SetAllBodiesFixed(bool bNewFixed);
+	class URB_ConstraintInstance* STATIC_FindConstraintInstance(const struct FName& ConName, class UPhysicsAsset* InAsset);
+	class URB_BodyInstance* STATIC_FindBodyInstance(const struct FName& BodyName, class UPhysicsAsset* InAsset);
+	void SetFullAnimWeightBonesFixed(bool bNewFixed, class USkeletalMeshComponent* SkelMesh);
+	void SetFullAnimWeightBlockRigidBody(bool bNewBlockRigidBody, class USkeletalMeshComponent* SkelMesh);
+	void SetNamedBodiesBlockRigidBody(bool bNewBlockRigidBody, TArray<struct FName> BoneNames, class USkeletalMeshComponent* SkelMesh);
+	void SetNamedRBBoneSprings(bool bEnable, TArray<struct FName> BoneNames, float InBoneLinearSpring, float InBoneAngularSpring, class USkeletalMeshComponent* SkelMeshComp);
+	void SetNamedMotorsAngularVelocityDrive(bool bEnableSwingDrive, bool bEnableTwistDrive, TArray<struct FName> BoneNames, class USkeletalMeshComponent* SkelMeshComp, bool bSetOtherBodiesToComplement);
+	void SetNamedMotorsAngularPositionDrive(bool bEnableSwingDrive, bool bEnableTwistDrive, TArray<struct FName> BoneNames, class USkeletalMeshComponent* SkelMeshComp, bool bSetOtherBodiesToComplement);
+	void SetAllMotorsAngularDriveParams(float InSpring, float InDamping, float InForceLimit, class USkeletalMeshComponent* SkelMesh, bool bSkipFullAnimWeightBodies);
+	void SetAllMotorsAngularVelocityDrive(bool bEnableSwingDrive, bool bEnableTwistDrive, class USkeletalMeshComponent* SkelMeshComp, bool bSkipFullAnimWeightBodies);
+	void SetAllMotorsAngularPositionDrive(bool bEnableSwingDrive, bool bEnableTwistDrive, class USkeletalMeshComponent* SkelMesh, bool bSkipFullAnimWeightBodies);
+	void STATIC_ForceAllBodiesBelowUnfixed(class UPhysicsAsset* InAsset, class USkeletalMeshComponent* InSkelMesh, bool InbInstanceAlwaysFullAnimWeight, struct FName* InBoneName);
+	void SetNamedBodiesFixed(bool bNewFixed, TArray<struct FName> BoneNames, class USkeletalMeshComponent* SkelMesh, bool bSetOtherBodiesToComplement, bool bSkipFullAnimWeightBodies);
+	void SetAllBodiesFixed(bool bNewFixed);
 	float GetTotalMassBelowBone(const struct FName& InBoneName, class UPhysicsAsset* InAsset, class USkeletalMesh* InSkelMesh);
-	void STATIC_SetAngularDriveScale(float InAngularSpringScale, float InAngularDampingScale, float InAngularForceLimitScale);
-	void STATIC_SetLinearDriveScale(float InLinearSpringScale, float InLinearDampingScale, float InLinearForceLimitScale);
+	void SetAngularDriveScale(float InAngularSpringScale, float InAngularDampingScale, float InAngularForceLimitScale);
+	void SetLinearDriveScale(float InLinearSpringScale, float InLinearDampingScale, float InLinearForceLimitScale);
 };
 
 
@@ -22750,13 +22751,13 @@ public:
 
 	void STATIC_UpdateDampingProperties();
 	void STATIC_UpdateMassProperties(class URB_BodySetup* Setup);
-	void STATIC_SetContactReportForceThreshold(float Threshold);
-	void EnableCollisionResponse(bool bEnableResponse);
-	void STATIC_SetPhysMaterialOverride(class UPhysicalMaterial* NewPhysMaterial);
-	void STATIC_SetBlockRigidBody(bool bNewBlockRigidBody);
-	void STATIC_SetBoneSpringTarget(bool bTeleport, struct FMatrix* InBoneTarget);
-	void STATIC_SetBoneSpringParams(float InLinearSpring, float InLinearDamping, float InAngularSpring, float InAngularDamping);
-	void EnableBoneSpring(bool bInEnableLinear, bool bInEnableAngular, struct FMatrix* InBoneTarget);
+	void SetContactReportForceThreshold(float Threshold);
+	void STATIC_EnableCollisionResponse(bool bEnableResponse);
+	void SetPhysMaterialOverride(class UPhysicalMaterial* NewPhysMaterial);
+	void SetBlockRigidBody(bool bNewBlockRigidBody);
+	void SetBoneSpringTarget(bool bTeleport, struct FMatrix* InBoneTarget);
+	void SetBoneSpringParams(float InLinearSpring, float InLinearDamping, float InAngularSpring, float InAngularDamping);
+	void STATIC_EnableBoneSpring(bool bInEnableLinear, bool bInEnableAngular, struct FMatrix* InBoneTarget);
 	struct FVector GetUnrealWorldVelocityAtPoint(const struct FVector& Point);
 	struct FVector GetUnrealWorldAngularVelocity();
 	struct FVector GetUnrealWorldVelocity();
@@ -22764,7 +22765,7 @@ public:
 	class UPhysicsAssetInstance* GetPhysicsAssetInstance();
 	bool IsValidBodyInstance();
 	bool IsFixed();
-	void STATIC_SetFixed(bool bNewFixed);
+	void SetFixed(bool bNewFixed);
 	float GetBodyMass();
 };
 
@@ -22813,18 +22814,18 @@ public:
 
 
 	void MoveKinActorTransform(struct FMatrix* NewTM);
-	void STATIC_SetLinearLimitSize(float NewLimitSize);
-	void STATIC_SetAngularDOFLimitScale(float InSwing1LimitScale, float InSwing2LimitScale, float InTwistLimitScale, class URB_ConstraintSetup* InSetup);
-	void STATIC_SetAngularDriveParams(float InSpring, float InDamping, float InForceLimit);
-	void STATIC_SetAngularVelocityTarget(const struct FVector& InVelTarget);
-	void STATIC_SetAngularPositionTarget(struct FQuat* InPosTarget);
-	void STATIC_SetLinearDriveParams(float InSpring, float InDamping, float InForceLimit);
-	void STATIC_SetLinearVelocityTarget(const struct FVector& InVelTarget);
-	void STATIC_SetLinearPositionTarget(const struct FVector& InPosTarget);
-	void STATIC_SetAngularVelocityDrive(bool bEnableSwingDrive, bool bEnableTwistDrive);
-	void STATIC_SetAngularPositionDrive(bool bEnableSwingDrive, bool bEnableTwistDrive);
-	void STATIC_SetLinearVelocityDrive(bool bEnableXDrive, bool bEnableYDrive, bool bEnableZDrive);
-	void STATIC_SetLinearPositionDrive(bool bEnableXDrive, bool bEnableYDrive, bool bEnableZDrive);
+	void SetLinearLimitSize(float NewLimitSize);
+	void SetAngularDOFLimitScale(float InSwing1LimitScale, float InSwing2LimitScale, float InTwistLimitScale, class URB_ConstraintSetup* InSetup);
+	void SetAngularDriveParams(float InSpring, float InDamping, float InForceLimit);
+	void SetAngularVelocityTarget(const struct FVector& InVelTarget);
+	void SetAngularPositionTarget(struct FQuat* InPosTarget);
+	void SetLinearDriveParams(float InSpring, float InDamping, float InForceLimit);
+	void SetLinearVelocityTarget(const struct FVector& InVelTarget);
+	void SetLinearPositionTarget(const struct FVector& InPosTarget);
+	void SetAngularVelocityDrive(bool bEnableSwingDrive, bool bEnableTwistDrive);
+	void SetAngularPositionDrive(bool bEnableSwingDrive, bool bEnableTwistDrive);
+	void SetLinearVelocityDrive(bool bEnableXDrive, bool bEnableYDrive, bool bEnableZDrive);
+	void SetLinearPositionDrive(bool bEnableXDrive, bool bEnableYDrive, bool bEnableZDrive);
 	struct FVector GetConstraintLocation();
 	class UPhysicsAssetInstance* GetPhysicsAssetInstance();
 	void STATIC_TermConstraint();
@@ -23085,7 +23086,7 @@ public:
 	}
 
 
-	bool STATIC_StopsProjectile(class AProjectile* P);
+	bool StopsProjectile(class AProjectile* P);
 	void PostBeginPlay();
 };
 
@@ -23131,8 +23132,8 @@ public:
 	}
 
 
-	void STATIC_OnToggle(class USeqAct_Toggle* inAction);
-	void DoInitRBPhys();
+	void OnToggle(class USeqAct_Toggle* inAction);
+	void STATIC_DoInitRBPhys();
 };
 
 
@@ -23176,7 +23177,7 @@ public:
 	}
 
 
-	void DoInitRBPhys();
+	void STATIC_DoInitRBPhys();
 };
 
 
@@ -23214,7 +23215,7 @@ public:
 	}
 
 
-	void DoInitRBPhys();
+	void STATIC_DoInitRBPhys();
 };
 
 
@@ -23239,7 +23240,7 @@ public:
 	}
 
 
-	void DoInitRBPhys();
+	void STATIC_DoInitRBPhys();
 };
 
 
@@ -23270,7 +23271,7 @@ public:
 	}
 
 
-	void DoInitRBPhys();
+	void STATIC_DoInitRBPhys();
 };
 
 
@@ -23320,7 +23321,7 @@ public:
 	}
 
 
-	void DoInitRBPhys();
+	void STATIC_DoInitRBPhys();
 };
 
 
@@ -23479,7 +23480,7 @@ public:
 	}
 
 
-	void STATIC_OnToggle(class USeqAct_Toggle* inAction);
+	void OnToggle(class USeqAct_Toggle* inAction);
 };
 
 
@@ -23512,7 +23513,7 @@ public:
 	}
 
 
-	void STATIC_OnToggle(class USeqAct_Toggle* inAction);
+	void OnToggle(class USeqAct_Toggle* inAction);
 };
 
 
@@ -23543,7 +23544,7 @@ public:
 	}
 
 
-	void STATIC_OnToggle(class USeqAct_Toggle* inAction);
+	void OnToggle(class USeqAct_Toggle* inAction);
 };
 
 
@@ -23575,7 +23576,7 @@ public:
 	}
 
 
-	void DoInitRBPhys();
+	void STATIC_DoInitRBPhys();
 };
 
 
@@ -23930,13 +23931,13 @@ public:
 	}
 
 
-	void ForceActivateOutput(int OutputIdx);
-	void ForceActivateInput(int InputIdx);
+	void STATIC_ForceActivateOutput(int OutputIdx);
+	void STATIC_ForceActivateInput(int InputIdx);
 	class AController* GetController(class AActor* TheActor);
 	class APawn* GetPawn(class AActor* TheActor);
 	void Reset();
-	void STATIC_PublishLinkedVariableValues();
-	void STATIC_PopulateLinkedVariableValues();
+	void PublishLinkedVariableValues();
+	void PopulateLinkedVariableValues();
 	void VersionUpdated(int OldVersion, int NewVersion);
 	void Deactivated();
 	void Activated();
@@ -23978,8 +23979,8 @@ public:
 
 	void SetEnabled(bool bInEnabled);
 	void Reset();
-	void FindSeqObjectsByName(const struct FString& SeqObjName, bool bCheckComment, bool bRecursive, bool bUseFullLevelName, TArray<class USequenceObject*>* OutputObjects);
-	void FindSeqObjectsByClass(class UClass* DesiredClass, bool bRecursive, TArray<class USequenceObject*>* OutputObjects);
+	void STATIC_FindSeqObjectsByName(const struct FString& SeqObjName, bool bCheckComment, bool bRecursive, bool bUseFullLevelName, TArray<class USequenceObject*>* OutputObjects);
+	void STATIC_FindSeqObjectsByClass(class UClass* DesiredClass, bool bRecursive, TArray<class USequenceObject*>* OutputObjects);
 };
 
 
@@ -23998,7 +23999,7 @@ public:
 
 
 	class APrefabInstance* GetOwnerPrefab();
-	void STATIC_SetOwnerPrefab(class APrefabInstance* InOwner);
+	void SetOwnerPrefab(class APrefabInstance* InOwner);
 };
 
 
@@ -24549,7 +24550,7 @@ public:
 	}
 
 
-	class AActor* STATIC_PickDestination(class AActor* Requestor);
+	class AActor* PickDestination(class AActor* Requestor);
 	int GetObjClassVersion();
 };
 
@@ -24573,7 +24574,7 @@ public:
 	}
 
 
-	void STATIC_ResetDelayActive();
+	void ResetDelayActive();
 	void Reset();
 };
 
@@ -24878,7 +24879,7 @@ public:
 
 
 	void Activated();
-	bool CheckLevelsVisible();
+	bool STATIC_CheckLevelsVisible();
 };
 
 
@@ -26120,7 +26121,7 @@ public:
 
 	void Toggled();
 	void Reset();
-	bool CheckActivate(class AActor* InOriginator, class AActor* InInstigator, bool bTest, bool bPushTop, TArray<int>* ActivateIndices);
+	bool STATIC_CheckActivate(class AActor* InOriginator, class AActor* InInstigator, bool bTest, bool bPushTop, TArray<int>* ActivateIndices);
 	void RegisterEvent();
 };
 
@@ -26316,10 +26317,10 @@ public:
 	}
 
 
-	void STATIC_NotifyFinishedOpen();
-	void STATIC_NotifyDetached(class AActor* Other);
-	void STATIC_NotifyAttached(class AActor* Other);
-	void STATIC_NotifyEncroachingOn(class AActor* Hit);
+	void NotifyFinishedOpen();
+	void NotifyDetached(class AActor* Other);
+	void NotifyAttached(class AActor* Other);
+	void NotifyEncroachingOn(class AActor* Hit);
 	void RegisterEvent();
 };
 
@@ -26478,10 +26479,10 @@ public:
 
 
 	int GetObjClassVersion();
-	void STATIC_NotifyTouchingPawnDied(class APawn* P);
+	void NotifyTouchingPawnDied(class APawn* P);
 	void Toggled();
-	bool CheckUnTouchActivate(class AActor* InOriginator, class AActor* InInstigator, bool bTest);
-	bool CheckTouchActivate(class AActor* InOriginator, class AActor* InInstigator, bool bTest);
+	bool STATIC_CheckUnTouchActivate(class AActor* InOriginator, class AActor* InInstigator, bool bTest);
+	bool STATIC_CheckTouchActivate(class AActor* InOriginator, class AActor* InInstigator, bool bTest);
 };
 
 
@@ -26698,7 +26699,7 @@ public:
 	}
 
 
-	void STATIC_SetObjectValue(class UObject* NewValue);
+	void SetObjectValue(class UObject* NewValue);
 	class UObject* GetObjectValue();
 };
 
@@ -26751,7 +26752,7 @@ public:
 	}
 
 
-	void STATIC_SetObjectValue(class UObject* NewValue);
+	void SetObjectValue(class UObject* NewValue);
 	class UObject* GetObjectValue();
 };
 
@@ -26915,10 +26916,10 @@ public:
 
 
 	void STATIC_ApplyCheckpointRecord(struct AAmbientSoundSimpleToggleable_FCheckpointRecord* Record);
-	void CreateCheckpointRecord(struct AAmbientSoundSimpleToggleable_FCheckpointRecord* Record);
-	void STATIC_OnToggle(class USeqAct_Toggle* Action);
-	void STATIC_StopPlaying();
-	void STATIC_StartPlaying();
+	void STATIC_CreateCheckpointRecord(struct AAmbientSoundSimpleToggleable_FCheckpointRecord* Record);
+	void OnToggle(class USeqAct_Toggle* Action);
+	void StopPlaying();
+	void StartPlaying();
 	void ReplicatedEvent(const struct FName& VarName);
 	void PostBeginPlay();
 };
@@ -27000,7 +27001,7 @@ public:
 	}
 
 
-	void STATIC_ReturnComponent(class UActorComponent* InComponent);
+	void ReturnComponent(class UActorComponent* InComponent);
 	class UActorComponent* STATIC_AllocateComponent(const struct FVector& InLocation);
 };
 
@@ -27625,7 +27626,7 @@ public:
 
 
 	void PostBeginPlay();
-	void CalcLayerBounds();
+	void STATIC_CalcLayerBounds();
 };
 
 
@@ -27907,15 +27908,15 @@ public:
 	}
 
 
-	void DebugDumpDataStoreInfo(bool bVerbose);
+	void STATIC_DebugDumpDataStoreInfo(bool bVerbose);
 	void NotifyGameSessionEnded();
-	class UClass* FindDataStoreClass(class UClass* RequiredMetaClass);
+	class UClass* STATIC_FindDataStoreClass(class UClass* RequiredMetaClass);
 	void GetPlayerDataStoreClasses(TArray<class UClass*>* out_DataStoreClasses);
-	int FindPlayerDataStoreIndex(class ULocalPlayer* PlayerOwner);
+	int STATIC_FindPlayerDataStoreIndex(class ULocalPlayer* PlayerOwner);
 	bool STATIC_UnregisterDataStore(class UUIDataStore* DataStore);
-	bool STATIC_RegisterDataStore(class UUIDataStore* DataStore, class ULocalPlayer* PlayerOwner);
-	class UUIDataStore* CreateDataStore(class UClass* DataStoreClass);
-	class UUIDataStore* FindDataStore(const struct FName& DataStoreTag, class ULocalPlayer* PlayerOwner);
+	bool RegisterDataStore(class UUIDataStore* DataStore, class ULocalPlayer* PlayerOwner);
+	class UUIDataStore* STATIC_CreateDataStore(class UClass* DataStoreClass);
+	class UUIDataStore* STATIC_FindDataStore(const struct FName& DataStoreTag, class ULocalPlayer* PlayerOwner);
 };
 
 
@@ -27960,21 +27961,21 @@ public:
 
 
 	void STATIC_UpdateCompleteIndices();
-	void BuildRuntimeAutoCompleteList(bool bForce);
+	void STATIC_BuildRuntimeAutoCompleteList(bool bForce);
 	void STATIC_AppendInputText(const struct FString& Text);
-	bool STATIC_ProcessControlKey(const struct FName& Key, TEnumAsByte<EInputEvent> Event);
-	void FlushPlayerInput();
+	bool ProcessControlKey(const struct FName& Key, TEnumAsByte<EInputEvent> Event);
+	void STATIC_FlushPlayerInput();
 	bool InputChar(int ControllerId, const struct FString& Unicode);
 	bool STATIC_InputKey(int ControllerId, const struct FName& Key, TEnumAsByte<EInputEvent> Event, float AmountDepressed, bool bGamepad);
-	void STATIC_PostRender_Console(class UCanvas* Canvas);
-	void STATIC_StartTyping(const struct FString& Text);
+	void PostRender_Console(class UCanvas* Canvas);
+	void StartTyping(const struct FString& Text);
 	void OutputText(const struct FString& Text);
-	void STATIC_OutputTextLine(const struct FString& Text);
-	void ClearOutput();
-	void ConsoleCommand(const struct FString& Command);
-	void STATIC_PurgeCommandFromHistory(const struct FString& Command);
-	void STATIC_SetCursorPos(int Position);
-	void STATIC_SetInputText(const struct FString& Text);
+	void OutputTextLine(const struct FString& Text);
+	void STATIC_ClearOutput();
+	void STATIC_ConsoleCommand(const struct FString& Command);
+	void PurgeCommandFromHistory(const struct FString& Command);
+	void SetCursorPos(int Position);
+	void SetInputText(const struct FString& Text);
 	void Initialized();
 };
 
@@ -28005,10 +28006,10 @@ public:
 	}
 
 
-	void STATIC_SetBind(const struct FString& Command, struct FName* BindName);
+	void SetBind(const struct FString& Command, struct FName* BindName);
 	struct FKeyBind GetKeybindWithCurrentModifiers(struct FName* Key);
 	struct FString GetBind(struct FName* Key, struct FKeyBind* ModifierKeyBind);
-	void STATIC_ResetInput();
+	void ResetInput();
 };
 
 
@@ -28090,16 +28091,16 @@ public:
 
 
 	void PreClientTravel(const struct FString& PendingURL, TEnumAsByte<ETravelType> TravelType, bool bIsSeamlessTravel);
-	void ClientInitInputSystem();
+	void STATIC_ClientInitInputSystem();
 	void InitInputSystem();
-	void STATIC_SmartJump();
+	void SmartJump();
 	void STATIC_Jump();
 	void PlayerInput(float DeltaTime);
-	void DrawHUD(class AHUD* H);
-	void STATIC_SetSensitivity(float F);
+	void STATIC_DrawHUD(class AHUD* H);
+	void SetSensitivity(float F);
 	bool InvertTurn();
 	bool InvertMouse();
-	void CancelMobileInput();
+	void STATIC_CancelMobileInput();
 };
 
 
@@ -28177,12 +28178,12 @@ public:
 	}
 
 
-	void ClearBoundDataStores();
+	void STATIC_ClearBoundDataStores();
 	void GetBoundDataStores(TArray<class UUIDataStore*>* out_BoundDataStores);
-	void STATIC_NotifyDataStoreValueUpdated(class UUIDataStore* SourceDataStore, bool bValuesInvalidated, const struct FName& PropertyTag, class UUIDataProvider* SourceProvider, int ArrayIndex);
-	bool STATIC_RefreshSubscriberValue(int BindingIndex);
+	void NotifyDataStoreValueUpdated(class UUIDataStore* SourceDataStore, bool bValuesInvalidated, const struct FName& PropertyTag, class UUIDataProvider* SourceProvider, int ArrayIndex);
+	bool RefreshSubscriberValue(int BindingIndex);
 	struct FString GetDataStoreBinding(int BindingIndex);
-	void STATIC_SetDataStoreBinding(const struct FString& MarkupText, int BindingIndex);
+	void SetDataStoreBinding(const struct FString& MarkupText, int BindingIndex);
 };
 
 
@@ -28199,7 +28200,7 @@ public:
 	}
 
 
-	bool STATIC_SaveSubscriberValue(int BindingIndex, TArray<class UUIDataStore*>* out_BoundDataStores);
+	bool SaveSubscriberValue(int BindingIndex, TArray<class UUIDataStore*>* out_BoundDataStores);
 };
 
 
@@ -28257,11 +28258,11 @@ public:
 	}
 
 
-	void STATIC_OnGameInviteReceived(unsigned char LocalUserNum, const struct FString& InviterName);
+	void OnGameInviteReceived(unsigned char LocalUserNum, const struct FString& InviterName);
 	void STATIC_OnLoginChange(unsigned char LocalUserNum);
 	void STATIC_OnFriendMessageReceived(unsigned char LocalUserNum, const struct FUniqueNetId& SendingPlayer, const struct FString& SendingNick, const struct FString& Message);
 	void STATIC_OnFriendInviteReceived(unsigned char LocalUserNum, const struct FUniqueNetId& RequestingPlayer, const struct FString& RequestingNick, const struct FString& Message);
-	void STATIC_ReadMessages();
+	void ReadMessages();
 	void OnUnregister();
 	void OnRegister(class ULocalPlayer* InPlayer);
 };
@@ -28297,7 +28298,7 @@ public:
 
 	void RefreshFriendsList();
 	void STATIC_OnLoginChange(unsigned char LocalUserNum);
-	void STATIC_OnFriendsReadComplete(bool bWasSuccessful);
+	void OnFriendsReadComplete(bool bWasSuccessful);
 	void OnUnregister();
 	void OnRegister(class ULocalPlayer* InPlayer);
 };
@@ -28355,17 +28356,17 @@ public:
 	void STATIC_OnExternalUIChange(bool bIsOpening);
 	void STATIC_OnStorageDeviceChange();
 	void STATIC_OnDeviceSelectionComplete(bool bWasSuccessful);
-	void STATIC_ShowDeviceSelection();
-	void STATIC_RefreshStorageData();
+	void ShowDeviceSelection();
+	void RefreshStorageData();
 	void STATIC_OnLoginChange(unsigned char LocalUserNum);
-	void STATIC_OnReadStorageComplete(unsigned char LocalUserNum, bool bWasSuccessful);
+	void OnReadStorageComplete(unsigned char LocalUserNum, bool bWasSuccessful);
 	void OnUnregister();
 	void OnRegister(class ULocalPlayer* InPlayer);
-	void ClearReadCompleteDelegate(const TScriptInterface<class UOnlinePlayerInterface>& PlayerInterface, unsigned char LocalUserNum);
+	void STATIC_ClearReadCompleteDelegate(const TScriptInterface<class UOnlinePlayerInterface>& PlayerInterface, unsigned char LocalUserNum);
 	void STATIC_AddReadCompleteDelegate(const TScriptInterface<class UOnlinePlayerInterface>& PlayerInterface, unsigned char LocalUserNum);
 	bool GetData(const TScriptInterface<class UOnlinePlayerInterface>& PlayerInterface, unsigned char LocalUserNum);
 	bool STATIC_WriteData(const TScriptInterface<class UOnlinePlayerInterface>& PlayerInterface, unsigned char LocalUserNum, int DeviceID, class UOnlinePlayerStorage* PlayerStorage);
-	bool STATIC_ReadData(const TScriptInterface<class UOnlinePlayerInterface>& PlayerInterface, unsigned char LocalUserNum, int DeviceID, class UOnlinePlayerStorage* PlayerStorage);
+	bool ReadData(const TScriptInterface<class UOnlinePlayerInterface>& PlayerInterface, unsigned char LocalUserNum, int DeviceID, class UOnlinePlayerStorage* PlayerStorage);
 };
 
 
@@ -28383,12 +28384,12 @@ public:
 
 
 	void STATIC_OnStorageDeviceChange();
-	void STATIC_RefreshStorageData();
-	void ClearReadCompleteDelegate(const TScriptInterface<class UOnlinePlayerInterface>& PlayerInterface, unsigned char LocalUserNum);
+	void RefreshStorageData();
+	void STATIC_ClearReadCompleteDelegate(const TScriptInterface<class UOnlinePlayerInterface>& PlayerInterface, unsigned char LocalUserNum);
 	void STATIC_AddReadCompleteDelegate(const TScriptInterface<class UOnlinePlayerInterface>& PlayerInterface, unsigned char LocalUserNum);
 	bool GetData(const TScriptInterface<class UOnlinePlayerInterface>& PlayerInterface, unsigned char LocalUserNum);
 	bool STATIC_WriteData(const TScriptInterface<class UOnlinePlayerInterface>& PlayerInterface, unsigned char LocalUserNum, int DeviceID, class UOnlinePlayerStorage* PlayerStorage);
-	bool STATIC_ReadData(const TScriptInterface<class UOnlinePlayerInterface>& PlayerInterface, unsigned char LocalUserNum, int DeviceID, class UOnlinePlayerStorage* PlayerStorage);
+	bool ReadData(const TScriptInterface<class UOnlinePlayerInterface>& PlayerInterface, unsigned char LocalUserNum, int DeviceID, class UOnlinePlayerStorage* PlayerStorage);
 };
 
 
@@ -28410,11 +28411,11 @@ public:
 	void STATIC_OnLoginChange(unsigned char LocalUserNum);
 	void OnUnregister();
 	void OnRegister(class ULocalPlayer* InPlayer);
-	void STATIC_OnPlayerAchievementUnlocked(bool bWasSuccessful);
-	void STATIC_OnPlayerAchievementsChanged(int TitleId);
+	void OnPlayerAchievementUnlocked(bool bWasSuccessful);
+	void OnPlayerAchievementsChanged(int TitleId);
 	void GetAchievementDetails(int AchievementId, struct FAchievementDetails* OutAchievementDetails);
 	struct FString GetAchievementIconPathName(int AchievementId, bool bReturnLockedIcon);
-	void STATIC_PopulateAchievementIcons();
+	void PopulateAchievementIcons();
 	int GetMaxTotalGamerScore();
 	int GetTotalGamerScore();
 };
@@ -28508,7 +28509,7 @@ public:
 	void Registered(class ULocalPlayer* PlayerOwner);
 	void STATIC_OnLoginChange(unsigned char LocalUserNum);
 	bool GetResourceProviders(const struct FName& ProviderTag, TArray<class UUIResourceCombinationProvider*>* out_Providers);
-	int FindProviderTypeIndex(const struct FName& ProviderTag);
+	int STATIC_FindProviderTypeIndex(const struct FName& ProviderTag);
 };
 
 
@@ -28543,7 +28544,7 @@ public:
 
 
 	bool GetResourceProviders(const struct FName& ProviderTag, TArray<class UUIResourceDataProvider*>* out_Providers);
-	int FindProviderTypeIndex(const struct FName& ProviderTag);
+	int STATIC_FindProviderTypeIndex(const struct FName& ProviderTag);
 };
 
 
@@ -28565,7 +28566,7 @@ public:
 
 	void Unregistered(class ULocalPlayer* PlayerOwner);
 	void Registered(class ULocalPlayer* PlayerOwner);
-	void STATIC_OnGameSettingsChanged(class UUIDataProvider* SourceProvider, const struct FName& PropTag);
+	void OnGameSettingsChanged(class UUIDataProvider* SourceProvider, const struct FName& PropTag);
 };
 
 
@@ -28642,18 +28643,18 @@ public:
 	}
 
 
-	void ClearAllSearchResults();
+	void STATIC_ClearAllSearchResults();
 	void MoveToPrevious(bool bInvalidateExistingSearchResults);
 	void MoveToNext(bool bInvalidateExistingSearchResults);
 	void SetCurrentByName(const struct FName& SearchName, bool bInvalidateExistingSearchResults);
 	void SetCurrentByIndex(int NewIndex, bool bInvalidateExistingSearchResults);
-	int FindSearchConfigurationIndex(const struct FName& SearchTag);
+	int STATIC_FindSearchConfigurationIndex(const struct FName& SearchTag);
 	class UOnlineGameSearch* GetActiveGameSearch();
 	class UOnlineGameSearch* GetCurrentGameSearch();
 	bool ShowHostGamercard(unsigned char ControllerIndex, int ListIndex);
 	bool GetSearchResultFromIndex(int ListIndex, struct FOnlineGameSearchResult* Result);
-	void STATIC_OnSearchComplete(bool bWasSuccessful);
-	bool STATIC_OverrideQuerySubmission(unsigned char ControllerId, class UOnlineGameSearch* Search);
+	void OnSearchComplete(bool bWasSuccessful);
+	bool OverrideQuerySubmission(unsigned char ControllerId, class UOnlineGameSearch* Search);
 	bool SubmitGameSearch(unsigned char ControllerIndex, bool bInvalidateExistingSearchResults);
 	bool InvalidateCurrentSearchResults();
 	void Init();
@@ -28699,9 +28700,9 @@ public:
 
 	class UOnlinePlayerStorage* GetCachedPlayerStorage(int ControllerId);
 	class UOnlineProfileSettings* GetCachedPlayerProfile(int ControllerId);
-	void ClearDelegates();
-	void STATIC_RegisterDelegates();
-	void STATIC_OnPlayerDataChange();
+	void STATIC_ClearDelegates();
+	void RegisterDelegates();
+	void OnPlayerDataChange();
 	void STATIC_OnLoginChange(unsigned char LocalUserNum);
 	void OnUnregister();
 	void OnRegister(class ULocalPlayer* InPlayer);
@@ -28732,11 +28733,11 @@ public:
 	}
 
 
-	void STATIC_SortResultsByRank(class UOnlineStatsRead* StatsToSort);
+	void SortResultsByRank(class UOnlineStatsRead* StatsToSort);
 	void OnReadComplete(bool bWasSuccessful);
 	bool ShowGamercard(unsigned char ConrollerIndex, int ListIndex);
 	bool RefreshStats(unsigned char ControllerIndex);
-	void STATIC_SetStatsReadInfo();
+	void SetStatsReadInfo();
 	void Init();
 };
 
@@ -28815,7 +28816,7 @@ public:
 
 
 	bool HasAliasMappingForPlatform(const struct FName& DesiredAlias, TEnumAsByte<EInputPlatformType> DesiredPlatform);
-	int FindInputAliasIndex(const struct FName& DesiredAlias);
+	int STATIC_FindInputAliasIndex(const struct FName& DesiredAlias);
 	bool GetAliasInputKeyDataByIndex(int AliasIndex, TEnumAsByte<EInputPlatformType> OverridePlatform, struct FRawInputKeyEventData* out_InputKeyData);
 	bool GetAliasInputKeyData(const struct FName& DesiredAlias, TEnumAsByte<EInputPlatformType> OverridePlatform, struct FRawInputKeyEventData* out_InputKeyData);
 	struct FName GetAliasInputKeyNameByIndex(int AliasIndex, TEnumAsByte<EInputPlatformType> OverridePlatform);
@@ -28842,7 +28843,7 @@ public:
 
 
 	int GetStringWithFieldName(const struct FString& FieldName, struct FString* MappedString);
-	int FindMappingWithFieldName(const struct FString& FieldName, const struct FString& SetName);
+	int STATIC_FindMappingWithFieldName(const struct FString& FieldName, const struct FString& SetName);
 	class ULocalPlayer* GetPlayerOwner();
 };
 
@@ -28955,7 +28956,7 @@ public:
 	}
 
 
-	void ClearProviderReferences();
+	void STATIC_ClearProviderReferences();
 	void InitializeProvider(bool bIsEditor, class UUIResourceDataProvider* InStaticResourceProvider, class UUIDataProvider_OnlineProfileSettings* InProfileProvider);
 };
 
@@ -28984,14 +28985,14 @@ public:
 	}
 
 
-	int FindLocalPlayerIndex(class UPlayer* P);
-	void STATIC_NotifyPlayerRemoved(int PlayerIndex, class ULocalPlayer* RemovedPlayer);
-	void STATIC_NotifyPlayerAdded(int PlayerIndex, class ULocalPlayer* AddedPlayer);
+	int STATIC_FindLocalPlayerIndex(class UPlayer* P);
+	void NotifyPlayerRemoved(int PlayerIndex, class ULocalPlayer* RemovedPlayer);
+	void NotifyPlayerAdded(int PlayerIndex, class ULocalPlayer* AddedPlayer);
 	void NotifyGameSessionEnded();
-	void STATIC_NotifyClientTravel(class APlayerController* TravellingPlayer, const struct FString& TravelURL, TEnumAsByte<ETravelType> TravelType, bool bIsSeamlessTravel);
+	void NotifyClientTravel(class APlayerController* TravellingPlayer, const struct FString& TravelURL, TEnumAsByte<ETravelType> TravelType, bool bIsSeamlessTravel);
 	void PauseGame(bool bDesiredPauseState, int PlayerIndex);
-	bool CanUnpauseInternalUI();
-	void STATIC_RequestInputProcessingUpdate();
+	bool STATIC_CanUnpauseInternalUI();
+	void RequestInputProcessingUpdate();
 	TEnumAsByte<ENetMode> GetCurrentNetMode();
 	void STATIC_TgFlushPlayerInput();
 };
@@ -29031,8 +29032,8 @@ public:
 	}
 
 
-	void ForceRemoveStreamGroups();
-	void STATIC_QueueRemoveStreamGroups();
+	void STATIC_ForceRemoveStreamGroups();
+	void QueueRemoveStreamGroups();
 	void STATIC_AddStreamGroups();
 	void GenerateStreamGroups();
 };
@@ -29200,7 +29201,7 @@ public:
 
 
 	void ReplicatedEvent(const struct FName& VarName);
-	void STATIC_OnToggle(class USeqAct_Toggle* inAction);
+	void OnToggle(class USeqAct_Toggle* inAction);
 };
 
 
@@ -29347,8 +29348,8 @@ public:
 	}
 
 
-	void STATIC_SetSimulationPosition(const struct FVector& WorldPos);
-	void STATIC_SetDetailPosition(const struct FVector& WorldPos);
+	void SetSimulationPosition(const struct FVector& WorldPos);
+	void SetDetailPosition(const struct FVector& WorldPos);
 	void STATIC_ApplyForce(const struct FVector& WorldPos, float Strength, float Radius, bool bImpulse);
 };
 
@@ -29414,7 +29415,7 @@ public:
 	}
 
 
-	void STATIC_SetMaterial(TEnumAsByte<ESpeedTreeMeshType> MeshType, class UMaterialInterface* Material);
+	void SetMaterial(TEnumAsByte<ESpeedTreeMeshType> MeshType, class UMaterialInterface* Material);
 	class UMaterialInterface* GetMaterial(TEnumAsByte<ESpeedTreeMeshType> MeshType);
 };
 
@@ -29498,13 +29499,13 @@ public:
 	}
 
 
-	void STATIC_SetActorParameter(const struct FName& ParameterName, class AActor* Param);
-	void STATIC_SetExtColorParameter(const struct FName& ParameterName, float Red, float Green, float Blue, float Alpha);
-	void STATIC_SetColorParameter(const struct FName& ParameterName, const struct FLinearColor& Param);
-	void STATIC_SetVectorParameter(const struct FName& ParameterName, const struct FVector& Param);
-	void STATIC_SetFloatParameter(const struct FName& ParameterName, float Param);
+	void SetActorParameter(const struct FName& ParameterName, class AActor* Param);
+	void SetExtColorParameter(const struct FName& ParameterName, float Red, float Green, float Blue, float Alpha);
+	void SetColorParameter(const struct FName& ParameterName, const struct FLinearColor& Param);
+	void SetVectorParameter(const struct FName& ParameterName, const struct FVector& Param);
+	void SetFloatParameter(const struct FName& ParameterName, float Param);
 	void ReplicatedEvent(const struct FName& VarName);
-	void STATIC_OnToggle(class USeqAct_Toggle* Action);
+	void OnToggle(class USeqAct_Toggle* Action);
 	void PostBeginPlay();
 	void SetTemplate(class ULensFlare* NewTemplate);
 };
@@ -29545,11 +29546,11 @@ public:
 	}
 
 
-	class UMaterialInstanceConstant* CreateAndSetMaterialInstanceConstant(int ElementIndex);
-	void STATIC_SetMaterial(int ElementIndex, class UMaterialInterface* Material);
+	class UMaterialInstanceConstant* STATIC_CreateAndSetMaterialInstanceConstant(int ElementIndex);
+	void SetMaterial(int ElementIndex, class UMaterialInterface* Material);
 	class UMaterialInterface* GetMaterial(int ElementIndex);
-	void STATIC_SetIsActive(bool bInIsActive);
-	void STATIC_SetSourceColor(const struct FLinearColor& InSourceColor);
+	void SetIsActive(bool bInIsActive);
+	void SetSourceColor(const struct FLinearColor& InSourceColor);
 	void SetTemplate(class ULensFlare* NewTemplate, bool bForceSet);
 };
 
@@ -29624,7 +29625,7 @@ public:
 	}
 
 
-	void STATIC_SetCurrentFrame(int Row, int Col);
+	void SetCurrentFrame(int Row, int Col);
 	void Stop();
 	void Pause();
 	void Play();
@@ -29648,9 +29649,9 @@ public:
 	}
 
 
-	void STATIC_ResetSourceRegions();
+	void ResetSourceRegions();
 	void STATIC_UpdateCompositeTexture(int NumMipsToGenerate);
-	bool STATIC_SourceTexturesFullyStreamedIn();
+	bool SourceTexturesFullyStreamedIn();
 };
 
 
@@ -29673,7 +29674,7 @@ public:
 	}
 
 
-	class UTexture2DDynamic* Create(int InSizeX, int InSizeY, TEnumAsByte<EPixelFormat> InFormat, bool InIsResolveTarget);
+	class UTexture2DDynamic* STATIC_Create(int InSizeX, int InSizeY, TEnumAsByte<EPixelFormat> InFormat, bool InIsResolveTarget);
 	void STATIC_UpdateMipFromPNG(int MipIdx, TArray<unsigned char>* MipData);
 	void STATIC_UpdateMipFromJPEG(int MipIdx, int MaxTotalPixels, TArray<unsigned char>* MipData);
 	void STATIC_UpdateMip(int MipIdx, TArray<unsigned char>* MipData);
@@ -29782,7 +29783,7 @@ public:
 	}
 
 
-	class UTextureRenderTarget2D* Create(int InSizeX, int InSizeY, TEnumAsByte<EPixelFormat> InFormat, const struct FLinearColor& InClearColor, bool bOnlyRenderOnce);
+	class UTextureRenderTarget2D* STATIC_Create(int InSizeX, int InSizeY, TEnumAsByte<EPixelFormat> InFormat, const struct FLinearColor& InClearColor, bool bOnlyRenderOnce);
 };
 
 
@@ -29889,9 +29890,9 @@ public:
 	}
 
 
-	class USoundClass* FindSoundClass(const struct FName& SoundClassName);
-	bool STATIC_SetSoundMode(const struct FName& NewMode);
-	void ChangeAudioDevice(const struct FString& NewAudioDevice);
+	class USoundClass* STATIC_FindSoundClass(const struct FName& SoundClassName);
+	bool SetSoundMode(const struct FName& NewMode);
+	void STATIC_ChangeAudioDevice(const struct FString& NewAudioDevice);
 	void ListAudioDevices(TArray<struct FString>* InstalledDevices);
 };
 
@@ -30023,7 +30024,7 @@ public:
 	}
 
 
-	void STATIC_OnToggle(class USeqAct_Toggle* Action);
+	void OnToggle(class USeqAct_Toggle* Action);
 	void ReplicatedEvent(const struct FName& VarName);
 };
 
@@ -30147,8 +30148,8 @@ public:
 
 
 	void STATIC_ApplyCheckpointRecord(struct APointLightToggleable_FCheckpointRecord* Record);
-	void CreateCheckpointRecord(struct APointLightToggleable_FCheckpointRecord* Record);
-	bool STATIC_ShouldSaveForCheckpoint();
+	void STATIC_CreateCheckpointRecord(struct APointLightToggleable_FCheckpointRecord* Record);
+	bool ShouldSaveForCheckpoint();
 };
 
 
@@ -30256,8 +30257,8 @@ public:
 
 
 	void STATIC_ApplyCheckpointRecord(struct ASpotLightToggleable_FCheckpointRecord* Record);
-	void CreateCheckpointRecord(struct ASpotLightToggleable_FCheckpointRecord* Record);
-	bool STATIC_ShouldSaveForCheckpoint();
+	void STATIC_CreateCheckpointRecord(struct ASpotLightToggleable_FCheckpointRecord* Record);
+	bool ShouldSaveForCheckpoint();
 };
 
 
@@ -30342,17 +30343,17 @@ public:
 	}
 
 
-	void STATIC_OnUpdatePropertyLightColor();
-	void STATIC_OnUpdatePropertyBrightness();
-	void STATIC_OnUpdatePropertyOcclusionMaskDarkness();
-	void STATIC_OnUpdatePropertyBloomTint();
-	void STATIC_OnUpdatePropertyBloomScale();
+	void OnUpdatePropertyLightColor();
+	void OnUpdatePropertyBrightness();
+	void OnUpdatePropertyOcclusionMaskDarkness();
+	void OnUpdatePropertyBloomTint();
+	void OnUpdatePropertyBloomScale();
 	void SetDetailMode(TEnumAsByte<EDetailMode> NewDetailMode);
 	void STATIC_UpdateLightShaftParameters();
 	void STATIC_UpdateColorAndBrightness();
 	struct FVector GetDirection();
 	struct FVector GetOrigin();
-	void STATIC_SetLightProperties(float NewBrightness, const struct FColor& NewLightColor, class ULightFunction* NewLightFunction);
+	void SetLightProperties(float NewBrightness, const struct FColor& NewLightColor, class ULightFunction* NewLightFunction);
 	void SetEnabled(bool bSetEnabled);
 };
 
@@ -30377,8 +30378,8 @@ public:
 	}
 
 
-	void STATIC_OnUpdatePropertyBrightness();
-	void STATIC_OnUpdatePropertyLightColor();
+	void OnUpdatePropertyBrightness();
+	void OnUpdatePropertyLightColor();
 };
 
 
@@ -30427,9 +30428,9 @@ public:
 	}
 
 
-	void STATIC_OnUpdatePropertyBrightness();
-	void STATIC_OnUpdatePropertyLightColor();
-	void STATIC_SetTranslation(const struct FVector& NewTranslation);
+	void OnUpdatePropertyBrightness();
+	void OnUpdatePropertyLightColor();
+	void SetTranslation(const struct FVector& NewTranslation);
 };
 
 
@@ -30467,7 +30468,7 @@ public:
 	}
 
 
-	void STATIC_SetRotation(const struct FRotator& NewRotation);
+	void SetRotation(const struct FRotator& NewRotation);
 };
 
 
@@ -30602,7 +30603,7 @@ public:
 	}
 
 
-	void STATIC_ResetEnvironment();
+	void ResetEnvironment();
 };
 
 
@@ -30907,50 +30908,50 @@ public:
 	}
 
 
-	void STATIC_SetMaterial(int ElementIndex, class UMaterialInterface* Material);
+	void SetMaterial(int ElementIndex, class UMaterialInterface* Material);
 	struct FRotator GetRotation();
 	struct FVector GetPosition();
 	void STATIC_BreakConstraint(const struct FVector& Impulse, const struct FVector& HitLocation, const struct FName& InBoneName, bool bVelChange);
-	void STATIC_SkelMeshCompOnParticleSystemFinished(class UParticleSystemComponent* PSC);
+	void SkelMeshCompOnParticleSystemFinished(class UParticleSystemComponent* PSC);
 	bool PlayParticleEffect(class UAnimNotify_PlayParticleEffect* AnimNotifyData);
 	class UParticleSystemComponent* GetPSCForPlayParticleEffect(class UAnimNotify_PlayParticleEffect* AnimNotifyData);
 	bool CreateForceField(class UAnimNotify_ForceField* AnimNotifyData);
-	void STATIC_StopAnim();
-	void STATIC_PlayAnim(const struct FName& AnimName, float Duration, bool bLoop, bool bRestartIfAlreadyPlaying, float StartTime, bool bPlayBackwards);
-	void STATIC_ShowMaterialSection(int MaterialID, bool bShow, int LODIndex);
+	void StopAnim();
+	void PlayAnim(const struct FName& AnimName, float Duration, bool bLoop, bool bRestartIfAlreadyPlaying, float StartTime, bool bPlayBackwards);
+	void ShowMaterialSection(int MaterialID, bool bShow, int LODIndex);
 	void STATIC_UpdateMeshForBrokenConstraints();
 	void STATIC_UnHideBoneByName(const struct FName& BoneName);
 	void HideBoneByName(const struct FName& BoneName, TEnumAsByte<EPhysBodyOp> PhysBodyOption);
 	bool IsBoneHidden(int BoneIndex);
 	void STATIC_UnHideBone(int BoneIndex);
 	void HideBone(int BoneIndex, TEnumAsByte<EPhysBodyOp> PhysBodyOption);
-	void STATIC_SetFaceFXRegisterEx(const struct FString& RegName, TEnumAsByte<EFaceFXRegOp> RegOp, float FirstValue, float FirstInterpDuration, float NextValue, float NextInterpDuration);
-	void STATIC_SetFaceFXRegister(const struct FString& RegName, float RegVal, TEnumAsByte<EFaceFXRegOp> RegOp, float InterpDuration);
+	void SetFaceFXRegisterEx(const struct FString& RegName, TEnumAsByte<EFaceFXRegOp> RegOp, float FirstValue, float FirstInterpDuration, float NextValue, float NextInterpDuration);
+	void SetFaceFXRegister(const struct FString& RegName, float RegVal, TEnumAsByte<EFaceFXRegOp> RegOp, float InterpDuration);
 	float GetFaceFXRegister(const struct FString& RegName);
-	void DeclareFaceFXRegister(const struct FString& RegName);
+	void STATIC_DeclareFaceFXRegister(const struct FString& RegName);
 	bool IsPlayingFaceFXAnim();
-	void STATIC_StopFaceFXAnim();
-	bool STATIC_PlayFaceFXAnim(class UFaceFXAnimSet* FaceFXAnimSetRef, const struct FString& AnimName, const struct FString& GroupName, class USoundCue* SoundCueToPlay, class UAkEvent* AkEventToPlay);
+	void StopFaceFXAnim();
+	bool PlayFaceFXAnim(class UFaceFXAnimSet* FaceFXAnimSetRef, const struct FString& AnimName, const struct FString& GroupName, class USoundCue* SoundCueToPlay, class UAkEvent* AkEventToPlay);
 	void STATIC_ToggleInstanceVertexWeights(bool bEnable, int LODIdx);
 	void STATIC_UpdateInstanceVertexWeightBones(TArray<struct FBonePair> BonePairs);
-	int FindInstanceVertexweightBonePair(const struct FBonePair& Bones);
-	void STATIC_RemoveInstanceVertexWeightBoneParented(const struct FName& BoneName);
+	int STATIC_FindInstanceVertexweightBonePair(const struct FBonePair& Bones);
+	void RemoveInstanceVertexWeightBoneParented(const struct FName& BoneName);
 	void STATIC_AddInstanceVertexWeightBoneParented(const struct FName& BoneName, bool bPairWithParent);
 	bool GetBonesWithinRadius(const struct FVector& Origin, float Radius, int TraceFlags, TArray<struct FName>* out_Bones);
 	void STATIC_UpdateAnimations();
-	void ForceSkelUpdate();
+	void STATIC_ForceSkelUpdate();
 	void STATIC_UpdateRBBonesFromSpaceBases(bool bMoveUnfixedBodies, bool bTeleport);
-	void STATIC_SetHasPhysicsAssetInstance(bool bHasInstance, bool bUseCurrentPosition);
-	class URB_BodyInstance* FindBodyInstanceNamed(const struct FName& BoneName);
-	struct FName FindConstraintBoneName(int ConstraintIndex);
-	int FindConstraintIndex(const struct FName& ConstraintName);
+	void SetHasPhysicsAssetInstance(bool bHasInstance, bool bUseCurrentPosition);
+	class URB_BodyInstance* STATIC_FindBodyInstanceNamed(const struct FName& BoneName);
+	struct FName STATIC_FindConstraintBoneName(int ConstraintIndex);
+	int STATIC_FindConstraintIndex(const struct FName& ConstraintName);
 	void InitMorphTargets();
 	void InitSkelControls();
 	void STATIC_UpdateParentBoneMap();
-	void STATIC_SetParentAnimComponent(class USkeletalMeshComponent* NewParentAnimComp);
-	void STATIC_SetAnimTreeTemplate(class UAnimTree* NewTemplate);
+	void SetParentAnimComponent(class USkeletalMeshComponent* NewParentAnimComp);
+	void SetAnimTreeTemplate(class UAnimTree* NewTemplate);
 	struct FVector GetClosestCollidingBoneLocation(const struct FVector& TestLocation, bool bCheckZeroExtent, bool bCheckNonZeroExtent);
-	struct FName FindClosestBone(const struct FVector& TestLocation, float IgnoreScale, struct FVector* BoneLocation);
+	struct FName STATIC_FindClosestBone(const struct FVector& TestLocation, float IgnoreScale, struct FVector* BoneLocation);
 	void STATIC_TransformFromBoneSpace(const struct FName& BoneName, const struct FVector& InPosition, const struct FRotator& InRotation, struct FVector* OutPosition, struct FRotator* OutRotation);
 	void STATIC_TransformToBoneSpace(const struct FName& BoneName, const struct FVector& InPosition, const struct FRotator& InRotation, struct FVector* OutPosition, struct FRotator* OutRotation);
 	struct FVector GetBoneAxis(const struct FName& BoneName, TEnumAsByte<EAxis> Axis);
@@ -30963,38 +30964,38 @@ public:
 	int MatchRefBone(const struct FName& BoneName);
 	struct FVector GetBoneLocation(const struct FName& BoneName, int Space);
 	struct FQuat GetBoneQuaternion(const struct FName& BoneName, int Space);
-	class UMorphNodeBase* FindMorphNode(const struct FName& InNodeName);
-	class USkelControlBase* FindSkelControl(const struct FName& InControlName);
+	class UMorphNodeBase* STATIC_FindMorphNode(const struct FName& InNodeName);
+	class USkelControlBase* STATIC_FindSkelControl(const struct FName& InControlName);
 	void STATIC_AllAnimNodes(class UClass* BaseClass, class UAnimNode** Node);
-	class UAnimNode* FindAnimNode(const struct FName& InNodeName);
-	class UMorphTarget* FindMorphTarget(const struct FName& MorphTargetName);
+	class UAnimNode* STATIC_FindAnimNode(const struct FName& InNodeName);
+	class UMorphTarget* STATIC_FindMorphTarget(const struct FName& MorphTargetName);
 	float GetAnimLength(const struct FName& AnimSeqName);
 	float GetAnimRateByDuration(const struct FName& AnimSeqName, float Duration);
-	void STATIC_RestoreSavedAnimSets();
-	void STATIC_SaveAnimSets();
-	class UAnimSequence* FindAnimSequence(const struct FName& AnimSeqName);
+	void RestoreSavedAnimSets();
+	void SaveAnimSets();
+	class UAnimSequence* STATIC_FindAnimSequence(const struct FName& AnimSeqName);
 	void STATIC_WakeSoftBody();
-	void STATIC_SetSoftBodyFrozen(bool bNewFrozen);
+	void SetSoftBodyFrozen(bool bNewFrozen);
 	void STATIC_UpdateSoftBodyParams();
-	void STATIC_SetClothValidBounds(const struct FVector& ClothValidBoundsMin, const struct FVector& ClothValidBoundsMax);
-	void EnableClothValidBounds(bool IfEnableClothValidBounds);
+	void SetClothValidBounds(const struct FVector& ClothValidBoundsMin, const struct FVector& ClothValidBoundsMax);
+	void STATIC_EnableClothValidBounds(bool IfEnableClothValidBounds);
 	void STATIC_AttachClothToCollidingShapes(bool AttatchTwoWay, bool AttachTearable);
-	void STATIC_SetClothVelocity(const struct FVector& VelocityOffSet);
-	void STATIC_SetClothPosition(const struct FVector& ClothOffSet);
-	void STATIC_SetClothSleep(bool IfClothSleep);
-	void STATIC_SetClothThickness(float ClothThickness);
-	void STATIC_SetClothTearFactor(float ClothTearFactor);
-	void STATIC_SetClothStretchingStiffness(float ClothStretchingStiffness);
-	void STATIC_SetClothSolverIterations(int ClothSolverIterations);
-	void STATIC_SetClothSleepLinearVelocity(float ClothSleepLinearVelocity);
-	void STATIC_SetClothPressure(float ClothPressure);
-	void STATIC_SetClothFriction(float ClothFriction);
-	void STATIC_SetClothFlags(int ClothFlags);
-	void STATIC_SetClothDampingCoefficient(float ClothDampingCoefficient);
-	void STATIC_SetClothCollisionResponseCoefficient(float ClothCollisionResponseCoefficient);
-	void STATIC_SetClothBendingStiffness(float ClothBendingStiffness);
-	void STATIC_SetClothAttachmentTearFactor(float ClothAttachTearFactor);
-	void STATIC_SetClothAttachmentResponseCoefficient(float ClothAttachmentResponseCoefficient);
+	void SetClothVelocity(const struct FVector& VelocityOffSet);
+	void SetClothPosition(const struct FVector& ClothOffSet);
+	void SetClothSleep(bool IfClothSleep);
+	void SetClothThickness(float ClothThickness);
+	void SetClothTearFactor(float ClothTearFactor);
+	void SetClothStretchingStiffness(float ClothStretchingStiffness);
+	void SetClothSolverIterations(int ClothSolverIterations);
+	void SetClothSleepLinearVelocity(float ClothSleepLinearVelocity);
+	void SetClothPressure(float ClothPressure);
+	void SetClothFriction(float ClothFriction);
+	void SetClothFlags(int ClothFlags);
+	void SetClothDampingCoefficient(float ClothDampingCoefficient);
+	void SetClothCollisionResponseCoefficient(float ClothCollisionResponseCoefficient);
+	void SetClothBendingStiffness(float ClothBendingStiffness);
+	void SetClothAttachmentTearFactor(float ClothAttachTearFactor);
+	void SetClothAttachmentResponseCoefficient(float ClothAttachmentResponseCoefficient);
 	float GetClothThickness();
 	float GetClothTearFactor();
 	float GetClothStretchingStiffness();
@@ -31008,30 +31009,30 @@ public:
 	float GetClothBendingStiffness();
 	float GetClothAttachmentTearFactor();
 	float GetClothAttachmentResponseCoefficient();
-	void ForceApexClothingTeleport();
-	void ForceApexClothingTeleportAndReset();
-	void STATIC_ResetClothVertsToRefPose();
-	void STATIC_SetAttachClothVertsToBaseBody(bool bAttachVerts);
-	void STATIC_SetClothExternalForce(const struct FVector& InForce);
+	void STATIC_ForceApexClothingTeleport();
+	void STATIC_ForceApexClothingTeleportAndReset();
+	void ResetClothVertsToRefPose();
+	void SetAttachClothVertsToBaseBody(bool bAttachVerts);
+	void SetClothExternalForce(const struct FVector& InForce);
 	void STATIC_UpdateClothParams();
-	void STATIC_SetEnableClothingSimulation(bool bInEnable);
-	void STATIC_SetClothFrozen(bool bNewFrozen);
-	void STATIC_SetEnableClothSimulation(bool bInEnable);
-	void STATIC_SetForceRefPose(bool bNewForceRefPose);
-	void STATIC_SetPhysicsAsset(class UPhysicsAsset* NewPhysicsAsset, bool bForceReInit);
-	void STATIC_SetSkeletalMesh(class USkeletalMesh* NewMesh, bool bKeepSpaceBases, bool bTgCallInitAnimTree);
+	void SetEnableClothingSimulation(bool bInEnable);
+	void SetClothFrozen(bool bNewFrozen);
+	void SetEnableClothSimulation(bool bInEnable);
+	void SetForceRefPose(bool bNewForceRefPose);
+	void SetPhysicsAsset(class UPhysicsAsset* NewPhysicsAsset, bool bForceReInit);
+	void SetSkeletalMesh(class USkeletalMesh* NewMesh, bool bKeepSpaceBases, bool bTgCallInitAnimTree);
 	struct FMatrix GetTransformMatrix();
 	void STATIC_AttachedComponents(class UClass* BaseClass, class UActorComponent** OutComponent);
 	bool IsComponentAttached(class UActorComponent* Component, const struct FName& BoneName);
-	class UActorComponent* FindComponentAttachedToBone(const struct FName& InBoneName);
+	class UActorComponent* STATIC_FindComponentAttachedToBone(const struct FName& InBoneName);
 	struct FName GetSocketBoneName(const struct FName& InSocketName);
 	class USkeletalMeshSocket* GetSocketByName(const struct FName& InSocketName);
 	bool GetSocketWorldLocationAndRotation(const struct FName& InSocketName, int Space, struct FVector* OutLocation, struct FRotator* OutRotation);
 	void STATIC_AttachComponentToSocket(class UActorComponent* Component, const struct FName& SocketName);
-	void DetachComponent(class UActorComponent* Component);
+	void STATIC_DetachComponent(class UActorComponent* Component);
 	void STATIC_AttachComponent(class UActorComponent* Component, const struct FName& BoneName, const struct FVector& RelativeLocation, const struct FRotator& RelativeRotation, const struct FVector& RelativeScale);
 	float GetFOV();
-	void STATIC_SetFOV(float NewFOV);
+	void SetFOV(float NewFOV);
 };
 
 
@@ -31223,17 +31224,17 @@ public:
 	}
 
 
-	void STATIC_OnToggleHidden(class USeqAct_ToggleHidden* Action);
-	void STATIC_OnToggle(class USeqAct_Toggle* inAction);
+	void OnToggleHidden(class USeqAct_ToggleHidden* Action);
+	void OnToggle(class USeqAct_Toggle* inAction);
 	void GetAllConnectedSplineActors(TArray<class ASplineActor*>* OutSet);
-	bool FindSplinePathTo(class ASplineActor* Goal, TArray<class ASplineActor*>* OutRoute);
+	bool STATIC_FindSplinePathTo(class ASplineActor* Goal, TArray<class ASplineActor*>* OutRoute);
 	class ASplineActor* GetBestConnectionInDirection(const struct FVector& DesiredDir, bool bUseLinksFrom);
 	class ASplineActor* GetRandomConnection(bool bUseLinksFrom);
 	void STATIC_BreakAllConnectionsFrom();
 	void STATIC_BreakAllConnections();
 	void STATIC_BreakConnectionTo(class ASplineActor* NextActor);
-	class ASplineActor* FindTargetForComponent(class USplineComponent* SplineComp);
-	class USplineComponent* FindSplineComponentTo(class ASplineActor* NextActor);
+	class ASplineActor* STATIC_FindTargetForComponent(class USplineComponent* SplineComp);
+	class USplineComponent* STATIC_FindSplineComponentTo(class ASplineActor* NextActor);
 	bool IsConnectedTo(class ASplineActor* NextActor, bool bCheckForDisableDestination);
 	void STATIC_AddConnectionTo(class ASplineActor* NextActor);
 	void STATIC_UpdateConnectedSplineComponents(bool bFinish);
@@ -31268,7 +31269,7 @@ public:
 
 
 	void STATIC_UpdateSplineParams();
-	void ClearLoftMesh();
+	void STATIC_ClearLoftMesh();
 };
 
 
@@ -31356,12 +31357,12 @@ public:
 	}
 
 
-	int FindEdgeForTopLevelScope(int TopLevelScopeIndex, TEnumAsByte<EScopeEdge> Edge);
+	int STATIC_FindEdgeForTopLevelScope(int TopLevelScopeIndex, TEnumAsByte<EScopeEdge> Edge);
 	void STATIC_BreakFractureComponent(class UFracturedStaticMeshComponent* Comp, const struct FVector& BoxMin, const struct FVector& BoxMax);
 	void GetAllGroupedProcBuildings(TArray<class AProcBuilding*>* OutSet);
 	class AProcBuilding* GetBaseMostBuilding();
-	TArray<class UStaticMeshComponent*> FindComponentsForTopLevelScope(int TopLevelScopeIndex);
-	void ClearBuildingMeshes();
+	TArray<class UStaticMeshComponent*> STATIC_FindComponentsForTopLevelScope(int TopLevelScopeIndex);
+	void STATIC_ClearBuildingMeshes();
 };
 
 
@@ -31570,7 +31571,7 @@ public:
 	}
 
 
-	int STATIC_PickRandomBuildingMesh();
+	int PickRandomBuildingMesh();
 };
 
 
@@ -31838,16 +31839,16 @@ public:
 	bool ShouldShowGore();
 	bool IsCoopMultiplayerGame();
 	bool IsMultiplayerGame();
-	void EndGame();
-	void STATIC_StartMatch();
+	void STATIC_EndGame();
+	void StartMatch();
 	void SetTeam(int Index, class ATeamInfo* TI);
-	void STATIC_RemovePRI(class APlayerReplicationInfo* PRI);
+	void RemovePRI(class APlayerReplicationInfo* PRI);
 	void STATIC_AddPRI(class APlayerReplicationInfo* PRI);
-	bool CheckIsEnemy(class AActor* A, class AActor* B);
-	bool STATIC_OnSameTeam(class AActor* A, class AActor* B);
+	bool STATIC_CheckIsEnemy(class AActor* A, class AActor* B);
+	bool OnSameTeam(class AActor* A, class AActor* B);
 	void Timer();
 	void Reset();
-	void STATIC_ReceivedGameClass();
+	void ReceivedGameClass();
 	void ReplicatedEvent(const struct FName& VarName);
 	void PostBeginPlay();
 };
@@ -31916,30 +31917,30 @@ public:
 
 	bool IsPrimaryPlayer();
 	void UnregisterPlayerFromSession();
-	void STATIC_RegisterPlayerWithSession();
+	void RegisterPlayerWithSession();
 	bool IsInvalidName();
 	unsigned char GetTeamNum();
-	void STATIC_SetUniqueId(const struct FUniqueNetId& PlayerUniqueId);
-	void STATIC_SeamlessTravelTo(class APlayerReplicationInfo* NewPRI);
+	void SetUniqueId(const struct FUniqueNetId& PlayerUniqueId);
+	void SeamlessTravelTo(class APlayerReplicationInfo* NewPRI);
 	void IncrementDeaths(int Amt);
-	void CopyProperties(class APlayerReplicationInfo* PRI);
-	void STATIC_OverrideWith(class APlayerReplicationInfo* PRI);
-	class APlayerReplicationInfo* Duplicate();
-	void STATIC_SetWaitingPlayer(bool B);
+	void STATIC_CopyProperties(class APlayerReplicationInfo* PRI);
+	void OverrideWith(class APlayerReplicationInfo* PRI);
+	class APlayerReplicationInfo* STATIC_Duplicate();
+	void SetWaitingPlayer(bool B);
 	void SetPlayerName(const struct FString& S);
-	void DisplayDebug(class AHUD* HUD, float* YL, float* YPos);
+	void STATIC_DisplayDebug(class AHUD* HUD, float* YL, float* YPos);
 	struct FString GetHumanReadableName();
 	void Reset();
 	void Destroyed();
-	bool STATIC_ShouldBroadCastWelcomeMessage(bool bExiting);
+	bool ShouldBroadCastWelcomeMessage(bool bExiting);
 	void STATIC_UpdatePing(float TimeStamp);
 	void ReplicatedEvent(const struct FName& VarName);
-	void STATIC_RemoteUserDataReplicated();
-	void STATIC_SetPlayerTeam(class ATeamInfo* NewTeam);
-	void ClientInitialize(class AController* C);
+	void RemoteUserDataReplicated();
+	void SetPlayerTeam(class ATeamInfo* NewTeam);
+	void STATIC_ClientInitialize(class AController* C);
 	void UpdateRemoteUserData();
-	void STATIC_ServerUpdateRemoteUserData(const struct FPRIAudioDeviceInfo& Device, int Index);
-	void STATIC_ServerFinalizeRemoteUserData(bool bGuest, const struct FString& Id);
+	void ServerUpdateRemoteUserData(const struct FPRIAudioDeviceInfo& Device, int Index);
+	void ServerFinalizeRemoteUserData(bool bGuest, const struct FString& Id);
 	void ClientFillRemoteUserData();
 	void PostBeginPlay();
 	bool IsBot();
@@ -31966,7 +31967,7 @@ public:
 
 	unsigned char GetTeamNum();
 	struct FString GetHumanReadableName();
-	void STATIC_RemoveFromTeam(class AController* Other);
+	void RemoveFromTeam(class AController* Other);
 	bool STATIC_AddToTeam(class AController* Other);
 	void Destroyed();
 	void ReplicatedEvent(const struct FName& VarName);
@@ -32033,39 +32034,39 @@ public:
 	}
 
 
-	void STATIC_StopCameraAnim(class UCameraAnimInst* AnimInst, bool bImmediate);
-	void STATIC_StopAllCameraAnimsByType(class UCameraAnim* Anim, bool bImmediate);
-	void STATIC_StopAllCameraAnims(bool bImmediate);
-	class UCameraAnimInst* STATIC_PlayCameraAnim(class UCameraAnim* Anim, float Rate, float Scale, float BlendInTime, float BlendOutTime, bool bLoop, bool bRandomStartTime, float Duration, bool bSingleInstance);
-	void ClearAllCameraShakes();
-	void STATIC_PlayWorldCameraShake(class UCameraShake* Shake, class AActor* ShakeInstigator, const struct FVector& Epicenter, float InnerRadius, float OuterRadius, float Falloff, bool bTryForceFeedback, bool bOrientShakeTowardsEpicenter);
-	float CalcRadialShakeScale(class ACamera* Cam, const struct FVector& Epicenter, float InnerRadius, float OuterRadius, float Falloff);
-	void STATIC_StopCameraShake(class UCameraShake* Shake);
-	void STATIC_PlayCameraShake(class UCameraShake* Shake, float Scale, TEnumAsByte<ECameraAnimPlaySpace> PlaySpace, const struct FRotator& UserPlaySpaceRot);
-	void ClearCameraLensEffects();
-	void STATIC_RemoveCameraLensEffect(class AEmitterCameraLensEffectBase* Emitter);
+	void StopCameraAnim(class UCameraAnimInst* AnimInst, bool bImmediate);
+	void StopAllCameraAnimsByType(class UCameraAnim* Anim, bool bImmediate);
+	void StopAllCameraAnims(bool bImmediate);
+	class UCameraAnimInst* PlayCameraAnim(class UCameraAnim* Anim, float Rate, float Scale, float BlendInTime, float BlendOutTime, bool bLoop, bool bRandomStartTime, float Duration, bool bSingleInstance);
+	void STATIC_ClearAllCameraShakes();
+	void PlayWorldCameraShake(class UCameraShake* Shake, class AActor* ShakeInstigator, const struct FVector& Epicenter, float InnerRadius, float OuterRadius, float Falloff, bool bTryForceFeedback, bool bOrientShakeTowardsEpicenter);
+	float STATIC_CalcRadialShakeScale(class ACamera* Cam, const struct FVector& Epicenter, float InnerRadius, float OuterRadius, float Falloff);
+	void StopCameraShake(class UCameraShake* Shake);
+	void PlayCameraShake(class UCameraShake* Shake, float Scale, TEnumAsByte<ECameraAnimPlaySpace> PlaySpace, const struct FRotator& UserPlaySpaceRot);
+	void STATIC_ClearCameraLensEffects();
+	void RemoveCameraLensEffect(class AEmitterCameraLensEffectBase* Emitter);
 	void STATIC_AddCameraLensEffect(class UClass* LensEffectEmitterClass);
-	class AEmitterCameraLensEffectBase* FindCameraLensEffect(class UClass* LensEffectEmitterClass);
-	void DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos);
+	class AEmitterCameraLensEffectBase* STATIC_FindCameraLensEffect(class UClass* LensEffectEmitterClass);
+	void STATIC_DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos);
 	void SetViewTarget(class AActor* NewViewTarget, const struct FViewTargetTransitionParams& TransitionParams);
 	void STATIC_UpdateViewTarget(float DeltaTime, struct FTViewTarget* OutVT);
-	void CheckViewTarget(struct FTViewTarget* VT);
-	void FillCameraCache(struct FTPOV* NewPOV);
+	void STATIC_CheckViewTarget(struct FTViewTarget* VT);
+	void STATIC_FillCameraCache(struct FTPOV* NewPOV);
 	void GetViewLocalToTarget(class AActor* InViewTarget, struct FVector* LocalViewLocation, struct FQuat* LocalViewRotation);
 	struct FTPOV STATIC_BlendViewTargets(float Alpha, struct FTViewTarget* A, struct FTViewTarget* B);
 	void STATIC_ApplyAudioFade();
-	void DoUpdateCamera(float DeltaTime);
+	void STATIC_DoUpdateCamera(float DeltaTime);
 	void UpdateCamera(float DeltaTime);
-	void STATIC_SetDesiredColorScale(const struct FVector& NewColorScale, float InterpTime);
+	void SetDesiredColorScale(const struct FVector& NewColorScale, float InterpTime);
 	struct FRotator GetCameraRotation();
 	void GetCameraViewPoint(struct FVector* OutCamLoc, struct FRotator* OutCamRot);
-	void STATIC_SetFOV(float NewFOV);
+	void SetFOV(float NewFOV);
 	float GetFOVAngle();
 	void InitializeFor(class APlayerController* PC);
 	void STATIC_ApplyCameraModifiers(float DeltaTime, struct FTPOV* OutPOV);
 	void Destroyed();
 	void PostBeginPlay();
-	class UCameraModifier* CreateCameraModifier(class UClass* ModifierClass);
+	class UCameraModifier* STATIC_CreateCameraModifier(class UClass* ModifierClass);
 };
 
 
@@ -32090,7 +32091,7 @@ public:
 	}
 
 
-	void DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos);
+	void STATIC_DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos);
 	void GetCameraView(float DeltaTime, bool bOnlyFOV, struct FTPOV* OutPOV);
 };
 
@@ -32171,7 +32172,7 @@ public:
 	}
 
 
-	void STATIC_SetPlaySpace(TEnumAsByte<ECameraAnimPlaySpace> NewSpace, const struct FRotator& UserPlaySpace);
+	void SetPlaySpace(TEnumAsByte<ECameraAnimPlaySpace> NewSpace, const struct FRotator& UserPlaySpace);
 	void STATIC_ApplyTransientScaling(float Scalar);
 	void Stop(bool bImmediate);
 	void STATIC_AdvanceAnim(float DeltaTime, bool bJump);
@@ -32206,9 +32207,9 @@ public:
 
 	void STATIC_UpdateAlpha(class ACamera* Camera, float DeltaTime);
 	void STATIC_ToggleModifier();
-	void EnableModifier();
+	void STATIC_EnableModifier();
 	void DisableModifier(bool bImmediate);
-	bool STATIC_RemoveCameraModifier(class ACamera* Camera);
+	bool RemoveCameraModifier(class ACamera* Camera);
 	bool STATIC_AddCameraModifier(class ACamera* Camera);
 	bool IsDisabled();
 	bool ModifyCamera(class ACamera* Camera, float DeltaTime, struct FTPOV* OutPOV);
@@ -32233,11 +32234,11 @@ public:
 
 	bool ModifyCamera(class ACamera* Camera, float DeltaTime, struct FTPOV* OutPOV);
 	void STATIC_UpdateCameraShake(float DeltaTime, struct FCameraShakeInstance* Shake, struct FTPOV* OutPOV);
-	void STATIC_RemoveAllCameraShakes();
-	void STATIC_RemoveCameraShake(class UCameraShake* Shake);
+	void RemoveAllCameraShakes();
+	void RemoveCameraShake(class UCameraShake* Shake);
 	void STATIC_AddCameraShake(class UCameraShake* NewShake, float Scale, TEnumAsByte<ECameraAnimPlaySpace> PlaySpace, const struct FRotator& UserPlaySpaceRot);
 	struct FCameraShakeInstance InitializeShake(class UCameraShake* NewShake, float Scale, TEnumAsByte<ECameraAnimPlaySpace> PlaySpace, const struct FRotator& UserPlaySpaceRot);
-	void STATIC_ReinitShake(int ActiveShakeIdx, float Scale);
+	void ReinitShake(int ActiveShakeIdx, float Scale);
 	float InitializeOffset(struct FFOscillator* Param);
 };
 
@@ -32387,11 +32388,11 @@ public:
 	}
 
 
-	void DebugLogNotification(struct FNotificationInfo* Notification);
+	void STATIC_DebugLogNotification(struct FNotificationInfo* Notification);
 	void OnReceivedRemoteNotification(bool bWasAppActive, struct FNotificationInfo* Notification);
 	void OnReceivedLocalNotification(bool bWasAppActive, struct FNotificationInfo* Notification);
-	void CancelAllScheduledLocalNotifications();
-	void STATIC_ScheduleLocalNotification(int StartOffsetSeconds, struct FNotificationInfo* Notification);
+	void STATIC_CancelAllScheduledLocalNotifications();
+	void ScheduleLocalNotification(int StartOffsetSeconds, struct FNotificationInfo* Notification);
 	bool STATIC_WasLaunchedViaNotification();
 	void Init();
 };
@@ -32499,10 +32500,10 @@ public:
 	}
 
 
-	void STATIC_SetPauseWhileAdOpen(bool bShouldPause);
-	void ForceCloseAd();
+	void SetPauseWhileAdOpen(bool bShouldPause);
+	void STATIC_ForceCloseAd();
 	void HideBanner();
-	void STATIC_ShowBanner(bool bShowBottomOfScreen);
+	void ShowBanner(bool bShowBottomOfScreen);
 	void Init();
 };
 
@@ -32676,7 +32677,7 @@ public:
 	}
 
 
-	void CleanupNavMesh();
+	void STATIC_CleanupNavMesh();
 	void InitializeNavMesh();
 };
 
@@ -32760,16 +32761,16 @@ public:
 	}
 
 
-	bool STATIC_PathCache_RemoveIndex(int Index, int Count);
-	void CopyMovePointsFromPathCache(const struct FVector& FinalDest, TArray<struct FVector>* MovePoints);
+	bool PathCache_RemoveIndex(int Index, int Count);
+	void STATIC_CopyMovePointsFromPathCache(const struct FVector& FinalDest, TArray<struct FVector>* MovePoints);
 	TEnumAsByte<ENavMeshEdgeType> GetCurrentEdgeType();
-	void ClearCurrentEdge();
+	void STATIC_ClearCurrentEdge();
 	int GetPackedKeyForPosition(int PreviousKey, struct FVector* pos, struct FVector* PrevPos);
 	bool LineCheck(const struct FVector& Start, const struct FVector& Direction, const struct FVector& Extent, struct FVector* out_HitLocation, struct FVector* out_HitNormal);
 	bool STATIC_ActorReachable(class AActor* GoalActor);
-	bool STATIC_PointReachable(const struct FVector& Point, const struct FVector& OverrideStartPoint, bool bAllowHitsInEndCollisionBox);
+	bool PointReachable(const struct FVector& Point, const struct FVector& OverrideStartPoint, bool bAllowHitsInEndCollisionBox);
 	bool SuggestMovePreparation(class AController* C, struct FVector* MovePt);
-	bool FindPath(class AActor** out_DestActor, int* out_DestItem);
+	bool STATIC_FindPath(class AActor** out_DestActor, int* out_DestItem);
 	bool GetNextMoveLocation(float ArrivalDistance, struct FVector* out_MoveDest);
 };
 
@@ -32812,7 +32813,7 @@ public:
 	}
 
 
-	bool STATIC_PartiallyDuplicates(int Switch1, int Switch2, class UObject* OptionalObject1, class UObject* OptionalObject2);
+	bool PartiallyDuplicates(int Switch1, int Switch2, class UObject* OptionalObject1, class UObject* OptionalObject2);
 	bool IsConsoleMessage(int Switch);
 	float GetLifeTime(int Switch);
 	int GetFontSize(int Switch, class APlayerReplicationInfo* RelatedPRI1, class APlayerReplicationInfo* RelatedPRI2, class APlayerReplicationInfo* LocalPlayer);
@@ -32820,7 +32821,7 @@ public:
 	struct FColor GetColor(int Switch, class APlayerReplicationInfo* RelatedPRI_2, class APlayerReplicationInfo* RelatedPRI_3, class UObject* OptionalObject);
 	struct FColor GetConsoleColor(class APlayerReplicationInfo* RelatedPRI_2);
 	struct FString GetString(int Switch, bool bPRI1HUD, class APlayerReplicationInfo* RelatedPRI_2, class APlayerReplicationInfo* RelatedPRI_3, class UObject* OptionalObject);
-	void ClientReceive(class APlayerController* P, int Switch, class APlayerReplicationInfo* RelatedPRI_2, class APlayerReplicationInfo* RelatedPRI_3, class UObject* OptionalObject);
+	void STATIC_ClientReceive(class APlayerController* P, int Switch, class APlayerReplicationInfo* RelatedPRI_2, class APlayerReplicationInfo* RelatedPRI_3, class UObject* OptionalObject);
 };
 
 
@@ -32860,7 +32861,7 @@ public:
 
 
 	int GetObjClassVersion();
-	bool STATIC_ShouldTeleport(class AActor* TestActor, const struct FVector& TeleportLocation, float TeleportDist, TArray<class AVolume*> Volumes);
+	bool ShouldTeleport(class AActor* TestActor, const struct FVector& TeleportLocation, float TeleportDist, TArray<class AVolume*> Volumes);
 };
 
 
@@ -32954,114 +32955,114 @@ public:
 
 
 	void STATIC_ClearCustomOnlineDelegates();
-	void ClearAchievements(unsigned char LocalUserNum, int TitleId);
+	void STATIC_ClearAchievements(unsigned char LocalUserNum, int TitleId);
 	TEnumAsByte<EOnlineEnumerationReadState> GetAchievements(unsigned char LocalUserNum, int TitleId, TArray<struct FAchievementDetails>* Achievements);
-	void ClearReadAchievementsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadAchievementsCompleteDelegate);
+	void STATIC_ClearReadAchievementsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadAchievementsCompleteDelegate);
 	void STATIC_AddReadAchievementsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadAchievementsCompleteDelegate);
 	void STATIC_OnReadAchievementsComplete(int TitleId);
-	bool STATIC_ReadAchievements(unsigned char LocalUserNum, int TitleId, bool bShouldReadText, bool bShouldReadImages);
-	void ClearUnlockAchievementCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& UnlockAchievementCompleteDelegate);
+	bool ReadAchievements(unsigned char LocalUserNum, int TitleId, bool bShouldReadText, bool bShouldReadImages);
+	void STATIC_ClearUnlockAchievementCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& UnlockAchievementCompleteDelegate);
 	void STATIC_AddUnlockAchievementCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& UnlockAchievementCompleteDelegate);
 	void STATIC_OnUnlockAchievementComplete(bool bWasSuccessful);
 	bool STATIC_UnlockAchievement(unsigned char LocalUserNum, int AchievementId, float PercentComplete);
-	bool DeleteMessage(unsigned char LocalUserNum, int MessageIndex);
-	void ClearFriendMessageReceivedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& MessageDelegate);
+	bool STATIC_DeleteMessage(unsigned char LocalUserNum, int MessageIndex);
+	void STATIC_ClearFriendMessageReceivedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& MessageDelegate);
 	void STATIC_AddFriendMessageReceivedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& MessageDelegate);
 	void STATIC_OnFriendMessageReceived(unsigned char LocalUserNum, const struct FUniqueNetId& SendingPlayer, const struct FString& SendingNick, const struct FString& Message);
 	void GetFriendMessages(unsigned char LocalUserNum, TArray<struct FOnlineFriendMessage>* FriendMessages);
-	void ClearJoinFriendGameCompleteDelegate(const struct FScriptDelegate& JoinFriendGameCompleteDelegate);
+	void STATIC_ClearJoinFriendGameCompleteDelegate(const struct FScriptDelegate& JoinFriendGameCompleteDelegate);
 	void STATIC_AddJoinFriendGameCompleteDelegate(const struct FScriptDelegate& JoinFriendGameCompleteDelegate);
 	void STATIC_OnJoinFriendGameComplete(bool bWasSuccessful);
 	bool JoinFriendGame(unsigned char LocalUserNum, const struct FUniqueNetId& Friend);
-	void CheckForGameInviteOnLaunch();
-	void ClearReceivedGameInviteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReceivedGameInviteDelegate);
+	void STATIC_CheckForGameInviteOnLaunch();
+	void STATIC_ClearReceivedGameInviteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReceivedGameInviteDelegate);
 	void STATIC_AddReceivedGameInviteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReceivedGameInviteDelegate);
 	void STATIC_OnReceivedGameInvite(unsigned char LocalUserNum, const struct FString& InviterName);
-	bool STATIC_SendGameInviteToFriends(unsigned char LocalUserNum, const struct FName& SessionName, TArray<struct FUniqueNetId> Friends, const struct FString& Text);
-	bool STATIC_SendGameInviteToFriend(unsigned char LocalUserNum, const struct FName& SessionName, const struct FUniqueNetId& Friend, const struct FString& Text);
-	bool STATIC_SendMessageToFriend(unsigned char LocalUserNum, const struct FUniqueNetId& Friend, const struct FString& Message);
-	void ClearFriendInviteReceivedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& InviteDelegate);
+	bool SendGameInviteToFriends(unsigned char LocalUserNum, const struct FName& SessionName, TArray<struct FUniqueNetId> Friends, const struct FString& Text);
+	bool SendGameInviteToFriend(unsigned char LocalUserNum, const struct FName& SessionName, const struct FUniqueNetId& Friend, const struct FString& Text);
+	bool SendMessageToFriend(unsigned char LocalUserNum, const struct FUniqueNetId& Friend, const struct FString& Message);
+	void STATIC_ClearFriendInviteReceivedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& InviteDelegate);
 	void STATIC_AddFriendInviteReceivedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& InviteDelegate);
 	void STATIC_OnFriendInviteReceived(unsigned char LocalUserNum, const struct FUniqueNetId& RequestingPlayer, const struct FString& RequestingNick, const struct FString& Message);
-	bool STATIC_RemoveFriend(unsigned char LocalUserNum, const struct FUniqueNetId& FormerFriend);
-	bool DenyFriendInvite(unsigned char LocalUserNum, const struct FUniqueNetId& RequestingPlayer);
+	bool RemoveFriend(unsigned char LocalUserNum, const struct FUniqueNetId& FormerFriend);
+	bool STATIC_DenyFriendInvite(unsigned char LocalUserNum, const struct FUniqueNetId& RequestingPlayer);
 	bool STATIC_AcceptFriendInvite(unsigned char LocalUserNum, const struct FUniqueNetId& RequestingPlayer);
-	void ClearAddFriendByNameCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& FriendDelegate);
+	void STATIC_ClearAddFriendByNameCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& FriendDelegate);
 	void STATIC_AddAddFriendByNameCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& FriendDelegate);
 	void STATIC_OnAddFriendByNameComplete(bool bWasSuccessful);
 	bool STATIC_AddFriendByName(unsigned char LocalUserNum, const struct FString& FriendName, const struct FString& Message);
 	bool STATIC_AddFriend(unsigned char LocalUserNum, const struct FUniqueNetId& NewFriend, const struct FString& Message);
 	struct FString GetKeyboardInputResults(unsigned char* bWasCanceled);
-	void ClearKeyboardInputDoneDelegate(const struct FScriptDelegate& InputDelegate);
+	void STATIC_ClearKeyboardInputDoneDelegate(const struct FScriptDelegate& InputDelegate);
 	void STATIC_AddKeyboardInputDoneDelegate(const struct FScriptDelegate& InputDelegate);
 	void STATIC_OnKeyboardInputComplete(bool bWasSuccessful);
 	bool HideKeyboardUI(unsigned char LocalUserNum);
 	bool ShowKeyboardUI(unsigned char LocalUserNum, const struct FString& TitleText, const struct FString& DescriptionText, bool bIsPassword, bool bShouldValidate, const struct FString& DefaultText, int MaxResultLength);
-	void STATIC_SetOnlineStatus(unsigned char LocalUserNum, const struct FString& StatusString, bool PlayerActive);
+	void SetOnlineStatus(unsigned char LocalUserNum, const struct FString& StatusString, bool PlayerActive);
 	TEnumAsByte<EOnlineEnumerationReadState> GetFriendsList(unsigned char LocalUserNum, int Count, int StartingAt, TArray<struct FOnlineFriend>* Friends);
-	void ClearReadFriendsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadFriendsCompleteDelegate);
+	void STATIC_ClearReadFriendsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadFriendsCompleteDelegate);
 	void STATIC_AddReadFriendsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadFriendsCompleteDelegate);
 	void STATIC_OnReadFriendsComplete(bool bWasSuccessful);
-	bool STATIC_ReadFriendsList(unsigned char LocalUserNum, int Count, int StartingAt);
-	void ClearWritePlayerStorageCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& WritePlayerStorageCompleteDelegate);
+	bool ReadFriendsList(unsigned char LocalUserNum, int Count, int StartingAt);
+	void STATIC_ClearWritePlayerStorageCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& WritePlayerStorageCompleteDelegate);
 	void STATIC_AddWritePlayerStorageCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& WritePlayerStorageCompleteDelegate);
 	void STATIC_OnWritePlayerStorageComplete(unsigned char LocalUserNum, bool bWasSuccessful);
 	bool STATIC_WritePlayerStorage(unsigned char LocalUserNum, class UOnlinePlayerStorage* PlayerStorage, int DeviceID);
 	class UOnlinePlayerStorage* GetPlayerStorage(unsigned char LocalUserNum);
-	void ClearReadPlayerStorageForNetIdCompleteDelegate(const struct FUniqueNetId& NetId, const struct FScriptDelegate& ReadPlayerStorageForNetIdCompleteDelegate);
+	void STATIC_ClearReadPlayerStorageForNetIdCompleteDelegate(const struct FUniqueNetId& NetId, const struct FScriptDelegate& ReadPlayerStorageForNetIdCompleteDelegate);
 	void STATIC_AddReadPlayerStorageForNetIdCompleteDelegate(const struct FUniqueNetId& NetId, const struct FScriptDelegate& ReadPlayerStorageForNetIdCompleteDelegate);
 	void STATIC_OnReadPlayerStorageForNetIdComplete(const struct FUniqueNetId& NetId, bool bWasSuccessful);
-	bool STATIC_ReadPlayerStorageForNetId(unsigned char LocalUserNum, const struct FUniqueNetId& NetId, class UOnlinePlayerStorage* PlayerStorage);
-	void ClearReadPlayerStorageCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadPlayerStorageCompleteDelegate);
+	bool ReadPlayerStorageForNetId(unsigned char LocalUserNum, const struct FUniqueNetId& NetId, class UOnlinePlayerStorage* PlayerStorage);
+	void STATIC_ClearReadPlayerStorageCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadPlayerStorageCompleteDelegate);
 	void STATIC_AddReadPlayerStorageCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadPlayerStorageCompleteDelegate);
 	void STATIC_OnReadPlayerStorageComplete(unsigned char LocalUserNum, bool bWasSuccessful);
-	bool STATIC_ReadPlayerStorage(unsigned char LocalUserNum, class UOnlinePlayerStorage* PlayerStorage, int DeviceID);
-	void ClearWriteProfileSettingsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& WriteProfileSettingsCompleteDelegate);
+	bool ReadPlayerStorage(unsigned char LocalUserNum, class UOnlinePlayerStorage* PlayerStorage, int DeviceID);
+	void STATIC_ClearWriteProfileSettingsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& WriteProfileSettingsCompleteDelegate);
 	void STATIC_AddWriteProfileSettingsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& WriteProfileSettingsCompleteDelegate);
 	void STATIC_OnWriteProfileSettingsComplete(unsigned char LocalUserNum, bool bWasSuccessful);
 	bool STATIC_WriteProfileSettings(unsigned char LocalUserNum, class UOnlineProfileSettings* ProfileSettings);
 	class UOnlineProfileSettings* GetProfileSettings(unsigned char LocalUserNum);
-	void ClearReadProfileSettingsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadProfileSettingsCompleteDelegate);
+	void STATIC_ClearReadProfileSettingsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadProfileSettingsCompleteDelegate);
 	void STATIC_AddReadProfileSettingsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadProfileSettingsCompleteDelegate);
 	void STATIC_OnReadProfileSettingsComplete(unsigned char LocalUserNum, bool bWasSuccessful);
-	bool STATIC_ReadProfileSettings(unsigned char LocalUserNum, class UOnlineProfileSettings* ProfileSettings);
-	void ClearFriendsChangeDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& FriendsDelegate);
+	bool ReadProfileSettings(unsigned char LocalUserNum, class UOnlineProfileSettings* ProfileSettings);
+	void STATIC_ClearFriendsChangeDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& FriendsDelegate);
 	void STATIC_AddFriendsChangeDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& FriendsDelegate);
-	void ClearMutingChangeDelegate(const struct FScriptDelegate& MutingDelegate);
+	void STATIC_ClearMutingChangeDelegate(const struct FScriptDelegate& MutingDelegate);
 	void STATIC_AddMutingChangeDelegate(const struct FScriptDelegate& MutingDelegate);
-	void ClearCurrentUserChangedDelegate(const struct FScriptDelegate& CurrentUserDelegate);
+	void STATIC_ClearCurrentUserChangedDelegate(const struct FScriptDelegate& CurrentUserDelegate);
 	void STATIC_AddCurrentUserChangedDelegate(const struct FScriptDelegate& CurrentUserDelegate);
-	void ClearLoginCancelledDelegate(const struct FScriptDelegate& CancelledDelegate);
+	void STATIC_ClearLoginCancelledDelegate(const struct FScriptDelegate& CancelledDelegate);
 	void STATIC_AddLoginCancelledDelegate(const struct FScriptDelegate& CancelledDelegate);
-	void ClearLoginStatusChangeDelegate(const struct FScriptDelegate& LoginStatusDelegate, unsigned char LocalUserNum);
+	void STATIC_ClearLoginStatusChangeDelegate(const struct FScriptDelegate& LoginStatusDelegate, unsigned char LocalUserNum);
 	void STATIC_AddLoginStatusChangeDelegate(const struct FScriptDelegate& LoginStatusDelegate, unsigned char LocalUserNum);
 	void STATIC_OnLoginStatusChange(TEnumAsByte<ELoginStatus> NewStatus, const struct FUniqueNetId& NewId);
-	void ClearLoginChangeDelegate(const struct FScriptDelegate& LoginDelegate);
+	void STATIC_ClearLoginChangeDelegate(const struct FScriptDelegate& LoginDelegate);
 	void STATIC_AddLoginChangeDelegate(const struct FScriptDelegate& LoginDelegate);
-	bool STATIC_ShowFriendsUI(unsigned char LocalUserNum);
+	bool ShowFriendsUI(unsigned char LocalUserNum);
 	bool IsMuted(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID);
 	bool STATIC_AreAnyFriends(unsigned char LocalUserNum, TArray<struct FFriendsQuery>* Query);
 	bool IsFriend(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID);
-	bool CanUploadFitnessData(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
-	bool CanShareKinectContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
-	bool CanShareWithSocialNetwork(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
-	bool CanBrowseInternet(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
-	bool CanAccessPremiumVideoContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
-	bool CanAccessPremiumContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
-	bool CanUseCloudStorage(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
-	bool CanRecordDVRClips(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
-	bool CanShowPresenceInformation(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
-	bool CanViewPlayerProfiles(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
-	bool CanPurchaseContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
-	bool CanShareUserCreatedContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
+	bool STATIC_CanUploadFitnessData(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
+	bool STATIC_CanShareKinectContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
+	bool STATIC_CanShareWithSocialNetwork(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
+	bool STATIC_CanBrowseInternet(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
+	bool STATIC_CanAccessPremiumVideoContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
+	bool STATIC_CanAccessPremiumContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
+	bool STATIC_CanUseCloudStorage(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
+	bool STATIC_CanRecordDVRClips(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
+	bool STATIC_CanShowPresenceInformation(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
+	bool STATIC_CanViewPlayerProfiles(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
+	bool STATIC_CanPurchaseContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
+	bool STATIC_CanShareUserCreatedContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
 	bool CanCommunicateTextWithUsersByUniqueNetIds(unsigned char LocalUserNum, TArray<struct FUniqueNetId> Users);
 	bool STATIC_CanCommunicateTextWithUsers(unsigned char LocalUserNum, TArray<struct FSessionMemberInfo> Users);
 	bool STATIC_CanCommunicateVoiceWithUsersByUniqueNetIds(unsigned char LocalUserNum, TArray<struct FUniqueNetId> Users);
-	bool CanCommunicateVoiceWithUsers(unsigned char LocalUserNum, TArray<struct FSessionMemberInfo> Users);
+	bool STATIC_CanCommunicateVoiceWithUsers(unsigned char LocalUserNum, TArray<struct FSessionMemberInfo> Users);
 	bool STATIC_CanCommunicateVoice(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
-	bool CanCommunicateVideo(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
+	bool STATIC_CanCommunicateVideo(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
 	bool CanCommunicateText(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
-	bool CanPlayOnline(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
+	bool STATIC_CanPlayOnline(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
 	void STATIC_ClearFilterTextDelegate(const struct FScriptDelegate& FilterTextDelegate);
 	void STATIC_AddFilterTextDelegate(const struct FScriptDelegate& FilterTextDelegate);
 	void STATIC_OnFilterText(const struct FString& OriginalText, const struct FString& FilteredText, bool bCensorCompletely);
@@ -33069,10 +33070,10 @@ public:
 	void STATIC_ClearPrivilegeCheckedForUsersByUniqueNetIdsDelegate(const struct FScriptDelegate& PrivilegeDelegate);
 	void STATIC_AddPrivilegeCheckedForUsersByUniqueNetIdsDelegate(const struct FScriptDelegate& PrivilegeDelegate);
 	void STATIC_OnPrivilegeCheckedForUsersByUniqueNetIds(unsigned char LocalUserNum, TEnumAsByte<EFeaturePrivilege> Privilege, TArray<struct FPermissionsResultByUniqueNetId> Results);
-	void ClearPrivilegeCheckedForUsersDelegate(const struct FScriptDelegate& PrivilegeDelegate);
+	void STATIC_ClearPrivilegeCheckedForUsersDelegate(const struct FScriptDelegate& PrivilegeDelegate);
 	void STATIC_AddPrivilegeCheckedForUsersDelegate(const struct FScriptDelegate& PrivilegeDelegate);
 	void STATIC_OnPrivilegeCheckedForUsers(unsigned char LocalUserNum, TEnumAsByte<EFeaturePrivilege> Privilege, TArray<struct FPermissionsResult> Results);
-	void ClearPrivilegeLevelCheckedDelegate(const struct FScriptDelegate& PrivilegeDelegate);
+	void STATIC_ClearPrivilegeLevelCheckedDelegate(const struct FScriptDelegate& PrivilegeDelegate);
 	void STATIC_AddPrivilegeLevelCheckedDelegate(const struct FScriptDelegate& PrivilegeDelegate);
 	void STATIC_OnPrivilegeLevelChecked(unsigned char LocalUserNum, TEnumAsByte<EFeaturePrivilege> Privilege, TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevel, bool bDiffersFromHint);
 	bool IsLocalLogin(unsigned char LocalUserNum);
@@ -33082,31 +33083,31 @@ public:
 	bool GetUniquePlayerId(unsigned char LocalUserNum, struct FUniqueNetId* PlayerID);
 	TEnumAsByte<ELoginStatus> GetLoginStatus(unsigned char LocalUserNum);
 	void CacheLoggedInGamepad();
-	bool STATIC_PairUserAndControllerAtIndex(unsigned char PlayerIndex, unsigned char ControllerIndex, int PairIndex);
-	void ClearSystemUserContrllerPairingChangedDelegate(const struct FScriptDelegate& PairingChangeDelegate);
+	bool PairUserAndControllerAtIndex(unsigned char PlayerIndex, unsigned char ControllerIndex, int PairIndex);
+	void STATIC_ClearSystemUserContrllerPairingChangedDelegate(const struct FScriptDelegate& PairingChangeDelegate);
 	void STATIC_AddSystemUserContrllerPairingChangedDelegate(const struct FScriptDelegate& PairingChangeDelegate);
 	void STATIC_OnSystemUserControllerPairingChanged(int NewLocalUserNum, int PreviousLocalUserNum);
-	void ClearLogoutCompletedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& LogoutDelegate);
+	void STATIC_ClearLogoutCompletedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& LogoutDelegate);
 	void STATIC_AddLogoutCompletedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& LogoutDelegate);
 	void STATIC_OnLogoutCompleted(bool bWasSuccessful);
 	bool Logout(unsigned char LocalUserNum);
-	void ClearLoginFailedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& LoginDelegate);
+	void STATIC_ClearLoginFailedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& LoginDelegate);
 	void STATIC_AddLoginFailedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& LoginDelegate);
 	void STATIC_OnLoginFailed(unsigned char LocalUserNum, TEnumAsByte<EOnlineServerConnectionStatus> ErrorCode);
 	bool STATIC_AutoLogin();
 	bool Login(unsigned char LocalUserNum, const struct FString& LoginName, const struct FString& Password, bool bWantsLocalOnly);
 	bool IsAccountPickerOpen();
-	bool STATIC_ShowLoginUI(unsigned char LocalUserNum, bool bForceLogin, bool bShowOnlineOnly);
-	void STATIC_RemoveAccountPickerCompleteDelegate(const struct FScriptDelegate& InDelegate);
+	bool ShowLoginUI(unsigned char LocalUserNum, bool bForceLogin, bool bShowOnlineOnly);
+	void RemoveAccountPickerCompleteDelegate(const struct FScriptDelegate& InDelegate);
 	void STATIC_AddAccountPickerCompleteDelegate(const struct FScriptDelegate& InDelegate);
 	void STATIC_OnAccountPickerComplete(bool bForceLogin);
 	void STATIC_OnFriendsChange();
 	void STATIC_OnMutingChange();
-	void ClearGetUserAccountInfoDelegate(const struct FScriptDelegate& InDelegate);
+	void STATIC_ClearGetUserAccountInfoDelegate(const struct FScriptDelegate& InDelegate);
 	void STATIC_AddGetUserAccountInfoDelegate(const struct FScriptDelegate& InDelegate);
 	bool GetUserAccountInfo(unsigned char LocalUserNum);
 	void STATIC_OnUserAccountInfoRetrieved(bool bSuccessful, const struct FUserAccountInfo& AccountInfo);
-	void ClearURLTokenRetrievedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& tsrDelegate);
+	void STATIC_ClearURLTokenRetrievedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& tsrDelegate);
 	void STATIC_AddURLTokenRetrievedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& tsrDelegate);
 	bool GetTokenAndSignatureForURL(unsigned char LocalUserNum, const struct FString& URL);
 	void STATIC_OnTokenAndSignatureRetrieved(bool bSuccess, unsigned char LocalUserNum, const struct FString& URL, const struct FString& Token, const struct FString& AuthToken, const struct FString& Signature);
@@ -33129,29 +33130,29 @@ public:
 	}
 
 
-	void STATIC_RateContent(unsigned char PlayerNum, int NewRating, struct FCommunityContentFile* FileToRate);
-	void ClearDeleteContentCompleteDelegate(const struct FScriptDelegate& DeleteContentCompleteDelegate);
+	void RateContent(unsigned char PlayerNum, int NewRating, struct FCommunityContentFile* FileToRate);
+	void STATIC_ClearDeleteContentCompleteDelegate(const struct FScriptDelegate& DeleteContentCompleteDelegate);
 	void STATIC_AddDeleteContentCompleteDelegate(const struct FScriptDelegate& DeleteContentCompleteDelegate);
-	void STATIC_OnDeleteContentComplete(bool bWasSuccessful);
-	bool DeleteContent(unsigned char PlayerNum, struct FCommunityContentMetadata* MetaData);
-	void ClearDownloadContentCompleteDelegate(const struct FScriptDelegate& DownloadContentCompleteDelegate);
+	void OnDeleteContentComplete(bool bWasSuccessful);
+	bool STATIC_DeleteContent(unsigned char PlayerNum, struct FCommunityContentMetadata* MetaData);
+	void STATIC_ClearDownloadContentCompleteDelegate(const struct FScriptDelegate& DownloadContentCompleteDelegate);
 	void STATIC_AddDownloadContentCompleteDelegate(const struct FScriptDelegate& DownloadContentCompleteDelegate);
-	void STATIC_OnDownloadContentComplete(bool bWasSuccessful, const struct FCommunityContentFile& FileDownloaded, TArray<unsigned char> Payload);
-	bool DownloadContent(unsigned char PlayerNum, struct FCommunityContentFile* FileToDownload);
-	void ClearUploadContentCompleteDelegate(const struct FScriptDelegate& UploadContentCompleteDelegate);
+	void OnDownloadContentComplete(bool bWasSuccessful, const struct FCommunityContentFile& FileDownloaded, TArray<unsigned char> Payload);
+	bool STATIC_DownloadContent(unsigned char PlayerNum, struct FCommunityContentFile* FileToDownload);
+	void STATIC_ClearUploadContentCompleteDelegate(const struct FScriptDelegate& UploadContentCompleteDelegate);
 	void STATIC_AddUploadContentCompleteDelegate(const struct FScriptDelegate& UploadContentCompleteDelegate);
-	void STATIC_OnUploadContentComplete(bool bWasSuccessful, const struct FCommunityContentFile& UploadedFile);
+	void OnUploadContentComplete(bool bWasSuccessful, const struct FCommunityContentFile& UploadedFile);
 	bool STATIC_UploadContent(unsigned char PlayerNum, TArray<unsigned char>* Payload, struct FCommunityContentMetadata* MetaData);
 	bool GetFriendsContentList(unsigned char PlayerNum, struct FOnlineFriend* Friend, TArray<struct FCommunityContentFile>* ContentFiles);
-	void ClearReadFriendsContentListCompleteDelegate(const struct FScriptDelegate& ReadFriendsContentListCompleteDelegate);
+	void STATIC_ClearReadFriendsContentListCompleteDelegate(const struct FScriptDelegate& ReadFriendsContentListCompleteDelegate);
 	void STATIC_AddReadFriendsContentListCompleteDelegate(const struct FScriptDelegate& ReadFriendsContentListCompleteDelegate);
-	void STATIC_OnReadFriendsContentListComplete(bool bWasSuccessful);
-	bool STATIC_ReadFriendsContentList(unsigned char PlayerNum, int StartAt, int NumToRead, TArray<struct FOnlineFriend>* Friends);
+	void OnReadFriendsContentListComplete(bool bWasSuccessful);
+	bool ReadFriendsContentList(unsigned char PlayerNum, int StartAt, int NumToRead, TArray<struct FOnlineFriend>* Friends);
 	bool GetContentList(unsigned char PlayerNum, TArray<struct FCommunityContentFile>* ContentFiles);
-	void ClearReadContentListCompleteDelegate(const struct FScriptDelegate& ReadContentListCompleteDelegate);
+	void STATIC_ClearReadContentListCompleteDelegate(const struct FScriptDelegate& ReadContentListCompleteDelegate);
 	void STATIC_AddReadContentListCompleteDelegate(const struct FScriptDelegate& ReadContentListCompleteDelegate);
-	void STATIC_OnReadContentListComplete(bool bWasSuccessful, TArray<struct FCommunityContentFile> ContentFiles);
-	bool STATIC_ReadContentList(unsigned char PlayerNum, const struct FUniqueNetId& NetId, const struct FString& Path, int StartAt, int NumToRead);
+	void OnReadContentListComplete(bool bWasSuccessful, TArray<struct FCommunityContentFile> ContentFiles);
+	bool ReadContentList(unsigned char PlayerNum, const struct FUniqueNetId& NetId, const struct FString& Path, int StartAt, int NumToRead);
 	void Exit();
 	bool Init();
 };
@@ -33170,20 +33171,20 @@ public:
 	}
 
 
-	bool CancelRecordingEvent(unsigned char LocalUserNum, const struct FString& EventName);
-	bool STATIC_RecordPreviousTimespan(unsigned char LocalUserNum, const struct FString& EventName, float Duration);
-	bool EndRecordingEvent(unsigned char LocalUserNum, const struct FString& EventName);
-	void ClearRecordEventCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& RecordEventCompleteDelegate);
+	bool STATIC_CancelRecordingEvent(unsigned char LocalUserNum, const struct FString& EventName);
+	bool RecordPreviousTimespan(unsigned char LocalUserNum, const struct FString& EventName, float Duration);
+	bool STATIC_EndRecordingEvent(unsigned char LocalUserNum, const struct FString& EventName);
+	void STATIC_ClearRecordEventCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& RecordEventCompleteDelegate);
 	void STATIC_AddRecordEventCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& RecordEventCompleteDelegate);
-	void STATIC_OnRecordEventComplete(bool bWasSuccessful, unsigned char LocalUserNum, const struct FString& EventName);
+	void OnRecordEventComplete(bool bWasSuccessful, unsigned char LocalUserNum, const struct FString& EventName);
 	bool STATIC_BeginRecordingEvent(unsigned char LocalUserNum, const struct FString& EventName);
-	void ClearReadRecordedClipsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadRecordedClipsCompleteDelegate);
+	void STATIC_ClearReadRecordedClipsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadRecordedClipsCompleteDelegate);
 	void STATIC_AddReadRecordedClipsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadRecordedClipsCompleteDelegate);
-	void ClearCachedRecordedClips(unsigned char LocalUserNum);
-	void STATIC_OnReadRecordedClipsComplete(bool bWasSuccessful, unsigned char LocalUserNum);
-	bool STATIC_ReadRecordedClips(unsigned char LocalUserNum);
-	void DisableRecording();
-	void EnableRecording();
+	void STATIC_ClearCachedRecordedClips(unsigned char LocalUserNum);
+	void OnReadRecordedClipsComplete(bool bWasSuccessful, unsigned char LocalUserNum);
+	bool ReadRecordedClips(unsigned char LocalUserNum);
+	void STATIC_DisableRecording();
+	void STATIC_EnableRecording();
 };
 
 
@@ -33200,16 +33201,16 @@ public:
 	}
 
 
-	void ClearWriteSharedFileCompleteDelegate(const struct FScriptDelegate& WriteSharedFileCompleteDelegate);
+	void STATIC_ClearWriteSharedFileCompleteDelegate(const struct FScriptDelegate& WriteSharedFileCompleteDelegate);
 	void STATIC_AddWriteSharedFileCompleteDelegate(const struct FScriptDelegate& WriteSharedFileCompleteDelegate);
 	bool STATIC_WriteSharedFile(const struct FString& UserId, const struct FString& Filename, TArray<unsigned char>* Contents);
 	void STATIC_OnWriteSharedFileComplete(bool bWasSuccessful, const struct FString& UserId, const struct FString& Filename, const struct FString& SharedHandle);
-	void ClearReadSharedFileCompleteDelegate(const struct FScriptDelegate& ReadSharedFileCompleteDelegate);
+	void STATIC_ClearReadSharedFileCompleteDelegate(const struct FScriptDelegate& ReadSharedFileCompleteDelegate);
 	void STATIC_AddReadSharedFileCompleteDelegate(const struct FScriptDelegate& ReadSharedFileCompleteDelegate);
-	bool STATIC_ReadSharedFile(const struct FString& SharedHandle);
+	bool ReadSharedFile(const struct FString& SharedHandle);
 	void STATIC_OnReadSharedFileComplete(bool bWasSuccessful, const struct FString& SharedHandle);
-	bool ClearSharedFile(const struct FString& SharedHandle);
-	bool ClearSharedFiles();
+	bool STATIC_ClearSharedFile(const struct FString& SharedHandle);
+	bool STATIC_ClearSharedFiles();
 	bool GetSharedFileContents(const struct FString& SharedHandle, TArray<unsigned char>* FileContents);
 };
 
@@ -33227,26 +33228,26 @@ public:
 	}
 
 
-	void ClearAllDelegates();
-	void ClearDeleteUserFileCompleteDelegate(const struct FScriptDelegate& DeleteUserFileCompleteDelegate);
+	void STATIC_ClearAllDelegates();
+	void STATIC_ClearDeleteUserFileCompleteDelegate(const struct FScriptDelegate& DeleteUserFileCompleteDelegate);
 	void STATIC_AddDeleteUserFileCompleteDelegate(const struct FScriptDelegate& DeleteUserFileCompleteDelegate);
-	bool DeleteUserFile(const struct FString& UserId, const struct FString& Filename, bool bShouldCloudDelete, bool bShouldLocallyDelete);
+	bool STATIC_DeleteUserFile(const struct FString& UserId, const struct FString& Filename, bool bShouldCloudDelete, bool bShouldLocallyDelete);
 	void STATIC_OnDeleteUserFileComplete(bool bWasSuccessful, const struct FString& UserId, const struct FString& Filename);
-	void ClearWriteUserFileCompleteDelegate(const struct FScriptDelegate& WriteUserFileCompleteDelegate);
+	void STATIC_ClearWriteUserFileCompleteDelegate(const struct FScriptDelegate& WriteUserFileCompleteDelegate);
 	void STATIC_AddWriteUserFileCompleteDelegate(const struct FScriptDelegate& WriteUserFileCompleteDelegate);
 	bool STATIC_WriteUserFile(const struct FString& UserId, const struct FString& Filename, TArray<unsigned char>* FileContents);
 	void STATIC_OnWriteUserFileComplete(bool bWasSuccessful, const struct FString& UserId, const struct FString& Filename);
-	void ClearReadUserFileCompleteDelegate(const struct FScriptDelegate& ReadUserFileCompleteDelegate);
+	void STATIC_ClearReadUserFileCompleteDelegate(const struct FScriptDelegate& ReadUserFileCompleteDelegate);
 	void STATIC_AddReadUserFileCompleteDelegate(const struct FScriptDelegate& ReadUserFileCompleteDelegate);
-	bool STATIC_ReadUserFile(const struct FString& UserId, const struct FString& Filename);
+	bool ReadUserFile(const struct FString& UserId, const struct FString& Filename);
 	void STATIC_OnReadUserFileComplete(bool bWasSuccessful, const struct FString& UserId, const struct FString& Filename);
 	void GetUserFileList(const struct FString& UserId, TArray<struct FEmsFile>* UserFiles);
-	void ClearEnumerateUserFileCompleteDelegate(const struct FScriptDelegate& EnumerateUserFileCompleteDelegate);
+	void STATIC_ClearEnumerateUserFileCompleteDelegate(const struct FScriptDelegate& EnumerateUserFileCompleteDelegate);
 	void STATIC_AddEnumerateUserFileCompleteDelegate(const struct FScriptDelegate& EnumerateUserFileCompleteDelegate);
-	void EnumerateUserFiles(const struct FString& UserId);
+	void STATIC_EnumerateUserFiles(const struct FString& UserId);
 	void STATIC_OnEnumerateUserFilesComplete(bool bWasSuccessful, const struct FString& UserId);
-	bool ClearFile(const struct FString& UserId, const struct FString& Filename);
-	bool ClearFiles(const struct FString& UserId);
+	bool STATIC_ClearFile(const struct FString& UserId, const struct FString& Filename);
+	bool STATIC_ClearFiles(const struct FString& UserId);
 	bool GetFileContents(const struct FString& UserId, const struct FString& Filename, TArray<unsigned char>* FileContents);
 };
 
@@ -33264,18 +33265,18 @@ public:
 	}
 
 
-	void ClearPostLinkCompleted(unsigned char LocalUserNum, const struct FScriptDelegate& PostLinkDelegate);
+	void STATIC_ClearPostLinkCompleted(unsigned char LocalUserNum, const struct FScriptDelegate& PostLinkDelegate);
 	void STATIC_AddPostLinkCompleted(unsigned char LocalUserNum, const struct FScriptDelegate& PostLinkDelegate);
-	void STATIC_OnPostLinkCompleted(unsigned char LocalUserNum, bool bWasSuccessful);
-	bool STATIC_PostLink(unsigned char LocalUserNum, struct FSocialPostLinkInfo* PostLinkInfo);
-	void ClearPostImageCompleted(unsigned char LocalUserNum, const struct FScriptDelegate& PostImageDelegate);
+	void OnPostLinkCompleted(unsigned char LocalUserNum, bool bWasSuccessful);
+	bool PostLink(unsigned char LocalUserNum, struct FSocialPostLinkInfo* PostLinkInfo);
+	void STATIC_ClearPostImageCompleted(unsigned char LocalUserNum, const struct FScriptDelegate& PostImageDelegate);
 	void STATIC_AddPostImageCompleted(unsigned char LocalUserNum, const struct FScriptDelegate& PostImageDelegate);
-	void STATIC_OnPostImageCompleted(unsigned char LocalUserNum, bool bWasSuccessful);
-	bool STATIC_PostImage(unsigned char LocalUserNum, TArray<unsigned char> FullImage, struct FSocialPostImageInfo* PostImageInfo);
-	void ClearQuerySocialPostPrivilegesCompleted(const struct FScriptDelegate& PostPrivilegesDelegate);
+	void OnPostImageCompleted(unsigned char LocalUserNum, bool bWasSuccessful);
+	bool PostImage(unsigned char LocalUserNum, TArray<unsigned char> FullImage, struct FSocialPostImageInfo* PostImageInfo);
+	void STATIC_ClearQuerySocialPostPrivilegesCompleted(const struct FScriptDelegate& PostPrivilegesDelegate);
 	void STATIC_AddQuerySocialPostPrivilegesCompleted(const struct FScriptDelegate& PostPrivilegesDelegate);
-	void STATIC_OnQuerySocialPostPrivilegesCompleted(bool bWasSuccessful, const struct FSocialPostPrivileges& PostPrivileges);
-	bool STATIC_QuerySocialPostPrivileges();
+	void OnQuerySocialPostPrivilegesCompleted(bool bWasSuccessful, const struct FSocialPostPrivileges& PostPrivileges);
+	bool QuerySocialPostPrivileges();
 };
 
 
@@ -33292,19 +33293,19 @@ public:
 	}
 
 
-	bool DeleteTitleFile(const struct FString& Filename);
-	bool DeleteTitleFiles(float MaxAgeSeconds);
-	bool ClearCachedFile(const struct FString& Filename);
-	bool ClearCachedFiles();
+	bool STATIC_DeleteTitleFile(const struct FString& Filename);
+	bool STATIC_DeleteTitleFiles(float MaxAgeSeconds);
+	bool STATIC_ClearCachedFile(const struct FString& Filename);
+	bool STATIC_ClearCachedFiles();
 	struct FString GetTitleFileLogicalName(const struct FString& Filename);
 	struct FString GetTitleFileHash(const struct FString& Filename);
 	TEnumAsByte<EOnlineEnumerationReadState> GetTitleFileState(const struct FString& Filename);
 	bool GetTitleFileContents(const struct FString& Filename, TArray<unsigned char>* FileContents);
-	void ClearSaveTitleFileCompleteDelegate(const struct FScriptDelegate& SaveCompleteDelegate);
+	void STATIC_ClearSaveTitleFileCompleteDelegate(const struct FScriptDelegate& SaveCompleteDelegate);
 	void STATIC_AddSaveTitleFileCompleteDelegate(const struct FScriptDelegate& SaveCompleteDelegate);
 	void OnSaveTitleFileComplete(bool bWasSuccessful, const struct FString& Filename);
-	bool STATIC_SaveTitleFile(const struct FString& Filename, const struct FString& LogicalName, TArray<unsigned char> FileContents);
-	void ClearLoadTitleFileCompleteDelegate(const struct FScriptDelegate& LoadCompleteDelegate);
+	bool SaveTitleFile(const struct FString& Filename, const struct FString& LogicalName, TArray<unsigned char> FileContents);
+	void STATIC_ClearLoadTitleFileCompleteDelegate(const struct FScriptDelegate& LoadCompleteDelegate);
 	void STATIC_AddLoadTitleFileCompleteDelegate(const struct FScriptDelegate& LoadCompleteDelegate);
 	void OnLoadTitleFileComplete(bool bWasSuccessful, const struct FString& Filename);
 	bool LoadTitleFile(const struct FString& Filename);
@@ -33324,11 +33325,11 @@ public:
 	}
 
 
-	void STATIC_NotifyTeamChange(const struct FQWord& PlayerUID, unsigned char TeamID);
-	void STATIC_SendChatMessage(int Channel, const struct FString& Message);
-	void ClearChatMessageDelegate(const struct FScriptDelegate& ChatDelegate);
+	void NotifyTeamChange(const struct FQWord& PlayerUID, unsigned char TeamID);
+	void SendChatMessage(int Channel, const struct FString& Message);
+	void STATIC_ClearChatMessageDelegate(const struct FScriptDelegate& ChatDelegate);
 	void STATIC_AddChatMessageDelegate(const struct FScriptDelegate& ChatDelegate);
-	void STATIC_OnChatMessage(int Channel, const struct FString& Sender, const struct FString& Message);
+	void OnChatMessage(int Channel, const struct FString& Sender, const struct FString& Message);
 };
 
 
@@ -33345,17 +33346,17 @@ public:
 	}
 
 
-	void ClearRequestTitleFileListCompleteDelegate(const struct FScriptDelegate& RequestTitleFileListDelegate);
+	void STATIC_ClearRequestTitleFileListCompleteDelegate(const struct FScriptDelegate& RequestTitleFileListDelegate);
 	void STATIC_AddRequestTitleFileListCompleteDelegate(const struct FScriptDelegate& RequestTitleFileListDelegate);
 	void OnRequestTitleFileListComplete(bool bWasSuccessful, TArray<struct FString> FilePaths);
-	bool STATIC_RequestTitleFileList();
-	bool ClearDownloadedFile(const struct FString& Filename);
-	bool ClearDownloadedFiles();
+	bool RequestTitleFileList();
+	bool STATIC_ClearDownloadedFile(const struct FString& Filename);
+	bool STATIC_ClearDownloadedFiles();
 	TEnumAsByte<EOnlineEnumerationReadState> GetTitleFileState(const struct FString& Filename);
 	bool GetTitleFileContents(const struct FString& Filename, TArray<unsigned char>* FileContents);
-	void ClearReadTitleFileCompleteDelegate(const struct FScriptDelegate& ReadTitleFileCompleteDelegate);
+	void STATIC_ClearReadTitleFileCompleteDelegate(const struct FScriptDelegate& ReadTitleFileCompleteDelegate);
 	void STATIC_AddReadTitleFileCompleteDelegate(const struct FScriptDelegate& ReadTitleFileCompleteDelegate);
-	bool STATIC_ReadTitleFile(const struct FString& FileToRead, TEnumAsByte<EOnlineFileType> FileType);
+	bool ReadTitleFile(const struct FString& FileToRead, TEnumAsByte<EOnlineFileType> FileType);
 	void STATIC_OnReadTitleFileComplete(bool bWasSuccessful, const struct FString& Filename);
 };
 
@@ -33383,26 +33384,26 @@ public:
 	void STATIC_ClearPartyChatActiveChangedDelegate(const struct FScriptDelegate& Delegate);
 	void STATIC_AddPartyChatActiveChangedDelegate(const struct FScriptDelegate& Delegate);
 	void STATIC_OnPartyChatActiveChanged(bool bIsActive);
-	bool STATIC_ShowCommunitySessionsUI(unsigned char LocalUserNum);
-	bool STATIC_ShowVoiceChannelUI(unsigned char LocalUserNum);
-	bool STATIC_ShowPartyUI(unsigned char LocalUserNum);
+	bool ShowCommunitySessionsUI(unsigned char LocalUserNum);
+	bool ShowVoiceChannelUI(unsigned char LocalUserNum);
+	bool ShowPartyUI(unsigned char LocalUserNum);
 	int GetPartyBandwidth();
-	bool STATIC_SetPartyMemberCustomData(unsigned char LocalUserNum, int Data1, int Data2, int Data3, int Data4);
-	void ClearPartyMembersInfoChangedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& PartyMembersInfoChangedDelegate);
+	bool SetPartyMemberCustomData(unsigned char LocalUserNum, int Data1, int Data2, int Data3, int Data4);
+	void STATIC_ClearPartyMembersInfoChangedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& PartyMembersInfoChangedDelegate);
 	void STATIC_AddPartyMembersInfoChangedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& PartyMembersInfoChangedDelegate);
-	void STATIC_OnPartyMembersInfoChanged(const struct FString& PlayerName, const struct FUniqueNetId& PlayerID, int CustomData1, int CustomData2, int CustomData3, int CustomData4);
-	void ClearReservedPartyMemberListChangedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReservedPartyMemberListChangedDelegate);
+	void OnPartyMembersInfoChanged(const struct FString& PlayerName, const struct FUniqueNetId& PlayerID, int CustomData1, int CustomData2, int CustomData3, int CustomData4);
+	void STATIC_ClearReservedPartyMemberListChangedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReservedPartyMemberListChangedDelegate);
 	void STATIC_AddReservedPartyMemberListChangedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReservedPartyMemberListChangedDelegate);
-	void STATIC_OnReservedPartyMemberListChanged(bool bJoinedOrLeft, const struct FString& PlayerName, const struct FUniqueNetId& PlayerID);
-	void ClearPartyMemberListChangedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& PartyMemberListChangedDelegate);
+	void OnReservedPartyMemberListChanged(bool bJoinedOrLeft, const struct FString& PlayerName, const struct FUniqueNetId& PlayerID);
+	void STATIC_ClearPartyMemberListChangedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& PartyMemberListChangedDelegate);
 	void STATIC_AddPartyMemberListChangedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& PartyMemberListChangedDelegate);
-	void STATIC_OnPartyMemberListChanged(bool bJoinedOrLeft, const struct FString& PlayerName, const struct FUniqueNetId& PlayerID);
+	void OnPartyMemberListChanged(bool bJoinedOrLeft, const struct FString& PlayerName, const struct FUniqueNetId& PlayerID);
 	bool GetPartyMemberInformation(const struct FUniqueNetId& MemberId, struct FOnlinePartyMember* PartyMember);
 	bool GetPartyMembersInformation(TArray<struct FOnlinePartyMember>* PartyMembers);
-	void ClearSendPartyGameInvitesCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& SendPartyGameInvitesCompleteDelegate);
+	void STATIC_ClearSendPartyGameInvitesCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& SendPartyGameInvitesCompleteDelegate);
 	void STATIC_AddSendPartyGameInvitesCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& SendPartyGameInvitesCompleteDelegate);
-	void STATIC_OnSendPartyGameInvitesComplete(bool bWasSuccessful);
-	bool STATIC_SendPartyGameInvites(unsigned char LocalUserNum);
+	void OnSendPartyGameInvitesComplete(bool bWasSuccessful);
+	bool SendPartyGameInvites(unsigned char LocalUserNum);
 };
 
 
@@ -33420,10 +33421,10 @@ public:
 
 
 	struct FString GetNews(unsigned char LocalUserNum, TEnumAsByte<EOnlineNewsType> NewsType);
-	void ClearReadNewsCompletedDelegate(const struct FScriptDelegate& ReadNewsDelegate);
+	void STATIC_ClearReadNewsCompletedDelegate(const struct FScriptDelegate& ReadNewsDelegate);
 	void STATIC_AddReadNewsCompletedDelegate(const struct FScriptDelegate& ReadNewsDelegate);
 	void OnReadNewsCompleted(bool bWasSuccessful, TEnumAsByte<EOnlineNewsType> NewsType);
-	bool STATIC_ReadNews(unsigned char LocalUserNum, TEnumAsByte<EOnlineNewsType> NewsType);
+	bool ReadNews(unsigned char LocalUserNum, TEnumAsByte<EOnlineNewsType> NewsType);
 };
 
 
@@ -33440,36 +33441,36 @@ public:
 	}
 
 
-	bool STATIC_SendPlayerSessionResume(unsigned char LocalUserNum, const struct FString& MultiplayerCorrelationId, int GameplayModeId, int DifficultyLevelId);
-	bool STATIC_SendPlayerSessionPause(unsigned char LocalUserNum, const struct FString& MultiplayerCorrelationId);
-	bool STATIC_SendPlayerSessionEnd(unsigned char LocalUserNum, const struct FString& MultiplayerCorrelationId, int GameplayModeId, int DifficultyLevelId, int ExitStatusId);
-	bool STATIC_SendPlayerSessionStart(unsigned char LocalUserNum, const struct FString& MultiplayerCorrelationId, int GameplayModeId, int DifficultyLevelId);
+	bool SendPlayerSessionResume(unsigned char LocalUserNum, const struct FString& MultiplayerCorrelationId, int GameplayModeId, int DifficultyLevelId);
+	bool SendPlayerSessionPause(unsigned char LocalUserNum, const struct FString& MultiplayerCorrelationId);
+	bool SendPlayerSessionEnd(unsigned char LocalUserNum, const struct FString& MultiplayerCorrelationId, int GameplayModeId, int DifficultyLevelId, int ExitStatusId);
+	bool SendPlayerSessionStart(unsigned char LocalUserNum, const struct FString& MultiplayerCorrelationId, int GameplayModeId, int DifficultyLevelId);
 	void STATIC_UnsubscribeToStatisticEvent(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerNetId, const struct FName& StatName);
 	void STATIC_SubscribeToStatisticEvent(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerNetId, const struct FName& StatName, const struct FScriptDelegate& EventDelegate);
 	void STATIC_OnStatisticChanged(const struct FUniqueNetId& PlayerNetId, const struct FName& StatName, const struct FString& NewStatValue);
-	void CalcAggregateSkill(TArray<struct FDouble> Mus, TArray<struct FDouble> Sigmas, struct FDouble* OutAggregateMu, struct FDouble* OutAggregateSigma);
-	bool STATIC_RegisterStatGuid(const struct FUniqueNetId& PlayerID, struct FString* ClientStatGuid);
+	void STATIC_CalcAggregateSkill(TArray<struct FDouble> Mus, TArray<struct FDouble> Sigmas, struct FDouble* OutAggregateMu, struct FDouble* OutAggregateSigma);
+	bool RegisterStatGuid(const struct FUniqueNetId& PlayerID, struct FString* ClientStatGuid);
 	struct FString GetClientStatGuid();
-	void ClearRegisterHostStatGuidCompleteDelegateDelegate(const struct FScriptDelegate& RegisterHostStatGuidCompleteDelegate);
+	void STATIC_ClearRegisterHostStatGuidCompleteDelegateDelegate(const struct FScriptDelegate& RegisterHostStatGuidCompleteDelegate);
 	void STATIC_AddRegisterHostStatGuidCompleteDelegate(const struct FScriptDelegate& RegisterHostStatGuidCompleteDelegate);
 	void STATIC_OnRegisterHostStatGuidComplete(bool bWasSuccessful);
-	bool STATIC_RegisterHostStatGuid(struct FString* HostStatGuid);
+	bool RegisterHostStatGuid(struct FString* HostStatGuid);
 	struct FString GetHostStatGuid();
 	bool STATIC_WriteOnlinePlayerScores(const struct FName& SessionName, int LeaderboardId, TArray<struct FOnlinePlayerScore>* PlayerScores);
-	void ClearFlushOnlineStatsCompleteDelegate(const struct FScriptDelegate& FlushOnlineStatsCompleteDelegate);
+	void STATIC_ClearFlushOnlineStatsCompleteDelegate(const struct FScriptDelegate& FlushOnlineStatsCompleteDelegate);
 	void STATIC_AddFlushOnlineStatsCompleteDelegate(const struct FScriptDelegate& FlushOnlineStatsCompleteDelegate);
 	void STATIC_OnFlushOnlineStatsComplete(const struct FName& SessionName, bool bWasSuccessful);
-	bool FlushOnlineStats(const struct FName& SessionName);
+	bool STATIC_FlushOnlineStats(const struct FName& SessionName);
 	bool STATIC_WriteOnlineStats(const struct FName& SessionName, const struct FUniqueNetId& Player, class UOnlineStatsWrite* StatsWrite);
 	void FreeStats(class UOnlineStatsRead* StatsRead);
-	void ClearReadOnlineStatsCompleteDelegate(const struct FScriptDelegate& ReadOnlineStatsCompleteDelegate);
+	void STATIC_ClearReadOnlineStatsCompleteDelegate(const struct FScriptDelegate& ReadOnlineStatsCompleteDelegate);
 	void STATIC_AddReadOnlineStatsCompleteDelegate(const struct FScriptDelegate& ReadOnlineStatsCompleteDelegate);
 	void STATIC_OnReadOnlineStatsComplete(bool bWasSuccessful);
-	bool STATIC_ReadOnlineStatsByRankAroundPlayer(unsigned char LocalUserNum, class UOnlineStatsRead* StatsRead, int NumRows);
-	bool STATIC_ReadOnlineStatsByRank(unsigned char LocalUserNum, class UOnlineStatsRead* StatsRead, int StartIndex, int NumToRead);
-	bool STATIC_ReadOnlineStatForFriends(unsigned char LocalUserNum, class UOnlineStatsRead* StatsRead, bool FavoriteFriendsOnly, int NumToRead);
-	bool STATIC_ReadOnlineStats(unsigned char LocalUserNum, class UOnlineStatsRead* StatsRead, TArray<struct FUniqueNetId>* Players);
-	bool STATIC_ReadOnlineStatsForPlayer(unsigned char LocalUserNum, class UOnlineStatsRead* StatsRead);
+	bool ReadOnlineStatsByRankAroundPlayer(unsigned char LocalUserNum, class UOnlineStatsRead* StatsRead, int NumRows);
+	bool ReadOnlineStatsByRank(unsigned char LocalUserNum, class UOnlineStatsRead* StatsRead, int StartIndex, int NumToRead);
+	bool ReadOnlineStatForFriends(unsigned char LocalUserNum, class UOnlineStatsRead* StatsRead, bool FavoriteFriendsOnly, int NumToRead);
+	bool ReadOnlineStats(unsigned char LocalUserNum, class UOnlineStatsRead* StatsRead, TArray<struct FUniqueNetId>* Players);
+	bool ReadOnlineStatsForPlayer(unsigned char LocalUserNum, class UOnlineStatsRead* StatsRead);
 };
 
 
@@ -33488,29 +33489,29 @@ public:
 
 	bool STATIC_UnmuteAll(unsigned char LocalUserNum);
 	bool MuteAll(unsigned char LocalUserNum, bool bAllowFriends);
-	bool STATIC_SetSpeechRecognitionObject(unsigned char LocalUserNum, class USpeechRecognition* SpeechRecogObj);
-	bool STATIC_SelectVocabulary(unsigned char LocalUserNum, int VocabularyId);
-	void ClearRecognitionCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& RecognitionDelegate);
+	bool SetSpeechRecognitionObject(unsigned char LocalUserNum, class USpeechRecognition* SpeechRecogObj);
+	bool SelectVocabulary(unsigned char LocalUserNum, int VocabularyId);
+	void STATIC_ClearRecognitionCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& RecognitionDelegate);
 	void STATIC_AddRecognitionCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& RecognitionDelegate);
 	void STATIC_OnRecognitionComplete();
 	bool GetRecognitionResults(unsigned char LocalUserNum, TArray<struct FSpeechRecognizedWord>* Words);
-	bool STATIC_StopSpeechRecognition(unsigned char LocalUserNum);
-	bool STATIC_StartSpeechRecognition(unsigned char LocalUserNum);
-	void STATIC_StopNetworkedVoice(unsigned char LocalUserNum);
-	void STATIC_StartNetworkedVoice(unsigned char LocalUserNum);
-	void ClearPlayerTalkingDelegate(const struct FScriptDelegate& TalkerDelegate);
+	bool StopSpeechRecognition(unsigned char LocalUserNum);
+	bool StartSpeechRecognition(unsigned char LocalUserNum);
+	void StopNetworkedVoice(unsigned char LocalUserNum);
+	void StartNetworkedVoice(unsigned char LocalUserNum);
+	void STATIC_ClearPlayerTalkingDelegate(const struct FScriptDelegate& TalkerDelegate);
 	void STATIC_AddPlayerTalkingDelegate(const struct FScriptDelegate& TalkerDelegate);
 	void STATIC_OnPlayerTalkingStateChange(const struct FUniqueNetId& Player, bool bIsTalking);
 	bool IsTalkerMuted(const struct FUniqueNetId& ConsoleId);
 	bool STATIC_UnmuteRemoteTalker(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID, bool bIsSystemWide);
 	bool MuteRemoteTalker(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID, bool bIsSystemWide);
 	bool UpdatePlayerMuteSetting(bool PlayerMuteSetting);
-	bool STATIC_SetRemoteTalkerPriority(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID, int Priority);
+	bool SetRemoteTalkerPriority(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID, int Priority);
 	bool IsHeadsetPresent(unsigned char LocalUserNum);
 	bool IsRemotePlayerTalking(const struct FUniqueNetId& PlayerID);
 	bool IsLocalPlayerTalking(unsigned char LocalUserNum);
 	bool STATIC_UnregisterRemoteTalker(const struct FUniqueNetId& PlayerID);
-	bool STATIC_RegisterRemoteTalker(const struct FUniqueNetId& PlayerID);
+	bool RegisterRemoteTalker(const struct FUniqueNetId& PlayerID);
 	bool UnregisterLocalTalker(unsigned char LocalUserNum, unsigned char ChannelIndex);
 	bool RegisterLocalTalker(unsigned char LocalUserNum, unsigned char ChannelIndex);
 };
@@ -33529,46 +33530,46 @@ public:
 	}
 
 
-	bool ClearCachedSaveGames(unsigned char LocalUserNum);
-	void ClearDeleteSaveGameDataCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& DeleteSaveGameDataCompleteDelegate);
+	bool STATIC_ClearCachedSaveGames(unsigned char LocalUserNum);
+	void STATIC_ClearDeleteSaveGameDataCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& DeleteSaveGameDataCompleteDelegate);
 	void STATIC_AddDeleteSaveGameDataCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& DeleteSaveGameDataCompleteDelegate);
-	void STATIC_OnDeleteSaveGameDataComplete(bool bWasSuccessful, unsigned char LocalUserNum, const struct FString& SaveFileName);
-	bool DeleteSaveGameData(unsigned char LocalUserNum, const struct FString& SaveFileName);
-	void ClearWriteSaveGameDataCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& WriteSaveGameDataCompleteDelegate);
+	void OnDeleteSaveGameDataComplete(bool bWasSuccessful, unsigned char LocalUserNum, const struct FString& SaveFileName);
+	bool STATIC_DeleteSaveGameData(unsigned char LocalUserNum, const struct FString& SaveFileName);
+	void STATIC_ClearWriteSaveGameDataCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& WriteSaveGameDataCompleteDelegate);
 	void STATIC_AddWriteSaveGameDataCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& WriteSaveGameDataCompleteDelegate);
-	void STATIC_OnWriteSaveGameDataComplete(bool bWasSuccessful, unsigned char LocalUserNum, const struct FString& SaveFileName);
+	void OnWriteSaveGameDataComplete(bool bWasSuccessful, unsigned char LocalUserNum, const struct FString& SaveFileName);
 	bool STATIC_WriteSaveGameData(unsigned char LocalUserNum, const struct FString& SaveFileName, const struct FString& Title, const struct FString& SubTitle, const struct FString& Description, TArray<unsigned char>* SaveGameData);
-	void ClearReadSaveGameDataCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadSaveGameDataCompleteDelegate);
+	void STATIC_ClearReadSaveGameDataCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadSaveGameDataCompleteDelegate);
 	void STATIC_AddReadSaveGameDataCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadSaveGameDataCompleteDelegate);
-	void STATIC_OnReadSaveGameDataComplete(bool bWasSuccessful, unsigned char LocalUserNum, const struct FString& SaveFileName);
+	void OnReadSaveGameDataComplete(bool bWasSuccessful, unsigned char LocalUserNum, const struct FString& SaveFileName);
 	bool GetSaveGameData(unsigned char LocalUserNum, const struct FString& SaveFileName, unsigned char* bIsValid, TArray<unsigned char>* SaveGameData);
-	bool STATIC_ReadSaveGameData(unsigned char LocalUserNum, const struct FString& SaveFileName);
+	bool ReadSaveGameData(unsigned char LocalUserNum, const struct FString& SaveFileName);
 	void GetAvailableDownloadCounts(unsigned char LocalUserNum, int* NewDownloads, int* TotalDownloads);
-	void ClearQueryAvailableDownloadsComplete(unsigned char LocalUserNum, const struct FScriptDelegate& QueryDownloadsDelegate);
+	void STATIC_ClearQueryAvailableDownloadsComplete(unsigned char LocalUserNum, const struct FScriptDelegate& QueryDownloadsDelegate);
 	void STATIC_AddQueryAvailableDownloadsComplete(unsigned char LocalUserNum, const struct FScriptDelegate& QueryDownloadsDelegate);
-	void STATIC_OnQueryAvailableDownloadsComplete(bool bWasSuccessful);
-	bool STATIC_QueryAvailableDownloads(unsigned char LocalUserNum, int CategoryMask);
-	bool ClearCrossTitleSaveGames(unsigned char LocalUserNum);
-	void ClearReadCrossTitleSaveGameDataComplete(unsigned char LocalUserNum, const struct FScriptDelegate& ReadSaveGameDataCompleteDelegate);
+	void OnQueryAvailableDownloadsComplete(bool bWasSuccessful);
+	bool QueryAvailableDownloads(unsigned char LocalUserNum, int CategoryMask);
+	bool STATIC_ClearCrossTitleSaveGames(unsigned char LocalUserNum);
+	void STATIC_ClearReadCrossTitleSaveGameDataComplete(unsigned char LocalUserNum, const struct FScriptDelegate& ReadSaveGameDataCompleteDelegate);
 	void STATIC_AddReadCrossTitleSaveGameDataComplete(unsigned char LocalUserNum, const struct FScriptDelegate& ReadSaveGameDataCompleteDelegate);
-	void STATIC_OnReadCrossTitleSaveGameDataComplete(bool bWasSuccessful, unsigned char LocalUserNum, int DeviceID, int TitleId, const struct FString& FriendlyName, const struct FString& Filename, const struct FString& SaveFileName);
+	void OnReadCrossTitleSaveGameDataComplete(bool bWasSuccessful, unsigned char LocalUserNum, int DeviceID, int TitleId, const struct FString& FriendlyName, const struct FString& Filename, const struct FString& SaveFileName);
 	bool GetCrossTitleSaveGameData(unsigned char LocalUserNum, int DeviceID, int TitleId, const struct FString& FriendlyName, const struct FString& Filename, const struct FString& SaveFileName, unsigned char* bIsValid, TArray<unsigned char>* SaveGameData);
-	bool STATIC_ReadCrossTitleSaveGameData(unsigned char LocalUserNum, int DeviceID, int TitleId, const struct FString& FriendlyName, const struct FString& Filename, const struct FString& SaveFileName);
-	void ClearReadCrossTitleDownloadableContentCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadCrossTitleDLCCompleteDelegate);
+	bool ReadCrossTitleSaveGameData(unsigned char LocalUserNum, int DeviceID, int TitleId, const struct FString& FriendlyName, const struct FString& Filename, const struct FString& SaveFileName);
+	void STATIC_ClearReadCrossTitleDownloadableContentCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadCrossTitleDLCCompleteDelegate);
 	void STATIC_AddReadCrossTitleDownloadableContentCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadCrossTitleDLCCompleteDelegate);
-	void STATIC_OnReadCrossTitleDownloadableContentComplete(bool bWasSuccessful);
+	void OnReadCrossTitleDownloadableContentComplete(bool bWasSuccessful);
 	TEnumAsByte<EOnlineEnumerationReadState> GetCrossTitleDownloadableContentList(unsigned char LocalUserNum, TArray<struct FOnlineCrossTitleContent>* ContentList);
-	void ClearCrossTitleDownloadableContentList(unsigned char LocalUserNum);
-	bool STATIC_ReadCrossTitleDownloadableContentList(unsigned char LocalUserNum, int TitleId);
+	void STATIC_ClearCrossTitleDownloadableContentList(unsigned char LocalUserNum);
+	bool ReadCrossTitleDownloadableContentList(unsigned char LocalUserNum, int TitleId);
 	TEnumAsByte<EOnlineEnumerationReadState> GetDownloadableContentList(unsigned char LocalUserNum, TArray<struct FOnlineContent>* ContentList);
-	void ClearDownloadableContentList(unsigned char LocalUserNum);
-	bool STATIC_ReadDownloadableContentList(unsigned char LocalUserNum);
-	void ClearReadDownloadableContentComplete(unsigned char LocalUserNum, const struct FScriptDelegate& ReadDLCCompleteDelegate);
+	void STATIC_ClearDownloadableContentList(unsigned char LocalUserNum);
+	bool ReadDownloadableContentList(unsigned char LocalUserNum);
+	void STATIC_ClearReadDownloadableContentComplete(unsigned char LocalUserNum, const struct FScriptDelegate& ReadDLCCompleteDelegate);
 	void STATIC_AddReadDownloadableContentComplete(unsigned char LocalUserNum, const struct FScriptDelegate& ReadDLCCompleteDelegate);
-	void STATIC_OnReadDownloadableContentComplete(bool bWasSuccessful);
-	void ClearContentChangeDelegate(const struct FScriptDelegate& ContentDelegate, unsigned char LocalUserNum);
+	void OnReadDownloadableContentComplete(bool bWasSuccessful);
+	void STATIC_ClearContentChangeDelegate(const struct FScriptDelegate& ContentDelegate, unsigned char LocalUserNum);
 	void STATIC_AddContentChangeDelegate(const struct FScriptDelegate& ContentDelegate, unsigned char LocalUserNum);
-	void STATIC_OnContentChange();
+	void OnContentChange();
 };
 
 
@@ -33585,162 +33586,162 @@ public:
 	}
 
 
-	void ClearGetUserConnectionInfoCompleteDelegate(const struct FScriptDelegate& GetGetUserConnectionInfoCompleteDelegate);
+	void STATIC_ClearGetUserConnectionInfoCompleteDelegate(const struct FScriptDelegate& GetGetUserConnectionInfoCompleteDelegate);
 	void STATIC_AddGetUserConnectionInfoCompleteDelegate(const struct FScriptDelegate& GetGetUserConnectionInfoCompleteDelegate);
 	void OnGetUserConnectionInfoComplete(TArray<struct FSessionMemberInfo> OutMemberInfo, bool bWasSuccessful);
 	bool GetUserConnectionInfoAsync(TArray<struct FString> UserNames);
-	void ClearGetSessionMemberInfoCompleteDelegate(const struct FScriptDelegate& GetSessionMemberInfoCompleteDelegate);
+	void STATIC_ClearGetSessionMemberInfoCompleteDelegate(const struct FScriptDelegate& GetSessionMemberInfoCompleteDelegate);
 	void STATIC_AddGetSessionMemberInfoCompleteDelegate(const struct FScriptDelegate& GetSessionMemberInfoCompleteDelegate);
 	void OnGetSessionMemberInfoComplete(TArray<struct FSessionMemberInfo> OutMemberInfo, bool bWasSuccessful);
 	bool GetCurrentSessionMemberInfo(const struct FName& SessionName, TArray<struct FSessionMemberInfo>* OutMemberInfo);
 	bool GetCurrentSessionMemberInfoAsync(unsigned char LocalUserNum, const struct FName& SessionName);
-	void STATIC_RunBandwidthTest();
+	void RunBandwidthTest();
 	bool IsAllowedToNetworkHost();
-	void ClearGetRoomIdFromTitleServiceDelegate(const struct FScriptDelegate& InDelegate);
+	void STATIC_ClearGetRoomIdFromTitleServiceDelegate(const struct FScriptDelegate& InDelegate);
 	void STATIC_AddGetRoomIdFromTitleServiceDelegate(const struct FScriptDelegate& InDelegate);
 	void GetRoomIdFromSessionId(const struct FString& SessionId);
 	void GetRoomIdFromTitleService(const struct FQWord& DataId);
 	void OnGetRoomIdFromTitleService(const struct FQWord& RoomId);
 	struct FString GetRoomId();
-	void ClearGetNumberOfCurrentPlayersCompleteDelegate(const struct FScriptDelegate& GetNumberOfCurrentPlayersCompleteDelegate);
+	void STATIC_ClearGetNumberOfCurrentPlayersCompleteDelegate(const struct FScriptDelegate& GetNumberOfCurrentPlayersCompleteDelegate);
 	void STATIC_AddGetNumberOfCurrentPlayersCompleteDelegate(const struct FScriptDelegate& GetNumberOfCurrentPlayersCompleteDelegate);
 	void STATIC_OnGetNumberOfCurrentPlayersComplete(int TotalPlayers);
 	int GetNumberOfCurrentPlayersCached();
-	bool STATIC_SendPlayerList(TArray<class APlayerReplicationInfo*> Players);
-	void STATIC_RetrieveGameSettingsForIP(const struct FString& IPAddress);
-	void ClearOnRetrieveGameSettingsForIPDelegate(const struct FScriptDelegate& RetrieveIPDelegate);
+	bool SendPlayerList(TArray<class APlayerReplicationInfo*> Players);
+	void RetrieveGameSettingsForIP(const struct FString& IPAddress);
+	void STATIC_ClearOnRetrieveGameSettingsForIPDelegate(const struct FScriptDelegate& RetrieveIPDelegate);
 	void STATIC_AddOnRetrieveGameSettingsForIPDelegate(const struct FScriptDelegate& NewRetrieveIPDelegate);
 	void OnRetrievedGameSettingsForIP(bool bSuccessful, struct FOnlineGameSearchResult* ConnectResult);
 	bool GetNumberOfCurrentPlayers();
-	void ClearJoinMigratedOnlineGameCompleteDelegate(const struct FScriptDelegate& JoinMigratedOnlineGameCompleteDelegate);
+	void STATIC_ClearJoinMigratedOnlineGameCompleteDelegate(const struct FScriptDelegate& JoinMigratedOnlineGameCompleteDelegate);
 	void STATIC_AddJoinMigratedOnlineGameCompleteDelegate(const struct FScriptDelegate& JoinMigratedOnlineGameCompleteDelegate);
 	void OnJoinMigratedOnlineGameComplete(const struct FName& SessionName, bool bWasSuccessful);
 	bool JoinMigratedOnlineGame(unsigned char PlayerNum, const struct FName& SessionName, struct FOnlineGameSearchResult* DesiredGame);
-	void ClearMigrateOnlineGameCompleteDelegate(const struct FScriptDelegate& MigrateOnlineGameCompleteDelegate);
+	void STATIC_ClearMigrateOnlineGameCompleteDelegate(const struct FScriptDelegate& MigrateOnlineGameCompleteDelegate);
 	void STATIC_AddMigrateOnlineGameCompleteDelegate(const struct FScriptDelegate& MigrateOnlineGameCompleteDelegate);
 	void OnMigrateOnlineGameComplete(const struct FName& SessionName, bool bWasSuccessful);
 	bool MigrateOnlineGame(unsigned char HostingPlayerNum, const struct FName& SessionName);
-	void ClearRecalculateSkillRatingCompleteDelegate(const struct FScriptDelegate& RecalculateSkillRatingGameCompleteDelegate);
+	void STATIC_ClearRecalculateSkillRatingCompleteDelegate(const struct FScriptDelegate& RecalculateSkillRatingGameCompleteDelegate);
 	void STATIC_AddRecalculateSkillRatingCompleteDelegate(const struct FScriptDelegate& RecalculateSkillRatingCompleteDelegate);
 	void OnRecalculateSkillRatingComplete(const struct FName& SessionName, bool bWasSuccessful);
-	bool STATIC_RecalculateSkillRating(const struct FName& SessionName, TArray<struct FUniqueNetId>* Players);
+	bool RecalculateSkillRating(const struct FName& SessionName, TArray<struct FUniqueNetId>* Players);
 	bool STATIC_AcceptGameInvite(unsigned char LocalUserNum, const struct FName& SessionName);
-	void ClearGameInviteAcceptedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& GameInviteAcceptedDelegate);
+	void STATIC_ClearGameInviteAcceptedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& GameInviteAcceptedDelegate);
 	void STATIC_AddGameInviteAcceptedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& GameInviteAcceptedDelegate);
 	void OnGameInviteAccepted(struct FOnlineGameSearchResult* InviteResult);
 	TArray<struct FOnlineArbitrationRegistrant> GetArbitratedPlayers(const struct FName& SessionName);
-	void ClearArbitrationRegistrationCompleteDelegate(const struct FScriptDelegate& ArbitrationRegistrationCompleteDelegate);
+	void STATIC_ClearArbitrationRegistrationCompleteDelegate(const struct FScriptDelegate& ArbitrationRegistrationCompleteDelegate);
 	void STATIC_AddArbitrationRegistrationCompleteDelegate(const struct FScriptDelegate& ArbitrationRegistrationCompleteDelegate);
 	void OnArbitrationRegistrationComplete(const struct FName& SessionName, bool bWasSuccessful);
-	bool STATIC_RegisterForArbitration(const struct FName& SessionName);
-	void ClearEndOnlineGameCompleteDelegate(const struct FScriptDelegate& EndOnlineGameCompleteDelegate);
+	bool RegisterForArbitration(const struct FName& SessionName);
+	void STATIC_ClearEndOnlineGameCompleteDelegate(const struct FScriptDelegate& EndOnlineGameCompleteDelegate);
 	void STATIC_AddEndOnlineGameCompleteDelegate(const struct FScriptDelegate& EndOnlineGameCompleteDelegate);
 	void OnEndOnlineGameComplete(const struct FName& SessionName, bool bWasSuccessful);
-	bool EndOnlineGame(const struct FName& SessionName);
-	void ClearStartOnlineGameCompleteDelegate(const struct FScriptDelegate& StartOnlineGameCompleteDelegate);
+	bool STATIC_EndOnlineGame(const struct FName& SessionName);
+	void STATIC_ClearStartOnlineGameCompleteDelegate(const struct FScriptDelegate& StartOnlineGameCompleteDelegate);
 	void STATIC_AddStartOnlineGameCompleteDelegate(const struct FScriptDelegate& StartOnlineGameCompleteDelegate);
 	void OnStartOnlineGameComplete(const struct FName& SessionName, bool bWasSuccessful);
-	bool STATIC_StartOnlineGame(const struct FName& SessionName);
-	void ClearUnregisterPlayerCompleteDelegate(const struct FScriptDelegate& UnregisterPlayerCompleteDelegate);
+	bool StartOnlineGame(const struct FName& SessionName);
+	void STATIC_ClearUnregisterPlayerCompleteDelegate(const struct FScriptDelegate& UnregisterPlayerCompleteDelegate);
 	void STATIC_AddUnregisterPlayerCompleteDelegate(const struct FScriptDelegate& UnregisterPlayerCompleteDelegate);
 	void OnUnregisterPlayerComplete(const struct FName& SessionName, const struct FUniqueNetId& PlayerID, bool bWasSuccessful);
 	bool STATIC_UnregisterPlayers(const struct FName& SessionName, TArray<struct FUniqueNetId>* Players);
 	bool STATIC_UnregisterPlayer(const struct FName& SessionName, const struct FUniqueNetId& PlayerID);
-	void ClearRegisterPlayerCompleteDelegate(const struct FScriptDelegate& RegisterPlayerCompleteDelegate);
+	void STATIC_ClearRegisterPlayerCompleteDelegate(const struct FScriptDelegate& RegisterPlayerCompleteDelegate);
 	void STATIC_AddRegisterPlayerCompleteDelegate(const struct FScriptDelegate& RegisterPlayerCompleteDelegate);
 	void OnRegisterPlayerComplete(const struct FName& SessionName, const struct FUniqueNetId& PlayerID, bool bWasSuccessful);
-	bool STATIC_RegisterPlayers(const struct FName& SessionName, TArray<struct FUniqueNetId>* Players);
-	bool STATIC_RegisterPlayer(const struct FName& SessionName, const struct FUniqueNetId& PlayerID, bool bWasInvited);
+	bool RegisterPlayers(const struct FName& SessionName, TArray<struct FUniqueNetId>* Players);
+	bool RegisterPlayer(const struct FName& SessionName, const struct FUniqueNetId& PlayerID, bool bWasInvited);
 	bool GetResolvedConnectString(const struct FName& SessionName, struct FString* ConnectInfo);
-	void ClearQuerySessionsForUserCompleteDelegate(const struct FScriptDelegate& QuerySessionsForUserCompleteDelegate);
+	void STATIC_ClearQuerySessionsForUserCompleteDelegate(const struct FScriptDelegate& QuerySessionsForUserCompleteDelegate);
 	void STATIC_AddQuerySessionsForUserCompleteDelegate(const struct FScriptDelegate& QuerySessionsForUserCompleteDelegate);
 	void OnQuerySessionsForUserComplete(unsigned char LocalPlayerNum, bool bWasSuccessful);
-	bool STATIC_QuerySessionsByKeyword(unsigned char LocalPlayerNum, const struct FString& Keyword, class UOnlineGameSearch* SearchSettings);
-	bool STATIC_QuerySessionsForUser(unsigned char LocalPlayerNum);
+	bool QuerySessionsByKeyword(unsigned char LocalPlayerNum, const struct FString& Keyword, class UOnlineGameSearch* SearchSettings);
+	bool QuerySessionsForUser(unsigned char LocalPlayerNum);
 	void LeaveAllOnlineSessions(bool bClearSessionIfHost);
 	bool LeaveOnlineSession(unsigned char LocalPlayerNum, const struct FName& SessionName, bool bClearSessionIfHost);
-	void ClearMatchStatusChangedDelegate(const struct FScriptDelegate& MatchStatusChangedDelegate);
+	void STATIC_ClearMatchStatusChangedDelegate(const struct FScriptDelegate& MatchStatusChangedDelegate);
 	void STATIC_AddMatchStatusChangedDelegate(const struct FScriptDelegate& MatchStatusChangedDelegate);
 	void OnMatchStatusChanged(const struct FName& SessionName, unsigned char Status);
-	void ClearGamePlayersChangedDelegate(const struct FScriptDelegate& GamePlayersChangedDelegate);
+	void STATIC_ClearGamePlayersChangedDelegate(const struct FScriptDelegate& GamePlayersChangedDelegate);
 	void STATIC_AddGamePlayersChangedDelegate(const struct FScriptDelegate& GamePlayersChangedDelegate);
 	void OnGamePlayersChanged(const struct FName& SessionName, TArray<struct FUniqueNetId> Players);
-	void ClearAcceptPendingGameSessionCompleteDelegate(const struct FScriptDelegate& AcceptPendingGameSessionCompleteDelegate);
+	void STATIC_ClearAcceptPendingGameSessionCompleteDelegate(const struct FScriptDelegate& AcceptPendingGameSessionCompleteDelegate);
 	void STATIC_AddAcceptPendingGameSessionCompleteDelegate(const struct FScriptDelegate& AcceptPendingGameSessionCompleteDelegate);
 	void OnAcceptPendingGameSessionComplete(const struct FName& SessionName, bool bWasSuccessful);
 	void STATIC_AcceptPendingGameSession(const struct FName& SessionName);
-	void ClearGameSessionReadyDelegate(const struct FScriptDelegate& GameSessionReadyDelegate);
+	void STATIC_ClearGameSessionReadyDelegate(const struct FScriptDelegate& GameSessionReadyDelegate);
 	void STATIC_AddGameSessionReadyDelegate(const struct FScriptDelegate& GameSessionReadyDelegate);
 	void OnGameSessionReady(const struct FName& SessionName);
-	void ClearUpdateSessionPropertiesCompleteDelegate(const struct FScriptDelegate& UpdateSessionPropertiesCompleteDelegate);
+	void STATIC_ClearUpdateSessionPropertiesCompleteDelegate(const struct FScriptDelegate& UpdateSessionPropertiesCompleteDelegate);
 	void STATIC_AddUpdateSessionPropertiesCompleteDelegate(const struct FScriptDelegate& UpdateSessionPropertiesCompleteDelegate);
 	void OnUpdateSessionPropertiesComplete(const struct FName& SessionName, bool bWasSuccessful);
 	bool STATIC_UpdateSessionProperties(unsigned char ScoutingUserNum, const struct FName& SessionName);
-	bool DeleteCustomMemberProperty(const struct FName& SessionName, const struct FString& PropertyName);
-	bool STATIC_SetCustomMemberProperty(const struct FName& SessionName, const struct FString& PropertyName, const struct FString& PropertyValue);
-	bool DeleteCustomSessionProperty(const struct FName& SessionName, const struct FString& PropertyName);
-	bool STATIC_SetCustomSessionProperty(const struct FName& SessionName, const struct FString& PropertyName, const struct FString& PropertyValue);
-	void ClearMultiplayerSessionChangeDelegate(const struct FScriptDelegate& MultiplayerSessionChangeDelegate);
+	bool STATIC_DeleteCustomMemberProperty(const struct FName& SessionName, const struct FString& PropertyName);
+	bool SetCustomMemberProperty(const struct FName& SessionName, const struct FString& PropertyName, const struct FString& PropertyValue);
+	bool STATIC_DeleteCustomSessionProperty(const struct FName& SessionName, const struct FString& PropertyName);
+	bool SetCustomSessionProperty(const struct FName& SessionName, const struct FString& PropertyName, const struct FString& PropertyValue);
+	void STATIC_ClearMultiplayerSessionChangeDelegate(const struct FScriptDelegate& MultiplayerSessionChangeDelegate);
 	void STATIC_AddMultiplayerSessionChangeDelegate(const struct FScriptDelegate& MultiplayerSessionChangeDelegate);
 	void OnMultiplayerSessionChange(const struct FName& SessionName, const struct FSessionUpdateInfo& SessionChanges);
-	void ClearAddSessionMemberCompleteDelegate(const struct FScriptDelegate& AddSessionMemberCompleteDelegate);
+	void STATIC_ClearAddSessionMemberCompleteDelegate(const struct FScriptDelegate& AddSessionMemberCompleteDelegate);
 	void STATIC_AddAddSessionMemberCompleteDelegate(const struct FScriptDelegate& AddSessionMemberCompleteDelegate);
 	void OnAddSessionMemberComplete(const struct FName& SessionName, bool bWasSuccessful);
 	bool STATIC_AddSessionMembers(unsigned char ScoutingPlayerNum, const struct FName& SessionName, TArray<struct FUniqueNetId> Members);
 	bool STATIC_AddSessionMember(unsigned char ScoutingPlayerNum, const struct FName& SessionName, const struct FUniqueNetId& Member);
 	bool STATIC_AddSessionMemberByString(unsigned char ScoutingPlayerNum, const struct FName& SessionName, const struct FString& Member);
-	bool CreateOnlineSessionWithTemplate(unsigned char ScoutingPlayerNum, const struct FName& SessionName, class UOnlineGameSettings* NewGameSettings, const struct FString& TemplateName, const struct FString& SessionKeyword);
+	bool STATIC_CreateOnlineSessionWithTemplate(unsigned char ScoutingPlayerNum, const struct FName& SessionName, class UOnlineGameSettings* NewGameSettings, const struct FString& TemplateName, const struct FString& SessionKeyword);
 	bool InitiatedSessionSearch(const struct FName& SessionName);
 	bool IsHostOfSession(const struct FName& SessionName);
-	void ClearMatchmakeOnlineGameWithPartyCompleteDelegate(const struct FScriptDelegate& MatchmakeOnlineGameWithPartyCompleteDelegate);
+	void STATIC_ClearMatchmakeOnlineGameWithPartyCompleteDelegate(const struct FScriptDelegate& MatchmakeOnlineGameWithPartyCompleteDelegate);
 	void STATIC_AddMatchmakeOnlineGameWithPartyCompleteDelegate(const struct FScriptDelegate& MatchmakeOnlineGameWithPartyCompleteDelegate);
 	void OnMatchmakeOnlineGameWithPartyComplete(const struct FName& SessionName, bool bWasSuccessful);
 	bool MatchmakeOnlineGameWithParty(unsigned char ScoutingPlayerNum, const struct FName& SessionName, class UOnlineGameSettings* NewGameSettings);
-	void ClearCreateOnlineGameWithPartyCompleteDelegate(const struct FScriptDelegate& CreateOnlineGameWithPartyCompleteDelegate);
+	void STATIC_ClearCreateOnlineGameWithPartyCompleteDelegate(const struct FScriptDelegate& CreateOnlineGameWithPartyCompleteDelegate);
 	void STATIC_AddCreateOnlineGameWithPartyCompleteDelegate(const struct FScriptDelegate& CreateOnlineGameWithPartyCompleteDelegate);
 	void OnCreateOnlineGameWithPartyComplete(const struct FName& SessionName, bool bWasSuccessful);
-	bool CreateOnlineGameWithParty(unsigned char ScoutingPlayerNum, const struct FName& SessionName, class UOnlineGameSettings* NewGameSettings);
-	void ClearJoinOnlineGameCompleteDelegate(const struct FScriptDelegate& JoinOnlineGameCompleteDelegate);
+	bool STATIC_CreateOnlineGameWithParty(unsigned char ScoutingPlayerNum, const struct FName& SessionName, class UOnlineGameSettings* NewGameSettings);
+	void STATIC_ClearJoinOnlineGameCompleteDelegate(const struct FScriptDelegate& JoinOnlineGameCompleteDelegate);
 	void STATIC_AddJoinOnlineGameCompleteDelegate(const struct FScriptDelegate& JoinOnlineGameCompleteDelegate);
 	void OnJoinOnlineGameComplete(const struct FName& SessionName, bool bWasSuccessful);
 	bool IsCurrentRoomOwner();
-	bool STATIC_SetRankedReadyStatus(bool bReady);
+	bool SetRankedReadyStatus(bool bReady);
 	bool IsJoinOperationInProgress();
 	bool JoinOnlineGameByMatchingParams(const struct FQWord& RoomId, class UOnlineGameSettings** JoinedGameSettings);
-	void STATIC_OnMapChangeComplete();
-	void STATIC_OnMapChangePending();
+	void OnMapChangeComplete();
+	void OnMapChangePending();
 	bool JoinOnlineGameBySessionHandle(unsigned char PlayerNum, const struct FName& SessionName, const struct FString& InSessionGuid);
 	bool JoinOnlineGame(unsigned char PlayerNum, const struct FName& SessionName, struct FOnlineGameSearchResult* DesiredGame);
-	bool STATIC_QueryNonAdvertisedData(int StartAt, int NumberToQuery);
+	bool QueryNonAdvertisedData(int StartAt, int NumberToQuery);
 	bool FreeSearchResults(class UOnlineGameSearch* Search);
 	class UOnlineGameSearch* GetGameSearch();
 	bool STATIC_BindPlatformSpecificSessionToSearch(unsigned char SearchingPlayerNum, class UOnlineGameSearch* SearchSettings, unsigned char PlatformSpecificInfo);
-	bool STATIC_ReadPlatformSpecificSessionInfoBySessionName(const struct FName& SessionName, unsigned char* PlatformSpecificInfo);
-	bool STATIC_ReadPlatformSpecificSessionInfo(struct FOnlineGameSearchResult* DesiredGame, unsigned char* PlatformSpecificInfo);
-	void ClearQosStatusChangedDelegate(const struct FScriptDelegate& QosStatusChangedDelegate);
+	bool ReadPlatformSpecificSessionInfoBySessionName(const struct FName& SessionName, unsigned char* PlatformSpecificInfo);
+	bool ReadPlatformSpecificSessionInfo(struct FOnlineGameSearchResult* DesiredGame, unsigned char* PlatformSpecificInfo);
+	void STATIC_ClearQosStatusChangedDelegate(const struct FScriptDelegate& QosStatusChangedDelegate);
 	void STATIC_AddQosStatusChangedDelegate(const struct FScriptDelegate& QosStatusChangedDelegate);
 	void OnQosStatusChanged(int NumComplete, int NumTotal);
-	void ClearCancelFindOnlineGamesCompleteDelegate(const struct FScriptDelegate& CancelFindOnlineGamesCompleteDelegate);
+	void STATIC_ClearCancelFindOnlineGamesCompleteDelegate(const struct FScriptDelegate& CancelFindOnlineGamesCompleteDelegate);
 	void STATIC_AddCancelFindOnlineGamesCompleteDelegate(const struct FScriptDelegate& CancelFindOnlineGamesCompleteDelegate);
 	void OnCancelFindOnlineGamesComplete(bool bWasSuccessful);
-	bool CancelFindOnlineGames();
-	void ClearFindOnlineGamesCompleteDelegate(const struct FScriptDelegate& FindOnlineGamesCompleteDelegate);
+	bool STATIC_CancelFindOnlineGames();
+	void STATIC_ClearFindOnlineGamesCompleteDelegate(const struct FScriptDelegate& FindOnlineGamesCompleteDelegate);
 	void STATIC_AddFindOnlineGamesCompleteDelegate(const struct FScriptDelegate& FindOnlineGamesCompleteDelegate);
 	void OnFindOnlineGamesComplete(bool bWasSuccessful);
-	bool FindOnlineGames(unsigned char SearchingPlayerNum, class UOnlineGameSearch* SearchSettings);
-	void ClearDestroyOnlineGameCompleteDelegate(const struct FScriptDelegate& DestroyOnlineGameCompleteDelegate);
+	bool STATIC_FindOnlineGames(unsigned char SearchingPlayerNum, class UOnlineGameSearch* SearchSettings);
+	void STATIC_ClearDestroyOnlineGameCompleteDelegate(const struct FScriptDelegate& DestroyOnlineGameCompleteDelegate);
 	void STATIC_AddDestroyOnlineGameCompleteDelegate(const struct FScriptDelegate& DestroyOnlineGameCompleteDelegate);
 	void OnDestroyOnlineGameComplete(const struct FName& SessionName, bool bWasSuccessful);
-	bool DestroyOnlineGame(const struct FName& SessionName);
+	bool STATIC_DestroyOnlineGame(const struct FName& SessionName);
 	class UOnlineGameSettings* GetGameSettings(const struct FName& SessionName);
-	void ClearUpdateOnlineGameCompleteDelegate(const struct FScriptDelegate& UpdateOnlineGameCompleteDelegate);
+	void STATIC_ClearUpdateOnlineGameCompleteDelegate(const struct FScriptDelegate& UpdateOnlineGameCompleteDelegate);
 	void STATIC_AddUpdateOnlineGameCompleteDelegate(const struct FScriptDelegate& UpdateOnlineGameCompleteDelegate);
 	void OnUpdateOnlineGameComplete(const struct FName& SessionName, bool bWasSuccessful);
 	bool STATIC_UpdateOnlineGame(const struct FName& SessionName, class UOnlineGameSettings* UpdatedGameSettings, bool bShouldRefreshOnlineData);
-	void ClearCreateOnlineGameCompleteDelegate(const struct FScriptDelegate& CreateOnlineGameCompleteDelegate);
+	void STATIC_ClearCreateOnlineGameCompleteDelegate(const struct FScriptDelegate& CreateOnlineGameCompleteDelegate);
 	void STATIC_AddCreateOnlineGameCompleteDelegate(const struct FScriptDelegate& CreateOnlineGameCompleteDelegate);
 	void OnCreateOnlineGameComplete(const struct FName& SessionName, bool bWasSuccessful);
-	bool CreateOnlineGame(unsigned char HostingPlayerNum, const struct FName& SessionName, class UOnlineGameSettings* NewGameSettings);
+	bool STATIC_CreateOnlineGame(unsigned char HostingPlayerNum, const struct FName& SessionName, class UOnlineGameSettings* NewGameSettings);
 };
 
 
@@ -33758,24 +33759,24 @@ public:
 
 
 	int GetLocale();
-	void ClearStorageDeviceChangeDelegate(const struct FScriptDelegate& StorageDeviceChangeDelegate);
+	void STATIC_ClearStorageDeviceChangeDelegate(const struct FScriptDelegate& StorageDeviceChangeDelegate);
 	void STATIC_AddStorageDeviceChangeDelegate(const struct FScriptDelegate& StorageDeviceChangeDelegate);
 	void STATIC_OnStorageDeviceChange();
 	TEnumAsByte<ENATType> GetNATType();
-	void ClearConnectionStatusChangeDelegate(const struct FScriptDelegate& ConnectionStatusDelegate);
+	void STATIC_ClearConnectionStatusChangeDelegate(const struct FScriptDelegate& ConnectionStatusDelegate);
 	void STATIC_AddConnectionStatusChangeDelegate(const struct FScriptDelegate& ConnectionStatusDelegate);
 	void STATIC_OnConnectionStatusChange(TEnumAsByte<EOnlineServerConnectionStatus> ConnectionStatus);
 	TEnumAsByte<EOnlineServerConnectionStatus> GetCurrentConnectionStatus();
 	bool IsControllerConnected(int ControllerId);
-	void ClearControllerChangeDelegate(const struct FScriptDelegate& ControllerChangeDelegate);
+	void STATIC_ClearControllerChangeDelegate(const struct FScriptDelegate& ControllerChangeDelegate);
 	void STATIC_AddControllerChangeDelegate(const struct FScriptDelegate& ControllerChangeDelegate);
 	void STATIC_OnControllerChange(int ControllerId, bool bIsConnected, bool bPauseGame);
-	void STATIC_SetNetworkNotificationPosition(TEnumAsByte<ENetworkNotificationPosition> NewPos);
+	void SetNetworkNotificationPosition(TEnumAsByte<ENetworkNotificationPosition> NewPos);
 	TEnumAsByte<ENetworkNotificationPosition> GetNetworkNotificationPosition();
-	void ClearExternalUIChangeDelegate(const struct FScriptDelegate& ExternalUIDelegate);
+	void STATIC_ClearExternalUIChangeDelegate(const struct FScriptDelegate& ExternalUIDelegate);
 	void STATIC_AddExternalUIChangeDelegate(const struct FScriptDelegate& ExternalUIDelegate);
 	void STATIC_OnExternalUIChange(bool bIsOpening);
-	void ClearLinkStatusChangeDelegate(const struct FScriptDelegate& LinkStatusDelegate);
+	void STATIC_ClearLinkStatusChangeDelegate(const struct FScriptDelegate& LinkStatusDelegate);
 	void STATIC_AddLinkStatusChangeDelegate(const struct FScriptDelegate& LinkStatusDelegate);
 	void STATIC_OnLinkStatusChange(bool bIsConnected);
 	bool HasLinkConnection();
@@ -33796,33 +33797,33 @@ public:
 
 
 	void SetMarketplaceVisibility(bool Visible, unsigned char IconPosition);
-	void ClearMarketplaceItemPurchasedDelegate(const struct FScriptDelegate& InDelegate);
+	void STATIC_ClearMarketplaceItemPurchasedDelegate(const struct FScriptDelegate& InDelegate);
 	void STATIC_AddMarketplaceItemPurchasedDelegate(const struct FScriptDelegate& InDelegate);
 	void STATIC_OnMarketplaceItemPurchased();
-	void ClearConsumeInventoryItemCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ConsumeInventoryItemCompleteDelegate);
+	void STATIC_ClearConsumeInventoryItemCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ConsumeInventoryItemCompleteDelegate);
 	void STATIC_AddConsumeInventoryItemCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ConsumeInventoryItemCompleteDelegate);
 	void STATIC_OnConsumeInventoryItemComplete(const struct FString& ProductID, bool bDidSucceed, int NewQuantity);
-	bool ConsumeInventoryItem(unsigned char LocalUserNum, const struct FString& ProductID, int Quantity, const struct FString& TransactionId);
-	void STATIC_ResetInventoryItems(unsigned char LocalUserNum);
+	bool STATIC_ConsumeInventoryItem(unsigned char LocalUserNum, const struct FString& ProductID, int Quantity, const struct FString& TransactionId);
+	void ResetInventoryItems(unsigned char LocalUserNum);
 	TEnumAsByte<EOnlineEnumerationReadState> GetInventoryItems(unsigned char LocalUserNum, TArray<struct FMarketplaceInventoryItem>* InventoryItems);
-	void ClearReadInventoryItemsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadInventoryItemsCompleteDelegate);
+	void STATIC_ClearReadInventoryItemsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadInventoryItemsCompleteDelegate);
 	void STATIC_AddReadInventoryItemsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadInventoryItemsCompleteDelegate);
 	void STATIC_OnReadInventoryItemsComplete();
-	bool STATIC_ReadInventoryItems(unsigned char LocalUserNum);
-	void ClearReadDetailsForProductIdListCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& InDelegate);
+	bool ReadInventoryItems(unsigned char LocalUserNum);
+	void STATIC_ClearReadDetailsForProductIdListCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& InDelegate);
 	void STATIC_AddReadDetailsForProductIdListCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& InDelegate);
-	bool STATIC_ReadDetailsForProductIdList(unsigned char LocalUserNum, TArray<struct FString> ProductIds);
+	bool ReadDetailsForProductIdList(unsigned char LocalUserNum, TArray<struct FString> ProductIds);
 	void STATIC_OnReadDetailsForProductIdList(TArray<struct FMarketplaceProductDetails>* ProductList);
-	void ClearReadAdditionalProductDetailsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadAdditionalProductDetailsCompleteDelegate);
+	void STATIC_ClearReadAdditionalProductDetailsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadAdditionalProductDetailsCompleteDelegate);
 	void STATIC_AddReadAdditionalProductDetailsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadAdditionalProductDetailsCompleteDelegate);
 	void STATIC_OnReadAdditionalProductDetailsComplete(TEnumAsByte<EMediaItemType> MediaType);
-	bool STATIC_ReadAdditionalDetailsForProducts(unsigned char LocalUserNum, TEnumAsByte<EMediaItemType> MediaType);
-	void STATIC_ResetAvailableProducts(unsigned char LocalUserNum, TEnumAsByte<EMediaItemType> MediaType);
+	bool ReadAdditionalDetailsForProducts(unsigned char LocalUserNum, TEnumAsByte<EMediaItemType> MediaType);
+	void ResetAvailableProducts(unsigned char LocalUserNum, TEnumAsByte<EMediaItemType> MediaType);
 	TEnumAsByte<EOnlineEnumerationReadState> GetAvailableProducts(unsigned char LocalUserNum, TEnumAsByte<EMediaItemType> MediaType, TArray<struct FMarketplaceProductDetails>* AvailableProducts);
-	void ClearReadAvailableProductsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadAvailableProductsCompleteDelegate);
+	void STATIC_ClearReadAvailableProductsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadAvailableProductsCompleteDelegate);
 	void STATIC_AddReadAvailableProductsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadAvailableProductsCompleteDelegate);
 	void STATIC_OnReadAvailableProductsComplete(TEnumAsByte<EMediaItemType> MediaType);
-	bool STATIC_ReadAvailableProducts(unsigned char LocalUserNum, const struct FString& ParentId, TEnumAsByte<EMediaItemType> ParentMediaType, TEnumAsByte<EMediaItemType> ChildMediaType, TEnumAsByte<ECatalogSortOrder> SortOrder);
+	bool ReadAvailableProducts(unsigned char LocalUserNum, const struct FString& ParentId, TEnumAsByte<EMediaItemType> ParentMediaType, TEnumAsByte<EMediaItemType> ChildMediaType, TEnumAsByte<ECatalogSortOrder> SortOrder);
 };
 
 
@@ -33839,82 +33840,82 @@ public:
 	}
 
 
-	bool STATIC_SendReputationFeedback(unsigned char SenderLocalUserNum, const struct FUniqueNetId& ReputeeNetId, TEnumAsByte<EReputationFeedbackType> FeedbackType, const struct FString& ReportText);
-	void ClearUnregisterRemoteTalkerCompleteDelegate(const struct FScriptDelegate& UnregisterRemoteTalkerCompleteDelegate);
+	bool SendReputationFeedback(unsigned char SenderLocalUserNum, const struct FUniqueNetId& ReputeeNetId, TEnumAsByte<EReputationFeedbackType> FeedbackType, const struct FString& ReportText);
+	void STATIC_ClearUnregisterRemoteTalkerCompleteDelegate(const struct FScriptDelegate& UnregisterRemoteTalkerCompleteDelegate);
 	void STATIC_AddUnregisterRemoteTalkerCompleteDelegate(const struct FScriptDelegate& UnregisterRemoteTalkerCompleteDelegate);
 	void STATIC_OnUnregisterRemoteTalkerComplete(const struct FUniqueNetId& RemoteNetId, bool bWasSuccessful);
-	void ClearUnregisterLocalTalkerCompleteDelegate(const struct FScriptDelegate& UnregisterLocalTalkerCompleteDelegate);
+	void STATIC_ClearUnregisterLocalTalkerCompleteDelegate(const struct FScriptDelegate& UnregisterLocalTalkerCompleteDelegate);
 	void STATIC_AddUnregisterLocalTalkerCompleteDelegate(const struct FScriptDelegate& UnregisterLocalTalkerCompleteDelegate);
 	void STATIC_OnUnregisterLocalTalkerComplete(unsigned char LocalUserNum, bool bWasSuccessful);
-	void ClearRegisterLocalTalkerCompleteDelegate(const struct FScriptDelegate& RegisterLocalTalkerCompleteDelegate);
+	void STATIC_ClearRegisterLocalTalkerCompleteDelegate(const struct FScriptDelegate& RegisterLocalTalkerCompleteDelegate);
 	void STATIC_AddRegisterLocalTalkerCompleteDelegate(const struct FScriptDelegate& RegisterLocalTalkerCompleteDelegate);
 	void STATIC_OnRegisterLocalTalkerComplete(unsigned char LocalUserNum, bool bWasSuccessful);
-	void ClearReadOnlineProfilesCompleteDelegate(const struct FScriptDelegate& ReadOnlineProfileDelegate);
+	void STATIC_ClearReadOnlineProfilesCompleteDelegate(const struct FScriptDelegate& ReadOnlineProfileDelegate);
 	void STATIC_AddReadOnlineProfilesCompleteDelegate(const struct FScriptDelegate& ReadOnlineProfileDelegate);
 	void STATIC_OnReadOnlineProfilesComplete(bool bWasSuccessful, TArray<struct FString> PlayerIDs, TArray<struct FOnlineProfile> OnlineProfiles);
-	bool STATIC_ReadOnlineProfilesForPlayers(TArray<struct FString> PlayerIDs);
+	bool ReadOnlineProfilesForPlayers(TArray<struct FString> PlayerIDs);
 	bool GetPlayerIDForPlayerNickname(const struct FString& InPlayerNickname, struct FUniqueNetId* OutPlayerId);
 	bool GetPlayerNicknameForPlayerId(const struct FUniqueNetId& InPlayerId, struct FString* OutPlayerNickname);
-	bool STATIC_ShowCustomErrorUI(int ErrorCode, const struct FString& ErrorContext, const struct FString& DialogTitle, const struct FString& DialogContent);
-	bool STATIC_ShowSystemErrorUI(int ErrorCode, const struct FString& ErrorContext);
-	bool STATIC_ShowCustomMessageUI(unsigned char LocalUserNum, const struct FString& MessageTitle, const struct FString& NonEditableMessage, const struct FString& EditableMessage, TArray<struct FUniqueNetId>* Recipients);
-	void ClearCrossTitleProfileSettings(unsigned char LocalUserNum, int TitleId);
+	bool ShowCustomErrorUI(int ErrorCode, const struct FString& ErrorContext, const struct FString& DialogTitle, const struct FString& DialogContent);
+	bool ShowSystemErrorUI(int ErrorCode, const struct FString& ErrorContext);
+	bool ShowCustomMessageUI(unsigned char LocalUserNum, const struct FString& MessageTitle, const struct FString& NonEditableMessage, const struct FString& EditableMessage, TArray<struct FUniqueNetId>* Recipients);
+	void STATIC_ClearCrossTitleProfileSettings(unsigned char LocalUserNum, int TitleId);
 	class UOnlineProfileSettings* GetCrossTitleProfileSettings(unsigned char LocalUserNum, int TitleId);
-	void ClearReadCrossTitleProfileSettingsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadProfileSettingsCompleteDelegate);
+	void STATIC_ClearReadCrossTitleProfileSettingsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadProfileSettingsCompleteDelegate);
 	void STATIC_AddReadCrossTitleProfileSettingsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadProfileSettingsCompleteDelegate);
 	void STATIC_OnReadCrossTitleProfileSettingsComplete(unsigned char LocalUserNum, int TitleId, bool bWasSuccessful);
-	bool STATIC_ReadCrossTitleProfileSettings(unsigned char LocalUserNum, int TitleId, class UOnlineProfileSettings* ProfileSettings);
+	bool ReadCrossTitleProfileSettings(unsigned char LocalUserNum, int TitleId, class UOnlineProfileSettings* ProfileSettings);
 	bool STATIC_UnlockAvatarAward(unsigned char LocalUserNum, int AvatarItemId);
-	bool STATIC_ShowCustomPlayersUI(unsigned char LocalUserNum, const struct FString& Title, const struct FString& Description, TArray<struct FUniqueNetId>* Players);
-	bool STATIC_ShowPlayersUI(unsigned char LocalUserNum);
-	bool STATIC_ShowFriendsInviteUI(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID);
-	void ClearProfileDataChangedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ProfileDataChangedDelegate);
+	bool ShowCustomPlayersUI(unsigned char LocalUserNum, const struct FString& Title, const struct FString& Description, TArray<struct FUniqueNetId>* Players);
+	bool ShowPlayersUI(unsigned char LocalUserNum);
+	bool ShowFriendsInviteUI(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID);
+	void STATIC_ClearProfileDataChangedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ProfileDataChangedDelegate);
 	void STATIC_AddProfileDataChangedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ProfileDataChangedDelegate);
 	void STATIC_OnProfileDataChanged();
 	bool STATIC_UnlockGamerPicture(unsigned char LocalUserNum, int PictureId);
 	bool IsDeviceValid(int DeviceID, int SizeNeeded);
 	int GetDeviceSelectionResults(unsigned char LocalUserNum, struct FString* DeviceName);
-	void ClearDeviceSelectionDoneDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& DeviceDelegate);
+	void STATIC_ClearDeviceSelectionDoneDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& DeviceDelegate);
 	void STATIC_AddDeviceSelectionDoneDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& DeviceDelegate);
 	void STATIC_OnDeviceSelectionComplete(bool bWasSuccessful);
-	bool STATIC_ShowDeviceSelectionUI(unsigned char LocalUserNum, int SizeNeeded, bool bManageStorage);
-	bool STATIC_ShowMembershipMarketplaceUI(unsigned char LocalUserNum);
-	void CloseCurrentContentUI();
-	bool STATIC_ShowContentRedeemCodeUI(unsigned char LocalUserNum, const struct FString& Offer);
+	bool ShowDeviceSelectionUI(unsigned char LocalUserNum, int SizeNeeded, bool bManageStorage);
+	bool ShowMembershipMarketplaceUI(unsigned char LocalUserNum);
+	void STATIC_CloseCurrentContentUI();
+	bool ShowContentRedeemCodeUI(unsigned char LocalUserNum, const struct FString& Offer);
 	bool ShowContentPurchaseUI(unsigned char LocalUserNum, const struct FString& Offer);
-	bool STATIC_ShowContentMarketplaceUI(unsigned char LocalUserNum, int ParentProductType, int RequestedProductTypes, const struct FString& ParentProductId);
-	void ClearContentPurchaseResponse(const struct FScriptDelegate& HelpDelegate);
+	bool ShowContentMarketplaceUI(unsigned char LocalUserNum, int ParentProductType, int RequestedProductTypes, const struct FString& ParentProductId);
+	void STATIC_ClearContentPurchaseResponse(const struct FScriptDelegate& HelpDelegate);
 	void STATIC_AddContentPurchaseResponse(const struct FScriptDelegate& HelpDelegate);
 	void STATIC_OnContentPurchaseResponse(bool bAccepted, const struct FQWord& qwOrderId);
 	bool CanShowContentPurchaseUI();
-	bool STATIC_ShowProductDetailsUI(unsigned char LocalUserNum, const struct FString& ParentProductId);
-	void ClearAcceptReceivedDataDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& InDelegate);
+	bool ShowProductDetailsUI(unsigned char LocalUserNum, const struct FString& ParentProductId);
+	void STATIC_ClearAcceptReceivedDataDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& InDelegate);
 	void STATIC_AddAcceptReceivedDataDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& InDelegate);
 	void STATIC_OnAcceptReceivedData(const struct FString& Data);
-	bool STATIC_ShowDataSendingUI(unsigned char LocalUserNum, const struct FString& Message, const struct FString& DataName, const struct FString& DataDescription, TArray<unsigned char> Data, int MaxSelectableUsers);
-	void ClearPeoplePickerCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& InDelegate);
+	bool ShowDataSendingUI(unsigned char LocalUserNum, const struct FString& Message, const struct FString& DataName, const struct FString& DataDescription, TArray<unsigned char> Data, int MaxSelectableUsers);
+	void STATIC_ClearPeoplePickerCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& InDelegate);
 	void STATIC_AddPeoplePickerCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& InDelegate);
 	void STATIC_OnPeoplePickerComplete(bool bWasSuccessful, TArray<struct FOnlineFriend> PeoplePicked);
 	bool ShowPeoplePickerUI(unsigned char LocalUserNum, TArray<struct FOnlineFriend> People, int MaxSelectable, const struct FString& Text);
-	bool STATIC_ShowInviteUI(unsigned char LocalUserNum, const struct FString& InviteText);
-	bool STATIC_ShowAchievementsUI(unsigned char LocalUserNum);
-	bool STATIC_ShowMessagesUI(unsigned char LocalUserNum);
-	bool STATIC_ShowComposeMessageUI(unsigned char LocalUserNum, TArray<struct FUniqueNetId> People, const struct FString& Text);
-	void ClearShowComposeMessageUICompleteDelegate(const struct FScriptDelegate& MessageDelegate);
+	bool ShowInviteUI(unsigned char LocalUserNum, const struct FString& InviteText);
+	bool ShowAchievementsUI(unsigned char LocalUserNum);
+	bool ShowMessagesUI(unsigned char LocalUserNum);
+	bool ShowComposeMessageUI(unsigned char LocalUserNum, TArray<struct FUniqueNetId> People, const struct FString& Text);
+	void STATIC_ClearShowComposeMessageUICompleteDelegate(const struct FScriptDelegate& MessageDelegate);
 	void STATIC_AddShowComposeMessageUICompleteDelegate(const struct FScriptDelegate& MessageDelegate);
 	void STATIC_OnShowComposeMessageUIComplete(bool bWasSuccessful);
-	bool STATIC_ShowGamerCardUIByUsername(unsigned char LocalUserNum, const struct FString& UserName, const struct FUniqueNetId& PlayerID);
-	bool STATIC_ShowGamerCardUI(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID);
-	void ClearShowGamerCardCompleteDelegate(const struct FScriptDelegate& GamerCardDelegate);
+	bool ShowGamerCardUIByUsername(unsigned char LocalUserNum, const struct FString& UserName, const struct FUniqueNetId& PlayerID);
+	bool ShowGamerCardUI(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID);
+	void STATIC_ClearShowGamerCardCompleteDelegate(const struct FScriptDelegate& GamerCardDelegate);
 	void STATIC_AddShowGamerCardCompleteDelegate(const struct FScriptDelegate& GamerCardDelegate);
 	void STATIC_OnShowGamerCardComplete(bool bWasSuccessful);
-	bool STATIC_ShowVideo(const struct FString& URL);
-	void ClearShowHelpCompleteDelegate(const struct FScriptDelegate& HelpDelegate);
+	bool ShowVideo(const struct FString& URL);
+	void STATIC_ClearShowHelpCompleteDelegate(const struct FScriptDelegate& HelpDelegate);
 	void STATIC_AddShowHelpCompleteDelegate(const struct FScriptDelegate& HelpDelegate);
 	void STATIC_OnShowHelpComplete(bool bWasSuccessful);
-	bool STATIC_ShowHelpForErrorUI(const struct FString& ContextId, const struct FString& ErrorString);
-	bool STATIC_ShowHelpUI(unsigned char LocalUserNum);
-	bool STATIC_ShowFeedbackUI(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID);
+	bool ShowHelpForErrorUI(const struct FString& ContextId, const struct FString& ErrorString);
+	bool ShowHelpUI(unsigned char LocalUserNum);
+	bool ShowFeedbackUI(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID);
 };
 
 
@@ -33932,13 +33933,13 @@ public:
 
 
 	bool GetLocalAccountNames(TArray<struct FString>* Accounts);
-	bool DeleteLocalAccount(const struct FString& UserName, const struct FString& Password);
-	bool STATIC_RenameLocalAccount(const struct FString& NewUserName, const struct FString& OldUserName, const struct FString& Password);
-	bool CreateLocalAccount(const struct FString& UserName, const struct FString& Password);
-	void ClearCreateOnlineAccountCompletedDelegate(const struct FScriptDelegate& AccountCreateDelegate);
+	bool STATIC_DeleteLocalAccount(const struct FString& UserName, const struct FString& Password);
+	bool RenameLocalAccount(const struct FString& NewUserName, const struct FString& OldUserName, const struct FString& Password);
+	bool STATIC_CreateLocalAccount(const struct FString& UserName, const struct FString& Password);
+	void STATIC_ClearCreateOnlineAccountCompletedDelegate(const struct FScriptDelegate& AccountCreateDelegate);
 	void STATIC_AddCreateOnlineAccountCompletedDelegate(const struct FScriptDelegate& AccountCreateDelegate);
 	void STATIC_OnCreateOnlineAccountCompleted(TEnumAsByte<EOnlineAccountCreateStatus> ErrorStatus);
-	bool CreateOnlineAccount(const struct FString& UserName, const struct FString& Password, const struct FString& EmailAddress, const struct FString& ProductKey);
+	bool STATIC_CreateOnlineAccount(const struct FString& UserName, const struct FString& Password, const struct FString& EmailAddress, const struct FString& ProductKey);
 };
 
 
@@ -33984,32 +33985,32 @@ public:
 
 
 	bool IsPendingAuth(const struct FUniqueNetId& PlayerUID);
-	void Cleanup(bool bExit);
-	void STATIC_NotifyExit();
-	void STATIC_NotifyGameEnding();
-	void STATIC_NotifyServerTravel(bool bSeamless);
+	void STATIC_Cleanup(bool bExit);
+	void NotifyExit();
+	void NotifyGameEnding();
+	void NotifyServerTravel(bool bSeamless);
 	void OnDestroyOnlineGameComplete(const struct FName& SessionName, bool bWasSuccessful);
-	void STATIC_StaticOnClientConnectionClose(class UPlayer* ClientConnection);
+	void StaticOnClientConnectionClose(class UPlayer* ClientConnection);
 	void OnClientConnectionClose(class UPlayer* ClientConnection);
 	void ListenHostAuthTimeout();
-	void EndListenHostAuth();
-	void ContinueListenHostAuth();
+	void STATIC_EndListenHostAuth();
+	void STATIC_ContinueListenHostAuth();
 	void STATIC_BeginListenHostAuth(bool bRetry);
-	void STATIC_ProcessServerAuthRetryRequest(class UPlayer* ClientConnection);
-	void STATIC_ProcessServerAuthRequest(class UPlayer* ClientConnection, const struct FUniqueNetId& ClientUID, const struct FIpAddr& ClientIP, int ClientPort);
+	void ProcessServerAuthRetryRequest(class UPlayer* ClientConnection);
+	void ProcessServerAuthRequest(class UPlayer* ClientConnection, const struct FUniqueNetId& ClientUID, const struct FIpAddr& ClientIP, int ClientPort);
 	void OnClientAuthComplete(bool bSuccess, const struct FUniqueNetId& ClientUID, class UPlayer* ClientConnection, const struct FString& ExtraInfo);
-	void STATIC_ProcessClientAuthResponse(const struct FUniqueNetId& ClientUID, const struct FIpAddr& ClientIP, int AuthTicketUID);
+	void ProcessClientAuthResponse(const struct FUniqueNetId& ClientUID, const struct FIpAddr& ClientIP, int AuthTicketUID);
 	void OnAuthReady();
-	void STATIC_PendingAuthTimer();
+	void PendingAuthTimer();
 	void PostLogin(class APlayerController* NewPlayer);
 	void PreLogin(const struct FString& Options, const struct FString& Address, const struct FUniqueNetId& UniqueId, bool bSupportsAuth, bool bSpectator, struct FString* OutError);
-	void ClearAuthDelegates(bool bExiting);
-	void STATIC_RegisterAuthDelegates();
+	void STATIC_ClearAuthDelegates(bool bExiting);
+	void RegisterAuthDelegates();
 	void InitAuthHooks();
 	bool IsIDBanned(struct FUniqueNetId* NetId);
-	bool CheckIPPolicy(const struct FString& Address);
+	bool STATIC_CheckIPPolicy(const struct FString& Address);
 	bool STATIC_ValidLogin(const struct FString& UserName, const struct FString& Password);
-	bool STATIC_ParseAdminOptions(const struct FString& Options);
+	bool ParseAdminOptions(const struct FString& Options);
 	void STATIC_AdminExited(class APlayerController* P);
 	void STATIC_AdminEntered(class APlayerController* P);
 	bool STATIC_AdminLogout(class APlayerController* P);
@@ -34019,9 +34020,9 @@ public:
 	void KickBan(const struct FString& Target);
 	void Kick(const struct FString& Target);
 	class AController* GetControllerFromString(const struct FString& Target);
-	bool STATIC_RequiresPassword();
-	void STATIC_SetGamePassword(const struct FString& P);
-	bool STATIC_SetAdminPassword(const struct FString& P);
+	bool RequiresPassword();
+	void SetGamePassword(const struct FString& P);
+	bool SetAdminPassword(const struct FString& P);
 	bool IsAdmin(class APlayerController* P);
 	void Destroyed();
 	void PostBeginPlay();
@@ -34041,16 +34042,16 @@ public:
 	}
 
 
-	void STATIC_ServerSwitch(const struct FString& URL);
+	void ServerSwitch(const struct FString& URL);
 	void Switch(const struct FString& URL);
-	void STATIC_ServerRestartMap();
-	void STATIC_RestartMap();
-	void STATIC_PlayerList();
-	void STATIC_ServerKick(const struct FString& S);
+	void ServerRestartMap();
+	void RestartMap();
+	void PlayerList();
+	void ServerKick(const struct FString& S);
 	void Kick(const struct FString& S);
-	void STATIC_ServerKickBan(const struct FString& S);
+	void ServerKickBan(const struct FString& S);
 	void KickBan(const struct FString& S);
-	void STATIC_ServerAdmin(const struct FString& CommandLine);
+	void ServerAdmin(const struct FString& CommandLine);
 	void STATIC_Admin(const struct FString& CommandLine);
 	void PostBeginPlay();
 };
@@ -34182,26 +34183,26 @@ public:
 	}
 
 
-	void ClientReceiveLinkDisabledState(int Index, class ACoverLink* Link, bool bLinkDisabled);
-	void STATIC_ServerSendLinkDisabledState(int Index);
-	void STATIC_NotifyLinkDisabledStateChange(class ACoverLink* Link);
-	void ClientReceiveManualCoverTypeSlots(int Index, class ACoverLink* Link, unsigned char NumCoverTypesChanged, const struct FManualCoverTypeInfo& SlotsCoverTypeChanged, bool bDone);
-	void STATIC_ServerSendManualCoverTypeSlots(int Index);
-	void STATIC_NotifySetManualCoverTypeForSlots(class ACoverLink* Link, TEnumAsByte<ECoverType> NewCoverType, TArray<int>* SlotIndices);
-	void ClientReceiveAdjustedSlots(int Index, class ACoverLink* Link, unsigned char NumSlotsAdjusted, unsigned char SlotsAdjusted, bool bDone);
-	void STATIC_ServerSendAdjustedSlots(int Index);
-	void STATIC_NotifyAutoAdjustSlots(class ACoverLink* Link, TArray<int>* SlotIndices);
-	void ClientReceiveDisabledSlots(int Index, class ACoverLink* Link, unsigned char NumSlotsDisabled, unsigned char SlotsDisabled, bool bDone);
-	void STATIC_ServerSendDisabledSlots(int Index);
-	void STATIC_NotifyDisabledSlots(class ACoverLink* Link, TArray<int>* SlotIndices);
-	void ClientReceiveEnabledSlots(int Index, class ACoverLink* Link, unsigned char NumSlotsEnabled, unsigned char SlotsEnabled, bool bDone);
-	void STATIC_ServerSendEnabledSlots(int Index);
-	void STATIC_NotifyEnabledSlots(class ACoverLink* Link, TArray<int>* SlotIndices);
-	void ClientReceiveInitialCoverReplicationInfo(int Index, class ACoverLink* Link, bool bLinkDisabled, unsigned char NumSlotsEnabled, unsigned char SlotsEnabled, unsigned char NumSlotsDisabled, unsigned char SlotsDisabled, unsigned char NumSlotsAdjusted, unsigned char SlotsAdjusted, unsigned char NumCoverTypesChanged, const struct FManualCoverTypeInfo& SlotsCoverTypeChanged, bool bDone);
-	void STATIC_ServerSendInitialCoverReplicationInfo(int Index);
-	void ClientSetOwner(class APlayerController* PC);
-	void STATIC_ReplicateInitialCoverInfo();
-	void STATIC_PurgeOldEntries();
+	void STATIC_ClientReceiveLinkDisabledState(int Index, class ACoverLink* Link, bool bLinkDisabled);
+	void ServerSendLinkDisabledState(int Index);
+	void NotifyLinkDisabledStateChange(class ACoverLink* Link);
+	void STATIC_ClientReceiveManualCoverTypeSlots(int Index, class ACoverLink* Link, unsigned char NumCoverTypesChanged, const struct FManualCoverTypeInfo& SlotsCoverTypeChanged, bool bDone);
+	void ServerSendManualCoverTypeSlots(int Index);
+	void NotifySetManualCoverTypeForSlots(class ACoverLink* Link, TEnumAsByte<ECoverType> NewCoverType, TArray<int>* SlotIndices);
+	void STATIC_ClientReceiveAdjustedSlots(int Index, class ACoverLink* Link, unsigned char NumSlotsAdjusted, unsigned char SlotsAdjusted, bool bDone);
+	void ServerSendAdjustedSlots(int Index);
+	void NotifyAutoAdjustSlots(class ACoverLink* Link, TArray<int>* SlotIndices);
+	void STATIC_ClientReceiveDisabledSlots(int Index, class ACoverLink* Link, unsigned char NumSlotsDisabled, unsigned char SlotsDisabled, bool bDone);
+	void ServerSendDisabledSlots(int Index);
+	void NotifyDisabledSlots(class ACoverLink* Link, TArray<int>* SlotIndices);
+	void STATIC_ClientReceiveEnabledSlots(int Index, class ACoverLink* Link, unsigned char NumSlotsEnabled, unsigned char SlotsEnabled, bool bDone);
+	void ServerSendEnabledSlots(int Index);
+	void NotifyEnabledSlots(class ACoverLink* Link, TArray<int>* SlotIndices);
+	void STATIC_ClientReceiveInitialCoverReplicationInfo(int Index, class ACoverLink* Link, bool bLinkDisabled, unsigned char NumSlotsEnabled, unsigned char SlotsEnabled, unsigned char NumSlotsDisabled, unsigned char SlotsDisabled, unsigned char NumSlotsAdjusted, unsigned char SlotsAdjusted, unsigned char NumCoverTypesChanged, const struct FManualCoverTypeInfo& SlotsCoverTypeChanged, bool bDone);
+	void ServerSendInitialCoverReplicationInfo(int Index);
+	void STATIC_ClientSetOwner(class APlayerController* PC);
+	void ReplicateInitialCoverInfo();
+	void PurgeOldEntries();
 };
 
 
@@ -34540,10 +34541,10 @@ public:
 
 	void STATIC_AllowBroadcastLocalizedTeam(int TeamIndex, class AActor* Sender, class UClass* Message, int Switch, class APlayerReplicationInfo* RelatedPRI_2, class APlayerReplicationInfo* RelatedPRI_3, class UObject* OptionalObject);
 	void STATIC_AllowBroadcastLocalized(class AActor* Sender, class UClass* Message, int Switch, class APlayerReplicationInfo* RelatedPRI_2, class APlayerReplicationInfo* RelatedPRI_3, class UObject* OptionalObject);
-	void BroadcastTeam(class AController* Sender, const struct FString& msg, const struct FName& Type);
+	void STATIC_BroadcastTeam(class AController* Sender, const struct FString& msg, const struct FName& Type);
 	void Broadcast(class AActor* Sender, const struct FString& msg, const struct FName& Type);
 	void BroadcastLocalized(class AActor* Sender, class APlayerController* Receiver, class UClass* Message, int Switch, class APlayerReplicationInfo* RelatedPRI_2, class APlayerReplicationInfo* RelatedPRI_3, class UObject* OptionalObject);
-	void BroadcastText(class APlayerReplicationInfo* SenderPRI, class APlayerController* Receiver, const struct FString& msg, const struct FName& Type);
+	void STATIC_BroadcastText(class APlayerReplicationInfo* SenderPRI, class APlayerController* Receiver, const struct FString& msg, const struct FName& Type);
 	bool STATIC_AllowsBroadcast(class AActor* broadcaster, int InLen);
 	void STATIC_UpdateSentText();
 };
@@ -34563,7 +34564,7 @@ public:
 	}
 
 
-	class UHttpRequestInterface* CreateRequest();
+	class UHttpRequestInterface* STATIC_CreateRequest();
 };
 
 
@@ -34598,10 +34599,10 @@ public:
 	}
 
 
-	bool DeleteDataBlob(const struct FString& StorageID, const struct FString& BlobName, const struct FScriptDelegate& InDeleteDataBlobCallback);
-	void DeleteDataBlobCallbackDelegate(bool bWasSucessfull, const struct FString& StorageID, const struct FString& BlobName, const struct FString& Error);
-	void STATIC_SetDataBlob(const struct FString& StorageID, const struct FString& BlobName, const struct FScriptDelegate& InSetDataBlobCallback, TArray<unsigned char>* DataBlob);
-	void STATIC_SetDataBlobCallbackDelegate(bool bWasSucessfull, const struct FString& StorageID, const struct FString& BlobName, const struct FString& Error);
+	bool STATIC_DeleteDataBlob(const struct FString& StorageID, const struct FString& BlobName, const struct FScriptDelegate& InDeleteDataBlobCallback);
+	void STATIC_DeleteDataBlobCallbackDelegate(bool bWasSucessfull, const struct FString& StorageID, const struct FString& BlobName, const struct FString& Error);
+	void SetDataBlob(const struct FString& StorageID, const struct FString& BlobName, const struct FScriptDelegate& InSetDataBlobCallback, TArray<unsigned char>* DataBlob);
+	void SetDataBlobCallbackDelegate(bool bWasSucessfull, const struct FString& StorageID, const struct FString& BlobName, const struct FString& Error);
 	void GetDataBlob(const struct FString& StorageID, const struct FString& BlobName, const struct FScriptDelegate& OnGetDataBlobComplete);
 	void GetDataBlobCallbackDelegate(bool bWasSuccessful, const struct FString& StorageID, const struct FString& BlobName, const struct FString& Error, TArray<unsigned char>* DataBlob);
 };
@@ -34767,7 +34768,7 @@ public:
 	}
 
 
-	void STATIC_OnToggle(class USeqAct_Toggle* Action);
+	void OnToggle(class USeqAct_Toggle* Action);
 	void ReplicatedEvent(const struct FName& VarName);
 	void PostBeginPlay();
 };
@@ -34853,7 +34854,7 @@ public:
 	}
 
 
-	void STATIC_OnToggle(class USeqAct_Toggle* Action);
+	void OnToggle(class USeqAct_Toggle* Action);
 	void ReplicatedEvent(const struct FName& VarName);
 	void PostBeginPlay();
 };
@@ -34937,19 +34938,19 @@ public:
 	}
 
 
-	void ClearOnChunkCompleteDelegate(const struct FScriptDelegate& InDelegate);
+	void STATIC_ClearOnChunkCompleteDelegate(const struct FScriptDelegate& InDelegate);
 	void STATIC_AddOnChunkCompleteDelegate(const struct FScriptDelegate& InDelegate);
-	void STATIC_OnChunkComplete(int ChunkIndex);
-	void STATIC_SetDownloadSpeed(TEnumAsByte<EDownloadSpeed> InSpeed);
-	void STATIC_SetChunksHighPriority(TArray<int> ChunkIndices);
+	void OnChunkComplete(int ChunkIndex);
+	void SetDownloadSpeed(TEnumAsByte<EDownloadSpeed> InSpeed);
+	void SetChunksHighPriority(TArray<int> ChunkIndices);
 	TArray<int> GetTodoList();
 	float GetOverallProgress();
 	float GetChunksProgress(TArray<int> ChunkIndices);
 	float GetChunkProgress(int InChunkIndex);
 	float GetChunksETA(TArray<int> ChunkIndices);
 	float GetChunkETA(int InChunkIndex);
-	void STATIC_RefreshGame();
-	bool DoesGameNeedRefresh();
+	void RefreshGame();
+	bool STATIC_DoesGameNeedRefresh();
 	bool STATIC_AreChunksComplete(TArray<int> ChunkIndices, bool bRequireFastAccess);
 	bool IsChunkComplete(int InChunkIndex, bool bRequireFastAccess);
 	bool IsGameComplete();
@@ -34997,19 +34998,19 @@ public:
 
 
 	int GetCurrentPlayersListCount();
-	void STATIC_SetCurrentPlayersList(TArray<struct FCurrentPlayerMet> Players);
-	bool STATIC_ShowCurrentPlayersList(unsigned char LocalUserNum, const struct FString& Title, const struct FString& Description);
-	bool STATIC_ShowLastPartyPlayerList(unsigned char LocalUserNum, const struct FString& Title, const struct FString& Description);
-	bool STATIC_ShowRecentPartiesPlayerList(unsigned char LocalUserNum, const struct FString& Title, const struct FString& Description);
-	bool STATIC_ShowRecentPlayerList(unsigned char LocalUserNum, const struct FString& Title, const struct FString& Description);
-	void STATIC_SetLastParty(const struct FUniqueNetId& PartyLeader, TArray<struct FUniqueNetId>* PartyMembers);
+	void SetCurrentPlayersList(TArray<struct FCurrentPlayerMet> Players);
+	bool ShowCurrentPlayersList(unsigned char LocalUserNum, const struct FString& Title, const struct FString& Description);
+	bool ShowLastPartyPlayerList(unsigned char LocalUserNum, const struct FString& Title, const struct FString& Description);
+	bool ShowRecentPartiesPlayerList(unsigned char LocalUserNum, const struct FString& Title, const struct FString& Description);
+	bool ShowRecentPlayerList(unsigned char LocalUserNum, const struct FString& Title, const struct FString& Description);
+	void SetLastParty(const struct FUniqueNetId& PartyLeader, TArray<struct FUniqueNetId>* PartyMembers);
 	int GetTeamForCurrentPlayer(const struct FUniqueNetId& Player);
 	int GetSkillForCurrentPlayer(const struct FUniqueNetId& Player);
 	void GetPlayersFromCurrentPlayers(TArray<struct FUniqueNetId>* Players);
 	void GetPlayersFromRecentParties(TArray<struct FUniqueNetId>* Players);
-	void ClearRecentParties();
+	void STATIC_ClearRecentParties();
 	void STATIC_AddPartyToRecentParties(const struct FUniqueNetId& PartyLeader, TArray<struct FUniqueNetId>* PartyMembers);
-	void ClearRecentPlayers();
+	void STATIC_ClearRecentPlayers();
 	void STATIC_AddPlayerToRecentPlayers(const struct FUniqueNetId& NewPlayer);
 };
 
@@ -35027,11 +35028,11 @@ public:
 	}
 
 
-	bool STATIC_ShowMatchmakingUI(unsigned char SearchingPlayerNum, class UOnlineGameSearch* SearchSettings, class UOnlineGameSettings* GameSettings);
-	void ClearShowOnlineStatsUICompleteDelegate(const struct FScriptDelegate& ShowOnlineStatsUICompleteDelegate);
+	bool ShowMatchmakingUI(unsigned char SearchingPlayerNum, class UOnlineGameSearch* SearchSettings, class UOnlineGameSettings* GameSettings);
+	void STATIC_ClearShowOnlineStatsUICompleteDelegate(const struct FScriptDelegate& ShowOnlineStatsUICompleteDelegate);
 	void STATIC_AddShowOnlineStatsUICompleteDelegate(const struct FScriptDelegate& ShowOnlineStatsUICompleteDelegate);
-	bool STATIC_ShowOnlineStatsUI(class UOnlineStatsRead* StatsRead, TArray<struct FUniqueNetId>* Players);
-	void STATIC_OnShowOnlineStatsUIComplete();
+	bool ShowOnlineStatsUI(class UOnlineStatsRead* StatsRead, TArray<struct FUniqueNetId>* Players);
+	void OnShowOnlineStatsUIComplete();
 };
 
 
@@ -35205,7 +35206,7 @@ public:
 	}
 
 
-	void STATIC_OnToggle(class USeqAct_Toggle* Action);
+	void OnToggle(class USeqAct_Toggle* Action);
 };
 
 
@@ -35530,7 +35531,7 @@ public:
 
 	bool SuggestMovePreparation(class APawn* Other);
 	class AActor* SpecialHandling(class APawn* Other);
-	void STATIC_OnToggle(class USeqAct_Toggle* inAction);
+	void OnToggle(class USeqAct_Toggle* inAction);
 };
 
 
@@ -35659,14 +35660,14 @@ public:
 
 
 	void STATIC_OnDeleteUserFileComplete(bool bWasSuccessful, const struct FString& UserId, const struct FString& Filename);
-	bool DeleteDataBlob(const struct FString& StorageID, const struct FString& BlobName, const struct FScriptDelegate& InDeleteDataBlobCallback);
+	bool STATIC_DeleteDataBlob(const struct FString& StorageID, const struct FString& BlobName, const struct FScriptDelegate& InDeleteDataBlobCallback);
 	void STATIC_OnWriteUserFileComplete(bool bWasSuccessful, const struct FString& UserId, const struct FString& Filename);
-	void STATIC_SetDataBlob(const struct FString& StorageID, const struct FString& BlobName, const struct FScriptDelegate& InSetDataBlobCallback, TArray<unsigned char>* DataBlob);
+	void SetDataBlob(const struct FString& StorageID, const struct FString& BlobName, const struct FScriptDelegate& InSetDataBlobCallback, TArray<unsigned char>* DataBlob);
 	void STATIC_OnReadUserFileComplete(bool bWasSuccessful, const struct FString& UserId, const struct FString& Filename);
 	void GetDataBlob(const struct FString& StorageID, const struct FString& BlobName, const struct FScriptDelegate& InGetDataBlobCallback);
 	void Init(const TScriptInterface<class UUserCloudFileInterface>& InUserCloudFile);
-	void DeleteDataBlobCallbackDelegate(bool bWasSucessfull, const struct FString& StorageID, const struct FString& BlobName, const struct FString& Error);
-	void STATIC_SetDataBlobCallbackDelegate(bool bWasSucessfull, const struct FString& StorageID, const struct FString& BlobName, const struct FString& Error);
+	void STATIC_DeleteDataBlobCallbackDelegate(bool bWasSucessfull, const struct FString& StorageID, const struct FString& BlobName, const struct FString& Error);
+	void SetDataBlobCallbackDelegate(bool bWasSucessfull, const struct FString& StorageID, const struct FString& BlobName, const struct FString& Error);
 	void GetDataBlobCallbackDelegate(bool bWasSuccessful, const struct FString& StorageID, const struct FString& BlobName, const struct FString& Error, TArray<unsigned char>* DataBlob);
 };
 
@@ -35688,9 +35689,9 @@ public:
 	}
 
 
-	void STATIC_PlayExitSplash(class AActor* Other);
+	void PlayExitSplash(class AActor* Other);
 	void UnTouch(class AActor* Other);
-	void STATIC_PlayEntrySplash(class AActor* Other);
+	void PlayEntrySplash(class AActor* Other);
 	void Touch(class AActor* Other, class UPrimitiveComponent* OtherComp, const struct FVector& HitLocation, const struct FVector& HitNormal);
 };
 

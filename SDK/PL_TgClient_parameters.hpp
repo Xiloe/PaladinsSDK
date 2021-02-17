@@ -1,6 +1,6 @@
 #pragma once
 
-// Paladins (3.05) SDK
+// Paladins (4.1.3942.2) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -3064,6 +3064,12 @@ struct ATgLobbyHUD_TestItemPreview_Params
 	float                                              fIntroTime;                                               // (Parm)
 	int                                                nItemIdToPreview;                                         // (OptionalParm, Parm)
 	int                                                nTargetIndex;                                             // (OptionalParm, Parm)
+};
+
+// Function TgClient.TgLobbyHUD.GetCurrentSprayPreviewOffset
+struct ATgLobbyHUD_GetCurrentSprayPreviewOffset_Params
+{
+	struct FVector                                     ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function TgClient.TgLobbyHUD.SwitchToCamera

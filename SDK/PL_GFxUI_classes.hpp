@@ -1,6 +1,6 @@
 #pragma once
 
-// Paladins (3.05) SDK
+// Paladins (4.1.3942.2) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -65,9 +65,9 @@ public:
 
 
 	void STATIC_CloseAllMoviePlayers();
-	void STATIC_NotifySplitscreenLayoutChanged();
-	void STATIC_NotifyPlayerRemoved(int PlayerIndex, class ULocalPlayer* RemovedPlayer);
-	void STATIC_NotifyPlayerAdded(int PlayerIndex, class ULocalPlayer* AddedPlayer);
+	void NotifySplitscreenLayoutChanged();
+	void NotifyPlayerRemoved(int PlayerIndex, class ULocalPlayer* RemovedPlayer);
+	void NotifyPlayerAdded(int PlayerIndex, class ULocalPlayer* AddedPlayer);
 	void NotifyGameSessionEnded();
 	class UGFxMoviePlayer* STATIC_GetFocusMovie(int ControllerId);
 };
@@ -144,7 +144,7 @@ public:
 	void STATIC_PlaySoundFromTheme(const struct FName& EventName, const struct FName& SoundThemeName);
 	void OnFocusLost(int LocalPlayerIndex);
 	void OnFocusGained(int LocalPlayerIndex);
-	void ConsoleCommand(const struct FString& Command);
+	void STATIC_ConsoleCommand(const struct FString& Command);
 	class APlayerController* GetPC();
 	class ULocalPlayer* GetLP();
 	void Init(class ULocalPlayer* LocPlay);
@@ -187,7 +187,7 @@ public:
 	bool ShouldBlockKey(int ControllerId, const struct FName& ButtonName, TEnumAsByte<EInputEvent> InputEvent);
 	bool FilterButtonInput(int ControllerId, const struct FName& ButtonName, TEnumAsByte<EInputEvent> InputEvent);
 	bool STATIC_NativeAllowButtonInput(int ControllerId, const struct FName& ButtonName, TEnumAsByte<EInputEvent> InputEvent);
-	void FlushPlayerInput(bool capturekeysonly);
+	void STATIC_FlushPlayerInput(bool capturekeysonly);
 	void STATIC_ClearFocusIgnoreKeys();
 	void STATIC_AddFocusIgnoreKey(const struct FName& Key);
 	void STATIC_ClearCaptureKeys();
@@ -212,7 +212,7 @@ public:
 	void ConditionalClearPause();
 	void OnCleanup();
 	void OnClose();
-	void Close(bool Unload);
+	void STATIC_Close(bool Unload);
 	void SetPause(bool bPausePlayback);
 	void OnPostAdvance(float DeltaTime);
 	void STATIC_PostAdvance(float DeltaTime);
@@ -268,7 +268,7 @@ public:
 	float STATIC_GetX();
 	void STATIC_SetYRotation(float fValue);
 	void STATIC_SetXRotation(float fValue);
-	void STATIC_SetRotation(float fValue);
+	void SetRotation(float fValue);
 	void SetDisabled(bool bValue);
 	void STATIC_SetYScale(float fValue);
 	void STATIC_SetXScale(float fValue);
@@ -343,12 +343,12 @@ public:
 	struct FASDisplayInfo STATIC_GetDisplayInfo();
 	struct FString STATIC_TranslateString(const struct FString& StringToTranslate, class UTranslationContext* InContext);
 	void STATIC_SetFunction(const struct FString& Member, class UObject* context, const struct FName& fname);
-	void STATIC_SetObject(const struct FString& Member, class UGFxObject* val);
+	void SetObject(const struct FString& Member, class UGFxObject* val);
 	void STATIC_SetString(const struct FString& Member, const struct FString& S, class UTranslationContext* InContext);
 	void STATIC_SetInt(const struct FString& Member, int I);
 	void STATIC_SetFloat(const struct FString& Member, float F);
 	void STATIC_SetBool(const struct FString& Member, bool B);
-	void STATIC_Set(const struct FString& Member, const struct FASValue& Arg);
+	void Set(const struct FString& Member, const struct FASValue& Arg);
 	class UGFxObject* GetObject(const struct FString& Member, class UClass* Type);
 	struct FString GetString(const struct FString& Member);
 	int GetInt(const struct FString& Member);
@@ -356,7 +356,7 @@ public:
 	bool STATIC_GetBool(const struct FString& Member, bool bIgnoreUndefined);
 	struct FASValue STATIC_Get(const struct FString& Member);
 	void STATIC_SetColorMultiplier(float R, float G, float B, float A, bool bMaintainAdditive);
-	void SetColor(float R, float G, float B, float A, bool bMaintainMultiplier);
+	void STATIC_SetColor(float R, float G, float B, float A, bool bMaintainMultiplier);
 };
 
 

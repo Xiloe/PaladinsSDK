@@ -1,6 +1,6 @@
 #pragma once
 
-// Paladins (3.05) SDK
+// Paladins (4.1.3942.2) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -8,8 +8,8 @@
 
 #include "PL_Basic.hpp"
 #include "PL_GameFramework_classes.hpp"
-#include "PL_Engine_classes.hpp"
 #include "PL_Core_classes.hpp"
+#include "PL_Engine_classes.hpp"
 #include "PL_PlatformCommon_classes.hpp"
 #include "PL_AkAudio_classes.hpp"
 
@@ -231,14 +231,14 @@ namespace SDK
 #define CONST_TGPID_HEALTH_FLOOR                                 1838
 #define CONST_TgAIController_BehaviorGod_GAMEEVENT_GAME_MAPNAME  8
 #define CONST_CHAMPION_ID_KOGA                                   2493
-#define CONST_CHAMPION_ID_YAGORATH                               2538
-#define CONST_TG_MAX_PLAYER_STUCK_BOMBS                          6
+#define CONST_VV_BOT_RANK_GOD                                    10126
+#define CONST_CHAMPION_ID_COMMANDER                              2540
 #define CONST_CHAMPION_ID_PVE_BARIK_TURRET2                      2337
+#define CONST_BNT_ACTION_SELECT_COMBAT_LEASH                     1048596
+#define CONST_SMITE_MIDPOINT_ROUTE_THRESHOLD                     176.0f
 #define CONST_TGPID_DEVICE_MODE_COOLDOWN_TIME                    4
 #define CONST_TgPawn_GAMEEVENT_GAMETHREAD_POLL                   41
 #define CONST_CHAMPION_ID_PVE_FERNANDO_SHIELD                    2331
-#define CONST_BNT_ACTION_SELECT_COMBAT_LEASH                     1048596
-#define CONST_SMITE_MIDPOINT_ROUTE_THRESHOLD                     176.0f
 #define CONST_CHAMPION_ID_PVE_GROVER_HEALS                       2333
 #define CONST_BNT_CONDITION_NEARBY_TARGET_TYPE_COUNT             277
 #define CONST_CHAMPION_ID_PVE_MAKOA_ULT                          2324
@@ -404,6 +404,8 @@ namespace SDK
 #define CONST_AIBOARD_BEHAVIOR_PET                               0x04
 #define CONST_SIMPROJ_VECTOR_MUNGE_FACTOR                        100
 #define CONST_DODM_SHOW_OWNED_SILHOUETTE                         64
+#define CONST_CHAMPION_ID_YAGORATH                               2538
+#define CONST_TG_MAX_PLAYER_STUCK_BOMBS                          6
 #define CONST_STRIX_EDM_RECOLOR_SKIN_ID                          23927
 #define CONST_TGPID_HAS_HEALING_EFFECT_UI_FRIEND                 1960
 #define CONST_BNT_ACTION_SUGGEST_COMBAT_SQUAD                    1048599
@@ -444,7 +446,6 @@ namespace SDK
 #define CONST_VV_BOT_RANK_BUFFMONSTER                            10178
 #define CONST_VV_BOT_RANK_MONSTER                                10085
 #define CONST_TGDT_PASSIVES                                      10964
-#define CONST_VV_BOT_RANK_GOD                                    10126
 #define CONST_ITEM_VOICE_BARIK_STEAMTF2                          15289
 #define CONST_FIREMODE_ID_CASSIE_INHAND                          10148
 #define CONST_TGPID_SHIELD_MAX                                   1599
@@ -3708,7 +3709,8 @@ enum class EUITargeters : uint8_t
 	TARGETER_DRUID_LOCKON          = 10,
 	TARGETER_DRUID_FOXAGGRO        = 11,
 	TARGETER_CORVUS_MARK           = 12,
-	TARGETER_MAX                   = 13
+	TARGETER_YAGORATH_ULT          = 13,
+	TARGETER_MAX                   = 14
 };
 
 
