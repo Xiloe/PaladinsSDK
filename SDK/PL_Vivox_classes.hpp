@@ -1,6 +1,6 @@
 #pragma once
 
-// Paladins (4.1.3942.2) SDK
+// Paladins (3.05) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -30,7 +30,7 @@ public:
 	}
 
 
-	void STATIC_OnGameChatBlockedChanged(bool bIsActive);
+	void OnGameChatBlockedChanged(bool bIsActive);
 	bool STATIC_IsGameChatBlocked();
 	void STATIC_SignalGameChatStopping();
 	void STATIC_SignalGameChatAttempting();
@@ -38,7 +38,7 @@ public:
 	bool STATIC_CanCommunicateVoiceWithUsersByUniqueNetIds(TArray<struct FUniqueNetId> Users);
 	bool STATIC_OnPrivilegeLevelChecked(int ChannelJoinCount, unsigned char LocalUserNum, TEnumAsByte<EFeaturePrivilege> Privilege, TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevel, bool bDiffersFromHint);
 	bool STATIC_CanCommunicateVoice(int ChannelJoinCount, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
-	void STATIC_RemoveClosure(class UVivoxClosure* Closure);
+	void RemoveClosure(class UVivoxClosure* Closure);
 	void STATIC_RegisterOnlineDelegates();
 };
 
@@ -81,7 +81,7 @@ public:
 	void STATIC_OnPrivilegeLevelChecked(unsigned char LocalUserNum, TEnumAsByte<EFeaturePrivilege> Privilege, TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevel, bool bDiffersFromHint);
 	void ClearOnlineDelegates();
 	void STATIC_RegisterOnlineDelegates(class UOnlineSubsystem* OnlineSub);
-	void STATIC_InitClosure(int ChannelJoinCount, class UVivoxOSSConnectors* Connector);
+	void InitClosure(int ChannelJoinCount, class UVivoxOSSConnectors* Connector);
 };
 
 

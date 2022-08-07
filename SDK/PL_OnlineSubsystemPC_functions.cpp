@@ -1,4 +1,4 @@
-// Paladins (4.1.3942.2) SDK
+// Paladins (3.05) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -13,7 +13,7 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.SendPlayerSessionResume
-// (Defined, Iterator, Latent, PreOperator, NetReliable, Exec, Event, Operator)
+// (Defined, Iterator, Latent, PreOperator, Singular, Simulated, Exec, HasOptionalParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FString                 MultiplayerCorrelationId       (Parm, NeedCtorLink)
@@ -42,7 +42,7 @@ bool UOnlineSubsystemPC::SendPlayerSessionResume(unsigned char LocalUserNum, con
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.SendPlayerSessionPause
-// (Final, Iterator, Latent, PreOperator, NetReliable, Exec, Event, Operator)
+// (Final, Iterator, Latent, PreOperator, Singular, Simulated, Exec, HasOptionalParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FString                 MultiplayerCorrelationId       (Parm, NeedCtorLink)
@@ -67,7 +67,7 @@ bool UOnlineSubsystemPC::SendPlayerSessionPause(unsigned char LocalUserNum, cons
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.SendPlayerSessionEnd
-// (Iterator, Latent, PreOperator, NetReliable, Exec, Event, Operator)
+// (Iterator, Latent, PreOperator, Singular, Simulated, Exec, HasOptionalParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FString                 MultiplayerCorrelationId       (Parm, NeedCtorLink)
@@ -98,7 +98,7 @@ bool UOnlineSubsystemPC::SendPlayerSessionEnd(unsigned char LocalUserNum, const 
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.SendPlayerSessionStart
-// (Final, Defined, Iterator, Latent, PreOperator, NetReliable, Exec, Event, Operator)
+// (Final, Defined, Iterator, Latent, PreOperator, Singular, Simulated, Exec, HasOptionalParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FString                 MultiplayerCorrelationId       (Parm, NeedCtorLink)
@@ -127,7 +127,7 @@ bool UOnlineSubsystemPC::SendPlayerSessionStart(unsigned char LocalUserNum, cons
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.UpdatePlayerMuteSetting
-// (Final, Defined, PreOperator, Singular, NetReliable, Event, HasOptionalParms)
+// (Iterator, Latent, Singular, Net, NetReliable, Exec, Event, HasOptionalParms)
 // Parameters:
 // bool                           PlayerMuteSetting              (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
@@ -150,12 +150,12 @@ bool UOnlineSubsystemPC::UpdatePlayerMuteSetting(bool PlayerMuteSetting)
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.IsTalkerMuted
-// (Iterator, Singular, Net, NetReliable, Exec, Native)
+// (Final, Defined, Iterator, PreOperator, Singular, NetReliable, Simulated, Exec, Native, Event, Static)
 // Parameters:
 // struct FUniqueNetId            ConsoleId                      (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::IsTalkerMuted(const struct FUniqueNetId& ConsoleId)
+bool UOnlineSubsystemPC::STATIC_IsTalkerMuted(const struct FUniqueNetId& ConsoleId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.IsTalkerMuted");
 
@@ -174,11 +174,11 @@ bool UOnlineSubsystemPC::IsTalkerMuted(const struct FUniqueNetId& ConsoleId)
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ClearGetUserAccountInfoDelegate
-// (Iterator, Latent, PreOperator, Singular, Simulated, Exec, Operator, Static, HasOptionalParms, Const)
+// (Final, Defined, Iterator, Singular, Native, Event, Operator)
 // Parameters:
 // struct FScriptDelegate         InDelegate                     (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_ClearGetUserAccountInfoDelegate(const struct FScriptDelegate& InDelegate)
+void UOnlineSubsystemPC::ClearGetUserAccountInfoDelegate(const struct FScriptDelegate& InDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ClearGetUserAccountInfoDelegate");
 
@@ -186,6 +186,7 @@ void UOnlineSubsystemPC::STATIC_ClearGetUserAccountInfoDelegate(const struct FSc
 	params.InDelegate = InDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -194,11 +195,11 @@ void UOnlineSubsystemPC::STATIC_ClearGetUserAccountInfoDelegate(const struct FSc
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.AddGetUserAccountInfoDelegate
-// (Final, Latent, Singular, Net, Simulated, Exec, Static, HasOptionalParms, Const)
+// (Iterator, Latent, PreOperator, Net, Native, Event)
 // Parameters:
 // struct FScriptDelegate         InDelegate                     (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_AddGetUserAccountInfoDelegate(const struct FScriptDelegate& InDelegate)
+void UOnlineSubsystemPC::AddGetUserAccountInfoDelegate(const struct FScriptDelegate& InDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.AddGetUserAccountInfoDelegate");
 
@@ -206,6 +207,7 @@ void UOnlineSubsystemPC::STATIC_AddGetUserAccountInfoDelegate(const struct FScri
 	params.InDelegate = InDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -214,12 +216,12 @@ void UOnlineSubsystemPC::STATIC_AddGetUserAccountInfoDelegate(const struct FScri
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.GetUserAccountInfo
-// (Latent, Simulated, Exec)
+// (Final, Defined, Iterator, Latent, PreOperator, Net, NetReliable, Simulated, Exec, Event, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::GetUserAccountInfo(unsigned char LocalUserNum)
+bool UOnlineSubsystemPC::STATIC_GetUserAccountInfo(unsigned char LocalUserNum)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.GetUserAccountInfo");
 
@@ -237,7 +239,7 @@ bool UOnlineSubsystemPC::GetUserAccountInfo(unsigned char LocalUserNum)
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.OnUserAccountInfoRetrieved
-// (Defined, Iterator, PreOperator, Singular, Net, NetReliable, Simulated, Native, Event, Static)
+// (Defined, Exec, Native, Event, Static)
 // Parameters:
 // bool                           bSuccessful                    (Parm)
 // struct FUserAccountInfo        AccountInfo                    (Parm, NeedCtorLink)
@@ -260,7 +262,7 @@ void UOnlineSubsystemPC::STATIC_OnUserAccountInfoRetrieved(bool bSuccessful, con
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.RemoveAccountPickerCompleteDelegate
-// (Final, Iterator, Event, Operator)
+// (PreOperator, Singular, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FScriptDelegate         InDelegate                     (Parm, NeedCtorLink)
 
@@ -280,11 +282,11 @@ void UOnlineSubsystemPC::RemoveAccountPickerCompleteDelegate(const struct FScrip
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.AddAccountPickerCompleteDelegate
-// (Iterator, Latent, Singular, Simulated, Exec, Static, HasOptionalParms, Const)
+// (Final, Defined, Iterator, Latent, PreOperator, Native, Event)
 // Parameters:
 // struct FScriptDelegate         InDelegate                     (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_AddAccountPickerCompleteDelegate(const struct FScriptDelegate& InDelegate)
+void UOnlineSubsystemPC::AddAccountPickerCompleteDelegate(const struct FScriptDelegate& InDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.AddAccountPickerCompleteDelegate");
 
@@ -292,6 +294,7 @@ void UOnlineSubsystemPC::STATIC_AddAccountPickerCompleteDelegate(const struct FS
 	params.InDelegate = InDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -300,7 +303,7 @@ void UOnlineSubsystemPC::STATIC_AddAccountPickerCompleteDelegate(const struct FS
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.OnAccountPickerComplete
-// (Final, Defined, Latent, PreOperator, Singular, NetReliable, Simulated, Native, Event, Static)
+// (Final, Defined, Iterator, Net, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // bool                           bForceLogin                    (Parm)
 
@@ -321,11 +324,11 @@ void UOnlineSubsystemPC::STATIC_OnAccountPickerComplete(bool bForceLogin)
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ClearFilterTextDelegate
-// (Defined, Iterator, Exec, Native, Static)
+// (Final, Defined, Iterator, NetReliable, Exec, Native, Event, HasOptionalParms)
 // Parameters:
 // struct FScriptDelegate         FilterTextDelegate             (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_ClearFilterTextDelegate(const struct FScriptDelegate& FilterTextDelegate)
+void UOnlineSubsystemPC::ClearFilterTextDelegate(const struct FScriptDelegate& FilterTextDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ClearFilterTextDelegate");
 
@@ -342,11 +345,11 @@ void UOnlineSubsystemPC::STATIC_ClearFilterTextDelegate(const struct FScriptDele
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.AddFilterTextDelegate
-// (Final, Defined, PreOperator, Singular, Net, NetReliable, Simulated, Native, Static)
+// (Defined, PreOperator, Singular, Net, Exec, Native, Event, HasOptionalParms)
 // Parameters:
 // struct FScriptDelegate         FilterTextDelegate             (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_AddFilterTextDelegate(const struct FScriptDelegate& FilterTextDelegate)
+void UOnlineSubsystemPC::AddFilterTextDelegate(const struct FScriptDelegate& FilterTextDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.AddFilterTextDelegate");
 
@@ -363,7 +366,7 @@ void UOnlineSubsystemPC::STATIC_AddFilterTextDelegate(const struct FScriptDelega
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.OnFilterText
-// (Defined, Iterator, Net, NetReliable, Simulated, Native, Event, Static)
+// (Defined, PreOperator, Net, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // struct FString                 OriginalText                   (Parm, NeedCtorLink)
 // struct FString                 FilteredText                   (Parm, NeedCtorLink)
@@ -388,7 +391,7 @@ void UOnlineSubsystemPC::STATIC_OnFilterText(const struct FString& OriginalText,
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.CheckFilterText
-// (Latent, Simulated, Native, HasOptionalParms)
+// (Defined, Iterator, Latent, PreOperator, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // struct FString                 Text                           (Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
@@ -412,11 +415,11 @@ bool UOnlineSubsystemPC::CheckFilterText(const struct FString& Text)
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ClearPrivilegeCheckedForUsersByUniqueNetIdsDelegate
-// (Defined, Latent, Exec, Native, Static)
+// (Final, Defined, Latent, NetReliable, Exec, Native, Event, HasOptionalParms)
 // Parameters:
 // struct FScriptDelegate         PrivilegeDelegate              (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_ClearPrivilegeCheckedForUsersByUniqueNetIdsDelegate(const struct FScriptDelegate& PrivilegeDelegate)
+void UOnlineSubsystemPC::ClearPrivilegeCheckedForUsersByUniqueNetIdsDelegate(const struct FScriptDelegate& PrivilegeDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ClearPrivilegeCheckedForUsersByUniqueNetIdsDelegate");
 
@@ -433,11 +436,11 @@ void UOnlineSubsystemPC::STATIC_ClearPrivilegeCheckedForUsersByUniqueNetIdsDeleg
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.AddPrivilegeCheckedForUsersByUniqueNetIdsDelegate
-// (Final, Defined, Iterator, PreOperator, Singular, Net, NetReliable, Simulated, Native, Static)
+// (Defined, Iterator, PreOperator, Singular, Net, Exec, Native, Event, HasOptionalParms)
 // Parameters:
 // struct FScriptDelegate         PrivilegeDelegate              (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_AddPrivilegeCheckedForUsersByUniqueNetIdsDelegate(const struct FScriptDelegate& PrivilegeDelegate)
+void UOnlineSubsystemPC::AddPrivilegeCheckedForUsersByUniqueNetIdsDelegate(const struct FScriptDelegate& PrivilegeDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.AddPrivilegeCheckedForUsersByUniqueNetIdsDelegate");
 
@@ -454,7 +457,7 @@ void UOnlineSubsystemPC::STATIC_AddPrivilegeCheckedForUsersByUniqueNetIdsDelegat
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.OnPrivilegeCheckedForUsersByUniqueNetIds
-// (Latent, PreOperator, Net, NetReliable, Simulated, Native, Event, Static)
+// (Iterator, Singular, Net, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // TEnumAsByte<EFeaturePrivilege> Privilege                      (Parm)
@@ -479,11 +482,11 @@ void UOnlineSubsystemPC::STATIC_OnPrivilegeCheckedForUsersByUniqueNetIds(unsigne
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ClearPrivilegeCheckedForUsersDelegate
-// (Final, Iterator, Singular, Net, Simulated, Exec, Operator, Static, HasOptionalParms, Const)
+// (PreOperator, Net, Native, Event, Operator)
 // Parameters:
 // struct FScriptDelegate         PrivilegeDelegate              (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_ClearPrivilegeCheckedForUsersDelegate(const struct FScriptDelegate& PrivilegeDelegate)
+void UOnlineSubsystemPC::ClearPrivilegeCheckedForUsersDelegate(const struct FScriptDelegate& PrivilegeDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ClearPrivilegeCheckedForUsersDelegate");
 
@@ -491,6 +494,7 @@ void UOnlineSubsystemPC::STATIC_ClearPrivilegeCheckedForUsersDelegate(const stru
 	params.PrivilegeDelegate = PrivilegeDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -499,11 +503,11 @@ void UOnlineSubsystemPC::STATIC_ClearPrivilegeCheckedForUsersDelegate(const stru
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.AddPrivilegeCheckedForUsersDelegate
-// (Latent, Singular, NetReliable, Simulated, Exec, Static, HasOptionalParms, Const)
+// (Final, Defined, Latent, PreOperator, NetReliable, Native, Event)
 // Parameters:
 // struct FScriptDelegate         PrivilegeDelegate              (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_AddPrivilegeCheckedForUsersDelegate(const struct FScriptDelegate& PrivilegeDelegate)
+void UOnlineSubsystemPC::AddPrivilegeCheckedForUsersDelegate(const struct FScriptDelegate& PrivilegeDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.AddPrivilegeCheckedForUsersDelegate");
 
@@ -511,6 +515,7 @@ void UOnlineSubsystemPC::STATIC_AddPrivilegeCheckedForUsersDelegate(const struct
 	params.PrivilegeDelegate = PrivilegeDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -519,7 +524,7 @@ void UOnlineSubsystemPC::STATIC_AddPrivilegeCheckedForUsersDelegate(const struct
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.OnPrivilegeCheckedForUsers
-// (Final, Defined, Iterator, PreOperator, Net, NetReliable, Simulated, Native, Event, Static)
+// (Final, Defined, Singular, Net, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // TEnumAsByte<EFeaturePrivilege> Privilege                      (Parm)
@@ -544,7 +549,7 @@ void UOnlineSubsystemPC::STATIC_OnPrivilegeCheckedForUsers(unsigned char LocalUs
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.CanCommunicateTextWithUsersByUniqueNetIds
-// (Final, Defined, Iterator, Simulated, Native, HasOptionalParms)
+// (Final, Iterator, Latent, PreOperator, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // TArray<struct FUniqueNetId>    Users                          (Parm, NeedCtorLink)
@@ -570,13 +575,13 @@ bool UOnlineSubsystemPC::CanCommunicateTextWithUsersByUniqueNetIds(unsigned char
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.CanCommunicateTextWithUsers
-// (Iterator, Exec, Native, Static)
+// (Iterator, NetReliable, Exec, Native, Event, HasOptionalParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // TArray<struct FSessionMemberInfo> Users                          (Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::STATIC_CanCommunicateTextWithUsers(unsigned char LocalUserNum, TArray<struct FSessionMemberInfo> Users)
+bool UOnlineSubsystemPC::CanCommunicateTextWithUsers(unsigned char LocalUserNum, TArray<struct FSessionMemberInfo> Users)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.CanCommunicateTextWithUsers");
 
@@ -596,7 +601,7 @@ bool UOnlineSubsystemPC::STATIC_CanCommunicateTextWithUsers(unsigned char LocalU
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.CanCommunicateVoiceWithUsersByUniqueNetIds
-// (Final, Defined, Latent, Singular, NetReliable, Simulated, Native, Event, Static)
+// (Final, Defined, Iterator, PreOperator, Singular, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // TArray<struct FUniqueNetId>    Users                          (Parm, NeedCtorLink)
@@ -622,13 +627,13 @@ bool UOnlineSubsystemPC::STATIC_CanCommunicateVoiceWithUsersByUniqueNetIds(unsig
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.CanCommunicateVoiceWithUsers
-// (Final, Defined, Iterator, Exec, Operator, Static, HasOptionalParms, Const)
+// (Final, Defined, PreOperator, Singular, Net, NetReliable, Exec, Event, Operator)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // TArray<struct FSessionMemberInfo> Users                          (Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::STATIC_CanCommunicateVoiceWithUsers(unsigned char LocalUserNum, TArray<struct FSessionMemberInfo> Users)
+bool UOnlineSubsystemPC::CanCommunicateVoiceWithUsers(unsigned char LocalUserNum, TArray<struct FSessionMemberInfo> Users)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.CanCommunicateVoiceWithUsers");
 
@@ -647,9 +652,9 @@ bool UOnlineSubsystemPC::STATIC_CanCommunicateVoiceWithUsers(unsigned char Local
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.CheckForGameInviteOnLaunch
-// (Final, Iterator, PreOperator, NetReliable, Exec, Operator, Static, HasOptionalParms, Const)
+// (NetReliable, Simulated, Exec, Event, Operator)
 
-void UOnlineSubsystemPC::STATIC_CheckForGameInviteOnLaunch()
+void UOnlineSubsystemPC::CheckForGameInviteOnLaunch()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.CheckForGameInviteOnLaunch");
 
@@ -664,7 +669,7 @@ void UOnlineSubsystemPC::STATIC_CheckForGameInviteOnLaunch()
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.GetControllerIdFromNetId
-// (Final, PreOperator, Simulated, Native, HasOptionalParms)
+// (Final, Defined, Iterator, Singular, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // struct FUniqueNetId            PlayerID                       (Parm)
 // int                            ControllerId                   (Parm, OutParm)
@@ -692,7 +697,7 @@ bool UOnlineSubsystemPC::GetControllerIdFromNetId(const struct FUniqueNetId& Pla
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.CacheLoggedInGamepad
-// (Final, Iterator, Simulated, Native, HasOptionalParms)
+// (Final, Defined, Latent, PreOperator, Simulated, Exec, Native, HasOptionalParms)
 
 void UOnlineSubsystemPC::CacheLoggedInGamepad()
 {
@@ -710,13 +715,13 @@ void UOnlineSubsystemPC::CacheLoggedInGamepad()
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.UnsubscribeToStatisticEvent
-// (Final, Defined, Iterator, PreOperator, Net, Simulated, Exec, Static)
+// (Final, Iterator, Latent, PreOperator, Net, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FUniqueNetId            PlayerNetId                    (Parm)
 // struct FName                   StatName                       (Parm)
 
-void UOnlineSubsystemPC::STATIC_UnsubscribeToStatisticEvent(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerNetId, const struct FName& StatName)
+void UOnlineSubsystemPC::UnsubscribeToStatisticEvent(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerNetId, const struct FName& StatName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.UnsubscribeToStatisticEvent");
 
@@ -734,14 +739,14 @@ void UOnlineSubsystemPC::STATIC_UnsubscribeToStatisticEvent(unsigned char LocalU
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.SubscribeToStatisticEvent
-// (Defined, Iterator, Latent, PreOperator, Singular, Static)
+// (Final, Defined, Latent, Net, NetReliable, Event, HasOptionalParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FUniqueNetId            PlayerNetId                    (Parm)
 // struct FName                   StatName                       (Parm)
 // struct FScriptDelegate         EventDelegate                  (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_SubscribeToStatisticEvent(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerNetId, const struct FName& StatName, const struct FScriptDelegate& EventDelegate)
+void UOnlineSubsystemPC::SubscribeToStatisticEvent(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerNetId, const struct FName& StatName, const struct FScriptDelegate& EventDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.SubscribeToStatisticEvent");
 
@@ -760,7 +765,7 @@ void UOnlineSubsystemPC::STATIC_SubscribeToStatisticEvent(unsigned char LocalUse
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.OnStatisticChanged
-// (Final, Defined, Iterator, Latent, Singular, Net, NetReliable, Simulated, Native, Event, Static)
+// (Final, Defined, Latent, PreOperator, Singular, Net, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // struct FUniqueNetId            PlayerNetId                    (Parm)
 // struct FName                   StatName                       (Parm)
@@ -785,12 +790,12 @@ void UOnlineSubsystemPC::STATIC_OnStatisticChanged(const struct FUniqueNetId& Pl
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ClearAchievements
-// (Defined, PreOperator, Singular, Net, NetReliable, Exec, Operator, Static, HasOptionalParms, Const)
+// (Final, Iterator, Latent, PreOperator, Net, NetReliable, Simulated, Exec, Event, Operator)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // int                            TitleId                        (OptionalParm, Parm)
 
-void UOnlineSubsystemPC::STATIC_ClearAchievements(unsigned char LocalUserNum, int TitleId)
+void UOnlineSubsystemPC::ClearAchievements(unsigned char LocalUserNum, int TitleId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ClearAchievements");
 
@@ -807,14 +812,14 @@ void UOnlineSubsystemPC::STATIC_ClearAchievements(unsigned char LocalUserNum, in
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.GetAchievements
-// (Defined, Latent, Simulated)
+// (Final, Singular, Net, NetReliable, Simulated, Event, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // TArray<struct FAchievementDetails> Achievements                   (Parm, OutParm, NeedCtorLink)
 // int                            TitleId                        (OptionalParm, Parm)
 // TEnumAsByte<EOnlineEnumerationReadState> ReturnValue                    (Parm, OutParm, ReturnParm)
 
-TEnumAsByte<EOnlineEnumerationReadState> UOnlineSubsystemPC::GetAchievements(unsigned char LocalUserNum, int TitleId, TArray<struct FAchievementDetails>* Achievements)
+TEnumAsByte<EOnlineEnumerationReadState> UOnlineSubsystemPC::STATIC_GetAchievements(unsigned char LocalUserNum, int TitleId, TArray<struct FAchievementDetails>* Achievements)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.GetAchievements");
 
@@ -836,12 +841,12 @@ TEnumAsByte<EOnlineEnumerationReadState> UOnlineSubsystemPC::GetAchievements(uns
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ClearReadAchievementsCompleteDelegate
-// (Defined, Iterator, Latent, Singular, Net, Simulated, Exec, Operator, Static, HasOptionalParms, Const)
+// (Final, Latent, PreOperator, Net, Native, Event, Operator)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FScriptDelegate         ReadAchievementsCompleteDelegate (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_ClearReadAchievementsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadAchievementsCompleteDelegate)
+void UOnlineSubsystemPC::ClearReadAchievementsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadAchievementsCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ClearReadAchievementsCompleteDelegate");
 
@@ -850,6 +855,7 @@ void UOnlineSubsystemPC::STATIC_ClearReadAchievementsCompleteDelegate(unsigned c
 	params.ReadAchievementsCompleteDelegate = ReadAchievementsCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -858,12 +864,12 @@ void UOnlineSubsystemPC::STATIC_ClearReadAchievementsCompleteDelegate(unsigned c
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.AddReadAchievementsCompleteDelegate
-// (Final, PreOperator, Singular, NetReliable, Simulated, Exec, Static, HasOptionalParms, Const)
+// (Iterator, Singular, NetReliable, Native, Event)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FScriptDelegate         ReadAchievementsCompleteDelegate (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_AddReadAchievementsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadAchievementsCompleteDelegate)
+void UOnlineSubsystemPC::AddReadAchievementsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadAchievementsCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.AddReadAchievementsCompleteDelegate");
 
@@ -872,6 +878,7 @@ void UOnlineSubsystemPC::STATIC_AddReadAchievementsCompleteDelegate(unsigned cha
 	params.ReadAchievementsCompleteDelegate = ReadAchievementsCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -880,7 +887,7 @@ void UOnlineSubsystemPC::STATIC_AddReadAchievementsCompleteDelegate(unsigned cha
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.OnReadAchievementsComplete
-// (Final, Defined, Latent, PreOperator, Net, NetReliable, Simulated, Native, Event, Static)
+// (Final, Defined, Iterator, Singular, Net, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // int                            TitleId                        (Parm)
 
@@ -901,7 +908,7 @@ void UOnlineSubsystemPC::STATIC_OnReadAchievementsComplete(int TitleId)
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ReadAchievements
-// (Defined, Latent, PreOperator, Simulated, Exec, Native, Operator)
+// (Final, Iterator, Net, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // int                            TitleId                        (OptionalParm, Parm)
@@ -909,7 +916,7 @@ void UOnlineSubsystemPC::STATIC_OnReadAchievementsComplete(int TitleId)
 // bool                           bShouldReadImages              (OptionalParm, Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::ReadAchievements(unsigned char LocalUserNum, int TitleId, bool bShouldReadText, bool bShouldReadImages)
+bool UOnlineSubsystemPC::STATIC_ReadAchievements(unsigned char LocalUserNum, int TitleId, bool bShouldReadText, bool bShouldReadImages)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ReadAchievements");
 
@@ -931,12 +938,12 @@ bool UOnlineSubsystemPC::ReadAchievements(unsigned char LocalUserNum, int TitleI
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ClearUnlockAchievementCompleteDelegate
-// (Iterator, Singular, NetReliable, Simulated, Exec, Operator, Static, HasOptionalParms, Const)
+// (Final, Defined, Iterator, Latent, NetReliable, Native, Event, Operator)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FScriptDelegate         UnlockAchievementCompleteDelegate (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_ClearUnlockAchievementCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& UnlockAchievementCompleteDelegate)
+void UOnlineSubsystemPC::ClearUnlockAchievementCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& UnlockAchievementCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ClearUnlockAchievementCompleteDelegate");
 
@@ -945,6 +952,7 @@ void UOnlineSubsystemPC::STATIC_ClearUnlockAchievementCompleteDelegate(unsigned 
 	params.UnlockAchievementCompleteDelegate = UnlockAchievementCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -953,12 +961,12 @@ void UOnlineSubsystemPC::STATIC_ClearUnlockAchievementCompleteDelegate(unsigned 
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.AddUnlockAchievementCompleteDelegate
-// (Final, Defined, PreOperator, Singular, Net, NetReliable, Simulated, Exec, Static, HasOptionalParms, Const)
+// (Defined, Iterator, Singular, Net, NetReliable, Native, Event)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FScriptDelegate         UnlockAchievementCompleteDelegate (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_AddUnlockAchievementCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& UnlockAchievementCompleteDelegate)
+void UOnlineSubsystemPC::AddUnlockAchievementCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& UnlockAchievementCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.AddUnlockAchievementCompleteDelegate");
 
@@ -967,6 +975,7 @@ void UOnlineSubsystemPC::STATIC_AddUnlockAchievementCompleteDelegate(unsigned ch
 	params.UnlockAchievementCompleteDelegate = UnlockAchievementCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -975,7 +984,7 @@ void UOnlineSubsystemPC::STATIC_AddUnlockAchievementCompleteDelegate(unsigned ch
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.OnUnlockAchievementComplete
-// (Final, Defined, PreOperator, Singular, Net, NetReliable, Simulated, Native, Event, Static)
+// (Final, Defined, Iterator, Latent, PreOperator, Singular, Net, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // bool                           bWasSuccessful                 (Parm)
 
@@ -996,14 +1005,14 @@ void UOnlineSubsystemPC::STATIC_OnUnlockAchievementComplete(bool bWasSuccessful)
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.UnlockAchievement
-// (Defined, Latent, PreOperator, Singular, Simulated, Exec, Static)
+// (Net, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // int                            AchievementId                  (Parm)
 // float                          PercentComplete                (OptionalParm, Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::STATIC_UnlockAchievement(unsigned char LocalUserNum, int AchievementId, float PercentComplete)
+bool UOnlineSubsystemPC::UnlockAchievement(unsigned char LocalUserNum, int AchievementId, float PercentComplete)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.UnlockAchievement");
 
@@ -1023,7 +1032,7 @@ bool UOnlineSubsystemPC::STATIC_UnlockAchievement(unsigned char LocalUserNum, in
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.DeleteMessage
-// (Final, Net, Event, Operator, Static, HasOptionalParms, Const)
+// (Defined, Singular, Simulated, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // int                            MessageIndex                   (Parm)
@@ -1048,12 +1057,12 @@ bool UOnlineSubsystemPC::STATIC_DeleteMessage(unsigned char LocalUserNum, int Me
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ClearFriendMessageReceivedDelegate
-// (Iterator, PreOperator, Singular, Simulated, Exec, Operator, Static, HasOptionalParms, Const)
+// (Final, Defined, Iterator, Latent, PreOperator, Native, Event, Operator)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FScriptDelegate         MessageDelegate                (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_ClearFriendMessageReceivedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& MessageDelegate)
+void UOnlineSubsystemPC::ClearFriendMessageReceivedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& MessageDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ClearFriendMessageReceivedDelegate");
 
@@ -1062,6 +1071,7 @@ void UOnlineSubsystemPC::STATIC_ClearFriendMessageReceivedDelegate(unsigned char
 	params.MessageDelegate = MessageDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1070,12 +1080,12 @@ void UOnlineSubsystemPC::STATIC_ClearFriendMessageReceivedDelegate(unsigned char
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.AddFriendMessageReceivedDelegate
-// (Final, Singular, Net, Simulated, Exec, Static, HasOptionalParms, Const)
+// (Iterator, PreOperator, Net, Native, Event)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FScriptDelegate         MessageDelegate                (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_AddFriendMessageReceivedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& MessageDelegate)
+void UOnlineSubsystemPC::AddFriendMessageReceivedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& MessageDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.AddFriendMessageReceivedDelegate");
 
@@ -1084,6 +1094,7 @@ void UOnlineSubsystemPC::STATIC_AddFriendMessageReceivedDelegate(unsigned char L
 	params.MessageDelegate = MessageDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1092,7 +1103,7 @@ void UOnlineSubsystemPC::STATIC_AddFriendMessageReceivedDelegate(unsigned char L
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.OnFriendMessageReceived
-// (Final, Latent, Net, NetReliable, Simulated, Native, Event, Static)
+// (Final, Iterator, PreOperator, Net, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FUniqueNetId            SendingPlayer                  (Parm)
@@ -1119,12 +1130,12 @@ void UOnlineSubsystemPC::STATIC_OnFriendMessageReceived(unsigned char LocalUserN
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.GetFriendMessages
-// (Final, Defined, Net, NetReliable, Simulated)
+// (Defined, Latent, PreOperator, NetReliable, Exec, Event, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // TArray<struct FOnlineFriendMessage> FriendMessages                 (Parm, OutParm, NeedCtorLink)
 
-void UOnlineSubsystemPC::GetFriendMessages(unsigned char LocalUserNum, TArray<struct FOnlineFriendMessage>* FriendMessages)
+void UOnlineSubsystemPC::STATIC_GetFriendMessages(unsigned char LocalUserNum, TArray<struct FOnlineFriendMessage>* FriendMessages)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.GetFriendMessages");
 
@@ -1143,11 +1154,11 @@ void UOnlineSubsystemPC::GetFriendMessages(unsigned char LocalUserNum, TArray<st
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ClearJoinFriendGameCompleteDelegate
-// (Final, Defined, Iterator, Latent, PreOperator, Singular, Simulated, Exec, Operator, Static, HasOptionalParms, Const)
+// (Defined, Latent, Singular, Native, Event, Operator)
 // Parameters:
 // struct FScriptDelegate         JoinFriendGameCompleteDelegate (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_ClearJoinFriendGameCompleteDelegate(const struct FScriptDelegate& JoinFriendGameCompleteDelegate)
+void UOnlineSubsystemPC::ClearJoinFriendGameCompleteDelegate(const struct FScriptDelegate& JoinFriendGameCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ClearJoinFriendGameCompleteDelegate");
 
@@ -1155,6 +1166,7 @@ void UOnlineSubsystemPC::STATIC_ClearJoinFriendGameCompleteDelegate(const struct
 	params.JoinFriendGameCompleteDelegate = JoinFriendGameCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1163,11 +1175,11 @@ void UOnlineSubsystemPC::STATIC_ClearJoinFriendGameCompleteDelegate(const struct
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.AddJoinFriendGameCompleteDelegate
-// (Final, Iterator, Latent, PreOperator, Singular, Net, Simulated, Exec, Static, HasOptionalParms, Const)
+// (PreOperator, Singular, Net, Native, Event)
 // Parameters:
 // struct FScriptDelegate         JoinFriendGameCompleteDelegate (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_AddJoinFriendGameCompleteDelegate(const struct FScriptDelegate& JoinFriendGameCompleteDelegate)
+void UOnlineSubsystemPC::AddJoinFriendGameCompleteDelegate(const struct FScriptDelegate& JoinFriendGameCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.AddJoinFriendGameCompleteDelegate");
 
@@ -1175,6 +1187,7 @@ void UOnlineSubsystemPC::STATIC_AddJoinFriendGameCompleteDelegate(const struct F
 	params.JoinFriendGameCompleteDelegate = JoinFriendGameCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1183,7 +1196,7 @@ void UOnlineSubsystemPC::STATIC_AddJoinFriendGameCompleteDelegate(const struct F
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.OnJoinFriendGameComplete
-// (Iterator, Latent, Net, NetReliable, Simulated, Native, Event, Static)
+// (Latent, PreOperator, Net, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // bool                           bWasSuccessful                 (Parm)
 
@@ -1204,13 +1217,13 @@ void UOnlineSubsystemPC::STATIC_OnJoinFriendGameComplete(bool bWasSuccessful)
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.JoinFriendGame
-// (Final, Latent, Simulated, Exec, Native)
+// (Iterator, Latent, PreOperator, Net, NetReliable, Simulated, Exec, Native, Event, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FUniqueNetId            Friend                         (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::JoinFriendGame(unsigned char LocalUserNum, const struct FUniqueNetId& Friend)
+bool UOnlineSubsystemPC::STATIC_JoinFriendGame(unsigned char LocalUserNum, const struct FUniqueNetId& Friend)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.JoinFriendGame");
 
@@ -1230,12 +1243,12 @@ bool UOnlineSubsystemPC::JoinFriendGame(unsigned char LocalUserNum, const struct
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ClearReceivedGameInviteDelegate
-// (Latent, NetReliable, Simulated, Exec, Operator, Static, HasOptionalParms, Const)
+// (Final, Defined, PreOperator, Singular, Net, Native, Event, Operator)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FScriptDelegate         ReceivedGameInviteDelegate     (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_ClearReceivedGameInviteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReceivedGameInviteDelegate)
+void UOnlineSubsystemPC::ClearReceivedGameInviteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReceivedGameInviteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ClearReceivedGameInviteDelegate");
 
@@ -1244,6 +1257,7 @@ void UOnlineSubsystemPC::STATIC_ClearReceivedGameInviteDelegate(unsigned char Lo
 	params.ReceivedGameInviteDelegate = ReceivedGameInviteDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1252,12 +1266,12 @@ void UOnlineSubsystemPC::STATIC_ClearReceivedGameInviteDelegate(unsigned char Lo
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.AddReceivedGameInviteDelegate
-// (Final, Defined, Latent, Net, NetReliable, Simulated, Exec, Static, HasOptionalParms, Const)
+// (Defined, Iterator, Latent, PreOperator, Singular, NetReliable, Native, Event)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FScriptDelegate         ReceivedGameInviteDelegate     (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_AddReceivedGameInviteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReceivedGameInviteDelegate)
+void UOnlineSubsystemPC::AddReceivedGameInviteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReceivedGameInviteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.AddReceivedGameInviteDelegate");
 
@@ -1266,6 +1280,7 @@ void UOnlineSubsystemPC::STATIC_AddReceivedGameInviteDelegate(unsigned char Loca
 	params.ReceivedGameInviteDelegate = ReceivedGameInviteDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1274,7 +1289,7 @@ void UOnlineSubsystemPC::STATIC_AddReceivedGameInviteDelegate(unsigned char Loca
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.OnReceivedGameInvite
-// (Final, Defined, Iterator, Singular, Net, NetReliable, Simulated, Native, Event, Static)
+// (Final, Defined, PreOperator, Singular, Net, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FString                 InviterName                    (Parm, NeedCtorLink)
@@ -1297,7 +1312,7 @@ void UOnlineSubsystemPC::STATIC_OnReceivedGameInvite(unsigned char LocalUserNum,
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.SendGameInviteToFriends
-// (Final, Defined, Iterator, Latent, NetReliable, Exec, Event, Operator)
+// (Final, Defined, Iterator, Latent, Singular, Simulated, Exec, HasOptionalParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FName                   SessionName                    (Parm)
@@ -1326,7 +1341,7 @@ bool UOnlineSubsystemPC::SendGameInviteToFriends(unsigned char LocalUserNum, con
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.SendGameInviteToFriend
-// (Defined, Iterator, Latent, NetReliable, Exec, Event, Operator)
+// (Defined, Iterator, Latent, Singular, Simulated, Exec, HasOptionalParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FName                   SessionName                    (Parm)
@@ -1355,7 +1370,7 @@ bool UOnlineSubsystemPC::SendGameInviteToFriend(unsigned char LocalUserNum, cons
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.SendMessageToFriend
-// (Final, Defined, Iterator, PreOperator, NetReliable, Exec, Event, Operator)
+// (Final, Defined, Iterator, PreOperator, Singular, Simulated, Exec, HasOptionalParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FUniqueNetId            Friend                         (Parm)
@@ -1382,12 +1397,12 @@ bool UOnlineSubsystemPC::SendMessageToFriend(unsigned char LocalUserNum, const s
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ClearFriendInviteReceivedDelegate
-// (Final, Defined, PreOperator, Singular, Simulated, Exec, Operator, Static, HasOptionalParms, Const)
+// (Defined, Iterator, Latent, PreOperator, Native, Event, Operator)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FScriptDelegate         InviteDelegate                 (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_ClearFriendInviteReceivedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& InviteDelegate)
+void UOnlineSubsystemPC::ClearFriendInviteReceivedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& InviteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ClearFriendInviteReceivedDelegate");
 
@@ -1396,6 +1411,7 @@ void UOnlineSubsystemPC::STATIC_ClearFriendInviteReceivedDelegate(unsigned char 
 	params.InviteDelegate = InviteDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1404,12 +1420,12 @@ void UOnlineSubsystemPC::STATIC_ClearFriendInviteReceivedDelegate(unsigned char 
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.AddFriendInviteReceivedDelegate
-// (Singular, Net, Simulated, Exec, Static, HasOptionalParms, Const)
+// (Final, Defined, PreOperator, Net, Native, Event)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FScriptDelegate         InviteDelegate                 (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_AddFriendInviteReceivedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& InviteDelegate)
+void UOnlineSubsystemPC::AddFriendInviteReceivedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& InviteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.AddFriendInviteReceivedDelegate");
 
@@ -1418,6 +1434,7 @@ void UOnlineSubsystemPC::STATIC_AddFriendInviteReceivedDelegate(unsigned char Lo
 	params.InviteDelegate = InviteDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1426,7 +1443,7 @@ void UOnlineSubsystemPC::STATIC_AddFriendInviteReceivedDelegate(unsigned char Lo
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.OnFriendInviteReceived
-// (Latent, Net, NetReliable, Simulated, Native, Event, Static)
+// (Iterator, PreOperator, Net, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FUniqueNetId            RequestingPlayer               (Parm)
@@ -1453,7 +1470,7 @@ void UOnlineSubsystemPC::STATIC_OnFriendInviteReceived(unsigned char LocalUserNu
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.RemoveFriend
-// (PreOperator, Event, Operator)
+// (Final, Defined, Latent, PreOperator, Singular, NetReliable, HasOptionalParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FUniqueNetId            FormerFriend                   (Parm)
@@ -1478,7 +1495,7 @@ bool UOnlineSubsystemPC::RemoveFriend(unsigned char LocalUserNum, const struct F
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.DenyFriendInvite
-// (Final, PreOperator, Net, Event, Operator, Static, HasOptionalParms, Const)
+// (Defined, PreOperator, Singular, Simulated, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FUniqueNetId            RequestingPlayer               (Parm)
@@ -1503,13 +1520,13 @@ bool UOnlineSubsystemPC::STATIC_DenyFriendInvite(unsigned char LocalUserNum, con
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.AcceptFriendInvite
-// (Defined, Iterator, Latent, Singular, NetReliable, Exec, Static, HasOptionalParms, Const)
+// (Defined, Singular, NetReliable, Simulated, Exec, Event)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FUniqueNetId            RequestingPlayer               (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::STATIC_AcceptFriendInvite(unsigned char LocalUserNum, const struct FUniqueNetId& RequestingPlayer)
+bool UOnlineSubsystemPC::AcceptFriendInvite(unsigned char LocalUserNum, const struct FUniqueNetId& RequestingPlayer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.AcceptFriendInvite");
 
@@ -1528,12 +1545,12 @@ bool UOnlineSubsystemPC::STATIC_AcceptFriendInvite(unsigned char LocalUserNum, c
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ClearAddFriendByNameCompleteDelegate
-// (Iterator, PreOperator, Singular, Net, NetReliable, Exec, Operator, Static, HasOptionalParms, Const)
+// (Final, Defined, Iterator, Latent, PreOperator, Net, NetReliable, Simulated, Exec, Event, Operator)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FScriptDelegate         FriendDelegate                 (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_ClearAddFriendByNameCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& FriendDelegate)
+void UOnlineSubsystemPC::ClearAddFriendByNameCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& FriendDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ClearAddFriendByNameCompleteDelegate");
 
@@ -1550,12 +1567,12 @@ void UOnlineSubsystemPC::STATIC_ClearAddFriendByNameCompleteDelegate(unsigned ch
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.AddAddFriendByNameCompleteDelegate
-// (Final, Iterator, Latent, Singular, Simulated, Exec, Static, HasOptionalParms, Const)
+// (Singular, Native, Event)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FScriptDelegate         FriendDelegate                 (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_AddAddFriendByNameCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& FriendDelegate)
+void UOnlineSubsystemPC::AddAddFriendByNameCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& FriendDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.AddAddFriendByNameCompleteDelegate");
 
@@ -1564,6 +1581,7 @@ void UOnlineSubsystemPC::STATIC_AddAddFriendByNameCompleteDelegate(unsigned char
 	params.FriendDelegate = FriendDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1572,7 +1590,7 @@ void UOnlineSubsystemPC::STATIC_AddAddFriendByNameCompleteDelegate(unsigned char
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.OnAddFriendByNameComplete
-// (Iterator, Latent, PreOperator, Singular, NetReliable, Simulated, Native, Event, Static)
+// (Latent, Net, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // bool                           bWasSuccessful                 (Parm)
 
@@ -1593,14 +1611,14 @@ void UOnlineSubsystemPC::STATIC_OnAddFriendByNameComplete(bool bWasSuccessful)
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.AddFriendByName
-// (Final, Defined, Iterator, Latent, PreOperator, Net, Simulated, Exec, Static, HasOptionalParms, Const)
+// (Defined, PreOperator, Net, Native, Event)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FString                 FriendName                     (Parm, NeedCtorLink)
 // struct FString                 Message                        (OptionalParm, Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::STATIC_AddFriendByName(unsigned char LocalUserNum, const struct FString& FriendName, const struct FString& Message)
+bool UOnlineSubsystemPC::AddFriendByName(unsigned char LocalUserNum, const struct FString& FriendName, const struct FString& Message)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.AddFriendByName");
 
@@ -1610,6 +1628,7 @@ bool UOnlineSubsystemPC::STATIC_AddFriendByName(unsigned char LocalUserNum, cons
 	params.Message = Message;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1620,14 +1639,14 @@ bool UOnlineSubsystemPC::STATIC_AddFriendByName(unsigned char LocalUserNum, cons
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.AddFriend
-// (Defined, Iterator, Latent, PreOperator, Net, Simulated, Exec, Static, HasOptionalParms, Const)
+// (Final, PreOperator, Net, Native, Event)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FUniqueNetId            NewFriend                      (Parm)
 // struct FString                 Message                        (OptionalParm, Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::STATIC_AddFriend(unsigned char LocalUserNum, const struct FUniqueNetId& NewFriend, const struct FString& Message)
+bool UOnlineSubsystemPC::AddFriend(unsigned char LocalUserNum, const struct FUniqueNetId& NewFriend, const struct FString& Message)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.AddFriend");
 
@@ -1637,6 +1656,7 @@ bool UOnlineSubsystemPC::STATIC_AddFriend(unsigned char LocalUserNum, const stru
 	params.Message = Message;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1647,12 +1667,12 @@ bool UOnlineSubsystemPC::STATIC_AddFriend(unsigned char LocalUserNum, const stru
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ClearWritePlayerStorageCompleteDelegate
-// (Iterator, Latent, Singular, NetReliable, Simulated, Exec, Operator, Static, HasOptionalParms, Const)
+// (Final, Defined, Iterator, PreOperator, NetReliable, Native, Event, Operator)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FScriptDelegate         WritePlayerStorageCompleteDelegate (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_ClearWritePlayerStorageCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& WritePlayerStorageCompleteDelegate)
+void UOnlineSubsystemPC::ClearWritePlayerStorageCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& WritePlayerStorageCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ClearWritePlayerStorageCompleteDelegate");
 
@@ -1661,6 +1681,7 @@ void UOnlineSubsystemPC::STATIC_ClearWritePlayerStorageCompleteDelegate(unsigned
 	params.WritePlayerStorageCompleteDelegate = WritePlayerStorageCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1669,14 +1690,14 @@ void UOnlineSubsystemPC::STATIC_ClearWritePlayerStorageCompleteDelegate(unsigned
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.WritePlayerStorage
-// (PreOperator, Singular, NetReliable, Simulated, Native, Static)
+// (Final, Defined, Iterator, Latent, Singular, Exec, Native, Event, HasOptionalParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // class UOnlinePlayerStorage*    PlayerStorage                  (Parm)
 // int                            DeviceID                       (OptionalParm, Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::STATIC_WritePlayerStorage(unsigned char LocalUserNum, class UOnlinePlayerStorage* PlayerStorage, int DeviceID)
+bool UOnlineSubsystemPC::WritePlayerStorage(unsigned char LocalUserNum, class UOnlinePlayerStorage* PlayerStorage, int DeviceID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.WritePlayerStorage");
 
@@ -1697,12 +1718,12 @@ bool UOnlineSubsystemPC::STATIC_WritePlayerStorage(unsigned char LocalUserNum, c
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.GetPlayerStorage
-// (Singular, Net, Exec)
+// (Final, Defined, Iterator, PreOperator, Singular, Simulated, Exec, Event, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // class UOnlinePlayerStorage*    ReturnValue                    (Parm, OutParm, ReturnParm)
 
-class UOnlinePlayerStorage* UOnlineSubsystemPC::GetPlayerStorage(unsigned char LocalUserNum)
+class UOnlinePlayerStorage* UOnlineSubsystemPC::STATIC_GetPlayerStorage(unsigned char LocalUserNum)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.GetPlayerStorage");
 
@@ -1720,12 +1741,12 @@ class UOnlinePlayerStorage* UOnlineSubsystemPC::GetPlayerStorage(unsigned char L
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ClearReadPlayerStorageCompleteDelegate
-// (Final, Defined, Iterator, Latent, PreOperator, Singular, Net, Simulated, Exec, Operator, Static, HasOptionalParms, Const)
+// (Defined, Latent, Singular, Net, Native, Event, Operator)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FScriptDelegate         ReadPlayerStorageCompleteDelegate (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_ClearReadPlayerStorageCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadPlayerStorageCompleteDelegate)
+void UOnlineSubsystemPC::ClearReadPlayerStorageCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadPlayerStorageCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ClearReadPlayerStorageCompleteDelegate");
 
@@ -1734,6 +1755,7 @@ void UOnlineSubsystemPC::STATIC_ClearReadPlayerStorageCompleteDelegate(unsigned 
 	params.ReadPlayerStorageCompleteDelegate = ReadPlayerStorageCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1742,12 +1764,12 @@ void UOnlineSubsystemPC::STATIC_ClearReadPlayerStorageCompleteDelegate(unsigned 
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.AddReadPlayerStorageCompleteDelegate
-// (Defined, Net, NetReliable, Simulated, Exec, Static, HasOptionalParms, Const)
+// (Final, Iterator, PreOperator, Singular, NetReliable, Native, Event)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FScriptDelegate         ReadPlayerStorageCompleteDelegate (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_AddReadPlayerStorageCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadPlayerStorageCompleteDelegate)
+void UOnlineSubsystemPC::AddReadPlayerStorageCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadPlayerStorageCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.AddReadPlayerStorageCompleteDelegate");
 
@@ -1756,6 +1778,7 @@ void UOnlineSubsystemPC::STATIC_AddReadPlayerStorageCompleteDelegate(unsigned ch
 	params.ReadPlayerStorageCompleteDelegate = ReadPlayerStorageCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1764,7 +1787,7 @@ void UOnlineSubsystemPC::STATIC_AddReadPlayerStorageCompleteDelegate(unsigned ch
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.OnReadPlayerStorageComplete
-// (Final, Singular, Net, NetReliable, Simulated, Native, Event, Static)
+// (Final, Iterator, Latent, Singular, Net, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // bool                           bWasSuccessful                 (Parm)
@@ -1787,14 +1810,14 @@ void UOnlineSubsystemPC::STATIC_OnReadPlayerStorageComplete(unsigned char LocalU
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ReadPlayerStorage
-// (Defined, Iterator, Latent, PreOperator, Singular, Simulated, Exec, Native, Operator)
+// (Final, Latent, Singular, Net, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // class UOnlinePlayerStorage*    PlayerStorage                  (Parm)
 // int                            DeviceID                       (OptionalParm, Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::ReadPlayerStorage(unsigned char LocalUserNum, class UOnlinePlayerStorage* PlayerStorage, int DeviceID)
+bool UOnlineSubsystemPC::STATIC_ReadPlayerStorage(unsigned char LocalUserNum, class UOnlinePlayerStorage* PlayerStorage, int DeviceID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ReadPlayerStorage");
 
@@ -1815,12 +1838,12 @@ bool UOnlineSubsystemPC::ReadPlayerStorage(unsigned char LocalUserNum, class UOn
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ClearReadPlayerStorageForNetIdCompleteDelegate
-// (NetReliable, Simulated, Exec, Operator, Static, HasOptionalParms, Const)
+// (Final, Defined, Latent, Singular, Net, Native, Event, Operator)
 // Parameters:
 // struct FUniqueNetId            NetId                          (Parm)
 // struct FScriptDelegate         ReadPlayerStorageForNetIdCompleteDelegate (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_ClearReadPlayerStorageForNetIdCompleteDelegate(const struct FUniqueNetId& NetId, const struct FScriptDelegate& ReadPlayerStorageForNetIdCompleteDelegate)
+void UOnlineSubsystemPC::ClearReadPlayerStorageForNetIdCompleteDelegate(const struct FUniqueNetId& NetId, const struct FScriptDelegate& ReadPlayerStorageForNetIdCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ClearReadPlayerStorageForNetIdCompleteDelegate");
 
@@ -1829,6 +1852,7 @@ void UOnlineSubsystemPC::STATIC_ClearReadPlayerStorageForNetIdCompleteDelegate(c
 	params.ReadPlayerStorageForNetIdCompleteDelegate = ReadPlayerStorageForNetIdCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1837,14 +1861,14 @@ void UOnlineSubsystemPC::STATIC_ClearReadPlayerStorageForNetIdCompleteDelegate(c
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ReadPlayerStorageForNetId
-// (Net, Simulated, Exec, Native, Operator)
+// (Final, Defined, Latent, Singular, Net, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FUniqueNetId            NetId                          (Parm)
 // class UOnlinePlayerStorage*    PlayerStorage                  (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::ReadPlayerStorageForNetId(unsigned char LocalUserNum, const struct FUniqueNetId& NetId, class UOnlinePlayerStorage* PlayerStorage)
+bool UOnlineSubsystemPC::STATIC_ReadPlayerStorageForNetId(unsigned char LocalUserNum, const struct FUniqueNetId& NetId, class UOnlinePlayerStorage* PlayerStorage)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ReadPlayerStorageForNetId");
 
@@ -1865,12 +1889,12 @@ bool UOnlineSubsystemPC::ReadPlayerStorageForNetId(unsigned char LocalUserNum, c
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.AddReadPlayerStorageForNetIdCompleteDelegate
-// (Final, Defined, Net, NetReliable, Simulated, Exec, Static, HasOptionalParms, Const)
+// (Defined, Iterator, PreOperator, Singular, NetReliable, Native, Event)
 // Parameters:
 // struct FUniqueNetId            NetId                          (Parm)
 // struct FScriptDelegate         ReadPlayerStorageForNetIdCompleteDelegate (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_AddReadPlayerStorageForNetIdCompleteDelegate(const struct FUniqueNetId& NetId, const struct FScriptDelegate& ReadPlayerStorageForNetIdCompleteDelegate)
+void UOnlineSubsystemPC::AddReadPlayerStorageForNetIdCompleteDelegate(const struct FUniqueNetId& NetId, const struct FScriptDelegate& ReadPlayerStorageForNetIdCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.AddReadPlayerStorageForNetIdCompleteDelegate");
 
@@ -1879,6 +1903,7 @@ void UOnlineSubsystemPC::STATIC_AddReadPlayerStorageForNetIdCompleteDelegate(con
 	params.ReadPlayerStorageForNetIdCompleteDelegate = ReadPlayerStorageForNetIdCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1887,7 +1912,7 @@ void UOnlineSubsystemPC::STATIC_AddReadPlayerStorageForNetIdCompleteDelegate(con
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.OnReadPlayerStorageForNetIdComplete
-// (Defined, Singular, Net, NetReliable, Simulated, Native, Event, Static)
+// (Defined, Iterator, Latent, Singular, Net, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // struct FUniqueNetId            NetId                          (Parm)
 // bool                           bWasSuccessful                 (Parm)
@@ -1910,12 +1935,12 @@ void UOnlineSubsystemPC::STATIC_OnReadPlayerStorageForNetIdComplete(const struct
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.AddWritePlayerStorageCompleteDelegate
-// (Iterator, Latent, PreOperator, Singular, Net, NetReliable, Simulated, Exec, Static, HasOptionalParms, Const)
+// (Final, Defined, Iterator, Latent, Singular, Net, NetReliable, Native, Event)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FScriptDelegate         WritePlayerStorageCompleteDelegate (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_AddWritePlayerStorageCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& WritePlayerStorageCompleteDelegate)
+void UOnlineSubsystemPC::AddWritePlayerStorageCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& WritePlayerStorageCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.AddWritePlayerStorageCompleteDelegate");
 
@@ -1924,6 +1949,7 @@ void UOnlineSubsystemPC::STATIC_AddWritePlayerStorageCompleteDelegate(unsigned c
 	params.WritePlayerStorageCompleteDelegate = WritePlayerStorageCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1932,7 +1958,7 @@ void UOnlineSubsystemPC::STATIC_AddWritePlayerStorageCompleteDelegate(unsigned c
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.OnWritePlayerStorageComplete
-// (Final, Defined, Iterator, PreOperator, Singular, Net, NetReliable, Simulated, Native, Event, Static)
+// (Final, Defined, Exec, Native, Event, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // bool                           bWasSuccessful                 (Parm)
@@ -1955,12 +1981,12 @@ void UOnlineSubsystemPC::STATIC_OnWritePlayerStorageComplete(unsigned char Local
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.GetKeyboardInputResults
-// (Iterator, Latent, Singular, Net, NetReliable, Simulated)
+// (Final, Defined, Net, NetReliable, Exec, Event, Static)
 // Parameters:
 // unsigned char                  bWasCanceled                   (Parm, OutParm)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString UOnlineSubsystemPC::GetKeyboardInputResults(unsigned char* bWasCanceled)
+struct FString UOnlineSubsystemPC::STATIC_GetKeyboardInputResults(unsigned char* bWasCanceled)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.GetKeyboardInputResults");
 
@@ -1980,11 +2006,11 @@ struct FString UOnlineSubsystemPC::GetKeyboardInputResults(unsigned char* bWasCa
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ClearKeyboardInputDoneDelegate
-// (Defined, Net, Simulated, Exec, Operator, Static, HasOptionalParms, Const)
+// (Final, Iterator, Latent, Singular, Native, Event, Operator)
 // Parameters:
 // struct FScriptDelegate         InputDelegate                  (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_ClearKeyboardInputDoneDelegate(const struct FScriptDelegate& InputDelegate)
+void UOnlineSubsystemPC::ClearKeyboardInputDoneDelegate(const struct FScriptDelegate& InputDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ClearKeyboardInputDoneDelegate");
 
@@ -1992,6 +2018,7 @@ void UOnlineSubsystemPC::STATIC_ClearKeyboardInputDoneDelegate(const struct FScr
 	params.InputDelegate = InputDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2000,11 +2027,11 @@ void UOnlineSubsystemPC::STATIC_ClearKeyboardInputDoneDelegate(const struct FScr
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.AddKeyboardInputDoneDelegate
-// (NetReliable, Simulated, Exec, Static, HasOptionalParms, Const)
+// (Final, Defined, PreOperator, Singular, Net, Native, Event)
 // Parameters:
 // struct FScriptDelegate         InputDelegate                  (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_AddKeyboardInputDoneDelegate(const struct FScriptDelegate& InputDelegate)
+void UOnlineSubsystemPC::AddKeyboardInputDoneDelegate(const struct FScriptDelegate& InputDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.AddKeyboardInputDoneDelegate");
 
@@ -2012,6 +2039,7 @@ void UOnlineSubsystemPC::STATIC_AddKeyboardInputDoneDelegate(const struct FScrip
 	params.InputDelegate = InputDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2020,7 +2048,7 @@ void UOnlineSubsystemPC::STATIC_AddKeyboardInputDoneDelegate(const struct FScrip
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.OnKeyboardInputComplete
-// (Final, Iterator, Latent, Net, NetReliable, Simulated, Native, Event, Static)
+// (Final, Latent, PreOperator, Net, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // bool                           bWasSuccessful                 (Parm)
 
@@ -2041,12 +2069,12 @@ void UOnlineSubsystemPC::STATIC_OnKeyboardInputComplete(bool bWasSuccessful)
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.HideKeyboardUI
-// (Final, PreOperator, Singular, Net, NetReliable, Simulated, Exec)
+// (Final, Iterator, Net, NetReliable, Native, Event, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::HideKeyboardUI(unsigned char LocalUserNum)
+bool UOnlineSubsystemPC::STATIC_HideKeyboardUI(unsigned char LocalUserNum)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.HideKeyboardUI");
 
@@ -2054,6 +2082,7 @@ bool UOnlineSubsystemPC::HideKeyboardUI(unsigned char LocalUserNum)
 	params.LocalUserNum = LocalUserNum;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2064,7 +2093,7 @@ bool UOnlineSubsystemPC::HideKeyboardUI(unsigned char LocalUserNum)
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ShowKeyboardUI
-// (Final, Iterator, Singular, Simulated, Event, HasOptionalParms)
+// (Final, Defined, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FString                 TitleText                      (Parm, NeedCtorLink)
@@ -2099,7 +2128,7 @@ bool UOnlineSubsystemPC::ShowKeyboardUI(unsigned char LocalUserNum, const struct
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.SetOnlineStatus
-// (Final, Iterator, Latent, Singular, Native, Event, Operator)
+// (Final, Latent, Net, NetReliable, Native, HasOptionalParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FString                 StatusString                   (Parm, NeedCtorLink)
@@ -2124,11 +2153,11 @@ void UOnlineSubsystemPC::SetOnlineStatus(unsigned char LocalUserNum, const struc
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ClearStorageDeviceChangeDelegate
-// (Final, Singular, NetReliable, Simulated, Exec, Operator, Static, HasOptionalParms, Const)
+// (Iterator, Latent, NetReliable, Native, Event, Operator)
 // Parameters:
 // struct FScriptDelegate         StorageDeviceChangeDelegate    (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_ClearStorageDeviceChangeDelegate(const struct FScriptDelegate& StorageDeviceChangeDelegate)
+void UOnlineSubsystemPC::ClearStorageDeviceChangeDelegate(const struct FScriptDelegate& StorageDeviceChangeDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ClearStorageDeviceChangeDelegate");
 
@@ -2136,6 +2165,7 @@ void UOnlineSubsystemPC::STATIC_ClearStorageDeviceChangeDelegate(const struct FS
 	params.StorageDeviceChangeDelegate = StorageDeviceChangeDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2144,11 +2174,11 @@ void UOnlineSubsystemPC::STATIC_ClearStorageDeviceChangeDelegate(const struct FS
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.AddStorageDeviceChangeDelegate
-// (Defined, Latent, Singular, Net, NetReliable, Simulated, Exec, Static, HasOptionalParms, Const)
+// (Final, Iterator, Latent, PreOperator, Net, NetReliable, Native, Event)
 // Parameters:
 // struct FScriptDelegate         StorageDeviceChangeDelegate    (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_AddStorageDeviceChangeDelegate(const struct FScriptDelegate& StorageDeviceChangeDelegate)
+void UOnlineSubsystemPC::AddStorageDeviceChangeDelegate(const struct FScriptDelegate& StorageDeviceChangeDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.AddStorageDeviceChangeDelegate");
 
@@ -2156,6 +2186,7 @@ void UOnlineSubsystemPC::STATIC_AddStorageDeviceChangeDelegate(const struct FScr
 	params.StorageDeviceChangeDelegate = StorageDeviceChangeDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2164,7 +2195,7 @@ void UOnlineSubsystemPC::STATIC_AddStorageDeviceChangeDelegate(const struct FScr
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.OnStorageDeviceChange
-// (PreOperator, Singular, Net, NetReliable, Simulated, Native, Event, Static)
+// (Iterator, Latent, PreOperator, Singular, Net, NetReliable, Simulated, Native, Event, Static)
 
 void UOnlineSubsystemPC::STATIC_OnStorageDeviceChange()
 {
@@ -2182,11 +2213,11 @@ void UOnlineSubsystemPC::STATIC_OnStorageDeviceChange()
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.GetLocale
-// (Final, Iterator, PreOperator, Singular, Net, NetReliable, Simulated)
+// (Iterator, Latent, Net, NetReliable, Exec, Event, Static)
 // Parameters:
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UOnlineSubsystemPC::GetLocale()
+int UOnlineSubsystemPC::STATIC_GetLocale()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.GetLocale");
 
@@ -2203,7 +2234,7 @@ int UOnlineSubsystemPC::GetLocale()
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.GetNATType
-// (Singular, Net, NetReliable, Exec, HasOptionalParms)
+// (Defined, Iterator, PreOperator, Singular, Net, NetReliable, Native, HasOptionalParms)
 // Parameters:
 // TEnumAsByte<ENATType>          ReturnValue                    (Parm, OutParm, ReturnParm)
 
@@ -2214,6 +2245,7 @@ TEnumAsByte<ENATType> UOnlineSubsystemPC::GetNATType()
 	UOnlineSubsystemPC_GetNATType_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2224,11 +2256,11 @@ TEnumAsByte<ENATType> UOnlineSubsystemPC::GetNATType()
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ClearConnectionStatusChangeDelegate
-// (Final, Defined, Iterator, Latent, Simulated, Exec, Operator, Static, HasOptionalParms, Const)
+// (Defined, Latent, PreOperator, Singular, Net, NetReliable, Simulated, Exec, Event, Operator)
 // Parameters:
 // struct FScriptDelegate         ConnectionStatusDelegate       (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_ClearConnectionStatusChangeDelegate(const struct FScriptDelegate& ConnectionStatusDelegate)
+void UOnlineSubsystemPC::ClearConnectionStatusChangeDelegate(const struct FScriptDelegate& ConnectionStatusDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ClearConnectionStatusChangeDelegate");
 
@@ -2244,11 +2276,11 @@ void UOnlineSubsystemPC::STATIC_ClearConnectionStatusChangeDelegate(const struct
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.AddConnectionStatusChangeDelegate
-// (Defined, Iterator, Latent, PreOperator, Singular, Simulated, Exec, Static, HasOptionalParms, Const)
+// (Final, PreOperator, Singular, Native, Event)
 // Parameters:
 // struct FScriptDelegate         ConnectionStatusDelegate       (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_AddConnectionStatusChangeDelegate(const struct FScriptDelegate& ConnectionStatusDelegate)
+void UOnlineSubsystemPC::AddConnectionStatusChangeDelegate(const struct FScriptDelegate& ConnectionStatusDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.AddConnectionStatusChangeDelegate");
 
@@ -2256,6 +2288,7 @@ void UOnlineSubsystemPC::STATIC_AddConnectionStatusChangeDelegate(const struct F
 	params.ConnectionStatusDelegate = ConnectionStatusDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2264,7 +2297,7 @@ void UOnlineSubsystemPC::STATIC_AddConnectionStatusChangeDelegate(const struct F
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.OnConnectionStatusChange
-// (Final, Iterator, Latent, PreOperator, Singular, NetReliable, Simulated, Native, Event, Static)
+// (Final, Latent, Net, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // TEnumAsByte<EOnlineServerConnectionStatus> ConnectionStatus               (Parm)
 
@@ -2285,11 +2318,11 @@ void UOnlineSubsystemPC::STATIC_OnConnectionStatusChange(TEnumAsByte<EOnlineServ
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.GetCurrentConnectionStatus
-// (Iterator, Latent, PreOperator, Singular, Net, Simulated)
+// (Final, Defined, PreOperator, Net, Exec, Event, Static)
 // Parameters:
 // TEnumAsByte<EOnlineServerConnectionStatus> ReturnValue                    (Parm, OutParm, ReturnParm)
 
-TEnumAsByte<EOnlineServerConnectionStatus> UOnlineSubsystemPC::GetCurrentConnectionStatus()
+TEnumAsByte<EOnlineServerConnectionStatus> UOnlineSubsystemPC::STATIC_GetCurrentConnectionStatus()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.GetCurrentConnectionStatus");
 
@@ -2306,12 +2339,12 @@ TEnumAsByte<EOnlineServerConnectionStatus> UOnlineSubsystemPC::GetCurrentConnect
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.IsControllerConnected
-// (Final, Iterator, Latent, PreOperator, Singular, Net, Exec, Native)
+// (PreOperator, Net, Simulated, Exec, Native, Event, Static)
 // Parameters:
 // int                            ControllerId                   (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::IsControllerConnected(int ControllerId)
+bool UOnlineSubsystemPC::STATIC_IsControllerConnected(int ControllerId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.IsControllerConnected");
 
@@ -2330,11 +2363,11 @@ bool UOnlineSubsystemPC::IsControllerConnected(int ControllerId)
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ClearControllerChangeDelegate
-// (Iterator, PreOperator, Simulated, Exec, Operator, Static, HasOptionalParms, Const)
+// (Final, Defined, Iterator, Latent, PreOperator, Singular, Net, NetReliable, Simulated, Exec, Event, Operator)
 // Parameters:
 // struct FScriptDelegate         ControllerChangeDelegate       (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_ClearControllerChangeDelegate(const struct FScriptDelegate& ControllerChangeDelegate)
+void UOnlineSubsystemPC::ClearControllerChangeDelegate(const struct FScriptDelegate& ControllerChangeDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ClearControllerChangeDelegate");
 
@@ -2350,11 +2383,11 @@ void UOnlineSubsystemPC::STATIC_ClearControllerChangeDelegate(const struct FScri
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.AddControllerChangeDelegate
-// (Iterator, Net, Simulated, Exec, Static, HasOptionalParms, Const)
+// (Final, Defined, Iterator, PreOperator, Singular, Native, Event)
 // Parameters:
 // struct FScriptDelegate         ControllerChangeDelegate       (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_AddControllerChangeDelegate(const struct FScriptDelegate& ControllerChangeDelegate)
+void UOnlineSubsystemPC::AddControllerChangeDelegate(const struct FScriptDelegate& ControllerChangeDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.AddControllerChangeDelegate");
 
@@ -2362,6 +2395,7 @@ void UOnlineSubsystemPC::STATIC_AddControllerChangeDelegate(const struct FScript
 	params.ControllerChangeDelegate = ControllerChangeDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2370,7 +2404,7 @@ void UOnlineSubsystemPC::STATIC_AddControllerChangeDelegate(const struct FScript
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.OnControllerChange
-// (Final, Defined, Iterator, Latent, PreOperator, Singular, NetReliable, Simulated, Native, Event, Static)
+// (Final, Defined, Latent, Net, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // int                            ControllerId                   (Parm)
 // bool                           bIsConnected                   (Parm)
@@ -2395,7 +2429,7 @@ void UOnlineSubsystemPC::STATIC_OnControllerChange(int ControllerId, bool bIsCon
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.SetNetworkNotificationPosition
-// (Final, Defined, Iterator, Singular, Native, Event, Operator)
+// (Final, Defined, Net, NetReliable, Native, HasOptionalParms)
 // Parameters:
 // TEnumAsByte<ENetworkNotificationPosition> NewPos                         (Parm)
 
@@ -2416,11 +2450,11 @@ void UOnlineSubsystemPC::SetNetworkNotificationPosition(TEnumAsByte<ENetworkNoti
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.GetNetworkNotificationPosition
-// (Final, Latent, PreOperator, Exec)
+// (PreOperator, Singular, Net, NetReliable, Exec, Event, Static)
 // Parameters:
 // TEnumAsByte<ENetworkNotificationPosition> ReturnValue                    (Parm, OutParm, ReturnParm)
 
-TEnumAsByte<ENetworkNotificationPosition> UOnlineSubsystemPC::GetNetworkNotificationPosition()
+TEnumAsByte<ENetworkNotificationPosition> UOnlineSubsystemPC::STATIC_GetNetworkNotificationPosition()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.GetNetworkNotificationPosition");
 
@@ -2437,11 +2471,11 @@ TEnumAsByte<ENetworkNotificationPosition> UOnlineSubsystemPC::GetNetworkNotifica
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ClearExternalUIChangeDelegate
-// (Final, Defined, Latent, Singular, Simulated, Exec, Operator, Static, HasOptionalParms, Const)
+// (Defined, Iterator, PreOperator, Native, Event, Operator)
 // Parameters:
 // struct FScriptDelegate         ExternalUIDelegate             (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_ClearExternalUIChangeDelegate(const struct FScriptDelegate& ExternalUIDelegate)
+void UOnlineSubsystemPC::ClearExternalUIChangeDelegate(const struct FScriptDelegate& ExternalUIDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ClearExternalUIChangeDelegate");
 
@@ -2449,6 +2483,7 @@ void UOnlineSubsystemPC::STATIC_ClearExternalUIChangeDelegate(const struct FScri
 	params.ExternalUIDelegate = ExternalUIDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2457,11 +2492,11 @@ void UOnlineSubsystemPC::STATIC_ClearExternalUIChangeDelegate(const struct FScri
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.AddExternalUIChangeDelegate
-// (Defined, Iterator, PreOperator, Net, Simulated, Exec, Static, HasOptionalParms, Const)
+// (Final, Latent, Net, Native, Event)
 // Parameters:
 // struct FScriptDelegate         ExternalUIDelegate             (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_AddExternalUIChangeDelegate(const struct FScriptDelegate& ExternalUIDelegate)
+void UOnlineSubsystemPC::AddExternalUIChangeDelegate(const struct FScriptDelegate& ExternalUIDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.AddExternalUIChangeDelegate");
 
@@ -2469,6 +2504,7 @@ void UOnlineSubsystemPC::STATIC_AddExternalUIChangeDelegate(const struct FScript
 	params.ExternalUIDelegate = ExternalUIDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2477,7 +2513,7 @@ void UOnlineSubsystemPC::STATIC_AddExternalUIChangeDelegate(const struct FScript
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.OnExternalUIChange
-// (Final, Iterator, Net, NetReliable, Simulated, Native, Event, Static)
+// (Final, PreOperator, Net, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // bool                           bIsOpening                     (Parm)
 
@@ -2498,11 +2534,11 @@ void UOnlineSubsystemPC::STATIC_OnExternalUIChange(bool bIsOpening)
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ClearLinkStatusChangeDelegate
-// (Iterator, Net, Simulated, Exec, Operator, Static, HasOptionalParms, Const)
+// (Final, Defined, Iterator, Latent, Singular, Native, Event, Operator)
 // Parameters:
 // struct FScriptDelegate         LinkStatusDelegate             (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_ClearLinkStatusChangeDelegate(const struct FScriptDelegate& LinkStatusDelegate)
+void UOnlineSubsystemPC::ClearLinkStatusChangeDelegate(const struct FScriptDelegate& LinkStatusDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ClearLinkStatusChangeDelegate");
 
@@ -2510,6 +2546,7 @@ void UOnlineSubsystemPC::STATIC_ClearLinkStatusChangeDelegate(const struct FScri
 	params.LinkStatusDelegate = LinkStatusDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2518,11 +2555,11 @@ void UOnlineSubsystemPC::STATIC_ClearLinkStatusChangeDelegate(const struct FScri
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.AddLinkStatusChangeDelegate
-// (Final, NetReliable, Simulated, Exec, Static, HasOptionalParms, Const)
+// (Iterator, PreOperator, Singular, Net, Native, Event)
 // Parameters:
 // struct FScriptDelegate         LinkStatusDelegate             (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_AddLinkStatusChangeDelegate(const struct FScriptDelegate& LinkStatusDelegate)
+void UOnlineSubsystemPC::AddLinkStatusChangeDelegate(const struct FScriptDelegate& LinkStatusDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.AddLinkStatusChangeDelegate");
 
@@ -2530,6 +2567,7 @@ void UOnlineSubsystemPC::STATIC_AddLinkStatusChangeDelegate(const struct FScript
 	params.LinkStatusDelegate = LinkStatusDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2538,7 +2576,7 @@ void UOnlineSubsystemPC::STATIC_AddLinkStatusChangeDelegate(const struct FScript
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.OnLinkStatusChange
-// (Defined, Iterator, Latent, Net, NetReliable, Simulated, Native, Event, Static)
+// (Defined, Latent, PreOperator, Net, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // bool                           bIsConnected                   (Parm)
 
@@ -2559,7 +2597,7 @@ void UOnlineSubsystemPC::STATIC_OnLinkStatusChange(bool bIsConnected)
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.HasLinkConnection
-// (Iterator, Latent, PreOperator, Singular, Net, NetReliable, Exec, HasOptionalParms)
+// (Defined, PreOperator, Simulated, Native, HasOptionalParms)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
@@ -2570,6 +2608,7 @@ bool UOnlineSubsystemPC::HasLinkConnection()
 	UOnlineSubsystemPC_HasLinkConnection_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2580,7 +2619,7 @@ bool UOnlineSubsystemPC::HasLinkConnection()
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.GetPlayerNicknameFromIndex
-// (Defined, Iterator, Latent, PreOperator, Singular, NetReliable, Native, HasOptionalParms)
+// (Iterator, PreOperator, Net, NetReliable, Exec, Native, HasOptionalParms)
 // Parameters:
 // int                            UserIndex                      (Parm)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
@@ -2604,14 +2643,14 @@ struct FString UOnlineSubsystemPC::GetPlayerNicknameFromIndex(int UserIndex)
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.CalcAggregateSkill
-// (Final, Iterator, PreOperator, Singular, NetReliable, Simulated, Operator, Static, HasOptionalParms, Const)
+// (Final, Singular, NetReliable, Exec, Event, Operator)
 // Parameters:
 // TArray<struct FDouble>         Mus                            (Parm, NeedCtorLink)
 // TArray<struct FDouble>         Sigmas                         (Parm, NeedCtorLink)
 // struct FDouble                 OutAggregateMu                 (Parm, OutParm)
 // struct FDouble                 OutAggregateSigma              (Parm, OutParm)
 
-void UOnlineSubsystemPC::STATIC_CalcAggregateSkill(TArray<struct FDouble> Mus, TArray<struct FDouble> Sigmas, struct FDouble* OutAggregateMu, struct FDouble* OutAggregateSigma)
+void UOnlineSubsystemPC::CalcAggregateSkill(TArray<struct FDouble> Mus, TArray<struct FDouble> Sigmas, struct FDouble* OutAggregateMu, struct FDouble* OutAggregateSigma)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.CalcAggregateSkill");
 
@@ -2633,7 +2672,7 @@ void UOnlineSubsystemPC::STATIC_CalcAggregateSkill(TArray<struct FDouble> Mus, T
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.RegisterStatGuid
-// (Final, Latent, Net, NetReliable, Simulated, Exec, Native, Operator)
+// (Iterator, PreOperator, Singular, Net, HasOptionalParms)
 // Parameters:
 // struct FUniqueNetId            PlayerID                       (Parm)
 // struct FString                 ClientStatGuid                 (Const, Parm, OutParm, NeedCtorLink)
@@ -2647,7 +2686,6 @@ bool UOnlineSubsystemPC::RegisterStatGuid(const struct FUniqueNetId& PlayerID, s
 	params.PlayerID = PlayerID;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2661,11 +2699,11 @@ bool UOnlineSubsystemPC::RegisterStatGuid(const struct FUniqueNetId& PlayerID, s
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.GetClientStatGuid
-// (Iterator, PreOperator, Net, Simulated)
+// (Final, Defined, Latent, Singular, Exec, Event, Static)
 // Parameters:
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString UOnlineSubsystemPC::GetClientStatGuid()
+struct FString UOnlineSubsystemPC::STATIC_GetClientStatGuid()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.GetClientStatGuid");
 
@@ -2682,11 +2720,11 @@ struct FString UOnlineSubsystemPC::GetClientStatGuid()
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ClearRegisterHostStatGuidCompleteDelegateDelegate
-// (Final, Iterator, Latent, NetReliable, Simulated, Exec, Operator, Static, HasOptionalParms, Const)
+// (Latent, PreOperator, Singular, Net, Native, Event, Operator)
 // Parameters:
 // struct FScriptDelegate         RegisterHostStatGuidCompleteDelegate (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_ClearRegisterHostStatGuidCompleteDelegateDelegate(const struct FScriptDelegate& RegisterHostStatGuidCompleteDelegate)
+void UOnlineSubsystemPC::ClearRegisterHostStatGuidCompleteDelegateDelegate(const struct FScriptDelegate& RegisterHostStatGuidCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ClearRegisterHostStatGuidCompleteDelegateDelegate");
 
@@ -2694,6 +2732,7 @@ void UOnlineSubsystemPC::STATIC_ClearRegisterHostStatGuidCompleteDelegateDelegat
 	params.RegisterHostStatGuidCompleteDelegate = RegisterHostStatGuidCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2702,11 +2741,11 @@ void UOnlineSubsystemPC::STATIC_ClearRegisterHostStatGuidCompleteDelegateDelegat
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.AddRegisterHostStatGuidCompleteDelegate
-// (Defined, Iterator, Latent, Net, NetReliable, Simulated, Exec, Static, HasOptionalParms, Const)
+// (Final, Net, NetReliable, Native, Event)
 // Parameters:
 // struct FScriptDelegate         RegisterHostStatGuidCompleteDelegate (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_AddRegisterHostStatGuidCompleteDelegate(const struct FScriptDelegate& RegisterHostStatGuidCompleteDelegate)
+void UOnlineSubsystemPC::AddRegisterHostStatGuidCompleteDelegate(const struct FScriptDelegate& RegisterHostStatGuidCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.AddRegisterHostStatGuidCompleteDelegate");
 
@@ -2714,6 +2753,7 @@ void UOnlineSubsystemPC::STATIC_AddRegisterHostStatGuidCompleteDelegate(const st
 	params.RegisterHostStatGuidCompleteDelegate = RegisterHostStatGuidCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2722,7 +2762,7 @@ void UOnlineSubsystemPC::STATIC_AddRegisterHostStatGuidCompleteDelegate(const st
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.OnRegisterHostStatGuidComplete
-// (Final, Latent, Singular, Net, NetReliable, Simulated, Native, Event, Static)
+// (Final, Iterator, PreOperator, Singular, Net, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // bool                           bWasSuccessful                 (Parm)
 
@@ -2743,7 +2783,7 @@ void UOnlineSubsystemPC::STATIC_OnRegisterHostStatGuidComplete(bool bWasSuccessf
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.RegisterHostStatGuid
-// (Iterator, Latent, PreOperator, Singular, NetReliable, Simulated, Exec, Native, Operator)
+// (Final, Defined, Iterator, Singular, Net, HasOptionalParms)
 // Parameters:
 // struct FString                 HostStatGuid                   (Const, Parm, OutParm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
@@ -2755,7 +2795,6 @@ bool UOnlineSubsystemPC::RegisterHostStatGuid(struct FString* HostStatGuid)
 	UOnlineSubsystemPC_RegisterHostStatGuid_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2769,11 +2808,11 @@ bool UOnlineSubsystemPC::RegisterHostStatGuid(struct FString* HostStatGuid)
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.GetHostStatGuid
-// (Iterator, Latent, PreOperator, Net, NetReliable, Simulated)
+// (Final, Defined, PreOperator, Singular, NetReliable, Exec, Event, Static)
 // Parameters:
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString UOnlineSubsystemPC::GetHostStatGuid()
+struct FString UOnlineSubsystemPC::STATIC_GetHostStatGuid()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.GetHostStatGuid");
 
@@ -2790,14 +2829,14 @@ struct FString UOnlineSubsystemPC::GetHostStatGuid()
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.WriteOnlinePlayerScores
-// (Defined, Iterator, Latent, Singular, NetReliable, Simulated, Native, Static)
+// (Final, Iterator, Latent, Singular, Exec, Native, Event, HasOptionalParms)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // int                            LeaderboardId                  (Parm)
 // TArray<struct FOnlinePlayerScore> PlayerScores                   (Const, Parm, OutParm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::STATIC_WriteOnlinePlayerScores(const struct FName& SessionName, int LeaderboardId, TArray<struct FOnlinePlayerScore>* PlayerScores)
+bool UOnlineSubsystemPC::WriteOnlinePlayerScores(const struct FName& SessionName, int LeaderboardId, TArray<struct FOnlinePlayerScore>* PlayerScores)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.WriteOnlinePlayerScores");
 
@@ -2820,11 +2859,11 @@ bool UOnlineSubsystemPC::STATIC_WriteOnlinePlayerScores(const struct FName& Sess
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ClearFlushOnlineStatsCompleteDelegate
-// (Defined, PreOperator, Singular, Simulated, Exec, Operator, Static, HasOptionalParms, Const)
+// (Final, Iterator, Latent, PreOperator, Native, Event, Operator)
 // Parameters:
 // struct FScriptDelegate         FlushOnlineStatsCompleteDelegate (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_ClearFlushOnlineStatsCompleteDelegate(const struct FScriptDelegate& FlushOnlineStatsCompleteDelegate)
+void UOnlineSubsystemPC::ClearFlushOnlineStatsCompleteDelegate(const struct FScriptDelegate& FlushOnlineStatsCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ClearFlushOnlineStatsCompleteDelegate");
 
@@ -2832,6 +2871,7 @@ void UOnlineSubsystemPC::STATIC_ClearFlushOnlineStatsCompleteDelegate(const stru
 	params.FlushOnlineStatsCompleteDelegate = FlushOnlineStatsCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2840,11 +2880,11 @@ void UOnlineSubsystemPC::STATIC_ClearFlushOnlineStatsCompleteDelegate(const stru
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.AddFlushOnlineStatsCompleteDelegate
-// (Iterator, Latent, PreOperator, Net, Simulated, Exec, Static, HasOptionalParms, Const)
+// (Final, Defined, Iterator, Latent, Net, Native, Event)
 // Parameters:
 // struct FScriptDelegate         FlushOnlineStatsCompleteDelegate (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_AddFlushOnlineStatsCompleteDelegate(const struct FScriptDelegate& FlushOnlineStatsCompleteDelegate)
+void UOnlineSubsystemPC::AddFlushOnlineStatsCompleteDelegate(const struct FScriptDelegate& FlushOnlineStatsCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.AddFlushOnlineStatsCompleteDelegate");
 
@@ -2852,6 +2892,7 @@ void UOnlineSubsystemPC::STATIC_AddFlushOnlineStatsCompleteDelegate(const struct
 	params.FlushOnlineStatsCompleteDelegate = FlushOnlineStatsCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2860,7 +2901,7 @@ void UOnlineSubsystemPC::STATIC_AddFlushOnlineStatsCompleteDelegate(const struct
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.OnFlushOnlineStatsComplete
-// (Final, Defined, Iterator, Net, NetReliable, Simulated, Native, Event, Static)
+// (Final, Defined, PreOperator, Net, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // bool                           bWasSuccessful                 (Parm)
@@ -2883,7 +2924,7 @@ void UOnlineSubsystemPC::STATIC_OnFlushOnlineStatsComplete(const struct FName& S
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.FlushOnlineStats
-// (PreOperator, Simulated, Exec, Native, Event, Operator, Static, HasOptionalParms, Const)
+// (Final, Defined, Latent, Singular, Net, NetReliable, Simulated, Exec, Native, Static)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
@@ -2907,14 +2948,14 @@ bool UOnlineSubsystemPC::STATIC_FlushOnlineStats(const struct FName& SessionName
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.WriteOnlineStats
-// (Final, Defined, Iterator, Latent, Singular, NetReliable, Simulated, Native, Static)
+// (Defined, Iterator, Latent, Singular, Exec, Native, Event, HasOptionalParms)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // struct FUniqueNetId            Player                         (Parm)
 // class UOnlineStatsWrite*       StatsWrite                     (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::STATIC_WriteOnlineStats(const struct FName& SessionName, const struct FUniqueNetId& Player, class UOnlineStatsWrite* StatsWrite)
+bool UOnlineSubsystemPC::WriteOnlineStats(const struct FName& SessionName, const struct FUniqueNetId& Player, class UOnlineStatsWrite* StatsWrite)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.WriteOnlineStats");
 
@@ -2935,11 +2976,11 @@ bool UOnlineSubsystemPC::STATIC_WriteOnlineStats(const struct FName& SessionName
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.FreeStats
-// (Defined, PreOperator)
+// (Final, Defined, Latent, Singular, Net, NetReliable, Event, Static)
 // Parameters:
 // class UOnlineStatsRead*        StatsRead                      (Parm)
 
-void UOnlineSubsystemPC::FreeStats(class UOnlineStatsRead* StatsRead)
+void UOnlineSubsystemPC::STATIC_FreeStats(class UOnlineStatsRead* StatsRead)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.FreeStats");
 
@@ -2955,11 +2996,11 @@ void UOnlineSubsystemPC::FreeStats(class UOnlineStatsRead* StatsRead)
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ClearReadOnlineStatsCompleteDelegate
-// (Defined, Iterator, Latent, PreOperator, Singular, Net, Simulated, Exec, Operator, Static, HasOptionalParms, Const)
+// (Final, Latent, Singular, Net, Native, Event, Operator)
 // Parameters:
 // struct FScriptDelegate         ReadOnlineStatsCompleteDelegate (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_ClearReadOnlineStatsCompleteDelegate(const struct FScriptDelegate& ReadOnlineStatsCompleteDelegate)
+void UOnlineSubsystemPC::ClearReadOnlineStatsCompleteDelegate(const struct FScriptDelegate& ReadOnlineStatsCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ClearReadOnlineStatsCompleteDelegate");
 
@@ -2967,6 +3008,7 @@ void UOnlineSubsystemPC::STATIC_ClearReadOnlineStatsCompleteDelegate(const struc
 	params.ReadOnlineStatsCompleteDelegate = ReadOnlineStatsCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2975,11 +3017,11 @@ void UOnlineSubsystemPC::STATIC_ClearReadOnlineStatsCompleteDelegate(const struc
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.AddReadOnlineStatsCompleteDelegate
-// (Final, Net, NetReliable, Simulated, Exec, Static, HasOptionalParms, Const)
+// (Iterator, PreOperator, Singular, NetReliable, Native, Event)
 // Parameters:
 // struct FScriptDelegate         ReadOnlineStatsCompleteDelegate (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_AddReadOnlineStatsCompleteDelegate(const struct FScriptDelegate& ReadOnlineStatsCompleteDelegate)
+void UOnlineSubsystemPC::AddReadOnlineStatsCompleteDelegate(const struct FScriptDelegate& ReadOnlineStatsCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.AddReadOnlineStatsCompleteDelegate");
 
@@ -2987,6 +3029,7 @@ void UOnlineSubsystemPC::STATIC_AddReadOnlineStatsCompleteDelegate(const struct 
 	params.ReadOnlineStatsCompleteDelegate = ReadOnlineStatsCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2995,14 +3038,14 @@ void UOnlineSubsystemPC::STATIC_AddReadOnlineStatsCompleteDelegate(const struct 
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ReadOnlineStatsByRankAroundPlayer
-// (Final, Latent, PreOperator, Singular, Simulated, Exec, Native, Operator)
+// (Iterator, Singular, Net, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // class UOnlineStatsRead*        StatsRead                      (Parm)
 // int                            NumRows                        (OptionalParm, Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::ReadOnlineStatsByRankAroundPlayer(unsigned char LocalUserNum, class UOnlineStatsRead* StatsRead, int NumRows)
+bool UOnlineSubsystemPC::STATIC_ReadOnlineStatsByRankAroundPlayer(unsigned char LocalUserNum, class UOnlineStatsRead* StatsRead, int NumRows)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ReadOnlineStatsByRankAroundPlayer");
 
@@ -3023,7 +3066,7 @@ bool UOnlineSubsystemPC::ReadOnlineStatsByRankAroundPlayer(unsigned char LocalUs
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ReadOnlineStatsByRank
-// (Latent, PreOperator, Singular, Simulated, Exec, Native, Operator)
+// (Final, Defined, Singular, Net, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // class UOnlineStatsRead*        StatsRead                      (Parm)
@@ -3031,7 +3074,7 @@ bool UOnlineSubsystemPC::ReadOnlineStatsByRankAroundPlayer(unsigned char LocalUs
 // int                            NumToRead                      (OptionalParm, Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::ReadOnlineStatsByRank(unsigned char LocalUserNum, class UOnlineStatsRead* StatsRead, int StartIndex, int NumToRead)
+bool UOnlineSubsystemPC::STATIC_ReadOnlineStatsByRank(unsigned char LocalUserNum, class UOnlineStatsRead* StatsRead, int StartIndex, int NumToRead)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ReadOnlineStatsByRank");
 
@@ -3053,7 +3096,7 @@ bool UOnlineSubsystemPC::ReadOnlineStatsByRank(unsigned char LocalUserNum, class
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ReadOnlineStatForFriends
-// (Defined, Iterator, PreOperator, Singular, Simulated, Exec, Native, Operator)
+// (Final, Singular, Net, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // class UOnlineStatsRead*        StatsRead                      (Parm)
@@ -3061,7 +3104,7 @@ bool UOnlineSubsystemPC::ReadOnlineStatsByRank(unsigned char LocalUserNum, class
 // int                            NumToRead                      (OptionalParm, Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::ReadOnlineStatForFriends(unsigned char LocalUserNum, class UOnlineStatsRead* StatsRead, bool FavoriteFriendsOnly, int NumToRead)
+bool UOnlineSubsystemPC::STATIC_ReadOnlineStatForFriends(unsigned char LocalUserNum, class UOnlineStatsRead* StatsRead, bool FavoriteFriendsOnly, int NumToRead)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ReadOnlineStatForFriends");
 
@@ -3083,14 +3126,14 @@ bool UOnlineSubsystemPC::ReadOnlineStatForFriends(unsigned char LocalUserNum, cl
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ReadOnlineStats
-// (Final, Defined, Iterator, PreOperator, Singular, Simulated, Exec, Native, Operator)
+// (Defined, Singular, Net, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // TArray<struct FUniqueNetId>    Players                        (Const, Parm, OutParm, NeedCtorLink)
 // class UOnlineStatsRead*        StatsRead                      (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::ReadOnlineStats(unsigned char LocalUserNum, class UOnlineStatsRead* StatsRead, TArray<struct FUniqueNetId>* Players)
+bool UOnlineSubsystemPC::STATIC_ReadOnlineStats(unsigned char LocalUserNum, class UOnlineStatsRead* StatsRead, TArray<struct FUniqueNetId>* Players)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ReadOnlineStats");
 
@@ -3113,13 +3156,13 @@ bool UOnlineSubsystemPC::ReadOnlineStats(unsigned char LocalUserNum, class UOnli
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ReadOnlineStatsForPlayer
-// (Final, Defined, Latent, PreOperator, Singular, Simulated, Exec, Native, Operator)
+// (Defined, Iterator, Singular, Net, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // class UOnlineStatsRead*        StatsRead                      (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::ReadOnlineStatsForPlayer(unsigned char LocalUserNum, class UOnlineStatsRead* StatsRead)
+bool UOnlineSubsystemPC::STATIC_ReadOnlineStatsForPlayer(unsigned char LocalUserNum, class UOnlineStatsRead* StatsRead)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ReadOnlineStatsForPlayer");
 
@@ -3139,7 +3182,7 @@ bool UOnlineSubsystemPC::ReadOnlineStatsForPlayer(unsigned char LocalUserNum, cl
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.OnReadOnlineStatsComplete
-// (Singular, Net, NetReliable, Simulated, Native, Event, Static)
+// (Iterator, Latent, Singular, Net, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // bool                           bWasSuccessful                 (Parm)
 
@@ -3160,7 +3203,7 @@ void UOnlineSubsystemPC::STATIC_OnReadOnlineStatsComplete(bool bWasSuccessful)
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.GetFriendsList
-// (Final, Iterator, Net, NetReliable, Simulated)
+// (Iterator, Latent, PreOperator, NetReliable, Exec, Event, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // TArray<struct FOnlineFriend>   Friends                        (Parm, OutParm, NeedCtorLink)
@@ -3168,7 +3211,7 @@ void UOnlineSubsystemPC::STATIC_OnReadOnlineStatsComplete(bool bWasSuccessful)
 // int                            StartingAt                     (OptionalParm, Parm)
 // TEnumAsByte<EOnlineEnumerationReadState> ReturnValue                    (Parm, OutParm, ReturnParm)
 
-TEnumAsByte<EOnlineEnumerationReadState> UOnlineSubsystemPC::GetFriendsList(unsigned char LocalUserNum, int Count, int StartingAt, TArray<struct FOnlineFriend>* Friends)
+TEnumAsByte<EOnlineEnumerationReadState> UOnlineSubsystemPC::STATIC_GetFriendsList(unsigned char LocalUserNum, int Count, int StartingAt, TArray<struct FOnlineFriend>* Friends)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.GetFriendsList");
 
@@ -3191,9 +3234,9 @@ TEnumAsByte<EOnlineEnumerationReadState> UOnlineSubsystemPC::GetFriendsList(unsi
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ClearCustomOnlineDelegates
-// (Final, Iterator, Exec, Native, Static)
+// (Defined, Iterator, NetReliable, Exec, Native, Event, HasOptionalParms)
 
-void UOnlineSubsystemPC::STATIC_ClearCustomOnlineDelegates()
+void UOnlineSubsystemPC::ClearCustomOnlineDelegates()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ClearCustomOnlineDelegates");
 
@@ -3209,12 +3252,12 @@ void UOnlineSubsystemPC::STATIC_ClearCustomOnlineDelegates()
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ClearReadFriendsCompleteDelegate
-// (Final, Latent, PreOperator, Singular, Net, Simulated, Exec, Operator, Static, HasOptionalParms, Const)
+// (Iterator, Singular, Net, Native, Event, Operator)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FScriptDelegate         ReadFriendsCompleteDelegate    (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_ClearReadFriendsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadFriendsCompleteDelegate)
+void UOnlineSubsystemPC::ClearReadFriendsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadFriendsCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ClearReadFriendsCompleteDelegate");
 
@@ -3223,6 +3266,7 @@ void UOnlineSubsystemPC::STATIC_ClearReadFriendsCompleteDelegate(unsigned char L
 	params.ReadFriendsCompleteDelegate = ReadFriendsCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3231,12 +3275,12 @@ void UOnlineSubsystemPC::STATIC_ClearReadFriendsCompleteDelegate(unsigned char L
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.AddReadFriendsCompleteDelegate
-// (Iterator, Latent, PreOperator, Singular, NetReliable, Simulated, Exec, Static, HasOptionalParms, Const)
+// (Final, Defined, Iterator, Latent, Singular, NetReliable, Native, Event)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FScriptDelegate         ReadFriendsCompleteDelegate    (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_AddReadFriendsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadFriendsCompleteDelegate)
+void UOnlineSubsystemPC::AddReadFriendsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadFriendsCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.AddReadFriendsCompleteDelegate");
 
@@ -3245,6 +3289,7 @@ void UOnlineSubsystemPC::STATIC_AddReadFriendsCompleteDelegate(unsigned char Loc
 	params.ReadFriendsCompleteDelegate = ReadFriendsCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3253,14 +3298,14 @@ void UOnlineSubsystemPC::STATIC_AddReadFriendsCompleteDelegate(unsigned char Loc
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ReadFriendsList
-// (Defined, Iterator, Latent, Singular, Simulated, Exec, Native, Operator)
+// (Final, Latent, PreOperator, Net, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // int                            Count                          (OptionalParm, Parm)
 // int                            StartingAt                     (OptionalParm, Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::ReadFriendsList(unsigned char LocalUserNum, int Count, int StartingAt)
+bool UOnlineSubsystemPC::STATIC_ReadFriendsList(unsigned char LocalUserNum, int Count, int StartingAt)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ReadFriendsList");
 
@@ -3281,7 +3326,7 @@ bool UOnlineSubsystemPC::ReadFriendsList(unsigned char LocalUserNum, int Count, 
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.OnReadFriendsComplete
-// (Final, Iterator, Latent, PreOperator, Net, NetReliable, Simulated, Native, Event, Static)
+// (Final, Latent, Singular, Net, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // bool                           bWasSuccessful                 (Parm)
 
@@ -3302,12 +3347,12 @@ void UOnlineSubsystemPC::STATIC_OnReadFriendsComplete(bool bWasSuccessful)
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ClearLoginStatusChangeDelegate
-// (Defined, Latent, Net, Simulated, Exec, Operator, Static, HasOptionalParms, Const)
+// (Final, Iterator, PreOperator, Singular, Native, Event, Operator)
 // Parameters:
 // struct FScriptDelegate         LoginStatusDelegate            (Parm, NeedCtorLink)
 // unsigned char                  LocalUserNum                   (Parm)
 
-void UOnlineSubsystemPC::STATIC_ClearLoginStatusChangeDelegate(const struct FScriptDelegate& LoginStatusDelegate, unsigned char LocalUserNum)
+void UOnlineSubsystemPC::ClearLoginStatusChangeDelegate(const struct FScriptDelegate& LoginStatusDelegate, unsigned char LocalUserNum)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ClearLoginStatusChangeDelegate");
 
@@ -3316,6 +3361,7 @@ void UOnlineSubsystemPC::STATIC_ClearLoginStatusChangeDelegate(const struct FScr
 	params.LocalUserNum = LocalUserNum;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3324,12 +3370,12 @@ void UOnlineSubsystemPC::STATIC_ClearLoginStatusChangeDelegate(const struct FScr
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.AddLoginStatusChangeDelegate
-// (Latent, NetReliable, Simulated, Exec, Static, HasOptionalParms, Const)
+// (Final, Defined, Latent, PreOperator, Singular, Net, Native, Event)
 // Parameters:
 // struct FScriptDelegate         LoginStatusDelegate            (Parm, NeedCtorLink)
 // unsigned char                  LocalUserNum                   (Parm)
 
-void UOnlineSubsystemPC::STATIC_AddLoginStatusChangeDelegate(const struct FScriptDelegate& LoginStatusDelegate, unsigned char LocalUserNum)
+void UOnlineSubsystemPC::AddLoginStatusChangeDelegate(const struct FScriptDelegate& LoginStatusDelegate, unsigned char LocalUserNum)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.AddLoginStatusChangeDelegate");
 
@@ -3338,6 +3384,7 @@ void UOnlineSubsystemPC::STATIC_AddLoginStatusChangeDelegate(const struct FScrip
 	params.LocalUserNum = LocalUserNum;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3346,7 +3393,7 @@ void UOnlineSubsystemPC::STATIC_AddLoginStatusChangeDelegate(const struct FScrip
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.OnLoginStatusChange
-// (Defined, PreOperator, Net, NetReliable, Simulated, Native, Event, Static)
+// (Defined, Iterator, Latent, PreOperator, Net, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // TEnumAsByte<ELoginStatus>      NewStatus                      (Parm)
 // struct FUniqueNetId            NewId                          (Parm)
@@ -3369,12 +3416,12 @@ void UOnlineSubsystemPC::STATIC_OnLoginStatusChange(TEnumAsByte<ELoginStatus> Ne
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ClearWriteProfileSettingsCompleteDelegate
-// (Final, Iterator, Latent, Singular, NetReliable, Simulated, Exec, Operator, Static, HasOptionalParms, Const)
+// (Latent, PreOperator, NetReliable, Native, Event, Operator)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FScriptDelegate         WriteProfileSettingsCompleteDelegate (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_ClearWriteProfileSettingsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& WriteProfileSettingsCompleteDelegate)
+void UOnlineSubsystemPC::ClearWriteProfileSettingsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& WriteProfileSettingsCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ClearWriteProfileSettingsCompleteDelegate");
 
@@ -3383,6 +3430,7 @@ void UOnlineSubsystemPC::STATIC_ClearWriteProfileSettingsCompleteDelegate(unsign
 	params.WriteProfileSettingsCompleteDelegate = WriteProfileSettingsCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3391,12 +3439,12 @@ void UOnlineSubsystemPC::STATIC_ClearWriteProfileSettingsCompleteDelegate(unsign
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.AddWriteProfileSettingsCompleteDelegate
-// (Final, Iterator, Latent, PreOperator, Singular, Net, NetReliable, Simulated, Exec, Static, HasOptionalParms, Const)
+// (PreOperator, Singular, Net, NetReliable, Native, Event)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FScriptDelegate         WriteProfileSettingsCompleteDelegate (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_AddWriteProfileSettingsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& WriteProfileSettingsCompleteDelegate)
+void UOnlineSubsystemPC::AddWriteProfileSettingsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& WriteProfileSettingsCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.AddWriteProfileSettingsCompleteDelegate");
 
@@ -3405,6 +3453,7 @@ void UOnlineSubsystemPC::STATIC_AddWriteProfileSettingsCompleteDelegate(unsigned
 	params.WriteProfileSettingsCompleteDelegate = WriteProfileSettingsCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3413,7 +3462,7 @@ void UOnlineSubsystemPC::STATIC_AddWriteProfileSettingsCompleteDelegate(unsigned
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.OnWriteProfileSettingsComplete
-// (Latent, PreOperator, Singular, Net, NetReliable, Simulated, Native, Event, Static)
+// (Iterator, Exec, Native, Event, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // bool                           bWasSuccessful                 (Parm)
@@ -3436,13 +3485,13 @@ void UOnlineSubsystemPC::STATIC_OnWriteProfileSettingsComplete(unsigned char Loc
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.WriteProfileSettings
-// (Defined, PreOperator, Singular, NetReliable, Simulated, Native, Static)
+// (Final, PreOperator, Singular, Exec, Native, Event, HasOptionalParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // class UOnlineProfileSettings*  ProfileSettings                (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::STATIC_WriteProfileSettings(unsigned char LocalUserNum, class UOnlineProfileSettings* ProfileSettings)
+bool UOnlineSubsystemPC::WriteProfileSettings(unsigned char LocalUserNum, class UOnlineProfileSettings* ProfileSettings)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.WriteProfileSettings");
 
@@ -3462,12 +3511,12 @@ bool UOnlineSubsystemPC::STATIC_WriteProfileSettings(unsigned char LocalUserNum,
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.GetProfileSettings
-// (Final, PreOperator, Singular, Net, Exec)
+// (Latent, Net, Simulated, Exec, Event, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // class UOnlineProfileSettings*  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-class UOnlineProfileSettings* UOnlineSubsystemPC::GetProfileSettings(unsigned char LocalUserNum)
+class UOnlineProfileSettings* UOnlineSubsystemPC::STATIC_GetProfileSettings(unsigned char LocalUserNum)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.GetProfileSettings");
 
@@ -3485,12 +3534,12 @@ class UOnlineProfileSettings* UOnlineSubsystemPC::GetProfileSettings(unsigned ch
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ClearReadProfileSettingsCompleteDelegate
-// (Final, NetReliable, Simulated, Exec, Operator, Static, HasOptionalParms, Const)
+// (Iterator, Latent, Singular, Net, Native, Event, Operator)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FScriptDelegate         ReadProfileSettingsCompleteDelegate (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_ClearReadProfileSettingsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadProfileSettingsCompleteDelegate)
+void UOnlineSubsystemPC::ClearReadProfileSettingsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadProfileSettingsCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ClearReadProfileSettingsCompleteDelegate");
 
@@ -3499,6 +3548,7 @@ void UOnlineSubsystemPC::STATIC_ClearReadProfileSettingsCompleteDelegate(unsigne
 	params.ReadProfileSettingsCompleteDelegate = ReadProfileSettingsCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3507,12 +3557,12 @@ void UOnlineSubsystemPC::STATIC_ClearReadProfileSettingsCompleteDelegate(unsigne
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.AddReadProfileSettingsCompleteDelegate
-// (Iterator, Net, NetReliable, Simulated, Exec, Static, HasOptionalParms, Const)
+// (Final, Defined, Iterator, PreOperator, Singular, NetReliable, Native, Event)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FScriptDelegate         ReadProfileSettingsCompleteDelegate (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_AddReadProfileSettingsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadProfileSettingsCompleteDelegate)
+void UOnlineSubsystemPC::AddReadProfileSettingsCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& ReadProfileSettingsCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.AddReadProfileSettingsCompleteDelegate");
 
@@ -3521,6 +3571,7 @@ void UOnlineSubsystemPC::STATIC_AddReadProfileSettingsCompleteDelegate(unsigned 
 	params.ReadProfileSettingsCompleteDelegate = ReadProfileSettingsCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3529,7 +3580,7 @@ void UOnlineSubsystemPC::STATIC_AddReadProfileSettingsCompleteDelegate(unsigned 
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.OnReadProfileSettingsComplete
-// (Final, Defined, Singular, Net, NetReliable, Simulated, Native, Event, Static)
+// (Final, Defined, Iterator, Latent, Singular, Net, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // bool                           bWasSuccessful                 (Parm)
@@ -3552,13 +3603,13 @@ void UOnlineSubsystemPC::STATIC_OnReadProfileSettingsComplete(unsigned char Loca
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ReadProfileSettings
-// (Defined, Net, Simulated, Exec, Native, Operator)
+// (Final, Iterator, Latent, Singular, Net, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // class UOnlineProfileSettings*  ProfileSettings                (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::ReadProfileSettings(unsigned char LocalUserNum, class UOnlineProfileSettings* ProfileSettings)
+bool UOnlineSubsystemPC::STATIC_ReadProfileSettings(unsigned char LocalUserNum, class UOnlineProfileSettings* ProfileSettings)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ReadProfileSettings");
 
@@ -3578,12 +3629,12 @@ bool UOnlineSubsystemPC::ReadProfileSettings(unsigned char LocalUserNum, class U
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ClearFriendsChangeDelegate
-// (Final, Iterator, PreOperator, Singular, Simulated, Exec, Operator, Static, HasOptionalParms, Const)
+// (Singular, Native, Event, Operator)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FScriptDelegate         FriendsDelegate                (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_ClearFriendsChangeDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& FriendsDelegate)
+void UOnlineSubsystemPC::ClearFriendsChangeDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& FriendsDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ClearFriendsChangeDelegate");
 
@@ -3592,6 +3643,7 @@ void UOnlineSubsystemPC::STATIC_ClearFriendsChangeDelegate(unsigned char LocalUs
 	params.FriendsDelegate = FriendsDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3600,12 +3652,12 @@ void UOnlineSubsystemPC::STATIC_ClearFriendsChangeDelegate(unsigned char LocalUs
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.AddFriendsChangeDelegate
-// (Defined, Singular, Net, Simulated, Exec, Static, HasOptionalParms, Const)
+// (Final, Iterator, PreOperator, Net, Native, Event)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FScriptDelegate         FriendsDelegate                (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_AddFriendsChangeDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& FriendsDelegate)
+void UOnlineSubsystemPC::AddFriendsChangeDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& FriendsDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.AddFriendsChangeDelegate");
 
@@ -3614,6 +3666,7 @@ void UOnlineSubsystemPC::STATIC_AddFriendsChangeDelegate(unsigned char LocalUser
 	params.FriendsDelegate = FriendsDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3622,11 +3675,11 @@ void UOnlineSubsystemPC::STATIC_AddFriendsChangeDelegate(unsigned char LocalUser
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ClearMutingChangeDelegate
-// (Defined, PreOperator, Net, Simulated, Exec, Operator, Static, HasOptionalParms, Const)
+// (Final, Iterator, Latent, PreOperator, Singular, Native, Event, Operator)
 // Parameters:
 // struct FScriptDelegate         MutingDelegate                 (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_ClearMutingChangeDelegate(const struct FScriptDelegate& MutingDelegate)
+void UOnlineSubsystemPC::ClearMutingChangeDelegate(const struct FScriptDelegate& MutingDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ClearMutingChangeDelegate");
 
@@ -3634,6 +3687,7 @@ void UOnlineSubsystemPC::STATIC_ClearMutingChangeDelegate(const struct FScriptDe
 	params.MutingDelegate = MutingDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3642,11 +3696,11 @@ void UOnlineSubsystemPC::STATIC_ClearMutingChangeDelegate(const struct FScriptDe
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.AddMutingChangeDelegate
-// (Defined, PreOperator, NetReliable, Simulated, Exec, Static, HasOptionalParms, Const)
+// (Final, Iterator, NetReliable, Native, Event)
 // Parameters:
 // struct FScriptDelegate         MutingDelegate                 (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_AddMutingChangeDelegate(const struct FScriptDelegate& MutingDelegate)
+void UOnlineSubsystemPC::AddMutingChangeDelegate(const struct FScriptDelegate& MutingDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.AddMutingChangeDelegate");
 
@@ -3654,6 +3708,7 @@ void UOnlineSubsystemPC::STATIC_AddMutingChangeDelegate(const struct FScriptDele
 	params.MutingDelegate = MutingDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3662,12 +3717,12 @@ void UOnlineSubsystemPC::STATIC_AddMutingChangeDelegate(const struct FScriptDele
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.IsGuestLogin
-// (Latent, PreOperator, NetReliable, Exec, Native)
+// (Final, Defined, Latent, Singular, Net, Simulated, Exec, Native, Event, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::IsGuestLogin(unsigned char LocalUserNum)
+bool UOnlineSubsystemPC::STATIC_IsGuestLogin(unsigned char LocalUserNum)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.IsGuestLogin");
 
@@ -3686,12 +3741,12 @@ bool UOnlineSubsystemPC::IsGuestLogin(unsigned char LocalUserNum)
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.IsLocalLogin
-// (Final, Iterator, Latent, Singular, NetReliable, Exec, Native)
+// (NetReliable, Simulated, Exec, Native, Event, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::IsLocalLogin(unsigned char LocalUserNum)
+bool UOnlineSubsystemPC::STATIC_IsLocalLogin(unsigned char LocalUserNum)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.IsLocalLogin");
 
@@ -3710,11 +3765,11 @@ bool UOnlineSubsystemPC::IsLocalLogin(unsigned char LocalUserNum)
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ClearCurrentUserChangedDelegate
-// (Iterator, Latent, PreOperator, Simulated, Exec, Operator, Static, HasOptionalParms, Const)
+// (Final, Defined, Iterator, Native, Event, Operator)
 // Parameters:
 // struct FScriptDelegate         CurrentUserDelegate            (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_ClearCurrentUserChangedDelegate(const struct FScriptDelegate& CurrentUserDelegate)
+void UOnlineSubsystemPC::ClearCurrentUserChangedDelegate(const struct FScriptDelegate& CurrentUserDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ClearCurrentUserChangedDelegate");
 
@@ -3722,6 +3777,7 @@ void UOnlineSubsystemPC::STATIC_ClearCurrentUserChangedDelegate(const struct FSc
 	params.CurrentUserDelegate = CurrentUserDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3730,11 +3786,11 @@ void UOnlineSubsystemPC::STATIC_ClearCurrentUserChangedDelegate(const struct FSc
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.AddCurrentUserChangedDelegate
-// (Final, Latent, Net, Simulated, Exec, Static, HasOptionalParms, Const)
+// (Iterator, Latent, PreOperator, Singular, Native, Event)
 // Parameters:
 // struct FScriptDelegate         CurrentUserDelegate            (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_AddCurrentUserChangedDelegate(const struct FScriptDelegate& CurrentUserDelegate)
+void UOnlineSubsystemPC::AddCurrentUserChangedDelegate(const struct FScriptDelegate& CurrentUserDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.AddCurrentUserChangedDelegate");
 
@@ -3742,6 +3798,7 @@ void UOnlineSubsystemPC::STATIC_AddCurrentUserChangedDelegate(const struct FScri
 	params.CurrentUserDelegate = CurrentUserDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3750,11 +3807,11 @@ void UOnlineSubsystemPC::STATIC_AddCurrentUserChangedDelegate(const struct FScri
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ClearLoginCancelledDelegate
-// (Final, Defined, Iterator, Net, Simulated, Exec, Operator, Static, HasOptionalParms, Const)
+// (Defined, PreOperator, Singular, Native, Event, Operator)
 // Parameters:
 // struct FScriptDelegate         CancelledDelegate              (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_ClearLoginCancelledDelegate(const struct FScriptDelegate& CancelledDelegate)
+void UOnlineSubsystemPC::ClearLoginCancelledDelegate(const struct FScriptDelegate& CancelledDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ClearLoginCancelledDelegate");
 
@@ -3762,6 +3819,7 @@ void UOnlineSubsystemPC::STATIC_ClearLoginCancelledDelegate(const struct FScript
 	params.CancelledDelegate = CancelledDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3770,11 +3828,11 @@ void UOnlineSubsystemPC::STATIC_ClearLoginCancelledDelegate(const struct FScript
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.AddLoginCancelledDelegate
-// (Final, Iterator, NetReliable, Simulated, Exec, Static, HasOptionalParms, Const)
+// (Latent, PreOperator, Singular, Net, Native, Event)
 // Parameters:
 // struct FScriptDelegate         CancelledDelegate              (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_AddLoginCancelledDelegate(const struct FScriptDelegate& CancelledDelegate)
+void UOnlineSubsystemPC::AddLoginCancelledDelegate(const struct FScriptDelegate& CancelledDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.AddLoginCancelledDelegate");
 
@@ -3782,6 +3840,7 @@ void UOnlineSubsystemPC::STATIC_AddLoginCancelledDelegate(const struct FScriptDe
 	params.CancelledDelegate = CancelledDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3790,11 +3849,11 @@ void UOnlineSubsystemPC::STATIC_AddLoginCancelledDelegate(const struct FScriptDe
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ClearLoginChangeDelegate
-// (Latent, Net, Simulated, Exec, Operator, Static, HasOptionalParms, Const)
+// (Final, Defined, PreOperator, Singular, Native, Event, Operator)
 // Parameters:
 // struct FScriptDelegate         LoginDelegate                  (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_ClearLoginChangeDelegate(const struct FScriptDelegate& LoginDelegate)
+void UOnlineSubsystemPC::ClearLoginChangeDelegate(const struct FScriptDelegate& LoginDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ClearLoginChangeDelegate");
 
@@ -3802,6 +3861,7 @@ void UOnlineSubsystemPC::STATIC_ClearLoginChangeDelegate(const struct FScriptDel
 	params.LoginDelegate = LoginDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3810,11 +3870,11 @@ void UOnlineSubsystemPC::STATIC_ClearLoginChangeDelegate(const struct FScriptDel
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.AddLoginChangeDelegate
-// (Defined, Iterator, NetReliable, Simulated, Exec, Static, HasOptionalParms, Const)
+// (Final, Latent, PreOperator, Singular, Net, Native, Event)
 // Parameters:
 // struct FScriptDelegate         LoginDelegate                  (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_AddLoginChangeDelegate(const struct FScriptDelegate& LoginDelegate)
+void UOnlineSubsystemPC::AddLoginChangeDelegate(const struct FScriptDelegate& LoginDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.AddLoginChangeDelegate");
 
@@ -3822,6 +3882,7 @@ void UOnlineSubsystemPC::STATIC_AddLoginChangeDelegate(const struct FScriptDeleg
 	params.LoginDelegate = LoginDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3830,7 +3891,7 @@ void UOnlineSubsystemPC::STATIC_AddLoginChangeDelegate(const struct FScriptDeleg
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ShowFriendsUI
-// (PreOperator, Singular, Simulated, Native, Event, Operator)
+// (Final, Latent, Net, NetReliable, Simulated, Native, HasOptionalParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
@@ -3854,13 +3915,13 @@ bool UOnlineSubsystemPC::ShowFriendsUI(unsigned char LocalUserNum)
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.IsMuted
-// (Latent, PreOperator, Singular, NetReliable, Exec, Native)
+// (Final, Defined, Latent, NetReliable, Simulated, Exec, Native, Event, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FUniqueNetId            PlayerID                       (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::IsMuted(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID)
+bool UOnlineSubsystemPC::STATIC_IsMuted(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.IsMuted");
 
@@ -3880,13 +3941,13 @@ bool UOnlineSubsystemPC::IsMuted(unsigned char LocalUserNum, const struct FUniqu
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.AreAnyFriends
-// (Defined, PreOperator, NetReliable, Simulated, Native, Static, HasOptionalParms, Const)
+// (NetReliable, Exec, Native, Event)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // TArray<struct FFriendsQuery>   Query                          (Parm, OutParm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::STATIC_AreAnyFriends(unsigned char LocalUserNum, TArray<struct FFriendsQuery>* Query)
+bool UOnlineSubsystemPC::AreAnyFriends(unsigned char LocalUserNum, TArray<struct FFriendsQuery>* Query)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.AreAnyFriends");
 
@@ -3908,13 +3969,13 @@ bool UOnlineSubsystemPC::STATIC_AreAnyFriends(unsigned char LocalUserNum, TArray
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.IsFriend
-// (Final, Defined, PreOperator, NetReliable, Exec, Native)
+// (Defined, Iterator, Singular, Net, Simulated, Exec, Native, Event, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FUniqueNetId            PlayerID                       (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::IsFriend(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID)
+bool UOnlineSubsystemPC::STATIC_IsFriend(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.IsFriend");
 
@@ -3934,7 +3995,7 @@ bool UOnlineSubsystemPC::IsFriend(unsigned char LocalUserNum, const struct FUniq
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.CanUploadFitnessData
-// (Iterator, Singular, Exec, Operator, Static, HasOptionalParms, Const)
+// (PreOperator, Simulated, Exec, Event, Operator)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (Parm, OutParm)
@@ -3942,7 +4003,7 @@ bool UOnlineSubsystemPC::IsFriend(unsigned char LocalUserNum, const struct FUniq
 // struct FString                 Reason                         (OptionalParm, Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::STATIC_CanUploadFitnessData(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlineSubsystemPC::CanUploadFitnessData(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.CanUploadFitnessData");
 
@@ -3965,7 +4026,7 @@ bool UOnlineSubsystemPC::STATIC_CanUploadFitnessData(unsigned char LocalUserNum,
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.CanShareKinectContent
-// (Iterator, PreOperator, Exec, Operator, Static, HasOptionalParms, Const)
+// (Simulated, Exec, Event, Operator)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (Parm, OutParm)
@@ -3973,7 +4034,7 @@ bool UOnlineSubsystemPC::STATIC_CanUploadFitnessData(unsigned char LocalUserNum,
 // struct FString                 Reason                         (OptionalParm, Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::STATIC_CanShareKinectContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlineSubsystemPC::CanShareKinectContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.CanShareKinectContent");
 
@@ -3996,7 +4057,7 @@ bool UOnlineSubsystemPC::STATIC_CanShareKinectContent(unsigned char LocalUserNum
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.CanShareWithSocialNetwork
-// (Defined, Iterator, PreOperator, Exec, Operator, Static, HasOptionalParms, Const)
+// (Defined, Simulated, Exec, Event, Operator)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (Parm, OutParm)
@@ -4004,7 +4065,7 @@ bool UOnlineSubsystemPC::STATIC_CanShareKinectContent(unsigned char LocalUserNum
 // struct FString                 Reason                         (OptionalParm, Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::STATIC_CanShareWithSocialNetwork(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlineSubsystemPC::CanShareWithSocialNetwork(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.CanShareWithSocialNetwork");
 
@@ -4027,7 +4088,7 @@ bool UOnlineSubsystemPC::STATIC_CanShareWithSocialNetwork(unsigned char LocalUse
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.CanBrowseInternet
-// (Final, Defined, Latent, PreOperator, Singular, Net, NetReliable, Simulated, Operator, Static, HasOptionalParms, Const)
+// (Final, Defined, Iterator, Singular, Net, NetReliable, Exec, Event, Operator)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (Parm, OutParm)
@@ -4035,7 +4096,7 @@ bool UOnlineSubsystemPC::STATIC_CanShareWithSocialNetwork(unsigned char LocalUse
 // struct FString                 Reason                         (OptionalParm, Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::STATIC_CanBrowseInternet(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlineSubsystemPC::CanBrowseInternet(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.CanBrowseInternet");
 
@@ -4058,7 +4119,7 @@ bool UOnlineSubsystemPC::STATIC_CanBrowseInternet(unsigned char LocalUserNum, bo
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.CanAccessPremiumVideoContent
-// (Defined, PreOperator, Singular, Net, NetReliable, Simulated, Operator, Static, HasOptionalParms, Const)
+// (Defined, Iterator, Latent, PreOperator, Net, NetReliable, Exec, Event, Operator)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (Parm, OutParm)
@@ -4066,7 +4127,7 @@ bool UOnlineSubsystemPC::STATIC_CanBrowseInternet(unsigned char LocalUserNum, bo
 // struct FString                 Reason                         (OptionalParm, Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::STATIC_CanAccessPremiumVideoContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlineSubsystemPC::CanAccessPremiumVideoContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.CanAccessPremiumVideoContent");
 
@@ -4089,7 +4150,7 @@ bool UOnlineSubsystemPC::STATIC_CanAccessPremiumVideoContent(unsigned char Local
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.CanAccessPremiumContent
-// (Final, PreOperator, Singular, Net, NetReliable, Simulated, Operator, Static, HasOptionalParms, Const)
+// (Final, Iterator, Latent, PreOperator, Net, NetReliable, Exec, Event, Operator)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (Parm, OutParm)
@@ -4097,7 +4158,7 @@ bool UOnlineSubsystemPC::STATIC_CanAccessPremiumVideoContent(unsigned char Local
 // struct FString                 Reason                         (OptionalParm, Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::STATIC_CanAccessPremiumContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlineSubsystemPC::CanAccessPremiumContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.CanAccessPremiumContent");
 
@@ -4120,7 +4181,7 @@ bool UOnlineSubsystemPC::STATIC_CanAccessPremiumContent(unsigned char LocalUserN
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.CanUseCloudStorage
-// (Final, Iterator, Singular, Exec, Operator, Static, HasOptionalParms, Const)
+// (Final, PreOperator, Simulated, Exec, Event, Operator)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (Parm, OutParm)
@@ -4128,7 +4189,7 @@ bool UOnlineSubsystemPC::STATIC_CanAccessPremiumContent(unsigned char LocalUserN
 // struct FString                 Reason                         (OptionalParm, Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::STATIC_CanUseCloudStorage(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlineSubsystemPC::CanUseCloudStorage(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.CanUseCloudStorage");
 
@@ -4151,7 +4212,7 @@ bool UOnlineSubsystemPC::STATIC_CanUseCloudStorage(unsigned char LocalUserNum, b
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.CanRecordDVRClips
-// (PreOperator, Exec, Operator, Static, HasOptionalParms, Const)
+// (Iterator, Latent, PreOperator, Singular, Net, NetReliable, Exec, Event, Operator)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (Parm, OutParm)
@@ -4159,7 +4220,7 @@ bool UOnlineSubsystemPC::STATIC_CanUseCloudStorage(unsigned char LocalUserNum, b
 // struct FString                 Reason                         (OptionalParm, Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::STATIC_CanRecordDVRClips(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlineSubsystemPC::CanRecordDVRClips(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.CanRecordDVRClips");
 
@@ -4182,7 +4243,7 @@ bool UOnlineSubsystemPC::STATIC_CanRecordDVRClips(unsigned char LocalUserNum, bo
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.CanShowPresenceInformation
-// (Final, Defined, Iterator, PreOperator, Exec, Operator, Static, HasOptionalParms, Const)
+// (Final, Defined, Simulated, Exec, Event, Operator)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (Parm, OutParm)
@@ -4190,7 +4251,7 @@ bool UOnlineSubsystemPC::STATIC_CanRecordDVRClips(unsigned char LocalUserNum, bo
 // struct FString                 Reason                         (OptionalParm, Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::STATIC_CanShowPresenceInformation(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlineSubsystemPC::CanShowPresenceInformation(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.CanShowPresenceInformation");
 
@@ -4213,7 +4274,7 @@ bool UOnlineSubsystemPC::STATIC_CanShowPresenceInformation(unsigned char LocalUs
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.CanViewPlayerProfiles
-// (Final, Latent, Singular, Exec, Operator, Static, HasOptionalParms, Const)
+// (Final, Iterator, PreOperator, Simulated, Exec, Event, Operator)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (Parm, OutParm)
@@ -4221,7 +4282,7 @@ bool UOnlineSubsystemPC::STATIC_CanShowPresenceInformation(unsigned char LocalUs
 // struct FString                 Reason                         (OptionalParm, Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::STATIC_CanViewPlayerProfiles(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlineSubsystemPC::CanViewPlayerProfiles(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.CanViewPlayerProfiles");
 
@@ -4244,7 +4305,7 @@ bool UOnlineSubsystemPC::STATIC_CanViewPlayerProfiles(unsigned char LocalUserNum
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.CanPurchaseContent
-// (Defined, Iterator, Latent, Exec, Operator, Static, HasOptionalParms, Const)
+// (Defined, Latent, PreOperator, Singular, Net, NetReliable, Exec, Event, Operator)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (Parm, OutParm)
@@ -4252,7 +4313,7 @@ bool UOnlineSubsystemPC::STATIC_CanViewPlayerProfiles(unsigned char LocalUserNum
 // struct FString                 Reason                         (OptionalParm, Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::STATIC_CanPurchaseContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlineSubsystemPC::CanPurchaseContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.CanPurchaseContent");
 
@@ -4275,7 +4336,7 @@ bool UOnlineSubsystemPC::STATIC_CanPurchaseContent(unsigned char LocalUserNum, b
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.CanShareUserCreatedContent
-// (Final, Iterator, PreOperator, Exec, Operator, Static, HasOptionalParms, Const)
+// (Final, Simulated, Exec, Event, Operator)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (Parm, OutParm)
@@ -4283,7 +4344,7 @@ bool UOnlineSubsystemPC::STATIC_CanPurchaseContent(unsigned char LocalUserNum, b
 // struct FString                 Reason                         (OptionalParm, Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::STATIC_CanShareUserCreatedContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlineSubsystemPC::CanShareUserCreatedContent(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.CanShareUserCreatedContent");
 
@@ -4305,8 +4366,40 @@ bool UOnlineSubsystemPC::STATIC_CanShareUserCreatedContent(unsigned char LocalUs
 }
 
 
+// Function OnlineSubsystemPC.OnlineSubsystemPC.CanMultiplayerCrossPlay
+// (Final, Iterator, NetReliable, Exec, Native, Event, HasOptionalParms)
+// Parameters:
+// unsigned char                  LocalUserNum                   (Parm)
+// TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (Parm, OutParm)
+// bool                           bAttemptToResolve              (OptionalParm, Parm)
+// struct FString                 Reason                         (OptionalParm, Parm, NeedCtorLink)
+// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+
+bool UOnlineSubsystemPC::CanMultiplayerCrossPlay(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.CanMultiplayerCrossPlay");
+
+	UOnlineSubsystemPC_CanMultiplayerCrossPlay_Params params;
+	params.LocalUserNum = LocalUserNum;
+	params.bAttemptToResolve = bAttemptToResolve;
+	params.Reason = Reason;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (PrivilegeLevelHint != nullptr)
+		*PrivilegeLevelHint = params.PrivilegeLevelHint;
+
+	return params.ReturnValue;
+}
+
+
 // Function OnlineSubsystemPC.OnlineSubsystemPC.CanCommunicateVoice
-// (Defined, Latent, Singular, NetReliable, Simulated, Native, Event, Static)
+// (Defined, Iterator, PreOperator, Singular, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (Parm, OutParm)
@@ -4338,7 +4431,7 @@ bool UOnlineSubsystemPC::STATIC_CanCommunicateVoice(unsigned char LocalUserNum, 
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.CanCommunicateVideo
-// (Defined, Iterator, Exec, Operator, Static, HasOptionalParms, Const)
+// (Defined, PreOperator, Singular, Net, NetReliable, Exec, Event, Operator)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (Parm, OutParm)
@@ -4346,7 +4439,7 @@ bool UOnlineSubsystemPC::STATIC_CanCommunicateVoice(unsigned char LocalUserNum, 
 // struct FString                 Reason                         (OptionalParm, Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::STATIC_CanCommunicateVideo(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlineSubsystemPC::CanCommunicateVideo(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.CanCommunicateVideo");
 
@@ -4369,7 +4462,7 @@ bool UOnlineSubsystemPC::STATIC_CanCommunicateVideo(unsigned char LocalUserNum, 
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.CanCommunicateText
-// (Defined, Iterator, Simulated, Native, HasOptionalParms)
+// (Iterator, Latent, PreOperator, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (Parm, OutParm)
@@ -4401,7 +4494,7 @@ bool UOnlineSubsystemPC::CanCommunicateText(unsigned char LocalUserNum, bool bAt
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.CanPlayOnline
-// (Final, Iterator, Latent, Exec, Operator, Static, HasOptionalParms, Const)
+// (Final, Latent, PreOperator, Singular, Net, NetReliable, Exec, Event, Operator)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevelHint             (Parm, OutParm)
@@ -4409,7 +4502,7 @@ bool UOnlineSubsystemPC::CanCommunicateText(unsigned char LocalUserNum, bool bAt
 // struct FString                 Reason                         (OptionalParm, Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::STATIC_CanPlayOnline(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
+bool UOnlineSubsystemPC::CanPlayOnline(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.CanPlayOnline");
 
@@ -4432,11 +4525,11 @@ bool UOnlineSubsystemPC::STATIC_CanPlayOnline(unsigned char LocalUserNum, bool b
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ClearPrivilegeLevelCheckedDelegate
-// (Defined, Iterator, Singular, Net, Simulated, Exec, Operator, Static, HasOptionalParms, Const)
+// (Final, PreOperator, Net, Native, Event, Operator)
 // Parameters:
 // struct FScriptDelegate         PrivilegeDelegate              (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_ClearPrivilegeLevelCheckedDelegate(const struct FScriptDelegate& PrivilegeDelegate)
+void UOnlineSubsystemPC::ClearPrivilegeLevelCheckedDelegate(const struct FScriptDelegate& PrivilegeDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ClearPrivilegeLevelCheckedDelegate");
 
@@ -4444,6 +4537,7 @@ void UOnlineSubsystemPC::STATIC_ClearPrivilegeLevelCheckedDelegate(const struct 
 	params.PrivilegeDelegate = PrivilegeDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4452,11 +4546,11 @@ void UOnlineSubsystemPC::STATIC_ClearPrivilegeLevelCheckedDelegate(const struct 
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.AddPrivilegeLevelCheckedDelegate
-// (Final, Latent, Singular, NetReliable, Simulated, Exec, Static, HasOptionalParms, Const)
+// (Iterator, Latent, PreOperator, NetReliable, Native, Event)
 // Parameters:
 // struct FScriptDelegate         PrivilegeDelegate              (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_AddPrivilegeLevelCheckedDelegate(const struct FScriptDelegate& PrivilegeDelegate)
+void UOnlineSubsystemPC::AddPrivilegeLevelCheckedDelegate(const struct FScriptDelegate& PrivilegeDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.AddPrivilegeLevelCheckedDelegate");
 
@@ -4464,6 +4558,7 @@ void UOnlineSubsystemPC::STATIC_AddPrivilegeLevelCheckedDelegate(const struct FS
 	params.PrivilegeDelegate = PrivilegeDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4472,7 +4567,7 @@ void UOnlineSubsystemPC::STATIC_AddPrivilegeLevelCheckedDelegate(const struct FS
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.OnPrivilegeLevelChecked
-// (Final, Latent, PreOperator, Net, NetReliable, Simulated, Native, Event, Static)
+// (Final, Iterator, Singular, Net, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // TEnumAsByte<EFeaturePrivilege> Privilege                      (Parm)
@@ -4499,12 +4594,12 @@ void UOnlineSubsystemPC::STATIC_OnPrivilegeLevelChecked(unsigned char LocalUserN
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.GetPlayerNickname
-// (Final, Defined, Latent, PreOperator, Net, Exec)
+// (Defined, PreOperator, Singular, Simulated, Exec, Event, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString UOnlineSubsystemPC::GetPlayerNickname(unsigned char LocalUserNum)
+struct FString UOnlineSubsystemPC::STATIC_GetPlayerNickname(unsigned char LocalUserNum)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.GetPlayerNickname");
 
@@ -4522,13 +4617,13 @@ struct FString UOnlineSubsystemPC::GetPlayerNickname(unsigned char LocalUserNum)
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.GetUniquePlayerId
-// (Simulated, Exec)
+// (Final, Defined, Iterator, PreOperator, Net, NetReliable, Simulated, Exec, Event, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FUniqueNetId            PlayerID                       (Parm, OutParm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::GetUniquePlayerId(unsigned char LocalUserNum, struct FUniqueNetId* PlayerID)
+bool UOnlineSubsystemPC::STATIC_GetUniquePlayerId(unsigned char LocalUserNum, struct FUniqueNetId* PlayerID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.GetUniquePlayerId");
 
@@ -4549,7 +4644,7 @@ bool UOnlineSubsystemPC::GetUniquePlayerId(unsigned char LocalUserNum, struct FU
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.GetLoginStatus
-// (Iterator, Latent, PreOperator, Net, NetReliable, Exec, HasOptionalParms)
+// (Defined, PreOperator, Singular, Net, NetReliable, Native, HasOptionalParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // TEnumAsByte<ELoginStatus>      ReturnValue                    (Parm, OutParm, ReturnParm)
@@ -4562,6 +4657,7 @@ TEnumAsByte<ELoginStatus> UOnlineSubsystemPC::GetLoginStatus(unsigned char Local
 	params.LocalUserNum = LocalUserNum;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4572,12 +4668,12 @@ TEnumAsByte<ELoginStatus> UOnlineSubsystemPC::GetLoginStatus(unsigned char Local
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ClearLogoutCompletedDelegate
-// (Final, Defined, Latent, Net, Simulated, Exec, Operator, Static, HasOptionalParms, Const)
+// (Defined, Iterator, PreOperator, Singular, Native, Event, Operator)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FScriptDelegate         LogoutDelegate                 (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_ClearLogoutCompletedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& LogoutDelegate)
+void UOnlineSubsystemPC::ClearLogoutCompletedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& LogoutDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ClearLogoutCompletedDelegate");
 
@@ -4586,6 +4682,7 @@ void UOnlineSubsystemPC::STATIC_ClearLogoutCompletedDelegate(unsigned char Local
 	params.LogoutDelegate = LogoutDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4594,12 +4691,12 @@ void UOnlineSubsystemPC::STATIC_ClearLogoutCompletedDelegate(unsigned char Local
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.AddLogoutCompletedDelegate
-// (Final, Latent, NetReliable, Simulated, Exec, Static, HasOptionalParms, Const)
+// (Iterator, Latent, PreOperator, Singular, Net, Native, Event)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FScriptDelegate         LogoutDelegate                 (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_AddLogoutCompletedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& LogoutDelegate)
+void UOnlineSubsystemPC::AddLogoutCompletedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& LogoutDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.AddLogoutCompletedDelegate");
 
@@ -4608,6 +4705,7 @@ void UOnlineSubsystemPC::STATIC_AddLogoutCompletedDelegate(unsigned char LocalUs
 	params.LogoutDelegate = LogoutDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4616,7 +4714,7 @@ void UOnlineSubsystemPC::STATIC_AddLogoutCompletedDelegate(unsigned char LocalUs
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.OnLogoutCompleted
-// (Final, Defined, PreOperator, Net, NetReliable, Simulated, Native, Event, Static)
+// (Final, Defined, Iterator, Latent, PreOperator, Net, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // bool                           bWasSuccessful                 (Parm)
 
@@ -4637,12 +4735,12 @@ void UOnlineSubsystemPC::STATIC_OnLogoutCompleted(bool bWasSuccessful)
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.Logout
-// (Final, Iterator, PreOperator, Singular, Net, Simulated, Event)
+// (Final, Iterator, Latent, PreOperator, Singular, Exec, Operator, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::Logout(unsigned char LocalUserNum)
+bool UOnlineSubsystemPC::STATIC_Logout(unsigned char LocalUserNum)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.Logout");
 
@@ -4660,14 +4758,14 @@ bool UOnlineSubsystemPC::Logout(unsigned char LocalUserNum)
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.PairUserAndControllerAtIndex
-// (Final, Iterator, Latent, Net, Exec, Operator)
+// (Simulated, Exec, Event, Operator, Static)
 // Parameters:
 // unsigned char                  PlayerIndex                    (Parm)
 // unsigned char                  ControllerIndex                (Parm)
 // int                            PairIndex                      (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::PairUserAndControllerAtIndex(unsigned char PlayerIndex, unsigned char ControllerIndex, int PairIndex)
+bool UOnlineSubsystemPC::STATIC_PairUserAndControllerAtIndex(unsigned char PlayerIndex, unsigned char ControllerIndex, int PairIndex)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.PairUserAndControllerAtIndex");
 
@@ -4687,11 +4785,11 @@ bool UOnlineSubsystemPC::PairUserAndControllerAtIndex(unsigned char PlayerIndex,
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ClearSystemUserContrllerPairingChangedDelegate
-// (Defined, Singular, NetReliable, Simulated, Exec, Operator, Static, HasOptionalParms, Const)
+// (Final, Iterator, Latent, NetReliable, Native, Event, Operator)
 // Parameters:
 // struct FScriptDelegate         PairingChangeDelegate          (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_ClearSystemUserContrllerPairingChangedDelegate(const struct FScriptDelegate& PairingChangeDelegate)
+void UOnlineSubsystemPC::ClearSystemUserContrllerPairingChangedDelegate(const struct FScriptDelegate& PairingChangeDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ClearSystemUserContrllerPairingChangedDelegate");
 
@@ -4699,6 +4797,7 @@ void UOnlineSubsystemPC::STATIC_ClearSystemUserContrllerPairingChangedDelegate(c
 	params.PairingChangeDelegate = PairingChangeDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4707,11 +4806,11 @@ void UOnlineSubsystemPC::STATIC_ClearSystemUserContrllerPairingChangedDelegate(c
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.AddSystemUserContrllerPairingChangedDelegate
-// (Final, Iterator, Latent, Singular, Net, NetReliable, Simulated, Exec, Static, HasOptionalParms, Const)
+// (Singular, Net, NetReliable, Native, Event)
 // Parameters:
 // struct FScriptDelegate         PairingChangeDelegate          (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_AddSystemUserContrllerPairingChangedDelegate(const struct FScriptDelegate& PairingChangeDelegate)
+void UOnlineSubsystemPC::AddSystemUserContrllerPairingChangedDelegate(const struct FScriptDelegate& PairingChangeDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.AddSystemUserContrllerPairingChangedDelegate");
 
@@ -4719,6 +4818,7 @@ void UOnlineSubsystemPC::STATIC_AddSystemUserContrllerPairingChangedDelegate(con
 	params.PairingChangeDelegate = PairingChangeDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4727,7 +4827,7 @@ void UOnlineSubsystemPC::STATIC_AddSystemUserContrllerPairingChangedDelegate(con
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.OnSystemUserControllerPairingChanged
-// (Final, PreOperator, Singular, Net, NetReliable, Simulated, Native, Event, Static)
+// (Final, Iterator, Latent, PreOperator, Singular, Net, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // int                            NewLocalUserNum                (Parm)
 // int                            PreviousLocalUserNum           (Parm)
@@ -4750,12 +4850,12 @@ void UOnlineSubsystemPC::STATIC_OnSystemUserControllerPairingChanged(int NewLoca
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ClearLoginFailedDelegate
-// (Final, Latent, Net, Simulated, Exec, Operator, Static, HasOptionalParms, Const)
+// (Iterator, PreOperator, Singular, Native, Event, Operator)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FScriptDelegate         LoginDelegate                  (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_ClearLoginFailedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& LoginDelegate)
+void UOnlineSubsystemPC::ClearLoginFailedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& LoginDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ClearLoginFailedDelegate");
 
@@ -4764,6 +4864,7 @@ void UOnlineSubsystemPC::STATIC_ClearLoginFailedDelegate(unsigned char LocalUser
 	params.LoginDelegate = LoginDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4772,12 +4873,12 @@ void UOnlineSubsystemPC::STATIC_ClearLoginFailedDelegate(unsigned char LocalUser
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.AddLoginFailedDelegate
-// (Final, Defined, Iterator, NetReliable, Simulated, Exec, Static, HasOptionalParms, Const)
+// (Defined, Latent, PreOperator, Singular, Net, Native, Event)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FScriptDelegate         LoginDelegate                  (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_AddLoginFailedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& LoginDelegate)
+void UOnlineSubsystemPC::AddLoginFailedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& LoginDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.AddLoginFailedDelegate");
 
@@ -4786,6 +4887,7 @@ void UOnlineSubsystemPC::STATIC_AddLoginFailedDelegate(unsigned char LocalUserNu
 	params.LoginDelegate = LoginDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4794,7 +4896,7 @@ void UOnlineSubsystemPC::STATIC_AddLoginFailedDelegate(unsigned char LocalUserNu
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.OnLoginFailed
-// (Final, PreOperator, Net, NetReliable, Simulated, Native, Event, Static)
+// (Final, Iterator, Latent, PreOperator, Net, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // TEnumAsByte<EOnlineServerConnectionStatus> ErrorCode                      (Parm)
@@ -4817,11 +4919,11 @@ void UOnlineSubsystemPC::STATIC_OnLoginFailed(unsigned char LocalUserNum, TEnumA
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.AutoLogin
-// (Final, Defined, Iterator, Latent, Exec, Native, Static, HasOptionalParms, Const)
+// (Final, Iterator, Latent, PreOperator, Singular, Net, NetReliable, Exec, Native, Event)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::STATIC_AutoLogin()
+bool UOnlineSubsystemPC::AutoLogin()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.AutoLogin");
 
@@ -4839,7 +4941,7 @@ bool UOnlineSubsystemPC::STATIC_AutoLogin()
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.Login
-// (Defined, Singular, Simulated, Exec, HasOptionalParms)
+// (Latent, PreOperator, Singular, Simulated, Native, HasOptionalParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FString                 LoginName                      (Parm, NeedCtorLink)
@@ -4858,6 +4960,7 @@ bool UOnlineSubsystemPC::Login(unsigned char LocalUserNum, const struct FString&
 	params.bWantsLocalOnly = bWantsLocalOnly;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4868,7 +4971,7 @@ bool UOnlineSubsystemPC::Login(unsigned char LocalUserNum, const struct FString&
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.IsAccountPickerOpen
-// (Final, Defined, Latent, Simulated, Event, HasOptionalParms)
+// (Final, Defined, Iterator, Net, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
@@ -4889,7 +4992,7 @@ bool UOnlineSubsystemPC::IsAccountPickerOpen()
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ShowLoginUI
-// (Defined, Latent, PreOperator, Singular, Simulated, Native, Event, Operator)
+// (Final, Defined, PreOperator, Net, NetReliable, Simulated, Native, HasOptionalParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // bool                           bForceLogin                    (OptionalParm, Parm)
@@ -4917,7 +5020,7 @@ bool UOnlineSubsystemPC::ShowLoginUI(unsigned char LocalUserNum, bool bForceLogi
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.OnFriendsChange
-// (Defined, Latent, Net, NetReliable, Simulated, Native, Event, Static)
+// (Defined, Iterator, PreOperator, Net, NetReliable, Simulated, Native, Event, Static)
 
 void UOnlineSubsystemPC::STATIC_OnFriendsChange()
 {
@@ -4935,12 +5038,12 @@ void UOnlineSubsystemPC::STATIC_OnFriendsChange()
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.GetTitleFileState
-// (Defined, PreOperator, Singular, Net, NetReliable, Exec)
+// (Final, Latent, Net, NetReliable, Simulated, Exec, Event, Static)
 // Parameters:
 // struct FString                 Filename                       (Parm, NeedCtorLink)
 // TEnumAsByte<EOnlineEnumerationReadState> ReturnValue                    (Parm, OutParm, ReturnParm)
 
-TEnumAsByte<EOnlineEnumerationReadState> UOnlineSubsystemPC::GetTitleFileState(const struct FString& Filename)
+TEnumAsByte<EOnlineEnumerationReadState> UOnlineSubsystemPC::STATIC_GetTitleFileState(const struct FString& Filename)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.GetTitleFileState");
 
@@ -4958,13 +5061,13 @@ TEnumAsByte<EOnlineEnumerationReadState> UOnlineSubsystemPC::GetTitleFileState(c
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.GetTitleFileContents
-// (Final, Defined, Iterator, Latent, Singular, Net, NetReliable, Exec)
+// (Defined, Iterator, Net, NetReliable, Simulated, Exec, Event, Static)
 // Parameters:
 // struct FString                 Filename                       (Parm, NeedCtorLink)
 // TArray<unsigned char>          FileContents                   (Parm, OutParm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::GetTitleFileContents(const struct FString& Filename, TArray<unsigned char>* FileContents)
+bool UOnlineSubsystemPC::STATIC_GetTitleFileContents(const struct FString& Filename, TArray<unsigned char>* FileContents)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.GetTitleFileContents");
 
@@ -4985,11 +5088,11 @@ bool UOnlineSubsystemPC::GetTitleFileContents(const struct FString& Filename, TA
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ClearReadTitleFileCompleteDelegate
-// (Final, Iterator, NetReliable, Simulated, Exec, Operator, Static, HasOptionalParms, Const)
+// (PreOperator, Singular, Net, Native, Event, Operator)
 // Parameters:
 // struct FScriptDelegate         ReadTitleFileCompleteDelegate  (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_ClearReadTitleFileCompleteDelegate(const struct FScriptDelegate& ReadTitleFileCompleteDelegate)
+void UOnlineSubsystemPC::ClearReadTitleFileCompleteDelegate(const struct FScriptDelegate& ReadTitleFileCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ClearReadTitleFileCompleteDelegate");
 
@@ -4997,6 +5100,7 @@ void UOnlineSubsystemPC::STATIC_ClearReadTitleFileCompleteDelegate(const struct 
 	params.ReadTitleFileCompleteDelegate = ReadTitleFileCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5005,11 +5109,11 @@ void UOnlineSubsystemPC::STATIC_ClearReadTitleFileCompleteDelegate(const struct 
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.AddReadTitleFileCompleteDelegate
-// (Latent, Net, NetReliable, Simulated, Exec, Static, HasOptionalParms, Const)
+// (Final, Defined, Latent, PreOperator, Singular, NetReliable, Native, Event)
 // Parameters:
 // struct FScriptDelegate         ReadTitleFileCompleteDelegate  (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_AddReadTitleFileCompleteDelegate(const struct FScriptDelegate& ReadTitleFileCompleteDelegate)
+void UOnlineSubsystemPC::AddReadTitleFileCompleteDelegate(const struct FScriptDelegate& ReadTitleFileCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.AddReadTitleFileCompleteDelegate");
 
@@ -5017,6 +5121,7 @@ void UOnlineSubsystemPC::STATIC_AddReadTitleFileCompleteDelegate(const struct FS
 	params.ReadTitleFileCompleteDelegate = ReadTitleFileCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5025,12 +5130,12 @@ void UOnlineSubsystemPC::STATIC_AddReadTitleFileCompleteDelegate(const struct FS
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ReadTitleFile
-// (Final, Defined, Latent, Net, Simulated, Exec, Native, Operator)
+// (Defined, Iterator, PreOperator, Singular, Net, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // struct FString                 FileToRead                     (Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::ReadTitleFile(const struct FString& FileToRead)
+bool UOnlineSubsystemPC::STATIC_ReadTitleFile(const struct FString& FileToRead)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ReadTitleFile");
 
@@ -5049,7 +5154,7 @@ bool UOnlineSubsystemPC::ReadTitleFile(const struct FString& FileToRead)
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.OnReadTitleFileComplete
-// (Final, Iterator, Singular, Net, NetReliable, Simulated, Native, Event, Static)
+// (Final, PreOperator, Singular, Net, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // bool                           bWasSuccessful                 (Parm)
 // struct FString                 Filename                       (Parm, NeedCtorLink)
@@ -5072,7 +5177,7 @@ void UOnlineSubsystemPC::STATIC_OnReadTitleFileComplete(bool bWasSuccessful, con
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.OnMutingChange
-// (Iterator, PreOperator, Net, NetReliable, Simulated, Native, Event, Static)
+// (Singular, Net, NetReliable, Simulated, Native, Event, Static)
 
 void UOnlineSubsystemPC::STATIC_OnMutingChange()
 {
@@ -5090,12 +5195,12 @@ void UOnlineSubsystemPC::STATIC_OnMutingChange()
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.ClearURLTokenRetrievedDelegate
-// (Final, Defined, Latent, Singular, NetReliable, Simulated, Exec, Operator, Static, HasOptionalParms, Const)
+// (Defined, Iterator, PreOperator, NetReliable, Native, Event, Operator)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FScriptDelegate         tsrDelegate                    (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_ClearURLTokenRetrievedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& tsrDelegate)
+void UOnlineSubsystemPC::ClearURLTokenRetrievedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& tsrDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.ClearURLTokenRetrievedDelegate");
 
@@ -5104,6 +5209,7 @@ void UOnlineSubsystemPC::STATIC_ClearURLTokenRetrievedDelegate(unsigned char Loc
 	params.tsrDelegate = tsrDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5112,12 +5218,12 @@ void UOnlineSubsystemPC::STATIC_ClearURLTokenRetrievedDelegate(unsigned char Loc
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.AddURLTokenRetrievedDelegate
-// (Defined, Latent, PreOperator, Singular, Net, NetReliable, Simulated, Exec, Static, HasOptionalParms, Const)
+// (Final, Iterator, Latent, Singular, Net, NetReliable, Native, Event)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FScriptDelegate         tsrDelegate                    (Parm, NeedCtorLink)
 
-void UOnlineSubsystemPC::STATIC_AddURLTokenRetrievedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& tsrDelegate)
+void UOnlineSubsystemPC::AddURLTokenRetrievedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& tsrDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.AddURLTokenRetrievedDelegate");
 
@@ -5126,6 +5232,7 @@ void UOnlineSubsystemPC::STATIC_AddURLTokenRetrievedDelegate(unsigned char Local
 	params.tsrDelegate = tsrDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5134,13 +5241,13 @@ void UOnlineSubsystemPC::STATIC_AddURLTokenRetrievedDelegate(unsigned char Local
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.GetTokenAndSignatureForURL
-// (Final, Iterator, PreOperator, Singular, Net, NetReliable, Exec)
+// (Iterator, Latent, Net, NetReliable, Simulated, Exec, Event, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FString                 URL                            (Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineSubsystemPC::GetTokenAndSignatureForURL(unsigned char LocalUserNum, const struct FString& URL)
+bool UOnlineSubsystemPC::STATIC_GetTokenAndSignatureForURL(unsigned char LocalUserNum, const struct FString& URL)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineSubsystemPC.GetTokenAndSignatureForURL");
 
@@ -5159,7 +5266,7 @@ bool UOnlineSubsystemPC::GetTokenAndSignatureForURL(unsigned char LocalUserNum, 
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.OnTokenAndSignatureRetrieved
-// (Defined, PreOperator, Singular, Net, NetReliable, Simulated, Native, Event, Static)
+// (Defined, Iterator, Latent, PreOperator, Singular, Net, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // bool                           bSuccess                       (Parm)
 // unsigned char                  LocalUserNum                   (Parm)
@@ -5190,7 +5297,7 @@ void UOnlineSubsystemPC::STATIC_OnTokenAndSignatureRetrieved(bool bSuccess, unsi
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.OnCurrentUserChanged
-// (Final, Net, NetReliable, Simulated, Native, Event, Static)
+// (Final, Iterator, Latent, Net, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FString                 CurrentUser                    (Parm, NeedCtorLink)
@@ -5215,7 +5322,7 @@ void UOnlineSubsystemPC::STATIC_OnCurrentUserChanged(unsigned char LocalUserNum,
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.OnLoginCancelled
-// (Final, Defined, Iterator, Latent, Net, NetReliable, Simulated, Native, Event, Static)
+// (Final, Defined, Latent, PreOperator, Net, NetReliable, Simulated, Native, Event, Static)
 
 void UOnlineSubsystemPC::STATIC_OnLoginCancelled()
 {
@@ -5233,7 +5340,7 @@ void UOnlineSubsystemPC::STATIC_OnLoginCancelled()
 
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.OnLoginChange
-// (PreOperator, Net, NetReliable, Simulated, Native, Event, Static)
+// (Iterator, Latent, PreOperator, Net, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 
@@ -5275,12 +5382,12 @@ bool UOnlineSubsystemPC::Init()
 
 
 // Function OnlineSubsystemPC.OnlineVoiceInterfacePC.UnmuteAll
-// (Defined, Net, Simulated, Exec, Static)
+// (Latent, Net, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineVoiceInterfacePC::STATIC_UnmuteAll(unsigned char LocalUserNum)
+bool UOnlineVoiceInterfacePC::UnmuteAll(unsigned char LocalUserNum)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineVoiceInterfacePC.UnmuteAll");
 
@@ -5298,13 +5405,13 @@ bool UOnlineVoiceInterfacePC::STATIC_UnmuteAll(unsigned char LocalUserNum)
 
 
 // Function OnlineSubsystemPC.OnlineVoiceInterfacePC.MuteAll
-// (Defined, Latent, PreOperator, Simulated, Native, Event)
+// (Final, Defined, Iterator, PreOperator, Net, NetReliable, Simulated, Native, Operator, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // bool                           bAllowFriends                  (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineVoiceInterfacePC::MuteAll(unsigned char LocalUserNum, bool bAllowFriends)
+bool UOnlineVoiceInterfacePC::STATIC_MuteAll(unsigned char LocalUserNum, bool bAllowFriends)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineVoiceInterfacePC.MuteAll");
 
@@ -5324,7 +5431,7 @@ bool UOnlineVoiceInterfacePC::MuteAll(unsigned char LocalUserNum, bool bAllowFri
 
 
 // Function OnlineSubsystemPC.OnlineVoiceInterfacePC.SetSpeechRecognitionObject
-// (Final, Iterator, Latent, NetReliable, Native, Event, Operator)
+// (Latent, Singular, Simulated, Native, HasOptionalParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // class USpeechRecognition*      SpeechRecogObj                 (Parm)
@@ -5350,7 +5457,7 @@ bool UOnlineVoiceInterfacePC::SetSpeechRecognitionObject(unsigned char LocalUser
 
 
 // Function OnlineSubsystemPC.OnlineVoiceInterfacePC.SelectVocabulary
-// (Final, Defined, Iterator, Latent, PreOperator, Singular, Net, Exec, Event, Operator)
+// (Final, Defined, Iterator, Latent, PreOperator, Simulated, Exec, HasOptionalParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // int                            VocabularyId                   (Parm)
@@ -5375,12 +5482,12 @@ bool UOnlineVoiceInterfacePC::SelectVocabulary(unsigned char LocalUserNum, int V
 
 
 // Function OnlineSubsystemPC.OnlineVoiceInterfacePC.ClearRecognitionCompleteDelegate
-// (Final, Defined, Latent, NetReliable, Simulated, Exec, Operator, Static, HasOptionalParms, Const)
+// (Defined, Iterator, PreOperator, Singular, Net, Native, Event, Operator)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FScriptDelegate         RecognitionDelegate            (Parm, NeedCtorLink)
 
-void UOnlineVoiceInterfacePC::STATIC_ClearRecognitionCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& RecognitionDelegate)
+void UOnlineVoiceInterfacePC::ClearRecognitionCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& RecognitionDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineVoiceInterfacePC.ClearRecognitionCompleteDelegate");
 
@@ -5389,6 +5496,7 @@ void UOnlineVoiceInterfacePC::STATIC_ClearRecognitionCompleteDelegate(unsigned c
 	params.RecognitionDelegate = RecognitionDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5397,12 +5505,12 @@ void UOnlineVoiceInterfacePC::STATIC_ClearRecognitionCompleteDelegate(unsigned c
 
 
 // Function OnlineSubsystemPC.OnlineVoiceInterfacePC.AddRecognitionCompleteDelegate
-// (Iterator, Latent, Net, NetReliable, Simulated, Exec, Static, HasOptionalParms, Const)
+// (Final, Defined, Iterator, Latent, PreOperator, Singular, NetReliable, Native, Event)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FScriptDelegate         RecognitionDelegate            (Parm, NeedCtorLink)
 
-void UOnlineVoiceInterfacePC::STATIC_AddRecognitionCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& RecognitionDelegate)
+void UOnlineVoiceInterfacePC::AddRecognitionCompleteDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& RecognitionDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineVoiceInterfacePC.AddRecognitionCompleteDelegate");
 
@@ -5411,6 +5519,7 @@ void UOnlineVoiceInterfacePC::STATIC_AddRecognitionCompleteDelegate(unsigned cha
 	params.RecognitionDelegate = RecognitionDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5419,7 +5528,7 @@ void UOnlineVoiceInterfacePC::STATIC_AddRecognitionCompleteDelegate(unsigned cha
 
 
 // Function OnlineSubsystemPC.OnlineVoiceInterfacePC.OnRecognitionComplete
-// (Latent, Singular, Net, NetReliable, Simulated, Native, Event, Static)
+// (Iterator, PreOperator, Singular, Net, NetReliable, Simulated, Native, Event, Static)
 
 void UOnlineVoiceInterfacePC::STATIC_OnRecognitionComplete()
 {
@@ -5437,13 +5546,13 @@ void UOnlineVoiceInterfacePC::STATIC_OnRecognitionComplete()
 
 
 // Function OnlineSubsystemPC.OnlineVoiceInterfacePC.GetRecognitionResults
-// (Final, Iterator, Latent, NetReliable, Exec)
+// (Iterator, Singular, Net, Simulated, Exec, Event, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // TArray<struct FSpeechRecognizedWord> Words                          (Parm, OutParm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineVoiceInterfacePC::GetRecognitionResults(unsigned char LocalUserNum, TArray<struct FSpeechRecognizedWord>* Words)
+bool UOnlineVoiceInterfacePC::STATIC_GetRecognitionResults(unsigned char LocalUserNum, TArray<struct FSpeechRecognizedWord>* Words)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineVoiceInterfacePC.GetRecognitionResults");
 
@@ -5464,7 +5573,7 @@ bool UOnlineVoiceInterfacePC::GetRecognitionResults(unsigned char LocalUserNum, 
 
 
 // Function OnlineSubsystemPC.OnlineVoiceInterfacePC.StopSpeechRecognition
-// (Defined, Iterator, Singular, Net, NetReliable, Simulated, Exec, Native, Event, Operator)
+// (Final, Defined, PreOperator, Singular, Net, Event, HasOptionalParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
@@ -5477,7 +5586,6 @@ bool UOnlineVoiceInterfacePC::StopSpeechRecognition(unsigned char LocalUserNum)
 	params.LocalUserNum = LocalUserNum;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5488,7 +5596,7 @@ bool UOnlineVoiceInterfacePC::StopSpeechRecognition(unsigned char LocalUserNum)
 
 
 // Function OnlineSubsystemPC.OnlineVoiceInterfacePC.StartSpeechRecognition
-// (Final, Defined, Latent, Singular, Net, Simulated, Exec, Native, Event, Operator)
+// (Final, Defined, Latent, PreOperator, Singular, Net, NetReliable, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
@@ -5512,7 +5620,7 @@ bool UOnlineVoiceInterfacePC::StartSpeechRecognition(unsigned char LocalUserNum)
 
 
 // Function OnlineSubsystemPC.OnlineVoiceInterfacePC.StopNetworkedVoice
-// (Defined, Singular, Net, NetReliable, Simulated, Exec, Native, Event, Operator)
+// (Final, Defined, Iterator, Latent, Singular, Net, Event, HasOptionalParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 
@@ -5524,7 +5632,6 @@ void UOnlineVoiceInterfacePC::StopNetworkedVoice(unsigned char LocalUserNum)
 	params.LocalUserNum = LocalUserNum;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5533,7 +5640,7 @@ void UOnlineVoiceInterfacePC::StopNetworkedVoice(unsigned char LocalUserNum)
 
 
 // Function OnlineSubsystemPC.OnlineVoiceInterfacePC.StartNetworkedVoice
-// (Final, Defined, Iterator, PreOperator, Net, Simulated, Exec, Native, Event, Operator)
+// (Final, Defined, Iterator, Singular, Net, NetReliable, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 
@@ -5554,11 +5661,11 @@ void UOnlineVoiceInterfacePC::StartNetworkedVoice(unsigned char LocalUserNum)
 
 
 // Function OnlineSubsystemPC.OnlineVoiceInterfacePC.ClearPlayerTalkingDelegate
-// (Singular, Net, Simulated, Exec, Operator, Static, HasOptionalParms, Const)
+// (Final, Defined, Latent, Net, Native, Event, Operator)
 // Parameters:
 // struct FScriptDelegate         TalkerDelegate                 (Parm, NeedCtorLink)
 
-void UOnlineVoiceInterfacePC::STATIC_ClearPlayerTalkingDelegate(const struct FScriptDelegate& TalkerDelegate)
+void UOnlineVoiceInterfacePC::ClearPlayerTalkingDelegate(const struct FScriptDelegate& TalkerDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineVoiceInterfacePC.ClearPlayerTalkingDelegate");
 
@@ -5566,6 +5673,7 @@ void UOnlineVoiceInterfacePC::STATIC_ClearPlayerTalkingDelegate(const struct FSc
 	params.TalkerDelegate = TalkerDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5574,11 +5682,11 @@ void UOnlineVoiceInterfacePC::STATIC_ClearPlayerTalkingDelegate(const struct FSc
 
 
 // Function OnlineSubsystemPC.OnlineVoiceInterfacePC.AddPlayerTalkingDelegate
-// (Final, Singular, NetReliable, Simulated, Exec, Static, HasOptionalParms, Const)
+// (Iterator, PreOperator, NetReliable, Native, Event)
 // Parameters:
 // struct FScriptDelegate         TalkerDelegate                 (Parm, NeedCtorLink)
 
-void UOnlineVoiceInterfacePC::STATIC_AddPlayerTalkingDelegate(const struct FScriptDelegate& TalkerDelegate)
+void UOnlineVoiceInterfacePC::AddPlayerTalkingDelegate(const struct FScriptDelegate& TalkerDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineVoiceInterfacePC.AddPlayerTalkingDelegate");
 
@@ -5586,6 +5694,7 @@ void UOnlineVoiceInterfacePC::STATIC_AddPlayerTalkingDelegate(const struct FScri
 	params.TalkerDelegate = TalkerDelegate;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5594,7 +5703,7 @@ void UOnlineVoiceInterfacePC::STATIC_AddPlayerTalkingDelegate(const struct FScri
 
 
 // Function OnlineSubsystemPC.OnlineVoiceInterfacePC.OnPlayerTalkingStateChange
-// (Defined, Iterator, PreOperator, Net, NetReliable, Simulated, Native, Event, Static)
+// (Defined, Singular, Net, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // struct FUniqueNetId            Player                         (Parm)
 // bool                           bIsTalking                     (Parm)
@@ -5617,12 +5726,12 @@ void UOnlineVoiceInterfacePC::STATIC_OnPlayerTalkingStateChange(const struct FUn
 
 
 // Function OnlineSubsystemPC.OnlineVoiceInterfacePC.IsTalkerMuted
-// (Iterator, Singular, Net, NetReliable, Exec, Native)
+// (Final, Defined, Iterator, PreOperator, Singular, NetReliable, Simulated, Exec, Native, Event, Static)
 // Parameters:
 // struct FUniqueNetId            ConsoleId                      (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineVoiceInterfacePC::IsTalkerMuted(const struct FUniqueNetId& ConsoleId)
+bool UOnlineVoiceInterfacePC::STATIC_IsTalkerMuted(const struct FUniqueNetId& ConsoleId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineVoiceInterfacePC.IsTalkerMuted");
 
@@ -5641,14 +5750,14 @@ bool UOnlineVoiceInterfacePC::IsTalkerMuted(const struct FUniqueNetId& ConsoleId
 
 
 // Function OnlineSubsystemPC.OnlineVoiceInterfacePC.UnmuteRemoteTalker
-// (Final, Defined, Net, Simulated, Exec, Static)
+// (Final, Latent, Net, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FUniqueNetId            PlayerID                       (Parm)
 // bool                           bIsSystemWide                  (OptionalParm, Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineVoiceInterfacePC::STATIC_UnmuteRemoteTalker(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID, bool bIsSystemWide)
+bool UOnlineVoiceInterfacePC::UnmuteRemoteTalker(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID, bool bIsSystemWide)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineVoiceInterfacePC.UnmuteRemoteTalker");
 
@@ -5668,14 +5777,14 @@ bool UOnlineVoiceInterfacePC::STATIC_UnmuteRemoteTalker(unsigned char LocalUserN
 
 
 // Function OnlineSubsystemPC.OnlineVoiceInterfacePC.MuteRemoteTalker
-// (Iterator, Latent, PreOperator, Simulated, Native, Event)
+// (Final, Latent, PreOperator, Net, NetReliable, Simulated, Native, Operator, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FUniqueNetId            PlayerID                       (Parm)
 // bool                           bIsSystemWide                  (OptionalParm, Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineVoiceInterfacePC::MuteRemoteTalker(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID, bool bIsSystemWide)
+bool UOnlineVoiceInterfacePC::STATIC_MuteRemoteTalker(unsigned char LocalUserNum, const struct FUniqueNetId& PlayerID, bool bIsSystemWide)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineVoiceInterfacePC.MuteRemoteTalker");
 
@@ -5696,7 +5805,7 @@ bool UOnlineVoiceInterfacePC::MuteRemoteTalker(unsigned char LocalUserNum, const
 
 
 // Function OnlineSubsystemPC.OnlineVoiceInterfacePC.UpdatePlayerMuteSetting
-// (Final, Defined, PreOperator, Singular, NetReliable, Event, HasOptionalParms)
+// (Iterator, Latent, Singular, Net, NetReliable, Exec, Event, HasOptionalParms)
 // Parameters:
 // bool                           PlayerMuteSetting              (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
@@ -5719,7 +5828,7 @@ bool UOnlineVoiceInterfacePC::UpdatePlayerMuteSetting(bool PlayerMuteSetting)
 
 
 // Function OnlineSubsystemPC.OnlineVoiceInterfacePC.SetRemoteTalkerPriority
-// (Iterator, Singular, Net, Native, Event, Operator)
+// (Final, Defined, Iterator, Latent, PreOperator, Singular, Net, NetReliable, Native, HasOptionalParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FUniqueNetId            PlayerID                       (Parm)
@@ -5747,12 +5856,12 @@ bool UOnlineVoiceInterfacePC::SetRemoteTalkerPriority(unsigned char LocalUserNum
 
 
 // Function OnlineSubsystemPC.OnlineVoiceInterfacePC.IsHeadsetPresent
-// (Final, Latent, PreOperator, NetReliable, Exec, Native)
+// (Iterator, Latent, Singular, Net, Simulated, Exec, Native, Event, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineVoiceInterfacePC::IsHeadsetPresent(unsigned char LocalUserNum)
+bool UOnlineVoiceInterfacePC::STATIC_IsHeadsetPresent(unsigned char LocalUserNum)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineVoiceInterfacePC.IsHeadsetPresent");
 
@@ -5771,12 +5880,12 @@ bool UOnlineVoiceInterfacePC::IsHeadsetPresent(unsigned char LocalUserNum)
 
 
 // Function OnlineSubsystemPC.OnlineVoiceInterfacePC.IsRemotePlayerTalking
-// (Final, Iterator, PreOperator, Net, NetReliable, Exec, Native)
+// (Latent, Singular, NetReliable, Simulated, Exec, Native, Event, Static)
 // Parameters:
 // struct FUniqueNetId            PlayerID                       (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineVoiceInterfacePC::IsRemotePlayerTalking(const struct FUniqueNetId& PlayerID)
+bool UOnlineVoiceInterfacePC::STATIC_IsRemotePlayerTalking(const struct FUniqueNetId& PlayerID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineVoiceInterfacePC.IsRemotePlayerTalking");
 
@@ -5795,12 +5904,12 @@ bool UOnlineVoiceInterfacePC::IsRemotePlayerTalking(const struct FUniqueNetId& P
 
 
 // Function OnlineSubsystemPC.OnlineVoiceInterfacePC.IsLocalPlayerTalking
-// (PreOperator, Singular, NetReliable, Exec, Native)
+// (Final, Defined, NetReliable, Simulated, Exec, Native, Event, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineVoiceInterfacePC::IsLocalPlayerTalking(unsigned char LocalUserNum)
+bool UOnlineVoiceInterfacePC::STATIC_IsLocalPlayerTalking(unsigned char LocalUserNum)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineVoiceInterfacePC.IsLocalPlayerTalking");
 
@@ -5819,12 +5928,12 @@ bool UOnlineVoiceInterfacePC::IsLocalPlayerTalking(unsigned char LocalUserNum)
 
 
 // Function OnlineSubsystemPC.OnlineVoiceInterfacePC.UnregisterRemoteTalker
-// (Defined, PreOperator, Net, Simulated, Exec, Static)
+// (Latent, PreOperator, Net, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // struct FUniqueNetId            PlayerID                       (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineVoiceInterfacePC::STATIC_UnregisterRemoteTalker(const struct FUniqueNetId& PlayerID)
+bool UOnlineVoiceInterfacePC::UnregisterRemoteTalker(const struct FUniqueNetId& PlayerID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function OnlineSubsystemPC.OnlineVoiceInterfacePC.UnregisterRemoteTalker");
 
@@ -5842,7 +5951,7 @@ bool UOnlineVoiceInterfacePC::STATIC_UnregisterRemoteTalker(const struct FUnique
 
 
 // Function OnlineSubsystemPC.OnlineVoiceInterfacePC.RegisterRemoteTalker
-// (Final, Iterator, Net, NetReliable, Simulated, Exec, Native, Operator)
+// (PreOperator, Singular, Net, HasOptionalParms)
 // Parameters:
 // struct FUniqueNetId            PlayerID                       (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
@@ -5855,7 +5964,6 @@ bool UOnlineVoiceInterfacePC::RegisterRemoteTalker(const struct FUniqueNetId& Pl
 	params.PlayerID = PlayerID;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5866,7 +5974,7 @@ bool UOnlineVoiceInterfacePC::RegisterRemoteTalker(const struct FUniqueNetId& Pl
 
 
 // Function OnlineSubsystemPC.OnlineVoiceInterfacePC.UnregisterLocalTalker
-// (Final, Iterator, PreOperator, Singular, Simulated, Event, HasOptionalParms)
+// (Iterator, PreOperator, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // unsigned char                  ChannelIndex                   (OptionalParm, Parm)
@@ -5891,7 +5999,7 @@ bool UOnlineVoiceInterfacePC::UnregisterLocalTalker(unsigned char LocalUserNum, 
 
 
 // Function OnlineSubsystemPC.OnlineVoiceInterfacePC.RegisterLocalTalker
-// (Defined, Latent, PreOperator, Simulated, Event, HasOptionalParms)
+// (Defined, Iterator, PreOperator, Net, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // unsigned char                  ChannelIndex                   (OptionalParm, Parm)

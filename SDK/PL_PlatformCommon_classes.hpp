@@ -1,6 +1,6 @@
 #pragma once
 
-// Paladins (4.1.3942.2) SDK
+// Paladins (3.05) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -43,7 +43,7 @@ public:
 	}
 
 
-	void STATIC_OpenURL(const struct FString& URL, bool bShowNavButtons, bool bSetFocus);
+	void OpenURL(const struct FString& URL, bool bShowNavButtons, bool bSetFocus);
 };
 
 
@@ -76,15 +76,15 @@ public:
 	}
 
 
-	void STATIC_SendGameRequest(const struct FString& fsRequest);
-	void STATIC_SendCtrlRequest(const struct FString& fsRequest);
-	void STATIC_SendMarshalAll(bool bLowPriority);
-	void STATIC_SendMarshal(const struct FUniqueNetId& qwPlayerId, bool bLowPriority);
-	void STATIC_ClearMarshal();
-	bool STATIC_SetFieldString(int nToken, const struct FString& StrValue);
-	bool STATIC_SetFieldFloat(int nToken, float FloatValue);
-	bool STATIC_SetFieldInt(int nToken, int IntValue);
-	bool STATIC_SetFunction(int nFunction);
+	void SendGameRequest(const struct FString& fsRequest);
+	void SendCtrlRequest(const struct FString& fsRequest);
+	void SendMarshalAll(bool bLowPriority);
+	void SendMarshal(const struct FUniqueNetId& qwPlayerId, bool bLowPriority);
+	void ClearMarshal();
+	bool SetFieldString(int nToken, const struct FString& StrValue);
+	bool SetFieldFloat(int nToken, float FloatValue);
+	bool SetFieldInt(int nToken, int IntValue);
+	bool SetFunction(int nFunction);
 };
 
 
@@ -106,14 +106,14 @@ public:
 
 
 	bool Init(struct FString* OutError);
-	void STATIC_StartFacebookStreaming();
-	void STATIC_StopRTMPStreaming();
-	void STATIC_StartRTMPStreaming(const struct FString& InServer, const struct FString& InKey);
-	void STATIC_SetRTMPSettings(bool bAllowWebcam, bool bAllowMicrophone, bool bAllowDesktopAudio);
-	void STATIC_CheckGameSettingsVersion();
-	void STATIC_HandleGameSettingsMigration(int OldGameSettingsVersion);
-	int STATIC_GetCurrentGameSettingsVersion();
-	void STATIC_InitDynamicResolutionScaler();
+	void StartFacebookStreaming();
+	void StopRTMPStreaming();
+	void StartRTMPStreaming(const struct FString& InServer, const struct FString& InKey);
+	void SetRTMPSettings(bool bAllowWebcam, bool bAllowMicrophone, bool bAllowDesktopAudio);
+	void CheckGameSettingsVersion();
+	void HandleGameSettingsMigration(int OldGameSettingsVersion);
+	int GetCurrentGameSettingsVersion();
+	void InitDynamicResolutionScaler();
 };
 
 
@@ -133,7 +133,7 @@ public:
 	}
 
 
-	void STATIC_SetPComImageDownloadedDelegate(const struct FScriptDelegate& PComImageDownloadedDelegate);
+	void SetPComImageDownloadedDelegate(const struct FScriptDelegate& PComImageDownloadedDelegate);
 	void OnPComImageDownloaded(const struct FPComImageDownload& CachedEntry);
 };
 
@@ -159,12 +159,12 @@ public:
 	}
 
 
-	bool STATIC_IsLogitechSdkVersionValid();
-	void STATIC_SetCurrentTime(const struct FName& InPresetName, float CurrentTime);
-	void STATIC_StopPreset(const struct FName& InPresetName);
-	void STATIC_PlayPreset(const struct FName& InPresetName, bool bUseOverrideStartTime, float OverrideStartTime);
-	void STATIC_DisableSystem();
-	void STATIC_TryEnableSystem();
+	bool IsLogitechSdkVersionValid();
+	void SetCurrentTime(const struct FName& InPresetName, float CurrentTime);
+	void StopPreset(const struct FName& InPresetName);
+	void PlayPreset(const struct FName& InPresetName, bool bUseOverrideStartTime, float OverrideStartTime);
+	void DisableSystem();
+	void TryEnableSystem();
 };
 
 
@@ -189,7 +189,7 @@ public:
 	}
 
 
-	void STATIC_OnImageDownloaded(const struct FPComImageDownload& CachedEntry);
+	void OnImageDownloaded(const struct FPComImageDownload& CachedEntry);
 };
 
 
@@ -224,13 +224,13 @@ public:
 
 	class UWebRequest* DecodeFacebookRTMPUrl(const struct FString& InRequest);
 	void Tick();
-	void STATIC_ForceStopStreaming();
-	void STATIC_StopStreaming();
-	void STATIC_StartRTMPStreaming(const struct FString& InServer, const struct FString& InKey);
-	void STATIC_StartFacebookStreaming();
-	void STATIC_QueueFacebookStreaming();
-	void STATIC_SetStreamSettings(struct FPComOpenBroadcasterSettings* InSettings);
-	bool STATIC_IsStreaming();
+	void ForceStopStreaming();
+	void StopStreaming();
+	void StartRTMPStreaming(const struct FString& InServer, const struct FString& InKey);
+	void StartFacebookStreaming();
+	void QueueFacebookStreaming();
+	void SetStreamSettings(struct FPComOpenBroadcasterSettings* InSettings);
+	bool IsStreaming();
 	void CloseWebBrowser();
 	void OpenWebBrowser(const struct FString& URL);
 	bool IsWebBrowserLoaded();
@@ -258,16 +258,16 @@ public:
 	}
 
 
-	void STATIC_CreateFileAndExit(const struct FString& FileNameWithExtension, const struct FString& FileContents, const struct FString& SubfolderName);
-	void STATIC_GetPerfStats(TArray<struct FPComPerformanceCaptureStat> PerfStats, struct FString* FileContents);
-	void STATIC_GetStatsToCollect(struct FString* FileContents);
-	void STATIC_GetMapNameAndTime(struct FString* MapNameStr, struct FString* FormattedDate, struct FString* FormattedTime);
-	void STATIC_StopCycleStats(TArray<struct FPComPerformanceCaptureStat>* PerfStats);
-	void STATIC_GetPerformanceData(TArray<struct FPComPerformanceCaptureStat>* PerfStats);
-	void STATIC_EnableStatNotify();
-	void STATIC_EnableNonCycleStats();
-	void STATIC_MoveCamera(class APlayerController* PlayerController, class AActor* Node);
-	void STATIC_InitializePerformanceCaptureSettings();
+	void CreateFileAndExit(const struct FString& FileNameWithExtension, const struct FString& FileContents, const struct FString& SubfolderName);
+	void GetPerfStats(TArray<struct FPComPerformanceCaptureStat> PerfStats, struct FString* FileContents);
+	void GetStatsToCollect(struct FString* FileContents);
+	void GetMapNameAndTime(struct FString* MapNameStr, struct FString* FormattedDate, struct FString* FormattedTime);
+	void StopCycleStats(TArray<struct FPComPerformanceCaptureStat>* PerfStats);
+	void GetPerformanceData(TArray<struct FPComPerformanceCaptureStat>* PerfStats);
+	void EnableStatNotify();
+	void EnableNonCycleStats();
+	void MoveCamera(class APlayerController* PlayerController, class AActor* Node);
+	void InitializePerformanceCaptureSettings();
 };
 
 
@@ -289,8 +289,8 @@ public:
 	}
 
 
-	void STATIC_DoNextAction();
-	void STATIC_CollectNodes();
+	void DoNextAction();
+	void CollectNodes();
 	void PostBeginPlay();
 };
 
@@ -332,14 +332,14 @@ public:
 	}
 
 
-	void STATIC_TestPictureInPicture();
-	void STATIC_DebugRender(class UCanvas* Canvas);
-	bool STATIC_IsViewDescReady(struct FPComPipViewDesc* ViewDesc);
-	bool STATIC_IsViewReady(const struct FName& ViewName);
-	void STATIC_RequestRender(const struct FName& ViewName);
-	void STATIC_RemoveView(const struct FName& ViewName);
-	void STATIC_AddView(struct FPComPipViewDesc* InViewDesc);
-	void STATIC_InitializeRenderTarget();
+	void TestPictureInPicture();
+	void DebugRender(class UCanvas* Canvas);
+	bool IsViewDescReady(struct FPComPipViewDesc* ViewDesc);
+	bool IsViewReady(const struct FName& ViewName);
+	void RequestRender(const struct FName& ViewName);
+	void RemoveView(const struct FName& ViewName);
+	void AddView(struct FPComPipViewDesc* InViewDesc);
+	void InitializeRenderTarget();
 };
 
 
@@ -367,19 +367,19 @@ public:
 	}
 
 
-	void STATIC_SetSkyColor(struct FColor* InSkyColor);
-	void STATIC_SetSkyBrightness(float InSkyBrightness);
-	void STATIC_SetBounceLightColor(struct FColor* LightColor);
-	void STATIC_SetBounceLightBrightness(float InLightBrightness);
-	void STATIC_SetBounceLightDirection(struct FRotator* InLightDir);
-	void STATIC_EnableDirectionalBounceLight(bool bInEnableBoundLight, float InBounceLightBrightness, const struct FRotator& BounceLightDir);
-	void STATIC_SetLightColor(struct FColor* LightColor);
-	void STATIC_SetLightBrightness(float InLightBrightness);
-	void STATIC_SetLightDirection(struct FRotator* InLightDir);
-	struct FRotator STATIC_GetLightDirection();
-	void STATIC_RemoveComponent(class UActorComponent* Component);
-	void STATIC_AddComponent(class UActorComponent* Component, struct FMatrix* LocalToWorld);
-	void STATIC_InitScene();
+	void SetSkyColor(struct FColor* InSkyColor);
+	void SetSkyBrightness(float InSkyBrightness);
+	void SetBounceLightColor(struct FColor* LightColor);
+	void SetBounceLightBrightness(float InLightBrightness);
+	void SetBounceLightDirection(struct FRotator* InLightDir);
+	void EnableDirectionalBounceLight(bool bInEnableBoundLight, float InBounceLightBrightness, const struct FRotator& BounceLightDir);
+	void SetLightColor(struct FColor* LightColor);
+	void SetLightBrightness(float InLightBrightness);
+	void SetLightDirection(struct FRotator* InLightDir);
+	struct FRotator GetLightDirection();
+	void RemoveComponent(class UActorComponent* Component);
+	void AddComponent(class UActorComponent* Component, struct FMatrix* LocalToWorld);
+	void InitScene();
 };
 
 
@@ -414,11 +414,11 @@ public:
 
 
 	void PlayTestInputLightingEffect(const struct FName& InPresetName);
-	void STATIC_SetCurrentTimeForInputLightingEffect(const struct FName& InPresetName, float InCurrentTime);
-	void STATIC_StopInputLightingEffect(const struct FName& InPresetName);
-	void STATIC_PlayInputLightingEffect(const struct FName& InPresetName, bool bUseOverrideStartTime, float OverrideStartTime);
+	void SetCurrentTimeForInputLightingEffect(const struct FName& InPresetName, float InCurrentTime);
+	void StopInputLightingEffect(const struct FName& InPresetName);
+	void PlayInputLightingEffect(const struct FName& InPresetName, bool bUseOverrideStartTime, float OverrideStartTime);
 	void ClientPlayInputLightingEffect(const struct FName& InPresetName, bool bUseOverrideStartTime, float OverrideStartTime);
-	bool STATIC_TryAutoLogin();
+	bool TryAutoLogin();
 	void TryAutoLoginDelayed();
 	void SetAsNewPartyHost();
 	void ToggleGameSessionInvitesAllowed(bool bAllowed);
@@ -426,121 +426,121 @@ public:
 	void UpdateMCTSWithNewPartyInfo();
 	bool IsHostOfParty();
 	void STATIC_OnPeoplePickerComplete(bool bWasSuccessful, TArray<struct FOnlineFriend> PeoplePicked);
-	void STATIC_OnReadFriendsListComplete(bool bWasSuccessful);
+	void OnReadFriendsListComplete(bool bWasSuccessful);
 	bool ShowPeoplePickerUI();
-	void STATIC_JoinCustomMatchForInviteDelay();
+	void JoinCustomMatchForInviteDelay();
 	void JoinCustomMatchFromInvite();
-	void STATIC_OnJoinSessionForReceivedInviteComplete(const struct FName& SessionName, bool bWasSuccessful);
-	void STATIC_OnPrivilegeCheckForGameSessionJoin(unsigned char LocalUserNum, TEnumAsByte<EFeaturePrivilege> Privilege, TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevel, bool bDiffersFromHint);
-	void STATIC_OnPrivilegeLevelCheckedCompleteForPartyJoin(unsigned char LocalUserNum, TEnumAsByte<EFeaturePrivilege> Privilege, TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevel, bool bDiffersFromHint);
-	void STATIC_OnGameDestroyedForPartyJoin(const struct FName& SessionName, bool bWasSuccessful);
-	void STATIC_OnAlternatePrivilegeLevelCheckedComplete(unsigned char LocalUserNum, TEnumAsByte<EFeaturePrivilege> Privilege, TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevel, bool bDiffersFromHint);
+	void OnJoinSessionForReceivedInviteComplete(const struct FName& SessionName, bool bWasSuccessful);
+	void OnPrivilegeCheckForGameSessionJoin(unsigned char LocalUserNum, TEnumAsByte<EFeaturePrivilege> Privilege, TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevel, bool bDiffersFromHint);
+	void OnPrivilegeLevelCheckedCompleteForPartyJoin(unsigned char LocalUserNum, TEnumAsByte<EFeaturePrivilege> Privilege, TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevel, bool bDiffersFromHint);
+	void OnGameDestroyedForPartyJoin(const struct FName& SessionName, bool bWasSuccessful);
+	void OnAlternatePrivilegeLevelCheckedComplete(unsigned char LocalUserNum, TEnumAsByte<EFeaturePrivilege> Privilege, TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevel, bool bDiffersFromHint);
 	void OnGameInviteAccepted(struct FOnlineGameSearchResult* InviteResult);
 	void JoinPartySession(unsigned char PartySessionGuid);
 	void OnPartySessionDestroyed(const struct FName& SessionName, bool bWasSuccessful);
 	void DestroyPartySession();
 	bool InvitePlayerToParty(const struct FUniqueNetId& InPlayerId);
 	bool InvitePlayerToPartyByName(const struct FString& InPlayerName);
-	void STATIC_OnCreatePartySessionComplete(const struct FName& SessionName, bool bSuccessful);
+	void OnCreatePartySessionComplete(const struct FName& SessionName, bool bSuccessful);
 	void CreatePartySession();
 	void UnregisterP2PEnemiesForCustomMatch(TArray<struct FUniqueNetId> EnemyIds);
-	void STATIC_OnGetVoicePermissionsForUsersComplete(unsigned char LocalUserNum, TEnumAsByte<EFeaturePrivilege> Privilege, TArray<struct FPermissionsResult> Results);
+	void OnGetVoicePermissionsForUsersComplete(unsigned char LocalUserNum, TEnumAsByte<EFeaturePrivilege> Privilege, TArray<struct FPermissionsResult> Results);
 	void OnGetSessionMemberInfoComplete(TArray<struct FSessionMemberInfo> SessionListInfo, bool bWasSuccessful);
 	void OnGetUserConnectionInfoComplete(TArray<struct FSessionMemberInfo> SessionListInfo, bool bWasSuccessful);
-	TArray<struct FString> STATIC_GetUserNamesForPS4P2PConnections();
-	void STATIC_CloseConnectionsToInvalidPeers(TArray<struct FSessionMemberInfo> SessionListInfo);
+	TArray<struct FString> GetUserNamesForPS4P2PConnections();
+	void CloseConnectionsToInvalidPeers(TArray<struct FSessionMemberInfo> SessionListInfo);
 	void EstablishPeers();
 	void LostP2PConnection(const struct FUniqueNetId& UniqueId);
 	void GetControllerIdFromNetId(const struct FUniqueNetId& PlayerID, int* ControllerId);
 	void PairLoggedInUserAndCurrentController();
-	bool STATIC_IsInGame();
-	bool STATIC_IsPackageInstalled();
+	bool IsInGame();
+	bool IsPackageInstalled();
 	void OnMultiplayerSessionChange(const struct FName& SessionName, const struct FSessionUpdateInfo& SessionChanges);
 	bool CheckFilterText(const struct FString& Text);
 	bool CanCommunicateTextWithUsersByUniqueNetIds(unsigned char LocalUserNum, TArray<struct FUniqueNetId> Users);
 	bool CanCommunicateText(unsigned char LocalUserNum, bool bAttemptToResolve, const struct FString& Reason, TEnumAsByte<EFeaturePrivilegeLevel>* PrivilegeLevelHint);
-	void STATIC_OnTextFilterApplied(const struct FString& OriginalText, const struct FString& FilteredText, bool bCensorCompletely);
-	void STATIC_RequestUpdateFriendsList(bool bForceRequest);
-	void STATIC_UpdateMctsWithFriends(bool bWasSuccessful);
+	void OnTextFilterApplied(const struct FString& OriginalText, const struct FString& FilteredText, bool bCensorCompletely);
+	void RequestUpdateFriendsList(bool bForceRequest);
+	void UpdateMctsWithFriends(bool bWasSuccessful);
 	void STATIC_OnContentPurchaseResponse(bool bAuthorized, const struct FQWord& qwOrderId);
 	void STATIC_OnPrivilegeCheckedForUsersByUniqueNetIds(unsigned char LocalUserNum, TEnumAsByte<EFeaturePrivilege> Privilege, TArray<struct FPermissionsResultByUniqueNetId> Results);
 	void STATIC_OnPrivilegeLevelChecked(unsigned char LocalUserNum, TEnumAsByte<EFeaturePrivilege> Privilege, TEnumAsByte<EFeaturePrivilegeLevel> PrivilegeLevel, bool bDiffersFromHint);
 	void ClearOnlineDelegates();
 	void STATIC_RegisterOnlineDelegates();
-	void STATIC_ClientRestablishP2PConnections();
-	void STATIC_ServerReEstablishP2PConnections();
-	bool STATIC_IsReconnect();
+	void ClientRestablishP2PConnections();
+	void ServerReEstablishP2PConnections();
+	bool IsReconnect();
 	void RestablishVoiceForReconnect();
-	void STATIC_OnJoinOnlineGameCompleteForReceivedSessionInfo(const struct FName& SessionName, bool bWasSuccessful);
+	void OnJoinOnlineGameCompleteForReceivedSessionInfo(const struct FName& SessionName, bool bWasSuccessful);
 	void ReceiveSessionInfo(unsigned char PlatformSpecificInfo, TEnumAsByte<EConsoleType> ConsoleType);
 	void OnCreateOnlineGameComplete(const struct FName& SessionName, bool bWasSuccessful);
 	void ChooseThisControllerForSessionScout(bool bCustomMatch, int MaxPlayers, bool bPrivate, TArray<struct FUniqueNetId>* ReservedMembers);
 	void OnDestroyOnlineGameComplete(const struct FName& SessionName, bool bWasSuccessful);
 	void OnEndOnlineGameComplete(const struct FName& SessionName, bool bWasSuccessful);
-	void STATIC_FinishQuitToMainMenu();
-	bool STATIC_CleanupOnlineSubsystemSession(bool bWasFromMenu);
+	void FinishQuitToMainMenu();
+	bool CleanupOnlineSubsystemSession(bool bWasFromMenu);
 	void QuitToMainMenu();
 	void ServerAcknowledgePossession(class APawn* P);
 	void AcknowledgePossession(class APawn* P);
-	void STATIC_OnAllMarketplaceProductDetailsRead();
-	void STATIC_LeaveMatchQueue();
-	void STATIC_UpdatePartyUI();
-	void STATIC_TryOpenPartyUI();
-	void STATIC_ShowCustomGameDisallowedPopup();
-	void STATIC_ShowPackageNotInstalledForPartyInviteWarning();
-	void STATIC_ShowPartyNoLongerAvailableWarning();
-	void STATIC_ShowPartyFullWarning(bool bPartySession);
-	void STATIC_ShowUnableToReadFriendsListWarning();
-	void STATIC_ShowNoFriendsForPartyInviteWarning();
-	void STATIC_ShowControllerDisconnectedWarning();
-	bool STATIC_ShouldPartySessionsBePublic();
-	void STATIC_CreateOrJoinPartySession();
-	bool STATIC_ArePartySessionInvitesAllowed();
-	void STATIC_UpdateMCTSSession(const struct FString& SessionGuid, bool bIsHost);
-	void STATIC_BlockPartySceneInput(bool bBlockInput);
-	void STATIC_FilterFriendListForPeoplePicker(TArray<struct FOnlineFriend>* FriendList, TArray<struct FSessionMemberInfo>* SessionMemberList);
-	void STATIC_ShowPrivilegeMessageAndDeclineInvite();
-	void STATIC_ConnectToPeers(TArray<struct FSessionMemberInfo>* SessionListInfo);
-	void STATIC_TryJoinSession();
-	void STATIC_MCTSSetSessionId(unsigned char PlatformSpecificInfo);
-	bool STATIC_IsInCustomMatch();
-	void STATIC_SendSessionEnd();
-	void STATIC_SendSessionStart(int GameModeId);
+	void OnAllMarketplaceProductDetailsRead();
+	void LeaveMatchQueue();
+	void UpdatePartyUI();
+	void TryOpenPartyUI();
+	void ShowCustomGameDisallowedPopup();
+	void ShowPackageNotInstalledForPartyInviteWarning();
+	void ShowPartyNoLongerAvailableWarning();
+	void ShowPartyFullWarning(bool bPartySession);
+	void ShowUnableToReadFriendsListWarning();
+	void ShowNoFriendsForPartyInviteWarning();
+	void ShowControllerDisconnectedWarning();
+	bool ShouldPartySessionsBePublic();
+	void CreateOrJoinPartySession();
+	bool ArePartySessionInvitesAllowed();
+	void UpdateMCTSSession(const struct FString& SessionGuid, bool bIsHost);
+	void BlockPartySceneInput(bool bBlockInput);
+	void FilterFriendListForPeoplePicker(TArray<struct FOnlineFriend>* FriendList, TArray<struct FSessionMemberInfo>* SessionMemberList);
+	void ShowPrivilegeMessageAndDeclineInvite();
+	void ConnectToPeers(TArray<struct FSessionMemberInfo>* SessionListInfo);
+	void TryJoinSession();
+	void MCTSSetSessionId(unsigned char PlatformSpecificInfo);
+	bool IsInCustomMatch();
+	void SendSessionEnd();
+	void SendSessionStart(int GameModeId);
 	void STATIC_OnRemoteTalkerStatusChange(const struct FUniqueNetId& RemoteNetId, bool bIsTalking);
 	void STATIC_OnCurrentUserChanged(unsigned char LocalUserNum, const struct FString& CurrentUser, const struct FString& LoggedInUser);
 	void STATIC_OnConnectionStatusChange(TEnumAsByte<EOnlineServerConnectionStatus> ConnectionStatus);
 	void STATIC_OnLoginStatusChange(TEnumAsByte<ELoginStatus> NewStatus, const struct FUniqueNetId& NewId);
 	void STATIC_OnMarketplaceItemPurchased();
 	TEnumAsByte<EOnlineEnumerationReadState> GetPlayerDLCLicenses(TArray<struct FOnlineContent>* ContentList);
-	void STATIC_OnReadPlayerMarketplaceInventoryComplete();
-	void STATIC_PlayerReceivedURLTokenAndSignatureForPortalInventory(bool bSuccess, unsigned char LocalUserNum, const struct FString& URL, const struct FString& Token, const struct FString& AuthToken, const struct FString& Signature);
+	void OnReadPlayerMarketplaceInventoryComplete();
+	void PlayerReceivedURLTokenAndSignatureForPortalInventory(bool bSuccess, unsigned char LocalUserNum, const struct FString& URL, const struct FString& Token, const struct FString& AuthToken, const struct FString& Signature);
 	void ProcessPortalInventoryWithAuthToken();
-	void STATIC_DumpStoreCatalog(TEnumAsByte<EMediaItemType> MediaType);
-	void STATIC_DumpConumables();
-	void STATIC_DumpDurables();
-	void STATIC_DumpGameProducts();
+	void DumpStoreCatalog(TEnumAsByte<EMediaItemType> MediaType);
+	void DumpConumables();
+	void DumpDurables();
+	void DumpGameProducts();
 	void STATIC_OnReadAdditionalProductDetailsComplete(TEnumAsByte<EMediaItemType> MediaType);
-	void STATIC_OnReadDetailsForProductIdListComplete(TArray<struct FMarketplaceProductDetails>* ProductList);
+	void OnReadDetailsForProductIdListComplete(TArray<struct FMarketplaceProductDetails>* ProductList);
 	void STATIC_OnReadAvailableProductsComplete(TEnumAsByte<EMediaItemType> MediaType);
 	void RefreshStoreData();
 	bool IsLoggedIntoOSS();
 	bool ShowConsoleLoginUI(int ControllerId, bool bForceLoginAfter);
 	void CacheLoggedInGamepad();
-	void STATIC_PlayerReceivedTokenForLogin(bool bSuccess);
-	void STATIC_PlayerReceivedURLTokenAndSignatureForLogin(bool bSuccess, unsigned char LocalUserNum, const struct FString& URL, const struct FString& Token, const struct FString& AuthToken, const struct FString& Signature);
+	void PlayerReceivedTokenForLogin(bool bSuccess);
+	void PlayerReceivedURLTokenAndSignatureForLogin(bool bSuccess, unsigned char LocalUserNum, const struct FString& URL, const struct FString& Token, const struct FString& AuthToken, const struct FString& Signature);
 	void GetOSSTokenAndSignatureForLogin();
-	struct FString STATIC_GetTokenURL();
-	void STATIC_BeginLogin();
-	void STATIC_PlayerRetrievedOSSInventory(TArray<struct FMarketplaceInventoryItem>* Items);
-	void STATIC_ValidateCreatedPartySession();
-	void STATIC_UpdateClientAuthToken(const struct FString& Token);
-	void STATIC_UpdateClientToken(const struct FString& Token);
-	void STATIC_ChallengeJoin(int nMatchId, const struct FString& fsName, const struct FString& fsPassword);
-	void STATIC_ChallengeCreate(int nQueue, const struct FString& fsName, const struct FString& fsPassword);
-	void STATIC_UpdateDatacenterPing();
-	void STATIC_TestVideoPlayer();
-	void STATIC_AddCheats();
-	void STATIC_ClientAddCheats();
+	struct FString GetTokenURL();
+	void BeginLogin();
+	void PlayerRetrievedOSSInventory(TArray<struct FMarketplaceInventoryItem>* Items);
+	void ValidateCreatedPartySession();
+	void UpdateClientAuthToken(const struct FString& Token);
+	void UpdateClientToken(const struct FString& Token);
+	void ChallengeJoin(int nMatchId, const struct FString& fsName, const struct FString& fsPassword);
+	void ChallengeCreate(int nQueue, const struct FString& fsName, const struct FString& fsPassword);
+	void UpdateDatacenterPing();
+	void TestVideoPlayer();
+	void AddCheats();
+	void ClientAddCheats();
 };
 
 
@@ -566,26 +566,26 @@ public:
 
 
 	void STATIC_Jump();
-	void STATIC_UnbindCommand(const struct FString& Command, bool bGamepad, int nAlternate);
+	void UnbindCommand(const struct FString& Command, bool bGamepad, int nAlternate);
 	void UnbindCommandAll(const struct FString& Command);
-	void STATIC_UnbindKey(struct FName* BindName);
+	void UnbindKey(struct FName* BindName);
 	void SetCommandBind(const struct FString& Command, bool bGamepad, int nAlternate, const struct FString& ExtendedBinding);
-	void STATIC_SetBindExtended(const struct FString& ExtendedBinding, const struct FString& Command);
+	void SetBindExtended(const struct FString& ExtendedBinding, const struct FString& Command);
 	float GetDisplayLookSensitivityY();
 	float GetDisplayLookSensitivity();
-	void STATIC_SetAimAcceleration(float fLookAccel);
-	void STATIC_SetLookSensitivity(float fSensitivity, float fSensitivityY);
-	void STATIC_SetMouseInput(bool bInvert, bool bSmooth, float fSensitivity);
-	void STATIC_SetDirty();
-	void STATIC_ReadMouseSettings();
-	void STATIC_StoreMouseSettings();
-	struct FKeyBind GetKeybindWithCurrentModifiers(struct FName* Key);
-	struct FString GetBind(struct FName* Key, struct FKeyBind* ModifierKeyBind);
-	struct FString STATIC_KeybindToExtendedString(struct FKeyBind* Bind);
-	struct FKeyBind STATIC_ExtendedStringToKeybind(const struct FString& Str, const struct FString& Cmd);
-	struct FKeyBind STATIC_GetBindFromCommand(const struct FString& Cmd, bool bGamepad, int nAlternate);
-	bool STATIC_GetBindExtended(const struct FString& Str, bool bExactMatch, struct FKeyBind* Bind);
-	void STATIC_ResetKeysToDefault();
+	void SetAimAcceleration(float fLookAccel);
+	void SetLookSensitivity(float fSensitivity, float fSensitivityY);
+	void SetMouseInput(bool bInvert, bool bSmooth, float fSensitivity);
+	void SetDirty();
+	void ReadMouseSettings();
+	void StoreMouseSettings();
+	struct FKeyBind STATIC_GetKeybindWithCurrentModifiers(struct FName* Key);
+	struct FString STATIC_GetBind(struct FName* Key, struct FKeyBind* ModifierKeyBind);
+	struct FString KeybindToExtendedString(struct FKeyBind* Bind);
+	struct FKeyBind ExtendedStringToKeybind(const struct FString& Str, const struct FString& Cmd);
+	struct FKeyBind GetBindFromCommand(const struct FString& Cmd, bool bGamepad, int nAlternate);
+	bool GetBindExtended(const struct FString& Str, bool bExactMatch, struct FKeyBind* Bind);
+	void ResetKeysToDefault();
 };
 
 
@@ -670,10 +670,10 @@ public:
 	}
 
 
-	bool STATIC_IsInSphere(float RewindTime, const struct FVector& LocationToCheck, float RadiusToCheck, struct FPComPositionHistoryData* PastDataUsed);
-	bool IsOverlapping(float RewindTime, const struct FVector& LocationToCheck, float RadiusToCheck, struct FPComPositionHistoryData* PastDataUsed);
-	struct FPComPositionHistoryData STATIC_GetPastData(float RewindTime, bool bUseClientTimeStamps);
-	void STATIC_RecordData();
+	bool IsInSphere(float RewindTime, const struct FVector& LocationToCheck, float RadiusToCheck, struct FPComPositionHistoryData* PastDataUsed);
+	bool STATIC_IsOverlapping(float RewindTime, const struct FVector& LocationToCheck, float RadiusToCheck, struct FPComPositionHistoryData* PastDataUsed);
+	struct FPComPositionHistoryData GetPastData(float RewindTime, bool bUseClientTimeStamps);
+	void RecordData();
 };
 
 
@@ -693,9 +693,9 @@ public:
 	}
 
 
-	void STATIC_CreateMusicThemePlayer();
+	void CreateMusicThemePlayer();
 	void PostBeginPlay();
-	void STATIC_PlayMusicEvent(const struct FName& EventName);
+	void PlayMusicEvent(const struct FName& EventName);
 };
 
 
@@ -729,39 +729,39 @@ public:
 	}
 
 
-	void STATIC_scLogTickFlags(int nFlags, bool bSet);
-	void STATIC_scPerfAlwaysRelevantLimit(int feet);
-	void STATIC_scGPerfServerFlags(int Flags, int alternate1, int alternate2);
-	void STATIC_scPerfPhysThreshold(float thresh1, float thesh2);
-	void STATIC_scPerfTickRate(int tickHz, int altTickHz);
-	void STATIC_scPerfDebugRelevMode(int Mode);
-	void STATIC_scPerfDebugSkip(int skips);
-	void STATIC_scPerfDebugFeet(int feet);
-	void STATIC_scDemoStop();
-	void STATIC_scDemoRec(const struct FString& sCommand);
-	void STATIC_scTimer(const struct FString& sCommand);
-	void STATIC_scTime(int nSeconds);
-	void STATIC_scScore(int nTeam, int nCount);
-	void STATIC_scEndGame(const struct FString& Reason);
-	void STATIC_scStartGame(const struct FString& Reason);
-	void STATIC_scLogMark(const struct FString& Comment);
-	void STATIC_scLog(const struct FString& LogName, bool bEnabled);
-	void STATIC_gmmf();
-	void STATIC_SetLogServerTickStatsFlags(int Flags, bool bSet);
-	void STATIC_GPerfDebugPhysicsThreshold(float fThresh1, float fThresh2);
-	void STATIC_GPerfDebugTickRate(int tickHz, int altTickHz);
-	void STATIC_GPerfAllRelevantLimit(int feet);
-	void STATIC_GPerfServerFlags(int Flags, int alternate1, int alternate2);
-	void STATIC_GPerfDebugRelevMode(int Mode);
-	void STATIC_GPerfDebugSkips(int skips);
-	void STATIC_GPerfDebugFeet(int feet);
-	void STATIC_gmDiag(int Code, int Route);
-	void STATIC_gmC(const struct FString& sCommand);
-	void STATIC_gmCommand(const struct FString& sCommand);
-	void STATIC_gmMatchLobbyResume();
-	void STATIC_gmMatchLobbyPause();
-	void STATIC_gmMatchNext(int nMapId);
-	void STATIC_gmMatchForce(int nQueueId);
+	void scLogTickFlags(int nFlags, bool bSet);
+	void scPerfAlwaysRelevantLimit(int feet);
+	void scGPerfServerFlags(int Flags, int alternate1, int alternate2);
+	void scPerfPhysThreshold(float thresh1, float thesh2);
+	void scPerfTickRate(int tickHz, int altTickHz);
+	void scPerfDebugRelevMode(int Mode);
+	void scPerfDebugSkip(int skips);
+	void scPerfDebugFeet(int feet);
+	void scDemoStop();
+	void scDemoRec(const struct FString& sCommand);
+	void scTimer(const struct FString& sCommand);
+	void scTime(int nSeconds);
+	void scScore(int nTeam, int nCount);
+	void scEndGame(const struct FString& Reason);
+	void scStartGame(const struct FString& Reason);
+	void scLogMark(const struct FString& Comment);
+	void scLog(const struct FString& LogName, bool bEnabled);
+	void gmmf();
+	void SetLogServerTickStatsFlags(int Flags, bool bSet);
+	void GPerfDebugPhysicsThreshold(float fThresh1, float fThresh2);
+	void GPerfDebugTickRate(int tickHz, int altTickHz);
+	void GPerfAllRelevantLimit(int feet);
+	void GPerfServerFlags(int Flags, int alternate1, int alternate2);
+	void GPerfDebugRelevMode(int Mode);
+	void GPerfDebugSkips(int skips);
+	void GPerfDebugFeet(int feet);
+	void gmDiag(int Code, int Route);
+	void gmC(const struct FString& sCommand);
+	void gmCommand(const struct FString& sCommand);
+	void gmMatchLobbyResume();
+	void gmMatchLobbyPause();
+	void gmMatchNext(int nMapId);
+	void gmMatchForce(int nQueueId);
 };
 
 
@@ -799,9 +799,9 @@ public:
 	}
 
 
-	float STATIC_GetGDeltaTime();
-	bool STATIC_IsAWithStop(class UObject* InObject, class UClass* SomeBase, class UClass* StopAtBase);
-	struct FVector STATIC_FakeNetSerialize(struct FVector* InVector);
+	float GetGDeltaTime();
+	bool IsAWithStop(class UObject* InObject, class UClass* SomeBase, class UClass* StopAtBase);
+	struct FVector FakeNetSerialize(struct FVector* InVector);
 };
 
 
@@ -842,11 +842,12 @@ public:
 	}
 
 
-	void STATIC_DestroyMe();
-	void STATIC_TestOnVideoError(class APComVideoPlayer* VideoPlayer, TEnumAsByte<EPComVideoPlayerError> ErrorCode);
-	void STATIC_TestVideoPlayer(class AActor* SpawningActor, const struct FString& InURL);
-	void Initialize();
-	void NativePostRenderFor(class APlayerController* PC, class UCanvas* Canvas, const struct FVector& CameraPosition, const struct FVector& CameraDir);
+	void DestroyMe();
+	void TestOnVideoError(class APComVideoPlayer* VideoPlayer, TEnumAsByte<EPComVideoPlayerError> ErrorCode);
+	void TestVideoPlayer(class AActor* SpawningActor, const struct FString& InURL);
+	void StopVideoSession();
+	void STATIC_Initialize();
+	void STATIC_NativePostRenderFor(class APlayerController* PC, class UCanvas* Canvas, const struct FVector& CameraPosition, const struct FVector& CameraDir);
 	void OnVideoError(class APComVideoPlayer* VideoPlayer, TEnumAsByte<EPComVideoPlayerError> ErrorCode);
 	void OnVideoFinished();
 };
@@ -921,15 +922,15 @@ public:
 	}
 
 
-	void STATIC_UpdateReplicatedMusicEvent(const struct FName& EventName);
-	void STATIC_UpdateMusicTrack(const struct FMusicTrackStruct& NewMusicTrack, float fDuration);
-	void STATIC_StopMusic();
-	void STATIC_PlayMusicEvent(const struct FName& EventName);
-	void STATIC_PlayDefaultMusic();
-	void STATIC_OnThemeLoaded();
-	void STATIC_LoadTheme(const struct FString& themepath);
-	struct FString STATIC_GetDefaultThemePath();
-	void STATIC_LoadDefaultTheme();
+	void UpdateReplicatedMusicEvent(const struct FName& EventName);
+	void UpdateMusicTrack(const struct FMusicTrackStruct& NewMusicTrack, float fDuration);
+	void StopMusic();
+	void PlayMusicEvent(const struct FName& EventName);
+	void PlayDefaultMusic();
+	void OnThemeLoaded();
+	void LoadTheme(const struct FString& themepath);
+	struct FString GetDefaultThemePath();
+	void LoadDefaultTheme();
 	void Init();
 };
 
@@ -949,8 +950,8 @@ public:
 
 
 	void ReplicatedEvent(const struct FName& VarName);
-	void STATIC_UpdateMusicEventClient(const struct FName& EventName);
-	void STATIC_UpdateMusicEvent(const struct FName& EventName);
+	void UpdateMusicEventClient(const struct FName& EventName);
+	void UpdateMusicEvent(const struct FName& EventName);
 };
 
 

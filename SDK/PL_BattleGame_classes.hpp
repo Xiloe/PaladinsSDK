@@ -1,6 +1,6 @@
 #pragma once
 
-// Paladins (4.1.3942.2) SDK
+// Paladins (3.05) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -30,7 +30,7 @@ public:
 
 
 // Class BattleGame.BattlePlayerController
-// 0x0000 (0x1624 - 0x1624)
+// 0x0000 (0x1628 - 0x1628)
 class ABattlePlayerController : public ATgPlayerController
 {
 public:
@@ -42,7 +42,7 @@ public:
 	}
 
 
-	void BattlePlayerControllerFunction();
+	void STATIC_BattlePlayerControllerFunction();
 };
 
 

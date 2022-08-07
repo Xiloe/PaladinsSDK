@@ -1,6 +1,6 @@
 #pragma once
 
-// Paladins (4.1.3942.2) SDK
+// Paladins (3.05) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -960,6 +960,19 @@ struct ATgPlayerController_ClientChangedTalent_Params
 {
 	int                                                nBotId;                                                   // (Parm)
 	int                                                nDeviceId;                                                // (Parm)
+};
+
+// Function TgGame.TgPlayerController.ClientChangedPassive
+struct ATgPlayerController_ClientChangedPassive_Params
+{
+	int                                                nBotId;                                                   // (Parm)
+	int                                                nDeviceId;                                                // (Parm)
+};
+
+// Function TgGame.TgPlayerController.ServerRequestPassive
+struct ATgPlayerController_ServerRequestPassive_Params
+{
+	int                                                nPassiveId;                                               // (Parm)
 };
 
 // Function TgGame.TgPlayerController.ServerRequestCard
@@ -2323,11 +2336,6 @@ struct ATgPlayerController_DisplayKillingBlowGameTip_Params
 	struct FCombatMessageInfo                          Info;                                                     // (Parm)
 };
 
-// Function TgGame.TgPlayerController.FadeForViewPlayersTimer
-struct ATgPlayerController_FadeForViewPlayersTimer_Params
-{
-};
-
 // Function TgGame.TgPlayerController.InDeathCam
 struct ATgPlayerController_InDeathCam_Params
 {
@@ -2772,6 +2780,30 @@ struct ATgPlayerController_CallServerMove_Params
 	unsigned char                                      ClientRoll;                                               // (Parm)
 	int                                                View;                                                     // (Parm)
 	class USavedMove*                                  OldMove;                                                  // (Parm)
+};
+
+// Function TgGame.TgPlayerController.ClientStartHandleClientPawnFunction
+struct ATgPlayerController_ClientStartHandleClientPawnFunction_Params
+{
+	TEnumAsByte<EClientPawnFuncType>                   funcType;                                                 // (Parm)
+	int                                                nPawnId;                                                  // (Parm)
+	struct FCLIENT_PAWN_FUNCTION_ARGS                  args;                                                     // (Parm)
+};
+
+// Function TgGame.TgPlayerController.StartHandleClientPawnFunction
+struct ATgPlayerController_StartHandleClientPawnFunction_Params
+{
+	TEnumAsByte<EClientPawnFuncType>                   funcType;                                                 // (Parm)
+	int                                                nPawnId;                                                  // (Parm)
+	struct FCLIENT_PAWN_FUNCTION_ARGS                  args;                                                     // (Parm)
+};
+
+// Function TgGame.TgPlayerController.HandleClientPawnFunction
+struct ATgPlayerController_HandleClientPawnFunction_Params
+{
+	TEnumAsByte<EClientPawnFuncType>                   funcType;                                                 // (Parm)
+	int                                                nPawnId;                                                  // (Parm)
+	struct FCLIENT_PAWN_FUNCTION_ARGS                  args;                                                     // (Parm)
 };
 
 // Function TgGame.TgPlayerController.GetDebugHoverActor
@@ -3473,6 +3505,13 @@ struct ATgPlayerController_OnRequestCard_Params
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function TgGame.TgPlayerController.OnRequestPassive
+struct ATgPlayerController_OnRequestPassive_Params
+{
+	int                                                nPassiveId;                                               // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function TgGame.TgPlayerController.SetRewardValues
 struct ATgPlayerController_SetRewardValues_Params
 {
@@ -3495,6 +3534,13 @@ struct ATgPlayerController_SetSelectedTalent_Params
 {
 	int                                                nBotId;                                                   // (Parm)
 	int                                                nDeviceIndex;                                             // (Parm)
+};
+
+// Function TgGame.TgPlayerController.SetSelectedPassive
+struct ATgPlayerController_SetSelectedPassive_Params
+{
+	int                                                nBotId;                                                   // (Parm)
+	int                                                nDeviceId;                                                // (Parm)
 };
 
 // Function TgGame.TgPlayerController.LogAntiCheatPlayerState
@@ -3875,6 +3921,12 @@ struct ATgPlayerController_GiveGoldToFriendlyPlayer_Params
 	TEnumAsByte<EGiveGoldResult>                       ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function TgGame.TgPlayerController.PlayerReceivedTokenForLogin
+struct ATgPlayerController_PlayerReceivedTokenForLogin_Params
+{
+	bool                                               bSuccess;                                                 // (Parm)
+};
+
 // Function TgGame.TgPlayerController.SetToggleZoomFlag
 struct ATgPlayerController_SetToggleZoomFlag_Params
 {
@@ -3906,6 +3958,11 @@ struct ATgPlayerController_AutoSkillUp_Params
 {
 };
 
+// Function TgGame.TgPlayerController.ClientAutoPurchase
+struct ATgPlayerController_ClientAutoPurchase_Params
+{
+};
+
 // Function TgGame.TgPlayerController.AutoPurchase
 struct ATgPlayerController_AutoPurchase_Params
 {
@@ -3917,6 +3974,18 @@ struct ATgPlayerController_GetDamageAngle_Params
 	struct FRotator                                    HitDir;                                                   // (Parm)
 	float                                              PitchDegrees;                                             // (Parm, OutParm)
 	float                                              YawDegrees;                                               // (Parm, OutParm)
+};
+
+// Function TgGame.TgPlayerController.GetCurrencyMultiplier
+struct ATgPlayerController_GetCurrencyMultiplier_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPlayerController.SetCurrencyMultiplier
+struct ATgPlayerController_SetCurrencyMultiplier_Params
+{
+	float                                              fMult;                                                    // (Parm)
 };
 
 // Function TgGame.TgPlayerController.SendUICurrencyChange
@@ -4503,6 +4572,12 @@ struct UTgBattleCheatManager_DrawActorEncroachmentFire_Params
 	bool                                               bDraw;                                                    // (OptionalParm, Parm)
 };
 
+// Function TgGame.TgBattleCheatManager.DAEF
+struct UTgBattleCheatManager_DAEF_Params
+{
+	bool                                               bDraw;                                                    // (OptionalParm, Parm)
+};
+
 // Function TgGame.TgBattleCheatManager.DisableEffectLagCompensation
 struct UTgBattleCheatManager_DisableEffectLagCompensation_Params
 {
@@ -4701,6 +4776,26 @@ struct UTgBattleCheatManager_SBM_Params
 struct UTgBattleCheatManager_SetBodyMesh_Params
 {
 	int                                                nBodyMeshID;                                              // (Parm)
+};
+
+// Function TgGame.TgBattleCheatManager.TheGoodStuff
+struct UTgBattleCheatManager_TheGoodStuff_Params
+{
+};
+
+// Function TgGame.TgBattleCheatManager.FeistyInfo
+struct UTgBattleCheatManager_FeistyInfo_Params
+{
+};
+
+// Function TgGame.TgBattleCheatManager.DebugExtraChampionInfo
+struct UTgBattleCheatManager_DebugExtraChampionInfo_Params
+{
+};
+
+// Function TgGame.TgBattleCheatManager.ForceShowAmmo
+struct UTgBattleCheatManager_ForceShowAmmo_Params
+{
 };
 
 // Function TgGame.TgBattleCheatManager.LiveRespawn
@@ -5767,6 +5862,11 @@ struct UTgBattleCheatManager_FillEnergyAll_Params
 	float                                              fPercent;                                                 // (OptionalParm, Parm)
 };
 
+// Function TgGame.TgBattleCheatManager.Energize
+struct UTgBattleCheatManager_Energize_Params
+{
+};
+
 // Function TgGame.TgBattleCheatManager.Slomo
 struct UTgBattleCheatManager_Slomo_Params
 {
@@ -5787,6 +5887,11 @@ struct UTgBattleCheatManager_separator_Params
 
 // Function TgGame.TgBattleCheatManager.ToggleTransitionManifest
 struct UTgBattleCheatManager_ToggleTransitionManifest_Params
+{
+};
+
+// Function TgGame.TgBattleCheatManager.CrashGame
+struct UTgBattleCheatManager_CrashGame_Params
 {
 };
 
@@ -5980,6 +6085,11 @@ struct UTgClientSettings_OnReadSaveGameData_Params
 struct UTgClientSettings_GetDesiredAspectRatio_Params
 {
 	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgClientSettings.UpdateLastLoginVersion
+struct UTgClientSettings_UpdateLastLoginVersion_Params
+{
 };
 
 // Function TgGame.TgClientSettings.SavePlayerSettings
@@ -7694,7 +7804,7 @@ struct ATgWeaponMeshActor_PlayReload_Params
 {
 	int                                                nEqpPoint;                                                // (Parm)
 	float                                              reloadTime;                                               // (Parm)
-	int                                                AmmoPostReload;                                           // (Parm)
+	int                                                AmmoAmount;                                               // (Parm)
 	int                                                ReloadType;                                               // (OptionalParm, Parm)
 };
 
@@ -7748,7 +7858,7 @@ struct ATgWeaponMeshActor_GetMeshFx_Params
 // Function TgGame.TgWeaponMeshActor.GetFiringSocketTransform
 struct ATgWeaponMeshActor_GetFiringSocketTransform_Params
 {
-	struct FVector                                     fireLoc;                                                  // (Parm, OutParm)
+	struct FVector                                     FireLoc;                                                  // (Parm, OutParm)
 	struct FRotator                                    FireRot;                                                  // (Parm, OutParm)
 };
 
@@ -7771,8 +7881,8 @@ struct ATgWeaponMeshActor_QueueInstantHitImpactEffects_Params
 // Function TgGame.TgWeaponMeshActor.OverrideTracerEndLocation
 struct ATgWeaponMeshActor_OverrideTracerEndLocation_Params
 {
-	struct FVector                                     fireLoc;                                                  // (Parm)
-	struct FVector                                     EndLocation;                                              // (Parm, OutParm)
+	struct FVector                                     FireLoc;                                                  // (Parm)
+	struct FVector                                     endLocation;                                              // (Parm, OutParm)
 	int                                                nIndex;                                                   // (OptionalParm, Parm)
 	bool                                               bSyntheticShot;                                           // (OptionalParm, Parm)
 };
@@ -7780,14 +7890,14 @@ struct ATgWeaponMeshActor_OverrideTracerEndLocation_Params
 // Function TgGame.TgWeaponMeshActor.OverrideTracerFireLoc
 struct ATgWeaponMeshActor_OverrideTracerFireLoc_Params
 {
-	struct FVector                                     fireLoc;                                                  // (Parm, OutParm)
+	struct FVector                                     FireLoc;                                                  // (Parm, OutParm)
 	int                                                nIndex;                                                   // (OptionalParm, Parm)
 };
 
 // Function TgGame.TgWeaponMeshActor.PlayTracerEffects
 struct ATgWeaponMeshActor_PlayTracerEffects_Params
 {
-	struct FVector                                     EndLocation;                                              // (Parm)
+	struct FVector                                     endLocation;                                              // (Parm)
 	int                                                nEquipSlot;                                               // (OptionalParm, Parm)
 	bool                                               bSyntheticShot;                                           // (OptionalParm, Parm)
 };
@@ -8009,7 +8119,7 @@ struct ATgWeaponMeshActor_FixUpReferencesToPawnMesh_Params
 // Function TgGame.TgWeaponMeshActor.FixUpReferencesToWeaponMesh1P
 struct ATgWeaponMeshActor_FixUpReferencesToWeaponMesh1P_Params
 {
-	class USkeletalMeshComponent*                      WeaponMesh;                                               // (Parm, EditInline)
+	class USkeletalMeshComponent*                      weaponMesh;                                               // (Parm, EditInline)
 };
 
 // Function TgGame.TgWeaponMeshActor.InitializeForWeapon
@@ -8133,6 +8243,18 @@ struct ATgWeaponMeshActor_GetMeshAsmIds_Params
 	int                                                DeviceID;                                                 // (Parm)
 	int                                                MeshId1P;                                                 // (Parm, OutParm)
 	int                                                MeshId3P;                                                 // (Parm, OutParm)
+};
+
+// Function TgGame.TgWeaponMeshActor_ADS.UseADSFireSounds
+struct ATgWeaponMeshActor_ADS_UseADSFireSounds_Params
+{
+	bool                                               bShouldUse;                                               // (Parm)
+};
+
+// Function TgGame.TgWeaponMeshActor_ADS.SetFOVZoomed
+struct ATgWeaponMeshActor_ADS_SetFOVZoomed_Params
+{
+	bool                                               bEnabled;                                                 // (Parm)
 };
 
 // Function TgGame.TgAnimBlendBySpeed.OnInit
@@ -8571,6 +8693,12 @@ struct UTgAnimNodeBlendByAbilityFragGrenade_StartThrow_Params
 {
 };
 
+// Function TgGame.TgAnimNodeBlendByAbilitySaatiUlt.SetAnimState
+struct UTgAnimNodeBlendByAbilitySaatiUlt_SetAnimState_Params
+{
+	unsigned char                                      AmmoCount;                                                // (Parm)
+};
+
 // Function TgGame.TgAnimNodeBlendByAbilitySimple.ReplayAnim
 struct UTgAnimNodeBlendByAbilitySimple_ReplayAnim_Params
 {
@@ -8779,6 +8907,11 @@ struct UTgAnimNodeChannelFire_EndChannel_Params
 struct UTgAnimNodeChannelFire_StartCooldownTimer_Params
 {
 	float                                              fCooldown;                                                // (Parm)
+};
+
+// Function TgGame.TgAnimNodeBlendByVampireMovement.EndChannel
+struct UTgAnimNodeBlendByVampireMovement_EndChannel_Params
+{
 };
 
 // Function TgGame.TgAnimNodeLockableChannelFire.SetLockedBase
@@ -9258,6 +9391,20 @@ struct UTgBeamHelper_Tick_Params
 	float                                              fDeltaSeconds;                                            // (Parm)
 };
 
+// Function TgGame.TgBeamHelper.SetVectorParameter
+struct UTgBeamHelper_SetVectorParameter_Params
+{
+	struct FName                                       nmParam;                                                  // (Parm)
+	struct FVector                                     vValue;                                                   // (Parm)
+};
+
+// Function TgGame.TgBeamHelper.SetFloatParameter
+struct UTgBeamHelper_SetFloatParameter_Params
+{
+	struct FName                                       nmParam;                                                  // (Parm)
+	float                                              fValue;                                                   // (Parm)
+};
+
 // Function TgGame.TgBeamHelper.SetTangentsMulti
 struct UTgBeamHelper_SetTangentsMulti_Params
 {
@@ -9319,6 +9466,15 @@ struct ATgDevice_HandleCustomWallKnockbackHit_Params
 {
 	class AActor*                                      Target;                                                   // (Parm)
 	struct FImpactInfo                                 Impact;                                                   // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice.HandleCustomWallGrabbedHit
+struct ATgDevice_HandleCustomWallGrabbedHit_Params
+{
+	class AActor*                                      Target;                                                   // (Parm)
+	struct FImpactInfo                                 Impact;                                                   // (Parm)
+	class AActor*                                      HitActor;                                                 // (Parm)
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -9576,6 +9732,11 @@ struct ATgDevice_PreReloadTimer_Params
 
 // Function TgGame.TgDevice.FullReloadTimer
 struct ATgDevice_FullReloadTimer_Params
+{
+};
+
+// Function TgGame.TgDevice.PrepReload
+struct ATgDevice_PrepReload_Params
 {
 };
 
@@ -10117,6 +10278,13 @@ struct ATgDevice_ProjectileFire_Params
 	class AProjectile*                                 ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function TgGame.TgDevice.OverrideProjectileAim
+struct ATgDevice_OverrideProjectileAim_Params
+{
+	struct FAimData                                    Aim;                                                      // (Parm, OutParm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function TgGame.TgDevice.ServerProjectileFire
 struct ATgDevice_ServerProjectileFire_Params
 {
@@ -10137,6 +10305,7 @@ struct ATgDevice_ServerProjectileFire_Params
 	float                                              ProjectileEndTraceX;                                      // (Parm)
 	float                                              ProjectileEndTraceY;                                      // (Parm)
 	float                                              ProjectileEndTraceZ;                                      // (Parm)
+	unsigned char                                      ExtraInfo;                                                // (Parm)
 };
 
 // Function TgGame.TgDevice.AdjustSpawnedProjectile
@@ -10169,6 +10338,7 @@ struct ATgDevice_SpawnSimulatedProjectile_Params
 	float                                              Range;                                                    // (Parm)
 	class AActor*                                      trackingTarget;                                           // (Parm)
 	struct FVector                                     EndTrace;                                                 // (Parm)
+	unsigned char                                      ExtraInfo;                                                // (Parm)
 	class ATgProj_Simulated*                           ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -10740,6 +10910,13 @@ struct ATgDevice_PlayClientFireFx_Params
 	int                                                nSocketIndex;                                             // (Parm)
 	bool                                               bSuccessfulHit;                                           // (Parm)
 	float                                              fRefireTime;                                              // (Parm)
+	int                                                nShotsFired;                                              // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDevice.ShouldPlayFireFx
+struct ATgDevice_ShouldPlayFireFx_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function TgGame.TgDevice.ServerFlashEnterTargetingMode
@@ -10819,6 +10996,7 @@ struct ATgDevice_StopFiringServerDeviceLockout_Params
 // Function TgGame.TgDevice.DeviceRestart
 struct ATgDevice_DeviceRestart_Params
 {
+	bool                                               bPostRevive;                                              // (Parm)
 };
 
 // Function TgGame.TgDevice.DeviceShutDown
@@ -10939,8 +11117,8 @@ struct ATgDevice_CanFiringBeCanceledByReactivation_Params
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
-// Function TgGame.TgDevice.CheckReactivationToggleLogic
-struct ATgDevice_CheckReactivationToggleLogic_Params
+// Function TgGame.TgDevice.DoReactivationCancelLogic
+struct ATgDevice_DoReactivationCancelLogic_Params
 {
 	unsigned char                                      bSuccessfulCancel;                                        // (Parm, OutParm)
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
@@ -10976,6 +11154,16 @@ struct ATgDevice_InterceptSlotPressed_Params
 {
 	class ATgPlayerController*                         TgController;                                             // (Parm)
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice.Handle2TapFireholdInput
+struct ATgDevice_Handle2TapFireholdInput_Params
+{
+};
+
+// Function TgGame.TgDevice.TapTimer
+struct ATgDevice_TapTimer_Params
+{
 };
 
 // Function TgGame.TgDevice.InterceptRightMouseReleased
@@ -11438,6 +11626,12 @@ struct ATgDevice_UpdateAmmoRegen_Params
 	float                                              fCooldownFloor;                                           // (OptionalParm, Parm)
 };
 
+// Function TgGame.TgDevice.ShouldResetAmmoChargesOnRespawn
+struct ATgDevice_ShouldResetAmmoChargesOnRespawn_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function TgGame.TgDevice.ShouldTreatAmmoAsCharges
 struct ATgDevice_ShouldTreatAmmoAsCharges_Params
 {
@@ -11519,6 +11713,13 @@ struct ATgDevice_GetAllocatedDevicePoints_Params
 struct ATgDevice_GetTotalDevicePoints_Params
 {
 	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice.GetTargetingMinRange
+struct ATgDevice_GetTargetingMinRange_Params
+{
+	class UTgDeviceFire*                               FireMode;                                                 // (OptionalParm, Parm)
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function TgGame.TgDevice.ExitTargetingMode
@@ -11829,6 +12030,12 @@ struct ATgDevice_IsDeviceCoolingDown_Params
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function TgGame.TgDevice.ShouldBankCooldown
+struct ATgDevice_ShouldBankCooldown_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function TgGame.TgDevice.DeviceConsumePowerPool
 struct ATgDevice_DeviceConsumePowerPool_Params
 {
@@ -11839,6 +12046,18 @@ struct ATgDevice_DeviceConsumePowerPool_Params
 struct ATgDevice_HasEnoughPowerPool_Params
 {
 	unsigned char                                      FireModeNum;                                              // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice.IsInPostfire
+struct ATgDevice_IsInPostfire_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice.IsInPrefire
+struct ATgDevice_IsInPrefire_Params
+{
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -12013,6 +12232,7 @@ struct ATgDevice_RemoveEquipEffects_Params
 // Function TgGame.TgDevice.ApplyEquipEffects
 struct ATgDevice_ApplyEquipEffects_Params
 {
+	bool                                               bPostRevive;                                              // (OptionalParm, Parm)
 };
 
 // Function TgGame.TgDevice.GetDeviceFire
@@ -12067,6 +12287,14 @@ struct ATgDevice_CalcFireSocketIndexMax_Params
 struct ATgDevice_GetFireSocketName_Params
 {
 	struct FName                                       ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice.GetProjectileExtraInfo
+struct ATgDevice_GetProjectileExtraInfo_Params
+{
+	unsigned char                                      FromClient;                                               // (OptionalParm, Parm)
+	bool                                               bValidating;                                              // (OptionalParm, Parm)
+	unsigned char                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function TgGame.TgDevice.QueryDeployableClass
@@ -12882,6 +13110,145 @@ struct ATgDevice_HitPulse_GetRefireTime_Params
 	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function TgGame.TgDevice_Latch.CanBeCanceled
+struct ATgDevice_Latch_CanBeCanceled_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_Latch.Tick
+struct ATgDevice_Latch_Tick_Params
+{
+	float                                              DeltaSeconds;                                             // (Parm)
+};
+
+// Function TgGame.TgDevice_Latch.SetIsPullingHitSpecial
+struct ATgDevice_Latch_SetIsPullingHitSpecial_Params
+{
+	bool                                               bIsPulling;                                               // (Parm)
+};
+
+// Function TgGame.TgDevice_Latch.EndPull
+struct ATgDevice_Latch_EndPull_Params
+{
+};
+
+// Function TgGame.TgDevice_Latch.FireAmmunition
+struct ATgDevice_Latch_FireAmmunition_Params
+{
+};
+
+// Function TgGame.TgDevice_Latch.ParentFireAmmunition
+struct ATgDevice_Latch_ParentFireAmmunition_Params
+{
+};
+
+// Function TgGame.TgDevice_Latch.PullToTarget
+struct ATgDevice_Latch_PullToTarget_Params
+{
+};
+
+// Function TgGame.TgDevice_Latch.StartFire
+struct ATgDevice_Latch_StartFire_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_Latch.ParentStartFire
+struct ATgDevice_Latch_ParentStartFire_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_Latch.CalcWeaponFire
+struct ATgDevice_Latch_CalcWeaponFire_Params
+{
+	struct FAimData                                    Aim;                                                      // (Parm)
+	TArray<struct FImpactInfo>                         ImpactList;                                               // (OptionalParm, Parm, OutParm, NeedCtorLink)
+	struct FImpactInfo                                 ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_Latch.CallServerRestartFireLoop
+struct ATgDevice_Latch_CallServerRestartFireLoop_Params
+{
+	struct FAimData                                    Aim;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_Latch.CallServerStartFire
+struct ATgDevice_Latch_CallServerStartFire_Params
+{
+	struct FAimData                                    Aim;                                                      // (Parm)
+	bool                                               bPendingUpdate;                                           // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDevice_Latch.DeactivateHover
+struct ATgDevice_Latch_DeactivateHover_Params
+{
+};
+
+// Function TgGame.TgDevice_Latch.OnOwnerRespawn
+struct ATgDevice_Latch_OnOwnerRespawn_Params
+{
+};
+
+// Function TgGame.TgDevice_Latch.ActivateHover
+struct ATgDevice_Latch_ActivateHover_Params
+{
+};
+
+// Function TgGame.TgDevice_Latch.TotalFireTime
+struct ATgDevice_Latch_TotalFireTime_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_Latch.ValidateReceivedAim
+struct ATgDevice_Latch_ValidateReceivedAim_Params
+{
+	float                                              ClientMovementTimeStamp;                                  // (Parm)
+	struct FAimData                                    Aim;                                                      // (Parm)
+	struct FAimData                                    ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_Latch.GetTrueFiringPreHitDelay
+struct ATgDevice_Latch_GetTrueFiringPreHitDelay_Params
+{
+	int                                                nMode;                                                    // (OptionalParm, Parm)
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_Latch.GetFiringPreHitDelay
+struct ATgDevice_Latch_GetFiringPreHitDelay_Params
+{
+	int                                                nMode;                                                    // (OptionalParm, Parm)
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_Latch.ShouldUseGradualMovement
+struct ATgDevice_Latch_ShouldUseGradualMovement_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_Latch.GetMoveSpeedMultiplier
+struct ATgDevice_Latch_GetMoveSpeedMultiplier_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_Latch.IsValidPullTarget
+struct ATgDevice_Latch_IsValidPullTarget_Params
+{
+	class AActor*                                      pCandidate;                                               // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_Latch.GetReticleTargetAim
+struct ATgDevice_Latch_GetReticleTargetAim_Params
+{
+	struct FAimData                                    Aim;                                                      // (Parm, OutParm)
+};
+
 // Function TgGame.TgDevice_Leap.SetLeapParams
 struct ATgDevice_Leap_SetLeapParams_Params
 {
@@ -12901,6 +13268,13 @@ struct ATgDevice_Leap_NotifyNewLeapDirection_Params
 struct ATgDevice_Leap_CanBeCanceled_Params
 {
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_Leap.ApplyRandomRotation
+struct ATgDevice_Leap_ApplyRandomRotation_Params
+{
+	struct FVector                                     vJumpVelocity;                                            // (Parm)
+	struct FVector                                     ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function TgGame.TgDevice_Leap.GetFiringPreHitDelay
@@ -13848,10 +14222,10 @@ struct ATgDevice_ToggleInhandFiremode_ShouldCooldownAfterFire_Params
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
-// Function TgGame.TgDevice_ToggleInhandFiremode.HasCachedInhand
-struct ATgDevice_ToggleInhandFiremode_HasCachedInhand_Params
+// Function TgGame.TgDevice_ToggleInhandFiremode.SyncFireModeWithServer
+struct ATgDevice_ToggleInhandFiremode_SyncFireModeWithServer_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+	int                                                m_nClientFireMode;                                        // (Parm)
 };
 
 // Function TgGame.TgDevice_ToggleInhandFiremode.FireAmmunition
@@ -13867,6 +14241,12 @@ struct ATgDevice_ToggleInhandFiremode_ShouldStopActionOnOffhandSlotReleased_Para
 
 // Function TgGame.TgDevice_ToggleInhandFiremode.ShouldInterruptReloadOnFire
 struct ATgDevice_ToggleInhandFiremode_ShouldInterruptReloadOnFire_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_ToggleInhandFiremode.HasCachedInhand
+struct ATgDevice_ToggleInhandFiremode_HasCachedInhand_Params
 {
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
@@ -14040,6 +14420,7 @@ struct UTgDeviceFire_RemoveHitSpecial_Params
 	bool                                               bForceRemove;                                             // (Parm)
 	int                                                nHitSpecialSituationalType;                               // (OptionalParm, Parm)
 	int                                                StackCount;                                               // (OptionalParm, Parm)
+	class AActor*                                      InstigatorOverride;                                       // (OptionalParm, Parm)
 };
 
 // Function TgGame.TgDeviceFire.ApplyHitSpecial
@@ -14049,6 +14430,7 @@ struct UTgDeviceFire_ApplyHitSpecial_Params
 	struct FImpactInfo                                 Impact;                                                   // (OptionalParm, Parm)
 	int                                                nHitSpecialSituationalType;                               // (OptionalParm, Parm)
 	int                                                StackCount;                                               // (OptionalParm, Parm)
+	class AActor*                                      InstigatorOverride;                                       // (OptionalParm, Parm)
 };
 
 // Function TgGame.TgDeviceFire.RemoveEffectType
@@ -14104,6 +14486,19 @@ struct UTgDeviceFire_RemoveEquipEffects_Params
 // Function TgGame.TgDeviceFire.ApplyEquipEffects
 struct UTgDeviceFire_ApplyEquipEffects_Params
 {
+};
+
+// Function TgGame.TgDeviceFire.NativeGetPropertyInstance
+struct UTgDeviceFire_NativeGetPropertyInstance_Params
+{
+	int                                                nPropertyId;                                              // (Parm)
+	struct FTgPropertyInstance                         ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDeviceFire.GetFireModeIndex
+struct UTgDeviceFire_GetFireModeIndex_Params
+{
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function TgGame.TgDeviceFire.GetShotsPerFire
@@ -14778,6 +15173,16 @@ struct UTgDeviceFire_Cylinder_CalcAoeFire_Params
 	struct FImpactInfo                                 ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function TgGame.TgDeviceFire_DamageVolume.IsValidTarget
+struct UTgDeviceFire_DamageVolume_IsValidTarget_Params
+{
+	class AActor*                                      P;                                                        // (Parm)
+	TEnumAsByte<EDeviceTargeterType>                   eTargeterType;                                            // (OptionalParm, Parm)
+	bool                                               bIgnoreHealth;                                            // (OptionalParm, Parm)
+	bool                                               bInvertTeam;                                              // (OptionalParm, Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function TgGame.TgDeviceFire_DeployablesOnly.IsValidTarget
 struct UTgDeviceFire_DeployablesOnly_IsValidTarget_Params
 {
@@ -14818,6 +15223,11 @@ struct UTgDeviceFire_DeployOnTarget_GetDeployLocationAndRotation_Params
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function TgGame.TgDeviceFire_EncroachmentActorScale.UpdateEncroachmentActorScale
+struct UTgDeviceFire_EncroachmentActorScale_UpdateEncroachmentActorScale_Params
+{
+};
+
 // Function TgGame.TgDeviceFire_EncroachmentFireCone.UpdateEncroachmentActorScale
 struct UTgDeviceFire_EncroachmentFireCone_UpdateEncroachmentActorScale_Params
 {
@@ -14828,6 +15238,28 @@ struct UTgDeviceFire_EncroachmentFireCone_IgnoreTargetForBlocking_Params
 {
 	class AActor*                                      Target;                                                   // (Parm)
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDeviceFire_CustomEffect.EffectCustom
+struct UTgDeviceFire_CustomEffect_EffectCustom_Params
+{
+	class ATgPawn*                                     Instigator;                                               // (Parm)
+	class ATgPawn*                                     Target;                                                   // (Parm)
+	int                                                nHitSpecialSituationalType;                               // (Parm)
+	float                                              fValue;                                                   // (Parm)
+	bool                                               bAddToBase;                                               // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDeviceFire_CustomEffect.SubmitEffectCustom
+struct UTgDeviceFire_CustomEffect_SubmitEffectCustom_Params
+{
+	class ATgPawn*                                     Instigator;                                               // (Parm)
+	class ATgPawn*                                     Target;                                                   // (Parm)
+	class UTgEffectGroup*                              effectGroup;                                              // (Parm)
+	struct FImpactInfo                                 Impact;                                                   // (Parm)
+	int                                                nHitSpecialSituationalType;                               // (Parm)
+	float                                              fValue;                                                   // (Parm)
+	bool                                               bAddToBase;                                               // (Parm)
 };
 
 // Function TgGame.TgDeviceFire_IgnoreCCImmune.IsValidTarget
@@ -15125,6 +15557,12 @@ struct UTgDeviceForm_StartFire_Params
 	int                                                nAmmoRemaining;                                           // (OptionalParm, Parm)
 };
 
+// Function TgGame.TgDeviceForm.SetAmmoNodesOnStartFire
+struct UTgDeviceForm_SetAmmoNodesOnStartFire_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function TgGame.TgDeviceForm.IsCurrentInHandWeapon
 struct UTgDeviceForm_IsCurrentInHandWeapon_Params
 {
@@ -15227,7 +15665,7 @@ struct UTgDeviceForm_GetWeaponSpecialFx_Params
 // Function TgGame.TgDeviceForm.PlayTracerEffects
 struct UTgDeviceForm_PlayTracerEffects_Params
 {
-	struct FVector                                     EndLocation;                                              // (Parm)
+	struct FVector                                     endLocation;                                              // (Parm)
 	struct FName                                       nmFxName;                                                 // (OptionalParm, Parm)
 	int                                                nEquipSlot;                                               // (OptionalParm, Parm)
 	int                                                nFireMode;                                                // (OptionalParm, Parm)
@@ -15575,6 +16013,84 @@ struct UTgDeviceForm_Inhand_OnAmmoCountUpdated_Params
 	int                                                nMaxAmmoCount;                                            // (Parm)
 };
 
+// Function TgGame.TgDeviceForm_Latch.Generic1
+struct UTgDeviceForm_Latch_Generic1_Params
+{
+	unsigned char                                      byExtraData;                                              // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDeviceForm_Latch.StopFire
+struct UTgDeviceForm_Latch_StopFire_Params
+{
+	int                                                nFireModeNum;                                             // (Parm)
+};
+
+// Function TgGame.TgDeviceForm_Latch.Fire
+struct UTgDeviceForm_Latch_Fire_Params
+{
+	struct FVector                                     HitLocation;                                              // (Parm)
+	int                                                nFireMode;                                                // (Parm)
+	int                                                nEquipSlot;                                               // (OptionalParm, Parm)
+	int                                                nSocketIndex;                                             // (OptionalParm, Parm)
+	bool                                               bSuccessfulHit;                                           // (OptionalParm, Parm)
+	float                                              fRefireTime;                                              // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDeviceForm_Latch.StartFire
+struct UTgDeviceForm_Latch_StartFire_Params
+{
+	int                                                nFireMode;                                                // (Parm)
+	float                                              fRefireTime;                                              // (OptionalParm, Parm)
+	class AActor*                                      Target;                                                   // (OptionalParm, Parm)
+	int                                                nAmmoRemaining;                                           // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDeviceForm_Latch.DisconnectBeam
+struct UTgDeviceForm_Latch_DisconnectBeam_Params
+{
+};
+
+// Function TgGame.TgDeviceForm_Latch.ConnectBeamToTarget
+struct UTgDeviceForm_Latch_ConnectBeamToTarget_Params
+{
+};
+
+// Function TgGame.TgDeviceForm_Latch.SetBeamActive
+struct UTgDeviceForm_Latch_SetBeamActive_Params
+{
+	bool                                               bActive;                                                  // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDeviceForm_Latch.UpdateBeamEndpoint
+struct UTgDeviceForm_Latch_UpdateBeamEndpoint_Params
+{
+	float                                              DeltaTime;                                                // (Parm)
+};
+
+// Function TgGame.TgDeviceForm_Latch.MoveBeamEndpoint
+struct UTgDeviceForm_Latch_MoveBeamEndpoint_Params
+{
+	struct FVector                                     vNewPosition;                                             // (Parm)
+};
+
+// Function TgGame.TgDeviceForm_Latch.UsesTargetingMode
+struct UTgDeviceForm_Latch_UsesTargetingMode_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDeviceForm_Latch.SetFireMode
+struct UTgDeviceForm_Latch_SetFireMode_Params
+{
+	int                                                nMode;                                                    // (Parm)
+};
+
+// Function TgGame.TgDeviceForm_Latch.SetLatchAssembly
+struct UTgDeviceForm_Latch_SetLatchAssembly_Params
+{
+	int                                                nAsmId;                                                   // (Parm)
+};
+
 // Function TgGame.TgDeviceForm_Mount.StopFire
 struct UTgDeviceForm_Mount_StopFire_Params
 {
@@ -15832,6 +16348,7 @@ struct UTgDeviceMod_Burst_CheckRefire_Params
 {
 	class ATgDevice*                                   Device;                                                   // (Parm)
 	bool                                               bWantsRefire;                                             // (Parm)
+	int                                                shotsRemaining;                                           // (Parm, OutParm)
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -15949,6 +16466,15 @@ struct UTgDeviceMod_Burst_GetPostHitDelayOverride_Params
 struct UTgDeviceMod_TargetingAimForwarder_GetTargetingAim_Params
 {
 	struct FAimData                                    Aim;                                                      // (Parm, OutParm)
+};
+
+// Function TgGame.TgDeployable.ScaleFXList
+struct ATgDeployable_ScaleFXList_Params
+{
+	struct FName                                       fxListName;                                               // (Parm)
+	float                                              fDamageRadius;                                            // (Parm)
+	float                                              fDamageRadiusUU;                                          // (Parm)
+	float                                              fRadiusScale;                                             // (Parm)
 };
 
 // Function TgGame.TgDeployable.SetHUDOverlayEnemyViewDist
@@ -16208,6 +16734,12 @@ struct ATgDeployable_TimeDeviceFiring_Params
 {
 };
 
+// Function TgGame.TgDeployable.BenefitsFromPctShieldIncrease
+struct ATgDeployable_BenefitsFromPctShieldIncrease_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function TgGame.TgDeployable.IsFiring
 struct ATgDeployable_IsFiring_Params
 {
@@ -16263,7 +16795,7 @@ struct ATgDeployable_FireAmmunitionDeployable_Params
 // Function TgGame.TgDeployable.GetPhysicalFireAimDirection
 struct ATgDeployable_GetPhysicalFireAimDirection_Params
 {
-	struct FVector                                     fireLoc;                                                  // (Parm)
+	struct FVector                                     FireLoc;                                                  // (Parm)
 	struct FVector                                     TargetLocation;                                           // (Parm)
 	struct FVector                                     ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
@@ -16620,6 +17152,7 @@ struct ATgDeployable_MitigateHealthDamage_Params
 	float                                              NewValue;                                                 // (Parm, OutParm)
 	float                                              fPercReduction;                                           // (Parm, OutParm)
 	bool                                               bIsHeadshot;                                              // (Parm)
+	unsigned char                                      bWasCapped;                                               // (Parm, OutParm)
 };
 
 // Function TgGame.TgDeployable.MitigateExecuteDamage
@@ -16664,6 +17197,12 @@ struct ATgDeployable_IsImmuneToHealing_Params
 
 // Function TgGame.TgDeployable.CanBeExecuted
 struct ATgDeployable_CanBeExecuted_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDeployable.IsImmuneToDamageByAbsorption
+struct ATgDeployable_IsImmuneToDamageByAbsorption_Params
 {
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
@@ -17356,6 +17895,39 @@ struct ATgDeploy_EffectField_OnProxyTouch_Params
 	struct FVector                                     HitNormal;                                                // (Parm)
 };
 
+// Function TgGame.TgDeploy_GeometryEffectField.PushOverlappingActors
+struct ATgDeploy_GeometryEffectField_PushOverlappingActors_Params
+{
+	float                                              DeltaSeconds;                                             // (Parm)
+};
+
+// Function TgGame.TgDeploy_GeometryEffectField.CalcPushDirection
+struct ATgDeploy_GeometryEffectField_CalcPushDirection_Params
+{
+	struct FVector                                     HitLocation;                                              // (Parm)
+	struct FVector                                     HitNormal;                                                // (Parm)
+	struct FVector                                     ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDeploy_GeometryEffectField.FindOverlappingActors
+struct ATgDeploy_GeometryEffectField_FindOverlappingActors_Params
+{
+};
+
+// Function TgGame.TgDeploy_GeometryEffectField.ShouldSelfDestructWhenTouchedBy
+struct ATgDeploy_GeometryEffectField_ShouldSelfDestructWhenTouchedBy_Params
+{
+	class AActor*                                      Other;                                                    // (Const, Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDeploy_GeometryEffectField.IsPushable
+struct ATgDeploy_GeometryEffectField_IsPushable_Params
+{
+	class AActor*                                      Other;                                                    // (Const, Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function TgGame.TgDeploy_EffectSpots.Destroyed
 struct ATgDeploy_EffectSpots_Destroyed_Params
 {
@@ -17566,6 +18138,12 @@ struct ATgDeploy_Shield_BaseChange_Params
 {
 };
 
+// Function TgGame.TgDeploy_Shield.BenefitsFromPctShieldIncrease
+struct ATgDeploy_Shield_BenefitsFromPctShieldIncrease_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function TgGame.TgProjectile.SetNonThreatening
 struct ATgProjectile_SetNonThreatening_Params
 {
@@ -17725,8 +18303,18 @@ struct ATgProjectile_SpawnExplosionEffects_Params
 	struct FIMPACT_FX                                  ImpactFx;                                                 // (OptionalParm, Parm)
 };
 
+// Function TgGame.TgProjectile.Halt
+struct ATgProjectile_Halt_Params
+{
+};
+
 // Function TgGame.TgProjectile.Fizzle
 struct ATgProjectile_Fizzle_Params
+{
+};
+
+// Function TgGame.TgProjectile.CleanUpExploded
+struct ATgProjectile_CleanUpExploded_Params
 {
 };
 
@@ -18196,6 +18784,7 @@ struct ATgProjectile_NativePostRenderFor_Params
 // Function TgGame.TgProjectile.CompleteInitialization
 struct ATgProjectile_CompleteInitialization_Params
 {
+	unsigned char                                      ExtraInfo;                                                // (OptionalParm, Parm)
 };
 
 // Function TgGame.TgProjectile.CheckPhysicality
@@ -18562,6 +19151,11 @@ struct ATgProj_Simulated_FlashNotifyExploded_Params
 	struct FVector                                     HitNormal;                                                // (Parm)
 };
 
+// Function TgGame.TgProj_Simulated.FlashNotifyHalt
+struct ATgProj_Simulated_FlashNotifyHalt_Params
+{
+};
+
 // Function TgGame.TgProj_Simulated.FlashNotifyFizzle
 struct ATgProj_Simulated_FlashNotifyFizzle_Params
 {
@@ -18580,6 +19174,7 @@ struct ATgProj_Simulated_FlashNotifySpawn_Params
 // Function TgGame.TgProj_Simulated.CompleteInitialization
 struct ATgProj_Simulated_CompleteInitialization_Params
 {
+	unsigned char                                      ExtraInfo;                                                // (OptionalParm, Parm)
 };
 
 // Function TgGame.TgProj_FreeGrenade.Destroyed
@@ -18726,6 +19321,7 @@ struct ATgProj_FreeGrenade_ApplySpawnParams_Params
 // Function TgGame.TgProj_FreeGrenade.CompleteInitialization
 struct ATgProj_FreeGrenade_CompleteInitialization_Params
 {
+	unsigned char                                      ExtraInfo;                                                // (OptionalParm, Parm)
 };
 
 // Function TgGame.TgProj_FreeGrenade.PredictStartLocationBasedOnPing
@@ -18852,6 +19448,7 @@ struct ATgProj_ExtraColliders_OnSecondaryProxyTouch_Params
 // Function TgGame.TgProj_ExtraColliders.CompleteInitialization
 struct ATgProj_ExtraColliders_CompleteInitialization_Params
 {
+	unsigned char                                      ExtraInfo;                                                // (OptionalParm, Parm)
 };
 
 // Function TgGame.TgAudioComponent.OcclusionChanged
@@ -19603,6 +20200,18 @@ struct UTgEffect_Lift_ApplyEffect_Params
 	struct FImpactInfo                                 Impact;                                                   // (OptionalParm, Parm)
 	bool                                               bLatent;                                                  // (OptionalParm, Parm)
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgEffect_TimeBasedScaling_Base.GetScaledBaseValue
+struct UTgEffect_TimeBasedScaling_Base_GetScaledBaseValue_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgEffect_TimeFromCartRepairScaling.GetScaledBaseValue
+struct UTgEffect_TimeFromCartRepairScaling_GetScaledBaseValue_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function TgGame.TgEffectDamage.GetDamageReportFireModeIndex
@@ -20397,6 +21006,24 @@ struct ATgEffectManager_PostBeginPlay_Params
 {
 };
 
+// Function TgGame.TgEffectManager.HandlePlayerKnockbackHit
+struct ATgEffectManager_HandlePlayerKnockbackHit_Params
+{
+	int                                                nPawnId;                                                  // (Parm)
+};
+
+// Function TgGame.TgEffectManager.HandleWallKnockbackHit
+struct ATgEffectManager_HandleWallKnockbackHit_Params
+{
+	struct FVector                                     HitNormal;                                                // (Parm)
+};
+
+// Function TgGame.TgEffectManager.HandleWallGrabbedHit
+struct ATgEffectManager_HandleWallGrabbedHit_Params
+{
+	struct FKnockbackHit                               Hit;                                                      // (Parm)
+};
+
 // Function TgGame.TgEffectManager.CheckStacksForDisplay
 struct ATgEffectManager_CheckStacksForDisplay_Params
 {
@@ -20713,6 +21340,16 @@ struct ATgEffectManager_RemoveEffectGroupsBySourceDevice_Params
 {
 	int                                                nDeviceInstId;                                            // (Parm)
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgEffectManager.RemoveEffectGroupsByCategoryMarked
+struct ATgEffectManager_RemoveEffectGroupsByCategoryMarked_Params
+{
+	int                                                nCategoryCode;                                            // (Parm)
+	int                                                nMarkType;                                                // (Parm)
+	int                                                nNumStacks;                                               // (OptionalParm, Parm)
+	class AActor*                                      theInstigator;                                            // (OptionalParm, Parm)
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function TgGame.TgEffectManager.RemoveEffectGroupsByCategory
@@ -22493,6 +23130,7 @@ struct UTgCombatActor_MitigateHealthDamage_Params
 	float                                              NewValue;                                                 // (Parm, OutParm)
 	float                                              fPercReduction;                                           // (Parm, OutParm)
 	bool                                               bIsHeadshot;                                              // (Parm)
+	unsigned char                                      bWasCapped;                                               // (Parm, OutParm)
 };
 
 // Function TgGame.TgCombatActor.MitigateExecuteDamage
@@ -22537,6 +23175,12 @@ struct UTgCombatActor_IsImmuneToHealing_Params
 
 // Function TgGame.TgCombatActor.CanBeExecuted
 struct UTgCombatActor_CanBeExecuted_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgCombatActor.IsImmuneToDamageByAbsorption
+struct UTgCombatActor_IsImmuneToDamageByAbsorption_Params
 {
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
@@ -23185,6 +23829,11 @@ struct UTgPaladinsController_SetCredits_Params
 struct UTgPaladinsController_GetCredits_Params
 {
 	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn.TIMER_CANNOT_BE_STUCK
+struct ATgPawn_TIMER_CANNOT_BE_STUCK_Params
+{
 };
 
 // Function TgGame.TgPawn.OnPlayerReconnected
@@ -24619,12 +25268,6 @@ struct ATgPawn_OnTeleport_Params
 	class USeqAct_Teleport*                            Action;                                                   // (Parm)
 };
 
-// Function TgGame.TgPawn.GetJumpSpeedMultiplier
-struct ATgPawn_GetJumpSpeedMultiplier_Params
-{
-	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
 // Function TgGame.TgPawn.GetJumpHeightMultiplier
 struct ATgPawn_GetJumpHeightMultiplier_Params
 {
@@ -25377,6 +26020,12 @@ struct ATgPawn_AutoMount_Params
 	bool                                               bToggleMount;                                             // (OptionalParm, Parm)
 };
 
+// Function TgGame.TgPawn.DrawPawnEncroachmentFire
+struct ATgPawn_DrawPawnEncroachmentFire_Params
+{
+	bool                                               bDraw;                                                    // (Parm)
+};
+
 // Function TgGame.TgPawn.SetMountOnRespawn
 struct ATgPawn_SetMountOnRespawn_Params
 {
@@ -25696,6 +26345,7 @@ struct ATgPawn_StartPhysTween_Params
 	bool                                               bCollideWithWorld;                                        // (OptionalParm, Parm)
 	bool                                               bRotateTowardsTarget;                                     // (OptionalParm, Parm)
 	float                                              fTweenSpeed;                                              // (OptionalParm, Parm)
+	bool                                               bKeepPitch;                                               // (OptionalParm, Parm)
 };
 
 // Function TgGame.TgPawn.GetPhysTweenTargetLocation
@@ -26061,13 +26711,6 @@ struct ATgPawn_PulseStealth_Params
 {
 };
 
-// Function TgGame.TgPawn.TakeHealing
-struct ATgPawn_TakeHealing_Params
-{
-	float                                              fHealAmount;                                              // (Parm)
-	bool                                               bSelf;                                                    // (Parm)
-};
-
 // Function TgGame.TgPawn.TakeShieldDamage
 struct ATgPawn_TakeShieldDamage_Params
 {
@@ -26309,6 +26952,7 @@ struct ATgPawn_SwapEquippedDevices_Params
 // Function TgGame.TgPawn.RestartAllDevices
 struct ATgPawn_RestartAllDevices_Params
 {
+	bool                                               bPostRevive;                                              // (OptionalParm, Parm)
 };
 
 // Function TgGame.TgPawn.ClientStopFiringAllDevices
@@ -27523,10 +28167,19 @@ struct ATgPawn_PawnOnDied_Params
 	class AController*                                 pKilller;                                                 // (Parm)
 };
 
+// Function TgGame.TgPawn.PawnOnKilledGlobal
+struct ATgPawn_PawnOnKilledGlobal_Params
+{
+	class AActor*                                      Victim;                                                   // (Parm)
+	class AActor*                                      Killer;                                                   // (Parm)
+	TArray<class ATgRepInfo_Player*>                   AssistingPlayers;                                         // (Parm, NeedCtorLink)
+};
+
 // Function TgGame.TgPawn.PawnOnAssisted
 struct ATgPawn_PawnOnAssisted_Params
 {
 	class AActor*                                      pVictim;                                                  // (Parm)
+	class AActor*                                      pKiller;                                                  // (Parm)
 };
 
 // Function TgGame.TgPawn.PawnOnKilled
@@ -27572,6 +28225,37 @@ struct ATgPawn_PawnOnPreDamageMitigation_Params
 struct ATgPawn_PawnOnDamaged_Params
 {
 	struct FOnDamagedParams                            Params;                                                   // (Parm, OutParm)
+};
+
+// Function TgGame.TgPawn.PawnMitigateDamageOther
+struct ATgPawn_PawnMitigateDamageOther_Params
+{
+	class ATgPawn*                                     Other;                                                    // (Parm)
+	TEnumAsByte<EPawnDamageMitigatorReason>            eReason;                                                  // (Parm)
+	class ATgPawn*                                     attacker;                                                 // (Parm)
+	class UTgEffectGroup*                              eg;                                                       // (Parm)
+	float                                              fDamage;                                                  // (Parm, OutParm)
+	int                                                nPropertyId;                                              // (Parm)
+};
+
+// Function TgGame.TgPawn.RemovePawnDamageMitigatorByReason
+struct ATgPawn_RemovePawnDamageMitigatorByReason_Params
+{
+	TEnumAsByte<EPawnDamageMitigatorReason>            eReason;                                                  // (Parm)
+};
+
+// Function TgGame.TgPawn.RemovePawnDamageMitigator
+struct ATgPawn_RemovePawnDamageMitigator_Params
+{
+	class ATgPawn*                                     PawnMitigator;                                            // (Parm)
+	TEnumAsByte<EPawnDamageMitigatorReason>            eReason;                                                  // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgPawn.AddPawnDamageMitigator
+struct ATgPawn_AddPawnDamageMitigator_Params
+{
+	class ATgPawn*                                     PawnMitigator;                                            // (Parm)
+	TEnumAsByte<EPawnDamageMitigatorReason>            eReason;                                                  // (OptionalParm, Parm)
 };
 
 // Function TgGame.TgPawn.SetSpawnEnergy
@@ -27651,6 +28335,30 @@ struct ATgPawn_GetDamageDealtPerc_Params
 	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function TgGame.TgPawn.GetHealingCapHP
+struct ATgPawn_GetHealingCapHP_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn.HasHealingCapHP
+struct ATgPawn_HasHealingCapHP_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn.GetDamageCapHP
+struct ATgPawn_GetDamageCapHP_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn.HasDamageCapHP
+struct ATgPawn_HasDamageCapHP_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function TgGame.TgPawn.GetDamageCapPercCurHP
 struct ATgPawn_GetDamageCapPercCurHP_Params
 {
@@ -27667,6 +28375,12 @@ struct ATgPawn_GetDamageCapPercMaxHP_Params
 struct ATgPawn_GetProtectionCC_Params
 {
 	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn.ShouldNeverBeHealed
+struct ATgPawn_ShouldNeverBeHealed_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function TgGame.TgPawn.IsHealingDisabled
@@ -28164,6 +28878,7 @@ struct ATgPawn_MitigateHealthDamage_Params
 	float                                              NewValue;                                                 // (Parm, OutParm)
 	float                                              fPercReduction;                                           // (Parm, OutParm)
 	bool                                               bIsHeadshot;                                              // (Parm)
+	unsigned char                                      bWasCapped;                                               // (Parm, OutParm)
 };
 
 // Function TgGame.TgPawn.MitigateExecuteDamage
@@ -28200,6 +28915,14 @@ struct ATgPawn_BuffDamage_Params
 	struct FExtraDamageInfo                            ExtraInfo;                                                // (Parm, OutParm)
 };
 
+// Function TgGame.TgPawn.TakeHealing
+struct ATgPawn_TakeHealing_Params
+{
+	float                                              fHealAmount;                                              // (Parm)
+	bool                                               bSelf;                                                    // (Parm)
+	int                                                nHealingDeviceId;                                         // (Parm)
+};
+
 // Function TgGame.TgPawn.IsImmuneToHealing
 struct ATgPawn_IsImmuneToHealing_Params
 {
@@ -28214,6 +28937,12 @@ struct ATgPawn_CanBeExecuted_Params
 
 // Function TgGame.TgPawn.IsPawnOutOfPlane
 struct ATgPawn_IsPawnOutOfPlane_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn.IsImmuneToDamageByAbsorption
+struct ATgPawn_IsImmuneToDamageByAbsorption_Params
 {
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
@@ -28782,6 +29511,12 @@ struct ATgPawn_AreObscuringDeployablesOverriden_Params
 struct ATgPawn_IsDeployableBlindedTo_Params
 {
 	class AActor*                                      Viewed;                                                   // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn.IsDeployableIgnoringStealthInterrupts
+struct ATgPawn_IsDeployableIgnoringStealthInterrupts_Params
+{
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -29432,6 +30167,7 @@ struct ATgPawn_bIsEditor_Params
 struct ATgPawn_ReapplyLoadoutEffects_Params
 {
 	bool                                               bKeepFiringMount;                                         // (OptionalParm, Parm)
+	bool                                               bPostRevive;                                              // (OptionalParm, Parm)
 };
 
 // Function TgGame.TgPawn.ReapplyLevelEffectGroups
@@ -29906,6 +30642,18 @@ struct ATgPawn_CrowdControlBreak_Params
 {
 };
 
+// Function TgGame.TgPawn.IsMounted
+struct ATgPawn_IsMounted_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn.IsInYagorathGrab
+struct ATgPawn_IsInYagorathGrab_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function TgGame.TgPawn.IsInSoftCrowdControl
 struct ATgPawn_IsInSoftCrowdControl_Params
 {
@@ -30179,10 +30927,22 @@ struct ATgPawn_CanPawnParticipateInCapture_Params
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function TgGame.TgPawn.CanSpawnScalableShields
+struct ATgPawn_CanSpawnScalableShields_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function TgGame.TgPawn.CanPawnMountUp
 struct ATgPawn_CanPawnMountUp_Params
 {
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn.GotBurnCard
+struct ATgPawn_GotBurnCard_Params
+{
+	int                                                BurnCardId;                                               // (Parm)
 };
 
 // Function TgGame.TgPawn.UpdateDeathCardItem
@@ -30197,12 +30957,28 @@ struct ATgPawn_CheckIsInItemShop_Params
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function TgGame.TgPawn.GetUISkillEqpSlotOverrideStaticDefault
+struct ATgPawn_GetUISkillEqpSlotOverrideStaticDefault_Params
+{
+	int                                                nEquipSlot;                                               // (Parm)
+	TEnumAsByte<EUI_SKILL_EQUIP_SLOT>                  eUISlot;                                                  // (OptionalParm, Parm)
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function TgGame.TgPawn.GetUISkillEqpSlotOverride
 struct ATgPawn_GetUISkillEqpSlotOverride_Params
 {
 	int                                                nEquipSlot;                                               // (Parm)
-	bool                                               bAltSlot;                                                 // (OptionalParm, Parm)
+	TEnumAsByte<EUI_SKILL_EQUIP_SLOT>                  eUISlot;                                                  // (OptionalParm, Parm)
+	bool                                               bBaseSkillOnly;                                           // (OptionalParm, Parm)
+	bool                                               bGamepadUI;                                               // (OptionalParm, Parm)
 	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn.GetUIUltChargePercent
+struct ATgPawn_GetUIUltChargePercent_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function TgGame.TgPawn.QueueSoundShutdown
@@ -30388,6 +31164,14 @@ struct ATgPawn_Character_Destroyed_Params
 {
 };
 
+// Function TgGame.TgPawn_Character.GetAICard
+struct ATgPawn_Character_GetAICard_Params
+{
+	int                                                WhichStore;                                               // (Parm)
+	int                                                WhichSlot;                                                // (Parm)
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function TgGame.TgPawn_Character.ApplyFOVModification
 struct ATgPawn_Character_ApplyFOVModification_Params
 {
@@ -30565,6 +31349,7 @@ struct ATgPawn_Character_StartPhysTween_Params
 	bool                                               bCollideWithWorld;                                        // (OptionalParm, Parm)
 	bool                                               bRotateTowardsTarget;                                     // (OptionalParm, Parm)
 	float                                              fTweenSpeed;                                              // (OptionalParm, Parm)
+	bool                                               bKeepPitch;                                               // (OptionalParm, Parm)
 };
 
 // Function TgGame.TgPawn_Character.AbortJoin
@@ -31003,6 +31788,12 @@ struct ATgPawn_Character_GetBaseSpeed_Params
 	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function TgGame.TgPawn_Character.GetGroundSpeed
+struct ATgPawn_Character_GetGroundSpeed_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function TgGame.TgPawn_Character.GetDiminishedGroundSpeed
 struct ATgPawn_Character_GetDiminishedGroundSpeed_Params
 {
@@ -31013,6 +31804,12 @@ struct ATgPawn_Character_GetDiminishedGroundSpeed_Params
 struct ATgPawn_Character_GetDeviceMoveSpeedMultiplier_Params
 {
 	bool                                               bUpdateSavedMove;                                         // (Parm)
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Character.GetJumpSpeedMultiplier
+struct ATgPawn_Character_GetJumpSpeedMultiplier_Params
+{
 	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -31178,10 +31975,19 @@ struct ATgPawn_Character_PawnOnRevive_Params
 {
 };
 
+// Function TgGame.TgPawn_Character.PawnOnKilledGlobal
+struct ATgPawn_Character_PawnOnKilledGlobal_Params
+{
+	class AActor*                                      Victim;                                                   // (Parm)
+	class AActor*                                      Killer;                                                   // (Parm)
+	TArray<class ATgRepInfo_Player*>                   AssistingPlayers;                                         // (Parm, NeedCtorLink)
+};
+
 // Function TgGame.TgPawn_Character.PawnOnAssisted
 struct ATgPawn_Character_PawnOnAssisted_Params
 {
 	class AActor*                                      pVictim;                                                  // (Parm)
+	class AActor*                                      pKiller;                                                  // (Parm)
 };
 
 // Function TgGame.TgPawn_Character.PawnOnKilled
@@ -31239,12 +32045,6 @@ struct ATgPawn_Character_ApplyItemEffects_Params
 	class UTgInventoryObject*                          pItem;                                                    // (Parm)
 	bool                                               bRemove;                                                  // (Parm)
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function TgGame.TgPawn_Character.ReapplyLoadoutEffects
-struct ATgPawn_Character_ReapplyLoadoutEffects_Params
-{
-	bool                                               bKeepFiringMount;                                         // (OptionalParm, Parm)
 };
 
 // Function TgGame.TgPawn_Character.AddSpray
@@ -31722,6 +32522,12 @@ struct ATgPawn_SiegeEngine_Payload_UpdateAlliesNearbyBehavior_Params
 	bool                                               bSkipCountUpdate;                                         // (OptionalParm, Parm)
 };
 
+// Function TgGame.TgPawn_SiegeEngine_Payload.GetNextControlState
+struct ATgPawn_SiegeEngine_Payload_GetNextControlState_Params
+{
+	TEnumAsByte<EPayloadControlState>                  ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function TgGame.TgPawn_SiegeEngine_Payload.RemoveNearbyPlayer
 struct ATgPawn_SiegeEngine_Payload_RemoveNearbyPlayer_Params
 {
@@ -31763,6 +32569,12 @@ struct ATgPawn_SiegeEngine_Payload_HasEnemyPlayersNearby_Params
 
 // Function TgGame.TgPawn_SiegeEngine_Payload.HasFriendlyPlayersNearby
 struct ATgPawn_SiegeEngine_Payload_HasFriendlyPlayersNearby_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_SiegeEngine_Payload.CanTriggerOvertime
+struct ATgPawn_SiegeEngine_Payload_CanTriggerOvertime_Params
 {
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
@@ -31856,6 +32668,182 @@ struct ATgPawn_SiegeEngine_Payload_CreateCollisionProxy_Params
 // Function TgGame.TgPawn_SiegeEngine_Payload.PostPawnSetupServer
 struct ATgPawn_SiegeEngine_Payload_PostPawnSetupServer_Params
 {
+};
+
+// Function TgGame.TgPawn_SiegeBeyond_Payload.HasFriendlyPlayersNearby
+struct ATgPawn_SiegeBeyond_Payload_HasFriendlyPlayersNearby_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_SiegeBeyond_Payload.CanTriggerOvertime
+struct ATgPawn_SiegeBeyond_Payload_CanTriggerOvertime_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_SiegeBeyond_Payload.GetNextControlState
+struct ATgPawn_SiegeBeyond_Payload_GetNextControlState_Params
+{
+	TEnumAsByte<EPayloadControlState>                  ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_SiegeBeyond_Payload.RemoveNearbyPlayer
+struct ATgPawn_SiegeBeyond_Payload_RemoveNearbyPlayer_Params
+{
+	class AActor*                                      Other;                                                    // (Parm)
+};
+
+// Function TgGame.TgPawn_SiegeBeyond_Payload.AddNearbyPlayer
+struct ATgPawn_SiegeBeyond_Payload_AddNearbyPlayer_Params
+{
+	class AActor*                                      Other;                                                    // (Parm)
+};
+
+// Function TgGame.TgPawn_SiegeBeyond_Payload.Died
+struct ATgPawn_SiegeBeyond_Payload_Died_Params
+{
+	class AController*                                 Killer;                                                   // (Parm)
+	class UClass*                                      dmgType;                                                  // (Parm)
+	struct FVector                                     HitLocation;                                              // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_SiegeBeyond_Payload.ExplodeAt
+struct ATgPawn_SiegeBeyond_Payload_ExplodeAt_Params
+{
+	struct FVector                                     vLoc;                                                     // (Parm)
+};
+
+// Function TgGame.TgPawn_SiegeBeyond_Payload.PlayExplosion
+struct ATgPawn_SiegeBeyond_Payload_PlayExplosion_Params
+{
+	struct FVector                                     vLoc;                                                     // (Parm)
+};
+
+// Function TgGame.TgPawn_SiegeBeyond_Payload.Destroyed
+struct ATgPawn_SiegeBeyond_Payload_Destroyed_Params
+{
+};
+
+// Function TgGame.TgPawn_SiegeBeyond_Payload.ReplicatedEvent
+struct ATgPawn_SiegeBeyond_Payload_ReplicatedEvent_Params
+{
+	struct FName                                       VarName;                                                  // (Parm)
+};
+
+// Function TgGame.TgPawn_SiegeBeyond_Payload.UpdateBuffFX
+struct ATgPawn_SiegeBeyond_Payload_UpdateBuffFX_Params
+{
+};
+
+// Function TgGame.TgPawn_SiegeBeyond_Payload.ActivateBuff
+struct ATgPawn_SiegeBeyond_Payload_ActivateBuff_Params
+{
+	struct FName                                       nmType;                                                   // (Parm)
+};
+
+// Function TgGame.TgPawn_SiegeBeyond_Payload.ResetBuffs
+struct ATgPawn_SiegeBeyond_Payload_ResetBuffs_Params
+{
+};
+
+// Function TgGame.TgPawn_SiegeBeyond_Payload.ClearAllPlayerBuffs
+struct ATgPawn_SiegeBeyond_Payload_ClearAllPlayerBuffs_Params
+{
+};
+
+// Function TgGame.TgPawn_SiegeBeyond_Payload.RemovePlayerBuffs
+struct ATgPawn_SiegeBeyond_Payload_RemovePlayerBuffs_Params
+{
+	class ATgPawn*                                     Pawn;                                                     // (Parm)
+};
+
+// Function TgGame.TgPawn_SiegeBeyond_Payload.ApplyPlayerBuffs
+struct ATgPawn_SiegeBeyond_Payload_ApplyPlayerBuffs_Params
+{
+	class ATgPawn*                                     Pawn;                                                     // (Parm)
+};
+
+// Function TgGame.TgPawn_SiegeBeyond_Payload.AreAnyBuffsActive
+struct ATgPawn_SiegeBeyond_Payload_AreAnyBuffsActive_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_SiegeBeyond_Payload.NativeIsContested
+struct ATgPawn_SiegeBeyond_Payload_NativeIsContested_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_SiegeBeyond_Payload.GainRepairProgress
+struct ATgPawn_SiegeBeyond_Payload_GainRepairProgress_Params
+{
+	float                                              fProgress;                                                // (Parm)
+	struct FName                                       nmType;                                                   // (Parm)
+};
+
+// Function TgGame.TgPawn_SiegeBeyond_Payload.FullRepairCart
+struct ATgPawn_SiegeBeyond_Payload_FullRepairCart_Params
+{
+};
+
+// Function TgGame.TgPawn_SiegeBeyond_Payload.PawnOnDamageMitigation
+struct ATgPawn_SiegeBeyond_Payload_PawnOnDamageMitigation_Params
+{
+	class ATgPawn*                                     attacker;                                                 // (Parm)
+	class UTgEffectGroup*                              eg;                                                       // (Parm)
+	float                                              fDamage;                                                  // (Parm, OutParm)
+	int                                                nPropertyId;                                              // (Parm)
+};
+
+// Function TgGame.TgPawn_SiegeBeyond_Payload.CanBeLifestealTarget
+struct ATgPawn_SiegeBeyond_Payload_CanBeLifestealTarget_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_SiegeBeyond_Payload.IsImmuneToHealing
+struct ATgPawn_SiegeBeyond_Payload_IsImmuneToHealing_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_SiegeBeyond_Payload.IsDamageOverTimeImmune
+struct ATgPawn_SiegeBeyond_Payload_IsDamageOverTimeImmune_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_SiegeBeyond_Payload.IsImmuneToDamage
+struct ATgPawn_SiegeBeyond_Payload_IsImmuneToDamage_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_SiegeBeyond_Payload.IsNonCombat
+struct ATgPawn_SiegeBeyond_Payload_IsNonCombat_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_SiegeBeyond_Payload.RetrieveExplosionFiremode
+struct ATgPawn_SiegeBeyond_Payload_RetrieveExplosionFiremode_Params
+{
+	class UTgDeviceFire*                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_SiegeBeyond_Payload.RetrieveBuffFiremode
+struct ATgPawn_SiegeBeyond_Payload_RetrieveBuffFiremode_Params
+{
+	class UTgDeviceFire*                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_SiegeBeyond_Payload.RetrievePassiveDevice
+struct ATgPawn_SiegeBeyond_Payload_RetrievePassiveDevice_Params
+{
+	class ATgDevice*                                   ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function TgGame.TgPawn_SiegeEngine_CaptureAndPayload.SetSpline
@@ -33480,6 +34468,18 @@ struct ATgPropActor_OutsideWorldBounds_Params
 struct ATgPropActor_FellOutOfWorld_Params
 {
 	class UClass*                                      dmgType;                                                  // (Parm)
+};
+
+// Function TgGame.TgPropActor.FxDeactivateGroup
+struct ATgPropActor_FxDeactivateGroup_Params
+{
+	struct FName                                       nmGroup;                                                  // (Parm)
+};
+
+// Function TgGame.TgPropActor.FxActivateGroup
+struct ATgPropActor_FxActivateGroup_Params
+{
+	struct FName                                       nmGroup;                                                  // (Parm)
 };
 
 // Function TgGame.TgPropActor.SetForceHidden
@@ -35172,11 +36172,6 @@ struct ATgAIController_BehaviorGod_StartReviveTimer_Params
 	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
-// Function TgGame.TgAIController_BehaviorGod.PurchaseBurnCards
-struct ATgAIController_BehaviorGod_PurchaseBurnCards_Params
-{
-};
-
 // Function TgGame.TgAIController_BehaviorGod.PurchaseSkills
 struct ATgAIController_BehaviorGod_PurchaseSkills_Params
 {
@@ -36156,6 +37151,19 @@ struct ATgPlayerCamera_AddCameraEffect_Params
 	TEnumAsByte<ECameraEffectVisiblity>                EffectVisibility;                                         // (OptionalParm, Parm)
 	class ATgPawn*                                     OwningPawn;                                               // (OptionalParm, Parm)
 	class ATgEmitter_CameraEffect*                     ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPlayerCamera.IsBlockedByExistingEffects
+struct ATgPlayerCamera_IsBlockedByExistingEffects_Params
+{
+	class ATgEmitter_CameraEffect*                     CameraEffect;                                             // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPlayerCamera.RemoveConflictingEffects
+struct ATgPlayerCamera_RemoveConflictingEffects_Params
+{
+	class ATgEmitter_CameraEffect*                     CameraEffect;                                             // (Parm)
 };
 
 // Function TgGame.TgPlayerCamera.PlayWeather
@@ -37583,6 +38591,14 @@ struct ATgGame_GetTaskForceCount_Params
 struct ATgGame_GetWinningTaskforce_Params
 {
 	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgGame.ApplyCharacterBasedGameProperties
+struct ATgGame_ApplyCharacterBasedGameProperties_Params
+{
+	class ATgPawn*                                     Pawn;                                                     // (Parm)
+	class ATgInventoryManager*                         tgInvManager;                                             // (Parm)
+	int                                                nTaskForce;                                               // (Parm)
 };
 
 // Function TgGame.TgGame.SpawnPlayerCharacter
@@ -39412,11 +40428,6 @@ struct ATgGame_PaladinsExtended_InitGameReplicationInfo_Params
 {
 };
 
-// Function TgGame.TgGame_PaladinsExtended.ScorePayload
-struct ATgGame_PaladinsExtended_ScorePayload_Params
-{
-};
-
 // Function TgGame.TgGame_PaladinsExtended.GetTotalSplineDist
 struct ATgGame_PaladinsExtended_GetTotalSplineDist_Params
 {
@@ -40183,6 +41194,23 @@ struct ATgGame_Paladins_Siege_OnRoundEnded_Params
 {
 };
 
+// Function TgGame.TgGame_Paladins_Siege.UpdatePayloadLOSCheckRate
+struct ATgGame_Paladins_Siege_UpdatePayloadLOSCheckRate_Params
+{
+	bool                                               bFaster;                                                  // (Parm)
+};
+
+// Function TgGame.TgGame_Paladins_Siege.TriggerFasterLOSCheckTimer
+struct ATgGame_Paladins_Siege_TriggerFasterLOSCheckTimer_Params
+{
+	bool                                               bUpdateLOSRate;                                           // (Parm)
+};
+
+// Function TgGame.TgGame_Paladins_Siege.ScorePayload
+struct ATgGame_Paladins_Siege_ScorePayload_Params
+{
+};
+
 // Function TgGame.TgGame_Paladins_Siege.SetPayloadTimer
 struct ATgGame_Paladins_Siege_SetPayloadTimer_Params
 {
@@ -40254,6 +41282,37 @@ struct ATgGame_Paladins_Siege_TaskforceWin_Params
 // Function TgGame.TgGame_Paladins_Siege.PostBeginPlay
 struct ATgGame_Paladins_Siege_PostBeginPlay_Params
 {
+};
+
+// Function TgGame.TgGame_Paladins_Siege.StartNewObjectiveRound
+struct ATgGame_Paladins_Siege_StartNewObjectiveRound_Params
+{
+	bool                                               bFirstRound;                                              // (Parm)
+};
+
+// Function TgGame.TgGame_Paladins_Siege.GetRepairCrystals
+struct ATgGame_Paladins_Siege_GetRepairCrystals_Params
+{
+	TArray<class ATgObjectiveCrystal*>                 ReturnValue;                                              // (Parm, OutParm, ReturnParm, NeedCtorLink)
+};
+
+// Function TgGame.TgGame_Paladins_Siege.GetAllRepairCrystals
+struct ATgGame_Paladins_Siege_GetAllRepairCrystals_Params
+{
+	TArray<class ATgObjectiveCrystal*>                 ReturnValue;                                              // (Parm, OutParm, ReturnParm, NeedCtorLink)
+};
+
+// Function TgGame.TgGame_Paladins_Siege.GetCurrentActiveRepairCrystals
+struct ATgGame_Paladins_Siege_GetCurrentActiveRepairCrystals_Params
+{
+	TArray<class ATgObjectiveCrystal*>                 ReturnValue;                                              // (Parm, OutParm, ReturnParm, NeedCtorLink)
+};
+
+// Function TgGame.TgGame_Paladins_Siege.IsContesting
+struct ATgGame_Paladins_Siege_IsContesting_Params
+{
+	int                                                nTaskForceNum;                                            // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function TgGame.TgGame_Paladins_Siege.TickOvertime
@@ -41293,6 +42352,59 @@ struct ATgObjective_ReplicatedEvent_Params
 	struct FName                                       VarName;                                                  // (Parm)
 };
 
+// Function TgGame.TgObjective.ActivateTeamFX
+struct ATgObjective_ActivateTeamFX_Params
+{
+	bool                                               bEnemyTaskForce;                                          // (Parm)
+};
+
+// Function TgGame.TgObjective.ActivateNeutralFX
+struct ATgObjective_ActivateNeutralFX_Params
+{
+};
+
+// Function TgGame.TgObjectiveContestable.UnTouch
+struct ATgObjectiveContestable_UnTouch_Params
+{
+	class AActor*                                      Other;                                                    // (Parm)
+};
+
+// Function TgGame.TgObjectiveContestable.Touch
+struct ATgObjectiveContestable_Touch_Params
+{
+	class AActor*                                      Other;                                                    // (Parm)
+	class UPrimitiveComponent*                         OtherComp;                                                // (Parm, EditInline)
+	struct FVector                                     HitLocation;                                              // (Parm)
+	struct FVector                                     HitNormal;                                                // (Parm)
+};
+
+// Function TgGame.TgObjectiveContestable.IsContested
+struct ATgObjectiveContestable_IsContested_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgObjectiveContestable.GetNumOnPoint
+struct ATgObjectiveContestable_GetNumOnPoint_Params
+{
+	int                                                nTaskForce;                                               // (Parm)
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgObjectiveContestable.CanAddPawnCaptureList
+struct ATgObjectiveContestable_CanAddPawnCaptureList_Params
+{
+	class ATgPawn_Character*                           pPawn;                                                    // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgObjectiveContestable.CanPawnCapture
+struct ATgObjectiveContestable_CanPawnCapture_Params
+{
+	class ATgPawn_Character*                           pPawn;                                                    // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function TgGame.TgChaosCapturePoint.Destroyed
 struct ATgChaosCapturePoint_Destroyed_Params
 {
@@ -41378,33 +42490,6 @@ struct ATgChaosCapturePoint_ReplicatedEvent_Params
 	struct FName                                       VarName;                                                  // (Parm)
 };
 
-// Function TgGame.TgChaosCapturePoint.IsContested
-struct ATgChaosCapturePoint_IsContested_Params
-{
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function TgGame.TgChaosCapturePoint.GetNumOnPoint
-struct ATgChaosCapturePoint_GetNumOnPoint_Params
-{
-	int                                                nTaskForce;                                               // (Parm)
-	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function TgGame.TgChaosCapturePoint.CanAddPawnCaptureList
-struct ATgChaosCapturePoint_CanAddPawnCaptureList_Params
-{
-	class ATgPawn_Character*                           pPawn;                                                    // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function TgGame.TgChaosCapturePoint.CanPawnCapture
-struct ATgChaosCapturePoint_CanPawnCapture_Params
-{
-	class ATgPawn_Character*                           pPawn;                                                    // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
 // Function TgGame.TgChaosCapturePoint.AnnounceFogOfDeath
 struct ATgChaosCapturePoint_AnnounceFogOfDeath_Params
 {
@@ -41430,6 +42515,77 @@ struct ATgChaosCapturePoint_ParticleStorm_Tick_Params
 // Function TgGame.TgChaosCapturePoint_ParticleStorm.SetInitialState
 struct ATgChaosCapturePoint_ParticleStorm_SetInitialState_Params
 {
+};
+
+// Function TgGame.TgObjectiveCrystal.UnTouch
+struct ATgObjectiveCrystal_UnTouch_Params
+{
+	class AActor*                                      Other;                                                    // (Parm)
+};
+
+// Function TgGame.TgObjectiveCrystal.Touch
+struct ATgObjectiveCrystal_Touch_Params
+{
+	class AActor*                                      Other;                                                    // (Parm)
+	class UPrimitiveComponent*                         OtherComp;                                                // (Parm, EditInline)
+	struct FVector                                     HitLocation;                                              // (Parm)
+	struct FVector                                     HitNormal;                                                // (Parm)
+};
+
+// Function TgGame.TgObjectiveCrystal.Tick
+struct ATgObjectiveCrystal_Tick_Params
+{
+	float                                              DeltaTime;                                                // (Parm)
+};
+
+// Function TgGame.TgObjectiveCrystal.HasCachedPayload
+struct ATgObjectiveCrystal_HasCachedPayload_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgObjectiveCrystal.ReplicatedEvent
+struct ATgObjectiveCrystal_ReplicatedEvent_Params
+{
+	struct FName                                       VarName;                                                  // (Parm)
+};
+
+// Function TgGame.TgObjectiveCrystal.RetrieveCrystalProp
+struct ATgObjectiveCrystal_RetrieveCrystalProp_Params
+{
+	class ATgPropActor*                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgObjectiveCrystal.RemoveActiveFX
+struct ATgObjectiveCrystal_RemoveActiveFX_Params
+{
+};
+
+// Function TgGame.TgObjectiveCrystal.ActivateActiveFX
+struct ATgObjectiveCrystal_ActivateActiveFX_Params
+{
+};
+
+// Function TgGame.TgObjectiveCrystal.ActivateTeamFX
+struct ATgObjectiveCrystal_ActivateTeamFX_Params
+{
+	bool                                               bEnemyTaskForce;                                          // (Parm)
+};
+
+// Function TgGame.TgObjectiveCrystal.ActivateNeutralFX
+struct ATgObjectiveCrystal_ActivateNeutralFX_Params
+{
+};
+
+// Function TgGame.TgObjectiveCrystal.UpdateFX
+struct ATgObjectiveCrystal_UpdateFX_Params
+{
+};
+
+// Function TgGame.TgObjectiveCrystal.SetStatus
+struct ATgObjectiveCrystal_SetStatus_Params
+{
+	TEnumAsByte<EObjectiveStatus>                      NewStatus;                                                // (Parm)
 };
 
 // Function TgGame.TgRepInfo_CapturePoint.GetCapturePointIndex
@@ -41850,6 +43006,12 @@ struct ATgRepInfo_Game_RemoveCapturePoint_Params
 	class ATgChaosCapturePoint*                        pPoint;                                                   // (Parm)
 };
 
+// Function TgGame.TgRepInfo_Game.AddCrystal
+struct ATgRepInfo_Game_AddCrystal_Params
+{
+	class ATgObjectiveCrystal*                         pCrystal;                                                 // (Parm)
+};
+
 // Function TgGame.TgRepInfo_Game.AddCapturePoint
 struct ATgRepInfo_Game_AddCapturePoint_Params
 {
@@ -42045,6 +43207,7 @@ struct ATgRepInfo_Game_SpawnSimulatedProjectile_Params
 	int                                                nProjectileIdOverride;                                    // (OptionalParm, Parm)
 	bool                                               bPredictStartLocationBasedOnPing;                         // (OptionalParm, Parm)
 	class UTgDeviceFire*                               FireMode;                                                 // (OptionalParm, Parm)
+	unsigned char                                      ExtraInfo;                                                // (OptionalParm, Parm)
 	class ATgProj_Simulated*                           ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -42146,6 +43309,12 @@ struct ATgRepInfo_Game_GetOpposingTeamsPawns_Params
 	TArray<class ATgPawn_Character*>                   enemyPawns;                                               // (Parm, OutParm, NeedCtorLink)
 };
 
+// Function TgGame.TgRepInfo_Game.GetPawns
+struct ATgRepInfo_Game_GetPawns_Params
+{
+	TArray<class ATgPawn_Character*>                   AllPawns;                                                 // (Parm, OutParm, NeedCtorLink)
+};
+
 // Function TgGame.TgRepInfo_Game.GetNumNearbyPlayers
 struct ATgRepInfo_Game_GetNumNearbyPlayers_Params
 {
@@ -42186,6 +43355,13 @@ struct ATgRepInfo_Game_GetTaskForceFor_Params
 	class ATgRepInfo_TaskForce*                        ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function TgGame.TgRepInfo_Game.FindPawnById
+struct ATgRepInfo_Game_FindPawnById_Params
+{
+	int                                                nPawnId;                                                  // (Parm)
+	class ATgPawn*                                     ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function TgGame.TgRepInfo_Game.GetPRIFromID
 struct ATgRepInfo_Game_GetPRIFromID_Params
 {
@@ -42211,6 +43387,18 @@ struct ATgRepInfo_Game_GetDeployable_Params
 struct ATgRepInfo_Game_GetDeployableCount_Params
 {
 	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgRepInfo_Game.GetUltCooldownMultiplier
+struct ATgRepInfo_Game_GetUltCooldownMultiplier_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgRepInfo_Game.GetCooldownReduction
+struct ATgRepInfo_Game_GetCooldownReduction_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function TgGame.TgRepInfo_Player.GetDeployableOverlayEnemyViewDist
@@ -43424,6 +44612,7 @@ struct UTgAchievement_PassesAsDevice_Params
 {
 	int                                                nIncomingDeviceID;                                        // (Parm)
 	int                                                nExpectedDeviceID;                                        // (Parm)
+	int                                                nFireMode;                                                // (OptionalParm, Parm)
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -43495,6 +44684,12 @@ struct ATgDeploy_Reversal_ReplicatedEvent_Params
 	struct FName                                       VarName;                                                  // (Parm)
 };
 
+// Function TgGame.TgDeploy_Reversal.BenefitsFromPctShieldIncrease
+struct ATgDeploy_Reversal_BenefitsFromPctShieldIncrease_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function TgGame.TgDeploy_Reversal.ToggleLargeMesh
 struct ATgDeploy_Reversal_ToggleLargeMesh_Params
 {
@@ -43519,6 +44714,7 @@ struct ATgDeploy_Reversal_MitigateHealthDamage_Params
 	float                                              NewValue;                                                 // (Parm, OutParm)
 	float                                              fPercReduction;                                           // (Parm, OutParm)
 	bool                                               bIsHeadshot;                                              // (Parm)
+	unsigned char                                      bWasCapped;                                               // (Parm, OutParm)
 };
 
 // Function TgGame.TgDevice_AccursedArmGun.OnUnlinkDevice
@@ -44360,6 +45556,12 @@ struct ATgDeploy_ShieldBarik_Touch_Params
 	struct FVector                                     HitNormal;                                                // (Parm)
 };
 
+// Function TgGame.TgDeploy_ShieldBarik.BenefitsFromPctShieldIncrease
+struct ATgDeploy_ShieldBarik_BenefitsFromPctShieldIncrease_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function TgGame.TgDeploy_ShieldBarik.ReplicatedEvent
 struct ATgDeploy_ShieldBarik_ReplicatedEvent_Params
 {
@@ -44381,6 +45583,12 @@ struct ATgDeploy_ShieldBarik_ToggleFX_Params
 struct ATgDeploy_ShieldBarikDome_DestroyIt_Params
 {
 	bool                                               bSkipFx;                                                  // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDeploy_ShieldBarikDome.BenefitsFromPctShieldIncrease
+struct ATgDeploy_ShieldBarikDome_BenefitsFromPctShieldIncrease_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function TgGame.TgDevice_BarricadeDome.InterruptOtherDevices
@@ -44524,6 +45732,22 @@ struct UTgDeviceFire_TurretShot_IsValidTarget_Params
 struct ATgPawn_Barik_HasCachedBurninate_Params
 {
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Barik.CanSpawnScalableShields
+struct ATgPawn_Barik_CanSpawnScalableShields_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Barik.RequestEmote
+struct ATgPawn_Barik_RequestEmote_Params
+{
+	TEnumAsByte<EEmote>                                Emote;                                                    // (Parm)
+	int                                                ExtraInfo;                                                // (OptionalParm, Parm)
+	int                                                nPriority;                                                // (OptionalParm, Parm)
+	float                                              fRelevance;                                               // (OptionalParm, Parm)
+	float                                              fPause;                                                   // (OptionalParm, Parm)
 };
 
 // Function TgGame.TgPawn_Barik.ModifyAccuracyForReticleBloom
@@ -45573,6 +46797,11 @@ struct ATgDevice_KingBomb_ShouldInstigatorCollideWith_Params
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function TgGame.TgDevice_BombKingInhand.PostReloadTimer
+struct ATgDevice_BombKingInhand_PostReloadTimer_Params
+{
+};
+
 // Function TgGame.TgDevice_BombKingInhand.LinkedDeviceUnequipped
 struct ATgDevice_BombKingInhand_LinkedDeviceUnequipped_Params
 {
@@ -46081,6 +47310,52 @@ struct ATgProj_PoppyBomb_SpawnDeployable_Params
 	class ATgDeployable*                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function TgGame.TgDevice_BuckInhand.ClientInterruptReload
+struct ATgDevice_BuckInhand_ClientInterruptReload_Params
+{
+	bool                                               bAllowAmmoFill;                                           // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDevice_BuckInhand.ServerStartReload
+struct ATgDevice_BuckInhand_ServerStartReload_Params
+{
+};
+
+// Function TgGame.TgDevice_BuckInhand.PostReloadTimer
+struct ATgDevice_BuckInhand_PostReloadTimer_Params
+{
+};
+
+// Function TgGame.TgDevice_BuckInhand.PlayReloadAnim
+struct ATgDevice_BuckInhand_PlayReloadAnim_Params
+{
+	TEnumAsByte<EReloadAnimType>                       rat;                                                      // (Parm)
+	float                                              reloadTime;                                               // (Parm)
+};
+
+// Function TgGame.TgDevice_BuckInhand.PreReloadTimer
+struct ATgDevice_BuckInhand_PreReloadTimer_Params
+{
+};
+
+// Function TgGame.TgDevice_BuckInhand.StartReload
+struct ATgDevice_BuckInhand_StartReload_Params
+{
+	bool                                               bIgnoreCurrentAmmo;                                       // (OptionalParm, Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_BuckInhand.ServerEndReloadForInhandFire
+struct ATgDevice_BuckInhand_ServerEndReloadForInhandFire_Params
+{
+};
+
+// Function TgGame.TgDevice_BuckInhand.Use
+struct ATgDevice_BuckInhand_Use_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function TgGame.TgDevice_HeroicLeap.ShouldInterruptReloadOnFire
 struct ATgDevice_HeroicLeap_ShouldInterruptReloadOnFire_Params
 {
@@ -46144,6 +47419,570 @@ struct ATgPawn_Buck_ModifyAccuracyForReticleBloom_Params
 	float                                              fAccuracy;                                                // (Parm, OutParm)
 };
 
+// Function TgGame.TgAnimNodeBlendByAbilityReiSpiritLink.Break
+struct UTgAnimNodeBlendByAbilityReiSpiritLink_Break_Params
+{
+};
+
+// Function TgGame.TgAnimNodeBlendByAbilityReiSpiritLink.Recast
+struct UTgAnimNodeBlendByAbilityReiSpiritLink_Recast_Params
+{
+};
+
+// Function TgGame.TgAnimNodeBlendByAbilityReiSpiritLink.Summon
+struct UTgAnimNodeBlendByAbilityReiSpiritLink_Summon_Params
+{
+};
+
+// Function TgGame.TgDevice_BunnyDefense.OnUnlinkDevice
+struct ATgDevice_BunnyDefense_OnUnlinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_BunnyDefense.OnLinkDevice
+struct ATgDevice_BunnyDefense_OnLinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_BunnyDefense.FireAmmunition
+struct ATgDevice_BunnyDefense_FireAmmunition_Params
+{
+};
+
+// Function TgGame.TgDevice_BunnyDefense.CanBeCanceled
+struct ATgDevice_BunnyDefense_CanBeCanceled_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_BunnyDefense.Tick
+struct ATgDevice_BunnyDefense_Tick_Params
+{
+	float                                              DeltaSeconds;                                             // (Parm)
+};
+
+// Function TgGame.TgDevice_BunnyDefense.PerformAoE
+struct ATgDevice_BunnyDefense_PerformAoE_Params
+{
+};
+
+// Function TgGame.TgDevice_BunnyDefense.GetAoEFireMode
+struct ATgDevice_BunnyDefense_GetAoEFireMode_Params
+{
+	class UTgDeviceFire*                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_BunnyDefense.CanFiringBeCanceledByLeftMouse
+struct ATgDevice_BunnyDefense_CanFiringBeCanceledByLeftMouse_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_BunnyDefense.RemoveAllEnvelopEnemyEffects
+struct ATgDevice_BunnyDefense_RemoveAllEnvelopEnemyEffects_Params
+{
+};
+
+// Function TgGame.TgDevice_BunnyDefense.ApplyAllEnvelopEnemyEffects
+struct ATgDevice_BunnyDefense_ApplyAllEnvelopEnemyEffects_Params
+{
+};
+
+// Function TgGame.TgDevice_BunnyDefense.RemoveEnvelopEnemyEffects
+struct ATgDevice_BunnyDefense_RemoveEnvelopEnemyEffects_Params
+{
+	class ATgPawn*                                     pTarget;                                                  // (Parm)
+};
+
+// Function TgGame.TgDevice_BunnyDefense.ApplyEnvelopEnemyEffects
+struct ATgDevice_BunnyDefense_ApplyEnvelopEnemyEffects_Params
+{
+	class ATgPawn*                                     pTarget;                                                  // (Parm)
+};
+
+// Function TgGame.TgDevice_BunnyHeal.OnUnlinkDevice
+struct ATgDevice_BunnyHeal_OnUnlinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_BunnyHeal.OnLinkDevice
+struct ATgDevice_BunnyHeal_OnLinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_BunnyHeal.CanDeviceStartFiringNow
+struct ATgDevice_BunnyHeal_CanDeviceStartFiringNow_Params
+{
+	unsigned char                                      FireModeNum;                                              // (Parm)
+	struct FAimData                                    Aim;                                                      // (Parm)
+	bool                                               bDebugRelevant;                                           // (Parm)
+	TEnumAsByte<EDeviceFailType>                       failType;                                                 // (OptionalParm, Parm, OutParm)
+	bool                                               bIgnoreCachedValue;                                       // (OptionalParm, Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_BunnyHeal.ServerStartFire
+struct ATgDevice_BunnyHeal_ServerStartFire_Params
+{
+	float                                              MovementTimeStamp;                                        // (OptionalParm, Parm)
+	struct FVector                                     MovementInAccel;                                          // (OptionalParm, Parm)
+	struct FVector                                     MovementClientLoc;                                        // (OptionalParm, Parm)
+	unsigned char                                      MovementNewFlags;                                         // (OptionalParm, Parm)
+	unsigned char                                      MovementClientRoll;                                       // (OptionalParm, Parm)
+	int                                                MovementView;                                             // (OptionalParm, Parm)
+	int                                                ClientFireRequestId;                                      // (OptionalParm, Parm)
+	unsigned char                                      ClientFireMode;                                           // (OptionalParm, Parm)
+	class AActor*                                      HitActor;                                                 // (OptionalParm, Parm)
+	float                                              StartTraceX;                                              // (OptionalParm, Parm)
+	float                                              StartTraceY;                                              // (OptionalParm, Parm)
+	float                                              StartTraceZ;                                              // (OptionalParm, Parm)
+	float                                              EndTraceX;                                                // (OptionalParm, Parm)
+	float                                              EndTraceY;                                                // (OptionalParm, Parm)
+	float                                              EndTraceZ;                                                // (OptionalParm, Parm)
+	int                                                nCompressedAimVector;                                     // (OptionalParm, Parm)
+	bool                                               bFirstBurstShot;                                          // (OptionalParm, Parm)
+	float                                              fAttackSpeedPercChange;                                   // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDevice_BunnyHeal.CallServerStartFire
+struct ATgDevice_BunnyHeal_CallServerStartFire_Params
+{
+	struct FAimData                                    Aim;                                                      // (Parm)
+	bool                                               bPendingUpdate;                                           // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDevice_BunnyHeal.InstantFire
+struct ATgDevice_BunnyHeal_InstantFire_Params
+{
+};
+
+// Function TgGame.TgDevice_BunnyHeal.ClientEarlyOut
+struct ATgDevice_BunnyHeal_ClientEarlyOut_Params
+{
+};
+
+// Function TgGame.TgDevice_BunnyHeal.EarlyOut
+struct ATgDevice_BunnyHeal_EarlyOut_Params
+{
+};
+
+// Function TgGame.TgDevice_BunnyHeal.GetRange
+struct ATgDevice_BunnyHeal_GetRange_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_BunnyHeal.SpawnHealProjectile
+struct ATgDevice_BunnyHeal_SpawnHealProjectile_Params
+{
+	class ATgPawn*                                     PawnFrom;                                                 // (Parm)
+	class ATgPawn*                                     PawnTo;                                                   // (Parm)
+	class ATgProj_BunnyHeal*                           ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_BunnyHeal.OnHealProjectileImpact
+struct ATgDevice_BunnyHeal_OnHealProjectileImpact_Params
+{
+	class ATgProj_BunnyHeal*                           Proj;                                                     // (Parm)
+	class ATgPawn*                                     HitPawn;                                                  // (Parm)
+};
+
+// Function TgGame.TgDevice_BunnyHeal.OnProjectileShutdownCheckEndSequence
+struct ATgDevice_BunnyHeal_OnProjectileShutdownCheckEndSequence_Params
+{
+	class ATgProj_BunnyHeal*                           Proj;                                                     // (Parm)
+};
+
+// Function TgGame.TgDevice_BunnyHeal.PerformCleanup
+struct ATgDevice_BunnyHeal_PerformCleanup_Params
+{
+};
+
+// Function TgGame.TgDevice_BunnyHeal.GetFireModeForFiringProjectile
+struct ATgDevice_BunnyHeal_GetFireModeForFiringProjectile_Params
+{
+	class UTgDeviceFire*                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_BunnyHeal.NativeGetFireModeForFiringProjectile
+struct ATgDevice_BunnyHeal_NativeGetFireModeForFiringProjectile_Params
+{
+	class UTgDeviceFire*                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_BunnyHeal.CheckHealTargetLoS
+struct ATgDevice_BunnyHeal_CheckHealTargetLoS_Params
+{
+	struct FVector                                     vOrigin;                                                  // (Parm)
+	class ATgPawn*                                     pTarget;                                                  // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_BunnyHeal.HealTarget
+struct ATgDevice_BunnyHeal_HealTarget_Params
+{
+	class ATgPawn*                                     pTarget;                                                  // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_BunnyHeal.GetNextHealTarget
+struct ATgDevice_BunnyHeal_GetNextHealTarget_Params
+{
+	struct FVector                                     vOrigin;                                                  // (Parm)
+	class ATgPawn*                                     pPawnFrom;                                                // (Parm)
+	class ATgPawn*                                     ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_BunnyLink.OnUnlinkDevice
+struct ATgDevice_BunnyLink_OnUnlinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_BunnyLink.OnLinkDevice
+struct ATgDevice_BunnyLink_OnLinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_BunnyLink.CanDeviceStartFiringNow
+struct ATgDevice_BunnyLink_CanDeviceStartFiringNow_Params
+{
+	unsigned char                                      FireModeNum;                                              // (Parm)
+	struct FAimData                                    Aim;                                                      // (Parm)
+	bool                                               bDebugRelevant;                                           // (Parm)
+	TEnumAsByte<EDeviceFailType>                       failType;                                                 // (OptionalParm, Parm, OutParm)
+	bool                                               bIgnoreCachedValue;                                       // (OptionalParm, Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_BunnyLink.ServerStartFire
+struct ATgDevice_BunnyLink_ServerStartFire_Params
+{
+	float                                              MovementTimeStamp;                                        // (OptionalParm, Parm)
+	struct FVector                                     MovementInAccel;                                          // (OptionalParm, Parm)
+	struct FVector                                     MovementClientLoc;                                        // (OptionalParm, Parm)
+	unsigned char                                      MovementNewFlags;                                         // (OptionalParm, Parm)
+	unsigned char                                      MovementClientRoll;                                       // (OptionalParm, Parm)
+	int                                                MovementView;                                             // (OptionalParm, Parm)
+	int                                                ClientFireRequestId;                                      // (OptionalParm, Parm)
+	unsigned char                                      ClientFireMode;                                           // (OptionalParm, Parm)
+	class AActor*                                      HitActor;                                                 // (OptionalParm, Parm)
+	float                                              StartTraceX;                                              // (OptionalParm, Parm)
+	float                                              StartTraceY;                                              // (OptionalParm, Parm)
+	float                                              StartTraceZ;                                              // (OptionalParm, Parm)
+	float                                              EndTraceX;                                                // (OptionalParm, Parm)
+	float                                              EndTraceY;                                                // (OptionalParm, Parm)
+	float                                              EndTraceZ;                                                // (OptionalParm, Parm)
+	int                                                nCompressedAimVector;                                     // (OptionalParm, Parm)
+	bool                                               bFirstBurstShot;                                          // (OptionalParm, Parm)
+	float                                              fAttackSpeedPercChange;                                   // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDevice_BunnyLink.CallServerStartFire
+struct ATgDevice_BunnyLink_CallServerStartFire_Params
+{
+	struct FAimData                                    Aim;                                                      // (Parm)
+	bool                                               bPendingUpdate;                                           // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDevice_BunnyLink.InstantFire
+struct ATgDevice_BunnyLink_InstantFire_Params
+{
+};
+
+// Function TgGame.TgDevice_BunnyLink.IsSelfDamageEffectGroup
+struct ATgDevice_BunnyLink_IsSelfDamageEffectGroup_Params
+{
+	class UTgEffectGroup*                              pEffectGroup;                                             // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_BunnyLink.HasLinkDeviceMode
+struct ATgDevice_BunnyLink_HasLinkDeviceMode_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_BunnyLink.QueryForTarget
+struct ATgDevice_BunnyLink_QueryForTarget_Params
+{
+	class ATgPawn_Character*                           ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_BunnyLink.GetMaxSpiritLinks
+struct ATgDevice_BunnyLink_GetMaxSpiritLinks_Params
+{
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_BunnyLink.ApplySelfDamage
+struct ATgDevice_BunnyLink_ApplySelfDamage_Params
+{
+	class ATgPawn*                                     attacker;                                                 // (Parm)
+	int                                                nDamageAmount;                                            // (Parm)
+};
+
+// Function TgGame.TgDevice_BunnyUlt.CanDeviceStartFiringNow
+struct ATgDevice_BunnyUlt_CanDeviceStartFiringNow_Params
+{
+	unsigned char                                      FireModeNum;                                              // (Parm)
+	struct FAimData                                    Aim;                                                      // (Parm)
+	bool                                               bDebugRelevant;                                           // (Parm)
+	TEnumAsByte<EDeviceFailType>                       failType;                                                 // (OptionalParm, Parm, OutParm)
+	bool                                               bIgnoreCachedValue;                                       // (OptionalParm, Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_BunnyUlt.OnUnlinkDevice
+struct ATgDevice_BunnyUlt_OnUnlinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_BunnyUlt.OnLinkDevice
+struct ATgDevice_BunnyUlt_OnLinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_BunnyUlt.ServerStartFire
+struct ATgDevice_BunnyUlt_ServerStartFire_Params
+{
+	float                                              MovementTimeStamp;                                        // (OptionalParm, Parm)
+	struct FVector                                     MovementInAccel;                                          // (OptionalParm, Parm)
+	struct FVector                                     MovementClientLoc;                                        // (OptionalParm, Parm)
+	unsigned char                                      MovementNewFlags;                                         // (OptionalParm, Parm)
+	unsigned char                                      MovementClientRoll;                                       // (OptionalParm, Parm)
+	int                                                MovementView;                                             // (OptionalParm, Parm)
+	int                                                ClientFireRequestId;                                      // (OptionalParm, Parm)
+	unsigned char                                      ClientFireMode;                                           // (OptionalParm, Parm)
+	class AActor*                                      HitActor;                                                 // (OptionalParm, Parm)
+	float                                              StartTraceX;                                              // (OptionalParm, Parm)
+	float                                              StartTraceY;                                              // (OptionalParm, Parm)
+	float                                              StartTraceZ;                                              // (OptionalParm, Parm)
+	float                                              EndTraceX;                                                // (OptionalParm, Parm)
+	float                                              EndTraceY;                                                // (OptionalParm, Parm)
+	float                                              EndTraceZ;                                                // (OptionalParm, Parm)
+	int                                                nCompressedAimVector;                                     // (OptionalParm, Parm)
+	bool                                               bFirstBurstShot;                                          // (OptionalParm, Parm)
+	float                                              fAttackSpeedPercChange;                                   // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDevice_BunnyUlt.InstantFire
+struct ATgDevice_BunnyUlt_InstantFire_Params
+{
+};
+
+// Function TgGame.TgDevice_BunnyUlt.GetRange
+struct ATgDevice_BunnyUlt_GetRange_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_BunnyUlt.CallServerStartFire
+struct ATgDevice_BunnyUlt_CallServerStartFire_Params
+{
+	struct FAimData                                    Aim;                                                      // (Parm)
+	bool                                               bPendingUpdate;                                           // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDeviceFire_BunnyLink.HasCachedBunny
+struct UTgDeviceFire_BunnyLink_HasCachedBunny_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDeviceForm_BunnySpiritLink.Fire
+struct UTgDeviceForm_BunnySpiritLink_Fire_Params
+{
+	struct FVector                                     HitLocation;                                              // (Parm)
+	int                                                nFireMode;                                                // (Parm)
+	int                                                nEquipSlot;                                               // (OptionalParm, Parm)
+	int                                                nSocketIndex;                                             // (OptionalParm, Parm)
+	bool                                               bSuccessfulHit;                                           // (OptionalParm, Parm)
+	float                                              fRefireTime;                                              // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDeviceForm_BunnySpiritLink.CacheAnimNode
+struct UTgDeviceForm_BunnySpiritLink_CacheAnimNode_Params
+{
+	class UAnimNode*                                   Node;                                                     // (Parm)
+	bool                                               bIs3p;                                                    // (Parm)
+};
+
+// Function TgGame.TgDeviceForm_BunnySpiritLink.ClearAnimNodes
+struct UTgDeviceForm_BunnySpiritLink_ClearAnimNodes_Params
+{
+	bool                                               bIs3p;                                                    // (Parm)
+};
+
+// Function TgGame.TgDeviceForm_BunnySpiritLink.SetSpiritLinkFamiliarActive
+struct UTgDeviceForm_BunnySpiritLink_SetSpiritLinkFamiliarActive_Params
+{
+	bool                                               bIsActive;                                                // (Parm)
+};
+
+// Function TgGame.TgPawn_Bunny.GetJumpHeightMultiplier
+struct ATgPawn_Bunny_GetJumpHeightMultiplier_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Bunny.PostBeginPlay
+struct ATgPawn_Bunny_PostBeginPlay_Params
+{
+};
+
+// Function TgGame.TgPawn_Bunny.PostPawnSetup
+struct ATgPawn_Bunny_PostPawnSetup_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Bunny.ReplicatedEvent
+struct ATgPawn_Bunny_ReplicatedEvent_Params
+{
+	struct FName                                       VarName;                                                  // (Parm)
+};
+
+// Function TgGame.TgPawn_Bunny.HasCachedLinkForm
+struct ATgPawn_Bunny_HasCachedLinkForm_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Bunny.ClientUpdateLinkedPawns
+struct ATgPawn_Bunny_ClientUpdateLinkedPawns_Params
+{
+};
+
+// Function TgGame.TgPawn_Bunny.IsPawnSpiritLinked
+struct ATgPawn_Bunny_IsPawnSpiritLinked_Params
+{
+	class ATgPawn*                                     QueryTarget;                                              // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Bunny.RemoveSpiritLink
+struct ATgPawn_Bunny_RemoveSpiritLink_Params
+{
+	class ATgPawn*                                     LinkTarget;                                               // (Parm)
+};
+
+// Function TgGame.TgPawn_Bunny.RemoveSpiritLinkByIndex
+struct ATgPawn_Bunny_RemoveSpiritLinkByIndex_Params
+{
+	int                                                nIndex;                                                   // (Parm)
+};
+
+// Function TgGame.TgPawn_Bunny.AddSpiritLink
+struct ATgPawn_Bunny_AddSpiritLink_Params
+{
+	class ATgPawn*                                     LinkTarget;                                               // (Parm)
+};
+
+// Function TgGame.TgPawn_Bunny.RemoveBreakingSpiritLinkAtIndex
+struct ATgPawn_Bunny_RemoveBreakingSpiritLinkAtIndex_Params
+{
+	int                                                nIndex;                                                   // (Parm)
+};
+
+// Function TgGame.TgPawn_Bunny.AddBreakingSpiritLink
+struct ATgPawn_Bunny_AddBreakingSpiritLink_Params
+{
+	class ATgPawn*                                     LinkTarget;                                               // (Parm)
+};
+
+// Function TgGame.TgPawn_Bunny.RemoveSpiritLinkEffects
+struct ATgPawn_Bunny_RemoveSpiritLinkEffects_Params
+{
+	class ATgPawn*                                     LinkTarget;                                               // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Bunny.ApplySpiritLinkEffects
+struct ATgPawn_Bunny_ApplySpiritLinkEffects_Params
+{
+	class ATgPawn*                                     LinkTarget;                                               // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Bunny.PawnMitigateDamageOther
+struct ATgPawn_Bunny_PawnMitigateDamageOther_Params
+{
+	class ATgPawn*                                     Other;                                                    // (Parm)
+	TEnumAsByte<EPawnDamageMitigatorReason>            eReason;                                                  // (Parm)
+	class ATgPawn*                                     attacker;                                                 // (Parm)
+	class UTgEffectGroup*                              eg;                                                       // (Parm)
+	float                                              fDamage;                                                  // (Parm, OutParm)
+	int                                                nPropertyId;                                              // (Parm)
+};
+
+// Function TgGame.TgPawn_Bunny.GetLinkBreakDelay
+struct ATgPawn_Bunny_GetLinkBreakDelay_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgProj_BunnyHeal.UpdateTrackingTargetActor
+struct ATgProj_BunnyHeal_UpdateTrackingTargetActor_Params
+{
+};
+
+// Function TgGame.TgProj_BunnyHeal.Tick
+struct ATgProj_BunnyHeal_Tick_Params
+{
+	float                                              DeltaSeconds;                                             // (Parm)
+};
+
+// Function TgGame.TgProj_BunnyHeal.ApplyHit
+struct ATgProj_BunnyHeal_ApplyHit_Params
+{
+	class AActor*                                      Target;                                                   // (Parm)
+	struct FVector                                     HitLocation;                                              // (Parm)
+	struct FVector                                     HitNormal;                                                // (Parm)
+	int                                                HitItem;                                                  // (OptionalParm, Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgProj_BunnyHeal.ApplyTheHit
+struct ATgProj_BunnyHeal_ApplyTheHit_Params
+{
+	class UTgDeviceFire*                               FireMode;                                                 // (Parm)
+	struct FImpactInfo                                 Impact;                                                   // (Parm)
+	class AActor*                                      DamageInstigator;                                         // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgProj_BunnyHeal.ShutDown
+struct ATgProj_BunnyHeal_ShutDown_Params
+{
+};
+
+// Function TgGame.TgProj_BunnyHeal.UpdateSeekingDirection
+struct ATgProj_BunnyHeal_UpdateSeekingDirection_Params
+{
+	float                                              fDeltaTime;                                               // (Parm)
+};
+
+// Function TgGame.TgProj_BunnyHeal.CanHitTarget
+struct ATgProj_BunnyHeal_CanHitTarget_Params
+{
+	class AActor*                                      Other;                                                    // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgProj_BunnyHeal.HasCachedBunnyHeal
+struct ATgProj_BunnyHeal_HasCachedBunnyHeal_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function TgGame.TgDevice_BlastShot.ScaleAbilityRadius
 struct ATgDevice_BlastShot_ScaleAbilityRadius_Params
 {
@@ -46188,6 +48027,23 @@ struct ATgProj_BlastShot_GetExplosionFXParams_Params
 	TArray<struct FParticleSysParam>                   Params;                                                   // (Parm, OutParm, NeedCtorLink)
 };
 
+// Function TgGame.TgDeploy_DistortionField.ScaleFX
+struct ATgDeploy_DistortionField_ScaleFX_Params
+{
+};
+
+// Function TgGame.TgDeploy_DistortionField.ActivateOnWhenDeployedFx
+struct ATgDeploy_DistortionField_ActivateOnWhenDeployedFx_Params
+{
+	bool                                               bOn;                                                      // (Parm)
+};
+
+// Function TgGame.TgDeploy_DistortionField.DistortionFieldTalentEquipped
+struct ATgDeploy_DistortionField_DistortionFieldTalentEquipped_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function TgGame.TgDeploy_DistortionField.IsObscuringOverriden
 struct ATgDeploy_DistortionField_IsObscuringOverriden_Params
 {
@@ -46209,13 +48065,48 @@ struct ATgDeploy_DistortionField_ApplyEffects_Params
 	class AActor*                                      Target;                                                   // (Parm)
 };
 
-// Function TgGame.TgDevice_CommanderInhand.SetAmmo
-struct ATgDevice_CommanderInhand_SetAmmo_Params
+// Function TgGame.TgDeploy_CommanderUlt.FlashFireCountUpdated
+struct ATgDeploy_CommanderUlt_FlashFireCountUpdated_Params
 {
-	int                                                AmmoCount;                                                // (Parm)
-	int                                                ClipSize;                                                 // (OptionalParm, Parm)
-	bool                                               bShouldValidate;                                          // (OptionalParm, Parm)
-	int                                                ValidationIDOverride;                                     // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDeploy_CommanderUlt.ProxyTouchHit
+struct ATgDeploy_CommanderUlt_ProxyTouchHit_Params
+{
+	class AActor*                                      Other;                                                    // (Parm)
+};
+
+// Function TgGame.TgDevice_CommanderCreditPassive.OnUnlinkDevice
+struct ATgDevice_CommanderCreditPassive_OnUnlinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_CommanderCreditPassive.OnLinkDevice
+struct ATgDevice_CommanderCreditPassive_OnLinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_CommanderCreditPassive.RemoveCommanderPassiveTeam
+struct ATgDevice_CommanderCreditPassive_RemoveCommanderPassiveTeam_Params
+{
+};
+
+// Function TgGame.TgDevice_CommanderCreditPassive.ApplyCommanderPassiveTeam
+struct ATgDevice_CommanderCreditPassive_ApplyCommanderPassiveTeam_Params
+{
+};
+
+// Function TgGame.TgDevice_CommanderCreditPassive.GiveCreditsToTeam
+struct ATgDevice_CommanderCreditPassive_GiveCreditsToTeam_Params
+{
+	int                                                nCredits;                                                 // (Parm)
+};
+
+// Function TgGame.TgDevice_CommanderCreditPassive.CheckGiveCreditsOnKill
+struct ATgDevice_CommanderCreditPassive_CheckGiveCreditsOnKill_Params
+{
 };
 
 // Function TgGame.TgDevice_CommanderInhand.StopFire
@@ -46227,24 +48118,6 @@ struct ATgDevice_CommanderInhand_StopFire_Params
 struct ATgDevice_CommanderInhand_InterceptLeftMousePressed_Params
 {
 	class ATgPlayerController*                         TgController;                                             // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function TgGame.TgDevice_CommanderInhand.ShouldShowAmmoCount
-struct ATgDevice_CommanderInhand_ShouldShowAmmoCount_Params
-{
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function TgGame.TgDevice_CommanderInhand.RequiresAmmoToFire
-struct ATgDevice_CommanderInhand_RequiresAmmoToFire_Params
-{
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function TgGame.TgDevice_CommanderInhand.CheckAutoReload
-struct ATgDevice_CommanderInhand_CheckAutoReload_Params
-{
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -46266,9 +48139,26 @@ struct ATgDevice_CommanderPassive_OnLinkDevice_Params
 	class ATgPawn*                                     TgP;                                                      // (Parm)
 };
 
+// Function TgGame.TgDevice_CommanderPassive.OnOwnerLiveRespawn
+struct ATgDevice_CommanderPassive_OnOwnerLiveRespawn_Params
+{
+};
+
+// Function TgGame.TgDevice_CommanderPassive.RemoveCommanderPassiveTeam
+struct ATgDevice_CommanderPassive_RemoveCommanderPassiveTeam_Params
+{
+};
+
 // Function TgGame.TgDevice_CommanderPassive.ApplyCommanderPassiveTeam
 struct ATgDevice_CommanderPassive_ApplyCommanderPassiveTeam_Params
 {
+	bool                                               bRegisterCallback;                                        // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDevice_CommanderPassive.RemoveCommanderPassiveTarget
+struct ATgDevice_CommanderPassive_RemoveCommanderPassiveTarget_Params
+{
+	class ATgPawn*                                     pTarget;                                                  // (Parm)
 };
 
 // Function TgGame.TgDevice_CommanderPassive.ApplyCommanderPassiveTarget
@@ -46295,50 +48185,34 @@ struct ATgDevice_CommanderUlt_LinkedDeviceEquipped_Params
 	class ATgDevice*                                   Dev;                                                      // (Parm)
 };
 
-// Function TgGame.TgDevice_CommanderUlt.CanBeInterrupted
-struct ATgDevice_CommanderUlt_CanBeInterrupted_Params
+// Function TgGame.TgDevice_CommanderUlt.HandleDeviceFormStartFire
+struct ATgDevice_CommanderUlt_HandleDeviceFormStartFire_Params
+{
+	int                                                nDeviceModeNum;                                           // (Parm)
+	float                                              fRefireTime;                                              // (Parm)
+	struct FAimData                                    Aim;                                                      // (Const, Parm, OutParm)
+};
+
+// Function TgGame.TgDevice_CommanderUlt.ShouldInterruptReloadOnFire
+struct ATgDevice_CommanderUlt_ShouldInterruptReloadOnFire_Params
 {
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
-// Function TgGame.TgDevice_CommanderUlt.CanBeCanceled
-struct ATgDevice_CommanderUlt_CanBeCanceled_Params
+// Function TgGame.TgDevice_CommanderUlt.UsesEnergy
+struct ATgDevice_CommanderUlt_UsesEnergy_Params
 {
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
-// Function TgGame.TgDevice_CommanderUlt.ShouldSwitchBackToBasicAttackTargeting
-struct ATgDevice_CommanderUlt_ShouldSwitchBackToBasicAttackTargeting_Params
-{
-	TEnumAsByte<ECastMode>                             CastMode;                                                 // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function TgGame.TgDevice_CommanderUlt.CanFireIfLeftMouseDown
-struct ATgDevice_CommanderUlt_CanFireIfLeftMouseDown_Params
+// Function TgGame.TgDevice_CommanderUlt.UpdateUltChargePercent
+struct ATgDevice_CommanderUlt_UpdateUltChargePercent_Params
 {
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
-// Function TgGame.TgDevice_CommanderUlt.IsToggleDevice
-struct ATgDevice_CommanderUlt_IsToggleDevice_Params
-{
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function TgGame.TgDevice_CommanderUlt.ExitTargetingMode
-struct ATgDevice_CommanderUlt_ExitTargetingMode_Params
-{
-};
-
-// Function TgGame.TgDevice_CommanderUlt.TickTargetingMode
-struct ATgDevice_CommanderUlt_TickTargetingMode_Params
-{
-	float                                              DeltaSeconds;                                             // (Parm)
-};
-
-// Function TgGame.TgDevice_CommanderUlt.UsesTargetingMode
-struct ATgDevice_CommanderUlt_UsesTargetingMode_Params
+// Function TgGame.TgDevice_CommanderUlt.CanFiringBeLocked
+struct ATgDevice_CommanderUlt_CanFiringBeLocked_Params
 {
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
@@ -46349,17 +48223,9 @@ struct ATgDevice_CommanderUltFire_LinkedDeviceEquipped_Params
 	class ATgDevice*                                   Dev;                                                      // (Parm)
 };
 
-// Function TgGame.TgDevice_CommanderUltFire.InterceptLeftMouseReleased
-struct ATgDevice_CommanderUltFire_InterceptLeftMouseReleased_Params
+// Function TgGame.TgDevice_CommanderUltFire.ShouldInterruptReloadOnFire
+struct ATgDevice_CommanderUltFire_ShouldInterruptReloadOnFire_Params
 {
-	class ATgPlayerController*                         TgController;                                             // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function TgGame.TgDevice_CommanderUltFire.InterceptLeftMousePressed
-struct ATgDevice_CommanderUltFire_InterceptLeftMousePressed_Params
-{
-	class ATgPlayerController*                         TgController;                                             // (Parm)
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -46369,13 +48235,15 @@ struct ATgDevice_CommanderUltFire_GetGroundTargetAim_Params
 	struct FAimData                                    Aim;                                                      // (Parm, OutParm)
 };
 
-// Function TgGame.TgDevice_CommanderUltFire.CanDeviceFireNow
-struct ATgDevice_CommanderUltFire_CanDeviceFireNow_Params
+// Function TgGame.TgDevice_CommanderUltFire.CanFiringBeLocked
+struct ATgDevice_CommanderUltFire_CanFiringBeLocked_Params
 {
-	unsigned char                                      FireModeNum;                                              // (Parm)
-	struct FAimData                                    Aim;                                                      // (Parm)
-	bool                                               bDeviceFailLog;                                           // (Parm)
-	TEnumAsByte<EDeviceFailType>                       failType;                                                 // (Parm, OutParm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_DistortionField.ShouldInterruptStealth
+struct ATgDevice_DistortionField_ShouldInterruptStealth_Params
+{
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -46387,6 +48255,24 @@ struct ATgDevice_CommanderLeap_ShouldInterruptReloadOnFire_Params
 
 // Function TgGame.TgDevice_CommanderLeap.ShouldMountCancelFiring
 struct ATgDevice_CommanderLeap_ShouldMountCancelFiring_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CommanderLeap.InterruptOtherDevices
+struct ATgDevice_CommanderLeap_InterruptOtherDevices_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_CommanderLeap.HasCachedScope
+struct ATgDevice_CommanderLeap_HasCachedScope_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CommanderLeap.HasCachedCommander
+struct ATgDevice_CommanderLeap_HasCachedCommander_Params
 {
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
@@ -46414,11 +48300,51 @@ struct ATgDevice_CommanderScope_LinkedDeviceEquipped_Params
 	class ATgDevice*                                   Dev;                                                      // (Parm)
 };
 
+// Function TgGame.TgDevice_CommanderScope.ShowReticle
+struct ATgDevice_CommanderScope_ShowReticle_Params
+{
+	bool                                               bShow;                                                    // (Parm)
+};
+
+// Function TgGame.TgDevice_CommanderScope.UnlockFromFiring
+struct ATgDevice_CommanderScope_UnlockFromFiring_Params
+{
+};
+
+// Function TgGame.TgDevice_CommanderScope.LockFromFiring
+struct ATgDevice_CommanderScope_LockFromFiring_Params
+{
+};
+
+// Function TgGame.TgDevice_CommanderScope.CancelJumpFloat
+struct ATgDevice_CommanderScope_CancelJumpFloat_Params
+{
+};
+
 // Function TgGame.TgDeviceFire_CommanderUlt.GetDeployLocationAndRotation
 struct UTgDeviceFire_CommanderUlt_GetDeployLocationAndRotation_Params
 {
 	struct FVector                                     OutLocation;                                              // (Parm, OutParm)
 	struct FRotator                                    OutRotation;                                              // (Parm, OutParm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDeviceForm_CommanderScope.CacheAnimNode
+struct UTgDeviceForm_CommanderScope_CacheAnimNode_Params
+{
+	class UAnimNode*                                   Node;                                                     // (Parm)
+	bool                                               bIs3p;                                                    // (Parm)
+};
+
+// Function TgGame.TgDeviceForm_CommanderScope.ClearAnimNodes
+struct UTgDeviceForm_CommanderScope_ClearAnimNodes_Params
+{
+	bool                                               bIs3p;                                                    // (Parm)
+};
+
+// Function TgGame.TgDeviceForm_CommanderScope.HasCachedOctavia
+struct UTgDeviceForm_CommanderScope_HasCachedOctavia_Params
+{
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -46434,9 +48360,23 @@ struct ATgPawn_Commander_Landed_Params
 	class AActor*                                      FloorActor;                                               // (Parm)
 };
 
-// Function TgGame.TgPawn_Commander.OnSpawnGatesOpened
-struct ATgPawn_Commander_OnSpawnGatesOpened_Params
+// Function TgGame.TgPawn_Commander.DoJump
+struct ATgPawn_Commander_DoJump_Params
 {
+	bool                                               bUpdating;                                                // (Parm)
+	float                                              JumpZSpeed;                                               // (OptionalParm, Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Commander.JumpFloatLockoutTimer
+struct ATgPawn_Commander_JumpFloatLockoutTimer_Params
+{
+};
+
+// Function TgGame.TgPawn_Commander.HasCachedScope
+struct ATgPawn_Commander_HasCachedScope_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function TgGame.TgAnimNodeBlendByAbilityCorvusDagger.CorvusTeleportAnimActivate
@@ -46614,6 +48554,18 @@ struct ATgDevice_CorvusDagger_CanFiringBeCanceledByLeftMouse_Params
 
 // Function TgGame.TgDevice_CorvusDagger.ShouldCooldownAfterFire
 struct ATgDevice_CorvusDagger_ShouldCooldownAfterFire_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CorvusDagger.IsDeviceFiringLockedForUI
+struct ATgDevice_CorvusDagger_IsDeviceFiringLockedForUI_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CorvusDagger.IsDeviceFiringForUI
+struct ATgDevice_CorvusDagger_IsDeviceFiringForUI_Params
 {
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
@@ -46865,6 +48817,13 @@ struct ATgDevice_CorvusUlt_CanFireIfLeftMouseDown_Params
 // Function TgGame.TgDevice_CorvusUlt.IsToggleDevice
 struct ATgDevice_CorvusUlt_IsToggleDevice_Params
 {
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CorvusUlt.IsTargetingModeReady
+struct ATgDevice_CorvusUlt_IsTargetingModeReady_Params
+{
+	TEnumAsByte<EDeviceFailType>                       failType;                                                 // (OptionalParm, Parm, OutParm)
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -47123,7 +49082,7 @@ struct ATgPawn_Corvus_HasRMBTarget_Params
 // Function TgGame.TgPawn_Corvus.SetRMBTarget
 struct ATgPawn_Corvus_SetRMBTarget_Params
 {
-	class ATgPawn_Character*                           pChar;                                                    // (Parm)
+	class ATgPawn*                                     pChar;                                                    // (Parm)
 };
 
 // Function TgGame.TgProj_CorvusDagger.SetNonThreatening
@@ -47159,8 +49118,8 @@ struct UTgAnimNodeChannelFire_CorrupterUlt_SetVoraUltExitState_Params
 	TEnumAsByte<ECorrupterUltAnimState>                eState;                                                   // (Parm)
 };
 
-// Function TgGame.TgAnimNodeChannelFire_CorrupterUlt.ReFireAnim
-struct UTgAnimNodeChannelFire_CorrupterUlt_ReFireAnim_Params
+// Function TgGame.TgAnimNodeChannelFire_CorrupterUlt.RefireAnim
+struct UTgAnimNodeChannelFire_CorrupterUlt_RefireAnim_Params
 {
 };
 
@@ -47191,134 +49150,6 @@ struct ATgDevice_CorrupterInhand_UpdateDesiredFireMode_Params
 struct ATgDevice_CorrupterInhand_DeliverHit_Params
 {
 	struct FImpactInfo                                 Impact;                                                   // (Parm)
-};
-
-// Function TgGame.TgDevice_CorrupterLatch.OnUnlinkDevice
-struct ATgDevice_CorrupterLatch_OnUnlinkDevice_Params
-{
-	class ATgPawn*                                     TgP;                                                      // (Parm)
-};
-
-// Function TgGame.TgDevice_CorrupterLatch.OnLinkDevice
-struct ATgDevice_CorrupterLatch_OnLinkDevice_Params
-{
-	class ATgPawn*                                     TgP;                                                      // (Parm)
-};
-
-// Function TgGame.TgDevice_CorrupterLatch.CanBeCanceled
-struct ATgDevice_CorrupterLatch_CanBeCanceled_Params
-{
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function TgGame.TgDevice_CorrupterLatch.Tick
-struct ATgDevice_CorrupterLatch_Tick_Params
-{
-	float                                              DeltaSeconds;                                             // (Parm)
-};
-
-// Function TgGame.TgDevice_CorrupterLatch.SetIsPullingHitSpecial
-struct ATgDevice_CorrupterLatch_SetIsPullingHitSpecial_Params
-{
-	bool                                               bIsPulling;                                               // (Parm)
-};
-
-// Function TgGame.TgDevice_CorrupterLatch.EndPull
-struct ATgDevice_CorrupterLatch_EndPull_Params
-{
-};
-
-// Function TgGame.TgDevice_CorrupterLatch.FireAmmunition
-struct ATgDevice_CorrupterLatch_FireAmmunition_Params
-{
-};
-
-// Function TgGame.TgDevice_CorrupterLatch.PullToTarget
-struct ATgDevice_CorrupterLatch_PullToTarget_Params
-{
-};
-
-// Function TgGame.TgDevice_CorrupterLatch.StartFire
-struct ATgDevice_CorrupterLatch_StartFire_Params
-{
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function TgGame.TgDevice_CorrupterLatch.CalcWeaponFire
-struct ATgDevice_CorrupterLatch_CalcWeaponFire_Params
-{
-	struct FAimData                                    Aim;                                                      // (Parm)
-	TArray<struct FImpactInfo>                         ImpactList;                                               // (OptionalParm, Parm, OutParm, NeedCtorLink)
-	struct FImpactInfo                                 ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function TgGame.TgDevice_CorrupterLatch.CallServerRestartFireLoop
-struct ATgDevice_CorrupterLatch_CallServerRestartFireLoop_Params
-{
-	struct FAimData                                    Aim;                                                      // (Parm)
-};
-
-// Function TgGame.TgDevice_CorrupterLatch.CallServerStartFire
-struct ATgDevice_CorrupterLatch_CallServerStartFire_Params
-{
-	struct FAimData                                    Aim;                                                      // (Parm)
-	bool                                               bPendingUpdate;                                           // (OptionalParm, Parm)
-};
-
-// Function TgGame.TgDevice_CorrupterLatch.DeactivateHover
-struct ATgDevice_CorrupterLatch_DeactivateHover_Params
-{
-};
-
-// Function TgGame.TgDevice_CorrupterLatch.OnOwnerRespawn
-struct ATgDevice_CorrupterLatch_OnOwnerRespawn_Params
-{
-};
-
-// Function TgGame.TgDevice_CorrupterLatch.ActivateHover
-struct ATgDevice_CorrupterLatch_ActivateHover_Params
-{
-};
-
-// Function TgGame.TgDevice_CorrupterLatch.TotalFireTime
-struct ATgDevice_CorrupterLatch_TotalFireTime_Params
-{
-	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function TgGame.TgDevice_CorrupterLatch.ValidateReceivedAim
-struct ATgDevice_CorrupterLatch_ValidateReceivedAim_Params
-{
-	float                                              ClientMovementTimeStamp;                                  // (Parm)
-	struct FAimData                                    Aim;                                                      // (Parm)
-	struct FAimData                                    ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function TgGame.TgDevice_CorrupterLatch.GetTrueFiringPreHitDelay
-struct ATgDevice_CorrupterLatch_GetTrueFiringPreHitDelay_Params
-{
-	int                                                nMode;                                                    // (OptionalParm, Parm)
-	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function TgGame.TgDevice_CorrupterLatch.GetFiringPreHitDelay
-struct ATgDevice_CorrupterLatch_GetFiringPreHitDelay_Params
-{
-	int                                                nMode;                                                    // (OptionalParm, Parm)
-	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function TgGame.TgDevice_CorrupterLatch.IsValidPullTarget
-struct ATgDevice_CorrupterLatch_IsValidPullTarget_Params
-{
-	class AActor*                                      pCandidate;                                               // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function TgGame.TgDevice_CorrupterLatch.GetReticleTargetAim
-struct ATgDevice_CorrupterLatch_GetReticleTargetAim_Params
-{
-	struct FAimData                                    Aim;                                                      // (Parm, OutParm)
 };
 
 // Function TgGame.TgDevice_CorrupterPassive.GetChainMax
@@ -47389,6 +49220,7 @@ struct ATgDevice_CorrupterUlt_PlayClientFireFx_Params
 	int                                                nSocketIndex;                                             // (Parm)
 	bool                                               bSuccessfulHit;                                           // (Parm)
 	float                                              fRefireTime;                                              // (Parm)
+	int                                                nShotsFired;                                              // (OptionalParm, Parm)
 };
 
 // Function TgGame.TgDevice_CorrupterUlt.DoUltFire
@@ -47418,6 +49250,18 @@ struct ATgDevice_CorrupterUlt_CanPerformUlt_Params
 struct ATgDevice_CorrupterUlt_HasCachedCorrupter_Params
 {
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CorrupterLatch.OnUnlinkDevice
+struct ATgDevice_CorrupterLatch_OnUnlinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_CorrupterLatch.OnLinkDevice
+struct ATgDevice_CorrupterLatch_OnLinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
 };
 
 // Function TgGame.TgDevice_CorrupterSpin.OnUnlinkDevice
@@ -47524,8 +49368,8 @@ struct UTgDeviceForm_CorrupterUlt_SetVoraUltExitState_Params
 	TEnumAsByte<ECorrupterUltAnimState>                eState;                                                   // (Parm)
 };
 
-// Function TgGame.TgDeviceForm_CorrupterUlt.ReFireAnim
-struct UTgDeviceForm_CorrupterUlt_ReFireAnim_Params
+// Function TgGame.TgDeviceForm_CorrupterUlt.RefireAnim
+struct UTgDeviceForm_CorrupterUlt_RefireAnim_Params
 {
 };
 
@@ -47600,111 +49444,17 @@ struct UTgDeviceForm_CorrupterUlt_HasCachedCorrupter_Params
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
-// Function TgGame.TgDeviceForm_Latch.Generic1
-struct UTgDeviceForm_Latch_Generic1_Params
-{
-	unsigned char                                      byExtraData;                                              // (OptionalParm, Parm)
-};
-
-// Function TgGame.TgDeviceForm_Latch.StopFire
-struct UTgDeviceForm_Latch_StopFire_Params
-{
-	int                                                nFireModeNum;                                             // (Parm)
-};
-
-// Function TgGame.TgDeviceForm_Latch.Fire
-struct UTgDeviceForm_Latch_Fire_Params
-{
-	struct FVector                                     HitLocation;                                              // (Parm)
-	int                                                nFireMode;                                                // (Parm)
-	int                                                nEquipSlot;                                               // (OptionalParm, Parm)
-	int                                                nSocketIndex;                                             // (OptionalParm, Parm)
-	bool                                               bSuccessfulHit;                                           // (OptionalParm, Parm)
-	float                                              fRefireTime;                                              // (OptionalParm, Parm)
-};
-
-// Function TgGame.TgDeviceForm_Latch.StartFire
-struct UTgDeviceForm_Latch_StartFire_Params
-{
-	int                                                nFireMode;                                                // (Parm)
-	float                                              fRefireTime;                                              // (OptionalParm, Parm)
-	class AActor*                                      Target;                                                   // (OptionalParm, Parm)
-	int                                                nAmmoRemaining;                                           // (OptionalParm, Parm)
-};
-
-// Function TgGame.TgDeviceForm_Latch.DisconnectBeam
-struct UTgDeviceForm_Latch_DisconnectBeam_Params
-{
-};
-
-// Function TgGame.TgDeviceForm_Latch.ConnectBeamToTarget
-struct UTgDeviceForm_Latch_ConnectBeamToTarget_Params
-{
-};
-
-// Function TgGame.TgDeviceForm_Latch.SetBeamActive
-struct UTgDeviceForm_Latch_SetBeamActive_Params
-{
-	bool                                               bActive;                                                  // (OptionalParm, Parm)
-};
-
-// Function TgGame.TgDeviceForm_Latch.AnimatePull
-struct UTgDeviceForm_Latch_AnimatePull_Params
-{
-};
-
-// Function TgGame.TgDeviceForm_Latch.CacheAnimNode
-struct UTgDeviceForm_Latch_CacheAnimNode_Params
-{
-	class UAnimNode*                                   Node;                                                     // (Parm)
-	bool                                               bIs3p;                                                    // (Parm)
-};
-
-// Function TgGame.TgDeviceForm_Latch.ClearAnimNodes
-struct UTgDeviceForm_Latch_ClearAnimNodes_Params
-{
-	bool                                               bIs3p;                                                    // (Parm)
-};
-
-// Function TgGame.TgDeviceForm_Latch.UpdateBeamEndpoint
-struct UTgDeviceForm_Latch_UpdateBeamEndpoint_Params
-{
-	float                                              DeltaTime;                                                // (Parm)
-};
-
-// Function TgGame.TgDeviceForm_Latch.MoveBeamEndpoint
-struct UTgDeviceForm_Latch_MoveBeamEndpoint_Params
-{
-	struct FVector                                     vNewPosition;                                             // (Parm)
-};
-
-// Function TgGame.TgDeviceForm_Latch.UsesTargetingMode
-struct UTgDeviceForm_Latch_UsesTargetingMode_Params
-{
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function TgGame.TgDeviceForm_Latch.SetFireMode
-struct UTgDeviceForm_Latch_SetFireMode_Params
-{
-	int                                                nMode;                                                    // (Parm)
-};
-
-// Function TgGame.TgDeviceForm_Latch.SetLatchAssembly
-struct UTgDeviceForm_Latch_SetLatchAssembly_Params
-{
-	int                                                nAsmId;                                                   // (Parm)
-};
-
 // Function TgGame.TgPawn_Corrupter.DoUltRefund
 struct ATgPawn_Corrupter_DoUltRefund_Params
 {
 	float                                              TimeRemaining;                                            // (Parm)
+	float                                              fEnergyRefund;                                            // (Parm)
 };
 
 // Function TgGame.TgPawn_Corrupter.ConsumeUltCharge
 struct ATgPawn_Corrupter_ConsumeUltCharge_Params
 {
+	float                                              fEnergyCost;                                              // (Parm)
 };
 
 // Function TgGame.TgPawn_Corrupter.SwapToOrFromPool
@@ -47796,6 +49546,11 @@ struct ATgProj_CorrupterSiphon_ApplyTheHit_Params
 	struct FImpactInfo                                 Impact;                                                   // (Parm)
 	class AActor*                                      DamageInstigator;                                         // (Parm)
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgProj_CorrupterSiphon.RangeReached
+struct ATgProj_CorrupterSiphon_RangeReached_Params
+{
 };
 
 // Function TgGame.TgProj_CorrupterSiphon.ApplyHit
@@ -48337,6 +50092,12 @@ struct ATgDevice_DemonTeleport_DoTeleport_Params
 {
 };
 
+// Function TgGame.TgDevice_DemonTeleport.InterruptEmote
+struct ATgDevice_DemonTeleport_InterruptEmote_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
 // Function TgGame.TgDevice_DemonTeleport.CanTeleportNow
 struct ATgDevice_DemonTeleport_CanTeleportNow_Params
 {
@@ -48382,6 +50143,12 @@ struct ATgDevice_DemonTeleport_ShouldCooldownAfterFire_Params
 
 // Function TgGame.TgDevice_DemonTeleport.ShouldTeleportOnTimeout
 struct ATgDevice_DemonTeleport_ShouldTeleportOnTimeout_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_DemonTeleport.IsDeviceFiringLockedForUI
+struct ATgDevice_DemonTeleport_IsDeviceFiringLockedForUI_Params
 {
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
@@ -49487,6 +51254,7 @@ struct ATgDevice_Wormhole_RequireHardReset_Params
 // Function TgGame.TgDevice_Wormhole.DeviceRestart
 struct ATgDevice_Wormhole_DeviceRestart_Params
 {
+	bool                                               bPostRevive;                                              // (Parm)
 };
 
 // Function TgGame.TgDevice_Wormhole.OnOwnerRespawn
@@ -49649,6 +51417,12 @@ struct ATgDeploy_ShieldFernando_ReplicatedEvent_Params
 	struct FName                                       VarName;                                                  // (Parm)
 };
 
+// Function TgGame.TgDeploy_ShieldFernando.BenefitsFromPctShieldIncrease
+struct ATgDeploy_ShieldFernando_BenefitsFromPctShieldIncrease_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function TgGame.TgDeploy_ShieldFernando.ToggleLargeMesh
 struct ATgDeploy_ShieldFernando_ToggleLargeMesh_Params
 {
@@ -49681,15 +51455,14 @@ struct ATgDevice_FernandoImmortal_CanBeCanceled_Params
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
-// Function TgGame.TgDevice_ChargeFernando.AuthStartCooldown
-struct ATgDevice_ChargeFernando_AuthStartCooldown_Params
-{
-	int                                                nMode;                                                    // (OptionalParm, Parm)
-	float                                              fCooldownTimeOverride;                                    // (OptionalParm, Parm)
-};
-
 // Function TgGame.TgDevice_ChargeFernando.CanBeCanceled
 struct ATgDevice_ChargeFernando_CanBeCanceled_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_FernandoInhand.CanFireIfLeftMouseDown
+struct ATgDevice_FernandoInhand_CanFireIfLeftMouseDown_Params
 {
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
@@ -49723,6 +51496,16 @@ struct ATgDevice_ShieldFernando_LinkedDeviceUnequipped_Params
 struct ATgDevice_ShieldFernando_LinkedDeviceEquipped_Params
 {
 	class ATgDevice*                                   Dev;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_ShieldFernando.AegisShieldDestroyedLockoutTimer
+struct ATgDevice_ShieldFernando_AegisShieldDestroyedLockoutTimer_Params
+{
+};
+
+// Function TgGame.TgDevice_ShieldFernando.ManaRegenLockoutTimer
+struct ATgDevice_ShieldFernando_ManaRegenLockoutTimer_Params
+{
 };
 
 // Function TgGame.TgDevice_ShieldFernando.CanBeCanceled
@@ -49759,6 +51542,12 @@ struct ATgDevice_ShieldFernando_IsFunctionallyToggleDevice_Params
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function TgGame.TgDevice_ShieldFernando.UpdateShieldHealthFromMana
+struct ATgDevice_ShieldFernando_UpdateShieldHealthFromMana_Params
+{
+	class ATgPawn_Fernando*                            pFernando;                                                // (Parm)
+};
+
 // Function TgGame.TgDevice_ShieldFernando.ShouldUseGradualMovement
 struct ATgDevice_ShieldFernando_ShouldUseGradualMovement_Params
 {
@@ -49774,6 +51563,16 @@ struct ATgDevice_ShieldFernando_GetMoveSpeedMultiplier_Params
 // Function TgGame.TgDevice_ShieldFernando.CanBeSilenced
 struct ATgDevice_ShieldFernando_CanBeSilenced_Params
 {
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_ShieldFernando.CanDeviceFireNow
+struct ATgDevice_ShieldFernando_CanDeviceFireNow_Params
+{
+	unsigned char                                      FireModeNum;                                              // (Parm)
+	struct FAimData                                    Aim;                                                      // (Parm)
+	bool                                               bDeviceFailLog;                                           // (Parm)
+	TEnumAsByte<EDeviceFailType>                       failType;                                                 // (Parm, OutParm)
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -49806,6 +51605,24 @@ struct ATgPawn_Fernando_HideShield_Params
 // Function TgGame.TgPawn_Fernando.ShowShield
 struct ATgPawn_Fernando_ShowShield_Params
 {
+};
+
+// Function TgGame.TgPawn_Fernando.GetManaRegen
+struct ATgPawn_Fernando_GetManaRegen_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Fernando.HasCachedShieldDevice
+struct ATgPawn_Fernando_HasCachedShieldDevice_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Fernando.CanSpawnScalableShields
+struct ATgPawn_Fernando_CanSpawnScalableShields_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function TgGame.TgPawn_Fernando.SpecialAOEImmunity
@@ -50211,8 +52028,26 @@ struct UTgDeviceForm_ArcaneMissilesInhand_HasCachedGauntlet_Params
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function TgGame.TgPawn_Gauntlet.RestartAllDevices
+struct ATgPawn_Gauntlet_RestartAllDevices_Params
+{
+	bool                                               bPostRevive;                                              // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgPawn_Gauntlet.GotBurnCard
+struct ATgPawn_Gauntlet_GotBurnCard_Params
+{
+	int                                                BurnCardId;                                               // (Parm)
+};
+
 // Function TgGame.TgPawn_Gauntlet.HasValidSilenceBeamTarget
 struct ATgPawn_Gauntlet_HasValidSilenceBeamTarget_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Gauntlet.CanSpawnScalableShields
+struct ATgPawn_Gauntlet_CanSpawnScalableShields_Params
 {
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
@@ -50280,6 +52115,7 @@ struct ATgDeploy_HealingTotem_MitigateHealthDamage_Params
 	float                                              NewValue;                                                 // (Parm, OutParm)
 	float                                              fPercReduction;                                           // (Parm, OutParm)
 	bool                                               bIsHeadshot;                                              // (Parm)
+	unsigned char                                      bWasCapped;                                               // (Parm, OutParm)
 };
 
 // Function TgGame.TgDeploy_HealingTotem.AdjustHeal
@@ -50491,6 +52327,34 @@ struct ATgPawn_Grohk_GetOverlayMaterial_Params
 	class UMaterialInstanceConstant*                   ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function TgGame.TgDeploy_DeepRoots.ScaleAbilityFX
+struct ATgDeploy_DeepRoots_ScaleAbilityFX_Params
+{
+};
+
+// Function TgGame.TgDeploy_DeepRoots.ReplicatedEvent
+struct ATgDeploy_DeepRoots_ReplicatedEvent_Params
+{
+	struct FName                                       VarName;                                                  // (Parm)
+};
+
+// Function TgGame.TgDevice_Whirlwind2.Tick
+struct ATgDevice_Whirlwind2_Tick_Params
+{
+	float                                              DeltaTime;                                                // (Parm)
+};
+
+// Function TgGame.TgDevice_Whirlwind2.ClearUltSimulation
+struct ATgDevice_Whirlwind2_ClearUltSimulation_Params
+{
+};
+
+// Function TgGame.TgDevice_Whirlwind2.StartFire
+struct ATgDevice_Whirlwind2_StartFire_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function TgGame.TgDevice_Whirlwind2.CanBeCanceled
 struct ATgDevice_Whirlwind2_CanBeCanceled_Params
 {
@@ -50565,6 +52429,17 @@ struct ATgDevice_OverGrowth_StartFire_Params
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function TgGame.TgDevice_Vine.HasCachedPawn
+struct ATgDevice_Vine_HasCachedPawn_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_Vine.RampantBloomingHeal
+struct ATgDevice_Vine_RampantBloomingHeal_Params
+{
+};
+
 // Function TgGame.TgDevice_Vine.CanBeCanceled
 struct ATgDevice_Vine_CanBeCanceled_Params
 {
@@ -50631,6 +52506,13 @@ struct ATgDevice_Vine_GetReticleTargetAim_Params
 	struct FAimData                                    Aim;                                                      // (Parm, OutParm)
 };
 
+// Function TgGame.TgDeviceFire_GroverVine.GetTraceFlags
+struct UTgDeviceFire_GroverVine_GetTraceFlags_Params
+{
+	bool                                               bIgnoreWorld;                                             // (Parm)
+	struct Fdword                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function TgGame.TgDeviceForm_Blossom.Generic1
 struct UTgDeviceForm_Blossom_Generic1_Params
 {
@@ -50689,10 +52571,22 @@ struct UTgDeviceForm_Vine_UsesTargetingMode_Params
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function TgGame.TgPawn_Grover.HasCachedUlt
+struct ATgPawn_Grover_HasCachedUlt_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function TgGame.TgPawn_Grover.HasCachedVine
 struct ATgPawn_Grover_HasCachedVine_Params
 {
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Grover.GetUIUltChargePercent
+struct ATgPawn_Grover_GetUIUltChargePercent_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function TgGame.TgProj_Vine.SetNonThreatening
@@ -50902,6 +52796,12 @@ struct ATgDevice_SniperMode_CanBeInterrupted_Params
 struct ATgDevice_SniperMode_ShouldInterruptMount_Params
 {
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_SniperMode.GetChargeDelayModifier
+struct ATgDevice_SniperMode_GetChargeDelayModifier_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function TgGame.TgDevice_SniperMode.CanDeviceFireNow
@@ -51745,7 +53645,9 @@ struct ATgPawn_Koga_IsSwappingWeapons_Params
 struct ATgPawn_Koga_GetUISkillEqpSlotOverride_Params
 {
 	int                                                nEquipSlot;                                               // (Parm)
-	bool                                               bAltSlot;                                                 // (OptionalParm, Parm)
+	TEnumAsByte<EUI_SKILL_EQUIP_SLOT>                  eUISlot;                                                  // (OptionalParm, Parm)
+	bool                                               bBaseSkillOnly;                                           // (OptionalParm, Parm)
+	bool                                               bGamepadUI;                                               // (OptionalParm, Parm)
 	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -52107,7 +54009,7 @@ struct ATgPawn_Lex_IsFiringAtMarkShotMark_Params
 // Function TgGame.TgWeaponMeshActor_LexInhand.OverrideTracerFireLoc
 struct ATgWeaponMeshActor_LexInhand_OverrideTracerFireLoc_Params
 {
-	struct FVector                                     fireLoc;                                                  // (Parm, OutParm)
+	struct FVector                                     FireLoc;                                                  // (Parm, OutParm)
 	int                                                nIndex;                                                   // (OptionalParm, Parm)
 };
 
@@ -52893,6 +54795,7 @@ struct ATgDevice_ImaniLMB1_PlayClientFireFx_Params
 	int                                                nSocketIndex;                                             // (Parm)
 	bool                                               bSuccessfulHit;                                           // (Parm)
 	float                                              fRefireTime;                                              // (Parm)
+	int                                                nShotsFired;                                              // (OptionalParm, Parm)
 };
 
 // Function TgGame.TgDevice_ImaniLMB1.ShouldConsumePowerPoolAfterFire
@@ -53120,6 +55023,7 @@ struct ATgDevice_ImaniLMB2_PlayClientFireFx_Params
 	int                                                nSocketIndex;                                             // (Parm)
 	bool                                               bSuccessfulHit;                                           // (Parm)
 	float                                              fRefireTime;                                              // (Parm)
+	int                                                nShotsFired;                                              // (OptionalParm, Parm)
 };
 
 // Function TgGame.TgDevice_ImaniLMB2.SetFireHoldAmt
@@ -53337,6 +55241,7 @@ struct ATgDevice_ImaniRMB2_PlayClientFireFx_Params
 	int                                                nSocketIndex;                                             // (Parm)
 	bool                                               bSuccessfulHit;                                           // (Parm)
 	float                                              fRefireTime;                                              // (Parm)
+	int                                                nShotsFired;                                              // (OptionalParm, Parm)
 };
 
 // Function TgGame.TgDevice_ImaniRMB2.StopFire
@@ -53902,7 +55807,9 @@ struct ATgPawn_Imani_IsSwappingStance_Params
 struct ATgPawn_Imani_GetUISkillEqpSlotOverride_Params
 {
 	int                                                nEquipSlot;                                               // (Parm)
-	bool                                               bAltSlot;                                                 // (OptionalParm, Parm)
+	TEnumAsByte<EUI_SKILL_EQUIP_SLOT>                  eUISlot;                                                  // (OptionalParm, Parm)
+	bool                                               bBaseSkillOnly;                                           // (OptionalParm, Parm)
+	bool                                               bGamepadUI;                                               // (OptionalParm, Parm)
 	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -53959,12 +55866,6 @@ struct ATgPawn_Imani_IsJumpDisabled_Params
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
-// Function TgGame.TgPawn_Imani.GetAirControl
-struct ATgPawn_Imani_GetAirControl_Params
-{
-	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
 // Function TgGame.TgPawn_Imani.SetInitialGlideBearing
 struct ATgPawn_Imani_SetInitialGlideBearing_Params
 {
@@ -53981,6 +55882,12 @@ struct ATgPawn_Imani_UpdateAccumulatedGlideDeviation_Params
 	float                                              fDeltaBearing;                                            // (Parm)
 	float                                              fDeltaSeconds;                                            // (Parm)
 	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Imani.ApplyDigitizedImaniFace
+struct ATgPawn_Imani_ApplyDigitizedImaniFace_Params
+{
+	TEnumAsByte<EDigitizedImaniFace>                   eFace;                                                    // (Parm)
 };
 
 // Function TgGame.TgPawn_ImaniAvatar.ShouldCreateCaptureProxy
@@ -56061,8 +57968,8 @@ struct UTgSkelCon_RaumSpinner_HasCachedRaum_Params
 // Function TgGame.TgWeaponMeshActor_RaumMinigun.OverrideTracerEndLocation
 struct ATgWeaponMeshActor_RaumMinigun_OverrideTracerEndLocation_Params
 {
-	struct FVector                                     fireLoc;                                                  // (Parm)
-	struct FVector                                     EndLocation;                                              // (Parm, OutParm)
+	struct FVector                                     FireLoc;                                                  // (Parm)
+	struct FVector                                     endLocation;                                              // (Parm, OutParm)
 	int                                                nIndex;                                                   // (OptionalParm, Parm)
 	bool                                               bSyntheticShot;                                           // (OptionalParm, Parm)
 };
@@ -56534,6 +58441,12 @@ struct ATgDevice_TigronUlt_TriggerPerMoveLockout_Params
 	float                                              fLockout;                                                 // (Parm)
 };
 
+// Function TgGame.TgDevice_TigronUlt.CanBeInterrupted
+struct ATgDevice_TigronUlt_CanBeInterrupted_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function TgGame.TgDevice_TigronUlt.CanBeCanceled
 struct ATgDevice_TigronUlt_CanBeCanceled_Params
 {
@@ -56566,6 +58479,18 @@ struct ATgDevice_TigronUlt_IsAnyUltSkillFiring_Params
 // Function TgGame.TgDevice_TigronUlt.EarlyFinish
 struct ATgDevice_TigronUlt_EarlyFinish_Params
 {
+};
+
+// Function TgGame.TgDevice_TigronUlt.CanBeSilenced
+struct ATgDevice_TigronUlt_CanBeSilenced_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_TigronUlt.CanBeStunned
+struct ATgDevice_TigronUlt_CanBeStunned_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function TgGame.TgDeviceForm_TiberiusLeap.Fire
@@ -56874,7 +58799,9 @@ struct ATgPawn_Tiberius_ShouldUseUltWeapons_Params
 struct ATgPawn_Tiberius_GetUISkillEqpSlotOverride_Params
 {
 	int                                                nEquipSlot;                                               // (Parm)
-	bool                                               bAltSlot;                                                 // (OptionalParm, Parm)
+	TEnumAsByte<EUI_SKILL_EQUIP_SLOT>                  eUISlot;                                                  // (OptionalParm, Parm)
+	bool                                               bBaseSkillOnly;                                           // (OptionalParm, Parm)
+	bool                                               bGamepadUI;                                               // (OptionalParm, Parm)
 	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -56997,6 +58924,7 @@ struct ATgDeploy_ShieldMakoa_MitigateHealthDamage_Params
 	float                                              NewValue;                                                 // (Parm, OutParm)
 	float                                              fPercReduction;                                           // (Parm, OutParm)
 	bool                                               bIsHeadshot;                                              // (Parm)
+	unsigned char                                      bWasCapped;                                               // (Parm, OutParm)
 };
 
 // Function TgGame.TgDevice_ShellSpin.GetActorHitPeriod
@@ -57495,6 +59423,12 @@ struct ATgPawn_Makoa_ReplicatedEvent_Params
 	struct FName                                       VarName;                                                  // (Parm)
 };
 
+// Function TgGame.TgPawn_Makoa.CanSpawnScalableShields
+struct ATgPawn_Makoa_CanSpawnScalableShields_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function TgGame.TgProj_Drag.StartDrag
 struct ATgProj_Drag_StartDrag_Params
 {
@@ -57586,6 +59520,24 @@ struct ATgDeploy_DarkConvergence_GetPullTime_Params
 struct ATgDeploy_DarkConvergence_GetPullDelay_Params
 {
 	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_DarkConvergence.InterceptSlotPressed
+struct ATgDevice_DarkConvergence_InterceptSlotPressed_Params
+{
+	class ATgPlayerController*                         TgController;                                             // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_DarkConvergence.ServerDeploySoulOrb
+struct ATgDevice_DarkConvergence_ServerDeploySoulOrb_Params
+{
+};
+
+// Function TgGame.TgDevice_DarkConvergence.TryDeploySoulOrb
+struct ATgDevice_DarkConvergence_TryDeploySoulOrb_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function TgGame.TgDevice_RendSoul.ShouldCooldownAfterFire
@@ -57831,6 +59783,11 @@ struct UTgDeviceForm_OracleInhand_HasCachedOracle_Params
 
 // Function TgGame.TgPawn_Oracle.UpdateRestoreSoulSecondaryBeams
 struct ATgPawn_Oracle_UpdateRestoreSoulSecondaryBeams_Params
+{
+};
+
+// Function TgGame.TgPawn_Oracle.ResetAgonyDetonatedOrbsTimer
+struct ATgPawn_Oracle_ResetAgonyDetonatedOrbsTimer_Params
 {
 };
 
@@ -58605,6 +60562,12 @@ struct ATgPawn_Ruckus_HasCachedHexaFireGuns_Params
 
 // Function TgGame.TgPawn_Ruckus.HasCachedRuckusInhand
 struct ATgPawn_Ruckus_HasCachedRuckusInhand_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Ruckus.CanSpawnScalableShields
+struct ATgPawn_Ruckus_CanSpawnScalableShields_Params
 {
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
@@ -61002,6 +62965,12 @@ struct ATgPawn_Flak_RampUpTimer_Params
 {
 };
 
+// Function TgGame.TgPawn_Flak.CanSpawnScalableShields
+struct ATgPawn_Flak_CanSpawnScalableShields_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function TgGame.TgPawn_Flak.PawnOnLandAfterLeap
 struct ATgPawn_Flak_PawnOnLandAfterLeap_Params
 {
@@ -61610,7 +63579,9 @@ struct ATgPawn_Owl_IsInScope_Params
 struct ATgPawn_Owl_GetUISkillEqpSlotOverride_Params
 {
 	int                                                nEquipSlot;                                               // (Parm)
-	bool                                               bAltSlot;                                                 // (OptionalParm, Parm)
+	TEnumAsByte<EUI_SKILL_EQUIP_SLOT>                  eUISlot;                                                  // (OptionalParm, Parm)
+	bool                                               bBaseSkillOnly;                                           // (OptionalParm, Parm)
+	bool                                               bGamepadUI;                                               // (OptionalParm, Parm)
 	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -61661,6 +63632,12 @@ struct ATgDeploy_AbsorptionField_PlayGenericTakeHit_Params
 	struct FExtraDamageInfo                            Info;                                                     // (OptionalParm, Parm)
 };
 
+// Function TgGame.TgDeploy_AbsorptionField.BenefitsFromPctShieldIncrease
+struct ATgDeploy_AbsorptionField_BenefitsFromPctShieldIncrease_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function TgGame.TgDeploy_AbsorptionField.TakeDamage
 struct ATgDeploy_AbsorptionField_TakeDamage_Params
 {
@@ -61688,6 +63665,7 @@ struct ATgDeploy_AbsorptionField_MitigateHealthDamage_Params
 	float                                              NewValue;                                                 // (Parm, OutParm)
 	float                                              fPercReduction;                                           // (Parm, OutParm)
 	bool                                               bIsHeadshot;                                              // (Parm)
+	unsigned char                                      bWasCapped;                                               // (Parm, OutParm)
 };
 
 // Function TgGame.TgDevice_AbsorptionField.LinkedDeviceUnequipped
@@ -62413,7 +64391,7 @@ struct ATgWeaponMeshActor_LazarusInhand_PlayInstantHitImpactEffects_Params
 // Function TgGame.TgDeploy_ChurchillTurret.GetPhysicalFireAimDirection
 struct ATgDeploy_ChurchillTurret_GetPhysicalFireAimDirection_Params
 {
-	struct FVector                                     fireLoc;                                                  // (Parm)
+	struct FVector                                     FireLoc;                                                  // (Parm)
 	struct FVector                                     TargetLocation;                                           // (Parm)
 	struct FVector                                     ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
@@ -62771,6 +64749,12 @@ struct ATgPawn_Churchill_ResetPermanentEffects_Params
 {
 };
 
+// Function TgGame.TgPawn_Churchill.CanSpawnScalableShields
+struct ATgPawn_Churchill_CanSpawnScalableShields_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function TgGame.TgPawn_Churchill.DeviceOnStopFire
 struct ATgPawn_Churchill_DeviceOnStopFire_Params
 {
@@ -62818,7 +64802,7 @@ struct ATgWeaponMeshActor_ChurchillInhand_SetCrystalDetected_Params
 // Function TgGame.TgWeaponMeshActor_ChurchillInhand.CacheColorizeRedOnMesh
 struct ATgWeaponMeshActor_ChurchillInhand_CacheColorizeRedOnMesh_Params
 {
-	class USkeletalMeshComponent*                      WeaponMesh;                                               // (Parm, EditInline)
+	class USkeletalMeshComponent*                      weaponMesh;                                               // (Parm, EditInline)
 	struct FLinearColor                                cDefaultColor;                                            // (Parm, OutParm)
 };
 
@@ -62838,19 +64822,7 @@ struct ATgWeaponMeshActor_ChurchillInhand_Initialize3P_Params
 // Function TgGame.TgWeaponMeshActor_ChurchillInhand.FixUpReferencesToWeaponMesh1P
 struct ATgWeaponMeshActor_ChurchillInhand_FixUpReferencesToWeaponMesh1P_Params
 {
-	class USkeletalMeshComponent*                      WeaponMesh;                                               // (Parm, EditInline)
-};
-
-// Function TgGame.TgWeaponMeshActor_ChurchillInhand.UseADSFireSounds
-struct ATgWeaponMeshActor_ChurchillInhand_UseADSFireSounds_Params
-{
-	bool                                               bShouldUse;                                               // (Parm)
-};
-
-// Function TgGame.TgWeaponMeshActor_ChurchillInhand.SetFOVZoomed
-struct ATgWeaponMeshActor_ChurchillInhand_SetFOVZoomed_Params
-{
-	bool                                               bEnabled;                                                 // (Parm)
+	class USkeletalMeshComponent*                      weaponMesh;                                               // (Parm, EditInline)
 };
 
 // Function TgGame.TgWeaponMeshActor_ChurchillInhand.Toggle1PVisibility
@@ -63342,6 +65314,12 @@ struct ATgPawn_Vanguard_GetEmoteCategory_Params
 	TEnumAsByte<EEmoteCategory>                        ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function TgGame.TgPawn_Vanguard.CanSpawnScalableShields
+struct ATgPawn_Vanguard_CanSpawnScalableShields_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function TgGame.TgPawn_Vanguard.HasCachedDevice
 struct ATgPawn_Vanguard_HasCachedDevice_Params
 {
@@ -63557,12 +65535,45 @@ struct ATgPawn_Rider_Bump_Params
 	struct FVector                                     HitNormal;                                                // (Parm)
 };
 
+// Function TgGame.TgPawn_Rider.GetUISkillEqpSlotOverride_Rider
+struct ATgPawn_Rider_GetUISkillEqpSlotOverride_Rider_Params
+{
+	int                                                nEquipSlot;                                               // (Parm)
+	TEnumAsByte<EUI_SKILL_EQUIP_SLOT>                  eUISlot;                                                  // (Parm)
+	bool                                               bShouldSwapAltAndInhandInputs;                            // (Parm)
+	int                                                nFallThroughValue;                                        // (Parm)
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Rider.GetUISkillEqpSlotOverrideStaticDefault
+struct ATgPawn_Rider_GetUISkillEqpSlotOverrideStaticDefault_Params
+{
+	int                                                nEquipSlot;                                               // (Parm)
+	TEnumAsByte<EUI_SKILL_EQUIP_SLOT>                  eUISlot;                                                  // (OptionalParm, Parm)
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function TgGame.TgPawn_Rider.GetUISkillEqpSlotOverride
 struct ATgPawn_Rider_GetUISkillEqpSlotOverride_Params
 {
 	int                                                nEquipSlot;                                               // (Parm)
-	bool                                               bAltSlot;                                                 // (OptionalParm, Parm)
+	TEnumAsByte<EUI_SKILL_EQUIP_SLOT>                  eUISlot;                                                  // (OptionalParm, Parm)
+	bool                                               bBaseSkillOnly;                                           // (OptionalParm, Parm)
+	bool                                               bGamepadUI;                                               // (OptionalParm, Parm)
 	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Rider.CheckMaxMarksTimestamp
+struct ATgPawn_Rider_CheckMaxMarksTimestamp_Params
+{
+	int                                                nTargetPawnId;                                            // (Parm)
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Rider.SetMaxMarksTimestamp
+struct ATgPawn_Rider_SetMaxMarksTimestamp_Params
+{
+	int                                                nTargetPawnId;                                            // (Parm)
 };
 
 // Function TgGame.TgPawn_Rider.GetNumMarks
@@ -63652,6 +65663,18 @@ struct ATgDevice_FuriaInhand_AddHolyWrath_Params
 	float                                              fAmt;                                                     // (Parm)
 };
 
+// Function TgGame.TgDevice_FuriaQ.ServerHaltBeam
+struct ATgDevice_FuriaQ_ServerHaltBeam_Params
+{
+};
+
+// Function TgGame.TgDevice_FuriaQ.InterceptSlotPressed
+struct ATgDevice_FuriaQ_InterceptSlotPressed_Params
+{
+	class ATgPlayerController*                         TgController;                                             // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function TgGame.TgDevice_FuriaQ.GetTargetingAim
 struct ATgDevice_FuriaQ_GetTargetingAim_Params
 {
@@ -63716,7 +65739,7 @@ struct ATgPawn_Furia_HasRMBTarget_Params
 // Function TgGame.TgPawn_Furia.SetRMBTarget
 struct ATgPawn_Furia_SetRMBTarget_Params
 {
-	class ATgPawn_Character*                           pChar;                                                    // (Parm)
+	class ATgPawn*                                     pChar;                                                    // (Parm)
 };
 
 // Function TgGame.TgPawn_Furia.GetGravityZ
@@ -63741,6 +65764,12 @@ struct ATgPawn_Furia_ModifyAccuracyForReticleBloom_Params
 struct ATgProj_FuriaQ_GetRemainingTime_Params
 {
 	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgProj_FuriaQ.HaltBeam
+struct ATgProj_FuriaQ_HaltBeam_Params
+{
+	struct FVector                                     vHitLocation;                                             // (OptionalParm, Parm)
 };
 
 // Function TgGame.TgProj_FuriaQ.CheckStopProjectile
@@ -63791,6 +65820,7 @@ struct ATgProj_FuriaQ_HandleTick_Params
 // Function TgGame.TgProj_FuriaQ.CompleteInitialization
 struct ATgProj_FuriaQ_CompleteInitialization_Params
 {
+	unsigned char                                      ExtraInfo;                                                // (OptionalParm, Parm)
 };
 
 // Function TgGame.TgProj_FuriaQ.HideProjectile
@@ -64489,6 +66519,7 @@ struct ATgDevice_AtlasInhand_PlayClientFireFx_Params
 	int                                                nSocketIndex;                                             // (Parm)
 	bool                                               bSuccessfulHit;                                           // (Parm)
 	float                                              fRefireTime;                                              // (Parm)
+	int                                                nShotsFired;                                              // (OptionalParm, Parm)
 };
 
 // Function TgGame.TgDevice_AtlasInhand.LinkedDeviceUnequipped
@@ -65003,11 +67034,6 @@ struct ATgDeploy_YagoHardenPoison_StartFire_Params
 {
 };
 
-// Function TgGame.TgDeploy_YagoPoison.StartFire
-struct ATgDeploy_YagoPoison_StartFire_Params
-{
-};
-
 // Function TgGame.TgDevice_YagoChargeUp.LinkedDeviceEquipped
 struct ATgDevice_YagoChargeUp_LinkedDeviceEquipped_Params
 {
@@ -65297,6 +67323,12 @@ struct ATgDevice_YagorathUlt_ApplyGrabHitToTarget_Params
 // Function TgGame.TgDevice_YagorathUlt.DeliverQueuedPendingHits
 struct ATgDevice_YagorathUlt_DeliverQueuedPendingHits_Params
 {
+};
+
+// Function TgGame.TgDevice_YagorathUlt.GetTargetingAim
+struct ATgDevice_YagorathUlt_GetTargetingAim_Params
+{
+	struct FAimData                                    Aim;                                                      // (Parm, OutParm)
 };
 
 // Function TgGame.TgDevice_YagorathUlt.ShouldForce3P
@@ -65786,10 +67818,27 @@ struct ATgPawn_Yagorath_PushPosture_Params
 	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function TgGame.TgPawn_Yagorath.StartFlourish
+struct ATgPawn_Yagorath_StartFlourish_Params
+{
+};
+
 // Function TgGame.TgPawn_Yagorath.ReplicatedEvent
 struct ATgPawn_Yagorath_ReplicatedEvent_Params
 {
 	struct FName                                       VarName;                                                  // (Parm)
+};
+
+// Function TgGame.TgPawn_Yagorath.ShouldNeverBeHealed
+struct ATgPawn_Yagorath_ShouldNeverBeHealed_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Yagorath.CanSpawnScalableShields
+struct ATgPawn_Yagorath_CanSpawnScalableShields_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function TgGame.TgPawn_Yagorath.GetTravelFormSpeedMultPercent
@@ -65844,7 +67893,9 @@ struct ATgPawn_Yagorath_FaceRotation_Params
 struct ATgPawn_Yagorath_GetUISkillEqpSlotOverride_Params
 {
 	int                                                nEquipSlot;                                               // (Parm)
-	bool                                               bAltSlot;                                                 // (OptionalParm, Parm)
+	TEnumAsByte<EUI_SKILL_EQUIP_SLOT>                  eUISlot;                                                  // (OptionalParm, Parm)
+	bool                                               bBaseSkillOnly;                                           // (OptionalParm, Parm)
+	bool                                               bGamepadUI;                                               // (OptionalParm, Parm)
 	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -65926,6 +67977,3660 @@ struct UTgSkelCon_YagorathSpinner_HasCachedYagorath_Params
 {
 	class USkeletalMeshComponent*                      SkelComp;                                                 // (Parm, EditInline)
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgAnimNodeChannelFire_VatuUlt.SetAnimState
+struct UTgAnimNodeChannelFire_VatuUlt_SetAnimState_Params
+{
+	TEnumAsByte<EVatuUltAnimState>                     animState;                                                // (Parm)
+};
+
+// Function TgGame.TgAnimNodeChannelFire_VatuUlt.ReplayAnim
+struct UTgAnimNodeChannelFire_VatuUlt_ReplayAnim_Params
+{
+};
+
+// Function TgGame.TgAnimNodeChannelFire_VatuUlt.EndChannel
+struct UTgAnimNodeChannelFire_VatuUlt_EndChannel_Params
+{
+};
+
+// Function TgGame.TgDevice_ShadowDash.GetTargetingAim
+struct ATgDevice_ShadowDash_GetTargetingAim_Params
+{
+	struct FAimData                                    Aim;                                                      // (Parm, OutParm)
+};
+
+// Function TgGame.TgDevice_ShadowUlt.StopFire
+struct ATgDevice_ShadowUlt_StopFire_Params
+{
+};
+
+// Function TgGame.TgDevice_ShadowUlt.ShouldLockJumping
+struct ATgDevice_ShadowUlt_ShouldLockJumping_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_ShadowUlt.ServerReleaseFireHold
+struct ATgDevice_ShadowUlt_ServerReleaseFireHold_Params
+{
+	float                                              fClientFireHoldPercent;                                   // (Parm)
+	int                                                nClientFireRequestId;                                     // (Parm)
+};
+
+// Function TgGame.TgDevice_ShadowUlt.ReleaseFireHold
+struct ATgDevice_ShadowUlt_ReleaseFireHold_Params
+{
+};
+
+// Function TgGame.TgDevice_ShadowUlt.ShouldStopOnThisHit
+struct ATgDevice_ShadowUlt_ShouldStopOnThisHit_Params
+{
+	class AActor*                                      Other;                                                    // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_ShadowUlt.GetChargeTime
+struct ATgDevice_ShadowUlt_GetChargeTime_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_ShadowUlt.GetChargeRange
+struct ATgDevice_ShadowUlt_GetChargeRange_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_ShadowUlt.ReleaseFireHoldInternal
+struct ATgDevice_ShadowUlt_ReleaseFireHoldInternal_Params
+{
+};
+
+// Function TgGame.TgDevice_ShadowUlt.ApplyTouchHit
+struct ATgDevice_ShadowUlt_ApplyTouchHit_Params
+{
+	class ATgPawn*                                     InstigatorPawn;                                           // (Parm)
+	struct FVector                                     vHitLocation;                                             // (Parm)
+	struct FVector                                     vHitNormal;                                               // (Parm)
+	class AActor*                                      Target;                                                   // (Parm)
+};
+
+// Function TgGame.TgDevice_ShadowUlt.InterceptLeftMousePressed
+struct ATgDevice_ShadowUlt_InterceptLeftMousePressed_Params
+{
+	class ATgPlayerController*                         TgController;                                             // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_ShadowUlt.StartFireHold
+struct ATgDevice_ShadowUlt_StartFireHold_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_ShadowUlt.MinChargeTime
+struct ATgDevice_ShadowUlt_MinChargeTime_Params
+{
+};
+
+// Function TgGame.TgDevice_ShadowUlt.HasCachedShadow
+struct ATgDevice_ShadowUlt_HasCachedShadow_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_ShadowUlt.ShouldConsumePowerPoolAfterFire
+struct ATgDevice_ShadowUlt_ShouldConsumePowerPoolAfterFire_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_ShadowUlt.ShouldConsumePowerPoolOnStartFire
+struct ATgDevice_ShadowUlt_ShouldConsumePowerPoolOnStartFire_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_ShadowUlt.ValidateChargeHit
+struct ATgDevice_ShadowUlt_ValidateChargeHit_Params
+{
+	class AActor*                                      Other;                                                    // (Parm)
+};
+
+// Function TgGame.TgDevice_ShadowUlt.GetChargePercent
+struct ATgDevice_ShadowUlt_GetChargePercent_Params
+{
+	bool                                               bForUIOnly;                                               // (OptionalParm, Parm)
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_ShadowUlt.EnterTargetingMode
+struct ATgDevice_ShadowUlt_EnterTargetingMode_Params
+{
+};
+
+// Function TgGame.TgDevice_ShadowUlt.TickTargetingMode
+struct ATgDevice_ShadowUlt_TickTargetingMode_Params
+{
+	float                                              DeltaSeconds;                                             // (Parm)
+};
+
+// Function TgGame.TgDevice_ShadowUlt.GetTargetingAim
+struct ATgDevice_ShadowUlt_GetTargetingAim_Params
+{
+	struct FAimData                                    Aim;                                                      // (Parm, OutParm)
+};
+
+// Function TgGame.TgDevice_ShadowUlt.GetTargetingMode
+struct ATgDevice_ShadowUlt_GetTargetingMode_Params
+{
+	TEnumAsByte<EDeviceTargetMode>                     ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_ShadowUlt.ShouldUseGradualMovement
+struct ATgDevice_ShadowUlt_ShouldUseGradualMovement_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_ShadowUlt.GetMoveSpeedMultiplier
+struct ATgDevice_ShadowUlt_GetMoveSpeedMultiplier_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_Kunai.GetProjectileSpawnOffset
+struct ATgDevice_Kunai_GetProjectileSpawnOffset_Params
+{
+	struct FVector                                     ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_Kunai.ShouldUseGradualMovement
+struct ATgDevice_Kunai_ShouldUseGradualMovement_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_Kunai.GetMoveSpeedMultiplier
+struct ATgDevice_Kunai_GetMoveSpeedMultiplier_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_Kunai.GetAdjustedAim
+struct ATgDevice_Kunai_GetAdjustedAim_Params
+{
+	struct FAimData                                    Aim;                                                      // (Parm, OutParm)
+	float                                              UsedAccuracyValue;                                        // (Parm, OutParm)
+	float                                              UsedRandomValue1;                                         // (Parm, OutParm)
+	float                                              UsedRandomValue2;                                         // (Parm, OutParm)
+	float                                              AccuracyValueOverride;                                    // (OptionalParm, Parm)
+	float                                              RandomValueOverride1;                                     // (OptionalParm, Parm)
+	float                                              RandomValueOverride2;                                     // (OptionalParm, Parm)
+	int                                                nMultifireIndex;                                          // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDevice_Kunai.CanDeviceFireNow
+struct ATgDevice_Kunai_CanDeviceFireNow_Params
+{
+	unsigned char                                      FireModeNum;                                              // (Parm)
+	struct FAimData                                    Aim;                                                      // (Parm)
+	bool                                               bDeviceFailLog;                                           // (Parm)
+	TEnumAsByte<EDeviceFailType>                       failType;                                                 // (Parm, OutParm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_ShadowTeleport.ServerStartFire
+struct ATgDevice_ShadowTeleport_ServerStartFire_Params
+{
+	float                                              MovementTimeStamp;                                        // (OptionalParm, Parm)
+	struct FVector                                     MovementInAccel;                                          // (OptionalParm, Parm)
+	struct FVector                                     MovementClientLoc;                                        // (OptionalParm, Parm)
+	unsigned char                                      MovementNewFlags;                                         // (OptionalParm, Parm)
+	unsigned char                                      MovementClientRoll;                                       // (OptionalParm, Parm)
+	int                                                MovementView;                                             // (OptionalParm, Parm)
+	int                                                ClientFireRequestId;                                      // (OptionalParm, Parm)
+	unsigned char                                      ClientFireMode;                                           // (OptionalParm, Parm)
+	class AActor*                                      HitActor;                                                 // (OptionalParm, Parm)
+	float                                              StartTraceX;                                              // (OptionalParm, Parm)
+	float                                              StartTraceY;                                              // (OptionalParm, Parm)
+	float                                              StartTraceZ;                                              // (OptionalParm, Parm)
+	float                                              EndTraceX;                                                // (OptionalParm, Parm)
+	float                                              EndTraceY;                                                // (OptionalParm, Parm)
+	float                                              EndTraceZ;                                                // (OptionalParm, Parm)
+	int                                                nCompressedAimVector;                                     // (OptionalParm, Parm)
+	bool                                               bFirstBurstShot;                                          // (OptionalParm, Parm)
+	float                                              fAttackSpeedPercChange;                                   // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDevice_ShadowTeleport.CallServerStartFire
+struct ATgDevice_ShadowTeleport_CallServerStartFire_Params
+{
+	struct FAimData                                    Aim;                                                      // (Parm)
+	bool                                               bPendingUpdate;                                           // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDevice_ShadowTeleport.GetTotalNumberOfShots
+struct ATgDevice_ShadowTeleport_GetTotalNumberOfShots_Params
+{
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_ShadowTeleport.ShouldCooldownAfterFire
+struct ATgDevice_ShadowTeleport_ShouldCooldownAfterFire_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_ShadowTeleport.ClientStartCooldown
+struct ATgDevice_ShadowTeleport_ClientStartCooldown_Params
+{
+	int                                                nMode;                                                    // (Parm)
+	float                                              fCooldownTime;                                            // (Parm)
+};
+
+// Function TgGame.TgDevice_ShadowTeleport.StartCooldown
+struct ATgDevice_ShadowTeleport_StartCooldown_Params
+{
+	int                                                nMode;                                                    // (OptionalParm, Parm)
+	float                                              fCooldownTimeOverride;                                    // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDevice_ShadowTeleport.HasCachedShadow
+struct ATgDevice_ShadowTeleport_HasCachedShadow_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_ShadowTeleport.RefireTimer
+struct ATgDevice_ShadowTeleport_RefireTimer_Params
+{
+};
+
+// Function TgGame.TgDevice_ShadowTeleport.IsValidTeleportTarget
+struct ATgDevice_ShadowTeleport_IsValidTeleportTarget_Params
+{
+	class ATgPawn_Character*                           Character;                                                // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDeviceFire_SuckSlash.ApplyHit
+struct UTgDeviceFire_SuckSlash_ApplyHit_Params
+{
+	struct FImpactInfo                                 Impact;                                                   // (Parm)
+	class AActor*                                      DamageInstigator;                                         // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDeviceForm_ShadowDash.Fire
+struct UTgDeviceForm_ShadowDash_Fire_Params
+{
+	struct FVector                                     HitLocation;                                              // (Parm)
+	int                                                nFireMode;                                                // (Parm)
+	int                                                nEquipSlot;                                               // (OptionalParm, Parm)
+	int                                                nSocketIndex;                                             // (OptionalParm, Parm)
+	bool                                               bSuccessfulHit;                                           // (OptionalParm, Parm)
+	float                                              fRefireTime;                                              // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDeviceForm_ShadowDash.GetFormIndex
+struct UTgDeviceForm_ShadowDash_GetFormIndex_Params
+{
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDeviceForm_ShadowUlt.ExitTargetingMode
+struct UTgDeviceForm_ShadowUlt_ExitTargetingMode_Params
+{
+};
+
+// Function TgGame.TgDeviceForm_ShadowUlt.EnterTargetingMode
+struct UTgDeviceForm_ShadowUlt_EnterTargetingMode_Params
+{
+};
+
+// Function TgGame.TgDeviceForm_ShadowUlt.Generic2
+struct UTgDeviceForm_ShadowUlt_Generic2_Params
+{
+	unsigned char                                      byExtraData;                                              // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDeviceForm_ShadowUlt.Generic1
+struct UTgDeviceForm_ShadowUlt_Generic1_Params
+{
+	unsigned char                                      byExtraData;                                              // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDeviceForm_ShadowUlt.StartFire
+struct UTgDeviceForm_ShadowUlt_StartFire_Params
+{
+	int                                                nFireMode;                                                // (Parm)
+	float                                              fRefireTime;                                              // (OptionalParm, Parm)
+	class AActor*                                      Target;                                                   // (OptionalParm, Parm)
+	int                                                nAmmoRemaining;                                           // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDeviceForm_ShadowUlt.CacheAnimNode
+struct UTgDeviceForm_ShadowUlt_CacheAnimNode_Params
+{
+	class UAnimNode*                                   Node;                                                     // (Parm)
+	bool                                               bIs3p;                                                    // (Parm)
+};
+
+// Function TgGame.TgDeviceForm_ShadowUlt.ClearAnimNodes
+struct UTgDeviceForm_ShadowUlt_ClearAnimNodes_Params
+{
+	bool                                               bIs3p;                                                    // (Parm)
+};
+
+// Function TgGame.TgDeviceForm_ShadowUlt.HasCachedShadow
+struct UTgDeviceForm_ShadowUlt_HasCachedShadow_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDeviceForm_ShadowUlt.UpdateUltAnimState
+struct UTgDeviceForm_ShadowUlt_UpdateUltAnimState_Params
+{
+	TEnumAsByte<EVatuUltAnimState>                     eNewState;                                                // (Parm)
+};
+
+// Function TgGame.TgPawn_Shadow.PostPawnSetup
+struct ATgPawn_Shadow_PostPawnSetup_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Shadow.GetStickyBombAsmId
+struct ATgPawn_Shadow_GetStickyBombAsmId_Params
+{
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgProj_ShadowStickyBomb.ShutDown
+struct ATgProj_ShadowStickyBomb_ShutDown_Params
+{
+};
+
+// Function TgGame.TgProj_ShadowStickyBomb.Destroyed
+struct ATgProj_ShadowStickyBomb_Destroyed_Params
+{
+};
+
+// Function TgGame.TgProj_ShadowStickyBomb.PlayHitTargetFX
+struct ATgProj_ShadowStickyBomb_PlayHitTargetFX_Params
+{
+	class AActor*                                      Target;                                                   // (Parm)
+	struct FVector                                     HitLocation;                                              // (Parm)
+	struct FVector                                     HitNormal;                                                // (Parm)
+	bool                                               bExploded;                                                // (Parm)
+};
+
+// Function TgGame.TgProj_ShadowStickyBomb.DelayExplodeOnTarget
+struct ATgProj_ShadowStickyBomb_DelayExplodeOnTarget_Params
+{
+};
+
+// Function TgGame.TgProj_ShadowStickyBomb.ExplodeOnTarget
+struct ATgProj_ShadowStickyBomb_ExplodeOnTarget_Params
+{
+	class AActor*                                      Target;                                                   // (Parm)
+	struct FVector                                     HitLocation;                                              // (Parm)
+	struct FVector                                     HitNormal;                                                // (Parm)
+};
+
+// Function TgGame.TgProj_ShadowStickyBomb.MoveSticky
+struct ATgProj_ShadowStickyBomb_MoveSticky_Params
+{
+	struct FVector                                     Loc;                                                      // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgProj_ShadowStickyBombHoming.UpdateTrackingTargetActor
+struct ATgProj_ShadowStickyBombHoming_UpdateTrackingTargetActor_Params
+{
+};
+
+// Function TgGame.TgProj_ShadowStickyBombHoming.Tick
+struct ATgProj_ShadowStickyBombHoming_Tick_Params
+{
+	float                                              DeltaSeconds;                                             // (Parm)
+};
+
+// Function TgGame.TgShadowStickProp.ClientStickToSocket
+struct ATgShadowStickProp_ClientStickToSocket_Params
+{
+	class ATgPawn*                                     TargetPawn;                                               // (Parm)
+};
+
+// Function TgGame.TgShadowStickProp.PostBeginPlay
+struct ATgShadowStickProp_PostBeginPlay_Params
+{
+};
+
+// Function TgGame.TgDeploy_SaatiCoin.CollisionChanged
+struct ATgDeploy_SaatiCoin_CollisionChanged_Params
+{
+};
+
+// Function TgGame.TgDeploy_SaatiCoin.PlayTracerEffects
+struct ATgDeploy_SaatiCoin_PlayTracerEffects_Params
+{
+};
+
+// Function TgGame.TgDeploy_SaatiCoin.PlayFireFx
+struct ATgDeploy_SaatiCoin_PlayFireFx_Params
+{
+};
+
+// Function TgGame.TgDeploy_SaatiCoin.ApplyHit
+struct ATgDeploy_SaatiCoin_ApplyHit_Params
+{
+	TArray<struct FImpactInfo>                         ImpactList;                                               // (Parm, OutParm, NeedCtorLink)
+};
+
+// Function TgGame.TgDeploy_SaatiCoin.CalcDeviceFire
+struct ATgDeploy_SaatiCoin_CalcDeviceFire_Params
+{
+	struct FVector                                     StartTrace;                                               // (Parm)
+	struct FVector                                     EndTrace;                                                 // (Parm)
+	TArray<struct FImpactInfo>                         ImpactList;                                               // (OptionalParm, Parm, OutParm, NeedCtorLink)
+	struct FImpactInfo                                 ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDeploy_SaatiCoin.InstantFireDeployable
+struct ATgDeploy_SaatiCoin_InstantFireDeployable_Params
+{
+};
+
+// Function TgGame.TgDeploy_SaatiCoin.TakeDamage
+struct ATgDeploy_SaatiCoin_TakeDamage_Params
+{
+	int                                                Damage;                                                   // (Parm)
+	class AController*                                 EventInstigator;                                          // (Parm)
+	struct FVector                                     HitLocation;                                              // (Parm)
+	struct FVector                                     Momentum;                                                 // (Parm)
+	class UClass*                                      DamageType;                                               // (Parm)
+	struct FTraceHitInfo                               HitInfo;                                                  // (OptionalParm, Parm)
+	class AActor*                                      DamageCauser;                                             // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDeploy_SaatiCoin.ExplodeOnUltHit
+struct ATgDeploy_SaatiCoin_ExplodeOnUltHit_Params
+{
+};
+
+// Function TgGame.TgDevice_BlastBack.ShouldInterruptReloadOnFire
+struct ATgDevice_BlastBack_ShouldInterruptReloadOnFire_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_BlastBack.ShouldMountCancelFiring
+struct ATgDevice_BlastBack_ShouldMountCancelFiring_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_SaatiDecoy.ShouldCancelStealth
+struct ATgDevice_SaatiDecoy_ShouldCancelStealth_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_SaatiDecoy.ShouldInterruptStealth
+struct ATgDevice_SaatiDecoy_ShouldInterruptStealth_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_SaatiDecoyExplosion.OnUnlinkDevice
+struct ATgDevice_SaatiDecoyExplosion_OnUnlinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_SaatiDecoyExplosion.OnLinkDevice
+struct ATgDevice_SaatiDecoyExplosion_OnLinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_SaatiPassive.OnUnlinkDevice
+struct ATgDevice_SaatiPassive_OnUnlinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_SaatiPassive.OnLinkDevice
+struct ATgDevice_SaatiPassive_OnLinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_SaatiPassive.ManagePassiveBuff
+struct ATgDevice_SaatiPassive_ManagePassiveBuff_Params
+{
+};
+
+// Function TgGame.TgDevice_WallBang.LinkedDeviceEquipped
+struct ATgDevice_WallBang_LinkedDeviceEquipped_Params
+{
+	class ATgDevice*                                   Dev;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_WallBang.LastShotCancelTimer
+struct ATgDevice_WallBang_LastShotCancelTimer_Params
+{
+};
+
+// Function TgGame.TgDevice_WallBang.ShouldInterruptReloadOnFire
+struct ATgDevice_WallBang_ShouldInterruptReloadOnFire_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_WallBang.CanBeCanceled
+struct ATgDevice_WallBang_CanBeCanceled_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_WallBang.UpdateHud
+struct ATgDevice_WallBang_UpdateHud_Params
+{
+};
+
+// Function TgGame.TgDevice_WallBang.CanBeSilenced
+struct ATgDevice_WallBang_CanBeSilenced_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_WallBang.CanFireIfLeftMouseDown
+struct ATgDevice_WallBang_CanFireIfLeftMouseDown_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_WallBang.IsToggleDevice
+struct ATgDevice_WallBang_IsToggleDevice_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_WallBangFire.LinkedDeviceUnequipped
+struct ATgDevice_WallBangFire_LinkedDeviceUnequipped_Params
+{
+	class ATgDevice*                                   Dev;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_WallBangFire.LinkedDeviceEquipped
+struct ATgDevice_WallBangFire_LinkedDeviceEquipped_Params
+{
+	class ATgDevice*                                   Dev;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_WallBangFire.ShouldConsumePowerPoolAfterFire
+struct ATgDevice_WallBangFire_ShouldConsumePowerPoolAfterFire_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_WallBangFire.ShouldConsumePowerPoolOnStartFire
+struct ATgDevice_WallBangFire_ShouldConsumePowerPoolOnStartFire_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_WallBangFire.InterceptLeftMouseReleased
+struct ATgDevice_WallBangFire_InterceptLeftMouseReleased_Params
+{
+	class ATgPlayerController*                         TgController;                                             // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_WallBangFire.InterceptLeftMousePressed
+struct ATgDevice_WallBangFire_InterceptLeftMousePressed_Params
+{
+	class ATgPlayerController*                         TgController;                                             // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_WallBangFire.SetUpWallBang
+struct ATgDevice_WallBangFire_SetUpWallBang_Params
+{
+};
+
+// Function TgGame.TgDevice_WallBangFire.HasCachedSaati
+struct ATgDevice_WallBangFire_HasCachedSaati_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_WallBangFire.CanDeviceFireNow
+struct ATgDevice_WallBangFire_CanDeviceFireNow_Params
+{
+	unsigned char                                      FireModeNum;                                              // (Parm)
+	struct FAimData                                    Aim;                                                      // (Parm)
+	bool                                               bDeviceFailLog;                                           // (Parm)
+	TEnumAsByte<EDeviceFailType>                       failType;                                                 // (Parm, OutParm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDeviceFire_WallBang.ApplyHit
+struct UTgDeviceFire_WallBang_ApplyHit_Params
+{
+	struct FImpactInfo                                 Impact;                                                   // (Parm)
+	class AActor*                                      DamageInstigator;                                         // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDeviceFire_WallBang.IsValidTarget
+struct UTgDeviceFire_WallBang_IsValidTarget_Params
+{
+	class AActor*                                      P;                                                        // (Parm)
+	TEnumAsByte<EDeviceTargeterType>                   eTargeterType;                                            // (OptionalParm, Parm)
+	bool                                               bIgnoreHealth;                                            // (OptionalParm, Parm)
+	bool                                               bInvertTeam;                                              // (OptionalParm, Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDeviceFire_SaatiCoin.IsValidTarget
+struct UTgDeviceFire_SaatiCoin_IsValidTarget_Params
+{
+	class AActor*                                      P;                                                        // (Parm)
+	TEnumAsByte<EDeviceTargeterType>                   eTargeterType;                                            // (OptionalParm, Parm)
+	bool                                               bIgnoreHealth;                                            // (OptionalParm, Parm)
+	bool                                               bInvertTeam;                                              // (OptionalParm, Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDeviceFire_SaatiCoinTalent.GetBonusShieldDamagePerc
+struct UTgDeviceFire_SaatiCoinTalent_GetBonusShieldDamagePerc_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDeviceFire_SaatiDecoy.SpawnPet
+struct UTgDeviceFire_SaatiDecoy_SpawnPet_Params
+{
+	bool                                               bPet;                                                     // (Parm)
+	class ATgPawn*                                     ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDeviceFire_SaatiInhand.ApplyHit
+struct UTgDeviceFire_SaatiInhand_ApplyHit_Params
+{
+	struct FImpactInfo                                 Impact;                                                   // (Parm)
+	class AActor*                                      DamageInstigator;                                         // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDeviceFire_SaatiInhand.IsValidTarget
+struct UTgDeviceFire_SaatiInhand_IsValidTarget_Params
+{
+	class AActor*                                      P;                                                        // (Parm)
+	TEnumAsByte<EDeviceTargeterType>                   eTargeterType;                                            // (OptionalParm, Parm)
+	bool                                               bIgnoreHealth;                                            // (OptionalParm, Parm)
+	bool                                               bInvertTeam;                                              // (OptionalParm, Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDeviceFire_WallBangProj.ApplyHit
+struct UTgDeviceFire_WallBangProj_ApplyHit_Params
+{
+	struct FImpactInfo                                 Impact;                                                   // (Parm)
+	class AActor*                                      DamageInstigator;                                         // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDeviceFire_WallBangProj.IsValidTarget
+struct UTgDeviceFire_WallBangProj_IsValidTarget_Params
+{
+	class AActor*                                      P;                                                        // (Parm)
+	TEnumAsByte<EDeviceTargeterType>                   eTargeterType;                                            // (OptionalParm, Parm)
+	bool                                               bIgnoreHealth;                                            // (OptionalParm, Parm)
+	bool                                               bInvertTeam;                                              // (OptionalParm, Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_SaatiDecoy.PlayDyingEffects
+struct ATgPawn_SaatiDecoy_PlayDyingEffects_Params
+{
+};
+
+// Function TgGame.TgPawn_SaatiDecoy.RevealEnemy
+struct ATgPawn_SaatiDecoy_RevealEnemy_Params
+{
+	class ATgPawn*                                     enemyPawn;                                                // (Parm)
+};
+
+// Function TgGame.TgPawn_SaatiDecoy.Died
+struct ATgPawn_SaatiDecoy_Died_Params
+{
+	class AController*                                 Killer;                                                   // (Parm)
+	class UClass*                                      DamageType;                                               // (Parm)
+	struct FVector                                     HitLocation;                                              // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_SaatiDecoy.TakeDamage
+struct ATgPawn_SaatiDecoy_TakeDamage_Params
+{
+	int                                                Damage;                                                   // (Parm)
+	class AController*                                 InstigatedBy;                                             // (Parm)
+	struct FVector                                     HitLocation;                                              // (Parm)
+	struct FVector                                     Momentum;                                                 // (Parm)
+	class UClass*                                      DamageType;                                               // (Parm)
+	struct FTraceHitInfo                               HitInfo;                                                  // (OptionalParm, Parm)
+	class AActor*                                      DamageCauser;                                             // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgPawn_SaatiDecoy.PostPawnSetup
+struct ATgPawn_SaatiDecoy_PostPawnSetup_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_SaatiDecoy.IsDebuffImmune
+struct ATgPawn_SaatiDecoy_IsDebuffImmune_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_SaatiDecoy.IsCrowdControlImmune
+struct ATgPawn_SaatiDecoy_IsCrowdControlImmune_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgProj_SaatiCoin.ExplodeOnTarget
+struct ATgProj_SaatiCoin_ExplodeOnTarget_Params
+{
+	class AActor*                                      Target;                                                   // (Parm)
+	struct FVector                                     HitLocation;                                              // (Parm)
+	struct FVector                                     HitNormal;                                                // (Parm)
+};
+
+// Function TgGame.TgProj_SaatiCoin.CheckTeamPassThrough
+struct ATgProj_SaatiCoin_CheckTeamPassThrough_Params
+{
+	class AActor*                                      Other;                                                    // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgProj_SaatiCoin.EnableCoinCollision
+struct ATgProj_SaatiCoin_EnableCoinCollision_Params
+{
+};
+
+// Function TgGame.TgAnimBlendByPaladinsCharacter_Azaan.OnRetrieve
+struct UTgAnimBlendByPaladinsCharacter_Azaan_OnRetrieve_Params
+{
+};
+
+// Function TgGame.TgAnimNodeChannelFire_AzaanUlt.SetAnimState
+struct UTgAnimNodeChannelFire_AzaanUlt_SetAnimState_Params
+{
+	TEnumAsByte<EAzaanUltAnimState>                    animState;                                                // (Parm)
+};
+
+// Function TgGame.TgAnimNodeChannelFire_AzaanUlt.EndChannel
+struct UTgAnimNodeChannelFire_AzaanUlt_EndChannel_Params
+{
+};
+
+// Function TgGame.TgDeploy_AzaanWall.OnHealthUpdated
+struct ATgDeploy_AzaanWall_OnHealthUpdated_Params
+{
+};
+
+// Function TgGame.TgDevice_AzaanUlt.GetCustomTimerBarMaxTime
+struct ATgDevice_AzaanUlt_GetCustomTimerBarMaxTime_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_AzaanUlt.GetCustomTimerBarCurrentTime
+struct ATgDevice_AzaanUlt_GetCustomTimerBarCurrentTime_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_AzaanUlt.OriginalPostHitTimer
+struct ATgDevice_AzaanUlt_OriginalPostHitTimer_Params
+{
+};
+
+// Function TgGame.TgDevice_AzaanUlt.LinkedDeviceEquipped
+struct ATgDevice_AzaanUlt_LinkedDeviceEquipped_Params
+{
+	class ATgDevice*                                   Dev;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_AzaanUlt.LastShotCancelTimer
+struct ATgDevice_AzaanUlt_LastShotCancelTimer_Params
+{
+};
+
+// Function TgGame.TgDevice_AzaanUlt.CanBeInterrupted
+struct ATgDevice_AzaanUlt_CanBeInterrupted_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_AzaanUlt.ShouldSwitchBackToBasicAttackTargeting
+struct ATgDevice_AzaanUlt_ShouldSwitchBackToBasicAttackTargeting_Params
+{
+	TEnumAsByte<ECastMode>                             CastMode;                                                 // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_AzaanUlt.HasCachedAzaan
+struct ATgDevice_AzaanUlt_HasCachedAzaan_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_AzaanUlt.CanBeCanceled
+struct ATgDevice_AzaanUlt_CanBeCanceled_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_AzaanUlt.ShouldForce3P
+struct ATgDevice_AzaanUlt_ShouldForce3P_Params
+{
+	class UTgDeviceForm*                               DeviceForm;                                               // (Parm)
+	bool                                               bOnlyCheckDeviceForm;                                     // (OptionalParm, Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_AzaanUlt.CanFireIfLeftMouseDown
+struct ATgDevice_AzaanUlt_CanFireIfLeftMouseDown_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_AzaanUlt.ExitTargetingMode
+struct ATgDevice_AzaanUlt_ExitTargetingMode_Params
+{
+};
+
+// Function TgGame.TgDevice_AzaanUlt.UpdateTargetingModeStatus
+struct ATgDevice_AzaanUlt_UpdateTargetingModeStatus_Params
+{
+	struct FAimData                                    Aim;                                                      // (Const, Parm, OutParm)
+};
+
+// Function TgGame.TgDevice_AzaanUlt.TickTargetingMode
+struct ATgDevice_AzaanUlt_TickTargetingMode_Params
+{
+	float                                              DeltaSeconds;                                             // (Parm)
+};
+
+// Function TgGame.TgDevice_AzaanUlt.UsesTargetingMode
+struct ATgDevice_AzaanUlt_UsesTargetingMode_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_AzaanUlt.IsToggleDevice
+struct ATgDevice_AzaanUlt_IsToggleDevice_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_AzaanUltSlam.ServerStartFire
+struct ATgDevice_AzaanUltSlam_ServerStartFire_Params
+{
+	float                                              MovementTimeStamp;                                        // (OptionalParm, Parm)
+	struct FVector                                     MovementInAccel;                                          // (OptionalParm, Parm)
+	struct FVector                                     MovementClientLoc;                                        // (OptionalParm, Parm)
+	unsigned char                                      MovementNewFlags;                                         // (OptionalParm, Parm)
+	unsigned char                                      MovementClientRoll;                                       // (OptionalParm, Parm)
+	int                                                MovementView;                                             // (OptionalParm, Parm)
+	int                                                ClientFireRequestId;                                      // (OptionalParm, Parm)
+	unsigned char                                      ClientFireMode;                                           // (OptionalParm, Parm)
+	class AActor*                                      HitActor;                                                 // (OptionalParm, Parm)
+	float                                              StartTraceX;                                              // (OptionalParm, Parm)
+	float                                              StartTraceY;                                              // (OptionalParm, Parm)
+	float                                              StartTraceZ;                                              // (OptionalParm, Parm)
+	float                                              EndTraceX;                                                // (OptionalParm, Parm)
+	float                                              EndTraceY;                                                // (OptionalParm, Parm)
+	float                                              EndTraceZ;                                                // (OptionalParm, Parm)
+	int                                                nCompressedAimVector;                                     // (OptionalParm, Parm)
+	bool                                               bFirstBurstShot;                                          // (OptionalParm, Parm)
+	float                                              fAttackSpeedPercChange;                                   // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDevice_AzaanUltSlam.CallServerStartFire
+struct ATgDevice_AzaanUltSlam_CallServerStartFire_Params
+{
+	struct FAimData                                    Aim;                                                      // (Parm)
+	bool                                               bPendingUpdate;                                           // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDevice_AzaanUltSlam.LinkedDeviceEquipped
+struct ATgDevice_AzaanUltSlam_LinkedDeviceEquipped_Params
+{
+	class ATgDevice*                                   Dev;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_AzaanUltSlam.PerProjectileFired
+struct ATgDevice_AzaanUltSlam_PerProjectileFired_Params
+{
+	class ATgProjectile*                               Proj;                                                     // (Parm)
+};
+
+// Function TgGame.TgDevice_AzaanUltSlam.StartLerpTimer
+struct ATgDevice_AzaanUltSlam_StartLerpTimer_Params
+{
+};
+
+// Function TgGame.TgDevice_AzaanUltSlam.ClientStartLerpTimer
+struct ATgDevice_AzaanUltSlam_ClientStartLerpTimer_Params
+{
+};
+
+// Function TgGame.TgDevice_AzaanUltSlam.Lerp3PTimer
+struct ATgDevice_AzaanUltSlam_Lerp3PTimer_Params
+{
+};
+
+// Function TgGame.TgDevice_AzaanUltSlam.StartLerpSequence
+struct ATgDevice_AzaanUltSlam_StartLerpSequence_Params
+{
+};
+
+// Function TgGame.TgDevice_AzaanUltSlam.ClientEndUlt
+struct ATgDevice_AzaanUltSlam_ClientEndUlt_Params
+{
+};
+
+// Function TgGame.TgDevice_AzaanUltSlam.EndUlt
+struct ATgDevice_AzaanUltSlam_EndUlt_Params
+{
+};
+
+// Function TgGame.TgDevice_AzaanUltSlam.DoLerp
+struct ATgDevice_AzaanUltSlam_DoLerp_Params
+{
+	struct FTeleportParams                             Params;                                                   // (Parm)
+	float                                              fLerpTime;                                                // (Parm)
+};
+
+// Function TgGame.TgDevice_AzaanUltSlam.ZeroPitchTimer
+struct ATgDevice_AzaanUltSlam_ZeroPitchTimer_Params
+{
+};
+
+// Function TgGame.TgDevice_AzaanUltSlam.Land
+struct ATgDevice_AzaanUltSlam_Land_Params
+{
+};
+
+// Function TgGame.TgDevice_AzaanUltSlam.DoShockwave
+struct ATgDevice_AzaanUltSlam_DoShockwave_Params
+{
+};
+
+// Function TgGame.TgDevice_AzaanUltSlam.ClientStartLerpSequence
+struct ATgDevice_AzaanUltSlam_ClientStartLerpSequence_Params
+{
+};
+
+// Function TgGame.TgDevice_AzaanUltSlam.DoFirstShockwave
+struct ATgDevice_AzaanUltSlam_DoFirstShockwave_Params
+{
+};
+
+// Function TgGame.TgDevice_AzaanUltSlam.ShouldConsumePowerPoolAfterFire
+struct ATgDevice_AzaanUltSlam_ShouldConsumePowerPoolAfterFire_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_AzaanUltSlam.ShouldConsumePowerPoolOnStartFire
+struct ATgDevice_AzaanUltSlam_ShouldConsumePowerPoolOnStartFire_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_AzaanUltSlam.InterceptLeftMouseReleased
+struct ATgDevice_AzaanUltSlam_InterceptLeftMouseReleased_Params
+{
+	class ATgPlayerController*                         TgController;                                             // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_AzaanUltSlam.InterceptLeftMousePressed
+struct ATgDevice_AzaanUltSlam_InterceptLeftMousePressed_Params
+{
+	class ATgPlayerController*                         TgController;                                             // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_AzaanUltSlam.HasCachedAzaan
+struct ATgDevice_AzaanUltSlam_HasCachedAzaan_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_AzaanUltSlam.GetTargetingAim
+struct ATgDevice_AzaanUltSlam_GetTargetingAim_Params
+{
+	struct FAimData                                    Aim;                                                      // (Parm, OutParm)
+};
+
+// Function TgGame.TgDevice_AzaanUltSlam.GetTargetingMode
+struct ATgDevice_AzaanUltSlam_GetTargetingMode_Params
+{
+	TEnumAsByte<EDeviceTargetMode>                     ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_AzaanUltSlam.GetGroundTargetAim
+struct ATgDevice_AzaanUltSlam_GetGroundTargetAim_Params
+{
+	struct FAimData                                    Aim;                                                      // (Parm, OutParm)
+};
+
+// Function TgGame.TgDevice_AzaanUltSlam.CanDeviceFireNow
+struct ATgDevice_AzaanUltSlam_CanDeviceFireNow_Params
+{
+	unsigned char                                      FireModeNum;                                              // (Parm)
+	struct FAimData                                    Aim;                                                      // (Parm)
+	bool                                               bDeviceFailLog;                                           // (Parm)
+	TEnumAsByte<EDeviceFailType>                       failType;                                                 // (Parm, OutParm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_AzaanWalls.InterceptSlotPressed
+struct ATgDevice_AzaanWalls_InterceptSlotPressed_Params
+{
+	class ATgPlayerController*                         TgController;                                             // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_AzaanWalls.UpdateWallCount
+struct ATgDevice_AzaanWalls_UpdateWallCount_Params
+{
+};
+
+// Function TgGame.TgDevice_AzaanWalls.ServerDestroyWalls
+struct ATgDevice_AzaanWalls_ServerDestroyWalls_Params
+{
+};
+
+// Function TgGame.TgDevice_AzaanWalls.CanBeCanceled
+struct ATgDevice_AzaanWalls_CanBeCanceled_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_AzaanWalls.SafetyEffectRemoval
+struct ATgDevice_AzaanWalls_SafetyEffectRemoval_Params
+{
+};
+
+// Function TgGame.TgDevice_AzaanWalls.HasCachedAzaan
+struct ATgDevice_AzaanWalls_HasCachedAzaan_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_AzaanWalls.ServerStartFire
+struct ATgDevice_AzaanWalls_ServerStartFire_Params
+{
+	float                                              MovementTimeStamp;                                        // (OptionalParm, Parm)
+	struct FVector                                     MovementInAccel;                                          // (OptionalParm, Parm)
+	struct FVector                                     MovementClientLoc;                                        // (OptionalParm, Parm)
+	unsigned char                                      MovementNewFlags;                                         // (OptionalParm, Parm)
+	unsigned char                                      MovementClientRoll;                                       // (OptionalParm, Parm)
+	int                                                MovementView;                                             // (OptionalParm, Parm)
+	int                                                ClientFireRequestId;                                      // (OptionalParm, Parm)
+	unsigned char                                      ClientFireMode;                                           // (OptionalParm, Parm)
+	class AActor*                                      HitActor;                                                 // (OptionalParm, Parm)
+	float                                              StartTraceX;                                              // (OptionalParm, Parm)
+	float                                              StartTraceY;                                              // (OptionalParm, Parm)
+	float                                              StartTraceZ;                                              // (OptionalParm, Parm)
+	float                                              EndTraceX;                                                // (OptionalParm, Parm)
+	float                                              EndTraceY;                                                // (OptionalParm, Parm)
+	float                                              EndTraceZ;                                                // (OptionalParm, Parm)
+	int                                                nCompressedAimVector;                                     // (OptionalParm, Parm)
+	bool                                               bFirstBurstShot;                                          // (OptionalParm, Parm)
+	float                                              fAttackSpeedPercChange;                                   // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDevice_AzaanWalls.CallServerStartFire
+struct ATgDevice_AzaanWalls_CallServerStartFire_Params
+{
+	struct FAimData                                    Aim;                                                      // (Parm)
+	bool                                               bPendingUpdate;                                           // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDevice_AzaanWalls.OnDeployableDestroyed
+struct ATgDevice_AzaanWalls_OnDeployableDestroyed_Params
+{
+	class ATgDeployable*                               deployable;                                               // (Parm)
+};
+
+// Function TgGame.TgDevice_AzaanWalls.OnDeployableSpawned
+struct ATgDevice_AzaanWalls_OnDeployableSpawned_Params
+{
+	class ATgDeployable*                               deployable;                                               // (Parm)
+};
+
+// Function TgGame.TgDevice_AzaanWalls.GuardMultiProc
+struct ATgDevice_AzaanWalls_GuardMultiProc_Params
+{
+};
+
+// Function TgGame.TgDevice_AzaanWalls.CustomFire
+struct ATgDevice_AzaanWalls_CustomFire_Params
+{
+};
+
+// Function TgGame.TgDevice_AzaanWalls.Use
+struct ATgDevice_AzaanWalls_Use_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_AzaanWalls.IsDeviceFiringForUI
+struct ATgDevice_AzaanWalls_IsDeviceFiringForUI_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_AzaanWalls.UsesTargetingMode
+struct ATgDevice_AzaanWalls_UsesTargetingMode_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_AzaanWalls.ShouldBankCooldown
+struct ATgDevice_AzaanWalls_ShouldBankCooldown_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_AzaanWalls.NativeSpawnFlankingWalls
+struct ATgDevice_AzaanWalls_NativeSpawnFlankingWalls_Params
+{
+};
+
+// Function TgGame.TgDevice_AzaanWalls.CanDeviceFireNow
+struct ATgDevice_AzaanWalls_CanDeviceFireNow_Params
+{
+	unsigned char                                      FireModeNum;                                              // (Parm)
+	struct FAimData                                    Aim;                                                      // (Parm)
+	bool                                               bDeviceFailLog;                                           // (Parm)
+	TEnumAsByte<EDeviceFailType>                       failType;                                                 // (Parm, OutParm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_AzaanInhand.GetChainMax
+struct ATgDevice_AzaanInhand_GetChainMax_Params
+{
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_AzaanInhand.GetProjectileExtraInfo
+struct ATgDevice_AzaanInhand_GetProjectileExtraInfo_Params
+{
+	unsigned char                                      FromClient;                                               // (OptionalParm, Parm)
+	bool                                               bValidating;                                              // (OptionalParm, Parm)
+	unsigned char                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_AzaanInhand.HasCachedAzaan
+struct ATgDevice_AzaanInhand_HasCachedAzaan_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_AzaanDash.OnUnlinkDevice
+struct ATgDevice_AzaanDash_OnUnlinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_AzaanDash.OnLinkDevice
+struct ATgDevice_AzaanDash_OnLinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_AzaanDash.RemoveGrabWallHitDetection
+struct ATgDevice_AzaanDash_RemoveGrabWallHitDetection_Params
+{
+	class ATgPawn*                                     Target;                                                   // (Parm)
+};
+
+// Function TgGame.TgDevice_AzaanDash.ApplyGrabWallHitDetection
+struct ATgDevice_AzaanDash_ApplyGrabWallHitDetection_Params
+{
+	class ATgPawn*                                     Target;                                                   // (Parm)
+};
+
+// Function TgGame.TgDevice_AzaanDash.BounceOff
+struct ATgDevice_AzaanDash_BounceOff_Params
+{
+	class AActor*                                      Target;                                                   // (Parm)
+};
+
+// Function TgGame.TgDevice_AzaanDash.HandleCustomWallGrabbedHit
+struct ATgDevice_AzaanDash_HandleCustomWallGrabbedHit_Params
+{
+	class AActor*                                      Target;                                                   // (Parm)
+	struct FImpactInfo                                 Impact;                                                   // (Parm)
+	class AActor*                                      HitActor;                                                 // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_AzaanDash.CanFiringBeCanceledByReactivation
+struct ATgDevice_AzaanDash_CanFiringBeCanceledByReactivation_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_AzaanDash.CanFiringBeCanceledByRightMouse
+struct ATgDevice_AzaanDash_CanFiringBeCanceledByRightMouse_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_AzaanDash.CanFiringBeCanceledByLeftMouse
+struct ATgDevice_AzaanDash_CanFiringBeCanceledByLeftMouse_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_AzaanDash.HasCachedAzaan
+struct ATgDevice_AzaanDash_HasCachedAzaan_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_AzaanDash.GetFiringPostHitDelay
+struct ATgDevice_AzaanDash_GetFiringPostHitDelay_Params
+{
+	int                                                nMode;                                                    // (OptionalParm, Parm)
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_AzaanDash.GetMoveSpeedMultiplier
+struct ATgDevice_AzaanDash_GetMoveSpeedMultiplier_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_AzaanDash.PredictChargeInterrupt
+struct ATgDevice_AzaanDash_PredictChargeInterrupt_Params
+{
+	struct FVector                                     StartLocation;                                            // (Parm)
+	struct FVector                                     endLocation;                                              // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_HammerSlam.FireAmmunition
+struct ATgDevice_HammerSlam_FireAmmunition_Params
+{
+};
+
+// Function TgGame.TgDevice_HammerSlam.HasCachedAzaan
+struct ATgDevice_HammerSlam_HasCachedAzaan_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_HammerSlam.GetTargetingMinRange
+struct ATgDevice_HammerSlam_GetTargetingMinRange_Params
+{
+	class UTgDeviceFire*                               FireMode;                                                 // (OptionalParm, Parm)
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_HammerSlam.ShouldAltFireOnTick
+struct ATgDevice_HammerSlam_ShouldAltFireOnTick_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_HammerSlam.DoRectangleSlam
+struct ATgDevice_HammerSlam_DoRectangleSlam_Params
+{
+};
+
+// Function TgGame.TgDeviceFire_HammerSlamStart.GetCooldownTime
+struct UTgDeviceFire_HammerSlamStart_GetCooldownTime_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDeviceForm_AzaanDash.SetPostureOnTarget
+struct UTgDeviceForm_AzaanDash_SetPostureOnTarget_Params
+{
+	TEnumAsByte<ETG_POSTURE>                           newPosture;                                               // (Parm)
+};
+
+// Function TgGame.TgDeviceForm_AzaanDash.StopFire
+struct UTgDeviceForm_AzaanDash_StopFire_Params
+{
+	int                                                nFireModeNum;                                             // (Parm)
+};
+
+// Function TgGame.TgDeviceForm_AzaanDash.DoInterrupt
+struct UTgDeviceForm_AzaanDash_DoInterrupt_Params
+{
+};
+
+// Function TgGame.TgDeviceForm_AzaanDash.Hit
+struct UTgDeviceForm_AzaanDash_Hit_Params
+{
+	int                                                nFireMode;                                                // (Parm)
+	class AActor*                                      Target;                                                   // (Parm)
+	float                                              fDamageAmount;                                            // (Parm)
+	struct FVector                                     HitLocation;                                              // (Parm)
+	struct FVector                                     HitNormal;                                                // (Parm)
+	struct FExtraDamageInfo                            ExtraInfo;                                                // (Const, Parm, OutParm)
+};
+
+// Function TgGame.TgDeviceForm_AzaanDash.Generic2
+struct UTgDeviceForm_AzaanDash_Generic2_Params
+{
+	unsigned char                                      byExtraData;                                              // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDeviceForm_AzaanDash.Generic1
+struct UTgDeviceForm_AzaanDash_Generic1_Params
+{
+	unsigned char                                      byExtraData;                                              // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDeviceForm_AzaanDash.CacheAnimNode
+struct UTgDeviceForm_AzaanDash_CacheAnimNode_Params
+{
+	class UAnimNode*                                   Node;                                                     // (Parm)
+	bool                                               bIs3p;                                                    // (Parm)
+};
+
+// Function TgGame.TgDeviceForm_AzaanUlt.Generic2
+struct UTgDeviceForm_AzaanUlt_Generic2_Params
+{
+	unsigned char                                      byExtraData;                                              // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDeviceForm_AzaanUlt.Generic1
+struct UTgDeviceForm_AzaanUlt_Generic1_Params
+{
+	unsigned char                                      byExtraData;                                              // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDeviceForm_AzaanUlt.CacheAnimNode
+struct UTgDeviceForm_AzaanUlt_CacheAnimNode_Params
+{
+	class UAnimNode*                                   Node;                                                     // (Parm)
+	bool                                               bIs3p;                                                    // (Parm)
+};
+
+// Function TgGame.TgDeviceForm_AzaanUlt.ClearAnimNodes
+struct UTgDeviceForm_AzaanUlt_ClearAnimNodes_Params
+{
+	bool                                               bIs3p;                                                    // (Parm)
+};
+
+// Function TgGame.TgDeviceForm_AzaanUltSlam.Generic2
+struct UTgDeviceForm_AzaanUltSlam_Generic2_Params
+{
+	unsigned char                                      byExtraData;                                              // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDeviceForm_AzaanUltSlam.Generic1
+struct UTgDeviceForm_AzaanUltSlam_Generic1_Params
+{
+	unsigned char                                      byExtraData;                                              // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDeviceForm_AzaanUltSlam.CacheAnimNode
+struct UTgDeviceForm_AzaanUltSlam_CacheAnimNode_Params
+{
+	class UAnimNode*                                   Node;                                                     // (Parm)
+	bool                                               bIs3p;                                                    // (Parm)
+};
+
+// Function TgGame.TgDeviceForm_HammerSlam.SpawnRectangleFX
+struct UTgDeviceForm_HammerSlam_SpawnRectangleFX_Params
+{
+	struct FVector                                     vLocation;                                                // (Parm)
+};
+
+// Function TgGame.TgDeviceForm_HammerSlam.UsesTargetingMode
+struct UTgDeviceForm_HammerSlam_UsesTargetingMode_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgInventoryObject_Listen_AzaanAbilityStartAboveThreshold.HasCachedAzaan
+struct UTgInventoryObject_Listen_AzaanAbilityStartAboveThreshold_HasCachedAzaan_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgInvListener_AzaanIreConsumed.HasCachedAzaan
+struct UTgInvListener_AzaanIreConsumed_HasCachedAzaan_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Azaan.OnGrabTargetDetach
+struct ATgPawn_Azaan_OnGrabTargetDetach_Params
+{
+	TEnumAsByte<EGrabState>                            endingGrabState;                                          // (Parm)
+	class ATgPawn*                                     Target;                                                   // (Parm)
+	bool                                               bInterrupted;                                             // (Parm)
+};
+
+// Function TgGame.TgPawn_Azaan.OnGrabTargetAttach
+struct ATgPawn_Azaan_OnGrabTargetAttach_Params
+{
+	TEnumAsByte<EGrabState>                            newGrabState;                                             // (Parm)
+	class ATgPawn*                                     Target;                                                   // (Parm)
+};
+
+// Function TgGame.TgPawn_Azaan.DashFearSafetyTimer
+struct ATgPawn_Azaan_DashFearSafetyTimer_Params
+{
+};
+
+// Function TgGame.TgPawn_Azaan.ShouldUseGradualMovement
+struct ATgPawn_Azaan_ShouldUseGradualMovement_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Azaan.IsAboveThreshold
+struct ATgPawn_Azaan_IsAboveThreshold_Params
+{
+	float                                              fForgiveness;                                             // (OptionalParm, Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Azaan.PawnOnDamageMitigation
+struct ATgPawn_Azaan_PawnOnDamageMitigation_Params
+{
+	class ATgPawn*                                     attacker;                                                 // (Parm)
+	class UTgEffectGroup*                              eg;                                                       // (Parm)
+	float                                              fDamage;                                                  // (Parm, OutParm)
+	int                                                nPropertyId;                                              // (Parm)
+};
+
+// Function TgGame.TgPawn_Azaan.DeviceAdjustDamage
+struct ATgPawn_Azaan_DeviceAdjustDamage_Params
+{
+	struct FAdjustDamageParams                         Params;                                                   // (Parm, OutParm)
+	float                                              fDamage;                                                  // (Parm, OutParm)
+};
+
+// Function TgGame.TgPawn_Azaan.AddIre
+struct ATgPawn_Azaan_AddIre_Params
+{
+	float                                              fAmt;                                                     // (Parm)
+};
+
+// Function TgGame.TgPawn_Azaan.SpendIre
+struct ATgPawn_Azaan_SpendIre_Params
+{
+	float                                              fAmt;                                                     // (Parm)
+	bool                                               bFromDecay;                                               // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgPawn_Azaan.DeviceOnDamaged
+struct ATgPawn_Azaan_DeviceOnDamaged_Params
+{
+	struct FOnDamagedParams                            Params;                                                   // (Parm, OutParm)
+};
+
+// Function TgGame.TgPawn_Azaan.PawnOnDamaged
+struct ATgPawn_Azaan_PawnOnDamaged_Params
+{
+	struct FOnDamagedParams                            Params;                                                   // (Parm, OutParm)
+};
+
+// Function TgGame.TgPawn_Azaan.OnPawnDied
+struct ATgPawn_Azaan_OnPawnDied_Params
+{
+};
+
+// Function TgGame.TgProj_AzaanHammer.ApplyTheHit
+struct ATgProj_AzaanHammer_ApplyTheHit_Params
+{
+	class UTgDeviceFire*                               FireMode;                                                 // (Parm)
+	struct FImpactInfo                                 Impact;                                                   // (Parm)
+	class AActor*                                      DamageInstigator;                                         // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgProj_AzaanHammer.ExplodeOnTarget
+struct ATgProj_AzaanHammer_ExplodeOnTarget_Params
+{
+	class AActor*                                      Target;                                                   // (Parm)
+	struct FVector                                     HitLocation;                                              // (Parm)
+	struct FVector                                     HitNormal;                                                // (Parm)
+};
+
+// Function TgGame.TgProj_AzaanHammer.UseAOE
+struct ATgProj_AzaanHammer_UseAOE_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgProj_AzaanHammer.GetExplodeInAirFxGroup
+struct ATgProj_AzaanHammer_GetExplodeInAirFxGroup_Params
+{
+	struct FName                                       ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgProj_AzaanHammer.GetHitWallFxGroup
+struct ATgProj_AzaanHammer_GetHitWallFxGroup_Params
+{
+	struct FName                                       ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgProj_AzaanHammer.GetHitTargetFxGroup
+struct ATgProj_AzaanHammer_GetHitTargetFxGroup_Params
+{
+	struct FName                                       ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgProj_AzaanHammer.HideProjectile
+struct ATgProj_AzaanHammer_HideProjectile_Params
+{
+};
+
+// Function TgGame.TgProj_AzaanHammer.ApplySpawnParams
+struct ATgProj_AzaanHammer_ApplySpawnParams_Params
+{
+	float                                              fDamageRadius;                                            // (Parm)
+	float                                              fGeneric2;                                                // (Parm)
+};
+
+// Function TgGame.TgProj_AzaanHammer.CompleteInitialization
+struct ATgProj_AzaanHammer_CompleteInitialization_Params
+{
+	unsigned char                                      ExtraInfo;                                                // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgProj_AzaanUlt.RangeReached
+struct ATgProj_AzaanUlt_RangeReached_Params
+{
+};
+
+// Function TgGame.TgProj_HammerSlam.ClientExplode
+struct ATgProj_HammerSlam_ClientExplode_Params
+{
+	class AActor*                                      Target;                                                   // (Parm)
+	struct FVector                                     HitLocation;                                              // (Parm)
+	struct FVector                                     HitNormal;                                                // (Parm)
+};
+
+// Function TgGame.TgProj_HammerSlam.RangeReached
+struct ATgProj_HammerSlam_RangeReached_Params
+{
+};
+
+// Function TgGame.TgProj_HammerSlam.HitPassThroughTarget
+struct ATgProj_HammerSlam_HitPassThroughTarget_Params
+{
+	class AActor*                                      Target;                                                   // (Parm)
+	struct FVector                                     HitLocation;                                              // (Parm)
+	struct FVector                                     HitNormal;                                                // (Parm)
+};
+
+// Function TgGame.TgAnimNodeBlendBySevenFireMode.SetAnimState
+struct UTgAnimNodeBlendBySevenFireMode_SetAnimState_Params
+{
+	unsigned char                                      FireMode;                                                 // (Parm)
+};
+
+// Function TgGame.TgAnimNodeBlendBySevenLatch.SetAnimState
+struct UTgAnimNodeBlendBySevenLatch_SetAnimState_Params
+{
+	unsigned char                                      animState;                                                // (Parm)
+};
+
+// Function TgGame.TgDevice_DropAndRoll.HasCachedSevenPawn
+struct ATgDevice_DropAndRoll_HasCachedSevenPawn_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_DropAndRoll.HasDoubleDropTalentEquipped
+struct ATgDevice_DropAndRoll_HasDoubleDropTalentEquipped_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_SevenMaskedFear.OnUnlinkDevice
+struct ATgDevice_SevenMaskedFear_OnUnlinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_SevenMaskedFear.OnLinkDevice
+struct ATgDevice_SevenMaskedFear_OnLinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_SevenMaskedFear.UseUltEnergy
+struct ATgDevice_SevenMaskedFear_UseUltEnergy_Params
+{
+};
+
+// Function TgGame.TgDevice_SevenMaskedFear.HasCachedSevenPawn
+struct ATgDevice_SevenMaskedFear_HasCachedSevenPawn_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_SevenMaskedFear.UpdateBeamVFXStandalone
+struct ATgDevice_SevenMaskedFear_UpdateBeamVFXStandalone_Params
+{
+	class AActor*                                      TargetActor;                                              // (Parm)
+};
+
+// Function TgGame.TgDevice_SevenMaskedFear.UpdateUltHUD
+struct ATgDevice_SevenMaskedFear_UpdateUltHUD_Params
+{
+	bool                                               bShow;                                                    // (Parm)
+};
+
+// Function TgGame.TgDevice_SevenMaskedFear.ApplyUltExplosion
+struct ATgDevice_SevenMaskedFear_ApplyUltExplosion_Params
+{
+	class AActor*                                      HitActor;                                                 // (Parm)
+};
+
+// Function TgGame.TgDevice_SevenMaskedFear.IgnoreDeliverHit
+struct ATgDevice_SevenMaskedFear_IgnoreDeliverHit_Params
+{
+};
+
+// Function TgGame.TgDevice_SevenMaskedFear.ClientUpdateMarkForFearTarget
+struct ATgDevice_SevenMaskedFear_ClientUpdateMarkForFearTarget_Params
+{
+	class AActor*                                      actorFearTarget;                                          // (Parm)
+	bool                                               bAdd;                                                     // (Parm)
+};
+
+// Function TgGame.TgDevice_SevenMaskedFear.ClientUpdateTrackedUITargets
+struct ATgDevice_SevenMaskedFear_ClientUpdateTrackedUITargets_Params
+{
+	class AActor*                                      actorUITarget;                                            // (Parm)
+	bool                                               bAdd;                                                     // (Parm)
+};
+
+// Function TgGame.TgDevice_SevenMaskedFear.IsValidUltTarget
+struct ATgDevice_SevenMaskedFear_IsValidUltTarget_Params
+{
+	class AActor*                                      pTarget;                                                  // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_SevenMaskedFear.Distance
+struct ATgDevice_SevenMaskedFear_Distance_Params
+{
+	struct FVector                                     v1;                                                       // (Parm)
+	struct FVector                                     v2;                                                       // (Parm)
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_SevenMaskedFear.DeliverHit
+struct ATgDevice_SevenMaskedFear_DeliverHit_Params
+{
+	struct FImpactInfo                                 Impact;                                                   // (Parm)
+};
+
+// Function TgGame.TgDevice_SevenMaskedFear.DeliverQueuedPendingHits
+struct ATgDevice_SevenMaskedFear_DeliverQueuedPendingHits_Params
+{
+};
+
+// Function TgGame.TgDevice_SevenMaskedFear.BreakBeamEffects
+struct ATgDevice_SevenMaskedFear_BreakBeamEffects_Params
+{
+};
+
+// Function TgGame.TgDevice_SevenMaskedFear.CanFiringBeCanceledByLeftMouse
+struct ATgDevice_SevenMaskedFear_CanFiringBeCanceledByLeftMouse_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_SevenMaskedFear.CanBeCanceled
+struct ATgDevice_SevenMaskedFear_CanBeCanceled_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_SevenLatch.GetCustomTimerBarMaxTime
+struct ATgDevice_SevenLatch_GetCustomTimerBarMaxTime_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_SevenLatch.GetCustomTimerBarCurrentTime
+struct ATgDevice_SevenLatch_GetCustomTimerBarCurrentTime_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_SevenLatch.ShouldCancelStealth
+struct ATgDevice_SevenLatch_ShouldCancelStealth_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_SevenLatch.OnUnlinkDevice
+struct ATgDevice_SevenLatch_OnUnlinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_SevenLatch.OnLinkDevice
+struct ATgDevice_SevenLatch_OnLinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_SevenLatch.StartFlyingAnimation
+struct ATgDevice_SevenLatch_StartFlyingAnimation_Params
+{
+};
+
+// Function TgGame.TgDevice_SevenLatch.FireAmmunition
+struct ATgDevice_SevenLatch_FireAmmunition_Params
+{
+};
+
+// Function TgGame.TgDevice_SevenLatch.DelayedDeactivateHover
+struct ATgDevice_SevenLatch_DelayedDeactivateHover_Params
+{
+};
+
+// Function TgGame.TgDevice_SevenLatch.ClientClearUnlatchTimer
+struct ATgDevice_SevenLatch_ClientClearUnlatchTimer_Params
+{
+};
+
+// Function TgGame.TgDevice_SevenLatch.ClearUnlatchTimers
+struct ATgDevice_SevenLatch_ClearUnlatchTimers_Params
+{
+};
+
+// Function TgGame.TgDevice_SevenLatch.RemoveSelfStealth
+struct ATgDevice_SevenLatch_RemoveSelfStealth_Params
+{
+};
+
+// Function TgGame.TgDevice_SevenLatch.UnlatchFromWall
+struct ATgDevice_SevenLatch_UnlatchFromWall_Params
+{
+	bool                                               bShouldNotPushOffWall;                                    // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDevice_SevenLatch.ClientStartUnlatchTimer
+struct ATgDevice_SevenLatch_ClientStartUnlatchTimer_Params
+{
+};
+
+// Function TgGame.TgDevice_SevenLatch.SetUpUnlatchTimers
+struct ATgDevice_SevenLatch_SetUpUnlatchTimers_Params
+{
+};
+
+// Function TgGame.TgDevice_SevenLatch.StartWallLatch
+struct ATgDevice_SevenLatch_StartWallLatch_Params
+{
+};
+
+// Function TgGame.TgDevice_SevenLatch.EndPull
+struct ATgDevice_SevenLatch_EndPull_Params
+{
+};
+
+// Function TgGame.TgDevice_SevenLatch.ResetGrappleAnim
+struct ATgDevice_SevenLatch_ResetGrappleAnim_Params
+{
+};
+
+// Function TgGame.TgDevice_SevenLatch.Yank
+struct ATgDevice_SevenLatch_Yank_Params
+{
+};
+
+// Function TgGame.TgDevice_SevenLatch.StartFire
+struct ATgDevice_SevenLatch_StartFire_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_SevenLatch.OnOwnerLiveRespawn
+struct ATgDevice_SevenLatch_OnOwnerLiveRespawn_Params
+{
+};
+
+// Function TgGame.TgDevice_SevenLatch.OnOwnerRespawn
+struct ATgDevice_SevenLatch_OnOwnerRespawn_Params
+{
+};
+
+// Function TgGame.TgDevice_SevenLatch.ActivateHover
+struct ATgDevice_SevenLatch_ActivateHover_Params
+{
+};
+
+// Function TgGame.TgDevice_SevenLatch.SpawnDoorBlocks
+struct ATgDevice_SevenLatch_SpawnDoorBlocks_Params
+{
+	class AActor*                                      pTarget;                                                  // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_SevenLatch.GetTargetingAim
+struct ATgDevice_SevenLatch_GetTargetingAim_Params
+{
+	struct FAimData                                    Aim;                                                      // (Parm, OutParm)
+};
+
+// Function TgGame.TgDevice_SevenLatch.ShouldInterruptStealth
+struct ATgDevice_SevenLatch_ShouldInterruptStealth_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_SevenInhand.OnUnlinkDevice
+struct ATgDevice_SevenInhand_OnUnlinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_SevenInhand.OnLinkDevice
+struct ATgDevice_SevenInhand_OnLinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_SevenInhand.PlayClientFireFx
+struct ATgDevice_SevenInhand_PlayClientFireFx_Params
+{
+	struct FVector                                     HitLocation;                                              // (Parm)
+	int                                                nSocketIndex;                                             // (Parm)
+	bool                                               bSuccessfulHit;                                           // (Parm)
+	float                                              fRefireTime;                                              // (Parm)
+	int                                                nShotsFired;                                              // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDevice_SevenInhand.HasElementalTalentEquipped
+struct ATgDevice_SevenInhand_HasElementalTalentEquipped_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_SevenInhand.ProcessElementalEffects
+struct ATgDevice_SevenInhand_ProcessElementalEffects_Params
+{
+	struct FImpactInfo                                 Impact;                                                   // (Parm)
+};
+
+// Function TgGame.TgDevice_SevenInhand.DeliverHit
+struct ATgDevice_SevenInhand_DeliverHit_Params
+{
+	struct FImpactInfo                                 Impact;                                                   // (Parm)
+};
+
+// Function TgGame.TgDevice_SevenInhand.GetMagDumpRecoilMultiplier
+struct ATgDevice_SevenInhand_GetMagDumpRecoilMultiplier_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_SevenInhand.GetRecoilMultiplier
+struct ATgDevice_SevenInhand_GetRecoilMultiplier_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_SevenInhand.OnOwnerRespawn
+struct ATgDevice_SevenInhand_OnOwnerRespawn_Params
+{
+};
+
+// Function TgGame.TgDevice_SevenInhand.OnOwnerLiveRespawn
+struct ATgDevice_SevenInhand_OnOwnerLiveRespawn_Params
+{
+};
+
+// Function TgGame.TgDevice_SevenInhand.ShouldUseGradualMovement
+struct ATgDevice_SevenInhand_ShouldUseGradualMovement_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_SevenInhand.GetMoveSpeedMultiplier
+struct ATgDevice_SevenInhand_GetMoveSpeedMultiplier_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_SevenInhand.SetFireMode
+struct ATgDevice_SevenInhand_SetFireMode_Params
+{
+	int                                                nFireModeNum;                                             // (Parm)
+	bool                                               ForceSet;                                                 // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDevice_SevenSwitchFiremode.ShouldInterruptInhand
+struct ATgDevice_SevenSwitchFiremode_ShouldInterruptInhand_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_SevenSwitchFiremode.CanDeviceFireNow
+struct ATgDevice_SevenSwitchFiremode_CanDeviceFireNow_Params
+{
+	unsigned char                                      FireModeNum;                                              // (Parm)
+	struct FAimData                                    Aim;                                                      // (Parm)
+	bool                                               bDeviceFailLog;                                           // (Parm)
+	TEnumAsByte<EDeviceFailType>                       failType;                                                 // (Parm, OutParm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDeviceForm_SevenLatch.Cache3PAnimNodes
+struct UTgDeviceForm_SevenLatch_Cache3PAnimNodes_Params
+{
+	class UTgSkeletalMeshComponent*                    SkelComp;                                                 // (Parm, EditInline)
+};
+
+// Function TgGame.TgDeviceForm_SevenLatch.Generic2
+struct UTgDeviceForm_SevenLatch_Generic2_Params
+{
+	unsigned char                                      byExtraData;                                              // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDeviceForm_SevenLatch.CacheAnimNode
+struct UTgDeviceForm_SevenLatch_CacheAnimNode_Params
+{
+	class UAnimNode*                                   Node;                                                     // (Parm)
+	bool                                               bIs3p;                                                    // (Parm)
+};
+
+// Function TgGame.TgDeviceForm_SevenLatch.ClearAnimNodes
+struct UTgDeviceForm_SevenLatch_ClearAnimNodes_Params
+{
+	bool                                               bIs3p;                                                    // (Parm)
+};
+
+// Function TgGame.TgDeviceForm_SevenLatch.SetSkelNormal
+struct UTgDeviceForm_SevenLatch_SetSkelNormal_Params
+{
+	struct FVector                                     vNormal;                                                  // (Parm)
+};
+
+// Function TgGame.TgDeviceForm_SevenInhand.Generic1
+struct UTgDeviceForm_SevenInhand_Generic1_Params
+{
+	unsigned char                                      byExtraData;                                              // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDeviceForm_SevenInhand.CacheAnimNode
+struct UTgDeviceForm_SevenInhand_CacheAnimNode_Params
+{
+	class UAnimNode*                                   Node;                                                     // (Parm)
+	bool                                               bIs3p;                                                    // (Parm)
+};
+
+// Function TgGame.TgDeviceForm_SevenInhand.ClearAnimNodes
+struct UTgDeviceForm_SevenInhand_ClearAnimNodes_Params
+{
+	bool                                               bIs3p;                                                    // (Parm)
+};
+
+// Function TgGame.TgDeviceForm_SevenInhand.Fire
+struct UTgDeviceForm_SevenInhand_Fire_Params
+{
+	struct FVector                                     HitLocation;                                              // (Parm)
+	int                                                nFireMode;                                                // (Parm)
+	int                                                nEquipSlot;                                               // (OptionalParm, Parm)
+	int                                                nSocketIndex;                                             // (OptionalParm, Parm)
+	bool                                               bSuccessfulHit;                                           // (OptionalParm, Parm)
+	float                                              fRefireTime;                                              // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDeviceForm_SevenInhand.HasCachedSeven
+struct UTgDeviceForm_SevenInhand_HasCachedSeven_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDeviceForm_SevenUlt.HasCached1PWeaponMesh
+struct UTgDeviceForm_SevenUlt_HasCached1PWeaponMesh_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDeviceForm_SevenUlt.HasCachedSevenPawn
+struct UTgDeviceForm_SevenUlt_HasCachedSevenPawn_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDeviceForm_SevenUlt.StopFire
+struct UTgDeviceForm_SevenUlt_StopFire_Params
+{
+	int                                                nFireModeNum;                                             // (Parm)
+};
+
+// Function TgGame.TgDeviceForm_SevenUlt.StartFire
+struct UTgDeviceForm_SevenUlt_StartFire_Params
+{
+	int                                                nFireMode;                                                // (Parm)
+	float                                              fRefireTime;                                              // (OptionalParm, Parm)
+	class AActor*                                      Target;                                                   // (OptionalParm, Parm)
+	int                                                nAmmoRemaining;                                           // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDeviceForm_SevenUlt.ConnectBeamToTarget
+struct UTgDeviceForm_SevenUlt_ConnectBeamToTarget_Params
+{
+	class AActor*                                      Target;                                                   // (Parm)
+};
+
+// Function TgGame.TgDeviceForm_SevenUlt.UpdateBeamFromStandalone
+struct UTgDeviceForm_SevenUlt_UpdateBeamFromStandalone_Params
+{
+	class AActor*                                      Target;                                                   // (Parm)
+};
+
+// Function TgGame.TgDeviceForm_SevenUlt.UpdateBeamByTarget
+struct UTgDeviceForm_SevenUlt_UpdateBeamByTarget_Params
+{
+};
+
+// Function TgGame.TgPawn_Seven.UpdateBeam
+struct ATgPawn_Seven_UpdateBeam_Params
+{
+};
+
+// Function TgGame.TgPawn_Seven.ReplicatedEvent
+struct ATgPawn_Seven_ReplicatedEvent_Params
+{
+	struct FName                                       VarName;                                                  // (Parm)
+};
+
+// Function TgGame.TgPawn_Seven.UpdateSevenSkelNormal
+struct ATgPawn_Seven_UpdateSevenSkelNormal_Params
+{
+	struct FVector                                     vNormal;                                                  // (Parm)
+};
+
+// Function TgGame.TgPawn_Seven.EndWallLatchForRoll
+struct ATgPawn_Seven_EndWallLatchForRoll_Params
+{
+};
+
+// Function TgGame.TgPawn_Seven.GetUISkillEqpSlotOverride
+struct ATgPawn_Seven_GetUISkillEqpSlotOverride_Params
+{
+	int                                                nEquipSlot;                                               // (Parm)
+	TEnumAsByte<EUI_SKILL_EQUIP_SLOT>                  eUISlot;                                                  // (OptionalParm, Parm)
+	bool                                               bBaseSkillOnly;                                           // (OptionalParm, Parm)
+	bool                                               bGamepadUI;                                               // (OptionalParm, Parm)
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Seven.OnMarkedTarget
+struct ATgPawn_Seven_OnMarkedTarget_Params
+{
+	int                                                nTargetPawnId;                                            // (Parm)
+	int                                                nMarkCountChange;                                         // (Parm)
+};
+
+// Function TgGame.TgDeploy_BombQueenBombBag.ProjectileFireDeployable
+struct ATgDeploy_BombQueenBombBag_ProjectileFireDeployable_Params
+{
+	class AProjectile*                                 ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDeploy_BombQueenBombBag.GetPhysicalFireAimDirection
+struct ATgDeploy_BombQueenBombBag_GetPhysicalFireAimDirection_Params
+{
+	struct FVector                                     FireLoc;                                                  // (Parm)
+	struct FVector                                     TargetLocation;                                           // (Parm)
+	struct FVector                                     ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDeploy_BombQueenBombBag.GetPhysicalFireStartLoc
+struct ATgDeploy_BombQueenBombBag_GetPhysicalFireStartLoc_Params
+{
+	struct FVector                                     ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDeploy_BombQueenBombBag.RandomizeDeployIndices
+struct ATgDeploy_BombQueenBombBag_RandomizeDeployIndices_Params
+{
+	class ATgPawn_BombQueen*                           PawnOwner;                                                // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDeploy_BombQueenBombBag.GetCustomValue2
+struct ATgDeploy_BombQueenBombBag_GetCustomValue2_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDeploy_BombQueenBombBag.GetCustomValue1
+struct ATgDeploy_BombQueenBombBag_GetCustomValue1_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDeploy_BombQueenBombBag.GetUpdatableFiremode
+struct ATgDeploy_BombQueenBombBag_GetUpdatableFiremode_Params
+{
+	class UTgDeviceFire*                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDeploy_BombQueenBombBag.SetSeedAndDelayBegin
+struct ATgDeploy_BombQueenBombBag_SetSeedAndDelayBegin_Params
+{
+	float                                              fSeed;                                                    // (Parm)
+	float                                              fTimeToStart;                                             // (Parm)
+	class ATgPawn_BombQueen*                           bombQueen;                                                // (Parm)
+};
+
+// Function TgGame.TgDeploy_BombQueenBombBag.InitializeDeployIndices
+struct ATgDeploy_BombQueenBombBag_InitializeDeployIndices_Params
+{
+};
+
+// Function TgGame.TgDeploy_BombQueenBombBag.TimeDeviceFiring
+struct ATgDeploy_BombQueenBombBag_TimeDeviceFiring_Params
+{
+};
+
+// Function TgGame.TgDeploy_BombQueenBombBag.FireAmmunitionDeployable
+struct ATgDeploy_BombQueenBombBag_FireAmmunitionDeployable_Params
+{
+};
+
+// Function TgGame.TgDeploy_BombQueenBombBag.RefireCheckTimer
+struct ATgDeploy_BombQueenBombBag_RefireCheckTimer_Params
+{
+};
+
+// Function TgGame.TgDeploy_BombQueenBombBag.DelayedBeginLogic
+struct ATgDeploy_BombQueenBombBag_DelayedBeginLogic_Params
+{
+};
+
+// Function TgGame.TgDeploy_BombQueenBombBag.ClientControllerStartBombBag
+struct ATgDeploy_BombQueenBombBag_ClientControllerStartBombBag_Params
+{
+	int                                                nPawnId;                                                  // (Parm)
+	struct FCLIENT_PAWN_FUNCTION_ARGS                  args;                                                     // (Parm)
+};
+
+// Function TgGame.TgDeploy_BombQueenBombBag.GetRandFraction
+struct ATgDeploy_BombQueenBombBag_GetRandFraction_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDeploy_BombQueenBombBag.SetSeed
+struct ATgDeploy_BombQueenBombBag_SetSeed_Params
+{
+	float                                              fSeed;                                                    // (Parm)
+};
+
+// Function TgGame.TgDevice_BombQueenAbility1.HasCachedBombQueen
+struct ATgDevice_BombQueenAbility1_HasCachedBombQueen_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_BombQueenAbility1.CanDeviceFireNow
+struct ATgDevice_BombQueenAbility1_CanDeviceFireNow_Params
+{
+	unsigned char                                      FireModeNum;                                              // (Parm)
+	struct FAimData                                    Aim;                                                      // (Parm)
+	bool                                               bDeviceFailLog;                                           // (Parm)
+	TEnumAsByte<EDeviceFailType>                       failType;                                                 // (Parm, OutParm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_BombQueenAltfire.HasCachedBombQueen
+struct ATgDevice_BombQueenAltfire_HasCachedBombQueen_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_BombQueenAltfire.DeviceAdjustDamage
+struct ATgDevice_BombQueenAltfire_DeviceAdjustDamage_Params
+{
+	struct FImpactInfo                                 Impact;                                                   // (Const, Parm, OutParm)
+	float                                              fDamage;                                                  // (Parm, OutParm)
+	int                                                nPropertyId;                                              // (Parm)
+};
+
+// Function TgGame.TgDevice_BombQueenInhand.PlayClientFireFx
+struct ATgDevice_BombQueenInhand_PlayClientFireFx_Params
+{
+	struct FVector                                     HitLocation;                                              // (Parm)
+	int                                                nSocketIndex;                                             // (Parm)
+	bool                                               bSuccessfulHit;                                           // (Parm)
+	float                                              fRefireTime;                                              // (Parm)
+	int                                                nShotsFired;                                              // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDevice_BombQueenInhand.HasCachedBombQueen
+struct ATgDevice_BombQueenInhand_HasCachedBombQueen_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_BombQueenInhand.CanSpawnOnClientFirst
+struct ATgDevice_BombQueenInhand_CanSpawnOnClientFirst_Params
+{
+	class UClass*                                      ProjectileClass;                                          // (Parm)
+	bool                                               bUsesTrackingTarget;                                      // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_BombQueenUlt.BounceOff
+struct ATgDevice_BombQueenUlt_BounceOff_Params
+{
+};
+
+// Function TgGame.TgDevice_BombQueenUlt.OnUnlinkDevice
+struct ATgDevice_BombQueenUlt_OnUnlinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_BombQueenUlt.OnLinkDevice
+struct ATgDevice_BombQueenUlt_OnLinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_BombQueenUlt.HasCachedBombQueen
+struct ATgDevice_BombQueenUlt_HasCachedBombQueen_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_BombQueenUlt.SpawnMissile
+struct ATgDevice_BombQueenUlt_SpawnMissile_Params
+{
+	class ATgProj_Simulated*                           ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_BombQueenUlt.OverrideProjectileAim
+struct ATgDevice_BombQueenUlt_OverrideProjectileAim_Params
+{
+	struct FAimData                                    Aim;                                                      // (Parm, OutParm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_BombQueenUlt.ProjectileFire
+struct ATgDevice_BombQueenUlt_ProjectileFire_Params
+{
+	int                                                ProjectileIndex;                                          // (OptionalParm, Parm)
+	class AProjectile*                                 ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_BombQueenUlt.FireAmmunition
+struct ATgDevice_BombQueenUlt_FireAmmunition_Params
+{
+};
+
+// Function TgGame.TgDevice_BombQueenUlt.UnlockInputSafely
+struct ATgDevice_BombQueenUlt_UnlockInputSafely_Params
+{
+};
+
+// Function TgGame.TgDevice_BombQueenUlt.LockInputSafely
+struct ATgDevice_BombQueenUlt_LockInputSafely_Params
+{
+};
+
+// Function TgGame.TgDevice_BombQueenUlt.DoReactivationCancelLogic
+struct ATgDevice_BombQueenUlt_DoReactivationCancelLogic_Params
+{
+	unsigned char                                      bSuccessfulCancel;                                        // (Parm, OutParm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_BombQueenUlt.CanBeCanceled
+struct ATgDevice_BombQueenUlt_CanBeCanceled_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_BombQueenUlt.ExplodeAt
+struct ATgDevice_BombQueenUlt_ExplodeAt_Params
+{
+	struct FVector                                     vLoc;                                                     // (Parm)
+};
+
+// Function TgGame.TgDevice_BombQueenUlt.ServerCueEarlyEnd
+struct ATgDevice_BombQueenUlt_ServerCueEarlyEnd_Params
+{
+	bool                                               bProjectileFire;                                          // (Parm)
+	float                                              fTotalPrefire;                                            // (Parm)
+};
+
+// Function TgGame.TgDevice_BombQueenUlt.ClientAckEarlyEnd
+struct ATgDevice_BombQueenUlt_ClientAckEarlyEnd_Params
+{
+	bool                                               bProjectileFire;                                          // (Parm)
+	float                                              fTotalPrefire;                                            // (Parm)
+};
+
+// Function TgGame.TgDevice_BombQueenUlt.InterceptLeftMousePressed
+struct ATgDevice_BombQueenUlt_InterceptLeftMousePressed_Params
+{
+	class ATgPlayerController*                         TgController;                                             // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_BombQueenUlt.CanFiringBeCanceledByLeftMouse
+struct ATgDevice_BombQueenUlt_CanFiringBeCanceledByLeftMouse_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_BombQueenUlt.ClientInitiateFireMissile
+struct ATgDevice_BombQueenUlt_ClientInitiateFireMissile_Params
+{
+};
+
+// Function TgGame.TgDevice_BombQueenUlt.CueFireMissile
+struct ATgDevice_BombQueenUlt_CueFireMissile_Params
+{
+	float                                              fDelay;                                                   // (Parm)
+	bool                                               bForce;                                                   // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDevice_BombQueenUlt.PerformFireMissile
+struct ATgDevice_BombQueenUlt_PerformFireMissile_Params
+{
+};
+
+// Function TgGame.TgDevice_BombQueenUlt.AnticipateFireMissile
+struct ATgDevice_BombQueenUlt_AnticipateFireMissile_Params
+{
+};
+
+// Function TgGame.TgDevice_BombQueenUlt.OnHitValidWall
+struct ATgDevice_BombQueenUlt_OnHitValidWall_Params
+{
+	class AActor*                                      HitActor;                                                 // (Parm)
+};
+
+// Function TgGame.TgDevice_BombQueenUlt.GetChargeSpeed
+struct ATgDevice_BombQueenUlt_GetChargeSpeed_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_BombQueenUlt.ShouldExplode
+struct ATgDevice_BombQueenUlt_ShouldExplode_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_BombQueenUlt.ResetHasExploded
+struct ATgDevice_BombQueenUlt_ResetHasExploded_Params
+{
+};
+
+// Function TgGame.TgDevice_BombQueenUlt.ShouldInstigatorCollideWith
+struct ATgDevice_BombQueenUlt_ShouldInstigatorCollideWith_Params
+{
+	class AActor*                                      Other;                                                    // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_ExplosiveJumps.ShouldInterruptReloadOnFire
+struct ATgDevice_ExplosiveJumps_ShouldInterruptReloadOnFire_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_ExplosiveJumps.GetTotalNumberOfShots
+struct ATgDevice_ExplosiveJumps_GetTotalNumberOfShots_Params
+{
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_ExplosiveJumps.StartCooldown
+struct ATgDevice_ExplosiveJumps_StartCooldown_Params
+{
+	int                                                nMode;                                                    // (OptionalParm, Parm)
+	float                                              fCooldownTimeOverride;                                    // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDevice_ExplosiveJumps.ShouldCooldownAfterFire
+struct ATgDevice_ExplosiveJumps_ShouldCooldownAfterFire_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_ExplosiveJumps.RefireTimer
+struct ATgDevice_ExplosiveJumps_RefireTimer_Params
+{
+};
+
+// Function TgGame.TgDevice_ExplosiveJumps.ApplyRandomRotation
+struct ATgDevice_ExplosiveJumps_ApplyRandomRotation_Params
+{
+	struct FVector                                     vJumpVelocity;                                            // (Parm)
+	struct FVector                                     ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_ExplosiveJumps.CanDeviceFireNow
+struct ATgDevice_ExplosiveJumps_CanDeviceFireNow_Params
+{
+	unsigned char                                      FireModeNum;                                              // (Parm)
+	struct FAimData                                    Aim;                                                      // (Parm)
+	bool                                               bDeviceFailLog;                                           // (Parm)
+	TEnumAsByte<EDeviceFailType>                       failType;                                                 // (Parm, OutParm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_BombQueen.GameSpawnBombProp
+struct ATgPawn_BombQueen_GameSpawnBombProp_Params
+{
+	struct FVector                                     vLocation;                                                // (Parm)
+	struct FVector                                     vRotation;                                                // (Parm)
+	class UTgDeviceFire*                               FireMode;                                                 // (Parm)
+	float                                              fInitVelocityMult;                                        // (Parm)
+	float                                              fExplodeTime;                                             // (Parm)
+	float                                              fFXSafetyTime;                                            // (Parm)
+};
+
+// Function TgGame.TgPawn_BombQueen.GetBombProp
+struct ATgPawn_BombQueen_GetBombProp_Params
+{
+	class ATgBombBagBombProp*                          ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_BombQueen.PostPawnSetup
+struct ATgPawn_BombQueen_PostPawnSetup_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_BombQueen.PostBeginPlay
+struct ATgPawn_BombQueen_PostBeginPlay_Params
+{
+};
+
+// Function TgGame.TgPawn_BombQueen.InitBombProps
+struct ATgPawn_BombQueen_InitBombProps_Params
+{
+};
+
+// Function TgGame.TgPawn_BombQueen.ClientBombBagDelayBegin
+struct ATgPawn_BombQueen_ClientBombBagDelayBegin_Params
+{
+	float                                              fSeed;                                                    // (Parm)
+	float                                              fTimeAfterCreation;                                       // (Parm)
+	class ATgDeployable*                               pDeploy;                                                  // (Parm)
+};
+
+// Function TgGame.TgPawn_BombQueen.StartClientBombBagDelayBegin
+struct ATgPawn_BombQueen_StartClientBombBagDelayBegin_Params
+{
+	float                                              fSeed;                                                    // (Parm)
+	float                                              fTimeAfterCreation;                                       // (Parm)
+	class ATgDeployable*                               pDeploy;                                                  // (Parm)
+};
+
+// Function TgGame.TgPawn_BombQueen.GetBombPropAsmId
+struct ATgPawn_BombQueen_GetBombPropAsmId_Params
+{
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_BombQueen.GetDiminishedGroundSpeed
+struct ATgPawn_BombQueen_GetDiminishedGroundSpeed_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_BombQueen.GetChargeDirection
+struct ATgPawn_BombQueen_GetChargeDirection_Params
+{
+	struct FVector                                     ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_BombQueen.DeviceOnDamaged
+struct ATgPawn_BombQueen_DeviceOnDamaged_Params
+{
+	struct FOnDamagedParams                            Params;                                                   // (Parm, OutParm)
+};
+
+// Function TgGame.TgProj_BombBagBomb.ApplyBounceDamping
+struct ATgProj_BombBagBomb_ApplyBounceDamping_Params
+{
+	struct FVector                                     vBounceVelocity;                                          // (Parm, OutParm)
+	float                                              fBounceDamping;                                           // (Parm)
+};
+
+// Function TgGame.TgProj_BombBagBomb.ApplyBounce
+struct ATgProj_BombBagBomb_ApplyBounce_Params
+{
+	struct FVector                                     HitNormal;                                                // (Parm)
+	class AActor*                                      Wall;                                                     // (Parm)
+	class UPrimitiveComponent*                         WallComp;                                                 // (Parm, EditInline)
+};
+
+// Function TgGame.TgProj_BombBagBomb.OnLand
+struct ATgProj_BombBagBomb_OnLand_Params
+{
+};
+
+// Function TgGame.TgProj_BombBagBomb.LoadFiremodeProp
+struct ATgProj_BombBagBomb_LoadFiremodeProp_Params
+{
+	int                                                nPropId;                                                  // (Parm)
+	float                                              fValue;                                                   // (Parm)
+};
+
+// Function TgGame.TgProj_BombBagSpawn.ExplodeOnTarget
+struct ATgProj_BombBagSpawn_ExplodeOnTarget_Params
+{
+	class AActor*                                      Target;                                                   // (Parm)
+	struct FVector                                     HitLocation;                                              // (Parm)
+	struct FVector                                     HitNormal;                                                // (Parm)
+};
+
+// Function TgGame.TgProj_BombBagSpawn.SpawnDeployable
+struct ATgProj_BombBagSpawn_SpawnDeployable_Params
+{
+	struct FVector                                     vLocation;                                                // (Parm)
+	class AActor*                                      TargetActor;                                              // (OptionalParm, Parm)
+	struct FVector                                     vNormal;                                                  // (OptionalParm, Parm)
+	class ATgDeployable*                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgProj_BombQueenInhand.PostProjectileInitialize
+struct ATgProj_BombQueenInhand_PostProjectileInitialize_Params
+{
+};
+
+// Function TgGame.TgProj_BombQueenInhand.ExplodeOnTarget
+struct ATgProj_BombQueenInhand_ExplodeOnTarget_Params
+{
+	class AActor*                                      Target;                                                   // (Parm)
+	struct FVector                                     HitLocation;                                              // (Parm)
+	struct FVector                                     HitNormal;                                                // (Parm)
+};
+
+// Function TgGame.TgProj_ClusterGrenade.StartLandExplodeTimer
+struct ATgProj_ClusterGrenade_StartLandExplodeTimer_Params
+{
+};
+
+// Function TgGame.TgProj_ClusterGrenade.GetPostLandDuration
+struct ATgProj_ClusterGrenade_GetPostLandDuration_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgProj_ClusterGrenade.ApplyHit
+struct ATgProj_ClusterGrenade_ApplyHit_Params
+{
+	class AActor*                                      Target;                                                   // (Parm)
+	struct FVector                                     HitLocation;                                              // (Parm)
+	struct FVector                                     HitNormal;                                                // (Parm)
+	int                                                HitItem;                                                  // (OptionalParm, Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgProj_ClusterGrenade.PostBeginPlay
+struct ATgProj_ClusterGrenade_PostBeginPlay_Params
+{
+};
+
+// Function TgGame.TgProj_ClusterGrenade.InitializeSilhouetteComponent
+struct ATgProj_ClusterGrenade_InitializeSilhouetteComponent_Params
+{
+};
+
+// Function TgGame.TgProj_ClusterGrenade.GetRotatedAim
+struct ATgProj_ClusterGrenade_GetRotatedAim_Params
+{
+	struct FVector                                     initialAim;                                               // (Parm)
+	int                                                Angle;                                                    // (Parm)
+	struct FVector                                     ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgBombBagBombProp.SafetyClearExplodeFX
+struct ATgBombBagBombProp_SafetyClearExplodeFX_Params
+{
+};
+
+// Function TgGame.TgBombBagBombProp.Explode
+struct ATgBombBagBombProp_Explode_Params
+{
+};
+
+// Function TgGame.TgBombBagBombProp.Touch
+struct ATgBombBagBombProp_Touch_Params
+{
+	class AActor*                                      Other;                                                    // (Parm)
+	class UPrimitiveComponent*                         OtherComp;                                                // (Parm, EditInline)
+	struct FVector                                     HitLocation;                                              // (Parm)
+	struct FVector                                     HitNormal;                                                // (Parm)
+};
+
+// Function TgGame.TgDeploy_VampireBloodPool.ScaleAbilityFX
+struct ATgDeploy_VampireBloodPool_ScaleAbilityFX_Params
+{
+};
+
+// Function TgGame.TgDeploy_VampireBloodPool.ScaleCollisionProxy
+struct ATgDeploy_VampireBloodPool_ScaleCollisionProxy_Params
+{
+};
+
+// Function TgGame.TgDeploy_VampireBloodPool.ReplicatedEvent
+struct ATgDeploy_VampireBloodPool_ReplicatedEvent_Params
+{
+	struct FName                                       VarName;                                                  // (Parm)
+};
+
+// Function TgGame.TgDevice_VampireMovement.SpawnBloodPoolAfterPlunge
+struct ATgDevice_VampireMovement_SpawnBloodPoolAfterPlunge_Params
+{
+};
+
+// Function TgGame.TgDevice_VampireMovement.SpendBloodVampireF
+struct ATgDevice_VampireMovement_SpendBloodVampireF_Params
+{
+};
+
+// Function TgGame.TgDevice_VampireMovement.DoVampirePlunge
+struct ATgDevice_VampireMovement_DoVampirePlunge_Params
+{
+	struct FVector                                     vTargetLocation;                                          // (Parm)
+};
+
+// Function TgGame.TgDevice_VampireMovement.ServerFindGroundBeneath
+struct ATgDevice_VampireMovement_ServerFindGroundBeneath_Params
+{
+};
+
+// Function TgGame.TgDevice_VampireMovement.InterceptSlotPressed
+struct ATgDevice_VampireMovement_InterceptSlotPressed_Params
+{
+	class ATgPlayerController*                         TgController;                                             // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_VampireMovement.FindGroundBeneathForPlunge
+struct ATgDevice_VampireMovement_FindGroundBeneathForPlunge_Params
+{
+};
+
+// Function TgGame.TgDevice_VampireMovement.HasCachedVampire
+struct ATgDevice_VampireMovement_HasCachedVampire_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_VampireMovement.GetMovementBloodDiscount
+struct ATgDevice_VampireMovement_GetMovementBloodDiscount_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_VampireMovement.CanDeviceFireNow
+struct ATgDevice_VampireMovement_CanDeviceFireNow_Params
+{
+	unsigned char                                      FireModeNum;                                              // (Parm)
+	struct FAimData                                    Aim;                                                      // (Parm)
+	bool                                               bDeviceFailLog;                                           // (Parm)
+	TEnumAsByte<EDeviceFailType>                       failType;                                                 // (Parm, OutParm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_VampireAltfire.OnUnlinkDevice
+struct ATgDevice_VampireAltfire_OnUnlinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_VampireAltfire.OnLinkDevice
+struct ATgDevice_VampireAltfire_OnLinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_VampireAltfire.CanDeviceStartFiringNow
+struct ATgDevice_VampireAltfire_CanDeviceStartFiringNow_Params
+{
+	unsigned char                                      FireModeNum;                                              // (Parm)
+	struct FAimData                                    Aim;                                                      // (Parm)
+	bool                                               bDebugRelevant;                                           // (Parm)
+	TEnumAsByte<EDeviceFailType>                       failType;                                                 // (OptionalParm, Parm, OutParm)
+	bool                                               bIgnoreCachedValue;                                       // (OptionalParm, Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_VampireAltfire.ServerStartFire
+struct ATgDevice_VampireAltfire_ServerStartFire_Params
+{
+	float                                              MovementTimeStamp;                                        // (OptionalParm, Parm)
+	struct FVector                                     MovementInAccel;                                          // (OptionalParm, Parm)
+	struct FVector                                     MovementClientLoc;                                        // (OptionalParm, Parm)
+	unsigned char                                      MovementNewFlags;                                         // (OptionalParm, Parm)
+	unsigned char                                      MovementClientRoll;                                       // (OptionalParm, Parm)
+	int                                                MovementView;                                             // (OptionalParm, Parm)
+	int                                                ClientFireRequestId;                                      // (OptionalParm, Parm)
+	unsigned char                                      ClientFireMode;                                           // (OptionalParm, Parm)
+	class AActor*                                      HitActor;                                                 // (OptionalParm, Parm)
+	float                                              StartTraceX;                                              // (OptionalParm, Parm)
+	float                                              StartTraceY;                                              // (OptionalParm, Parm)
+	float                                              StartTraceZ;                                              // (OptionalParm, Parm)
+	float                                              EndTraceX;                                                // (OptionalParm, Parm)
+	float                                              EndTraceY;                                                // (OptionalParm, Parm)
+	float                                              EndTraceZ;                                                // (OptionalParm, Parm)
+	int                                                nCompressedAimVector;                                     // (OptionalParm, Parm)
+	bool                                               bFirstBurstShot;                                          // (OptionalParm, Parm)
+	float                                              fAttackSpeedPercChange;                                   // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDevice_VampireAltfire.CallServerStartFire
+struct ATgDevice_VampireAltfire_CallServerStartFire_Params
+{
+	struct FAimData                                    Aim;                                                      // (Parm)
+	bool                                               bPendingUpdate;                                           // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDevice_VampireAltfire.StartCooldown
+struct ATgDevice_VampireAltfire_StartCooldown_Params
+{
+	int                                                nMode;                                                    // (OptionalParm, Parm)
+	float                                              fCooldownTimeOverride;                                    // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDevice_VampireAltfire.InstantFire
+struct ATgDevice_VampireAltfire_InstantFire_Params
+{
+};
+
+// Function TgGame.TgDevice_VampireAltfire.HasMarkDeviceMode
+struct ATgDevice_VampireAltfire_HasMarkDeviceMode_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_VampireAltfire.ApplyAllyHealing
+struct ATgDevice_VampireAltfire_ApplyAllyHealing_Params
+{
+	class ATgPawn*                                     Target;                                                   // (Parm)
+	int                                                nStackAmount;                                             // (Parm)
+};
+
+// Function TgGame.TgDevice_VampireAltfire.QueryForTarget
+struct ATgDevice_VampireAltfire_QueryForTarget_Params
+{
+	class ATgPawn_Character*                           ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_VampireAltfire.GetMaxMarks
+struct ATgDevice_VampireAltfire_GetMaxMarks_Params
+{
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_VampireBloodManager.VampireOutOfCombatBloodRegen
+struct ATgDevice_VampireBloodManager_VampireOutOfCombatBloodRegen_Params
+{
+};
+
+// Function TgGame.TgDevice_VampireBloodManager.HasCachedVampire
+struct ATgDevice_VampireBloodManager_HasCachedVampire_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_VampireQ.SpendBloodVampireQ
+struct ATgDevice_VampireQ_SpendBloodVampireQ_Params
+{
+};
+
+// Function TgGame.TgDevice_VampireQ.GetDeloyFireModeOverride
+struct ATgDevice_VampireQ_GetDeloyFireModeOverride_Params
+{
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_VampireQ.SetFireHoldAmt
+struct ATgDevice_VampireQ_SetFireHoldAmt_Params
+{
+	float                                              fFireHoldTime;                                            // (Parm)
+};
+
+// Function TgGame.TgDevice_VampireQ.OnDeployableDestroyed
+struct ATgDevice_VampireQ_OnDeployableDestroyed_Params
+{
+	class ATgDeployable*                               deployable;                                               // (Parm)
+};
+
+// Function TgGame.TgDevice_VampireQ.OnDeployableSpawned
+struct ATgDevice_VampireQ_OnDeployableSpawned_Params
+{
+	class ATgDeployable*                               deployable;                                               // (Parm)
+};
+
+// Function TgGame.TgDevice_VampireQ.InterceptRightMousePressed
+struct ATgDevice_VampireQ_InterceptRightMousePressed_Params
+{
+	class ATgPlayerController*                         TgController;                                             // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_VampireQ.CanBeCanceled
+struct ATgDevice_VampireQ_CanBeCanceled_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_VampireQ.GetFirstChargeValueForUIBar
+struct ATgDevice_VampireQ_GetFirstChargeValueForUIBar_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_VampireQ.UpdateTargetingModeStatus
+struct ATgDevice_VampireQ_UpdateTargetingModeStatus_Params
+{
+	struct FAimData                                    Aim;                                                      // (Const, Parm, OutParm)
+};
+
+// Function TgGame.TgDevice_VampireQ.GetGroundTargetAim
+struct ATgDevice_VampireQ_GetGroundTargetAim_Params
+{
+	struct FAimData                                    Aim;                                                      // (Parm, OutParm)
+};
+
+// Function TgGame.TgDevice_VampireQ.HasCachedVampire
+struct ATgDevice_VampireQ_HasCachedVampire_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_VampireQ.GetQBloodDiscount
+struct ATgDevice_VampireQ_GetQBloodDiscount_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_VampireQ.CanDeviceFireNow
+struct ATgDevice_VampireQ_CanDeviceFireNow_Params
+{
+	unsigned char                                      FireModeNum;                                              // (Parm)
+	struct FAimData                                    Aim;                                                      // (Parm)
+	bool                                               bDeviceFailLog;                                           // (Parm)
+	TEnumAsByte<EDeviceFailType>                       failType;                                                 // (Parm, OutParm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_VampireUlt.AutoBloodRegen
+struct ATgDevice_VampireUlt_AutoBloodRegen_Params
+{
+};
+
+// Function TgGame.TgDevice_VampireUlt.ApplyEffectsToPawns
+struct ATgDevice_VampireUlt_ApplyEffectsToPawns_Params
+{
+};
+
+// Function TgGame.TgDevice_VampireUlt.HasCachedVampire
+struct ATgDevice_VampireUlt_HasCachedVampire_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Vampire.SpendBlood
+struct ATgPawn_Vampire_SpendBlood_Params
+{
+	float                                              fBloodAmount;                                             // (Parm)
+	bool                                               bConsumeAllRemaingBlood;                                  // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgPawn_Vampire.PostBeginPlay
+struct ATgPawn_Vampire_PostBeginPlay_Params
+{
+};
+
+// Function TgGame.TgPawn_Vampire.ReplicatedEvent
+struct ATgPawn_Vampire_ReplicatedEvent_Params
+{
+	struct FName                                       VarName;                                                  // (Parm)
+};
+
+// Function TgGame.TgPawn_Vampire.DeviceOnDamaged
+struct ATgPawn_Vampire_DeviceOnDamaged_Params
+{
+	struct FOnDamagedParams                            Params;                                                   // (Parm, OutParm)
+};
+
+// Function TgGame.TgPawn_Vampire.TakeHealing
+struct ATgPawn_Vampire_TakeHealing_Params
+{
+	float                                              fHealAmount;                                              // (Parm)
+	bool                                               bSelf;                                                    // (Parm)
+	int                                                nHealingDeviceId;                                         // (Parm)
+};
+
+// Function TgGame.TgPawn_Vampire.BloodHealing
+struct ATgPawn_Vampire_BloodHealing_Params
+{
+	float                                              fHealAmount;                                              // (Parm)
+};
+
+// Function TgGame.TgPawn_Vampire.HasEnoughBlood
+struct ATgPawn_Vampire_HasEnoughBlood_Params
+{
+	float                                              fHealthAmount;                                            // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Vampire.ClientUpdateMarkedPawns
+struct ATgPawn_Vampire_ClientUpdateMarkedPawns_Params
+{
+};
+
+// Function TgGame.TgPawn_Vampire.IsPawnMarked
+struct ATgPawn_Vampire_IsPawnMarked_Params
+{
+	class ATgPawn*                                     QueryTarget;                                              // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Vampire.RemoveMark
+struct ATgPawn_Vampire_RemoveMark_Params
+{
+	class ATgPawn*                                     MarkTarget;                                               // (Parm)
+};
+
+// Function TgGame.TgPawn_Vampire.RemoveMarkByIndex
+struct ATgPawn_Vampire_RemoveMarkByIndex_Params
+{
+	int                                                nIndex;                                                   // (Parm)
+};
+
+// Function TgGame.TgPawn_Vampire.AddMark
+struct ATgPawn_Vampire_AddMark_Params
+{
+	class ATgPawn*                                     MarkedTarget;                                             // (Parm)
+};
+
+// Function TgGame.TgPawn_Vampire.RemoveMarkedEffects
+struct ATgPawn_Vampire_RemoveMarkedEffects_Params
+{
+	class ATgPawn*                                     MarkedTarget;                                             // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Vampire.ApplyMarkedEffects
+struct ATgPawn_Vampire_ApplyMarkedEffects_Params
+{
+	class ATgPawn*                                     MarkedTarget;                                             // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Vampire.GetMarkBreakDelay
+struct ATgPawn_Vampire_GetMarkBreakDelay_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Vampire.PawnOnKilledGlobal
+struct ATgPawn_Vampire_PawnOnKilledGlobal_Params
+{
+	class AActor*                                      Victim;                                                   // (Parm)
+	class AActor*                                      Killer;                                                   // (Parm)
+	TArray<class ATgRepInfo_Player*>                   AssistingPlayers;                                         // (Parm, NeedCtorLink)
+};
+
+// Function TgGame.TgPawn_Vampire.ApplyMarkKillBonus
+struct ATgPawn_Vampire_ApplyMarkKillBonus_Params
+{
+	class ATgPawn*                                     InstigatedBy;                                             // (Parm)
+	bool                                               bAssist;                                                  // (Parm)
+};
+
+// Function TgGame.TgPawn_Vampire.GetBloodBonusFiremode
+struct ATgPawn_Vampire_GetBloodBonusFiremode_Params
+{
+	class UTgDeviceFire*                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianAltfire.PrepReload
+struct ATgDevice_CaspianAltfire_PrepReload_Params
+{
+};
+
+// Function TgGame.TgDevice_CaspianAltfire.LinkedDeviceUnequipped
+struct ATgDevice_CaspianAltfire_LinkedDeviceUnequipped_Params
+{
+	class ATgDevice*                                   Dev;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_CaspianAltfire.LinkedDeviceEquipped
+struct ATgDevice_CaspianAltfire_LinkedDeviceEquipped_Params
+{
+	class ATgDevice*                                   Dev;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_CaspianAltfire.ReloadAmmo
+struct ATgDevice_CaspianAltfire_ReloadAmmo_Params
+{
+	bool                                               bToFull;                                                  // (OptionalParm, Parm)
+	bool                                               bShouldValidate;                                          // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDevice_CaspianAltfire.SetAmmo
+struct ATgDevice_CaspianAltfire_SetAmmo_Params
+{
+	int                                                AmmoCount;                                                // (Parm)
+	int                                                ClipSize;                                                 // (OptionalParm, Parm)
+	bool                                               bShouldValidate;                                          // (OptionalParm, Parm)
+	int                                                ValidationIDOverride;                                     // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDevice_CaspianAltfire.UsesSimulatedAmmo
+struct ATgDevice_CaspianAltfire_UsesSimulatedAmmo_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianAltfire.FireAmmunition
+struct ATgDevice_CaspianAltfire_FireAmmunition_Params
+{
+};
+
+// Function TgGame.TgDevice_CaspianAltfire.HasCachedCaspian
+struct ATgDevice_CaspianAltfire_HasCachedCaspian_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianAltfire.GetFiringPostHitDelay
+struct ATgDevice_CaspianAltfire_GetFiringPostHitDelay_Params
+{
+	int                                                nMode;                                                    // (OptionalParm, Parm)
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianAltfire.GetFiringPreHitDelay
+struct ATgDevice_CaspianAltfire_GetFiringPreHitDelay_Params
+{
+	int                                                nMode;                                                    // (OptionalParm, Parm)
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianAltfire.CanDeviceFireNow
+struct ATgDevice_CaspianAltfire_CanDeviceFireNow_Params
+{
+	unsigned char                                      FireModeNum;                                              // (Parm)
+	struct FAimData                                    Aim;                                                      // (Parm)
+	bool                                               bDeviceFailLog;                                           // (Parm)
+	TEnumAsByte<EDeviceFailType>                       failType;                                                 // (Parm, OutParm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianAltfire.ShouldBlockReload
+struct ATgDevice_CaspianAltfire_ShouldBlockReload_Params
+{
+	class ATgDevice*                                   Dev;                                                      // (Parm)
+	bool                                               bIsAutoReload;                                            // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianAltfire.HasAmmo
+struct ATgDevice_CaspianAltfire_HasAmmo_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianAltfire.IsReloading
+struct ATgDevice_CaspianAltfire_IsReloading_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianAltfire.GetCurrentAmmoAmount
+struct ATgDevice_CaspianAltfire_GetCurrentAmmoAmount_Params
+{
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianAltfire.RequiresAmmoToFire
+struct ATgDevice_CaspianAltfire_RequiresAmmoToFire_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianQ.GetProjectileExtraInfo
+struct ATgDevice_CaspianQ_GetProjectileExtraInfo_Params
+{
+	unsigned char                                      FromClient;                                               // (OptionalParm, Parm)
+	bool                                               bValidating;                                              // (OptionalParm, Parm)
+	unsigned char                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianQ.HasCachedCaspian
+struct ATgDevice_CaspianQ_HasCachedCaspian_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianUlt.OnUnlinkDevice
+struct ATgDevice_CaspianUlt_OnUnlinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_CaspianUlt.OnLinkDevice
+struct ATgDevice_CaspianUlt_OnLinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_CaspianUlt.LinkedDeviceUnequipped
+struct ATgDevice_CaspianUlt_LinkedDeviceUnequipped_Params
+{
+	class ATgDevice*                                   Dev;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_CaspianUlt.LinkedDeviceEquipped
+struct ATgDevice_CaspianUlt_LinkedDeviceEquipped_Params
+{
+	class ATgDevice*                                   Dev;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_CaspianUlt.EarlyOut
+struct ATgDevice_CaspianUlt_EarlyOut_Params
+{
+};
+
+// Function TgGame.TgDevice_CaspianUlt.UpdateSwordMissiles
+struct ATgDevice_CaspianUlt_UpdateSwordMissiles_Params
+{
+};
+
+// Function TgGame.TgDevice_CaspianUlt.UpdateSword
+struct ATgDevice_CaspianUlt_UpdateSword_Params
+{
+	int                                                Index;                                                    // (Parm)
+};
+
+// Function TgGame.TgDevice_CaspianUlt.DeactivateSword
+struct ATgDevice_CaspianUlt_DeactivateSword_Params
+{
+	int                                                I;                                                        // (Parm)
+};
+
+// Function TgGame.TgDevice_CaspianUlt.DeactivateAllSwords
+struct ATgDevice_CaspianUlt_DeactivateAllSwords_Params
+{
+};
+
+// Function TgGame.TgDevice_CaspianUlt.LocalActivateSword
+struct ATgDevice_CaspianUlt_LocalActivateSword_Params
+{
+	int                                                I;                                                        // (Parm)
+};
+
+// Function TgGame.TgDevice_CaspianUlt.SpawnSword
+struct ATgDevice_CaspianUlt_SpawnSword_Params
+{
+	int                                                nPosition;                                                // (Parm)
+};
+
+// Function TgGame.TgDevice_CaspianUlt.RollbackSimulatedSwordMissileFire
+struct ATgDevice_CaspianUlt_RollbackSimulatedSwordMissileFire_Params
+{
+	int                                                Index;                                                    // (Parm)
+};
+
+// Function TgGame.TgDevice_CaspianUlt.DeactivateSwordFx
+struct ATgDevice_CaspianUlt_DeactivateSwordFx_Params
+{
+	int                                                Index;                                                    // (Parm)
+};
+
+// Function TgGame.TgDevice_CaspianUlt.ActivateSwordFx
+struct ATgDevice_CaspianUlt_ActivateSwordFx_Params
+{
+	int                                                Index;                                                    // (Parm)
+};
+
+// Function TgGame.TgDevice_CaspianUlt.GetNextFreeSwordIndex
+struct ATgDevice_CaspianUlt_GetNextFreeSwordIndex_Params
+{
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianUlt.GetSwordWorldLocation
+struct ATgDevice_CaspianUlt_GetSwordWorldLocation_Params
+{
+	int                                                nNdx;                                                     // (Parm)
+	struct FVector                                     ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianUlt.GetNextSwordProjectileFireOffset
+struct ATgDevice_CaspianUlt_GetNextSwordProjectileFireOffset_Params
+{
+	struct FVector                                     ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianUlt.GetNextSwordToFire
+struct ATgDevice_CaspianUlt_GetNextSwordToFire_Params
+{
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianUlt.OnSwordExploded
+struct ATgDevice_CaspianUlt_OnSwordExploded_Params
+{
+	class ATgProjectile*                               SwordProjectile;                                          // (Parm)
+};
+
+// Function TgGame.TgDevice_CaspianUlt.OnSwordFired
+struct ATgDevice_CaspianUlt_OnSwordFired_Params
+{
+	class ATgProjectile*                               SwordProjectile;                                          // (Parm)
+};
+
+// Function TgGame.TgDevice_CaspianUlt.FireAmmunition
+struct ATgDevice_CaspianUlt_FireAmmunition_Params
+{
+};
+
+// Function TgGame.TgDevice_CaspianUlt.Tick
+struct ATgDevice_CaspianUlt_Tick_Params
+{
+	float                                              DeltaSeconds;                                             // (Parm)
+};
+
+// Function TgGame.TgDevice_CaspianUlt.AuthSwordUpdated
+struct ATgDevice_CaspianUlt_AuthSwordUpdated_Params
+{
+	int                                                I;                                                        // (Parm)
+};
+
+// Function TgGame.TgDevice_CaspianUlt.ShouldInterruptInhand
+struct ATgDevice_CaspianUlt_ShouldInterruptInhand_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianUlt.ReplicatedEvent
+struct ATgDevice_CaspianUlt_ReplicatedEvent_Params
+{
+	struct FName                                       VarName;                                                  // (Parm)
+};
+
+// Function TgGame.TgDevice_CaspianUlt.GetSwordIsFiredSimulated
+struct ATgDevice_CaspianUlt_GetSwordIsFiredSimulated_Params
+{
+	int                                                nNdx;                                                     // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianUlt.SetSwordPositionIndex
+struct ATgDevice_CaspianUlt_SetSwordPositionIndex_Params
+{
+	int                                                nNdx;                                                     // (Parm)
+	int                                                nPosition;                                                // (Parm)
+};
+
+// Function TgGame.TgDevice_CaspianUlt.SetSwordIsFired
+struct ATgDevice_CaspianUlt_SetSwordIsFired_Params
+{
+	int                                                nNdx;                                                     // (Parm)
+	bool                                               bIsFired;                                                 // (Parm)
+};
+
+// Function TgGame.TgDevice_CaspianUlt.SetSwordIsActive
+struct ATgDevice_CaspianUlt_SetSwordIsActive_Params
+{
+	int                                                nNdx;                                                     // (Parm)
+	bool                                               bIsActive;                                                // (Parm)
+};
+
+// Function TgGame.TgDevice_CaspianUlt.NumSwordsReadyToFire
+struct ATgDevice_CaspianUlt_NumSwordsReadyToFire_Params
+{
+	bool                                               bAuthoritativeOnly;                                       // (OptionalParm, Parm)
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianUlt.GetSwordIsActive
+struct ATgDevice_CaspianUlt_GetSwordIsActive_Params
+{
+	int                                                nNdx;                                                     // (Parm)
+	bool                                               byRep;                                                    // (OptionalParm, Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianUlt.GetSwordPositionIndex
+struct ATgDevice_CaspianUlt_GetSwordPositionIndex_Params
+{
+	int                                                nNdx;                                                     // (Parm)
+	bool                                               byRep;                                                    // (OptionalParm, Parm)
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianUlt.GetSwordIsFired
+struct ATgDevice_CaspianUlt_GetSwordIsFired_Params
+{
+	int                                                nNdx;                                                     // (Parm)
+	bool                                               byRep;                                                    // (OptionalParm, Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianUlt.CanDeviceFireNow
+struct ATgDevice_CaspianUlt_CanDeviceFireNow_Params
+{
+	unsigned char                                      FireModeNum;                                              // (Parm)
+	struct FAimData                                    Aim;                                                      // (Parm)
+	bool                                               bDeviceFailLog;                                           // (Parm)
+	TEnumAsByte<EDeviceFailType>                       failType;                                                 // (Parm, OutParm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianUlt.IsDeviceFiringForUI
+struct ATgDevice_CaspianUlt_IsDeviceFiringForUI_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianUlt.IsInFalsePostfire
+struct ATgDevice_CaspianUlt_IsInFalsePostfire_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianUlt.IsSimulatingSpeculativeSwordFired
+struct ATgDevice_CaspianUlt_IsSimulatingSpeculativeSwordFired_Params
+{
+	int                                                Index;                                                    // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianUltFire.OnUnlinkDevice
+struct ATgDevice_CaspianUltFire_OnUnlinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_CaspianUltFire.OnLinkDevice
+struct ATgDevice_CaspianUltFire_OnLinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_CaspianUltFire.LinkedDeviceUnequipped
+struct ATgDevice_CaspianUltFire_LinkedDeviceUnequipped_Params
+{
+	class ATgDevice*                                   Dev;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_CaspianUltFire.LinkedDeviceEquipped
+struct ATgDevice_CaspianUltFire_LinkedDeviceEquipped_Params
+{
+	class ATgDevice*                                   Dev;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_CaspianUltFire.GetProjectileSpawnOffset
+struct ATgDevice_CaspianUltFire_GetProjectileSpawnOffset_Params
+{
+	struct FVector                                     ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianUltFire.ShouldInterruptInhand
+struct ATgDevice_CaspianUltFire_ShouldInterruptInhand_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianUltFire.GetSwordMeshAsmId
+struct ATgDevice_CaspianUltFire_GetSwordMeshAsmId_Params
+{
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianUltFire.CanDeviceFireNow
+struct ATgDevice_CaspianUltFire_CanDeviceFireNow_Params
+{
+	unsigned char                                      FireModeNum;                                              // (Parm)
+	struct FAimData                                    Aim;                                                      // (Parm)
+	bool                                               bDeviceFailLog;                                           // (Parm)
+	TEnumAsByte<EDeviceFailType>                       failType;                                                 // (Parm, OutParm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianInhand.GetChainMax
+struct ATgDevice_CaspianInhand_GetChainMax_Params
+{
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianInhand.FireAmmunition
+struct ATgDevice_CaspianInhand_FireAmmunition_Params
+{
+};
+
+// Function TgGame.TgDevice_CaspianInhand.HasCachedCaspian
+struct ATgDevice_CaspianInhand_HasCachedCaspian_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianInhand.GetFiringPostHitDelay
+struct ATgDevice_CaspianInhand_GetFiringPostHitDelay_Params
+{
+	int                                                nMode;                                                    // (OptionalParm, Parm)
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianInhand.GetFiringPreHitDelay
+struct ATgDevice_CaspianInhand_GetFiringPreHitDelay_Params
+{
+	int                                                nMode;                                                    // (OptionalParm, Parm)
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianInhand.SetFireMode
+struct ATgDevice_CaspianInhand_SetFireMode_Params
+{
+	int                                                nFireModeNum;                                             // (Parm)
+	bool                                               ForceSet;                                                 // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDevice_CaspianMovement.BeginSpinningSwords
+struct ATgDevice_CaspianMovement_BeginSpinningSwords_Params
+{
+};
+
+// Function TgGame.TgDevice_CaspianMovement.BeginSpinningSwordsTimer
+struct ATgDevice_CaspianMovement_BeginSpinningSwordsTimer_Params
+{
+};
+
+// Function TgGame.TgDevice_CaspianMovement.EndSpinningSwordsTimer
+struct ATgDevice_CaspianMovement_EndSpinningSwordsTimer_Params
+{
+};
+
+// Function TgGame.TgDevice_CaspianMovement.ClientEndSpinningSwords
+struct ATgDevice_CaspianMovement_ClientEndSpinningSwords_Params
+{
+};
+
+// Function TgGame.TgDevice_CaspianMovement.EndSpinningSwords
+struct ATgDevice_CaspianMovement_EndSpinningSwords_Params
+{
+};
+
+// Function TgGame.TgDevice_CaspianMovement.TrySpinningSwords
+struct ATgDevice_CaspianMovement_TrySpinningSwords_Params
+{
+	float                                              fOffsetDelay;                                             // (OptionalParm, Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianMovement.ServerTrySpinningSwords
+struct ATgDevice_CaspianMovement_ServerTrySpinningSwords_Params
+{
+	float                                              fTimeOfActivation;                                        // (Parm)
+};
+
+// Function TgGame.TgDevice_CaspianMovement.InterceptSlotPressed
+struct ATgDevice_CaspianMovement_InterceptSlotPressed_Params
+{
+	class ATgPlayerController*                         TgController;                                             // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianMovement.HasCachedCaspian
+struct ATgDevice_CaspianMovement_HasCachedCaspian_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Caspian.CanFlyWithoutHover
+struct ATgPawn_Caspian_CanFlyWithoutHover_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Caspian.ReplicatedEvent
+struct ATgPawn_Caspian_ReplicatedEvent_Params
+{
+	struct FName                                       VarName;                                                  // (Parm)
+};
+
+// Function TgGame.TgPawn_Caspian.AttemptFireUltSword
+struct ATgPawn_Caspian_AttemptFireUltSword_Params
+{
+};
+
+// Function TgGame.TgPawn_Caspian.OnProjectileExploded
+struct ATgPawn_Caspian_OnProjectileExploded_Params
+{
+	class ATgProjectile*                               ExplodedProjectile;                                       // (Parm)
+	class AActor*                                      HitActor;                                                 // (Parm)
+	struct FVector                                     HitLocation;                                              // (Parm)
+	struct FVector                                     HitNormal;                                                // (Parm)
+};
+
+// Function TgGame.TgPawn_Caspian.ProjectileOnFire
+struct ATgPawn_Caspian_ProjectileOnFire_Params
+{
+	class ATgProjectile*                               Proj;                                                     // (Parm)
+};
+
+// Function TgGame.TgPawn_Caspian.GetSwordMissileLocation
+struct ATgPawn_Caspian_GetSwordMissileLocation_Params
+{
+	int                                                nIndex;                                                   // (Parm)
+	struct FVector                                     ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Caspian.GetSwordMissileSocketName
+struct ATgPawn_Caspian_GetSwordMissileSocketName_Params
+{
+	int                                                nIndex;                                                   // (Parm)
+	struct FName                                       ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Caspian.ValidateClientStacks
+struct ATgPawn_Caspian_ValidateClientStacks_Params
+{
+	int                                                nStacks;                                                  // (Parm, OutParm)
+	TEnumAsByte<ECaspianStackSource>                   eSource;                                                  // (OptionalParm, Parm)
+	float                                              fRewindAmount;                                            // (OptionalParm, Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Caspian.DeviceOnDamaged
+struct ATgPawn_Caspian_DeviceOnDamaged_Params
+{
+	struct FOnDamagedParams                            Params;                                                   // (Parm, OutParm)
+};
+
+// Function TgGame.TgPawn_Caspian.UpdateStackCounts
+struct ATgPawn_Caspian_UpdateStackCounts_Params
+{
+};
+
+// Function TgGame.TgPawn_Caspian.AddStackHistoryRecord
+struct ATgPawn_Caspian_AddStackHistoryRecord_Params
+{
+	unsigned char                                      eSource;                                                  // (Parm)
+};
+
+// Function TgGame.TgPawn_Caspian.GetCurrentStacks
+struct ATgPawn_Caspian_GetCurrentStacks_Params
+{
+	TEnumAsByte<ECaspianStackSource>                   eSource;                                                  // (Parm)
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Caspian.AddStack
+struct ATgPawn_Caspian_AddStack_Params
+{
+	TEnumAsByte<ECaspianStackSource>                   eSource;                                                  // (Parm)
+};
+
+// Function TgGame.TgPawn_Caspian.GetTimeSinceLastStack
+struct ATgPawn_Caspian_GetTimeSinceLastStack_Params
+{
+	TEnumAsByte<ECaspianStackSource>                   eSource;                                                  // (Parm)
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Caspian.CullStacks
+struct ATgPawn_Caspian_CullStacks_Params
+{
+};
+
+// Function TgGame.TgPawn_Caspian.CountStacks_Internal
+struct ATgPawn_Caspian_CountStacks_Internal_Params
+{
+	TEnumAsByte<ECaspianStackSource>                   eSource;                                                  // (Parm)
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Caspian.ClientOnCurrentStacksUpdated
+struct ATgPawn_Caspian_ClientOnCurrentStacksUpdated_Params
+{
 };
 
 // Function TgGame.TgDevice_FlagBall.ServerExitTargetingMode
@@ -67071,7 +72776,7 @@ struct ATgWeaponMeshActor_AndroxusInhand_PlayFireEffects_Params
 // Function TgGame.TgWeaponMeshActor_AndroxusInhand.FixUpReferencesToWeaponMesh1P
 struct ATgWeaponMeshActor_AndroxusInhand_FixUpReferencesToWeaponMesh1P_Params
 {
-	class USkeletalMeshComponent*                      WeaponMesh;                                               // (Parm, EditInline)
+	class USkeletalMeshComponent*                      weaponMesh;                                               // (Parm, EditInline)
 };
 
 // Function TgGame.TgDevice_ApplyCooldownModToChild.LinkedDeviceUnequipped
@@ -67205,52 +72910,6 @@ struct ATgDevice_IceBlock_CanBeCanceled_Params
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
-// Function TgGame.TgDevice_BuckInhand.ClientInterruptReload
-struct ATgDevice_BuckInhand_ClientInterruptReload_Params
-{
-	bool                                               bAllowAmmoFill;                                           // (OptionalParm, Parm)
-};
-
-// Function TgGame.TgDevice_BuckInhand.ServerStartReload
-struct ATgDevice_BuckInhand_ServerStartReload_Params
-{
-};
-
-// Function TgGame.TgDevice_BuckInhand.PostReloadTimer
-struct ATgDevice_BuckInhand_PostReloadTimer_Params
-{
-};
-
-// Function TgGame.TgDevice_BuckInhand.PlayReloadAnim
-struct ATgDevice_BuckInhand_PlayReloadAnim_Params
-{
-	TEnumAsByte<EReloadAnimType>                       rat;                                                      // (Parm)
-	float                                              reloadTime;                                               // (Parm)
-};
-
-// Function TgGame.TgDevice_BuckInhand.PreReloadTimer
-struct ATgDevice_BuckInhand_PreReloadTimer_Params
-{
-};
-
-// Function TgGame.TgDevice_BuckInhand.StartReload
-struct ATgDevice_BuckInhand_StartReload_Params
-{
-	bool                                               bIgnoreCurrentAmmo;                                       // (OptionalParm, Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function TgGame.TgDevice_BuckInhand.ServerEndReloadForInhandFire
-struct ATgDevice_BuckInhand_ServerEndReloadForInhandFire_Params
-{
-};
-
-// Function TgGame.TgDevice_BuckInhand.Use
-struct ATgDevice_BuckInhand_Use_Params
-{
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
 // Function TgGame.TgWeaponMeshActor_BuckInhand.PlayReload
 struct ATgWeaponMeshActor_BuckInhand_PlayReload_Params
 {
@@ -67269,7 +72928,7 @@ struct ATgWeaponMeshActor_BuckInhand_FixUpReferencesToPawnMesh_Params
 // Function TgGame.TgWeaponMeshActor_BuckInhand.FixUpReferencesToWeaponMesh1P
 struct ATgWeaponMeshActor_BuckInhand_FixUpReferencesToWeaponMesh1P_Params
 {
-	class USkeletalMeshComponent*                      WeaponMesh;                                               // (Parm, EditInline)
+	class USkeletalMeshComponent*                      weaponMesh;                                               // (Parm, EditInline)
 };
 
 // Function TgGame.TgDevice_ChurchillTurret.CanDeviceStartFiringNow
@@ -67370,10 +73029,16 @@ struct ATgDevice_DredgeF_CanDeviceStartFiringNow_Params
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function TgGame.TgDevice_DeepRoots.TriggerArc
+struct ATgDevice_DeepRoots_TriggerArc_Params
+{
+	int                                                Index;                                                    // (Parm)
+};
+
 // Function TgGame.TgWeaponMeshActor_DemonInhand.OverrideTracerFireLoc
 struct ATgWeaponMeshActor_DemonInhand_OverrideTracerFireLoc_Params
 {
-	struct FVector                                     fireLoc;                                                  // (Parm, OutParm)
+	struct FVector                                     FireLoc;                                                  // (Parm, OutParm)
 	int                                                nIndex;                                                   // (OptionalParm, Parm)
 };
 
@@ -67651,7 +73316,7 @@ struct ATgWeaponMeshActor_FuriaInhand_PlayFireFx_Params
 // Function TgGame.TgWeaponMeshActor_FuriaInhand.OverrideTracerFireLoc
 struct ATgWeaponMeshActor_FuriaInhand_OverrideTracerFireLoc_Params
 {
-	struct FVector                                     fireLoc;                                                  // (Parm, OutParm)
+	struct FVector                                     FireLoc;                                                  // (Parm, OutParm)
 	int                                                nIndex;                                                   // (OptionalParm, Parm)
 };
 
@@ -67670,7 +73335,7 @@ struct ATgWeaponMeshActor_FuriaInhand_FixUpReferencesToPawnMesh_Params
 // Function TgGame.TgWeaponMeshActor_FuriaInhand.FixUpReferencesToWeaponMesh1P
 struct ATgWeaponMeshActor_FuriaInhand_FixUpReferencesToWeaponMesh1P_Params
 {
-	class USkeletalMeshComponent*                      WeaponMesh;                                               // (Parm, EditInline)
+	class USkeletalMeshComponent*                      weaponMesh;                                               // (Parm, EditInline)
 };
 
 // Function TgGame.TgDevice_GhostWalk.ShouldInterruptReloadOnFire
@@ -67841,15 +73506,15 @@ struct ATgDevice_MarkAndRecall_FireAmmunition_Params
 // Function TgGame.TgWeaponMeshActor_NinjaInhand.OverrideTracerFireLoc
 struct ATgWeaponMeshActor_NinjaInhand_OverrideTracerFireLoc_Params
 {
-	struct FVector                                     fireLoc;                                                  // (Parm, OutParm)
+	struct FVector                                     FireLoc;                                                  // (Parm, OutParm)
 	int                                                nIndex;                                                   // (OptionalParm, Parm)
 };
 
 // Function TgGame.TgWeaponMeshActor_NinjaInhand.OverrideTracerEndLocation
 struct ATgWeaponMeshActor_NinjaInhand_OverrideTracerEndLocation_Params
 {
-	struct FVector                                     fireLoc;                                                  // (Parm)
-	struct FVector                                     EndLocation;                                              // (Parm, OutParm)
+	struct FVector                                     FireLoc;                                                  // (Parm)
+	struct FVector                                     endLocation;                                              // (Parm, OutParm)
 	int                                                nIndex;                                                   // (OptionalParm, Parm)
 	bool                                               bSyntheticShot;                                           // (OptionalParm, Parm)
 };
@@ -67921,7 +73586,7 @@ struct ATgWeaponMeshActor_OwlInhand_HasCachedOwl_Params
 // Function TgGame.TgWeaponMeshActor_OwlInhand.PlayTracerEffects
 struct ATgWeaponMeshActor_OwlInhand_PlayTracerEffects_Params
 {
-	struct FVector                                     EndLocation;                                              // (Parm)
+	struct FVector                                     endLocation;                                              // (Parm)
 	int                                                nEquipSlot;                                               // (OptionalParm, Parm)
 	bool                                               bSyntheticShot;                                           // (OptionalParm, Parm)
 };
@@ -68012,7 +73677,7 @@ struct ATgDevice_RiderLegUltBonus_ApplyExtraEatEffects_Params
 // Function TgGame.TgWeaponMeshActor_RuckusInhand.OverrideTracerFireLoc
 struct ATgWeaponMeshActor_RuckusInhand_OverrideTracerFireLoc_Params
 {
-	struct FVector                                     fireLoc;                                                  // (Parm, OutParm)
+	struct FVector                                     FireLoc;                                                  // (Parm, OutParm)
 	int                                                nIndex;                                                   // (OptionalParm, Parm)
 };
 
@@ -68089,18 +73754,6 @@ struct ATgDevice_Uppercut_IsUltActive_Params
 // Function TgGame.TgDevice_ViktorAmmoRefill.FireAmmunition
 struct ATgDevice_ViktorAmmoRefill_FireAmmunition_Params
 {
-};
-
-// Function TgGame.TgWeaponMeshActor_ViktorInhand.UseADSFireSounds
-struct ATgWeaponMeshActor_ViktorInhand_UseADSFireSounds_Params
-{
-	bool                                               bShouldUse;                                               // (Parm)
-};
-
-// Function TgGame.TgWeaponMeshActor_ViktorInhand.SetFOVZoomed
-struct ATgWeaponMeshActor_ViktorInhand_SetFOVZoomed_Params
-{
-	bool                                               bEnabled;                                                 // (Parm)
 };
 
 // Function TgGame.TgWeaponMeshActor_YingInhand.EndYingLoopingBeam
@@ -70658,6 +76311,7 @@ struct ATgProj_IceStorm_HandleTick_Params
 // Function TgGame.TgProj_IceStorm.CompleteInitialization
 struct ATgProj_IceStorm_CompleteInitialization_Params
 {
+	unsigned char                                      ExtraInfo;                                                // (OptionalParm, Parm)
 };
 
 // Function TgGame.TgProj_LanepusherCannon.Tick
@@ -70900,6 +76554,49 @@ struct ATgWeaponMeshActor_Rider_Tick_Params
 	float                                              DeltaTime;                                                // (Parm)
 };
 
+// Function TgGame.TgDeploy_ProxyMineAdvanced.FlashFireCountUpdated
+struct ATgDeploy_ProxyMineAdvanced_FlashFireCountUpdated_Params
+{
+};
+
+// Function TgGame.TgDeploy_ProxyMineAdvanced.FireExplosionVFX
+struct ATgDeploy_ProxyMineAdvanced_FireExplosionVFX_Params
+{
+};
+
+// Function TgGame.TgDeploy_ProxyMineAdvanced.CheckRemainingExplosions
+struct ATgDeploy_ProxyMineAdvanced_CheckRemainingExplosions_Params
+{
+};
+
+// Function TgGame.TgDeploy_ProxyMineAdvanced.CheckExplode
+struct ATgDeploy_ProxyMineAdvanced_CheckExplode_Params
+{
+};
+
+// Function TgGame.TgDeploy_ProxyMineAdvanced.DeployComplete
+struct ATgDeploy_ProxyMineAdvanced_DeployComplete_Params
+{
+};
+
+// Function TgGame.TgDeploy_ProxyMineAdvanced.ReplicatedEvent
+struct ATgDeploy_ProxyMineAdvanced_ReplicatedEvent_Params
+{
+	struct FName                                       VarName;                                                  // (Parm)
+};
+
+// Function TgGame.TgDevice_AsymmetricWarfare.OnUnlinkDevice
+struct ATgDevice_AsymmetricWarfare_OnUnlinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_AsymmetricWarfare.OnLinkDevice
+struct ATgDevice_AsymmetricWarfare_OnLinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
 // Function TgGame.TgWeaponMeshActor_AtlasInhand.Tick
 struct ATgWeaponMeshActor_AtlasInhand_Tick_Params
 {
@@ -70917,6 +76614,42 @@ struct ATgWeaponMeshActor_AtlasInhand_PlayFireAnimation_Params
 struct ATgDevice_AtlasQ_CanBeCanceled_Params
 {
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_BombQueenRangeCard.OnUnlinkDevice
+struct ATgDevice_BombQueenRangeCard_OnUnlinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_BombQueenRangeCard.OnLinkDevice
+struct ATgDevice_BombQueenRangeCard_OnLinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_BombQueenTalent1.OnUnlinkDevice
+struct ATgDevice_BombQueenTalent1_OnUnlinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_BombQueenTalent1.OnLinkDevice
+struct ATgDevice_BombQueenTalent1_OnLinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_BombQueenTalent3.OnUnlinkDevice
+struct ATgDevice_BombQueenTalent3_OnUnlinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_BombQueenTalent3.OnLinkDevice
+struct ATgDevice_BombQueenTalent3_OnLinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
 };
 
 // Function TgGame.TgWeaponMeshActor_ImaniInhand.UpdateTransform
@@ -70949,13 +76682,85 @@ struct ATgWeaponMeshActor_ImaniInhand_FixUpReferencesToPawnMesh_Params
 // Function TgGame.TgWeaponMeshActor_ImaniInhand.FixUpReferencesToWeaponMesh1P
 struct ATgWeaponMeshActor_ImaniInhand_FixUpReferencesToWeaponMesh1P_Params
 {
-	class USkeletalMeshComponent*                      WeaponMesh;                                               // (Parm, EditInline)
+	class USkeletalMeshComponent*                      weaponMesh;                                               // (Parm, EditInline)
 };
 
 // Function TgGame.TgDevice_InnerStrength.CanBeFiredWhileTweening
 struct ATgDevice_InnerStrength_CanBeFiredWhileTweening_Params
 {
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_OppressorMineTalent.OnUnlinkDevice
+struct ATgDevice_OppressorMineTalent_OnUnlinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_OppressorMineTalent.OnLinkDevice
+struct ATgDevice_OppressorMineTalent_OnLinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_RampantBlooming.OnUnlinkDevice
+struct ATgDevice_RampantBlooming_OnUnlinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_RampantBlooming.OnLinkDevice
+struct ATgDevice_RampantBlooming_OnLinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_SaatiDecoyTalent.OnUnlinkDevice
+struct ATgDevice_SaatiDecoyTalent_OnUnlinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_SaatiDecoyTalent.OnLinkDevice
+struct ATgDevice_SaatiDecoyTalent_OnLinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_SevenDoubleDropTalent.OnUnlinkDevice
+struct ATgDevice_SevenDoubleDropTalent_OnUnlinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_SevenDoubleDropTalent.OnLinkDevice
+struct ATgDevice_SevenDoubleDropTalent_OnLinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_SevenElementalSwitch.OnUnlinkDevice
+struct ATgDevice_SevenElementalSwitch_OnUnlinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_SevenElementalSwitch.OnLinkDevice
+struct ATgDevice_SevenElementalSwitch_OnLinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_SevenExplosiveUltTalent.OnUnlinkDevice
+struct ATgDevice_SevenExplosiveUltTalent_OnUnlinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_SevenExplosiveUltTalent.OnLinkDevice
+struct ATgDevice_SevenExplosiveUltTalent_OnLinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
 };
 
 // Function TgGame.TgWeaponMeshActor_YagorathInhand.OnBehindViewUpdated
@@ -71026,6 +76831,35 @@ struct UTgDeviceForm_AtlasF_ClearAnimNodes_Params
 	bool                                               bIs3p;                                                    // (Parm)
 };
 
+// Function TgGame.TgDeviceForm_BettyInhand.Fire
+struct UTgDeviceForm_BettyInhand_Fire_Params
+{
+	struct FVector                                     HitLocation;                                              // (Parm)
+	int                                                nFireMode;                                                // (Parm)
+	int                                                nEquipSlot;                                               // (OptionalParm, Parm)
+	int                                                nSocketIndex;                                             // (OptionalParm, Parm)
+	bool                                               bSuccessfulHit;                                           // (OptionalParm, Parm)
+	float                                              fRefireTime;                                              // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDeviceForm_BettyInhand.SetAmmoNodesOnStartFire
+struct UTgDeviceForm_BettyInhand_SetAmmoNodesOnStartFire_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDeviceForm_BettyUlt.Generic2
+struct UTgDeviceForm_BettyUlt_Generic2_Params
+{
+	unsigned char                                      byExtraData;                                              // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDeviceForm_BettyUlt.Generic1
+struct UTgDeviceForm_BettyUlt_Generic1_Params
+{
+	unsigned char                                      byExtraData;                                              // (OptionalParm, Parm)
+};
+
 // Function TgGame.TgDeviceForm_ImaniRMB1.Generic1
 struct UTgDeviceForm_ImaniRMB1_Generic1_Params
 {
@@ -71072,6 +76906,51 @@ struct UTgDeviceForm_ImaniUlt_StopFire_Params
 	int                                                nFireModeNum;                                             // (Parm)
 };
 
+// Function TgGame.TgDeviceForm_LillithMovement.Generic2
+struct UTgDeviceForm_LillithMovement_Generic2_Params
+{
+	unsigned char                                      byExtraData;                                              // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDeviceForm_LillithMovement.Generic1
+struct UTgDeviceForm_LillithMovement_Generic1_Params
+{
+	unsigned char                                      byExtraData;                                              // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDeviceForm_LillithMovement.CacheAnimNode
+struct UTgDeviceForm_LillithMovement_CacheAnimNode_Params
+{
+	class UAnimNode*                                   Node;                                                     // (Parm)
+	bool                                               bIs3p;                                                    // (Parm)
+};
+
+// Function TgGame.TgDeviceForm_LillithMovement.ClearAnimNodes
+struct UTgDeviceForm_LillithMovement_ClearAnimNodes_Params
+{
+	bool                                               bIs3p;                                                    // (Parm)
+};
+
+// Function TgGame.TgDeviceForm_SaatiDecoyInhand.PlayTracerEffects
+struct UTgDeviceForm_SaatiDecoyInhand_PlayTracerEffects_Params
+{
+	struct FVector                                     endLocation;                                              // (Parm)
+	struct FName                                       nmFxName;                                                 // (OptionalParm, Parm)
+	int                                                nEquipSlot;                                               // (OptionalParm, Parm)
+	int                                                nFireMode;                                                // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDeviceForm_SaatiDecoyInhand.Fire
+struct UTgDeviceForm_SaatiDecoyInhand_Fire_Params
+{
+	struct FVector                                     HitLocation;                                              // (Parm)
+	int                                                nFireMode;                                                // (Parm)
+	int                                                nEquipSlot;                                               // (OptionalParm, Parm)
+	int                                                nSocketIndex;                                             // (OptionalParm, Parm)
+	bool                                               bSuccessfulHit;                                           // (OptionalParm, Parm)
+	float                                              fRefireTime;                                              // (OptionalParm, Parm)
+};
+
 // Function TgGame.TgDeviceForm_Stealth.StartFire
 struct UTgDeviceForm_Stealth_StartFire_Params
 {
@@ -71079,6 +76958,46 @@ struct UTgDeviceForm_Stealth_StartFire_Params
 	float                                              fRefireTime;                                              // (OptionalParm, Parm)
 	class AActor*                                      Target;                                                   // (OptionalParm, Parm)
 	int                                                nAmmoRemaining;                                           // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDeviceForm_WallBang.PlayUltActiveEffect
+struct UTgDeviceForm_WallBang_PlayUltActiveEffect_Params
+{
+	bool                                               bActive;                                                  // (Parm)
+};
+
+// Function TgGame.TgDeviceForm_WallBang.Generic1
+struct UTgDeviceForm_WallBang_Generic1_Params
+{
+	unsigned char                                      byExtraData;                                              // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDeviceForm_WallBang.StartFire
+struct UTgDeviceForm_WallBang_StartFire_Params
+{
+	int                                                nFireMode;                                                // (Parm)
+	float                                              fRefireTime;                                              // (OptionalParm, Parm)
+	class AActor*                                      Target;                                                   // (OptionalParm, Parm)
+	int                                                nAmmoRemaining;                                           // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDeviceForm_WallBangFire.Generic1
+struct UTgDeviceForm_WallBangFire_Generic1_Params
+{
+	unsigned char                                      byExtraData;                                              // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDeviceForm_WallBangFire.CacheAnimNode
+struct UTgDeviceForm_WallBangFire_CacheAnimNode_Params
+{
+	class UAnimNode*                                   Node;                                                     // (Parm)
+	bool                                               bIs3p;                                                    // (Parm)
+};
+
+// Function TgGame.TgDeviceForm_WallBangFire.ClearAnimNodes
+struct UTgDeviceForm_WallBangFire_ClearAnimNodes_Params
+{
+	bool                                               bIs3p;                                                    // (Parm)
 };
 
 // Function TgGame.TgDeviceForm_YagoSpray.StartFire

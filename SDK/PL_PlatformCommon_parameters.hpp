@@ -1,6 +1,6 @@
 #pragma once
 
-// Paladins (4.1.3942.2) SDK
+// Paladins (3.05) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -1711,6 +1711,11 @@ struct APComVideoPlayer_TestVideoPlayer_Params
 {
 	class AActor*                                      SpawningActor;                                            // (Parm)
 	struct FString                                     InURL;                                                    // (OptionalParm, Parm, NeedCtorLink)
+};
+
+// Function PlatformCommon.PComVideoPlayer.StopVideoSession
+struct APComVideoPlayer_StopVideoSession_Params
+{
 };
 
 // Function PlatformCommon.PComVideoPlayer.Initialize

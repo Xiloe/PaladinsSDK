@@ -1,6 +1,6 @@
 #pragma once
 
-// Paladins (4.1.3942.2) SDK
+// Paladins (3.05) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -21419,6 +21419,12 @@ struct APawn_InterpolationStarted_Params
 	class UInterpGroupInst*                            GroupInst;                                                // (Parm)
 };
 
+// Function Engine.Pawn.GetGroundSpeed
+struct APawn_GetGroundSpeed_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function Engine.Pawn.MAT_SetSkelControlStrength
 struct APawn_MAT_SetSkelControlStrength_Params
 {
@@ -21535,6 +21541,12 @@ struct APawn_CacheAnimNodes_Params
 struct APawn_PostInitAnimTree_Params
 {
 	class USkeletalMeshComponent*                      SkelComp;                                                 // (Parm, EditInline)
+};
+
+// Function Engine.Pawn.GetJumpSpeedMultiplier
+struct APawn_GetJumpSpeedMultiplier_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function Engine.Pawn.IsDesiredRotationLocked
@@ -28934,6 +28946,16 @@ struct UOnlinePlayerInterface_CanCommunicateVoiceWithUsers_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (Parm)
 	TArray<struct FSessionMemberInfo>                  Users;                                                    // (Parm, NeedCtorLink)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function Engine.OnlinePlayerInterface.CanMultiplayerCrossPlay
+struct UOnlinePlayerInterface_CanMultiplayerCrossPlay_Params
+{
+	unsigned char                                      LocalUserNum;                                             // (Parm)
+	TEnumAsByte<EFeaturePrivilegeLevel>                PrivilegeLevelHint;                                       // (Parm, OutParm)
+	bool                                               bAttemptToResolve;                                        // (OptionalParm, Parm)
+	struct FString                                     Reason;                                                   // (OptionalParm, Parm, NeedCtorLink)
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 

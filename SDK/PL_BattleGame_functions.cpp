@@ -1,4 +1,4 @@
-// Paladins (4.1.3942.2) SDK
+// Paladins (3.05) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -13,9 +13,9 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // Function BattleGame.BattlePlayerController.BattlePlayerControllerFunction
-// (Defined, Iterator, Latent, PreOperator, HasOptionalParms, Const)
+// (Latent, PreOperator, Net, Operator, Static, HasOptionalParms, Const)
 
-void ABattlePlayerController::BattlePlayerControllerFunction()
+void ABattlePlayerController::STATIC_BattlePlayerControllerFunction()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function BattleGame.BattlePlayerController.BattlePlayerControllerFunction");
 

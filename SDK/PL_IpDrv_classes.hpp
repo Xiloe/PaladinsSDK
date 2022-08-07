@@ -1,6 +1,6 @@
 #pragma once
 
-// Paladins (4.1.3942.2) SDK
+// Paladins (3.05) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -75,13 +75,13 @@ public:
 
 	void ResolveFailed();
 	void Resolved(const struct FIpAddr& Addr);
-	void STATIC_GetLocalIP(struct FIpAddr* Arg);
-	bool STATIC_StringToIpAddr(const struct FString& Str, struct FIpAddr* Addr);
-	struct FString STATIC_IpAddrToString(const struct FIpAddr& Arg);
-	int STATIC_GetLastError();
-	void STATIC_Resolve(const struct FString& Domain);
-	bool STATIC_ParseURL(const struct FString& URL, struct FString* Addr, int* PortNum, struct FString* LevelName, struct FString* EntryName);
-	bool STATIC_IsDataPending();
+	void GetLocalIP(struct FIpAddr* Arg);
+	bool StringToIpAddr(const struct FString& Str, struct FIpAddr* Addr);
+	struct FString IpAddrToString(const struct FIpAddr& Arg);
+	int GetLastError();
+	void Resolve(const struct FString& Domain);
+	bool ParseURL(const struct FString& URL, struct FString* Addr, int* PortNum, struct FString* LevelName, struct FString* EntryName);
+	bool IsDataPending();
 };
 
 
@@ -110,15 +110,15 @@ public:
 	void Closed();
 	void Opened();
 	void Accepted();
-	int STATIC_ReadBinary(int Count, unsigned char* B);
-	int STATIC_ReadText(struct FString* Str);
+	int ReadBinary(int Count, unsigned char* B);
+	int ReadText(struct FString* Str);
 	int SendBinary(int Count, unsigned char B);
 	int SendText(const struct FString& Str);
-	bool STATIC_IsConnected();
-	bool STATIC_Close();
+	bool IsConnected();
+	bool Close();
 	bool Open(const struct FIpAddr& Addr);
-	bool STATIC_Listen();
-	int STATIC_BindPort(int PortNum, bool bUseNextAvailable);
+	bool Listen();
+	int BindPort(int PortNum, bool bUseNextAvailable);
 };
 
 
@@ -137,9 +137,9 @@ public:
 	}
 
 
-	struct FString STATIC_GetUserAuthURL(const struct FString& McpId);
-	struct FString STATIC_GetAppAccessURL();
-	struct FString STATIC_GetBaseURL();
+	struct FString GetUserAuthURL(const struct FString& McpId);
+	struct FString GetAppAccessURL();
+	struct FString GetBaseURL();
 	void Init();
 };
 
@@ -177,10 +177,10 @@ public:
 	}
 
 
-	bool STATIC_UploadMatchmakingStats(const struct FUniqueNetId& UniqueId, class UOnlineMatchmakingStats* MMStats);
-	bool STATIC_UpdatePlaylistPopulation(int PlaylistId, int NumPlayers);
-	bool STATIC_UploadGameplayEventsData(const struct FUniqueNetId& UniqueId, TArray<unsigned char>* Payload);
-	bool STATIC_UploadPlayerData(const struct FUniqueNetId& UniqueId, const struct FString& PlayerNick, class UOnlineProfileSettings* ProfileSettings, class UOnlinePlayerStorage* PlayerStorage);
+	bool UploadMatchmakingStats(const struct FUniqueNetId& UniqueId, class UOnlineMatchmakingStats* MMStats);
+	bool UpdatePlaylistPopulation(int PlaylistId, int NumPlayers);
+	bool UploadGameplayEventsData(const struct FUniqueNetId& UniqueId, TArray<unsigned char>* Payload);
+	bool UploadPlayerData(const struct FUniqueNetId& UniqueId, const struct FString& PlayerNick, class UOnlineProfileSettings* ProfileSettings, class UOnlinePlayerStorage* PlayerStorage);
 };
 
 
@@ -202,11 +202,11 @@ public:
 	}
 
 
-	struct FString GetNews(unsigned char LocalUserNum, TEnumAsByte<EOnlineNewsType> NewsType);
-	void STATIC_ClearReadNewsCompletedDelegate(const struct FScriptDelegate& ReadGameNewsDelegate);
-	void STATIC_AddReadNewsCompletedDelegate(const struct FScriptDelegate& ReadNewsDelegate);
+	struct FString STATIC_GetNews(unsigned char LocalUserNum, TEnumAsByte<EOnlineNewsType> NewsType);
+	void ClearReadNewsCompletedDelegate(const struct FScriptDelegate& ReadGameNewsDelegate);
+	void AddReadNewsCompletedDelegate(const struct FScriptDelegate& ReadNewsDelegate);
 	void OnReadNewsCompleted(bool bWasSuccessful, TEnumAsByte<EOnlineNewsType> NewsType);
-	bool ReadNews(unsigned char LocalUserNum, TEnumAsByte<EOnlineNewsType> NewsType);
+	bool STATIC_ReadNews(unsigned char LocalUserNum, TEnumAsByte<EOnlineNewsType> NewsType);
 };
 
 
@@ -234,18 +234,18 @@ public:
 	}
 
 
-	struct FString STATIC_GetUrlForFile(const struct FString& Filename);
-	void STATIC_ClearRequestTitleFileListCompleteDelegate(const struct FScriptDelegate& RequestTitleFileListDelegate);
-	void STATIC_AddRequestTitleFileListCompleteDelegate(const struct FScriptDelegate& RequestTitleFileListDelegate);
+	struct FString GetUrlForFile(const struct FString& Filename);
+	void ClearRequestTitleFileListCompleteDelegate(const struct FScriptDelegate& RequestTitleFileListDelegate);
+	void AddRequestTitleFileListCompleteDelegate(const struct FScriptDelegate& RequestTitleFileListDelegate);
 	void OnRequestTitleFileListComplete(bool bWasSuccessful, TArray<struct FString> FilePaths);
 	bool RequestTitleFileList();
-	bool STATIC_ClearDownloadedFile(const struct FString& Filename);
-	bool STATIC_ClearDownloadedFiles();
-	TEnumAsByte<EOnlineEnumerationReadState> GetTitleFileState(const struct FString& Filename);
-	bool GetTitleFileContents(const struct FString& Filename, TArray<unsigned char>* FileContents);
-	void STATIC_ClearReadTitleFileCompleteDelegate(const struct FScriptDelegate& ReadTitleFileCompleteDelegate);
-	void STATIC_AddReadTitleFileCompleteDelegate(const struct FScriptDelegate& ReadTitleFileCompleteDelegate);
-	bool ReadTitleFile(const struct FString& FileToRead, TEnumAsByte<EOnlineFileType> FileType);
+	bool ClearDownloadedFile(const struct FString& Filename);
+	bool ClearDownloadedFiles();
+	TEnumAsByte<EOnlineEnumerationReadState> STATIC_GetTitleFileState(const struct FString& Filename);
+	bool STATIC_GetTitleFileContents(const struct FString& Filename, TArray<unsigned char>* FileContents);
+	void ClearReadTitleFileCompleteDelegate(const struct FScriptDelegate& ReadTitleFileCompleteDelegate);
+	void AddReadTitleFileCompleteDelegate(const struct FScriptDelegate& ReadTitleFileCompleteDelegate);
+	bool STATIC_ReadTitleFile(const struct FString& FileToRead, TEnumAsByte<EOnlineFileType> FileType);
 	void STATIC_OnReadTitleFileComplete(bool bWasSuccessful, const struct FString& Filename);
 };
 
@@ -265,11 +265,11 @@ public:
 	}
 
 
-	bool STATIC_ClearDownloadedFile(const struct FString& Filename);
-	bool STATIC_ClearDownloadedFiles();
-	TEnumAsByte<EOnlineEnumerationReadState> GetTitleFileState(const struct FString& Filename);
-	bool GetTitleFileContents(const struct FString& Filename, TArray<unsigned char>* FileContents);
-	bool ReadTitleFile(const struct FString& FileToRead, TEnumAsByte<EOnlineFileType> FileType);
+	bool ClearDownloadedFile(const struct FString& Filename);
+	bool ClearDownloadedFiles();
+	TEnumAsByte<EOnlineEnumerationReadState> STATIC_GetTitleFileState(const struct FString& Filename);
+	bool STATIC_GetTitleFileContents(const struct FString& Filename, TArray<unsigned char>* FileContents);
+	bool STATIC_ReadTitleFile(const struct FString& FileToRead, TEnumAsByte<EOnlineFileType> FileType);
 };
 
 
@@ -287,17 +287,17 @@ public:
 	}
 
 
-	struct FString STATIC_GetUrlForFile(const struct FString& Filename);
-	void STATIC_OnFileListReceived(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bDidSucceed);
+	struct FString GetUrlForFile(const struct FString& Filename);
+	void OnFileListReceived(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bDidSucceed);
 	bool RequestTitleFileList();
-	bool STATIC_ClearDownloadedFile(const struct FString& Filename);
-	bool STATIC_ClearDownloadedFiles();
-	TEnumAsByte<EOnlineEnumerationReadState> GetTitleFileState(const struct FString& Filename);
-	bool GetTitleFileContents(const struct FString& Filename, TArray<unsigned char>* FileContents);
-	void STATIC_TriggerDelegates(bool bSuccess, const struct FString& FileRead);
-	void STATIC_OnFileDownloadComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bDidSucceed);
-	bool ReadTitleFile(const struct FString& FileToRead, TEnumAsByte<EOnlineFileType> FileType);
-	bool STATIC_UncompressTitleFileContents(TEnumAsByte<EMcpFileCompressionType> FileCompressionType, TArray<unsigned char>* CompressedFileContents, TArray<unsigned char>* UncompressedFileContents);
+	bool ClearDownloadedFile(const struct FString& Filename);
+	bool ClearDownloadedFiles();
+	TEnumAsByte<EOnlineEnumerationReadState> STATIC_GetTitleFileState(const struct FString& Filename);
+	bool STATIC_GetTitleFileContents(const struct FString& Filename, TArray<unsigned char>* FileContents);
+	void TriggerDelegates(bool bSuccess, const struct FString& FileRead);
+	void OnFileDownloadComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bDidSucceed);
+	bool STATIC_ReadTitleFile(const struct FString& FileToRead, TEnumAsByte<EOnlineFileType> FileType);
+	bool UncompressTitleFileContents(TEnumAsByte<EMcpFileCompressionType> FileCompressionType, TArray<unsigned char>* CompressedFileContents, TArray<unsigned char>* UncompressedFileContents);
 };
 
 
@@ -323,20 +323,20 @@ public:
 
 	bool STATIC_DeleteTitleFile(const struct FString& Filename);
 	bool STATIC_DeleteTitleFiles(float MaxAgeSeconds);
-	bool STATIC_ClearCachedFile(const struct FString& Filename);
-	bool STATIC_ClearCachedFiles();
-	struct FString GetTitleFileLogicalName(const struct FString& Filename);
-	struct FString GetTitleFileHash(const struct FString& Filename);
-	TEnumAsByte<EOnlineEnumerationReadState> GetTitleFileState(const struct FString& Filename);
-	bool GetTitleFileContents(const struct FString& Filename, TArray<unsigned char>* FileContents);
-	void STATIC_ClearSaveTitleFileCompleteDelegate(const struct FScriptDelegate& SaveCompleteDelegate);
-	void STATIC_AddSaveTitleFileCompleteDelegate(const struct FScriptDelegate& SaveCompleteDelegate);
+	bool ClearCachedFile(const struct FString& Filename);
+	bool ClearCachedFiles();
+	struct FString STATIC_GetTitleFileLogicalName(const struct FString& Filename);
+	struct FString STATIC_GetTitleFileHash(const struct FString& Filename);
+	TEnumAsByte<EOnlineEnumerationReadState> STATIC_GetTitleFileState(const struct FString& Filename);
+	bool STATIC_GetTitleFileContents(const struct FString& Filename, TArray<unsigned char>* FileContents);
+	void ClearSaveTitleFileCompleteDelegate(const struct FScriptDelegate& SaveCompleteDelegate);
+	void AddSaveTitleFileCompleteDelegate(const struct FScriptDelegate& SaveCompleteDelegate);
 	void OnSaveTitleFileComplete(bool bWasSuccessful, const struct FString& Filename);
 	bool SaveTitleFile(const struct FString& Filename, const struct FString& LogicalName, TArray<unsigned char> FileContents);
-	void STATIC_ClearLoadTitleFileCompleteDelegate(const struct FScriptDelegate& LoadCompleteDelegate);
-	void STATIC_AddLoadTitleFileCompleteDelegate(const struct FScriptDelegate& LoadCompleteDelegate);
+	void ClearLoadTitleFileCompleteDelegate(const struct FScriptDelegate& LoadCompleteDelegate);
+	void AddLoadTitleFileCompleteDelegate(const struct FScriptDelegate& LoadCompleteDelegate);
 	void OnLoadTitleFileComplete(bool bWasSuccessful, const struct FString& Filename);
-	bool LoadTitleFile(const struct FString& Filename);
+	bool STATIC_LoadTitleFile(const struct FString& Filename);
 };
 
 
@@ -366,19 +366,19 @@ public:
 	}
 
 
-	bool STATIC_CacheMessageContents(const struct FString& MessageId, TArray<unsigned char>* MessageContents);
-	void STATIC_CacheMessage(const struct FMcpMessage& Message);
-	bool STATIC_GetMessageContents(const struct FString& MessageId, TArray<unsigned char>* MessageContents);
+	bool CacheMessageContents(const struct FString& MessageId, TArray<unsigned char>* MessageContents);
+	void CacheMessage(const struct FMcpMessage& Message);
+	bool GetMessageContents(const struct FString& MessageId, TArray<unsigned char>* MessageContents);
 	void OnQueryMessageContentsComplete(const struct FString& MessageId, bool bWasSuccessful, const struct FString& Error);
-	void STATIC_QueryMessageContents(const struct FString& MessageId);
-	void STATIC_GetMessageList(const struct FString& ToUniqueUserId, struct FMcpMessageList* MessageList);
+	void QueryMessageContents(const struct FString& MessageId);
+	void GetMessageList(const struct FString& ToUniqueUserId, struct FMcpMessageList* MessageList);
 	void OnQueryMessagesComplete(const struct FString& UserId, bool bWasSuccessful, const struct FString& Error);
-	void STATIC_QueryMessages(const struct FString& ToUniqueUserId, const struct FString& TitleId);
+	void QueryMessages(const struct FString& ToUniqueUserId, const struct FString& TitleId);
 	void OnDeleteMessageComplete(const struct FString& MessageId, bool bWasSuccessful, const struct FString& Error);
 	void STATIC_DeleteMessage(const struct FString& MessageId);
 	void OnCreateMessageComplete(const struct FMcpMessage& Message, bool bWasSuccessful, const struct FString& Error);
-	void STATIC_CreateMessage(const struct FString& FromUniqueUserId, const struct FString& FromFriendlyName, const struct FString& MessageType, const struct FString& TitleId, const struct FString& PushMessage, const struct FString& ValidUntil, TArray<struct FString>* ToUniqueUserIds, TArray<unsigned char>* MessageContents);
-	class UMcpMessageBase* STATIC_CreateInstance();
+	void CreateMessage(const struct FString& FromUniqueUserId, const struct FString& FromFriendlyName, const struct FString& MessageType, const struct FString& TitleId, const struct FString& PushMessage, const struct FString& ValidUntil, TArray<struct FString>* ToUniqueUserIds, TArray<unsigned char>* MessageContents);
+	class UMcpMessageBase* CreateInstance();
 };
 
 
@@ -403,22 +403,22 @@ public:
 	}
 
 
-	bool STATIC_CacheMessageContents(const struct FString& MessageId, TArray<unsigned char>* MessageContents);
-	bool STATIC_GetMessageById(const struct FString& MessageId, struct FMcpMessage* Message);
-	void STATIC_CacheMessage(const struct FMcpMessage& Message);
-	bool STATIC_GetMessageContents(const struct FString& MessageId, TArray<unsigned char>* MessageContents);
-	void STATIC_OnQueryMessageContentsRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful);
-	void STATIC_QueryMessageContents(const struct FString& MessageId);
-	void STATIC_GetMessageList(const struct FString& ToUniqueUserId, struct FMcpMessageList* MessageList);
-	void STATIC_OnQueryMessagesRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful);
-	void STATIC_QueryMessages(const struct FString& ToUniqueUserId, const struct FString& TitleId);
-	void STATIC_OnDeleteMessageRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful);
+	bool CacheMessageContents(const struct FString& MessageId, TArray<unsigned char>* MessageContents);
+	bool GetMessageById(const struct FString& MessageId, struct FMcpMessage* Message);
+	void CacheMessage(const struct FMcpMessage& Message);
+	bool GetMessageContents(const struct FString& MessageId, TArray<unsigned char>* MessageContents);
+	void OnQueryMessageContentsRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful);
+	void QueryMessageContents(const struct FString& MessageId);
+	void GetMessageList(const struct FString& ToUniqueUserId, struct FMcpMessageList* MessageList);
+	void OnQueryMessagesRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful);
+	void QueryMessages(const struct FString& ToUniqueUserId, const struct FString& TitleId);
+	void OnDeleteMessageRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful);
 	void STATIC_DeleteMessage(const struct FString& MessageId);
-	void STATIC_OnCreateMessageRequestComplete(class UHttpRequestInterface* CreateMessageRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful);
-	void STATIC_CreateMessage(const struct FString& FromUniqueUserId, const struct FString& FromFriendlyName, const struct FString& MessageType, const struct FString& TitleId, const struct FString& PushMessage, const struct FString& ValidUntil, TArray<struct FString>* ToUniqueUserIds, TArray<unsigned char>* MessageContents);
+	void OnCreateMessageRequestComplete(class UHttpRequestInterface* CreateMessageRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful);
+	void CreateMessage(const struct FString& FromUniqueUserId, const struct FString& FromFriendlyName, const struct FString& MessageType, const struct FString& TitleId, const struct FString& PushMessage, const struct FString& ValidUntil, TArray<struct FString>* ToUniqueUserIds, TArray<unsigned char>* MessageContents);
 	void FinishedAsyncUncompression(bool bWasSuccessful, const struct FString& MessageId, TArray<unsigned char>* UncompressedMessageContents);
-	bool STATIC_StartAsyncUncompression(const struct FString& MessageId, TEnumAsByte<EMcpMessageCompressionType> MessageCompressionType, TArray<unsigned char>* MessageContent);
-	bool STATIC_StartAsyncCompression(TEnumAsByte<EMcpMessageCompressionType> MessageCompressionType, class UHttpRequestInterface* Request, TArray<unsigned char>* MessageContent);
+	bool StartAsyncUncompression(const struct FString& MessageId, TEnumAsByte<EMcpMessageCompressionType> MessageCompressionType, TArray<unsigned char>* MessageContent);
+	bool StartAsyncCompression(TEnumAsByte<EMcpMessageCompressionType> MessageCompressionType, class UHttpRequestInterface* Request, TArray<unsigned char>* MessageContent);
 };
 
 
@@ -452,36 +452,36 @@ public:
 	}
 
 
-	void STATIC_ClearAllDelegates();
-	void STATIC_ClearDeleteUserFileCompleteDelegate(const struct FScriptDelegate& DeleteUserFileCompleteDelegate);
-	void STATIC_AddDeleteUserFileCompleteDelegate(const struct FScriptDelegate& DeleteUserFileCompleteDelegate);
-	void STATIC_CallDeleteUserFileCompleteDelegates(bool bWasSuccessful, const struct FString& UserId, const struct FString& Filename);
+	void ClearAllDelegates();
+	void ClearDeleteUserFileCompleteDelegate(const struct FScriptDelegate& DeleteUserFileCompleteDelegate);
+	void AddDeleteUserFileCompleteDelegate(const struct FScriptDelegate& DeleteUserFileCompleteDelegate);
+	void CallDeleteUserFileCompleteDelegates(bool bWasSuccessful, const struct FString& UserId, const struct FString& Filename);
 	void STATIC_OnDeleteUserFileComplete(bool bWasSuccessful, const struct FString& UserId, const struct FString& Filename);
-	void STATIC_OnHTTPRequestDeleteUserFileComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
+	void OnHTTPRequestDeleteUserFileComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
 	bool STATIC_DeleteUserFile(const struct FString& UserId, const struct FString& Filename, bool bShouldCloudDelete, bool bShouldLocallyDelete);
-	void STATIC_ClearWriteUserFileCompleteDelegate(const struct FScriptDelegate& WriteUserFileCompleteDelegate);
-	void STATIC_AddWriteUserFileCompleteDelegate(const struct FScriptDelegate& WriteUserFileCompleteDelegate);
-	void STATIC_CallWriteUserFileCompleteDelegates(bool bWasSuccessful, const struct FString& UserId, const struct FString& Filename);
+	void ClearWriteUserFileCompleteDelegate(const struct FScriptDelegate& WriteUserFileCompleteDelegate);
+	void AddWriteUserFileCompleteDelegate(const struct FScriptDelegate& WriteUserFileCompleteDelegate);
+	void CallWriteUserFileCompleteDelegates(bool bWasSuccessful, const struct FString& UserId, const struct FString& Filename);
 	void STATIC_OnWriteUserFileComplete(bool bWasSuccessful, const struct FString& UserId, const struct FString& Filename);
-	void STATIC_OnHTTPRequestWriteUserFileComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
-	void STATIC_GetUserFileIndexForRequest(class UHttpRequestInterface* Request, int* UserIdx, int* FileIdx);
-	bool STATIC_WriteUserFile(const struct FString& UserId, const struct FString& Filename, TArray<unsigned char>* FileContents);
-	void STATIC_ClearReadUserFileCompleteDelegate(const struct FScriptDelegate& ReadUserFileCompleteDelegate);
-	void STATIC_AddReadUserFileCompleteDelegate(const struct FScriptDelegate& ReadUserFileCompleteDelegate);
-	void STATIC_CallReadUserFileCompleteDelegates(bool bWasSuccessful, const struct FString& UserId, const struct FString& Filename);
+	void OnHTTPRequestWriteUserFileComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
+	void GetUserFileIndexForRequest(class UHttpRequestInterface* Request, int* UserIdx, int* FileIdx);
+	bool WriteUserFile(const struct FString& UserId, const struct FString& Filename, TArray<unsigned char>* FileContents);
+	void ClearReadUserFileCompleteDelegate(const struct FScriptDelegate& ReadUserFileCompleteDelegate);
+	void AddReadUserFileCompleteDelegate(const struct FScriptDelegate& ReadUserFileCompleteDelegate);
+	void CallReadUserFileCompleteDelegates(bool bWasSuccessful, const struct FString& UserId, const struct FString& Filename);
 	void STATIC_OnReadUserFileComplete(bool bWasSuccessful, const struct FString& UserId, const struct FString& Filename);
-	void STATIC_OnHTTPRequestReadUserFileComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
-	bool ReadUserFile(const struct FString& UserId, const struct FString& Filename);
-	void GetUserFileList(const struct FString& UserId, TArray<struct FEmsFile>* UserFiles);
-	void STATIC_ClearEnumerateUserFileCompleteDelegate(const struct FScriptDelegate& EnumerateUserFileCompleteDelegate);
-	void STATIC_AddEnumerateUserFileCompleteDelegate(const struct FScriptDelegate& EnumerateUserFileCompleteDelegate);
-	void STATIC_CallEnumerateUserFileCompleteDelegates(bool bWasSuccessful, const struct FString& UserId);
+	void OnHTTPRequestReadUserFileComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
+	bool STATIC_ReadUserFile(const struct FString& UserId, const struct FString& Filename);
+	void STATIC_GetUserFileList(const struct FString& UserId, TArray<struct FEmsFile>* UserFiles);
+	void ClearEnumerateUserFileCompleteDelegate(const struct FScriptDelegate& EnumerateUserFileCompleteDelegate);
+	void AddEnumerateUserFileCompleteDelegate(const struct FScriptDelegate& EnumerateUserFileCompleteDelegate);
+	void CallEnumerateUserFileCompleteDelegates(bool bWasSuccessful, const struct FString& UserId);
 	void STATIC_OnEnumerateUserFilesComplete(bool bWasSuccessful, const struct FString& UserId);
-	void STATIC_OnHTTPRequestEnumerateUserFilesComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
+	void OnHTTPRequestEnumerateUserFilesComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
 	void STATIC_EnumerateUserFiles(const struct FString& UserId);
-	bool STATIC_ClearFile(const struct FString& UserId, const struct FString& Filename);
-	bool STATIC_ClearFiles(const struct FString& UserId);
-	bool GetFileContents(const struct FString& UserId, const struct FString& Filename, TArray<unsigned char>* FileContents);
+	bool ClearFile(const struct FString& UserId, const struct FString& Filename);
+	bool ClearFiles(const struct FString& UserId);
+	bool STATIC_GetFileContents(const struct FString& UserId, const struct FString& Filename, TArray<unsigned char>* FileContents);
 };
 
 
@@ -553,14 +553,14 @@ public:
 	}
 
 
-	bool STATIC_SendHostNewGameSessionResponse(bool bSuccess, const struct FName& SessionName, class UClass* SearchClass, unsigned char* PlatformSpecificInfo);
+	bool SendHostNewGameSessionResponse(bool bSuccess, const struct FName& SessionName, class UClass* SearchClass, unsigned char* PlatformSpecificInfo);
 	void OnCreateNewSessionRequestReceived(const struct FName& SessionName, class UClass* SearchClass, TArray<struct FPlayerMember>* Players);
 	void OnTravelRequestReceived(const struct FName& SessionName, class UClass* SearchClass, unsigned char* PlatformSpecificInfo);
 	void OnReceivedBandwidthTestResults(TEnumAsByte<EMeshBeaconBandwidthTestType> TestType, TEnumAsByte<EMeshBeaconBandwidthTestResult> TestResult, struct FConnectionBandwidthStats* BandwidthStats);
 	void OnReceivedBandwidthTestRequest(TEnumAsByte<EMeshBeaconBandwidthTestType> TestType);
 	void OnConnectionRequestResult(TEnumAsByte<EMeshBeaconConnectionResult> ConnectionResult);
-	bool STATIC_BeginBandwidthTest(TEnumAsByte<EMeshBeaconBandwidthTestType> TestType, int TestBufferSize);
-	bool STATIC_RequestConnection(bool bRegisterSecureAddress, struct FOnlineGameSearchResult* DesiredHost, struct FClientConnectionRequest* ClientRequest);
+	bool BeginBandwidthTest(TEnumAsByte<EMeshBeaconBandwidthTestType> TestType, int TestBufferSize);
+	bool RequestConnection(bool bRegisterSecureAddress, struct FOnlineGameSearchResult* DesiredHost, struct FClientConnectionRequest* ClientRequest);
 	void DestroyBeacon();
 };
 
@@ -594,23 +594,23 @@ public:
 
 
 	void OnReceivedClientCreateNewSessionResult(bool bSucceeded, const struct FName& SessionName, class UClass* SearchClass, unsigned char* PlatformSpecificInfo);
-	bool STATIC_RequestClientCreateNewSession(const struct FUniqueNetId& PlayerNetId, const struct FName& SessionName, class UClass* SearchClass, TArray<struct FPlayerMember>* Players);
-	void STATIC_TellClientsToTravel(const struct FName& SessionName, class UClass* SearchClass, unsigned char* PlatformSpecificInfo);
+	bool RequestClientCreateNewSession(const struct FUniqueNetId& PlayerNetId, const struct FName& SessionName, class UClass* SearchClass, TArray<struct FPlayerMember>* Players);
+	void TellClientsToTravel(const struct FName& SessionName, class UClass* SearchClass, unsigned char* PlatformSpecificInfo);
 	void OnAllPendingPlayersConnected();
-	bool STATIC_AllPlayersConnected(TArray<struct FUniqueNetId>* Players);
-	int STATIC_GetConnectionIndexForPlayer(const struct FUniqueNetId& PlayerNetId);
-	void STATIC_SetPendingPlayerConnections(TArray<struct FUniqueNetId>* Players);
+	bool AllPlayersConnected(TArray<struct FUniqueNetId>* Players);
+	int GetConnectionIndexForPlayer(const struct FUniqueNetId& PlayerNetId);
+	void SetPendingPlayerConnections(TArray<struct FUniqueNetId>* Players);
 	void OnFinishedBandwidthTest(const struct FUniqueNetId& PlayerNetId, TEnumAsByte<EMeshBeaconBandwidthTestType> TestType, TEnumAsByte<EMeshBeaconBandwidthTestResult> TestResult, struct FConnectionBandwidthStats* BandwidthStats);
 	void OnStartedBandwidthTest(const struct FUniqueNetId& PlayerNetId, TEnumAsByte<EMeshBeaconBandwidthTestType> TestType);
 	void OnReceivedClientConnectionRequest(struct FClientMeshBeaconConnection* NewClientConnection);
-	void STATIC_AllowBandwidthTesting(bool bEnabled);
-	void STATIC_CancelPendingBandwidthTests();
-	bool STATIC_HasPendingBandwidthTest();
-	void STATIC_CancelInProgressBandwidthTests();
-	bool STATIC_HasInProgressBandwidthTest();
-	bool STATIC_RequestClientBandwidthTest(const struct FUniqueNetId& PlayerNetId, TEnumAsByte<EMeshBeaconBandwidthTestType> TestType, int TestBufferSize);
+	void AllowBandwidthTesting(bool bEnabled);
+	void CancelPendingBandwidthTests();
+	bool HasPendingBandwidthTest();
+	void CancelInProgressBandwidthTests();
+	bool HasInProgressBandwidthTest();
+	bool RequestClientBandwidthTest(const struct FUniqueNetId& PlayerNetId, TEnumAsByte<EMeshBeaconBandwidthTestType> TestType, int TestBufferSize);
 	void DestroyBeacon();
-	bool STATIC_InitHostBeacon(const struct FUniqueNetId& InOwningPlayerId);
+	bool InitHostBeacon(const struct FUniqueNetId& InOwningPlayerId);
 };
 
 
@@ -633,8 +633,8 @@ public:
 	}
 
 
-	void STATIC_GetRegisteredPlayers(const struct FName& SessionName, TArray<struct FUniqueNetId>* OutRegisteredPlayers);
-	bool STATIC_IsPlayerInSession(const struct FName& SessionName, const struct FUniqueNetId& PlayerID);
+	void GetRegisteredPlayers(const struct FName& SessionName, TArray<struct FUniqueNetId>* OutRegisteredPlayers);
+	bool IsPlayerInSession(const struct FName& SessionName, const struct FUniqueNetId& PlayerID);
 	struct FString GetPlayerNicknameFromIndex(int UserIndex);
 };
 
@@ -694,68 +694,68 @@ public:
 	}
 
 
-	bool GetServerAddr(struct FIpAddr* OutServerIP, int* OutServerPort);
-	bool GetServerUniqueId(struct FUniqueNetId* OutServerUID);
+	bool STATIC_GetServerAddr(struct FIpAddr* OutServerIP, int* OutServerPort);
+	bool STATIC_GetServerUniqueId(struct FUniqueNetId* OutServerUID);
 	bool STATIC_FindLocalServerAuthSession(class UPlayer* ClientConnection, struct FLocalAuthSession* OutSessionInfo);
 	bool STATIC_FindServerAuthSession(class UPlayer* ServerConnection, struct FAuthSession* OutSessionInfo);
 	bool STATIC_FindLocalClientAuthSession(class UPlayer* ServerConnection, struct FLocalAuthSession* OutSessionInfo);
 	bool STATIC_FindClientAuthSession(class UPlayer* ClientConnection, struct FAuthSession* OutSessionInfo);
-	void STATIC_AllLocalServerAuthSessions(struct FLocalAuthSession* OutSessionInfo);
-	void STATIC_AllServerAuthSessions(struct FAuthSession* OutSessionInfo);
-	void STATIC_AllLocalClientAuthSessions(struct FLocalAuthSession* OutSessionInfo);
-	void STATIC_AllClientAuthSessions(struct FAuthSession* OutSessionInfo);
+	void AllLocalServerAuthSessions(struct FLocalAuthSession* OutSessionInfo);
+	void AllServerAuthSessions(struct FAuthSession* OutSessionInfo);
+	void AllLocalClientAuthSessions(struct FLocalAuthSession* OutSessionInfo);
+	void AllClientAuthSessions(struct FAuthSession* OutSessionInfo);
 	void STATIC_EndAllRemoteServerAuthSessions();
 	void STATIC_EndAllLocalServerAuthSessions();
 	void STATIC_EndRemoteServerAuthSession(const struct FUniqueNetId& ServerUID, const struct FIpAddr& ServerIP);
 	void STATIC_EndLocalServerAuthSession(const struct FUniqueNetId& ClientUID, const struct FIpAddr& ClientIP);
-	bool STATIC_VerifyServerAuthSession(const struct FUniqueNetId& ServerUID, const struct FIpAddr& ServerIP, int AuthTicketUID);
-	bool STATIC_CreateServerAuthSession(const struct FUniqueNetId& ClientUID, const struct FIpAddr& ClientIP, int ClientPort, int* OutAuthTicketUID);
+	bool VerifyServerAuthSession(const struct FUniqueNetId& ServerUID, const struct FIpAddr& ServerIP, int AuthTicketUID);
+	bool CreateServerAuthSession(const struct FUniqueNetId& ClientUID, const struct FIpAddr& ClientIP, int ClientPort, int* OutAuthTicketUID);
 	void STATIC_EndAllRemoteClientAuthSessions();
 	void STATIC_EndAllLocalClientAuthSessions();
 	void STATIC_EndRemoteClientAuthSession(const struct FUniqueNetId& ClientUID, const struct FIpAddr& ClientIP);
 	void STATIC_EndLocalClientAuthSession(const struct FUniqueNetId& ServerUID, const struct FIpAddr& ServerIP, int ServerPort);
-	bool STATIC_VerifyClientAuthSession(const struct FUniqueNetId& ClientUID, const struct FIpAddr& ClientIP, int ClientPort, int AuthTicketUID);
-	bool STATIC_CreateClientAuthSession(const struct FUniqueNetId& ServerUID, const struct FIpAddr& ServerIP, int ServerPort, bool bSecure, int* OutAuthTicketUID);
+	bool VerifyClientAuthSession(const struct FUniqueNetId& ClientUID, const struct FIpAddr& ClientIP, int ClientPort, int AuthTicketUID);
+	bool CreateClientAuthSession(const struct FUniqueNetId& ServerUID, const struct FIpAddr& ServerIP, int ServerPort, bool bSecure, int* OutAuthTicketUID);
 	bool SendServerAuthRetryRequest();
 	bool SendClientAuthEndSessionRequest(class UPlayer* ClientConnection);
 	bool SendServerAuthResponse(class UPlayer* ClientConnection, int AuthTicketUID);
 	bool SendClientAuthResponse(int AuthTicketUID);
 	bool SendServerAuthRequest(const struct FUniqueNetId& ServerUID);
 	bool SendClientAuthRequest(class UPlayer* ClientConnection, const struct FUniqueNetId& ClientUID);
-	void STATIC_ClearServerConnectionCloseDelegate(const struct FScriptDelegate& ServerConnectionCloseDelegate);
-	void STATIC_AddServerConnectionCloseDelegate(const struct FScriptDelegate& ServerConnectionCloseDelegate);
+	void ClearServerConnectionCloseDelegate(const struct FScriptDelegate& ServerConnectionCloseDelegate);
+	void AddServerConnectionCloseDelegate(const struct FScriptDelegate& ServerConnectionCloseDelegate);
 	void OnServerConnectionClose(class UPlayer* ServerConnection);
-	void STATIC_ClearClientConnectionCloseDelegate(const struct FScriptDelegate& ClientConnectionCloseDelegate);
-	void STATIC_AddClientConnectionCloseDelegate(const struct FScriptDelegate& ClientConnectionCloseDelegate);
+	void ClearClientConnectionCloseDelegate(const struct FScriptDelegate& ClientConnectionCloseDelegate);
+	void AddClientConnectionCloseDelegate(const struct FScriptDelegate& ClientConnectionCloseDelegate);
 	void OnClientConnectionClose(class UPlayer* ClientConnection);
-	void STATIC_ClearServerAuthRetryRequestDelegate(const struct FScriptDelegate& ServerAuthRetryRequestDelegate);
-	void STATIC_AddServerAuthRetryRequestDelegate(const struct FScriptDelegate& ServerAuthRetryRequestDelegate);
+	void ClearServerAuthRetryRequestDelegate(const struct FScriptDelegate& ServerAuthRetryRequestDelegate);
+	void AddServerAuthRetryRequestDelegate(const struct FScriptDelegate& ServerAuthRetryRequestDelegate);
 	void OnServerAuthRetryRequest(class UPlayer* ClientConnection);
-	void STATIC_ClearClientAuthEndSessionRequestDelegate(const struct FScriptDelegate& ClientAuthEndSessionRequestDelegate);
-	void STATIC_AddClientAuthEndSessionRequestDelegate(const struct FScriptDelegate& ClientAuthEndSessionRequestDelegate);
+	void ClearClientAuthEndSessionRequestDelegate(const struct FScriptDelegate& ClientAuthEndSessionRequestDelegate);
+	void AddClientAuthEndSessionRequestDelegate(const struct FScriptDelegate& ClientAuthEndSessionRequestDelegate);
 	void OnClientAuthEndSessionRequest(class UPlayer* ServerConnection);
-	void STATIC_ClearServerAuthCompleteDelegate(const struct FScriptDelegate& ServerAuthCompleteDelegate);
-	void STATIC_AddServerAuthCompleteDelegate(const struct FScriptDelegate& ServerAuthCompleteDelegate);
+	void ClearServerAuthCompleteDelegate(const struct FScriptDelegate& ServerAuthCompleteDelegate);
+	void AddServerAuthCompleteDelegate(const struct FScriptDelegate& ServerAuthCompleteDelegate);
 	void OnServerAuthComplete(bool bSuccess, const struct FUniqueNetId& ServerUID, class UPlayer* ServerConnection, const struct FString& ExtraInfo);
-	void STATIC_ClearClientAuthCompleteDelegate(const struct FScriptDelegate& ClientAuthCompleteDelegate);
-	void STATIC_AddClientAuthCompleteDelegate(const struct FScriptDelegate& ClientAuthCompleteDelegate);
+	void ClearClientAuthCompleteDelegate(const struct FScriptDelegate& ClientAuthCompleteDelegate);
+	void AddClientAuthCompleteDelegate(const struct FScriptDelegate& ClientAuthCompleteDelegate);
 	void OnClientAuthComplete(bool bSuccess, const struct FUniqueNetId& ClientUID, class UPlayer* ClientConnection, const struct FString& ExtraInfo);
-	void STATIC_ClearServerAuthResponseDelegate(const struct FScriptDelegate& ServerAuthResponseDelegate);
-	void STATIC_AddServerAuthResponseDelegate(const struct FScriptDelegate& ServerAuthResponseDelegate);
+	void ClearServerAuthResponseDelegate(const struct FScriptDelegate& ServerAuthResponseDelegate);
+	void AddServerAuthResponseDelegate(const struct FScriptDelegate& ServerAuthResponseDelegate);
 	void OnServerAuthResponse(const struct FUniqueNetId& ServerUID, const struct FIpAddr& ServerIP, int AuthTicketUID);
-	void STATIC_ClearClientAuthResponseDelegate(const struct FScriptDelegate& ClientAuthResponseDelegate);
-	void STATIC_AddClientAuthResponseDelegate(const struct FScriptDelegate& ClientAuthResponseDelegate);
+	void ClearClientAuthResponseDelegate(const struct FScriptDelegate& ClientAuthResponseDelegate);
+	void AddClientAuthResponseDelegate(const struct FScriptDelegate& ClientAuthResponseDelegate);
 	void OnClientAuthResponse(const struct FUniqueNetId& ClientUID, const struct FIpAddr& ClientIP, int AuthTicketUID);
-	void STATIC_ClearServerAuthRequestDelegate(const struct FScriptDelegate& ServerAuthRequestDelegate);
-	void STATIC_AddServerAuthRequestDelegate(const struct FScriptDelegate& ServerAuthRequestDelegate);
+	void ClearServerAuthRequestDelegate(const struct FScriptDelegate& ServerAuthRequestDelegate);
+	void AddServerAuthRequestDelegate(const struct FScriptDelegate& ServerAuthRequestDelegate);
 	void OnServerAuthRequest(class UPlayer* ClientConnection, const struct FUniqueNetId& ClientUID, const struct FIpAddr& ClientIP, int ClientPort);
-	void STATIC_ClearClientAuthRequestDelegate(const struct FScriptDelegate& ClientAuthRequestDelegate);
-	void STATIC_AddClientAuthRequestDelegate(const struct FScriptDelegate& ClientAuthRequestDelegate);
+	void ClearClientAuthRequestDelegate(const struct FScriptDelegate& ClientAuthRequestDelegate);
+	void AddClientAuthRequestDelegate(const struct FScriptDelegate& ClientAuthRequestDelegate);
 	void OnClientAuthRequest(const struct FUniqueNetId& ServerUID, const struct FIpAddr& ServerIP, int ServerPort, bool bSecure);
-	void STATIC_ClearAuthReadyDelegate(const struct FScriptDelegate& AuthReadyDelegate);
-	void STATIC_AddAuthReadyDelegate(const struct FScriptDelegate& AuthReadyDelegate);
+	void ClearAuthReadyDelegate(const struct FScriptDelegate& AuthReadyDelegate);
+	void AddAuthReadyDelegate(const struct FScriptDelegate& AuthReadyDelegate);
 	void OnAuthReady();
-	bool IsReady();
+	bool STATIC_IsReady();
 };
 
 
@@ -858,161 +858,161 @@ public:
 	}
 
 
-	void STATIC_ClearGetUserConnectionInfoCompleteDelegate(const struct FScriptDelegate& GetUserConnectionInfoCompleteDelegate);
-	void STATIC_AddGetUserConnectionInfoCompleteDelegate(const struct FScriptDelegate& GetUserConnectionInfoCompleteDelegate);
+	void ClearGetUserConnectionInfoCompleteDelegate(const struct FScriptDelegate& GetUserConnectionInfoCompleteDelegate);
+	void AddGetUserConnectionInfoCompleteDelegate(const struct FScriptDelegate& GetUserConnectionInfoCompleteDelegate);
 	void OnGetUserConnectionInfoComplete(TArray<struct FSessionMemberInfo> OutMemberInfo, bool bWasSuccessful);
-	bool GetUserConnectionInfoAsync(TArray<struct FString> UserNames);
-	void STATIC_ClearGetSessionMemberInfoCompleteDelegate(const struct FScriptDelegate& GetSessionMemberInfoCompleteDelegate);
-	void STATIC_AddGetSessionMemberInfoCompleteDelegate(const struct FScriptDelegate& GetSessionMemberInfoCompleteDelegate);
+	bool STATIC_GetUserConnectionInfoAsync(TArray<struct FString> UserNames);
+	void ClearGetSessionMemberInfoCompleteDelegate(const struct FScriptDelegate& GetSessionMemberInfoCompleteDelegate);
+	void AddGetSessionMemberInfoCompleteDelegate(const struct FScriptDelegate& GetSessionMemberInfoCompleteDelegate);
 	void OnGetSessionMemberInfoComplete(TArray<struct FSessionMemberInfo> OutMemberInfo, bool bWasSuccessful);
-	bool GetCurrentSessionMemberInfo(const struct FName& SessionName, TArray<struct FSessionMemberInfo>* OutMemberInfo);
-	bool GetCurrentSessionMemberInfoAsync(unsigned char LocalUserNum, const struct FName& SessionName);
+	bool STATIC_GetCurrentSessionMemberInfo(const struct FName& SessionName, TArray<struct FSessionMemberInfo>* OutMemberInfo);
+	bool STATIC_GetCurrentSessionMemberInfoAsync(unsigned char LocalUserNum, const struct FName& SessionName);
 	void RunBandwidthTest();
-	bool IsAllowedToNetworkHost();
-	void STATIC_ClearGetRoomIdFromTitleServiceDelegate(const struct FScriptDelegate& InDelegate);
-	void STATIC_AddGetRoomIdFromTitleServiceDelegate(const struct FScriptDelegate& InDelegate);
-	void GetRoomIdFromSessionId(const struct FString& SessionId);
-	void GetRoomIdFromTitleService(const struct FQWord& DataId);
+	bool STATIC_IsAllowedToNetworkHost();
+	void ClearGetRoomIdFromTitleServiceDelegate(const struct FScriptDelegate& InDelegate);
+	void AddGetRoomIdFromTitleServiceDelegate(const struct FScriptDelegate& InDelegate);
+	void STATIC_GetRoomIdFromSessionId(const struct FString& SessionId);
+	void STATIC_GetRoomIdFromTitleService(const struct FQWord& DataId);
 	void OnGetRoomIdFromTitleService(const struct FQWord& RoomId);
-	struct FString GetRoomId();
+	struct FString STATIC_GetRoomId();
 	bool SendPlayerList(TArray<class APlayerReplicationInfo*> Players);
-	void STATIC_ClearGetNumberOfCurrentPlayersCompleteDelegate(const struct FScriptDelegate& GetNumberOfCurrentPlayersCompleteDelegate);
-	void STATIC_AddGetNumberOfCurrentPlayersCompleteDelegate(const struct FScriptDelegate& GetNumberOfCurrentPlayersCompleteDelegate);
+	void ClearGetNumberOfCurrentPlayersCompleteDelegate(const struct FScriptDelegate& GetNumberOfCurrentPlayersCompleteDelegate);
+	void AddGetNumberOfCurrentPlayersCompleteDelegate(const struct FScriptDelegate& GetNumberOfCurrentPlayersCompleteDelegate);
 	void STATIC_OnGetNumberOfCurrentPlayersComplete(int TotalPlayers);
-	int GetNumberOfCurrentPlayersCached();
-	bool GetNumberOfCurrentPlayers();
-	void STATIC_ClearQosStatusChangedDelegate(const struct FScriptDelegate& QosStatusChangedDelegate);
-	void STATIC_AddQosStatusChangedDelegate(const struct FScriptDelegate& QosStatusChangedDelegate);
+	int STATIC_GetNumberOfCurrentPlayersCached();
+	bool STATIC_GetNumberOfCurrentPlayers();
+	void ClearQosStatusChangedDelegate(const struct FScriptDelegate& QosStatusChangedDelegate);
+	void AddQosStatusChangedDelegate(const struct FScriptDelegate& QosStatusChangedDelegate);
 	void OnQosStatusChanged(int NumComplete, int NumTotal);
-	bool STATIC_BindPlatformSpecificSessionToSearch(unsigned char SearchingPlayerNum, class UOnlineGameSearch* SearchSettings, unsigned char PlatformSpecificInfo);
-	bool ReadPlatformSpecificSessionInfoBySessionName(const struct FName& SessionName, unsigned char* PlatformSpecificInfo);
-	bool ReadPlatformSpecificSessionInfo(struct FOnlineGameSearchResult* DesiredGame, unsigned char* PlatformSpecificInfo);
-	bool QueryNonAdvertisedData(int StartAt, int NumberToQuery);
-	void STATIC_ClearJoinMigratedOnlineGameCompleteDelegate(const struct FScriptDelegate& JoinMigratedOnlineGameCompleteDelegate);
-	void STATIC_AddJoinMigratedOnlineGameCompleteDelegate(const struct FScriptDelegate& JoinMigratedOnlineGameCompleteDelegate);
+	bool BindPlatformSpecificSessionToSearch(unsigned char SearchingPlayerNum, class UOnlineGameSearch* SearchSettings, unsigned char PlatformSpecificInfo);
+	bool STATIC_ReadPlatformSpecificSessionInfoBySessionName(const struct FName& SessionName, unsigned char* PlatformSpecificInfo);
+	bool STATIC_ReadPlatformSpecificSessionInfo(struct FOnlineGameSearchResult* DesiredGame, unsigned char* PlatformSpecificInfo);
+	bool STATIC_QueryNonAdvertisedData(int StartAt, int NumberToQuery);
+	void ClearJoinMigratedOnlineGameCompleteDelegate(const struct FScriptDelegate& JoinMigratedOnlineGameCompleteDelegate);
+	void AddJoinMigratedOnlineGameCompleteDelegate(const struct FScriptDelegate& JoinMigratedOnlineGameCompleteDelegate);
 	void OnJoinMigratedOnlineGameComplete(const struct FName& SessionName, bool bWasSuccessful);
-	bool JoinMigratedOnlineGame(unsigned char PlayerNum, const struct FName& SessionName, struct FOnlineGameSearchResult* DesiredGame);
-	void STATIC_ClearMigrateOnlineGameCompleteDelegate(const struct FScriptDelegate& MigrateOnlineGameCompleteDelegate);
-	void STATIC_AddMigrateOnlineGameCompleteDelegate(const struct FScriptDelegate& MigrateOnlineGameCompleteDelegate);
+	bool STATIC_JoinMigratedOnlineGame(unsigned char PlayerNum, const struct FName& SessionName, struct FOnlineGameSearchResult* DesiredGame);
+	void ClearMigrateOnlineGameCompleteDelegate(const struct FScriptDelegate& MigrateOnlineGameCompleteDelegate);
+	void AddMigrateOnlineGameCompleteDelegate(const struct FScriptDelegate& MigrateOnlineGameCompleteDelegate);
 	void OnMigrateOnlineGameComplete(const struct FName& SessionName, bool bWasSuccessful);
-	bool MigrateOnlineGame(unsigned char HostingPlayerNum, const struct FName& SessionName);
-	void STATIC_ClearRecalculateSkillRatingCompleteDelegate(const struct FScriptDelegate& RecalculateSkillRatingGameCompleteDelegate);
-	void STATIC_AddRecalculateSkillRatingCompleteDelegate(const struct FScriptDelegate& RecalculateSkillRatingCompleteDelegate);
+	bool STATIC_MigrateOnlineGame(unsigned char HostingPlayerNum, const struct FName& SessionName);
+	void ClearRecalculateSkillRatingCompleteDelegate(const struct FScriptDelegate& RecalculateSkillRatingGameCompleteDelegate);
+	void AddRecalculateSkillRatingCompleteDelegate(const struct FScriptDelegate& RecalculateSkillRatingCompleteDelegate);
 	void OnRecalculateSkillRatingComplete(const struct FName& SessionName, bool bWasSuccessful);
 	bool RecalculateSkillRating(const struct FName& SessionName, TArray<struct FUniqueNetId>* Players);
-	bool STATIC_AcceptGameInvite(unsigned char LocalUserNum, const struct FName& SessionName);
-	void STATIC_ClearGameInviteAcceptedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& GameInviteAcceptedDelegate);
-	void STATIC_AddGameInviteAcceptedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& GameInviteAcceptedDelegate);
+	bool AcceptGameInvite(unsigned char LocalUserNum, const struct FName& SessionName);
+	void ClearGameInviteAcceptedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& GameInviteAcceptedDelegate);
+	void AddGameInviteAcceptedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& GameInviteAcceptedDelegate);
 	void OnGameInviteAccepted(struct FOnlineGameSearchResult* InviteResult);
-	TArray<struct FOnlineArbitrationRegistrant> GetArbitratedPlayers(const struct FName& SessionName);
-	void STATIC_ClearArbitrationRegistrationCompleteDelegate(const struct FScriptDelegate& ArbitrationRegistrationCompleteDelegate);
-	void STATIC_AddArbitrationRegistrationCompleteDelegate(const struct FScriptDelegate& ArbitrationRegistrationCompleteDelegate);
+	TArray<struct FOnlineArbitrationRegistrant> STATIC_GetArbitratedPlayers(const struct FName& SessionName);
+	void ClearArbitrationRegistrationCompleteDelegate(const struct FScriptDelegate& ArbitrationRegistrationCompleteDelegate);
+	void AddArbitrationRegistrationCompleteDelegate(const struct FScriptDelegate& ArbitrationRegistrationCompleteDelegate);
 	void OnArbitrationRegistrationComplete(const struct FName& SessionName, bool bWasSuccessful);
 	bool RegisterForArbitration(const struct FName& SessionName);
-	void STATIC_ClearEndOnlineGameCompleteDelegate(const struct FScriptDelegate& EndOnlineGameCompleteDelegate);
-	void STATIC_AddEndOnlineGameCompleteDelegate(const struct FScriptDelegate& EndOnlineGameCompleteDelegate);
+	void ClearEndOnlineGameCompleteDelegate(const struct FScriptDelegate& EndOnlineGameCompleteDelegate);
+	void AddEndOnlineGameCompleteDelegate(const struct FScriptDelegate& EndOnlineGameCompleteDelegate);
 	void OnEndOnlineGameComplete(const struct FName& SessionName, bool bWasSuccessful);
 	bool STATIC_EndOnlineGame(const struct FName& SessionName);
-	void STATIC_ClearStartOnlineGameCompleteDelegate(const struct FScriptDelegate& StartOnlineGameCompleteDelegate);
-	void STATIC_AddStartOnlineGameCompleteDelegate(const struct FScriptDelegate& StartOnlineGameCompleteDelegate);
+	void ClearStartOnlineGameCompleteDelegate(const struct FScriptDelegate& StartOnlineGameCompleteDelegate);
+	void AddStartOnlineGameCompleteDelegate(const struct FScriptDelegate& StartOnlineGameCompleteDelegate);
 	void OnStartOnlineGameComplete(const struct FName& SessionName, bool bWasSuccessful);
 	bool StartOnlineGame(const struct FName& SessionName);
 	void RetrieveGameSettingsForIP(const struct FString& IPAddress);
-	void STATIC_ClearOnRetrieveGameSettingsForIPDelegate(const struct FScriptDelegate& RetrieveIPDelegate);
-	void STATIC_AddOnRetrieveGameSettingsForIPDelegate(const struct FScriptDelegate& NewRetrieveIPDelegate);
+	void ClearOnRetrieveGameSettingsForIPDelegate(const struct FScriptDelegate& RetrieveIPDelegate);
+	void AddOnRetrieveGameSettingsForIPDelegate(const struct FScriptDelegate& NewRetrieveIPDelegate);
 	void OnRetrievedGameSettingsForIP(bool bSuccessful, struct FOnlineGameSearchResult* ConnectResult);
-	void STATIC_ClearUnregisterPlayerCompleteDelegate(const struct FScriptDelegate& UnregisterPlayerCompleteDelegate);
-	void STATIC_AddUnregisterPlayerCompleteDelegate(const struct FScriptDelegate& UnregisterPlayerCompleteDelegate);
+	void ClearUnregisterPlayerCompleteDelegate(const struct FScriptDelegate& UnregisterPlayerCompleteDelegate);
+	void AddUnregisterPlayerCompleteDelegate(const struct FScriptDelegate& UnregisterPlayerCompleteDelegate);
 	void OnUnregisterPlayerComplete(const struct FName& SessionName, const struct FUniqueNetId& PlayerID, bool bWasSuccessful);
-	bool STATIC_UnregisterPlayers(const struct FName& SessionName, TArray<struct FUniqueNetId>* Players);
-	bool STATIC_UnregisterPlayer(const struct FName& SessionName, const struct FUniqueNetId& PlayerID);
-	void STATIC_ClearRegisterPlayerCompleteDelegate(const struct FScriptDelegate& RegisterPlayerCompleteDelegate);
-	void STATIC_AddRegisterPlayerCompleteDelegate(const struct FScriptDelegate& RegisterPlayerCompleteDelegate);
+	bool UnregisterPlayers(const struct FName& SessionName, TArray<struct FUniqueNetId>* Players);
+	bool UnregisterPlayer(const struct FName& SessionName, const struct FUniqueNetId& PlayerID);
+	void ClearRegisterPlayerCompleteDelegate(const struct FScriptDelegate& RegisterPlayerCompleteDelegate);
+	void AddRegisterPlayerCompleteDelegate(const struct FScriptDelegate& RegisterPlayerCompleteDelegate);
 	void OnRegisterPlayerComplete(const struct FName& SessionName, const struct FUniqueNetId& PlayerID, bool bWasSuccessful);
 	bool RegisterPlayers(const struct FName& SessionName, TArray<struct FUniqueNetId>* Players);
 	bool RegisterPlayer(const struct FName& SessionName, const struct FUniqueNetId& PlayerID, bool bWasInvited);
-	bool GetResolvedConnectString(const struct FName& SessionName, struct FString* ConnectInfo);
-	void STATIC_ClearQuerySessionsForUserCompleteDelegate(const struct FScriptDelegate& QuerySessionsForUserCompleteDelegate);
-	void STATIC_AddQuerySessionsForUserCompleteDelegate(const struct FScriptDelegate& QuerySessionsForUserCompleteDelegate);
+	bool STATIC_GetResolvedConnectString(const struct FName& SessionName, struct FString* ConnectInfo);
+	void ClearQuerySessionsForUserCompleteDelegate(const struct FScriptDelegate& QuerySessionsForUserCompleteDelegate);
+	void AddQuerySessionsForUserCompleteDelegate(const struct FScriptDelegate& QuerySessionsForUserCompleteDelegate);
 	void OnQuerySessionsForUserComplete(unsigned char LocalPlayerNum, bool bWasSuccessful);
-	bool QuerySessionsByKeyword(unsigned char LocalPlayerNum, const struct FString& Keyword, class UOnlineGameSearch* SearchSettings);
-	bool QuerySessionsForUser(unsigned char LocalPlayerNum);
-	void LeaveAllOnlineSessions(bool bClearSessionIfHost);
-	bool LeaveOnlineSession(unsigned char LocalPlayerNum, const struct FName& SessionName, bool bClearSessionIfHost);
-	void STATIC_ClearMatchStatusChangedDelegate(const struct FScriptDelegate& MatchStatusChangedDelegate);
-	void STATIC_AddMatchStatusChangedDelegate(const struct FScriptDelegate& MatchStatusChangedDelegate);
+	bool STATIC_QuerySessionsByKeyword(unsigned char LocalPlayerNum, const struct FString& Keyword, class UOnlineGameSearch* SearchSettings);
+	bool STATIC_QuerySessionsForUser(unsigned char LocalPlayerNum);
+	void STATIC_LeaveAllOnlineSessions(bool bClearSessionIfHost);
+	bool STATIC_LeaveOnlineSession(unsigned char LocalPlayerNum, const struct FName& SessionName, bool bClearSessionIfHost);
+	void ClearMatchStatusChangedDelegate(const struct FScriptDelegate& MatchStatusChangedDelegate);
+	void AddMatchStatusChangedDelegate(const struct FScriptDelegate& MatchStatusChangedDelegate);
 	void OnMatchStatusChanged(const struct FName& SessionName, unsigned char Status);
-	void STATIC_ClearGamePlayersChangedDelegate(const struct FScriptDelegate& GamePlayersChangedDelegate);
-	void STATIC_AddGamePlayersChangedDelegate(const struct FScriptDelegate& GamePlayersChangedDelegate);
+	void ClearGamePlayersChangedDelegate(const struct FScriptDelegate& GamePlayersChangedDelegate);
+	void AddGamePlayersChangedDelegate(const struct FScriptDelegate& GamePlayersChangedDelegate);
 	void OnGamePlayersChanged(const struct FName& SessionName, TArray<struct FUniqueNetId> Players);
-	void STATIC_ClearAcceptPendingGameSessionCompleteDelegate(const struct FScriptDelegate& AcceptPendingGameSessionCompleteDelegate);
-	void STATIC_AddAcceptPendingGameSessionCompleteDelegate(const struct FScriptDelegate& AcceptPendingGameSessionCompleteDelegate);
+	void ClearAcceptPendingGameSessionCompleteDelegate(const struct FScriptDelegate& AcceptPendingGameSessionCompleteDelegate);
+	void AddAcceptPendingGameSessionCompleteDelegate(const struct FScriptDelegate& AcceptPendingGameSessionCompleteDelegate);
 	void OnAcceptPendingGameSessionComplete(const struct FName& SessionName, bool bWasSuccessful);
-	void STATIC_AcceptPendingGameSession(const struct FName& SessionName);
-	void STATIC_ClearGameSessionReadyDelegate(const struct FScriptDelegate& GameSessionReadyDelegate);
-	void STATIC_AddGameSessionReadyDelegate(const struct FScriptDelegate& GameSessionReadyDelegate);
+	void AcceptPendingGameSession(const struct FName& SessionName);
+	void ClearGameSessionReadyDelegate(const struct FScriptDelegate& GameSessionReadyDelegate);
+	void AddGameSessionReadyDelegate(const struct FScriptDelegate& GameSessionReadyDelegate);
 	void OnGameSessionReady(const struct FName& SessionName);
-	void STATIC_ClearUpdateSessionPropertiesCompleteDelegate(const struct FScriptDelegate& UpdateSessionPropertiesCompleteDelegate);
-	void STATIC_AddUpdateSessionPropertiesCompleteDelegate(const struct FScriptDelegate& UpdateSessionPropertiesCompleteDelegate);
+	void ClearUpdateSessionPropertiesCompleteDelegate(const struct FScriptDelegate& UpdateSessionPropertiesCompleteDelegate);
+	void AddUpdateSessionPropertiesCompleteDelegate(const struct FScriptDelegate& UpdateSessionPropertiesCompleteDelegate);
 	void OnUpdateSessionPropertiesComplete(const struct FName& SessionName, bool bWasSuccessful);
-	bool STATIC_UpdateSessionProperties(unsigned char ScoutingUserNum, const struct FName& SessionName);
+	bool UpdateSessionProperties(unsigned char ScoutingUserNum, const struct FName& SessionName);
 	bool STATIC_DeleteCustomMemberProperty(const struct FName& SessionName, const struct FString& PropertyName);
 	bool SetCustomMemberProperty(const struct FName& SessionName, const struct FString& PropertyName, const struct FString& PropertyValue);
 	bool STATIC_DeleteCustomSessionProperty(const struct FName& SessionName, const struct FString& PropertyName);
 	bool SetCustomSessionProperty(const struct FName& SessionName, const struct FString& PropertyName, const struct FString& PropertyValue);
-	void STATIC_ClearMultiplayerSessionChangeDelegate(const struct FScriptDelegate& MultiplayerSessionChangeDelegate);
-	void STATIC_AddMultiplayerSessionChangeDelegate(const struct FScriptDelegate& MultiplayerSessionChangeDelegate);
+	void ClearMultiplayerSessionChangeDelegate(const struct FScriptDelegate& MultiplayerSessionChangeDelegate);
+	void AddMultiplayerSessionChangeDelegate(const struct FScriptDelegate& MultiplayerSessionChangeDelegate);
 	void OnMultiplayerSessionChange(const struct FName& SessionName, const struct FSessionUpdateInfo& SessionChanges);
-	void STATIC_ClearAddSessionMemberCompleteDelegate(const struct FScriptDelegate& AddSessionMemberCompleteDelegate);
-	void STATIC_AddAddSessionMemberCompleteDelegate(const struct FScriptDelegate& AddSessionMemberCompleteDelegate);
+	void ClearAddSessionMemberCompleteDelegate(const struct FScriptDelegate& AddSessionMemberCompleteDelegate);
+	void AddAddSessionMemberCompleteDelegate(const struct FScriptDelegate& AddSessionMemberCompleteDelegate);
 	void OnAddSessionMemberComplete(const struct FName& SessionName, bool bWasSuccessful);
-	bool STATIC_AddSessionMembers(unsigned char ScoutingPlayerNum, const struct FName& SessionName, TArray<struct FUniqueNetId> Members);
-	bool STATIC_AddSessionMember(unsigned char ScoutingPlayerNum, const struct FName& SessionName, const struct FUniqueNetId& Member);
-	bool STATIC_AddSessionMemberByString(unsigned char ScoutingPlayerNum, const struct FName& SessionName, const struct FString& Member);
-	bool STATIC_CreateOnlineSessionWithTemplate(unsigned char ScoutingPlayerNum, const struct FName& SessionName, class UOnlineGameSettings* NewGameSettings, const struct FString& TemplateName, const struct FString& SessionKeyword);
-	bool InitiatedSessionSearch(const struct FName& SessionName);
-	bool IsHostOfSession(const struct FName& SessionName);
-	void STATIC_ClearMatchmakeOnlineGameWithPartyCompleteDelegate(const struct FScriptDelegate& MatchmakeOnlineGameWithPartyCompleteDelegate);
-	void STATIC_AddMatchmakeOnlineGameWithPartyCompleteDelegate(const struct FScriptDelegate& MatchmakeOnlineGameWithPartyCompleteDelegate);
+	bool AddSessionMembers(unsigned char ScoutingPlayerNum, const struct FName& SessionName, TArray<struct FUniqueNetId> Members);
+	bool AddSessionMember(unsigned char ScoutingPlayerNum, const struct FName& SessionName, const struct FUniqueNetId& Member);
+	bool AddSessionMemberByString(unsigned char ScoutingPlayerNum, const struct FName& SessionName, const struct FString& Member);
+	bool CreateOnlineSessionWithTemplate(unsigned char ScoutingPlayerNum, const struct FName& SessionName, class UOnlineGameSettings* NewGameSettings, const struct FString& TemplateName, const struct FString& SessionKeyword);
+	bool STATIC_InitiatedSessionSearch(const struct FName& SessionName);
+	bool STATIC_IsHostOfSession(const struct FName& SessionName);
+	void ClearMatchmakeOnlineGameWithPartyCompleteDelegate(const struct FScriptDelegate& MatchmakeOnlineGameWithPartyCompleteDelegate);
+	void AddMatchmakeOnlineGameWithPartyCompleteDelegate(const struct FScriptDelegate& MatchmakeOnlineGameWithPartyCompleteDelegate);
 	void OnMatchmakeOnlineGameWithPartyComplete(const struct FName& SessionName, bool bWasSuccessful);
-	bool MatchmakeOnlineGameWithParty(unsigned char ScoutingPlayerNum, const struct FName& SessionName, class UOnlineGameSettings* NewGameSettings);
-	void STATIC_ClearCreateOnlineGameWithPartyCompleteDelegate(const struct FScriptDelegate& CreateOnlineGameWithPartyCompleteDelegate);
-	void STATIC_AddCreateOnlineGameWithPartyCompleteDelegate(const struct FScriptDelegate& CreateOnlineGameWithPartyCompleteDelegate);
+	bool STATIC_MatchmakeOnlineGameWithParty(unsigned char ScoutingPlayerNum, const struct FName& SessionName, class UOnlineGameSettings* NewGameSettings);
+	void ClearCreateOnlineGameWithPartyCompleteDelegate(const struct FScriptDelegate& CreateOnlineGameWithPartyCompleteDelegate);
+	void AddCreateOnlineGameWithPartyCompleteDelegate(const struct FScriptDelegate& CreateOnlineGameWithPartyCompleteDelegate);
 	void OnCreateOnlineGameWithPartyComplete(const struct FName& SessionName, bool bWasSuccessful);
-	bool STATIC_CreateOnlineGameWithParty(unsigned char ScoutingPlayerNum, const struct FName& SessionName, class UOnlineGameSettings* NewGameSettings);
-	void STATIC_ClearJoinOnlineGameCompleteDelegate(const struct FScriptDelegate& JoinOnlineGameCompleteDelegate);
-	void STATIC_AddJoinOnlineGameCompleteDelegate(const struct FScriptDelegate& JoinOnlineGameCompleteDelegate);
+	bool CreateOnlineGameWithParty(unsigned char ScoutingPlayerNum, const struct FName& SessionName, class UOnlineGameSettings* NewGameSettings);
+	void ClearJoinOnlineGameCompleteDelegate(const struct FScriptDelegate& JoinOnlineGameCompleteDelegate);
+	void AddJoinOnlineGameCompleteDelegate(const struct FScriptDelegate& JoinOnlineGameCompleteDelegate);
 	void OnJoinOnlineGameComplete(const struct FName& SessionName, bool bWasSuccessful);
-	bool IsCurrentRoomOwner();
+	bool STATIC_IsCurrentRoomOwner();
 	bool SetRankedReadyStatus(bool bReady);
-	bool IsJoinOperationInProgress();
-	bool JoinOnlineGameByMatchingParams(const struct FQWord& RoomId, class UOnlineGameSettings** JoinedGameSettings);
-	void OnMapChangeComplete();
-	void OnMapChangePending();
-	bool JoinOnlineGameBySessionHandle(unsigned char PlayerNum, const struct FName& SessionName, const struct FString& InSessionGuid);
-	bool JoinOnlineGame(unsigned char PlayerNum, const struct FName& SessionName, struct FOnlineGameSearchResult* DesiredGame);
-	bool FreeSearchResults(class UOnlineGameSearch* Search);
-	void STATIC_ClearCancelFindOnlineGamesCompleteDelegate(const struct FScriptDelegate& CancelFindOnlineGamesCompleteDelegate);
-	void STATIC_AddCancelFindOnlineGamesCompleteDelegate(const struct FScriptDelegate& CancelFindOnlineGamesCompleteDelegate);
+	bool STATIC_IsJoinOperationInProgress();
+	bool STATIC_JoinOnlineGameByMatchingParams(const struct FQWord& RoomId, class UOnlineGameSettings** JoinedGameSettings);
+	void STATIC_OnMapChangeComplete();
+	void STATIC_OnMapChangePending();
+	bool STATIC_JoinOnlineGameBySessionHandle(unsigned char PlayerNum, const struct FName& SessionName, const struct FString& InSessionGuid);
+	bool STATIC_JoinOnlineGame(unsigned char PlayerNum, const struct FName& SessionName, struct FOnlineGameSearchResult* DesiredGame);
+	bool STATIC_FreeSearchResults(class UOnlineGameSearch* Search);
+	void ClearCancelFindOnlineGamesCompleteDelegate(const struct FScriptDelegate& CancelFindOnlineGamesCompleteDelegate);
+	void AddCancelFindOnlineGamesCompleteDelegate(const struct FScriptDelegate& CancelFindOnlineGamesCompleteDelegate);
 	void OnCancelFindOnlineGamesComplete(bool bWasSuccessful);
-	bool STATIC_CancelFindOnlineGames();
-	void STATIC_ClearFindOnlineGamesCompleteDelegate(const struct FScriptDelegate& FindOnlineGamesCompleteDelegate);
-	void STATIC_AddFindOnlineGamesCompleteDelegate(const struct FScriptDelegate& FindOnlineGamesCompleteDelegate);
+	bool CancelFindOnlineGames();
+	void ClearFindOnlineGamesCompleteDelegate(const struct FScriptDelegate& FindOnlineGamesCompleteDelegate);
+	void AddFindOnlineGamesCompleteDelegate(const struct FScriptDelegate& FindOnlineGamesCompleteDelegate);
 	bool STATIC_FindOnlineGames(unsigned char SearchingPlayerNum, class UOnlineGameSearch* SearchSettings);
-	void STATIC_ClearDestroyOnlineGameCompleteDelegate(const struct FScriptDelegate& DestroyOnlineGameCompleteDelegate);
-	void STATIC_AddDestroyOnlineGameCompleteDelegate(const struct FScriptDelegate& DestroyOnlineGameCompleteDelegate);
+	void ClearDestroyOnlineGameCompleteDelegate(const struct FScriptDelegate& DestroyOnlineGameCompleteDelegate);
+	void AddDestroyOnlineGameCompleteDelegate(const struct FScriptDelegate& DestroyOnlineGameCompleteDelegate);
 	void OnDestroyOnlineGameComplete(const struct FName& SessionName, bool bWasSuccessful);
 	bool STATIC_DestroyOnlineGame(const struct FName& SessionName);
-	void STATIC_ClearUpdateOnlineGameCompleteDelegate(const struct FScriptDelegate& UpdateOnlineGameCompleteDelegate);
-	void STATIC_AddUpdateOnlineGameCompleteDelegate(const struct FScriptDelegate& UpdateOnlineGameCompleteDelegate);
+	void ClearUpdateOnlineGameCompleteDelegate(const struct FScriptDelegate& UpdateOnlineGameCompleteDelegate);
+	void AddUpdateOnlineGameCompleteDelegate(const struct FScriptDelegate& UpdateOnlineGameCompleteDelegate);
 	void OnUpdateOnlineGameComplete(const struct FName& SessionName, bool bWasSuccessful);
-	bool STATIC_UpdateOnlineGame(const struct FName& SessionName, class UOnlineGameSettings* UpdatedGameSettings, bool bShouldRefreshOnlineData);
-	void STATIC_ClearCreateOnlineGameCompleteDelegate(const struct FScriptDelegate& CreateOnlineGameCompleteDelegate);
-	void STATIC_AddCreateOnlineGameCompleteDelegate(const struct FScriptDelegate& CreateOnlineGameCompleteDelegate);
+	bool UpdateOnlineGame(const struct FName& SessionName, class UOnlineGameSettings* UpdatedGameSettings, bool bShouldRefreshOnlineData);
+	void ClearCreateOnlineGameCompleteDelegate(const struct FScriptDelegate& CreateOnlineGameCompleteDelegate);
+	void AddCreateOnlineGameCompleteDelegate(const struct FScriptDelegate& CreateOnlineGameCompleteDelegate);
 	void OnCreateOnlineGameComplete(const struct FName& SessionName, bool bWasSuccessful);
-	bool STATIC_CreateOnlineGame(unsigned char HostingPlayerNum, const struct FName& SessionName, class UOnlineGameSettings* NewGameSettings);
-	class UOnlineGameSearch* GetGameSearch();
-	class UOnlineGameSettings* GetGameSettings(const struct FName& SessionName);
+	bool CreateOnlineGame(unsigned char HostingPlayerNum, const struct FName& SessionName, class UOnlineGameSettings* NewGameSettings);
+	class UOnlineGameSearch* STATIC_GetGameSearch();
+	class UOnlineGameSettings* STATIC_GetGameSettings(const struct FName& SessionName);
 	void OnFindOnlineGamesComplete(bool bWasSuccessful);
 };
 
@@ -1030,8 +1030,8 @@ public:
 	}
 
 
-	bool STATIC_SaveImageToTempDir(const struct FString& Filename, TArray<unsigned char> ImageData);
-	bool STATIC_LoadImageFromTempDir(const struct FString& Filename, TArray<unsigned char>* ImageData);
+	bool SaveImageToTempDir(const struct FString& Filename, TArray<unsigned char> ImageData);
+	bool LoadImageFromTempDir(const struct FString& Filename, TArray<unsigned char>* ImageData);
 };
 
 
@@ -1073,32 +1073,32 @@ public:
 	}
 
 
-	void STATIC_ParseDataCenterId(TArray<unsigned char>* Data);
-	void STATIC_OnReadDataCenterIdComplete(bool bWasSuccessful, const struct FString& Filename);
-	void STATIC_ReadDataCenterId();
+	void ParseDataCenterId(TArray<unsigned char>* Data);
+	void OnReadDataCenterIdComplete(bool bWasSuccessful, const struct FString& Filename);
+	void ReadDataCenterId();
 	void SendPlaylistPopulationUpdate(int NumPlayers);
-	void STATIC_GetPopulationInfoFromPlaylist(int PlaylistId, int* WorldwideTotal, int* RegionTotal);
-	void STATIC_ParsePlaylistPopulationData(TArray<unsigned char>* Data);
+	void GetPopulationInfoFromPlaylist(int PlaylistId, int* WorldwideTotal, int* RegionTotal);
+	void ParsePlaylistPopulationData(TArray<unsigned char>* Data);
 	void OnPlaylistPopulationDataUpdated();
-	void STATIC_OnReadPlaylistPopulationComplete(bool bWasSuccessful, const struct FString& Filename);
-	void STATIC_ReadPlaylistPopulation();
+	void OnReadPlaylistPopulationComplete(bool bWasSuccessful, const struct FString& Filename);
+	void ReadPlaylistPopulation();
 	void Reset();
-	void STATIC_GetContentIdsFromPlaylist(int PlaylistId, TArray<int>* ContentIds);
-	class UClass* STATIC_GetInventorySwapFromPlaylist(int PlaylistId, class UClass* SourceInventory);
-	void STATIC_GetMapCycleFromPlaylist(int PlaylistId, TArray<struct FName>* MapCycle);
-	struct FString STATIC_GetUrlFromPlaylist(int PlaylistId);
-	int STATIC_GetMatchType(int PlaylistId);
-	bool STATIC_IsPlaylistArbitrated(int PlaylistId);
-	void STATIC_GetLoadBalanceIdFromPlaylist(int PlaylistId, int* LoadBalanceId);
-	void STATIC_GetTeamInfoFromPlaylist(int PlaylistId, int* TeamSize, int* TeamCount, int* MaxPartySize);
-	bool STATIC_PlaylistSupportsDedicatedServers(int PlaylistId);
-	bool STATIC_HasAnyGameSettings(int PlaylistId);
-	class UOnlineGameSettings* GetGameSettings(int PlaylistId, int GameSettingsId);
-	void STATIC_FinalizePlaylistObjects();
+	void GetContentIdsFromPlaylist(int PlaylistId, TArray<int>* ContentIds);
+	class UClass* GetInventorySwapFromPlaylist(int PlaylistId, class UClass* SourceInventory);
+	void GetMapCycleFromPlaylist(int PlaylistId, TArray<struct FName>* MapCycle);
+	struct FString GetUrlFromPlaylist(int PlaylistId);
+	int GetMatchType(int PlaylistId);
+	bool IsPlaylistArbitrated(int PlaylistId);
+	void GetLoadBalanceIdFromPlaylist(int PlaylistId, int* LoadBalanceId);
+	void GetTeamInfoFromPlaylist(int PlaylistId, int* TeamSize, int* TeamCount, int* MaxPartySize);
+	bool PlaylistSupportsDedicatedServers(int PlaylistId);
+	bool HasAnyGameSettings(int PlaylistId);
+	class UOnlineGameSettings* STATIC_GetGameSettings(int PlaylistId, int GameSettingsId);
+	void FinalizePlaylistObjects();
 	void STATIC_OnReadTitleFileComplete(bool bWasSuccessful, const struct FString& Filename);
-	bool STATIC_ShouldRefreshPlaylists();
-	void STATIC_DetermineFilesToDownload();
-	void STATIC_DownloadPlaylist();
+	bool ShouldRefreshPlaylists();
+	void DetermineFilesToDownload();
+	void DownloadPlaylist();
 	void OnReadPlaylistComplete(bool bWasSuccessful);
 };
 
@@ -1166,9 +1166,9 @@ public:
 
 
 	void DestroyBeacon();
-	bool STATIC_CancelReservation(const struct FUniqueNetId& CancellingPartyLeader);
-	bool STATIC_RequestReservationUpdate(const struct FUniqueNetId& RequestingPartyLeader, struct FOnlineGameSearchResult* DesiredHost, TArray<struct FPlayerReservation>* PlayersToAdd);
-	bool STATIC_RequestReservation(const struct FUniqueNetId& RequestingPartyLeader, struct FOnlineGameSearchResult* DesiredHost, TArray<struct FPlayerReservation>* Players);
+	bool CancelReservation(const struct FUniqueNetId& CancellingPartyLeader);
+	bool RequestReservationUpdate(const struct FUniqueNetId& RequestingPartyLeader, struct FOnlineGameSearchResult* DesiredHost, TArray<struct FPlayerReservation>* PlayersToAdd);
+	bool RequestReservation(const struct FUniqueNetId& RequestingPartyLeader, struct FOnlineGameSearchResult* DesiredHost, TArray<struct FPlayerReservation>* Players);
 	void OnHostHasCancelled();
 	void OnHostIsReady();
 	void OnTravelRequestReceived(const struct FName& SessionName, class UClass* SearchClass, unsigned char PlatformSpecificInfo);
@@ -1209,27 +1209,27 @@ public:
 	}
 
 
-	int STATIC_GetMaxAvailableTeamSize();
-	void STATIC_GetPartyLeaders(TArray<struct FUniqueNetId>* PartyLeaders);
-	void STATIC_GetPlayers(TArray<struct FUniqueNetId>* Players);
-	void STATIC_AppendReservationSkillsToSearch(class UOnlineGameSearch* Search);
+	int GetMaxAvailableTeamSize();
+	void GetPartyLeaders(TArray<struct FUniqueNetId>* PartyLeaders);
+	void GetPlayers(TArray<struct FUniqueNetId>* Players);
+	void AppendReservationSkillsToSearch(class UOnlineGameSearch* Search);
 	void UnregisterParty(const struct FUniqueNetId& PartyLeader);
 	void UnregisterPartyMembers();
 	void RegisterPartyMembers();
-	bool STATIC_AreReservationsFull();
-	void STATIC_TellClientsHostHasCancelled();
-	void STATIC_TellClientsHostIsReady();
-	void STATIC_TellClientsToTravel(const struct FName& SessionName, class UClass* SearchClass, unsigned char PlatformSpecificInfo);
+	bool AreReservationsFull();
+	void TellClientsHostHasCancelled();
+	void TellClientsHostIsReady();
+	void TellClientsToTravel(const struct FName& SessionName, class UClass* SearchClass, unsigned char PlatformSpecificInfo);
 	void DestroyBeacon();
 	void OnClientCancellationReceived(const struct FUniqueNetId& PartyLeader);
 	void OnReservationsFull();
 	void OnReservationChange();
-	void STATIC_HandlePlayerLogout(const struct FUniqueNetId& PlayerID, bool bMaintainParty);
-	int STATIC_GetExistingReservation(struct FUniqueNetId* PartyLeader);
-	TEnumAsByte<EPartyReservationResult> STATIC_UpdatePartyReservationEntry(const struct FUniqueNetId& PartyLeader, TArray<struct FPlayerReservation>* PlayerMembers);
-	TEnumAsByte<EPartyReservationResult> STATIC_AddPartyReservationEntry(const struct FUniqueNetId& PartyLeader, int TeamNum, bool bIsHost, TArray<struct FPlayerReservation>* PlayerMembers);
-	bool STATIC_InitHostBeacon(int InNumTeams, int InNumPlayersPerTeam, int InNumReservations, const struct FName& InSessionName, int InForceTeamNum);
-	void STATIC_PauseReservationRequests(bool bPause);
+	void HandlePlayerLogout(const struct FUniqueNetId& PlayerID, bool bMaintainParty);
+	int GetExistingReservation(struct FUniqueNetId* PartyLeader);
+	TEnumAsByte<EPartyReservationResult> UpdatePartyReservationEntry(const struct FUniqueNetId& PartyLeader, TArray<struct FPlayerReservation>* PlayerMembers);
+	TEnumAsByte<EPartyReservationResult> AddPartyReservationEntry(const struct FUniqueNetId& PartyLeader, int TeamNum, bool bIsHost, TArray<struct FPlayerReservation>* PlayerMembers);
+	bool InitHostBeacon(int InNumTeams, int InNumPlayersPerTeam, int InNumReservations, const struct FName& InSessionName, int InForceTeamNum);
+	void PauseReservationRequests(bool bPause);
 };
 
 
@@ -1291,20 +1291,20 @@ public:
 	}
 
 
-	int STATIC_GetHexDigit(const struct FString& D);
-	void STATIC_DecodeFormData(const struct FString& Data, int MaxValueLength, int MaxLineLength);
-	void STATIC_ProcessHeaderString(const struct FString& S);
-	void STATIC_Dump();
-	void STATIC_GetVariables(TArray<struct FString>* varNames);
-	struct FString STATIC_GetVariableNumber(const struct FString& VariableName, int Number, const struct FString& DefaultValue);
-	int STATIC_GetVariableCount(const struct FString& VariableName);
-	struct FString STATIC_GetVariable(const struct FString& VariableName, const struct FString& DefaultValue);
-	void STATIC_AddVariable(const struct FString& VariableName, const struct FString& Value);
-	void GetHeaders(TArray<struct FString>* Headers);
-	struct FString GetHeader(const struct FString& HeaderName, const struct FString& DefaultValue);
-	void STATIC_AddHeader(const struct FString& HeaderName, const struct FString& Value);
-	struct FString STATIC_EncodeBase64(const struct FString& Decoded);
-	struct FString STATIC_DecodeBase64(const struct FString& Encoded);
+	int GetHexDigit(const struct FString& D);
+	void DecodeFormData(const struct FString& Data, int MaxValueLength, int MaxLineLength);
+	void ProcessHeaderString(const struct FString& S);
+	void Dump();
+	void GetVariables(TArray<struct FString>* varNames);
+	struct FString GetVariableNumber(const struct FString& VariableName, int Number, const struct FString& DefaultValue);
+	int GetVariableCount(const struct FString& VariableName);
+	struct FString GetVariable(const struct FString& VariableName, const struct FString& DefaultValue);
+	void AddVariable(const struct FString& VariableName, const struct FString& Value);
+	void STATIC_GetHeaders(TArray<struct FString>* Headers);
+	struct FString STATIC_GetHeader(const struct FString& HeaderName, const struct FString& DefaultValue);
+	void AddHeader(const struct FString& HeaderName, const struct FString& Value);
+	struct FString EncodeBase64(const struct FString& Decoded);
+	struct FString DecodeBase64(const struct FString& Encoded);
 };
 
 
@@ -1328,27 +1328,27 @@ public:
 	}
 
 
-	bool STATIC_SentResponse();
+	bool SentResponse();
 	bool SentText();
-	void STATIC_Redirect(const struct FString& URL);
-	void STATIC_SendStandardHeaders(const struct FString& ContentType, bool bCache);
-	void STATIC_HTTPError(int ErrorNum, const struct FString& Data);
-	void STATIC_SendHeaders();
-	void STATIC_AddHeader(const struct FString& Header, bool bReplace);
-	void STATIC_HTTPHeader(const struct FString& Header);
-	void STATIC_HttpResponse(const struct FString& Header);
-	void STATIC_FailAuthentication(const struct FString& Realm);
-	bool STATIC_SendCachedFile(const struct FString& Filename, const struct FString& ContentType);
+	void Redirect(const struct FString& URL);
+	void SendStandardHeaders(const struct FString& ContentType, bool bCache);
+	void HTTPError(int ErrorNum, const struct FString& Data);
+	void SendHeaders();
+	void AddHeader(const struct FString& Header, bool bReplace);
+	void HTTPHeader(const struct FString& Header);
+	void HttpResponse(const struct FString& Header);
+	void FailAuthentication(const struct FString& Realm);
+	bool SendCachedFile(const struct FString& Filename, const struct FString& ContentType);
 	void SendBinary(int Count, unsigned char B);
 	void SendText(const struct FString& Text, bool bNoCRLF);
-	void STATIC_Dump();
-	struct FString STATIC_GetHTTPExpiration(int OffsetSeconds);
-	struct FString STATIC_LoadParsedUHTM(const struct FString& Filename);
-	bool STATIC_IncludeBinaryFile(const struct FString& Filename);
-	bool STATIC_IncludeUHTM(const struct FString& Filename);
-	void STATIC_ClearSubst();
-	void STATIC_Subst(const struct FString& Variable, const struct FString& Value, bool bClear);
-	bool STATIC_FileExists(const struct FString& Filename);
+	void Dump();
+	struct FString GetHTTPExpiration(int OffsetSeconds);
+	struct FString LoadParsedUHTM(const struct FString& Filename);
+	bool IncludeBinaryFile(const struct FString& Filename);
+	bool IncludeUHTM(const struct FString& Filename);
+	void ClearSubst();
+	void Subst(const struct FString& Variable, const struct FString& Value, bool bClear);
+	bool FileExists(const struct FString& Filename);
 };
 
 
@@ -1392,9 +1392,9 @@ public:
 
 
 	int GetMatchTypeForPlaylistId(int PlaylistId);
-	class UOnlinePlaylistProvider* STATIC_GetOnlinePlaylistProvider(const struct FName& ProviderTag, int PlaylistId, int* ProviderIndex);
-	bool STATIC_GetPlaylistProvider(const struct FName& ProviderTag, int ProviderIndex, class UUIResourceDataProvider** out_Provider);
-	bool GetResourceProviders(const struct FName& ProviderTag, TArray<class UUIResourceDataProvider*>* out_Providers);
+	class UOnlinePlaylistProvider* GetOnlinePlaylistProvider(const struct FName& ProviderTag, int PlaylistId, int* ProviderIndex);
+	bool GetPlaylistProvider(const struct FName& ProviderTag, int ProviderIndex, class UUIResourceDataProvider** out_Provider);
+	bool STATIC_GetResourceProviders(const struct FName& ProviderTag, TArray<class UUIResourceDataProvider*>* out_Providers);
 	void Init();
 };
 
@@ -1415,11 +1415,11 @@ public:
 	}
 
 
-	void STATIC_PostQuery(class UWebRequest* Request, class UWebResponse* Response);
-	void Query(class UWebRequest* Request, class UWebResponse* Response);
-	bool STATIC_PreQuery(class UWebRequest* Request, class UWebResponse* Response);
-	void STATIC_CleanupApp();
-	void STATIC_Cleanup();
+	void PostQuery(class UWebRequest* Request, class UWebResponse* Response);
+	void STATIC_Query(class UWebRequest* Request, class UWebResponse* Response);
+	bool PreQuery(class UWebRequest* Request, class UWebResponse* Response);
+	void CleanupApp();
+	void Cleanup();
 	void Init();
 };
 
@@ -1449,7 +1449,7 @@ public:
 	}
 
 
-	class UWebApplication* STATIC_GetApplication(const struct FString& URI, struct FString* SubURI);
+	class UWebApplication* GetApplication(const struct FString& URI, struct FString* SubURI);
 	void LostChild(class AActor* C);
 	void GainedChild(class AActor* C);
 	void Destroyed();
@@ -1470,7 +1470,7 @@ public:
 	}
 
 
-	void Query(class UWebRequest* Request, class UWebResponse* Response);
+	void STATIC_Query(class UWebRequest* Request, class UWebResponse* Response);
 	void Init();
 };
 
@@ -1488,7 +1488,7 @@ public:
 	}
 
 
-	void Query(class UWebRequest* Request, class UWebResponse* Response);
+	void STATIC_Query(class UWebRequest* Request, class UWebResponse* Response);
 };
 
 
@@ -1510,7 +1510,7 @@ public:
 	}
 
 
-	struct FString STATIC_GetUserAuthTicket(const struct FString& McpId);
+	struct FString GetUserAuthTicket(const struct FString& McpId);
 };
 
 
@@ -1540,26 +1540,26 @@ public:
 	}
 
 
-	void STATIC_UpdateChallengeUserReward(const struct FString& UniqueChallengeId, const struct FString& UniqueUserId, int UserReward);
-	void STATIC_OnUpdateChallengeUserRewardComplete(bool bWasSuccessful, const struct FString& UniqueChallengeId, const struct FString& UniqueUserId, const struct FString& Error);
-	void STATIC_UpdateChallengeUserProgress(const struct FString& UniqueChallengeId, const struct FString& UniqueUserId, bool bDidComplete, int GoalProgress);
-	void STATIC_OnUpdateChallengeUserProgressComplete(bool bWasSuccessful, const struct FString& UniqueChallengeId, const struct FString& UniqueUserId, const struct FString& Error);
-	void STATIC_GetChallengeUserStatus(const struct FString& UniqueChallengeId, const struct FString& UniqueUserId, struct FMcpClashMobChallengeUserStatus* OutChallengeUserStatus);
-	void STATIC_QueryChallengeMultiUserStatus(const struct FString& UniqueChallengeId, const struct FString& UniqueUserId, TArray<struct FString>* UserIdsToRead);
-	void STATIC_QueryChallengeUserStatus(const struct FString& UniqueChallengeId, const struct FString& UniqueUserId);
-	void STATIC_OnQueryChallengeUserStatusComplete(bool bWasSuccessful, const struct FString& UniqueChallengeId, const struct FString& UniqueUserId, const struct FString& Error);
-	void STATIC_AcceptChallenge(const struct FString& UniqueChallengeId, const struct FString& UniqueUserId);
-	void STATIC_OnAcceptChallengeComplete(bool bWasSuccessful, const struct FString& UniqueChallengeId, const struct FString& UniqueUserId, const struct FString& Error);
-	void STATIC_DeleteCachedChallengeFile(const struct FString& UniqueChallengeId, const struct FString& DLName);
-	void STATIC_ClearCachedChallengeFile(const struct FString& UniqueChallengeId, const struct FString& DLName);
-	void STATIC_GetChallengeFileContents(const struct FString& UniqueChallengeId, const struct FString& DLName, TArray<unsigned char>* OutFileContents);
-	void STATIC_DownloadChallengeFile(const struct FString& UniqueChallengeId, const struct FString& DLName);
-	void STATIC_GetChallengeFileList(const struct FString& UniqueChallengeId, TArray<struct FMcpClashMobChallengeFile>* OutChallengeFiles);
-	void STATIC_OnDownloadChallengeFileComplete(bool bWasSuccessful, const struct FString& UniqueChallengeId, const struct FString& DLName, const struct FString& Filename, const struct FString& Error);
-	void STATIC_GetChallengeList(TArray<struct FMcpClashMobChallengeEvent>* OutChallengeEvents);
-	void STATIC_QueryChallengeList();
-	void STATIC_OnQueryChallengeListComplete(bool bWasSuccessful, const struct FString& Error);
-	class UMcpClashMobBase* STATIC_CreateInstance();
+	void UpdateChallengeUserReward(const struct FString& UniqueChallengeId, const struct FString& UniqueUserId, int UserReward);
+	void OnUpdateChallengeUserRewardComplete(bool bWasSuccessful, const struct FString& UniqueChallengeId, const struct FString& UniqueUserId, const struct FString& Error);
+	void UpdateChallengeUserProgress(const struct FString& UniqueChallengeId, const struct FString& UniqueUserId, bool bDidComplete, int GoalProgress);
+	void OnUpdateChallengeUserProgressComplete(bool bWasSuccessful, const struct FString& UniqueChallengeId, const struct FString& UniqueUserId, const struct FString& Error);
+	void GetChallengeUserStatus(const struct FString& UniqueChallengeId, const struct FString& UniqueUserId, struct FMcpClashMobChallengeUserStatus* OutChallengeUserStatus);
+	void QueryChallengeMultiUserStatus(const struct FString& UniqueChallengeId, const struct FString& UniqueUserId, TArray<struct FString>* UserIdsToRead);
+	void QueryChallengeUserStatus(const struct FString& UniqueChallengeId, const struct FString& UniqueUserId);
+	void OnQueryChallengeUserStatusComplete(bool bWasSuccessful, const struct FString& UniqueChallengeId, const struct FString& UniqueUserId, const struct FString& Error);
+	void AcceptChallenge(const struct FString& UniqueChallengeId, const struct FString& UniqueUserId);
+	void OnAcceptChallengeComplete(bool bWasSuccessful, const struct FString& UniqueChallengeId, const struct FString& UniqueUserId, const struct FString& Error);
+	void DeleteCachedChallengeFile(const struct FString& UniqueChallengeId, const struct FString& DLName);
+	void ClearCachedChallengeFile(const struct FString& UniqueChallengeId, const struct FString& DLName);
+	void GetChallengeFileContents(const struct FString& UniqueChallengeId, const struct FString& DLName, TArray<unsigned char>* OutFileContents);
+	void DownloadChallengeFile(const struct FString& UniqueChallengeId, const struct FString& DLName);
+	void GetChallengeFileList(const struct FString& UniqueChallengeId, TArray<struct FMcpClashMobChallengeFile>* OutChallengeFiles);
+	void OnDownloadChallengeFileComplete(bool bWasSuccessful, const struct FString& UniqueChallengeId, const struct FString& DLName, const struct FString& Filename, const struct FString& Error);
+	void GetChallengeList(TArray<struct FMcpClashMobChallengeEvent>* OutChallengeEvents);
+	void QueryChallengeList();
+	void OnQueryChallengeListComplete(bool bWasSuccessful, const struct FString& Error);
+	class UMcpClashMobBase* CreateInstance();
 };
 
 
@@ -1576,7 +1576,7 @@ public:
 	}
 
 
-	struct FString STATIC_GetUrlForFile(const struct FString& Filename);
+	struct FString GetUrlForFile(const struct FString& Filename);
 };
 
 
@@ -1607,27 +1607,27 @@ public:
 	}
 
 
-	void STATIC_OnUpdateChallengeUserRewardHTTPRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
-	void STATIC_UpdateChallengeUserReward(const struct FString& UniqueChallengeId, const struct FString& UniqueUserId, int UserReward);
-	void STATIC_OnUpdateChallengeUserProgressHTTPRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
-	void STATIC_UpdateChallengeUserProgress(const struct FString& UniqueChallengeId, const struct FString& UniqueUserId, bool bDidComplete, int GoalProgress);
-	void STATIC_GetChallengeUserStatus(const struct FString& UniqueChallengeId, const struct FString& UniqueUserId, struct FMcpClashMobChallengeUserStatus* OutChallengeUserStatus);
-	void STATIC_OnQueryChallengeMultiStatusHTTPRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
-	void STATIC_QueryChallengeMultiUserStatus(const struct FString& UniqueChallengeId, const struct FString& UniqueUserId, TArray<struct FString>* UserIdsToRead);
-	void STATIC_OnQueryChallengeStatusHTTPRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
-	void STATIC_QueryChallengeUserStatus(const struct FString& UniqueChallengeId, const struct FString& UniqueUserId);
-	void STATIC_OnAcceptChallengeHTTPRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
-	void STATIC_AcceptChallenge(const struct FString& UniqueChallengeId, const struct FString& UniqueUserId);
-	void STATIC_DeleteCachedChallengeFile(const struct FString& UniqueChallengeId, const struct FString& DLName);
-	void STATIC_ClearCachedChallengeFile(const struct FString& UniqueChallengeId, const struct FString& DLName);
-	void STATIC_GetChallengeFileContents(const struct FString& UniqueChallengeId, const struct FString& DLName, TArray<unsigned char>* OutFileContents);
-	void STATIC_OnDownloadMcpFileComplete(bool bWasSuccessful, const struct FString& DLName);
-	void STATIC_OnLoadCachedFileComplete(bool bWasSuccessful, const struct FString& DLName);
-	void STATIC_DownloadChallengeFile(const struct FString& UniqueChallengeId, const struct FString& DLName);
-	void STATIC_GetChallengeFileList(const struct FString& UniqueChallengeId, TArray<struct FMcpClashMobChallengeFile>* OutChallengeFiles);
-	void STATIC_GetChallengeList(TArray<struct FMcpClashMobChallengeEvent>* OutChallengeEvents);
-	void STATIC_OnQueryChallengeListHTTPRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
-	void STATIC_QueryChallengeList();
+	void OnUpdateChallengeUserRewardHTTPRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
+	void UpdateChallengeUserReward(const struct FString& UniqueChallengeId, const struct FString& UniqueUserId, int UserReward);
+	void OnUpdateChallengeUserProgressHTTPRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
+	void UpdateChallengeUserProgress(const struct FString& UniqueChallengeId, const struct FString& UniqueUserId, bool bDidComplete, int GoalProgress);
+	void GetChallengeUserStatus(const struct FString& UniqueChallengeId, const struct FString& UniqueUserId, struct FMcpClashMobChallengeUserStatus* OutChallengeUserStatus);
+	void OnQueryChallengeMultiStatusHTTPRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
+	void QueryChallengeMultiUserStatus(const struct FString& UniqueChallengeId, const struct FString& UniqueUserId, TArray<struct FString>* UserIdsToRead);
+	void OnQueryChallengeStatusHTTPRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
+	void QueryChallengeUserStatus(const struct FString& UniqueChallengeId, const struct FString& UniqueUserId);
+	void OnAcceptChallengeHTTPRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
+	void AcceptChallenge(const struct FString& UniqueChallengeId, const struct FString& UniqueUserId);
+	void DeleteCachedChallengeFile(const struct FString& UniqueChallengeId, const struct FString& DLName);
+	void ClearCachedChallengeFile(const struct FString& UniqueChallengeId, const struct FString& DLName);
+	void GetChallengeFileContents(const struct FString& UniqueChallengeId, const struct FString& DLName, TArray<unsigned char>* OutFileContents);
+	void OnDownloadMcpFileComplete(bool bWasSuccessful, const struct FString& DLName);
+	void OnLoadCachedFileComplete(bool bWasSuccessful, const struct FString& DLName);
+	void DownloadChallengeFile(const struct FString& UniqueChallengeId, const struct FString& DLName);
+	void GetChallengeFileList(const struct FString& UniqueChallengeId, TArray<struct FMcpClashMobChallengeFile>* OutChallengeFiles);
+	void GetChallengeList(TArray<struct FMcpClashMobChallengeEvent>* OutChallengeEvents);
+	void OnQueryChallengeListHTTPRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
+	void QueryChallengeList();
 	void Init();
 };
 
@@ -1665,28 +1665,28 @@ public:
 	}
 
 
-	void STATIC_OnAcceptGroupInviteComplete(const struct FString& GroupID, bool bWasSuccessful, const struct FString& Error);
-	void STATIC_AcceptGroupInvite(const struct FString& UniqueUserId, const struct FString& GroupID, bool bShouldAccept);
-	void STATIC_GetGroupInviteList(const struct FString& UserId, struct FMcpGroupList* InviteList);
-	void STATIC_OnQueryGroupInvitesComplete(bool bWasSuccessful, const struct FString& Error);
-	void STATIC_QueryGroupInvites(const struct FString& UniqueUserId);
-	void STATIC_OnDeleteAllGroupsComplete(const struct FString& RequesterId, bool bWasSuccessful, const struct FString& Error);
-	void STATIC_DeleteAllGroups(const struct FString& OwnerId);
-	void STATIC_OnRemoveGroupMembersComplete(const struct FString& GroupID, bool bWasSuccessful, const struct FString& Error);
-	void STATIC_RemoveGroupMembers(const struct FString& OwnerId, const struct FString& GroupID, TArray<struct FString>* MemberIds);
-	void STATIC_OnAddGroupMembersComplete(const struct FString& GroupID, bool bWasSuccessful, const struct FString& Error);
-	void STATIC_AddGroupMembers(const struct FString& OwnerId, const struct FString& GroupID, bool bRequiresAcceptance, TArray<struct FString>* MemberIds);
-	void STATIC_GetGroupMembers(const struct FString& GroupID, TArray<struct FMcpGroupMember>* GroupMembers);
-	void STATIC_OnQueryGroupMembersComplete(const struct FString& GroupID, bool bWasSuccessful, const struct FString& Error);
-	void STATIC_QueryGroupMembers(const struct FString& UniqueUserId, const struct FString& GroupID);
-	void STATIC_GetGroupList(const struct FString& UserId, struct FMcpGroupList* GroupList);
-	void STATIC_OnQueryGroupsComplete(const struct FString& UserId, bool bWasSuccessful, const struct FString& Error);
-	void STATIC_QueryGroups(const struct FString& RequesterId);
-	void STATIC_OnDeleteGroupComplete(const struct FString& GroupID, bool bWasSuccessful, const struct FString& Error);
-	void STATIC_DeleteGroup(const struct FString& UniqueUserId, const struct FString& GroupID);
-	void STATIC_OnCreateGroupComplete(const struct FMcpGroup& Group, bool bWasSuccessful, const struct FString& Error);
-	void STATIC_CreateGroup(const struct FString& OwnerId, const struct FString& GroupName);
-	class UMcpGroupsBase* STATIC_CreateInstance();
+	void OnAcceptGroupInviteComplete(const struct FString& GroupID, bool bWasSuccessful, const struct FString& Error);
+	void AcceptGroupInvite(const struct FString& UniqueUserId, const struct FString& GroupID, bool bShouldAccept);
+	void GetGroupInviteList(const struct FString& UserId, struct FMcpGroupList* InviteList);
+	void OnQueryGroupInvitesComplete(bool bWasSuccessful, const struct FString& Error);
+	void QueryGroupInvites(const struct FString& UniqueUserId);
+	void OnDeleteAllGroupsComplete(const struct FString& RequesterId, bool bWasSuccessful, const struct FString& Error);
+	void DeleteAllGroups(const struct FString& OwnerId);
+	void OnRemoveGroupMembersComplete(const struct FString& GroupID, bool bWasSuccessful, const struct FString& Error);
+	void RemoveGroupMembers(const struct FString& OwnerId, const struct FString& GroupID, TArray<struct FString>* MemberIds);
+	void OnAddGroupMembersComplete(const struct FString& GroupID, bool bWasSuccessful, const struct FString& Error);
+	void AddGroupMembers(const struct FString& OwnerId, const struct FString& GroupID, bool bRequiresAcceptance, TArray<struct FString>* MemberIds);
+	void GetGroupMembers(const struct FString& GroupID, TArray<struct FMcpGroupMember>* GroupMembers);
+	void OnQueryGroupMembersComplete(const struct FString& GroupID, bool bWasSuccessful, const struct FString& Error);
+	void QueryGroupMembers(const struct FString& UniqueUserId, const struct FString& GroupID);
+	void GetGroupList(const struct FString& UserId, struct FMcpGroupList* GroupList);
+	void OnQueryGroupsComplete(const struct FString& UserId, bool bWasSuccessful, const struct FString& Error);
+	void QueryGroups(const struct FString& RequesterId);
+	void OnDeleteGroupComplete(const struct FString& GroupID, bool bWasSuccessful, const struct FString& Error);
+	void DeleteGroup(const struct FString& UniqueUserId, const struct FString& GroupID);
+	void OnCreateGroupComplete(const struct FMcpGroup& Group, bool bWasSuccessful, const struct FString& Error);
+	void CreateGroup(const struct FString& OwnerId, const struct FString& GroupName);
+	class UMcpGroupsBase* CreateInstance();
 };
 
 
@@ -1720,26 +1720,26 @@ public:
 	}
 
 
-	void STATIC_CacheGroupMember(const struct FString& MemberId, const struct FString& GroupID, TEnumAsByte<EMcpGroupAcceptState> AcceptState);
-	void STATIC_CacheGroup(const struct FString& RequesterId, const struct FMcpGroup& Group);
-	void STATIC_OnAcceptGroupInviteRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful);
-	void STATIC_AcceptGroupInvite(const struct FString& UniqueUserId, const struct FString& GroupID, bool bShouldAccept);
-	void STATIC_OnDeleteAllGroupsRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful);
-	void STATIC_DeleteAllGroups(const struct FString& UniqueUserId);
-	void STATIC_OnRemoveGroupMembersRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful);
-	void STATIC_RemoveGroupMembers(const struct FString& UniqueUserId, const struct FString& GroupID, TArray<struct FString>* MemberIds);
-	void STATIC_OnAddGroupMembersRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful);
-	void STATIC_AddGroupMembers(const struct FString& UniqueUserId, const struct FString& GroupID, bool bRequiresAcceptance, TArray<struct FString>* MemberIds);
-	void STATIC_GetGroupMembers(const struct FString& GroupID, TArray<struct FMcpGroupMember>* GroupMembers);
-	void STATIC_OnQueryGroupMembersRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful);
-	void STATIC_QueryGroupMembers(const struct FString& UniqueUserId, const struct FString& GroupID);
-	void STATIC_GetGroupList(const struct FString& UserId, struct FMcpGroupList* GroupList);
-	void STATIC_OnQueryGroupsRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful);
-	void STATIC_QueryGroups(const struct FString& RequesterId);
-	void STATIC_OnDeleteGroupRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful);
-	void STATIC_DeleteGroup(const struct FString& UniqueUserId, const struct FString& GroupID);
-	void STATIC_OnCreateGroupRequestComplete(class UHttpRequestInterface* CreateGroupRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful);
-	void STATIC_CreateGroup(const struct FString& UniqueUserId, const struct FString& GroupName);
+	void CacheGroupMember(const struct FString& MemberId, const struct FString& GroupID, TEnumAsByte<EMcpGroupAcceptState> AcceptState);
+	void CacheGroup(const struct FString& RequesterId, const struct FMcpGroup& Group);
+	void OnAcceptGroupInviteRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful);
+	void AcceptGroupInvite(const struct FString& UniqueUserId, const struct FString& GroupID, bool bShouldAccept);
+	void OnDeleteAllGroupsRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful);
+	void DeleteAllGroups(const struct FString& UniqueUserId);
+	void OnRemoveGroupMembersRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful);
+	void RemoveGroupMembers(const struct FString& UniqueUserId, const struct FString& GroupID, TArray<struct FString>* MemberIds);
+	void OnAddGroupMembersRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful);
+	void AddGroupMembers(const struct FString& UniqueUserId, const struct FString& GroupID, bool bRequiresAcceptance, TArray<struct FString>* MemberIds);
+	void GetGroupMembers(const struct FString& GroupID, TArray<struct FMcpGroupMember>* GroupMembers);
+	void OnQueryGroupMembersRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful);
+	void QueryGroupMembers(const struct FString& UniqueUserId, const struct FString& GroupID);
+	void GetGroupList(const struct FString& UserId, struct FMcpGroupList* GroupList);
+	void OnQueryGroupsRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful);
+	void QueryGroups(const struct FString& RequesterId);
+	void OnDeleteGroupRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful);
+	void DeleteGroup(const struct FString& UniqueUserId, const struct FString& GroupID);
+	void OnCreateGroupRequestComplete(class UHttpRequestInterface* CreateGroupRequest, class UHttpResponseInterface* HttpResponse, bool bWasSuccessful);
+	void CreateGroup(const struct FString& UniqueUserId, const struct FString& GroupName);
 };
 
 
@@ -1761,12 +1761,12 @@ public:
 	}
 
 
-	void STATIC_GetIdMappings(const struct FString& ExternalType, TArray<struct FMcpIdMapping>* IDMappings);
-	void STATIC_OnQueryMappingsComplete(const struct FString& ExternalType, bool bWasSuccessful, const struct FString& Error);
-	void STATIC_QueryMappings(const struct FString& ExternalType, TArray<struct FString>* ExternalIds);
-	void STATIC_OnAddMappingComplete(const struct FString& McpId, const struct FString& ExternalId, const struct FString& ExternalType, bool bWasSuccessful, const struct FString& Error);
-	void STATIC_AddMapping(const struct FString& McpId, const struct FString& ExternalId, const struct FString& ExternalType);
-	class UMcpIdMappingBase* STATIC_CreateInstance();
+	void GetIdMappings(const struct FString& ExternalType, TArray<struct FMcpIdMapping>* IDMappings);
+	void OnQueryMappingsComplete(const struct FString& ExternalType, bool bWasSuccessful, const struct FString& Error);
+	void QueryMappings(const struct FString& ExternalType, TArray<struct FString>* ExternalIds);
+	void OnAddMappingComplete(const struct FString& McpId, const struct FString& ExternalId, const struct FString& ExternalType, bool bWasSuccessful, const struct FString& Error);
+	void AddMapping(const struct FString& McpId, const struct FString& ExternalId, const struct FString& ExternalType);
+	class UMcpIdMappingBase* CreateInstance();
 };
 
 
@@ -1788,11 +1788,11 @@ public:
 	}
 
 
-	void STATIC_GetIdMappings(const struct FString& ExternalType, TArray<struct FMcpIdMapping>* IDMappings);
-	void STATIC_OnQueryMappingsRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
-	void STATIC_QueryMappings(const struct FString& ExternalType, TArray<struct FString>* ExternalIds);
-	void STATIC_OnAddMappingRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
-	void STATIC_AddMapping(const struct FString& McpId, const struct FString& ExternalId, const struct FString& ExternalType);
+	void GetIdMappings(const struct FString& ExternalType, TArray<struct FMcpIdMapping>* IDMappings);
+	void OnQueryMappingsRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
+	void QueryMappings(const struct FString& ExternalType, TArray<struct FString>* ExternalIds);
+	void OnAddMappingRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
+	void AddMapping(const struct FString& McpId, const struct FString& ExternalId, const struct FString& ExternalType);
 };
 
 
@@ -1818,17 +1818,17 @@ public:
 	}
 
 
-	void STATIC_OnDeleteValueComplete(const struct FString& McpId, const struct FString& SaveSlot, const struct FName& ValueId, bool bWasSuccessful, const struct FString& Error);
-	void STATIC_DeleteValue(const struct FString& McpId, const struct FString& SaveSlot, const struct FName& ValueId);
-	void STATIC_OnUpdateValueComplete(const struct FString& McpId, const struct FString& SaveSlot, const struct FName& ValueId, int Value, bool bWasSuccessful, const struct FString& Error);
-	void STATIC_UpdateValue(const struct FString& McpId, const struct FString& SaveSlot, const struct FName& ValueId, int Value);
-	int STATIC_GetValue(const struct FString& McpId, const struct FString& SaveSlot, const struct FName& ValueId);
-	TArray<struct FManagedValue> STATIC_GetValues(const struct FString& McpId, const struct FString& SaveSlot);
-	void STATIC_OnReadSaveSlotComplete(const struct FString& McpId, const struct FString& SaveSlot, bool bWasSuccessful, const struct FString& Error);
-	void STATIC_ReadSaveSlot(const struct FString& McpId, const struct FString& SaveSlot);
-	void STATIC_OnCreateSaveSlotComplete(const struct FString& McpId, const struct FString& SaveSlot, bool bWasSuccessful, const struct FString& Error);
-	void STATIC_CreateSaveSlot(const struct FString& McpId, const struct FString& SaveSlot);
-	class UMcpManagedValueManagerBase* STATIC_CreateInstance();
+	void OnDeleteValueComplete(const struct FString& McpId, const struct FString& SaveSlot, const struct FName& ValueId, bool bWasSuccessful, const struct FString& Error);
+	void DeleteValue(const struct FString& McpId, const struct FString& SaveSlot, const struct FName& ValueId);
+	void OnUpdateValueComplete(const struct FString& McpId, const struct FString& SaveSlot, const struct FName& ValueId, int Value, bool bWasSuccessful, const struct FString& Error);
+	void UpdateValue(const struct FString& McpId, const struct FString& SaveSlot, const struct FName& ValueId, int Value);
+	int GetValue(const struct FString& McpId, const struct FString& SaveSlot, const struct FName& ValueId);
+	TArray<struct FManagedValue> GetValues(const struct FString& McpId, const struct FString& SaveSlot);
+	void OnReadSaveSlotComplete(const struct FString& McpId, const struct FString& SaveSlot, bool bWasSuccessful, const struct FString& Error);
+	void ReadSaveSlot(const struct FString& McpId, const struct FString& SaveSlot);
+	void OnCreateSaveSlotComplete(const struct FString& McpId, const struct FString& SaveSlot, bool bWasSuccessful, const struct FString& Error);
+	void CreateSaveSlot(const struct FString& McpId, const struct FString& SaveSlot);
+	class UMcpManagedValueManagerBase* CreateInstance();
 };
 
 
@@ -1854,18 +1854,18 @@ public:
 	}
 
 
-	void STATIC_OnDeleteValueRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
-	void STATIC_DeleteValue(const struct FString& McpId, const struct FString& SaveSlot, const struct FName& ValueId);
-	void STATIC_OnUpdateValueRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
-	void STATIC_UpdateValue(const struct FString& McpId, const struct FString& SaveSlot, const struct FName& ValueId, int Value);
-	int STATIC_GetValue(const struct FString& McpId, const struct FString& SaveSlot, const struct FName& ValueId);
-	TArray<struct FManagedValue> STATIC_GetValues(const struct FString& McpId, const struct FString& SaveSlot);
-	void STATIC_OnReadSaveSlotRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
-	void STATIC_ReadSaveSlot(const struct FString& McpId, const struct FString& SaveSlot);
-	void STATIC_ParseValuesForSaveSlot(const struct FString& McpId, const struct FString& SaveSlot, const struct FString& JsonPayload);
-	int STATIC_FindSaveSlotIndex(const struct FString& McpId, const struct FString& SaveSlot);
-	void STATIC_OnCreateSaveSlotRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
-	void STATIC_CreateSaveSlot(const struct FString& McpId, const struct FString& SaveSlot);
+	void OnDeleteValueRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
+	void DeleteValue(const struct FString& McpId, const struct FString& SaveSlot, const struct FName& ValueId);
+	void OnUpdateValueRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
+	void UpdateValue(const struct FString& McpId, const struct FString& SaveSlot, const struct FName& ValueId, int Value);
+	int GetValue(const struct FString& McpId, const struct FString& SaveSlot, const struct FName& ValueId);
+	TArray<struct FManagedValue> GetValues(const struct FString& McpId, const struct FString& SaveSlot);
+	void OnReadSaveSlotRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
+	void ReadSaveSlot(const struct FString& McpId, const struct FString& SaveSlot);
+	void ParseValuesForSaveSlot(const struct FString& McpId, const struct FString& SaveSlot, const struct FString& JsonPayload);
+	int FindSaveSlotIndex(const struct FString& McpId, const struct FString& SaveSlot);
+	void OnCreateSaveSlotRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
+	void CreateSaveSlot(const struct FString& McpId, const struct FString& SaveSlot);
 };
 
 
@@ -1885,10 +1885,10 @@ public:
 	}
 
 
-	struct FString STATIC_GetLastServerTime();
-	void STATIC_OnQueryServerTimeComplete(bool bWasSuccessful, const struct FString& DateTimeStr, const struct FString& Error);
-	void STATIC_QueryServerTime();
-	class UMcpServerTimeBase* STATIC_CreateInstance();
+	struct FString GetLastServerTime();
+	void OnQueryServerTimeComplete(bool bWasSuccessful, const struct FString& DateTimeStr, const struct FString& Error);
+	void QueryServerTime();
+	class UMcpServerTimeBase* CreateInstance();
 };
 
 
@@ -1908,9 +1908,9 @@ public:
 	}
 
 
-	struct FString STATIC_GetLastServerTime();
-	void STATIC_OnQueryServerTimeHTTPRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
-	void STATIC_QueryServerTime();
+	struct FString GetLastServerTime();
+	void OnQueryServerTimeHTTPRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
+	void QueryServerTime();
 };
 
 
@@ -1948,30 +1948,30 @@ public:
 	}
 
 
-	void STATIC_OnRecordIapComplete(const struct FString& McpId, const struct FString& SaveSlotId, TArray<struct FString> UpdatedItemIds, bool bWasSuccessful, const struct FString& Error);
-	void STATIC_RecordIap(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& Receipt);
-	void STATIC_OnDeleteItemComplete(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& InstanceItemId, bool bWasSuccessful, const struct FString& Error);
-	void STATIC_DeleteItem(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& InstanceItemId, int StoreVersion);
-	void STATIC_OnConsumeItemComplete(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& InstanceItemId, TArray<struct FString> UpdatedItemIds, bool bWasSuccessful, const struct FString& Error);
-	void STATIC_ConsumeItem(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& InstanceItemId, int Quantity, int StoreVersion);
-	void STATIC_OnEarnItemComplete(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& GlobalItemId, TArray<struct FString> UpdatedItemIds, bool bWasSuccessful, const struct FString& Error);
-	void STATIC_EarnItem(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& GlobalItemId, int Quantity, int StoreVersion);
-	void STATIC_OnSellItemComplete(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& InstanceItemId, TArray<struct FString> UpdatedItemIds, bool bWasSuccessful, const struct FString& Error);
-	void STATIC_SellItem(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& InstanceItemId, int Quantity, int StoreVersion, TArray<struct FMcpInventoryItemContainer>* ExpectedResultItems);
-	void STATIC_OnPurchaseItemComplete(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& GlobalItemId, TArray<struct FString> UpdatedItemIds, bool bWasSuccessful, const struct FString& Error);
-	void STATIC_PurchaseItem(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& GlobalItemId, TArray<struct FString> PurchaseItemIds, int Quantity, int StoreVersion, float Scalar);
-	bool STATIC_GetInventoryItem(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& InstanceItemId, struct FMcpInventoryItem* OutInventoryItem);
+	void OnRecordIapComplete(const struct FString& McpId, const struct FString& SaveSlotId, TArray<struct FString> UpdatedItemIds, bool bWasSuccessful, const struct FString& Error);
+	void RecordIap(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& Receipt);
+	void OnDeleteItemComplete(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& InstanceItemId, bool bWasSuccessful, const struct FString& Error);
+	void DeleteItem(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& InstanceItemId, int StoreVersion);
+	void OnConsumeItemComplete(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& InstanceItemId, TArray<struct FString> UpdatedItemIds, bool bWasSuccessful, const struct FString& Error);
+	void ConsumeItem(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& InstanceItemId, int Quantity, int StoreVersion);
+	void OnEarnItemComplete(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& GlobalItemId, TArray<struct FString> UpdatedItemIds, bool bWasSuccessful, const struct FString& Error);
+	void EarnItem(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& GlobalItemId, int Quantity, int StoreVersion);
+	void OnSellItemComplete(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& InstanceItemId, TArray<struct FString> UpdatedItemIds, bool bWasSuccessful, const struct FString& Error);
+	void SellItem(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& InstanceItemId, int Quantity, int StoreVersion, TArray<struct FMcpInventoryItemContainer>* ExpectedResultItems);
+	void OnPurchaseItemComplete(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& GlobalItemId, TArray<struct FString> UpdatedItemIds, bool bWasSuccessful, const struct FString& Error);
+	void PurchaseItem(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& GlobalItemId, TArray<struct FString> PurchaseItemIds, int Quantity, int StoreVersion, float Scalar);
+	bool GetInventoryItem(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& InstanceItemId, struct FMcpInventoryItem* OutInventoryItem);
 	void GetInventoryItems(const struct FString& McpId, const struct FString& SaveSlotId, TArray<struct FMcpInventoryItem>* OutInventoryItems);
-	void STATIC_OnQueryInventoryItemsComplete(const struct FString& McpId, const struct FString& SaveSlotId, bool bWasSuccessful, const struct FString& Error);
-	void STATIC_QueryInventoryItems(const struct FString& McpId, const struct FString& SaveSlotId);
-	void STATIC_OnQuerySaveSlotListComplete(const struct FString& McpId, bool bWasSuccessful, const struct FString& Error);
-	TArray<struct FString> STATIC_GetSaveSlotList(const struct FString& McpId);
-	void STATIC_QuerySaveSlotList(const struct FString& McpId);
-	void STATIC_OnDeleteSaveSlotComplete(const struct FString& McpId, const struct FString& SaveSlotId, bool bWasSuccessful, const struct FString& Error);
-	void STATIC_DeleteSaveSlot(const struct FString& McpId, const struct FString& SaveSlotId);
-	void STATIC_OnCreateSaveSlotComplete(const struct FString& McpId, const struct FString& SaveSlotId, bool bWasSuccessful, const struct FString& Error);
-	void STATIC_CreateSaveSlot(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& ParentSaveSlotId);
-	class UMcpUserInventoryBase* STATIC_CreateInstance();
+	void OnQueryInventoryItemsComplete(const struct FString& McpId, const struct FString& SaveSlotId, bool bWasSuccessful, const struct FString& Error);
+	void QueryInventoryItems(const struct FString& McpId, const struct FString& SaveSlotId);
+	void OnQuerySaveSlotListComplete(const struct FString& McpId, bool bWasSuccessful, const struct FString& Error);
+	TArray<struct FString> GetSaveSlotList(const struct FString& McpId);
+	void QuerySaveSlotList(const struct FString& McpId);
+	void OnDeleteSaveSlotComplete(const struct FString& McpId, const struct FString& SaveSlotId, bool bWasSuccessful, const struct FString& Error);
+	void DeleteSaveSlot(const struct FString& McpId, const struct FString& SaveSlotId);
+	void OnCreateSaveSlotComplete(const struct FString& McpId, const struct FString& SaveSlotId, bool bWasSuccessful, const struct FString& Error);
+	void CreateSaveSlot(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& ParentSaveSlotId);
+	class UMcpUserInventoryBase* CreateInstance();
 };
 
 
@@ -2003,34 +2003,34 @@ public:
 	}
 
 
-	void STATIC_OnRecordIapRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
-	void STATIC_RecordIap(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& Receipt);
-	void STATIC_OnDeleteItemRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
-	void STATIC_DeleteItem(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& InstanceItemId, int StoreVersion);
-	void STATIC_OnConsumeItemRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
-	void STATIC_ConsumeItem(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& InstanceItemId, int Quantity, int StoreVersion);
-	void STATIC_OnEarnItemRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
-	void STATIC_EarnItem(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& GlobalItemId, int Quantity, int StoreVersion);
-	void STATIC_OnSellItemRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
-	void STATIC_SellItem(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& InstanceItemId, int Quantity, int StoreVersion, TArray<struct FMcpInventoryItemContainer>* ExpectedResultItems);
-	void STATIC_OnPurchaseItemRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
-	void STATIC_PurchaseItem(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& GlobalItemId, TArray<struct FString> PurchaseItemIds, int Quantity, int StoreVersion, float Scalar);
-	int STATIC_FindItemRequest(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& ItemId, TArray<struct FInventoryItemRequestState>* InItemRequests);
-	int STATIC_FindSaveSlotRequest(const struct FString& McpId, const struct FString& SaveSlotId, TArray<struct UMcpUserInventoryManager_FSaveSlotRequestState>* InSaveSlotRequests);
-	int STATIC_FindSaveSlotIndex(const struct FString& McpId, const struct FString& SaveSlotId);
-	void STATIC_ParseSaveSlotList(const struct FString& McpId, const struct FString& JsonPayload);
-	TArray<struct FString> STATIC_ParseInventoryForSaveSlot(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& JsonPayload);
-	bool STATIC_GetInventoryItem(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& InstanceItemId, struct FMcpInventoryItem* OutInventoryItem);
+	void OnRecordIapRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
+	void RecordIap(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& Receipt);
+	void OnDeleteItemRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
+	void DeleteItem(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& InstanceItemId, int StoreVersion);
+	void OnConsumeItemRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
+	void ConsumeItem(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& InstanceItemId, int Quantity, int StoreVersion);
+	void OnEarnItemRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
+	void EarnItem(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& GlobalItemId, int Quantity, int StoreVersion);
+	void OnSellItemRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
+	void SellItem(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& InstanceItemId, int Quantity, int StoreVersion, TArray<struct FMcpInventoryItemContainer>* ExpectedResultItems);
+	void OnPurchaseItemRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
+	void PurchaseItem(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& GlobalItemId, TArray<struct FString> PurchaseItemIds, int Quantity, int StoreVersion, float Scalar);
+	int FindItemRequest(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& ItemId, TArray<struct FInventoryItemRequestState>* InItemRequests);
+	int FindSaveSlotRequest(const struct FString& McpId, const struct FString& SaveSlotId, TArray<struct UMcpUserInventoryManager_FSaveSlotRequestState>* InSaveSlotRequests);
+	int FindSaveSlotIndex(const struct FString& McpId, const struct FString& SaveSlotId);
+	void ParseSaveSlotList(const struct FString& McpId, const struct FString& JsonPayload);
+	TArray<struct FString> ParseInventoryForSaveSlot(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& JsonPayload);
+	bool GetInventoryItem(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& InstanceItemId, struct FMcpInventoryItem* OutInventoryItem);
 	void GetInventoryItems(const struct FString& McpId, const struct FString& SaveSlotId, TArray<struct FMcpInventoryItem>* OutInventoryItems);
-	void STATIC_OnQueryInventoryItemsRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
-	void STATIC_QueryInventoryItems(const struct FString& McpId, const struct FString& SaveSlotId);
-	TArray<struct FString> STATIC_GetSaveSlotList(const struct FString& McpId);
-	void STATIC_OnQuerySaveSlotListRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
-	void STATIC_QuerySaveSlotList(const struct FString& McpId);
-	void STATIC_OnDeleteSaveSlotRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
-	void STATIC_DeleteSaveSlot(const struct FString& McpId, const struct FString& SaveSlotId);
-	void STATIC_OnCreateSaveSlotRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
-	void STATIC_CreateSaveSlot(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& ParentSaveSlotId);
+	void OnQueryInventoryItemsRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
+	void QueryInventoryItems(const struct FString& McpId, const struct FString& SaveSlotId);
+	TArray<struct FString> GetSaveSlotList(const struct FString& McpId);
+	void OnQuerySaveSlotListRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
+	void QuerySaveSlotList(const struct FString& McpId);
+	void OnDeleteSaveSlotRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
+	void DeleteSaveSlot(const struct FString& McpId, const struct FString& SaveSlotId);
+	void OnCreateSaveSlotRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
+	void CreateSaveSlot(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& ParentSaveSlotId);
 };
 
 
@@ -2054,18 +2054,18 @@ public:
 	}
 
 
-	void STATIC_OnDeleteUserComplete(bool bWasSuccessful, const struct FString& Error);
-	void STATIC_DeleteUser(const struct FString& McpId);
-	bool STATIC_GetUser(const struct FString& McpId, struct FMcpUserStatus* User);
-	void STATIC_GetUsers(TArray<struct FMcpUserStatus>* Users);
-	void STATIC_OnQueryUsersComplete(bool bWasSuccessful, const struct FString& Error);
-	void STATIC_QueryUsers(TArray<struct FString>* McpIds);
-	void STATIC_QueryUser(const struct FString& McpId, bool bShouldUpdateLastActive);
-	void STATIC_OnRegisterUserComplete(const struct FString& McpId, const struct FString& UDID, bool bWasSuccessful, const struct FString& Error);
-	void STATIC_RegisterUserFacebook(const struct FString& FacebookId, const struct FString& FacebookAuthToken, const struct FString& UDID, const struct FString& ExistingMcpAuth);
-	void STATIC_RegisterUserEmail(const struct FString& Email, const struct FString& PasswordHash, const struct FString& UDID, const struct FString& ExistingMcpAuth);
-	void STATIC_RegisterUserGenerated(const struct FString& UDID, const struct FString& ExistingMcpAuth);
-	class UMcpUserManagerBase* STATIC_CreateInstance();
+	void OnDeleteUserComplete(bool bWasSuccessful, const struct FString& Error);
+	void DeleteUser(const struct FString& McpId);
+	bool GetUser(const struct FString& McpId, struct FMcpUserStatus* User);
+	void GetUsers(TArray<struct FMcpUserStatus>* Users);
+	void OnQueryUsersComplete(bool bWasSuccessful, const struct FString& Error);
+	void QueryUsers(TArray<struct FString>* McpIds);
+	void QueryUser(const struct FString& McpId, bool bShouldUpdateLastActive);
+	void OnRegisterUserComplete(const struct FString& McpId, const struct FString& UDID, bool bWasSuccessful, const struct FString& Error);
+	void RegisterUserFacebook(const struct FString& FacebookId, const struct FString& FacebookAuthToken, const struct FString& UDID, const struct FString& ExistingMcpAuth);
+	void RegisterUserEmail(const struct FString& Email, const struct FString& PasswordHash, const struct FString& UDID, const struct FString& ExistingMcpAuth);
+	void RegisterUserGenerated(const struct FString& UDID, const struct FString& ExistingMcpAuth);
+	class UMcpUserManagerBase* CreateInstance();
 };
 
 
@@ -2092,19 +2092,19 @@ public:
 	}
 
 
-	void STATIC_OnDeleteUserRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
-	void STATIC_DeleteUser(const struct FString& McpId);
-	void STATIC_GetUsers(TArray<struct FMcpUserStatus>* Users);
-	void STATIC_OnQueryUsersRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
-	void STATIC_QueryUsers(TArray<struct FString>* McpIds);
-	void STATIC_OnQueryUserRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
-	void STATIC_QueryUser(const struct FString& McpId, bool bShouldUpdateLastActive);
-	void STATIC_OnRegisterUserFacebookRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
-	void STATIC_RegisterUserFacebook(const struct FString& FacebookId, const struct FString& FacebookAuthToken, const struct FString& UDID, const struct FString& ExistingMcpAuth);
-	void STATIC_OnRegisterUserEmailRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
-	void STATIC_RegisterUserEmail(const struct FString& Email, const struct FString& PasswordHash, const struct FString& UDID, const struct FString& ExistingMcpAuth);
-	void STATIC_OnRegisterUserRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
-	void STATIC_RegisterUserGenerated(const struct FString& UDID, const struct FString& ExistingMcpAuth);
+	void OnDeleteUserRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
+	void DeleteUser(const struct FString& McpId);
+	void GetUsers(TArray<struct FMcpUserStatus>* Users);
+	void OnQueryUsersRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
+	void QueryUsers(TArray<struct FString>* McpIds);
+	void OnQueryUserRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
+	void QueryUser(const struct FString& McpId, bool bShouldUpdateLastActive);
+	void OnRegisterUserFacebookRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
+	void RegisterUserFacebook(const struct FString& FacebookId, const struct FString& FacebookAuthToken, const struct FString& UDID, const struct FString& ExistingMcpAuth);
+	void OnRegisterUserEmailRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
+	void RegisterUserEmail(const struct FString& Email, const struct FString& PasswordHash, const struct FString& UDID, const struct FString& ExistingMcpAuth);
+	void OnRegisterUserRequestComplete(class UHttpRequestInterface* Request, class UHttpResponseInterface* Response, bool bWasSuccessful);
+	void RegisterUserGenerated(const struct FString& UDID, const struct FString& ExistingMcpAuth);
 };
 
 
@@ -2126,15 +2126,15 @@ public:
 
 
 	void DebugDraw(class UCanvas* Canvas);
-	void OnDownloadComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* Response, bool bDidSucceed);
-	void STATIC_DownloadNextImage();
-	void STATIC_ClearAllDownloads();
-	void STATIC_ClearDownloads(TArray<struct FString> URLs);
-	int STATIC_GetNumPendingDownloads();
-	void STATIC_RequestOnlineImages(TArray<struct FString> URLs);
-	int STATIC_GetOpenDownloadImagesSlot();
-	class UTexture* STATIC_GetOnlineImageTexture(const struct FString& URL);
-	void STATIC_OnOnlineImageDownloaded(const struct FOnlineImageDownload& CachedEntry);
+	void STATIC_OnDownloadComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* Response, bool bDidSucceed);
+	void DownloadNextImage();
+	void ClearAllDownloads();
+	void ClearDownloads(TArray<struct FString> URLs);
+	int GetNumPendingDownloads();
+	void RequestOnlineImages(TArray<struct FString> URLs);
+	int GetOpenDownloadImagesSlot();
+	class UTexture* GetOnlineImageTexture(const struct FString& URL);
+	void OnOnlineImageDownloaded(const struct FOnlineImageDownload& CachedEntry);
 };
 
 
@@ -2161,14 +2161,14 @@ public:
 	}
 
 
-	bool STATIC_IsHanging();
-	void STATIC_Cleanup();
-	void STATIC_CheckRawBytes();
-	void STATIC_EndOfHeaders();
-	void STATIC_CreateResponseObject();
-	void STATIC_ProcessPost(const struct FString& S);
-	void STATIC_ProcessGet(const struct FString& S);
-	void STATIC_ProcessHead(const struct FString& S);
+	bool IsHanging();
+	void Cleanup();
+	void CheckRawBytes();
+	void EndOfHeaders();
+	void CreateResponseObject();
+	void ProcessPost(const struct FString& S);
+	void ProcessGet(const struct FString& S);
+	void ProcessHead(const struct FString& S);
 	void ReceivedLine(const struct FString& S);
 	void ReceivedText(const struct FString& Text);
 	void Timer();

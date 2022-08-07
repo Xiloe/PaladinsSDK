@@ -1,6 +1,6 @@
 #pragma once
 
-// Paladins (4.1.3942.2) SDK
+// Paladins (3.05) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -553,7 +553,8 @@ enum class EFeaturePrivilege : uint8_t
 	FP_SocialNetworkSharing        = 13,
 	FP_KinectSharing               = 14,
 	FP_FitnessUpload               = 15,
-	FP_MAX                         = 16
+	FP_CrossPlay                   = 16,
+	FP_MAX                         = 17
 };
 
 

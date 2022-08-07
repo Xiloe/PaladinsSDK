@@ -1,6 +1,6 @@
 #pragma once
 
-// Paladins (4.1.3942.2) SDK
+// Paladins (3.05) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -87,20 +87,20 @@ public:
 	struct FString GetActionString();
 	void SetDesiredRotation(const struct FRotator& TargetDesiredRotation, bool InLockDesiredRotation, bool InUnlockWhenReached, float InterpolationTime);
 	void AILog_Internal(const struct FString& LogText, const struct FName& LogCategory, bool bForce);
-	void STATIC_RecordDemoAILog(const struct FString& LogText);
+	void RecordDemoAILog(const struct FString& LogText);
 	void Destroyed();
-	void STATIC_ReachedIntermediateMoveGoal();
-	void STATIC_ReachedMoveGoal();
-	float STATIC_GetDestinationOffset();
-	class UGameAICommand* STATIC_GetAICommandInStack(class UClass* InClass);
-	class UGameAICommand* STATIC_FindCommandOfClass(class UClass* SearchClass);
-	void STATIC_DumpCommandStack();
-	void STATIC_CheckCommandCount();
-	class UGameAICommand* STATIC_GetActiveCommand();
-	bool STATIC_AbortCommand(class UGameAICommand* AbortCmd, class UClass* AbortClass);
-	void STATIC_PopCommand(class UGameAICommand* ToBePoppedCommand);
-	void STATIC_PushCommand(class UGameAICommand* NewCommand);
-	void STATIC_AllCommands(class UClass* BaseClass, class UGameAICommand** Cmd);
+	void ReachedIntermediateMoveGoal();
+	void ReachedMoveGoal();
+	float GetDestinationOffset();
+	class UGameAICommand* GetAICommandInStack(class UClass* InClass);
+	class UGameAICommand* FindCommandOfClass(class UClass* SearchClass);
+	void DumpCommandStack();
+	void CheckCommandCount();
+	class UGameAICommand* GetActiveCommand();
+	bool AbortCommand(class UGameAICommand* AbortCmd, class UClass* AbortClass);
+	void PopCommand(class UGameAICommand* ToBePoppedCommand);
+	void PushCommand(class UGameAICommand* NewCommand);
+	void AllCommands(class UClass* BaseClass, class UGameAICommand** Cmd);
 };
 
 
@@ -129,29 +129,29 @@ public:
 
 	bool HandlePathObstruction(class AActor* BlockedBy);
 	bool MoveUnreachable(const struct FVector& AttemptedDest, class AActor* AttemptedTarget);
-	void STATIC_NotifyNeedRepath();
+	void NotifyNeedRepath();
 	struct FString GetDebugVerboseText();
-	void STATIC_GetDebugOverheadText(class APlayerController* PC, TArray<struct FString>* OutText);
+	void GetDebugOverheadText(class APlayerController* PC, TArray<struct FString>* OutText);
 	void DrawDebug(class AHUD* H, const struct FName& Category);
 	struct FString GetDumpString();
-	void STATIC_Resumed(const struct FName& OldCommandName);
-	void Paused(class UGameAICommand* NewCommand);
-	void STATIC_Popped();
-	void STATIC_Pushed();
-	void STATIC_PostPopped();
-	void STATIC_PrePushed(class AGameAIController* AI);
-	bool STATIC_AllowStateTransitionTo(const struct FName& StateName);
-	bool STATIC_AllowTransitionTo(class UClass* AttemptCommand);
+	void Resumed(const struct FName& OldCommandName);
+	void STATIC_Paused(class UGameAICommand* NewCommand);
+	void Popped();
+	void Pushed();
+	void PostPopped();
+	void PrePushed(class AGameAIController* AI);
+	bool AllowStateTransitionTo(const struct FName& StateName);
+	bool AllowTransitionTo(class UClass* AttemptCommand);
 	void Tick(float DeltaTime);
-	bool STATIC_ShouldIgnoreNotifies();
+	bool ShouldIgnoreNotifies();
 	void InternalTick(float DeltaTime);
 	void InternalResumed(const struct FName& OldCommandName);
 	void InternalPaused(class UGameAICommand* NewCommand);
 	void InternalPopped();
 	void InternalPushed();
 	void InternalPrePushed(class AGameAIController* AI);
-	bool STATIC_InitCommand(class AGameAIController* AI);
-	bool STATIC_InitCommandUserActor(class AGameAIController* AI, class AActor* UserActor);
+	bool InitCommand(class AGameAIController* AI);
+	bool InitCommandUserActor(class AGameAIController* AI, class AActor* UserActor);
 };
 
 
@@ -189,24 +189,24 @@ public:
 	}
 
 
-	void STATIC_ClientColorFade(const struct FColor& FadeColor, unsigned char FromAlpha, unsigned char ToAlpha, float FadeTime);
-	void STATIC_CallMemLeakCheck();
-	void STATIC_StopMemLeakChecking();
-	void STATIC_DoMemLeakChecking(float InTimeBetweenMemLeakChecks);
+	void ClientColorFade(const struct FColor& FadeColor, unsigned char FromAlpha, unsigned char ToAlpha, float FadeTime);
+	void CallMemLeakCheck();
+	void StopMemLeakChecking();
+	void DoMemLeakChecking(float InTimeBetweenMemLeakChecks);
 	void WarmupPause(bool bDesiredPauseState);
-	bool STATIC_CanUnpauseWarmup();
-	void STATIC_GetCurrentMovie(struct FString* MovieName);
+	bool CanUnpauseWarmup();
+	void GetCurrentMovie(struct FString* MovieName);
 	void ClientStopMovie(float DelayInSeconds, bool bAllowMovieToFinish, bool bForceStopNonSkippable, bool bForceStopLoadingMovie);
 	void ClientPlayMovie(const struct FString& MovieName, int InStartOfRenderingMovieFrame, int InEndOfRenderingMovieFrame, bool bRestrictPausing, bool bPlayOnceFromStream, bool bOnlyBackButtonSkipsMovie);
-	void STATIC_KeepPlayingLoadingMovie();
-	void STATIC_ShowLoadingMovie(bool bShowMovie, bool bPauseAfterHide, float PauseDuration, float KeepPlayingDuration, bool bOverridePreviousDelays);
+	void KeepPlayingLoadingMovie();
+	void ShowLoadingMovie(bool bShowMovie, bool bPauseAfterHide, float PauseDuration, float KeepPlayingDuration, bool bOverridePreviousDelays);
 	void SetSoundMode(const struct FName& InSoundModeName);
 	void STATIC_DoForceFeedbackForScreenShake(class UCameraShake* ShakeData, float Scale);
 	void NotifyCrowdAgentInRadius(class AGameCrowdAgent* Agent);
 	void NotifyCrowdAgentRefresh();
-	void STATIC_CrowdDebug(bool bEnabled);
-	int STATIC_GetUIPlayerIndex();
-	void STATIC_OnToggleMouseCursor(class USeqAct_ToggleMouseCursor* inAction);
+	void CrowdDebug(bool bEnabled);
+	int GetUIPlayerIndex();
+	void OnToggleMouseCursor(class USeqAct_ToggleMouseCursor* inAction);
 };
 
 
@@ -226,12 +226,12 @@ public:
 	}
 
 
-	void OnRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* Response, bool bDidSucceed);
-	void STATIC_TestHttp(const struct FString& Verb, const struct FString& Payload, const struct FString& URL, bool bSendParallelRequest);
-	void STATIC_EnableDebugCamera(bool bEnableDebugText);
-	void STATIC_TeleportPawnToCamera(bool bToggleDebugCameraOff);
-	void STATIC_ToggleDebugCamera(bool bDrawDebugText);
-	void STATIC_PatchDebugCameraController();
+	void STATIC_OnRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* Response, bool bDidSucceed);
+	void TestHttp(const struct FString& Verb, const struct FString& Payload, const struct FString& URL, bool bSendParallelRequest);
+	void EnableDebugCamera(bool bEnableDebugText);
+	void TeleportPawnToCamera(bool bToggleDebugCameraOff);
+	void ToggleDebugCamera(bool bDrawDebugText);
+	void PatchDebugCameraController();
 };
 
 
@@ -348,48 +348,48 @@ public:
 	}
 
 
-	void STATIC_InitDebugColor();
-	struct FString STATIC_GetBehaviorString();
-	struct FString STATIC_GetDestString();
+	void InitDebugColor();
+	struct FString GetBehaviorString();
+	struct FString GetDestString();
 	void PostRenderFor(class APlayerController* PC, class UCanvas* Canvas, const struct FVector& CameraPosition, const struct FVector& CameraDir);
-	void NativePostRenderFor(class APlayerController* PC, class UCanvas* Canvas, const struct FVector& CameraPosition, const struct FVector& CameraDir);
+	void STATIC_NativePostRenderFor(class APlayerController* PC, class UCanvas* Canvas, const struct FVector& CameraPosition, const struct FVector& CameraDir);
 	struct FVector GeneratePathToActor(class AActor* Goal, float WithinDistance, bool bAllowPartialPath);
 	void InitNavigationHandle();
 	void OverlappedActorEvent(class AActor* A);
 	void TakeDamage(int DamageAmount, class AController* EventInstigator, const struct FVector& HitLocation, const struct FVector& Momentum, class UClass* DamageType, const struct FTraceHitInfo& HitInfo, class AActor* DamageCauser);
 	void FireDeathEvent();
-	void STATIC_PlayDeath(const struct FVector& KillMomentum);
+	void PlayDeath(const struct FVector& KillMomentum);
 	void UpdateIntermediatePoint(class AActor* DestinationActor);
-	bool STATIC_CalcCamera(float fDeltaTime, struct FVector* out_CamLoc, struct FRotator* out_CamRot, float* out_FOV);
-	bool STATIC_IsIdle();
-	void STATIC_SetCurrentBehavior(class UGameCrowdAgentBehavior* BehaviorArchetype);
+	bool CalcCamera(float fDeltaTime, struct FVector* out_CamLoc, struct FRotator* out_CamRot, float* out_FOV);
+	bool IsIdle();
+	void SetCurrentBehavior(class UGameCrowdAgentBehavior* BehaviorArchetype);
 	void StopBehavior();
 	void HandleBehaviorEvent(TEnumAsByte<ECrowdBehaviorEvent> EventType, class AActor* InInstigator, bool bViralCause, bool bPropagateViralFlag);
-	void STATIC_ActivateInstancedBehavior(class UGameCrowdAgentBehavior* NewBehaviorObject);
+	void ActivateInstancedBehavior(class UGameCrowdAgentBehavior* NewBehaviorObject);
 	void ActivateBehavior(class UGameCrowdAgentBehavior* NewBehaviorArchetype, class AActor* LookAtActor);
-	void STATIC_ResetSeePlayer();
-	void STATIC_TryRandomBehavior();
+	void ResetSeePlayer();
+	void TryRandomBehavior();
 	void NotifySeePlayer(class APlayerController* PC);
-	void STATIC_PlaySpawnBehavior();
+	void PlaySpawnBehavior();
 	void HandlePotentialAgentEncounter();
 	void StopIdleAnimation();
 	void PlayIdleAnimation();
-	void STATIC_OnPlayAgentAnimation(class USeqAct_PlayAgentAnimation* Action);
-	void STATIC_InitializeAgent(class AActor* SpawnLoc, class AGameCrowdAgent* AgentTemplate, class UGameCrowdGroup* NewGroup, float AgentWarmupTime, bool bWarmupPosition, bool bCheckWarmupVisibility, TArray<struct FCrowdSpawnerPlayerInfo>* PlayerInfo);
-	struct FVector STATIC_GetAttemptedSpawnLocation(float Pct, const struct FVector& CurPos, float CurRadius, const struct FVector& DestPos, float DestRadius);
-	void STATIC_SetLighting(bool bEnableLightEnvironment, const struct FLightingChannelContainer& AgentLightingChannel, bool bCastShadows);
+	void OnPlayAgentAnimation(class USeqAct_PlayAgentAnimation* Action);
+	void InitializeAgent(class AActor* SpawnLoc, class AGameCrowdAgent* AgentTemplate, class UGameCrowdGroup* NewGroup, float AgentWarmupTime, bool bWarmupPosition, bool bCheckWarmupVisibility, TArray<struct FCrowdSpawnerPlayerInfo>* PlayerInfo);
+	struct FVector GetAttemptedSpawnLocation(float Pct, const struct FVector& CurPos, float CurRadius, const struct FVector& DestPos, float DestRadius);
+	void SetLighting(bool bEnableLightEnvironment, const struct FLightingChannelContainer& AgentLightingChannel, bool bCastShadows);
 	void STATIC_DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos);
 	void Destroyed();
-	void STATIC_ResetPooledAgent();
+	void ResetPooledAgent();
 	void KillAgent();
 	void PostBeginPlay();
-	void STATIC_SetMaxSpeed();
+	void SetMaxSpeed();
 	void SetCurrentDestination(class AGameCrowdDestination* NewDest);
 	void WaitForGroupMembers();
-	bool STATIC_PickBehaviorFrom(TArray<struct FBehaviorEntry> BehaviorList, const struct FVector& BestCameraLoc);
-	bool STATIC_IsPanicked();
+	bool PickBehaviorFrom(TArray<struct FBehaviorEntry> BehaviorList, const struct FVector& BestCameraLoc);
+	bool IsPanicked();
 	void FellOutOfWorld(class UClass* dmgType);
-	struct FVector GetCollisionExtent();
+	struct FVector STATIC_GetCollisionExtent();
 };
 
 
@@ -434,15 +434,15 @@ public:
 	}
 
 
-	void STATIC_CreateAttachments();
+	void CreateAttachments();
 	void OnAnimEnd(class UAnimNodeSequence* SeqNode, float PlayedTime, float ExcessTime);
 	void StopIdleAnimation();
 	void PlayIdleAnimation();
 	void ClearLatentAnimation();
-	void STATIC_OnPlayAgentAnimation(class USeqAct_PlayAgentAnimation* Action);
-	void STATIC_SetRootMotion(bool bRootMotionEnabled);
-	void STATIC_PlayDeath(const struct FVector& KillMomentum);
-	void STATIC_SetLighting(bool bEnableLightEnvironment, const struct FLightingChannelContainer& AgentLightingChannel, bool bCastShadows);
+	void OnPlayAgentAnimation(class USeqAct_PlayAgentAnimation* Action);
+	void SetRootMotion(bool bRootMotionEnabled);
+	void PlayDeath(const struct FVector& KillMomentum);
+	void SetLighting(bool bEnableLightEnvironment, const struct FLightingChannelContainer& AgentLightingChannel, bool bCastShadows);
 	void PostBeginPlay();
 };
 
@@ -464,8 +464,8 @@ public:
 
 	void StopBehavior();
 	void ActivateBehavior(class UGameCrowdAgentBehavior* NewBehaviorArchetype, class AActor* LookAtActor);
-	void STATIC_ChangeDebugColor(const struct FColor& InC);
-	void STATIC_InitDebugColor();
+	void ChangeDebugColor(const struct FColor& InC);
+	void InitDebugColor();
 	void PostBeginPlay();
 };
 
@@ -501,23 +501,23 @@ public:
 	}
 
 
-	bool STATIC_AllowBehaviorAt(class AGameCrowdDestination* Destination);
-	bool STATIC_AllowThisDestination(class AGameCrowdDestination* Destination);
+	bool AllowBehaviorAt(class AGameCrowdDestination* Destination);
+	bool AllowThisDestination(class AGameCrowdDestination* Destination);
 	void PropagateViralBehaviorTo(class AGameCrowdAgent* OtherAgent);
-	class AActor* STATIC_GetBehaviorInstigator();
-	void STATIC_ActivatedBy(class AActor* NewActionTarget);
-	class AActor* STATIC_GetDestinationActor();
-	void STATIC_ChangingDestination(class AGameCrowdDestination* NewDest);
-	struct FString STATIC_GetBehaviorString();
+	class AActor* GetBehaviorInstigator();
+	void ActivatedBy(class AActor* NewActionTarget);
+	class AActor* GetDestinationActor();
+	void ChangingDestination(class AGameCrowdDestination* NewDest);
+	struct FString GetBehaviorString();
 	void OnAnimEnd(class UAnimNodeSequence* SeqNode, float PlayedTime, float ExcessTime);
 	void StopBehavior();
-	void STATIC_InitBehavior(class AGameCrowdAgent* Agent);
-	bool STATIC_HandleMovement();
+	void InitBehavior(class AGameCrowdAgent* Agent);
+	bool HandleMovement();
 	void FinishedTargetRotation();
-	bool STATIC_CanBeUsedBy(class AGameCrowdAgent* Agent, const struct FVector& CameraLoc);
+	bool CanBeUsedBy(class AGameCrowdAgent* Agent, const struct FVector& CameraLoc);
 	void Tick(float DeltaTime);
-	bool STATIC_ShouldEndIdle();
-	class AGameCrowdBehaviorPoint* STATIC_TriggerCrowdBehavior(TEnumAsByte<ECrowdBehaviorEvent> EventType, class AActor* Instigator, const struct FVector& AtLocation, float InRange, float InDuration, class AActor* BaseActor, bool bRequireLOS);
+	bool ShouldEndIdle();
+	class AGameCrowdBehaviorPoint* TriggerCrowdBehavior(TEnumAsByte<ECrowdBehaviorEvent> EventType, class AActor* Instigator, const struct FVector& AtLocation, float InRange, float InDuration, class AActor* BaseActor, bool bRequireLOS);
 };
 
 
@@ -546,13 +546,13 @@ public:
 	}
 
 
-	struct FString STATIC_GetBehaviorString();
+	struct FString GetBehaviorString();
 	void StopBehavior();
-	void STATIC_PlayAgentAnimationNow();
+	void PlayAgentAnimationNow();
 	void OnAnimEnd(class UAnimNodeSequence* SeqNode, float PlayedTime, float ExcessTime);
-	void STATIC_SetSequenceOutput();
+	void SetSequenceOutput();
 	void FinishedTargetRotation();
-	void STATIC_InitBehavior(class AGameCrowdAgent* Agent);
+	void InitBehavior(class AGameCrowdAgent* Agent);
 };
 
 
@@ -570,13 +570,13 @@ public:
 	}
 
 
-	struct FString STATIC_GetBehaviorString();
-	bool STATIC_AllowBehaviorAt(class AGameCrowdDestination* Destination);
-	bool STATIC_AllowThisDestination(class AGameCrowdDestination* Destination);
-	class AActor* STATIC_GetBehaviorInstigator();
+	struct FString GetBehaviorString();
+	bool AllowBehaviorAt(class AGameCrowdDestination* Destination);
+	bool AllowThisDestination(class AGameCrowdDestination* Destination);
+	class AActor* GetBehaviorInstigator();
 	void StopBehavior();
-	void STATIC_InitBehavior(class AGameCrowdAgent* Agent);
-	void STATIC_ActivatedBy(class AActor* NewActionTarget);
+	void InitBehavior(class AGameCrowdAgent* Agent);
+	void ActivatedBy(class AActor* NewActionTarget);
 };
 
 
@@ -594,9 +594,9 @@ public:
 
 
 	void StopBehavior();
-	bool STATIC_ShouldEndIdle();
-	struct FString STATIC_GetBehaviorString();
-	void STATIC_InitBehavior(class AGameCrowdAgent* Agent);
+	bool ShouldEndIdle();
+	struct FString GetBehaviorString();
+	void InitBehavior(class AGameCrowdAgent* Agent);
 };
 
 
@@ -616,11 +616,11 @@ public:
 
 
 	void StopBehavior();
-	bool STATIC_ShouldEndIdle();
-	struct FString STATIC_GetBehaviorString();
-	class AActor* STATIC_GetDestinationActor();
-	void STATIC_ChangingDestination(class AGameCrowdDestination* NewDest);
-	bool STATIC_HandleMovement();
+	bool ShouldEndIdle();
+	struct FString GetBehaviorString();
+	class AActor* GetDestinationActor();
+	void ChangingDestination(class AGameCrowdDestination* NewDest);
+	bool HandleMovement();
 };
 
 
@@ -638,9 +638,9 @@ public:
 	}
 
 
-	void STATIC_UpdateDestinations(class AGameCrowdDestination* NewDestination);
-	void STATIC_RemoveMember(class AGameCrowdAgent* Agent);
-	void STATIC_AddMember(class AGameCrowdAgent* Agent);
+	void UpdateDestinations(class AGameCrowdDestination* NewDestination);
+	void RemoveMember(class AGameCrowdAgent* Agent);
+	void AddMember(class AGameCrowdAgent* Agent);
 };
 
 
@@ -678,7 +678,7 @@ public:
 	}
 
 
-	void OnToggle(class USeqAct_Toggle* Action);
+	void STATIC_OnToggle(class USeqAct_Toggle* Action);
 };
 
 
@@ -702,7 +702,7 @@ public:
 
 
 	void Touch(class AActor* Other, class UPrimitiveComponent* OtherComp, const struct FVector& HitLocation, const struct FVector& HitNormal);
-	void STATIC_DestroySelf();
+	void DestroySelf();
 	void PostBeginPlay();
 };
 
@@ -758,20 +758,20 @@ public:
 
 
 	void DrawDebug(bool bPresistent, TArray<struct FCrowdSpawnerPlayerInfo>* PlayerInfo);
-	float STATIC_GetDestinationRadius();
-	void STATIC_PrioritizeSpawnPoint(float MaxSpawnDist, TArray<struct FCrowdSpawnerPlayerInfo>* PlayerInfo);
-	bool STATIC_AnalyzeSpawnPoint(float MaxSpawnDistSq, bool bForceNavMeshPathing, class UNavigationHandle* NavHandle, TArray<struct FCrowdSpawnerPlayerInfo>* PlayerInfo);
-	void STATIC_GetSpawnPosition(class USeqAct_GameCrowdSpawner* Spawner, struct FVector* SpawnPos, struct FRotator* SpawnRot);
-	float STATIC_GetSpawnRadius();
+	float GetDestinationRadius();
+	void PrioritizeSpawnPoint(float MaxSpawnDist, TArray<struct FCrowdSpawnerPlayerInfo>* PlayerInfo);
+	bool AnalyzeSpawnPoint(float MaxSpawnDistSq, bool bForceNavMeshPathing, class UNavigationHandle* NavHandle, TArray<struct FCrowdSpawnerPlayerInfo>* PlayerInfo);
+	void GetSpawnPosition(class USeqAct_GameCrowdSpawner* Spawner, struct FVector* SpawnPos, struct FRotator* SpawnRot);
+	float GetSpawnRadius();
 	bool AllowableDestinationFor(class AGameCrowdAgent* Agent);
-	bool STATIC_AtCapacity(unsigned char CheckCnt);
+	bool AtCapacity(unsigned char CheckCnt);
 	void IncrementCustomerCount(class AGameCrowdAgent* ArrivingAgent);
 	void DecrementCustomerCount(class AGameCrowdAgent* DepartingAgent);
-	void STATIC_PickNewDestinationFor(class AGameCrowdAgent* Agent, bool bIgnoreRestrictions);
+	void PickNewDestinationFor(class AGameCrowdAgent* Agent, bool bIgnoreRestrictions);
 	void ReachedDestination(class AGameCrowdAgent* Agent);
 	void Destroyed();
 	void PostBeginPlay();
-	bool STATIC_ReachedByAgent(class AGameCrowdAgent* Agent, const struct FVector& TestPosition, bool bTestExactly);
+	bool ReachedByAgent(class AGameCrowdAgent* Agent, const struct FVector& TestPosition, bool bTestExactly);
 };
 
 
@@ -796,14 +796,14 @@ public:
 	}
 
 
-	bool STATIC_HasCustomer();
-	void STATIC_ClearQueue(class AGameCrowdAgent* OldCustomer);
-	void STATIC_AddCustomer(class AGameCrowdAgent* NewCustomer, class AGameCrowdInteractionPoint* PreviousPosition);
-	void STATIC_ActuallyAdvance();
-	void STATIC_AdvanceCustomerTo(class AGameCrowdInteractionPoint* FrontPosition);
+	bool HasCustomer();
+	void ClearQueue(class AGameCrowdAgent* OldCustomer);
+	void AddCustomer(class AGameCrowdAgent* NewCustomer, class AGameCrowdInteractionPoint* PreviousPosition);
+	void ActuallyAdvance();
+	void AdvanceCustomerTo(class AGameCrowdInteractionPoint* FrontPosition);
 	void ReachedDestination(class AGameCrowdAgent* Agent);
-	bool STATIC_HasSpace();
-	bool STATIC_QueueReachedBy(class AGameCrowdAgent* Agent, const struct FVector& TestPosition);
+	bool HasSpace();
+	bool QueueReachedBy(class AGameCrowdAgent* Agent, const struct FVector& TestPosition);
 };
 
 
@@ -836,29 +836,29 @@ public:
 
 
 	class AGameCrowdAgent* CreateNewAgent(class AGameCrowdDestination* SpawnLoc, class AGameCrowdAgent* AgentTemplate, class UGameCrowdGroup* NewGroup, struct FCrowdSpawnInfoItem* Item);
-	bool STATIC_Warmup(int WarmupNum, struct FCrowdSpawnInfoItem* Item);
-	class AGameCrowdAgent* STATIC_SpawnAgent(class AGameCrowdDestination* SpawnLoc, struct FCrowdSpawnInfoItem* Item);
-	class AGameCrowdAgent* STATIC_SpawnAgentByIdx(int SpawnerIdx, class AGameCrowdDestination* SpawnLoc);
-	bool STATIC_ValidateSpawnAt(class AGameCrowdDestination* Candidate, struct FCrowdSpawnInfoItem* Item);
-	void STATIC_AddPrioritizedSpawnPoint(class AGameCrowdDestination* GCD, struct FCrowdSpawnInfoItem* Item);
-	void STATIC_AnalyzeSpawnPoints(int StartIndex, int NumToUpdate, struct FCrowdSpawnInfoItem* Item);
+	bool Warmup(int WarmupNum, struct FCrowdSpawnInfoItem* Item);
+	class AGameCrowdAgent* SpawnAgent(class AGameCrowdDestination* SpawnLoc, struct FCrowdSpawnInfoItem* Item);
+	class AGameCrowdAgent* SpawnAgentByIdx(int SpawnerIdx, class AGameCrowdDestination* SpawnLoc);
+	bool ValidateSpawnAt(class AGameCrowdDestination* Candidate, struct FCrowdSpawnInfoItem* Item);
+	void AddPrioritizedSpawnPoint(class AGameCrowdDestination* GCD, struct FCrowdSpawnInfoItem* Item);
+	void AnalyzeSpawnPoints(int StartIndex, int NumToUpdate, struct FCrowdSpawnInfoItem* Item);
 	void PrioritizeSpawnPoints(float DeltaTime, struct FCrowdSpawnInfoItem* Item);
-	bool STATIC_StaticGetPlayerInfo(TArray<struct FCrowdSpawnerPlayerInfo>* out_PlayerInfo);
-	bool STATIC_GetPlayerInfo();
+	bool StaticGetPlayerInfo(TArray<struct FCrowdSpawnerPlayerInfo>* out_PlayerInfo);
+	bool GetPlayerInfo();
 	class AGameCrowdDestination* PickSpawnPoint(struct FCrowdSpawnInfoItem* Item);
 	bool UpdateSpawner(float DeltaTime, struct FCrowdSpawnInfoItem* Item);
-	void STATIC_UpdateAllSpawners(float DeltaTime);
+	void UpdateAllSpawners(float DeltaTime);
 	void Tick(float DeltaTime);
-	bool STATIC_ShouldDebugDestinations();
-	bool STATIC_IsSpawningActive();
+	bool ShouldDebugDestinations();
+	bool IsSpawningActive();
 	void STATIC_DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos);
-	void STATIC_AgentDestroyed(class AGameCrowdAgent* Agent);
+	void AgentDestroyed(class AGameCrowdAgent* Agent);
 	void FlushAllAgents();
 	void FlushAgents(const struct FCrowdSpawnInfoItem& Item);
 	int CreateSpawner(class USeqAct_GameCrowdPopulationManagerToggle* inAction);
-	void STATIC_SetCrowdInfoVolume(class AGameCrowdInfoVolume* Vol);
-	void STATIC_RemoveSpawnPoint(class AGameCrowdDestination* GCD);
-	void STATIC_AddSpawnPoint(class AGameCrowdDestination* GCD);
+	void SetCrowdInfoVolume(class AGameCrowdInfoVolume* Vol);
+	void RemoveSpawnPoint(class AGameCrowdDestination* GCD);
+	void AddSpawnPoint(class AGameCrowdDestination* GCD);
 	void NotifyPathChanged();
 	void PostBeginPlay();
 };
@@ -1014,24 +1014,24 @@ public:
 	}
 
 
-	class UCameraShake* STATIC_ChooseCameraShake(const struct FVector& Epicenter, class APlayerController* PC);
-	void STATIC_SpawnCameraLensEffects();
-	void STATIC_DoExplosionCameraEffects();
+	class UCameraShake* ChooseCameraShake(const struct FVector& Epicenter, class APlayerController* PC);
+	void SpawnCameraLensEffects();
+	void DoExplosionCameraEffects();
 	void DrawDebug();
-	void STATIC_DelayedExplosionDamage();
+	void DelayedExplosionDamage();
 	void Explode(class UGameExplosion* NewExplosionTemplate, const struct FVector& Direction);
-	void STATIC_SpawnExplosionFogVolume();
-	void STATIC_SpawnExplosionDecal();
-	void STATIC_SpawnExplosionParticleSystem(class UParticleSystem* Template);
-	void STATIC_UpdateExplosionTemplateWithPerMaterialFX(class UPhysicalMaterial* PhysMaterial);
-	void STATIC_SpecialCringeEffectsFor(class AActor* Victim, float VictimDist);
-	void STATIC_SpecialPawnEffectsFor(class AGamePawn* VictimPawn, float VictimDist);
-	float STATIC_GetEffectCheckRadius(bool bCauseDamage, bool bCauseFractureEffects, bool bCauseEffects);
-	bool STATIC_DoExplosionDamage(bool bCauseDamage, bool bCauseEffects);
-	float STATIC_BoxDistanceToPoint(const struct FVector& Start, const struct FBox& BBox);
-	bool STATIC_IsBehindExplosion(class AActor* A);
-	bool STATIC_DoFullDamageToActor(class AActor* Victim);
-	class UPhysicalMaterial* GetPhysicalMaterial();
+	void SpawnExplosionFogVolume();
+	void SpawnExplosionDecal();
+	void SpawnExplosionParticleSystem(class UParticleSystem* Template);
+	void UpdateExplosionTemplateWithPerMaterialFX(class UPhysicalMaterial* PhysMaterial);
+	void SpecialCringeEffectsFor(class AActor* Victim, float VictimDist);
+	void SpecialPawnEffectsFor(class AGamePawn* VictimPawn, float VictimDist);
+	float GetEffectCheckRadius(bool bCauseDamage, bool bCauseFractureEffects, bool bCauseEffects);
+	bool DoExplosionDamage(bool bCauseDamage, bool bCauseEffects);
+	float BoxDistanceToPoint(const struct FVector& Start, const struct FBox& BBox);
+	bool IsBehindExplosion(class AActor* A);
+	bool DoFullDamageToActor(class AActor* Victim);
+	class UPhysicalMaterial* STATIC_GetPhysicalMaterial();
 	void PreBeginPlay();
 };
 
@@ -1051,8 +1051,8 @@ public:
 	}
 
 
-	void STATIC_ReattachMeshWithoutBeingSeen();
-	void STATIC_ReattachMesh();
+	void ReattachMeshWithoutBeingSeen();
+	void ReattachMesh();
 	void UpdateShadowSettings(bool bInWantShadow);
 };
 
@@ -1082,20 +1082,20 @@ public:
 	}
 
 
-	struct FString STATIC_ConsoleCommand(const struct FString& Command, bool bWriteToLog);
-	void STATIC_ShowDebugSelectedInfo();
-	bool STATIC_NativeInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<EInputEvent> Event, float AmountDepressed, bool bGamepad);
-	void STATIC_InitDebugInputSystem();
-	void STATIC_DisableDebugCamera();
-	void STATIC_NormalSpeed();
-	void STATIC_MoreSpeed();
-	void STATIC_SetFreezeRendering();
-	void STATIC_OnDeactivate(class APlayerController* PC);
-	void STATIC_OnActivate(class APlayerController* PC);
+	struct FString ConsoleCommand(const struct FString& Command, bool bWriteToLog);
+	void ShowDebugSelectedInfo();
+	bool NativeInputKey(int ControllerId, const struct FName& Key, TEnumAsByte<EInputEvent> Event, float AmountDepressed, bool bGamepad);
+	void InitDebugInputSystem();
+	void DisableDebugCamera();
+	void NormalSpeed();
+	void MoreSpeed();
+	void SetFreezeRendering();
+	void OnDeactivate(class APlayerController* PC);
+	void OnActivate(class APlayerController* PC);
 	void PostBeginPlay();
-	void STATIC_Unselect();
-	void STATIC_SecondarySelect(const struct FVector& HitLoc, const struct FVector& HitNormal, const struct FTraceHitInfo& HitInfo);
-	void STATIC_PrimarySelect(const struct FVector& HitLoc, const struct FVector& HitNormal, const struct FTraceHitInfo& HitInfo);
+	void Unselect();
+	void SecondarySelect(const struct FVector& HitLoc, const struct FVector& HitNormal, const struct FTraceHitInfo& HitInfo);
+	void PrimarySelect(const struct FVector& HitLoc, const struct FVector& HitNormal, const struct FTraceHitInfo& HitInfo);
 };
 
 
@@ -1153,18 +1153,18 @@ public:
 	}
 
 
-	void STATIC_RenderKismetHud();
-	void STATIC_AddKismetRenderEvent(class USeqEvent_HudRender* NewEvent);
+	void RenderKismetHud();
+	void AddKismetRenderEvent(class USeqEvent_HudRender* NewEvent);
 	void RefreshKismetLinks();
-	void STATIC_DrawMobileZone_Slider(class UMobileInputZone* Zone);
-	void STATIC_DrawMobileTilt(class UMobilePlayerInput* MobileInput);
-	void STATIC_DrawMobileZone_Trackball(class UMobileInputZone* Zone);
-	void STATIC_DrawMobileZone_Joystick(class UMobileInputZone* Zone);
-	void STATIC_DrawMobileZone_Button(class UMobileInputZone* Zone);
-	void STATIC_DrawInputZoneOverlays();
-	void STATIC_RenderMobileMenu();
-	bool STATIC_ShowMobileHud();
-	void STATIC_DrawMobileDebugString(float XPos, float YPos, const struct FString& Str);
+	void DrawMobileZone_Slider(class UMobileInputZone* Zone);
+	void DrawMobileTilt(class UMobilePlayerInput* MobileInput);
+	void DrawMobileZone_Trackball(class UMobileInputZone* Zone);
+	void DrawMobileZone_Joystick(class UMobileInputZone* Zone);
+	void DrawMobileZone_Button(class UMobileInputZone* Zone);
+	void DrawInputZoneOverlays();
+	void RenderMobileMenu();
+	bool ShowMobileHud();
+	void DrawMobileDebugString(float XPos, float YPos, const struct FString& Str);
 	void PostRender();
 	void PostBeginPlay();
 };
@@ -1273,15 +1273,15 @@ public:
 	}
 
 
-	void STATIC_AddKismetEventHandler(class USeqEvent_MobileZoneBase* NewHandler);
+	void AddKismetEventHandler(class USeqEvent_MobileZoneBase* NewHandler);
 	void OnPostDrawZone(class UMobileInputZone* Zone, class UCanvas* Canvas);
 	bool OnPreDrawZone(class UMobileInputZone* Zone, class UCanvas* Canvas);
 	bool OnProcessSlide(class UMobileInputZone* Zone, TEnumAsByte<ETouchType> EventType, int SlideValue, const struct FVector2D& ViewportSize);
 	bool OnDoubleTapDelegate(class UMobileInputZone* Zone, TEnumAsByte<ETouchType> EventType, const struct FVector2D& TouchLocation);
 	bool OnTapDelegate(class UMobileInputZone* Zone, TEnumAsByte<ETouchType> EventType, const struct FVector2D& TouchLocation);
 	bool OnProcessInputDelegate(class UMobileInputZone* Zone, float DeltaTime, int Handle, TEnumAsByte<ETouchType> EventType, const struct FVector2D& TouchLocation);
-	void STATIC_DeactivateZone();
-	void STATIC_ActivateZone();
+	void DeactivateZone();
+	void ActivateZone();
 };
 
 
@@ -1336,9 +1336,9 @@ public:
 	}
 
 
-	void STATIC_RenderObject(class UCanvas* Canvas, float DeltaTime);
-	void STATIC_SetCanvasPos(class UCanvas* Canvas, float OffsetX, float OffsetY);
-	void STATIC_InitMenuObject(class UMobilePlayerInput* PlayerInput, class UMobileMenuScene* Scene, int ScreenWidth, int ScreenHeight, bool bIsFirstInitialization);
+	void RenderObject(class UCanvas* Canvas, float DeltaTime);
+	void SetCanvasPos(class UCanvas* Canvas, float OffsetX, float OffsetY);
+	void InitMenuObject(class UMobilePlayerInput* PlayerInput, class UMobileMenuScene* Scene, int ScreenWidth, int ScreenHeight, bool bIsFirstInitialization);
 	void GetRealPosition(float* PosX, float* PosY);
 	bool OnTouch(TEnumAsByte<ETouchType> EventType, float TouchX, float TouchY, class UMobileMenuObject* ObjectOver, float DeltaTime);
 };
@@ -1362,7 +1362,7 @@ public:
 	}
 
 
-	void STATIC_RenderObject(class UCanvas* Canvas, float DeltaTime);
+	void RenderObject(class UCanvas* Canvas, float DeltaTime);
 };
 
 
@@ -1406,21 +1406,21 @@ public:
 	}
 
 
-	bool STATIC_MobileMenuCommand(const struct FString& Command);
-	class UMobileMenuObject* STATIC_FindMenuObject(const struct FString& Tag);
-	void STATIC_CleanUpScene();
+	bool MobileMenuCommand(const struct FString& Command);
+	class UMobileMenuObject* FindMenuObject(const struct FString& Tag);
+	void CleanUpScene();
 	void Closed();
-	bool STATIC_Closing();
-	void STATIC_MadeTopMenu();
+	bool Closing();
+	void MadeTopMenu();
 	void Opened(const struct FString& Mode);
 	bool OnSceneTouch(TEnumAsByte<ETouchType> EventType, float TouchX, float TouchY, bool bInside);
 	void OnTouch(class UMobileMenuObject* Sender, TEnumAsByte<ETouchType> EventType, float TouchX, float TouchY);
-	void STATIC_PreRenderMenuObject(class UMobileMenuObject* MenuObject, class UCanvas* Canvas, float RenderDelta);
-	void STATIC_RenderScene(class UCanvas* Canvas, float RenderDelta);
-	class UFont* STATIC_GetSceneFont();
+	void PreRenderMenuObject(class UMobileMenuObject* MenuObject, class UCanvas* Canvas, float RenderDelta);
+	void RenderScene(class UCanvas* Canvas, float RenderDelta);
+	class UFont* GetSceneFont();
 	void InitMenuScene(class UMobilePlayerInput* PlayerInput, int ScreenWidth, int ScreenHeight, bool bIsFirstInitialization);
-	float STATIC_GetGlobalScaleY();
-	float STATIC_GetGlobalScaleX();
+	float GetGlobalScaleY();
+	float GetGlobalScaleX();
 };
 
 
@@ -1475,41 +1475,41 @@ public:
 	}
 
 
-	class UMobileMenuScene* STATIC_OpenMobileMenuMode(const struct FString& MenuClassName, const struct FString& Mode);
-	class UMobileMenuScene* STATIC_OpenMobileMenu(const struct FString& MenuClassName);
-	void STATIC_MobileMenuCommand(const struct FString& MenuCommand);
-	void STATIC_SceneRenderToggle();
+	class UMobileMenuScene* OpenMobileMenuMode(const struct FString& MenuClassName, const struct FString& Mode);
+	class UMobileMenuScene* OpenMobileMenu(const struct FString& MenuClassName);
+	void MobileMenuCommand(const struct FString& MenuCommand);
+	void SceneRenderToggle();
 	void PreClientTravel(const struct FString& PendingURL, TEnumAsByte<ETravelType> TravelType, bool bIsSeamlessTravel);
 	void RenderMenus(class UCanvas* Canvas, float RenderDelta);
 	void CloseAllMenus();
 	void CloseMenuScene(class UMobileMenuScene* SceneToClose);
 	class UMobileMenuScene* OpenMenuScene(class UClass* SceneClass, const struct FString& Mode);
-	void STATIC_SetMobileInputConfig(const struct FString& GroupName);
-	void STATIC_ActivateInputGroup(const struct FString& GroupName);
-	TArray<class UMobileInputZone*> STATIC_GetCurrentZones();
-	bool STATIC_HasZones();
-	class UMobileInputZone* STATIC_FindorAddZone(const struct FString& ZoneName);
-	class UMobileInputZone* STATIC_FindZone(const struct FString& ZoneName);
-	void STATIC_AddKismetRawInputEventHandler(class USeqEvent_MobileRawInput* NewHandler);
-	void STATIC_AddKismetEventHandler(class USeqEvent_MobileBase* NewHandler);
+	void SetMobileInputConfig(const struct FString& GroupName);
+	void ActivateInputGroup(const struct FString& GroupName);
+	TArray<class UMobileInputZone*> GetCurrentZones();
+	bool HasZones();
+	class UMobileInputZone* FindorAddZone(const struct FString& ZoneName);
+	class UMobileInputZone* FindZone(const struct FString& ZoneName);
+	void AddKismetRawInputEventHandler(class USeqEvent_MobileRawInput* NewHandler);
+	void AddKismetEventHandler(class USeqEvent_MobileBase* NewHandler);
 	void RefreshKismetLinks();
-	void STATIC_SwapZoneOwners();
-	void STATIC_InitializeInputZones();
-	void STATIC_InitTouchSystem();
-	void STATIC_ClientInitInputSystem();
+	void SwapZoneOwners();
+	void InitializeInputZones();
+	void InitTouchSystem();
+	void ClientInitInputSystem();
 	void InitInputSystem();
-	bool STATIC_ProcessWorldTouch(class UMobileInputZone* Zone, TEnumAsByte<ETouchType> EventType, const struct FVector2D& TouchLocation);
-	void STATIC_SendInputAxis(const struct FName& Key, float Delta, float DeltaTime);
-	void STATIC_SendInputKey(const struct FName& Key, TEnumAsByte<EInputEvent> Event, float AmountDepressed);
-	void STATIC_ConditionalUpdateInputZones(int NewViewportX, int NewViewportY, int NewViewportSizeX, int NewViewportSizeY);
-	void STATIC_NativeInitializeInputZones(bool bIsFirstInitialize);
-	void STATIC_NativeInitializeInputSystem();
+	bool ProcessWorldTouch(class UMobileInputZone* Zone, TEnumAsByte<ETouchType> EventType, const struct FVector2D& TouchLocation);
+	void SendInputAxis(const struct FName& Key, float Delta, float DeltaTime);
+	void SendInputKey(const struct FName& Key, TEnumAsByte<EInputEvent> Event, float AmountDepressed);
+	void ConditionalUpdateInputZones(int NewViewportX, int NewViewportY, int NewViewportSizeX, int NewViewportSizeY);
+	void NativeInitializeInputZones(bool bIsFirstInitialize);
+	void NativeInitializeInputSystem();
 	void OnInputTouch(int Handle, TEnumAsByte<ETouchType> Type, const struct FVector2D& TouchLocation, float DeviceTimestamp, int TouchpadIndex);
 	bool OnPreviewTouch(float X, float Y, int TouchpadIndex);
 	void OnTouchNotHandledInMenu();
 	void PlayerInput(float DeltaTime);
-	void STATIC_CancelMobileInput();
-	void STATIC_ProcessMobileInput(float DeltaTime);
+	void CancelMobileInput();
+	void ProcessMobileInput(float DeltaTime);
 };
 
 
@@ -1530,7 +1530,7 @@ public:
 
 
 	void Recycle();
-	bool MustBeHiddenFromThisPoint(class UNavigationHandle* NavHandle, const struct FVector& InOutOfViewLocation);
+	bool STATIC_MustBeHiddenFromThisPoint(class UNavigationHandle* NavHandle, const struct FVector& InOutOfViewLocation);
 	void RecycleNative();
 };
 
@@ -1553,7 +1553,7 @@ public:
 
 
 	void Recycle();
-	bool STATIC_BiasAgainstPolysWithinDistanceOfLocations(class UNavigationHandle* NavHandle, const struct FVector& InLocation, const struct FRotator& InRotation, float InDistanceToCheck, TArray<struct FVector> InLocationsToCheck);
+	bool BiasAgainstPolysWithinDistanceOfLocations(class UNavigationHandle* NavHandle, const struct FVector& InLocation, const struct FRotator& InRotation, float InDistanceToCheck, TArray<struct FVector> InLocationsToCheck);
 };
 
 
@@ -1661,8 +1661,8 @@ public:
 	}
 
 
-	void STATIC_AgentDestroyed(class AGameCrowdAgent* Agent);
-	float STATIC_GetMaxSpawnDist();
+	void AgentDestroyed(class AGameCrowdAgent* Agent);
+	float GetMaxSpawnDist();
 	void FillCrowdSpawnInfoItem(class AGameCrowdPopulationManager* PopMgr, struct FCrowdSpawnInfoItem* out_Item);
 	int GetObjClassVersion();
 };
@@ -1789,7 +1789,7 @@ public:
 	}
 
 
-	void STATIC_SetCurrentAnimationActionFor(class AGameCrowdAgentSkeletal* Agent);
+	void SetCurrentAnimationActionFor(class AGameCrowdAgentSkeletal* Agent);
 	int GetObjClassVersion();
 };
 
@@ -2055,9 +2055,9 @@ public:
 	void Init();
 	void STATIC_DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos);
 	void UpdateCamera(class APawn* P, class AGamePlayerCamera* CameraActor, float DeltaTime, struct FTViewTarget* OutVT);
-	void STATIC_ResetInterpolation();
-	void STATIC_OnBecomeInActive(class UGameCameraBase* NewCamera);
-	void STATIC_OnBecomeActive(class UGameCameraBase* OldCamera);
+	void ResetInterpolation();
+	void OnBecomeInActive(class UGameCameraBase* NewCamera);
+	void OnBecomeActive(class UGameCameraBase* OldCamera);
 };
 
 
@@ -2126,27 +2126,27 @@ public:
 	}
 
 
-	void STATIC_ResetInterpolation();
+	void ResetInterpolation();
 	void ModifyPostProcessSettings(struct FPostProcessSettings* PP);
-	void STATIC_OnBecomeActive(class UGameCameraBase* OldCamera);
-	void STATIC_UpdateCameraMode(class APawn* P);
-	class UGameThirdPersonCameraMode* STATIC_FindBestCameraMode(class APawn* P);
-	void STATIC_AdjustFocusPointInterpolation(const struct FRotator& Delta);
-	struct FVector STATIC_GetActualFocusLocation();
+	void OnBecomeActive(class UGameCameraBase* OldCamera);
+	void UpdateCameraMode(class APawn* P);
+	class UGameThirdPersonCameraMode* FindBestCameraMode(class APawn* P);
+	void AdjustFocusPointInterpolation(const struct FRotator& Delta);
+	struct FVector GetActualFocusLocation();
 	void UpdateFocusPoint(class APawn* P);
-	void STATIC_ClearFocusPoint(bool bLeaveCameraRotation);
-	class AActor* STATIC_GetFocusActor();
-	void STATIC_SetFocusOnActor(class AActor* FocusActor, const struct FName& FocusBoneName, const struct FVector2D& InterpSpeedRange, const struct FVector2D& InFocusFOV, float CameraFOV, bool bAlwaysFocus, bool bAdjustCamera, bool bIgnoreTrace, float FocusPitchOffsetDeg);
-	void STATIC_SetFocusOnLoc(const struct FVector& FocusWorldLoc, const struct FVector2D& InterpSpeedRange, const struct FVector2D& InFocusFOV, float CameraFOV, bool bAlwaysFocus, bool bAdjustCamera, bool bIgnoreTrace, float FocusPitchOffsetDeg);
-	void STATIC_AdjustTurn(int AngleOffset);
-	void STATIC_EndTurn();
-	void STATIC_BeginTurn(int StartAngle, int EndAngle, float TimeSec, float DelaySec, bool bAlignTargetWhenFinished);
-	void STATIC_PlayerUpdateCamera(class APawn* P, class AGamePlayerCamera* CameraActor, float DeltaTime, struct FTViewTarget* OutVT);
+	void ClearFocusPoint(bool bLeaveCameraRotation);
+	class AActor* GetFocusActor();
+	void SetFocusOnActor(class AActor* FocusActor, const struct FName& FocusBoneName, const struct FVector2D& InterpSpeedRange, const struct FVector2D& InFocusFOV, float CameraFOV, bool bAlwaysFocus, bool bAdjustCamera, bool bIgnoreTrace, float FocusPitchOffsetDeg);
+	void SetFocusOnLoc(const struct FVector& FocusWorldLoc, const struct FVector2D& InterpSpeedRange, const struct FVector2D& InFocusFOV, float CameraFOV, bool bAlwaysFocus, bool bAdjustCamera, bool bIgnoreTrace, float FocusPitchOffsetDeg);
+	void AdjustTurn(int AngleOffset);
+	void EndTurn();
+	void BeginTurn(int StartAngle, int EndAngle, float TimeSec, float DelaySec, bool bAlignTargetWhenFinished);
+	void PlayerUpdateCamera(class APawn* P, class AGamePlayerCamera* CameraActor, float DeltaTime, struct FTViewTarget* OutVT);
 	void UpdateCamera(class APawn* P, class AGamePlayerCamera* CameraActor, float DeltaTime, struct FTViewTarget* OutVT);
 	float GetDesiredFOV(class APawn* ViewedPawn);
 	void Init();
 	void Reset();
-	class UGameThirdPersonCameraMode* STATIC_CreateCameraMode(class UClass* ModeClass);
+	class UGameThirdPersonCameraMode* CreateCameraMode(class UClass* ModeClass);
 };
 
 
@@ -2177,18 +2177,18 @@ public:
 	}
 
 
-	float STATIC_AdjustFOVForViewport(float inHorizFOV, class APawn* CameraTargetPawn);
-	void STATIC_ResetInterpolation();
-	void STATIC_SetColorScale(const struct FVector& NewColorScale);
+	float AdjustFOVForViewport(float inHorizFOV, class APawn* CameraTargetPawn);
+	void ResetInterpolation();
+	void SetColorScale(const struct FVector& NewColorScale);
 	void STATIC_DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos);
-	void STATIC_UpdateCameraLensEffects(struct FTViewTarget* OutVT);
-	void STATIC_UpdateViewTarget(float DeltaTime, struct FTViewTarget* OutVT);
-	bool STATIC_ShouldConstrainAspectRatio();
-	class UGameCameraBase* STATIC_FindBestCameraType(class AActor* CameraTarget);
+	void UpdateCameraLensEffects(struct FTViewTarget* OutVT);
+	void UpdateViewTarget(float DeltaTime, struct FTViewTarget* OutVT);
+	bool ShouldConstrainAspectRatio();
+	class UGameCameraBase* FindBestCameraType(class AActor* CameraTarget);
 	void Reset();
 	void PostBeginPlay();
-	void STATIC_CacheLastTargetBaseInfo(class AActor* TargetBase);
-	class UGameCameraBase* STATIC_CreateCamera(class UClass* CameraClass);
+	void CacheLastTargetBaseInfo(class AActor* TargetBase);
+	class UGameCameraBase* CreateCamera(class UClass* CameraClass);
 };
 
 
@@ -2262,17 +2262,17 @@ public:
 	}
 
 
-	void STATIC_SetViewOffset(struct FViewOffsetData* NewViewOffset);
+	void SetViewOffset(struct FViewOffsetData* NewViewOffset);
 	void ModifyPostProcessSettings(struct FPostProcessSettings* PP);
-	void STATIC_UpdatePostProcess(float DeltaTime, struct FTViewTarget* VT);
-	struct FVector STATIC_DOFTrace(class AActor* TraceOwner, const struct FVector& StartTrace, const struct FVector& EndTrace);
-	struct FVector STATIC_GetDOFFocusLoc(class AActor* TraceOwner, const struct FVector& StartTrace, const struct FVector& EndTrace);
-	bool STATIC_SetFocusPoint(class APawn* ViewedPawn);
+	void UpdatePostProcess(float DeltaTime, struct FTViewTarget* VT);
+	struct FVector DOFTrace(class AActor* TraceOwner, const struct FVector& StartTrace, const struct FVector& EndTrace);
+	struct FVector GetDOFFocusLoc(class AActor* TraceOwner, const struct FVector& StartTrace, const struct FVector& EndTrace);
+	bool SetFocusPoint(class APawn* ViewedPawn);
 	struct FVector GetCameraWorstCaseLoc(class APawn* TargetPawn, const struct FTViewTarget& CurrentViewTarget);
 	float GetDesiredFOV(class APawn* ViewedPawn);
 	struct FVector AdjustViewOffset(class APawn* P, const struct FVector& Offset);
-	void STATIC_OnBecomeInActive(class APawn* TargetPawn, class UGameThirdPersonCameraMode* NewMode);
-	void STATIC_OnBecomeActive(class APawn* TargetPawn, class UGameThirdPersonCameraMode* PrevMode);
+	void OnBecomeInActive(class APawn* TargetPawn, class UGameThirdPersonCameraMode* NewMode);
+	void OnBecomeActive(class APawn* TargetPawn, class UGameThirdPersonCameraMode* PrevMode);
 	void Init();
 };
 
@@ -2323,27 +2323,27 @@ public:
 	}
 
 
-	struct FVector STATIC_RelativeToWorldOffset(const struct FRotator& InRotation, const struct FVector& RelativeSpaceOffset);
-	struct FVector STATIC_WorldToRelativeOffset(const struct FRotator& InRotation, const struct FVector& WorldSpaceOffset);
-	void STATIC_ForcePawnRotation(class APawn* P, const struct FRotator& NewRotation);
-	bool STATIC_MessageEvent(const struct FName& EventName, class UObject* Sender);
-	void STATIC_ResetFacePreciseRotation();
+	struct FVector RelativeToWorldOffset(const struct FRotator& InRotation, const struct FVector& RelativeSpaceOffset);
+	struct FVector WorldToRelativeOffset(const struct FRotator& InRotation, const struct FVector& WorldSpaceOffset);
+	void ForcePawnRotation(class APawn* P, const struct FRotator& NewRotation);
+	bool MessageEvent(const struct FName& EventName, class UObject* Sender);
+	void ResetFacePreciseRotation();
 	void ReachedPrecisePosition();
-	void STATIC_SetFacePreciseRotation(const struct FRotator& RotationToFace, float InterpolationTime);
-	void STATIC_SetReachPreciseDestination(const struct FVector& DestinationToReach, bool bCancel);
-	bool STATIC_ShouldReplicate();
-	void STATIC_SpecialMoveFlagsUpdated();
+	void SetFacePreciseRotation(const struct FRotator& RotationToFace, float InterpolationTime);
+	void SetReachPreciseDestination(const struct FVector& DestinationToReach, bool bCancel);
+	bool ShouldReplicate();
+	void SpecialMoveFlagsUpdated();
 	void Tick(float DeltaTime);
-	void STATIC_SpecialMoveEnded(const struct FName& PrevMove, const struct FName& NextMove);
-	void STATIC_SpecialMoveStarted(bool bForced, const struct FName& PrevMove);
-	bool STATIC_InternalCanDoSpecialMove();
-	bool STATIC_CanDoSpecialMove(bool bForceCheck);
-	bool STATIC_CanOverrideSpecialMove(const struct FName& InMove);
-	bool STATIC_CanOverrideMoveWith(const struct FName& NewMove);
-	bool STATIC_CanChainMove(const struct FName& NextMove);
-	void STATIC_ExtractSpecialMoveFlags(int Flags);
-	void STATIC_InitSpecialMoveFlags(int* out_Flags);
-	void STATIC_InitSpecialMove(class AGamePawn* inPawn, const struct FName& InHandle);
+	void SpecialMoveEnded(const struct FName& PrevMove, const struct FName& NextMove);
+	void SpecialMoveStarted(bool bForced, const struct FName& PrevMove);
+	bool InternalCanDoSpecialMove();
+	bool CanDoSpecialMove(bool bForceCheck);
+	bool CanOverrideSpecialMove(const struct FName& InMove);
+	bool CanOverrideMoveWith(const struct FName& NewMove);
+	bool CanChainMove(const struct FName& NextMove);
+	void ExtractSpecialMoveFlags(int Flags);
+	void InitSpecialMoveFlags(int* out_Flags);
+	void InitSpecialMove(class AGamePawn* inPawn, const struct FName& InHandle);
 };
 
 
@@ -2398,7 +2398,7 @@ public:
 	}
 
 
-	bool STATIC_GetAggregateMappingIDs(int EventID, int* AggregateID, int* TargetAggregateID);
+	bool GetAggregateMappingIDs(int EventID, int* AggregateID, int* TargetAggregateID);
 	void Reset();
 	void PostProcessStream();
 	void PreProcessStream();
@@ -2454,7 +2454,7 @@ public:
 
 
 	void PostRender();
-	bool STATIC_DisplayMaterials(float X, float DY, class UMeshComponent* MeshComp, float* Y);
+	bool DisplayMaterials(float X, float DY, class UMeshComponent* MeshComp, float* Y);
 	void PostBeginPlay();
 };
 
@@ -2489,8 +2489,8 @@ public:
 	}
 
 
-	float STATIC_GetMaxSpawnDist();
-	void STATIC_AgentDestroyed(class AGameCrowdAgent* Agent);
+	float GetMaxSpawnDist();
+	void AgentDestroyed(class AGameCrowdAgent* Agent);
 };
 
 
@@ -2507,7 +2507,7 @@ public:
 	}
 
 
-	void STATIC_GetSpawnPosition(class USeqAct_GameCrowdSpawner* Spawner, struct FVector* SpawnPos, struct FRotator* SpawnRot);
+	void GetSpawnPosition(class USeqAct_GameCrowdSpawner* Spawner, struct FVector* SpawnPos, struct FRotator* SpawnRot);
 };
 
 
@@ -2550,10 +2550,10 @@ public:
 	}
 
 
-	bool STATIC_IsEnemyBasedOnInterpActor(class APawn* InEnemy);
+	bool IsEnemyBasedOnInterpActor(class APawn* InEnemy);
 	bool HandlePathObstruction(class AActor* BlockedBy);
-	void STATIC_Pushed();
-	bool STATIC_MoveToGoal(class AGameAIController* AI, class AActor* InGoal, float InGoalDistance, float InHoverHeight);
+	void Pushed();
+	bool MoveToGoal(class AGameAIController* AI, class AActor* InGoal, float InGoalDistance, float InHoverHeight);
 };
 
 
@@ -2588,17 +2588,17 @@ public:
 
 
 	void DrawDebug(class AHUD* H, const struct FName& Category);
-	bool STATIC_IsEnemyBasedOnInterpActor(class APawn* InEnemy);
-	bool STATIC_ShouldUpdateBreadCrumbs();
-	bool STATIC_HasReachedGoal();
-	void STATIC_ReEvaluatePath();
+	bool IsEnemyBasedOnInterpActor(class APawn* InEnemy);
+	bool ShouldUpdateBreadCrumbs();
+	bool HasReachedGoal();
+	void ReEvaluatePath();
 	bool HandlePathObstruction(class AActor* BlockedBy);
 	void Tick(float DeltaTime);
-	void STATIC_Popped();
-	void STATIC_Pushed();
-	bool STATIC_HoverBackToMesh(class AGameAIController* AI);
-	bool STATIC_HoverToPoint(class AGameAIController* AI, const struct FVector& InPoint, float InGoalDistance, float InHoverHeight);
-	bool STATIC_HoverToGoal(class AGameAIController* AI, class AActor* InGoal, float InGoalDistance, float InHoverHeight);
+	void Popped();
+	void Pushed();
+	bool HoverBackToMesh(class AGameAIController* AI);
+	bool HoverToPoint(class AGameAIController* AI, const struct FVector& InPoint, float InGoalDistance, float InHoverHeight);
+	bool HoverToGoal(class AGameAIController* AI, class AActor* InGoal, float InGoalDistance, float InHoverHeight);
 };
 
 
@@ -2681,7 +2681,7 @@ public:
 	}
 
 
-	void STATIC_OnBecomeActive(class UGameCameraBase* OldCamera);
+	void OnBecomeActive(class UGameCameraBase* OldCamera);
 	void UpdateCamera(class APawn* P, class AGamePlayerCamera* CameraActor, float DeltaTime, struct FTViewTarget* OutVT);
 };
 
@@ -2699,7 +2699,7 @@ public:
 	}
 
 
-	void STATIC_StartScalingDown();
+	void StartScalingDown();
 	void FellOutOfWorld(class UClass* dmgType);
 	void PostBeginPlay();
 };
@@ -2720,11 +2720,11 @@ public:
 	}
 
 
-	void STATIC_SetupDebugZones();
+	void SetupDebugZones();
 	void InitInputSystem();
-	void STATIC_OnDeactivate(class APlayerController* PC);
-	void STATIC_InitDebugInputSystem();
-	void STATIC_OnActivate(class APlayerController* PC);
+	void OnDeactivate(class APlayerController* PC);
+	void InitDebugInputSystem();
+	void OnActivate(class APlayerController* PC);
 };
 
 
@@ -2760,7 +2760,7 @@ public:
 
 
 	void PostRender();
-	bool STATIC_DisplayMaterials(float X, float DY, class UMeshComponent* MeshComp, float* Y);
+	bool DisplayMaterials(float X, float DY, class UMeshComponent* MeshComp, float* Y);
 	void PostBeginPlay();
 };
 
@@ -2783,15 +2783,15 @@ public:
 	}
 
 
-	void STATIC_UpdateItemViewports();
-	void STATIC_SetFirstItem(int first);
-	void STATIC_RenderItem(class UCanvas* Canvas, float DeltaTime, int ItemIndex);
-	void STATIC_RenderObject(class UCanvas* Canvas, float DeltaTime);
+	void UpdateItemViewports();
+	void SetFirstItem(int first);
+	void RenderItem(class UCanvas* Canvas, float DeltaTime, int ItemIndex);
+	void RenderObject(class UCanvas* Canvas, float DeltaTime);
 	bool OnTouch(TEnumAsByte<ETouchType> EventType, float TouchX, float TouchY, class UMobileMenuObject* ObjectOver, float DeltaTime);
-	class UMobileMenuBarItem* STATIC_GetSelected();
-	int Num();
+	class UMobileMenuBarItem* GetSelected();
+	int STATIC_Num();
 	void AddItem(class UMobileMenuBarItem* Item, int Index);
-	void STATIC_InitMenuObject(class UMobilePlayerInput* PlayerInput, class UMobileMenuScene* Scene, int ScreenWidth, int ScreenHeight, bool bIsFirstInitialization);
+	void InitMenuObject(class UMobilePlayerInput* PlayerInput, class UMobileMenuScene* Scene, int ScreenWidth, int ScreenHeight, bool bIsFirstInitialization);
 };
 
 
@@ -2811,7 +2811,7 @@ public:
 	}
 
 
-	void STATIC_RenderItem(class UMobileMenuBar* Bar, class UCanvas* Canvas, float DeltaTime);
+	void RenderItem(class UMobileMenuBar* Bar, class UCanvas* Canvas, float DeltaTime);
 };
 
 
@@ -2833,9 +2833,9 @@ public:
 	}
 
 
-	void STATIC_RenderCaption(class UCanvas* Canvas);
-	void STATIC_RenderObject(class UCanvas* Canvas, float DeltaTime);
-	void STATIC_InitMenuObject(class UMobilePlayerInput* PlayerInput, class UMobileMenuScene* Scene, int ScreenWidth, int ScreenHeight, bool bIsFirstInitialization);
+	void RenderCaption(class UCanvas* Canvas);
+	void RenderObject(class UCanvas* Canvas, float DeltaTime);
+	void InitMenuObject(class UMobilePlayerInput* PlayerInput, class UMobileMenuScene* Scene, int ScreenWidth, int ScreenHeight, bool bIsFirstInitialization);
 };
 
 
@@ -2856,7 +2856,7 @@ public:
 	}
 
 
-	void STATIC_RenderElement(class UMobileMenuObject* Owner, class UCanvas* Canvas, float DeltaTime, float Opacity);
+	void RenderElement(class UMobileMenuObject* Owner, class UCanvas* Canvas, float DeltaTime, float Opacity);
 	bool OnTouch(TEnumAsByte<ETouchType> EventType, float TouchX, float TouchY, float DeltaTime);
 };
 
@@ -2922,22 +2922,22 @@ public:
 	}
 
 
-	void STATIC_RenderDragItem(class UCanvas* Canvas, float DeltaTime);
-	void STATIC_RenderObject(class UCanvas* Canvas, float DeltaTime);
-	int STATIC_GetIndexOfItem(class UMobileMenuElement* Item);
-	int STATIC_FindSlotIndexAt(float X, float Y);
-	void STATIC_InitDragAt(int TouchX, int TouchY);
-	void STATIC_UpdateItemInSlot(int InSlot);
-	class UMobileMenuElement* STATIC_AddItemToSlot(class UMobileMenuElement* Element, int ToSlot);
-	bool STATIC_SwapItemsInSlots(int Slot0, int Slot1);
+	void RenderDragItem(class UCanvas* Canvas, float DeltaTime);
+	void RenderObject(class UCanvas* Canvas, float DeltaTime);
+	int GetIndexOfItem(class UMobileMenuElement* Item);
+	int FindSlotIndexAt(float X, float Y);
+	void InitDragAt(int TouchX, int TouchY);
+	void UpdateItemInSlot(int InSlot);
+	class UMobileMenuElement* AddItemToSlot(class UMobileMenuElement* Element, int ToSlot);
+	bool SwapItemsInSlots(int Slot0, int Slot1);
 	bool OnTouch(TEnumAsByte<ETouchType> EventType, float TouchX, float TouchY, class UMobileMenuObject* ObjectOver, float DeltaTime);
-	bool STATIC_CanPutItemInSlot(class UMobileMenuElement* Item, class UMobileMenuElement* ToSlot, int ToIdx, int FromIdx);
-	void STATIC_ScaleSlot(class UMobileMenuElement* Slot);
-	int STATIC_AddSlot(class UMobileMenuElement* Slot);
-	void STATIC_InitMenuObject(class UMobilePlayerInput* PlayerInput, class UMobileMenuScene* Scene, int ScreenWidth, int ScreenHeight, bool bIsFirstInitialization);
-	void STATIC_OnUpdateDrag(struct FDragElementInfo* Before, struct FDragElementInfo* After);
-	bool STATIC_DoCanPutItemInSlot(class UMobileMenuInventory* FromInv, class UMobileMenuElement* Item, class UMobileMenuElement* ToSlot, int ToIdx, int FromIdx);
-	void STATIC_OnUpdateItemInSlot(class UMobileMenuInventory* FromInv, int SlotIndex);
+	bool CanPutItemInSlot(class UMobileMenuElement* Item, class UMobileMenuElement* ToSlot, int ToIdx, int FromIdx);
+	void ScaleSlot(class UMobileMenuElement* Slot);
+	int AddSlot(class UMobileMenuElement* Slot);
+	void InitMenuObject(class UMobilePlayerInput* PlayerInput, class UMobileMenuScene* Scene, int ScreenWidth, int ScreenHeight, bool bIsFirstInitialization);
+	void OnUpdateDrag(struct FDragElementInfo* Before, struct FDragElementInfo* After);
+	bool DoCanPutItemInSlot(class UMobileMenuInventory* FromInv, class UMobileMenuElement* Item, class UMobileMenuElement* ToSlot, int ToIdx, int FromIdx);
+	void OnUpdateItemInSlot(class UMobileMenuInventory* FromInv, int SlotIndex);
 };
 
 
@@ -2961,7 +2961,7 @@ public:
 	}
 
 
-	void STATIC_RenderObject(class UCanvas* Canvas, float DeltaTime);
+	void RenderObject(class UCanvas* Canvas, float DeltaTime);
 };
 
 
@@ -2995,21 +2995,21 @@ public:
 	}
 
 
-	int STATIC_ItemScrollSize(class UMobileMenuListItem* Item);
-	void STATIC_RenderObject(class UCanvas* Canvas, float DeltaTime);
-	void STATIC_UpdateScroll(float DeltaTime);
-	float STATIC_CalculateSelectedItem(float ScrollAmount, bool bForceZeroAdjustment, struct FSelectedMenuItem* Selected);
-	class UMobileMenuListItem* STATIC_GetItemClickPosition(float* MouseX, float* MouseY);
+	int ItemScrollSize(class UMobileMenuListItem* Item);
+	void RenderObject(class UCanvas* Canvas, float DeltaTime);
+	void UpdateScroll(float DeltaTime);
+	float CalculateSelectedItem(float ScrollAmount, bool bForceZeroAdjustment, struct FSelectedMenuItem* Selected);
+	class UMobileMenuListItem* GetItemClickPosition(float* MouseX, float* MouseY);
 	bool OnTouch(TEnumAsByte<ETouchType> EventType, float TouchX, float TouchY, class UMobileMenuObject* ObjectOver, float DeltaTime);
-	bool STATIC_SetSelectedItem(int ItemIndex, bool bForceAll);
-	int STATIC_GetNumVisible();
-	int STATIC_SetSelectedToVisibleIndex(int VisibleIndex);
-	int STATIC_GetVisibleIndexOfSelected();
-	float STATIC_GetAmountSelected(class UMobileMenuListItem* Item);
-	class UMobileMenuListItem* STATIC_GetSelected();
-	int Num();
+	bool SetSelectedItem(int ItemIndex, bool bForceAll);
+	int GetNumVisible();
+	int SetSelectedToVisibleIndex(int VisibleIndex);
+	int GetVisibleIndexOfSelected();
+	float GetAmountSelected(class UMobileMenuListItem* Item);
+	class UMobileMenuListItem* GetSelected();
+	int STATIC_Num();
 	void AddItem(class UMobileMenuListItem* Item, int Index);
-	void STATIC_InitMenuObject(class UMobilePlayerInput* PlayerInput, class UMobileMenuScene* Scene, int ScreenWidth, int ScreenHeight, bool bIsFirstInitialization);
+	void InitMenuObject(class UMobilePlayerInput* PlayerInput, class UMobileMenuScene* Scene, int ScreenWidth, int ScreenHeight, bool bIsFirstInitialization);
 };
 
 
@@ -3028,7 +3028,7 @@ public:
 	}
 
 
-	void STATIC_RenderItem(class UMobileMenuList* List, class UCanvas* Canvas, float DeltaTime);
+	void RenderItem(class UMobileMenuList* List, class UCanvas* Canvas, float DeltaTime);
 };
 
 
@@ -3049,10 +3049,10 @@ public:
 	}
 
 
-	void STATIC_RenderObject(class UCanvas* Canvas, float DeltaTime);
+	void RenderObject(class UCanvas* Canvas, float DeltaTime);
 	bool OnTouch(TEnumAsByte<ETouchType> EventType, float TouchX, float TouchY, class UMobileMenuObject* ObjectOver, float DeltaTime);
-	void STATIC_OnRenderObject(class UMobileMenuObjectProxy* Proxy, class UCanvas* Canvas, float DeltaTime);
-	bool STATIC_OnTouchEvent(class UMobileMenuObjectProxy* Proxy, TEnumAsByte<ETouchType> EventType, float TouchX, float TouchY, class UMobileMenuObject* ObjectOver, float DeltaTime);
+	void OnRenderObject(class UMobileMenuObjectProxy* Proxy, class UCanvas* Canvas, float DeltaTime);
+	bool OnTouchEvent(class UMobileMenuObjectProxy* Proxy, TEnumAsByte<ETouchType> EventType, float TouchX, float TouchY, class UMobileMenuObject* ObjectOver, float DeltaTime);
 };
 
 
@@ -3070,10 +3070,10 @@ public:
 	}
 
 
-	void STATIC_HandleDragOver();
-	void STATIC_HandleDoubleClick();
-	void STATIC_HandleClick();
-	void OnToggle(class USeqAct_Toggle* inAction);
+	void HandleDragOver();
+	void HandleDoubleClick();
+	void HandleClick();
+	void STATIC_OnToggle(class USeqAct_Toggle* inAction);
 };
 
 
@@ -3105,9 +3105,9 @@ public:
 	}
 
 
-	void STATIC_HandleDragOver();
-	void STATIC_HandleDoubleClick();
-	void STATIC_HandleClick();
+	void HandleDragOver();
+	void HandleDoubleClick();
+	void HandleClick();
 };
 
 

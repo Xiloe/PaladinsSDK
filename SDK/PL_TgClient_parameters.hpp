@@ -1,6 +1,6 @@
 #pragma once
 
-// Paladins (4.1.3942.2) SDK
+// Paladins (3.05) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -317,6 +317,13 @@ struct ATgClientHUD_RemoveSceneFromStack_Params
 {
 	class UTgGfxScene*                                 pScene;                                                   // (Parm)
 	bool                                               bPopAll;                                                  // (OptionalParm, Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgClient.TgClientHUD.PopToScene
+struct ATgClientHUD_PopToScene_Params
+{
+	struct FString                                     sName;                                                    // (Parm, NeedCtorLink)
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -1361,6 +1368,12 @@ struct UUIDataGoals_GetDailyLoginBonusDay_Params
 	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function TgClient.UIDataGoals.GetDailyLoginBonusClaimsAvailable
+struct UUIDataGoals_GetDailyLoginBonusClaimsAvailable_Params
+{
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function TgClient.UIDataGoals.GetDailyLoginsCount
 struct UUIDataGoals_GetDailyLoginsCount_Params
 {
@@ -1479,6 +1492,11 @@ struct ATgGameHUD_PostRender_Params
 
 // Function TgClient.TgGameHUD.PostBeginPlay
 struct ATgGameHUD_PostBeginPlay_Params
+{
+};
+
+// Function TgClient.TgGameHUD.UnblockLeavingMatch
+struct ATgGameHUD_UnblockLeavingMatch_Params
 {
 };
 
@@ -3066,6 +3084,13 @@ struct ATgLobbyHUD_TestItemPreview_Params
 	int                                                nTargetIndex;                                             // (OptionalParm, Parm)
 };
 
+// Function TgClient.TgLobbyHUD.GetStorePreviewMeshActor
+struct ATgLobbyHUD_GetStorePreviewMeshActor_Params
+{
+	int                                                nTargetIndex;                                             // (OptionalParm, Parm)
+	class ATgSkeletalMeshActor_Lobby*                  ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function TgClient.TgLobbyHUD.GetCurrentSprayPreviewOffset
 struct ATgLobbyHUD_GetCurrentSprayPreviewOffset_Params
 {
@@ -3509,6 +3534,39 @@ struct UUIScene_UILobbyChat_OnKeyboardUIComplete_Params
 	unsigned char                                      bCanceled;                                                // (Parm)
 };
 
+// Function TgClient.UIScene_UISimulMedia.CompleteWatchingAd
+struct UUIScene_UISimulMedia_CompleteWatchingAd_Params
+{
+};
+
+// Function TgClient.UIScene_UISimulMedia.OnVideoError
+struct UUIScene_UISimulMedia_OnVideoError_Params
+{
+	class APComVideoPlayer*                            VideoPlayer;                                              // (Parm)
+	TEnumAsByte<EPComVideoPlayerError>                 ErrorCode;                                                // (Parm)
+};
+
+// Function TgClient.UIScene_UISimulMedia.DestroyVideoPlayer
+struct UUIScene_UISimulMedia_DestroyVideoPlayer_Params
+{
+};
+
+// Function TgClient.UIScene_UISimulMedia.SpawnVideoPlayer
+struct UUIScene_UISimulMedia_SpawnVideoPlayer_Params
+{
+	class AActor*                                      SpawningActor;                                            // (Parm)
+};
+
+// Function TgClient.UIScene_UISimulMedia.AbortAd
+struct UUIScene_UISimulMedia_AbortAd_Params
+{
+};
+
+// Function TgClient.UIScene_UISimulMedia.CompleteAd
+struct UUIScene_UISimulMedia_CompleteAd_Params
+{
+};
+
 // Function TgClient.UIScene_UIStore.OnDeathStampLoaded
 struct UUIScene_UIStore_OnDeathStampLoaded_Params
 {
@@ -3793,6 +3851,12 @@ struct UUIHudResult_HandleAnimState_Params
 	int                                                nAnimGroup;                                               // (OptionalParm, Parm)
 };
 
+// Function TgClient.UIHudScoreboard.HasCachedScalingCautEffect
+struct UUIHudScoreboard_HasCachedScalingCautEffect_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function TgClient.UIHudTeam.TransitionTeamSidesSizing
 struct UUIHudTeam_TransitionTeamSidesSizing_Params
 {
@@ -3832,6 +3896,27 @@ struct UUIHudTeam_HandleAnimState_Params
 struct UUIPurchaseGems_GetInventoryItems_Params
 {
 	TArray<struct FMarketplaceInventoryItem>           InventoryItems;                                           // (Parm, OutParm, NeedCtorLink)
+};
+
+// Function TgClient.UISimulMedia.UpdateSimulmediaPopupOpportunities
+struct UUISimulMedia_UpdateSimulmediaPopupOpportunities_Params
+{
+	float                                              DeltaTime;                                                // (Parm)
+};
+
+// Function TgClient.UISimulMedia.RemoveSimulmediaDelegate
+struct UUISimulMedia_RemoveSimulmediaDelegate_Params
+{
+};
+
+// Function TgClient.UISimulMedia.SetOnPostAdvanceDelegateSimulmedia
+struct UUISimulMedia_SetOnPostAdvanceDelegateSimulmedia_Params
+{
+};
+
+// Function TgClient.UISimulMedia.OnOpportunityUpdated
+struct UUISimulMedia_OnOpportunityUpdated_Params
+{
 };
 
 // Function TgClient.TgIconGroup.OnManifestLoaded

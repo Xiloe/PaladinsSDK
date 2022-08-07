@@ -1,6 +1,6 @@
 #pragma once
 
-// Paladins (4.1.3942.2) SDK
+// Paladins (3.05) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -1335,6 +1335,16 @@ struct UOnlineSubsystemPC_CanPurchaseContent_Params
 
 // Function OnlineSubsystemPC.OnlineSubsystemPC.CanShareUserCreatedContent
 struct UOnlineSubsystemPC_CanShareUserCreatedContent_Params
+{
+	unsigned char                                      LocalUserNum;                                             // (Parm)
+	TEnumAsByte<EFeaturePrivilegeLevel>                PrivilegeLevelHint;                                       // (Parm, OutParm)
+	bool                                               bAttemptToResolve;                                        // (OptionalParm, Parm)
+	struct FString                                     Reason;                                                   // (OptionalParm, Parm, NeedCtorLink)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function OnlineSubsystemPC.OnlineSubsystemPC.CanMultiplayerCrossPlay
+struct UOnlineSubsystemPC_CanMultiplayerCrossPlay_Params
 {
 	unsigned char                                      LocalUserNum;                                             // (Parm)
 	TEnumAsByte<EFeaturePrivilegeLevel>                PrivilegeLevelHint;                                       // (Parm, OutParm)

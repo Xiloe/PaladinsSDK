@@ -1,6 +1,6 @@
 #pragma once
 
-// Paladins (4.1.3942.2) SDK
+// Paladins (3.05) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -12,6 +12,14 @@
 
 namespace SDK
 {
+//---------------------------------------------------------------------------
+//Constants
+//---------------------------------------------------------------------------
+
+#define CONST_GFXOBJECT_VERTICAL_ALIGN_CENTER                    "center"
+#define CONST_GFXOBJECT_VERTICAL_ALIGN_BOTTOM                    "bottom"
+#define CONST_GFXOBJECT_VERTICAL_ALIGN_TOP_NONE                  "none"
+
 //---------------------------------------------------------------------------
 //Enums
 //---------------------------------------------------------------------------

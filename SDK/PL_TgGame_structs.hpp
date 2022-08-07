@@ -1,6 +1,6 @@
 #pragma once
 
-// Paladins (4.1.3942.2) SDK
+// Paladins (3.05) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -134,9 +134,9 @@ namespace SDK
 #define CONST_CHAMPION_ID_RUCKUS                                 2149
 #define CONST_DODM_SHOW_ALL_SILHOUETTE                           448
 #define CONST_CHAMPION_ID_BARIK                                  2073
+#define CONST_TG_AIM_FUDGE_FACTOR                                256.0f
 #define CONST_BNT_CONDITION_NEARBY_GOD_COUNT                     275
 #define CONST_TG_BACK_HIT_ANGLE                                  120.0
-#define CONST_TG_AIM_FUDGE_FACTOR                                256.0f
 #define CONST_TgAIController_BehaviorGod_GAMEEVENT_PING_POLL     39
 #define CONST_GT_ContestPayloadAttackers                         118
 #define CONST_TgGamePhase_Push_GAMEEVENT_PLAYER_LOCATION_POLL    105
@@ -167,11 +167,11 @@ namespace SDK
 #define CONST_TG_ASSIST_TIMEOUT                                  5
 #define CONST_FLAGBALL_RESPAWN_DURATION                          12
 #define CONST_CHAMPION_ID_GROHK                                  2093
-#define CONST_CHAMPION_ID_SKYE                                   2057
-#define CONST_TGEGT_EQUIP_MODE                                   283
 #define CONST_TGPID_KNOCKBACK_PLUS_GRAVITY                       1507
 #define CONST_TGPID_HAS_HEALING_EFFECT_UI_SELF                   1959
 #define CONST_TGPID_HP5_PERCENT                                  1565
+#define CONST_TGEGT_EQUIP_MODE                                   283
+#define CONST_CHAMPION_ID_SKYE                                   2057
 #define CONST_CUE_ATTACKANY_PERIOD                               5.0
 #define CONST_REFRESH_REUSE                                      1
 #define CONST_BNT_CONDITION_TIMER                                300
@@ -231,8 +231,8 @@ namespace SDK
 #define CONST_TGPID_HEALTH_FLOOR                                 1838
 #define CONST_TgAIController_BehaviorGod_GAMEEVENT_GAME_MAPNAME  8
 #define CONST_CHAMPION_ID_KOGA                                   2493
-#define CONST_VV_BOT_RANK_GOD                                    10126
-#define CONST_CHAMPION_ID_COMMANDER                              2540
+#define CONST_CHAMPION_ID_CASPIAN                                2554
+#define CONST_TgAIController_BehaviorGod_GAMEEVENT_ROUND_ENDED   3
 #define CONST_CHAMPION_ID_PVE_BARIK_TURRET2                      2337
 #define CONST_BNT_ACTION_SELECT_COMBAT_LEASH                     1048596
 #define CONST_SMITE_MIDPOINT_ROUTE_THRESHOLD                     176.0f
@@ -264,10 +264,6 @@ namespace SDK
 #define CONST_TgPawn_GAMEEVENT_TEAM_MATCH_WON                    4
 #define CONST_TgPawn_GAMEEVENT_MAX_EVENTID                       0x0000FFFF
 #define CONST_TG_ASSIST_TIMEOUT_OBJ                              10
-#define CONST_TGPID_MARK_SHOT_FIRING_AT_MARK                     1992
-#define CONST_TGPID_STUNTAUNT                                    1555
-#define CONST_TgPawn_GAMEEVENT_MEMORYUSAGE_POLL                  35
-#define CONST_TGPID_MP5                                          1003
 #define CONST_GT_Tutorial_SuccessfulCapture                      194
 #define CONST_CHAMPION_ID_PVE_PIP_HEALS                          2339
 #define CONST_FIREMODE_ID_DISENGAGE                              23970
@@ -278,6 +274,7 @@ namespace SDK
 #define CONST_TGDT_ALTFIRE_CARD                                  15189
 #define CONST_SPRAY_HIT_3P_FX_ID                                 7427
 #define CONST_CHAMPION_ID_PVE_VIKTOR_GRENADE2                    2356
+#define CONST_MESH_ID_AZAAN_RECTANGLE                            11836
 #define CONST_TGPID_POWER_MAGICAL_ITEM                           1008
 #define CONST_TGEGC_FEAR                                         10051
 #define CONST_CHAMPION_ID_PVE_VIKTOR_GRENADE3                    2357
@@ -292,8 +289,6 @@ namespace SDK
 #define CONST_COMPLETE_DECK_GROVER                               796
 #define CONST_GTP_Tutorial                                       1953
 #define CONST_CHAMPION_ID_PVE_FERNANDO_FB4                       2367
-#define CONST_TgPlayerController_GAMEEVENT_PLAYER_ROUND_WON      109
-#define CONST_TGPID_SOUL_ARMOR_MAX                               2142
 #define CONST_CHAMPION_ID_PVE_BUCK_LEAP1                         2352
 #define CONST_TGPT_COMBO                                         503
 #define CONST_CHAMPION_ID_PVE_BUCK_LEAP2                         2351
@@ -311,11 +306,11 @@ namespace SDK
 #define CONST_BNT_CONDITION_LANEPUSHER_IS_VISIBLE                422
 #define CONST_TgAIController_BehaviorGod_GAMEEVENT_PLAYER_KILL   104
 #define CONST_STARTER_DECK_CASSIE                                770
+#define CONST_TGPID_REDUCE_ACTIVE_COOLDOWN                       1554
 #define CONST_ORACLE_BEAM_FADE_END_DIST                          3000.0f
+#define CONST_TGEGT_POST_HIT_DELAY                               10456
 #define CONST_DODM_MODIFIER_ALWAYS_SHOW                          32768
 #define CONST_TGPID_CAPTURE_ONLY_ONCE                            289
-#define CONST_TGEGT_POST_HIT_DELAY                               10456
-#define CONST_TGPID_REDUCE_ACTIVE_COOLDOWN                       1554
 #define CONST_GT_SiegeContestingPoint                            161
 #define CONST_DODM_SHOW_ENEMY_INDICATOR                          4
 #define CONST_TERMINUS_NO_CHUNK_NO_GEO_MESH_ID                   10080
@@ -323,16 +318,16 @@ namespace SDK
 #define CONST_STARTER_DECK_FERNANDO                              771
 #define CONST_TGPID_MARKED                                       1839
 #define CONST_TgGame_Paladins_GAMEEVENT_PALADINS_PLAYER_DEATH    1002
-#define CONST_STARTER_DECK_GROHK                                 773
 #define CONST_TGEGT_HIT_AURA                                     10060
+#define CONST_STARTER_DECK_GROHK                                 773
 #define CONST_STARTER_DECK_BUCK                                  774
 #define CONST_TG_COMBAT_DURATION                                 5.0
 #define CONST_TG_CANCEL_SAFETY_PERIOD                            0.5f
 #define CONST_GT_AutoPurchaseItems                               199
 #define CONST_GT_DieToUltimate                                   156
+#define CONST_TGEGT_WHILE_DEAD                                   16715
 #define CONST_STARTER_DECK_SKYE                                  777
 #define CONST_TGPID_NAME_SELECTION_LIST                          292
-#define CONST_TGEGT_WHILE_DEAD                                   16715
 #define CONST_STARTER_DECK_ANDROXUS                              783
 #define CONST_BNT_ACTION_LOOK_AT_CAPTURE_POINT                   1048707
 #define CONST_COMPLETE_DECK_BARIK                                757
@@ -345,8 +340,8 @@ namespace SDK
 #define CONST_COMPLETE_DECK_EVIE                                 760
 #define CONST_COMPLETE_DECK_GROHK                                765
 #define CONST_TGPID_EP5                                          1006
-#define CONST_BNT_CONDITION_COMBAT_HAS_EFFECT_CATEGORY           306
 #define CONST_TGEGT_FINAL_BLOW                                   10575
+#define CONST_BNT_CONDITION_COMBAT_HAS_EFFECT_CATEGORY           306
 #define CONST_FORCED_3P_BASE_COLLISION_RADIUS                    32.0f
 #define CONST_INDEX_SEE_DEPLOYABLES                              5
 #define CONST_ABILITY_VIKTOR_FRAGGRENADE                         14149
@@ -404,6 +399,26 @@ namespace SDK
 #define CONST_AIBOARD_BEHAVIOR_PET                               0x04
 #define CONST_SIMPROJ_VECTOR_MUNGE_FACTOR                        100
 #define CONST_DODM_SHOW_OWNED_SILHOUETTE                         64
+#define CONST_CHAMPION_ID_VAMPIRE                                2551
+#define CONST_ABILITY_MAKOA_ANCHOR                               14181
+#define CONST_BNT_CONDITION_IS_LANEPUSHER_HOSTILE                427
+#define CONST_CHAMPION_ID_BOMBQUEEN                              2550
+#define CONST_CHAMPION_ID_SEVEN                                  2549
+#define CONST_DODM_SHOW_ALL_INDICATORS                           7
+#define CONST_TGPID_MINIMAP_DETECTOR                             1033
+#define CONST_TGTT_TARGET_ENEMY_AND_SELF                         10805
+#define CONST_BNT_CONDITION_IS_AT_RALLY_POINT                    323
+#define CONST_TgPlayerController_GAMEEVENT_ROUND_ENDED           3
+#define CONST_CHAMPION_ID_AZAAN                                  2548
+#define CONST_TGPID_CAPTURE_TIME_RESET                           358
+#define CONST_PHYS_TWEEN_FLAG_KEEP_PITCH                         4
+#define CONST_CHAMPION_ID_SAATI                                  2543
+#define CONST_TGPID_DAMAGE_CAP_PERC_MAX_HP                       1857
+#define CONST_CHAMPION_ID_BUNNY                                  2542
+#define CONST_GT_CheckpiointsAttackers                           121
+#define CONST_CHAMPION_ID_SHADOW                                 2541
+#define CONST_VV_BOT_RANK_GOD                                    10126
+#define CONST_CHAMPION_ID_COMMANDER                              2540
 #define CONST_CHAMPION_ID_YAGORATH                               2538
 #define CONST_TG_MAX_PLAYER_STUCK_BOMBS                          6
 #define CONST_STRIX_EDM_RECOLOR_SKIN_ID                          23927
@@ -427,7 +442,6 @@ namespace SDK
 #define CONST_TgPawn_GAMEEVENT_FRAMERATE_POLL                    36
 #define CONST_VV_BOT_RANK_SIEGE_WALL                             11104
 #define CONST_VV_BOT_RANK_ELITE_MINION                           10787
-#define CONST_TGEGT_HIT_SPECIAL_INSTANT                          10681
 #define CONST_SPRAY_FLANKWINS_TRACKER_ACTIVITYID                 2022
 #define CONST_VV_BOT_RANK_DEPLOYABLE                             10678
 #define CONST_TGPID_MINIMUM_RADIUS                               1048
@@ -468,6 +482,7 @@ namespace SDK
 #define CONST_TG_ROLE_DAMAGE                                     10601
 #define CONST_CONTEXT_NOTIFY_SELF_RETREAT                        118528
 #define CONST_TGPID_PATROL_LOOP                                  181
+#define CONST_TGEGC_SCALING_DOT                                  18231
 #define CONST_CONTEXT_NOTIFY_SELF_RETURNED                       118527
 #define CONST_DEVICE_ID_OWL_INHAND                               19108
 #define CONST_BNT_ACTION_SELECT_COMBAT_FORTRESS_OBJECTIVE        1048705
@@ -477,7 +492,6 @@ namespace SDK
 #define CONST_CONTEXT_NOTIFY_SELF_ATTACK                         118524
 #define CONST_OBJECTIVE_NEUTRAL_FOREGROUND_SPECIALFX             6286
 #define CONST_CONTEXT_NOTIFY_RETURNED                            117675
-#define CONST_TGEGT_FIRED_PER_SHOT                               10030
 #define CONST_CONTEXT_NOTIFY_RETREAT                             117674
 #define CONST_TGPID_MANA_MAX                                     1001
 #define CONST_CONTEXT_NOTIFY_INCOMING                            117673
@@ -505,15 +519,11 @@ namespace SDK
 #define CONST_DEVICE_ID_FIRE_SPIT                                13327
 #define CONST_DEVICE_ID_BLADES_DISPLACE                          16235
 #define CONST_BNT_CONDITION_COMBAT_DAMAGEABLE_DEVICE             262
+#define CONST_DEFAULT_BLOODPOOL_FX_RADIUS                        19.0f
 #define CONST_DODM_SHOW_ALL_HEALTHBAR                            56
-#define CONST_DODM_SHOW_ALL_INDICATORS                           7
 #define CONST_BNT_CONDITION_HEALTH_PERCENT                       268
 #define CONST_MESH_ID_FURIA_RMB_TARGETING                        9555
 #define CONST_DODM_SHOW_ENEMY_ALL_OVERLAYS                       292
-#define CONST_TGPID_LOOT_TABLE_ID                                332
-#define CONST_IMPASSE_SIDE_WALL_SEGMENTS                         2
-#define CONST_TGPID_DEVICE_MODE_FIRE_TIME                        53
-#define CONST_TGPID_ARC_MAX_RANGE                                1058
 #define CONST_DODM_SHOW_OWNED_ALL_OVERLAYS                       73
 #define CONST_TgPawn_GAMEEVENT_NETWORKUSAGEOUT_POLL              38
 #define CONST_BNT_ACTION_SELECT_COMBAT_SQUAD                     1048598
@@ -564,8 +574,10 @@ namespace SDK
 #define CONST_BNT_CONDITION_IS_DECOY_STATE                       335
 #define CONST_TG_UPDATE_ALTITUDE_RTPC_DELAY                      0.5
 #define CONST_DODM_SHOW_FRIENDLY_INDICATOR                       2
-#define CONST_TGPID_POINTS_TO_WIN                                327
 #define CONST_MAX_PRACTICAL_PLAYER_IDS                           10
+#define CONST_TGPAWN_VERY_LARGE_HEALTH                           64000
+#define CONST_TGPID_POINTS_TO_WIN                                327
+#define CONST_TG_DEVICE_WALL_BANG_FIRE_ID                        27538
 #define CONST_MAX_GENERAL_UTILITY_STAT                           318.0f
 #define CONST_MAX_CHAMP_RADIUS                                   50.0
 #define CONST_GT_CounteringTorvald                               198
@@ -601,17 +613,18 @@ namespace SDK
 #define CONST_AIBOARD_SQUAD                                      0x08
 #define CONST_BNT_COMPOSITE_SEQUENCE_SCRIPTED                    2
 #define CONST_BNT_COMPOSITE_GATED                                4
+#define CONST_TG_DEVICE_WALL_BANG_ID                             27451
 #define CONST_BNT_CONDITION_COMBAT_TARGET_DISTANCE_FROM_CAPTURE_POINT 411
 #define CONST_TgGamePhase_Push_GAMEEVENT_WEAPON_DAMAGE_MELEE     151
 #define CONST_BNT_SENSOR_SIGHT_RADIUS                            9
 #define CONST_GT_SiegePayloadBackingUp                           163
 #define CONST_TgAIController_BehaviorGod_GAMEEVENT_PLAYER_ROUND_STALEMATE 110
-#define CONST_TGPID_MARK_SHOT_MARK                               1991
 #define CONST_BNT_SENSOR_IN_HOSTILE_ABILITY                      11
+#define CONST_TGPID_MARK_SHOT_MARK                               1991
 #define CONST_TgPawn_GAMEEVENT_PALADINS_PLAYER_KILL_SUICIDE      2001
 #define CONST_TG_SURRENDER_VOTE_YES                              0x01
 #define CONST_BNT_SENSOR_SAFE_TO_RECALL                          13
-#define CONST_MAX_OPPRESSOR_MINE_TARGETS                         5
+#define CONST_MAX_OPPRESSOR_MINE_TARGETS                         6
 #define CONST_BNT_ACTION_SPREAD_FROM_SQUAD                       1048622
 #define CONST_TgAIController_BehaviorGod_GAMEEVENT_GAME_CLASS    6
 #define CONST_BNT_SENSOR_LEASH                                   14
@@ -636,9 +649,9 @@ namespace SDK
 #define CONST_TIBERIUS_BLADE_THROWN_TIMEOUT                      0.5f
 #define CONST_BNT_CONDITION_IS_SAFE_TO_RECALL                    257
 #define CONST_BNT_CONDITION_IS_IN_HOSTILE_ABILITY                258
+#define CONST_TGPID_POLYMORPH_RIDER                              2075
 #define CONST_TGPID_KNOCKBACK                                    60
 #define CONST_BNT_CONDITION_CAN_PURCHASE_ITEMS                   259
-#define CONST_TGPID_POLYMORPH_RIDER                              2075
 #define CONST_BNT_CONDITION_COMBAT_HEALTH_PERCENT                263
 #define CONST_BNT_CONDITION_CURRENT_LEVEL                        264
 #define CONST_BNT_CONDITION_DEVICE_READY                         265
@@ -718,6 +731,7 @@ namespace SDK
 #define CONST_BNT_CONDITION_COMBAT_IS_LAST_ATTACKER              310
 #define CONST_TGPID_RESPAWN                                      171
 #define CONST_TgPawn_GAMEEVENT_GPUFRAMETIME_POLL                 42
+#define CONST_BUNNY_DEFAULT_SPIRIT_ENEMY_LINK_BEAM_FX_ID_3P      15689
 #define CONST_BNT_CONDITION_INCOMING_DAMAGE                      312
 #define CONST_BNT_ACTION_PURCHASE_BURN_CARDS                     1048709
 #define CONST_GTP_RoundEndSurvivalOrSiege                        1902
@@ -742,9 +756,6 @@ namespace SDK
 #define CONST_BNT_CONDITION_LAST_ATTACKER_IS_TARGET_TYPE         320
 #define CONST_MAX_NUM_DEPLOYED_BOTS                              3
 #define CONST_BNT_CONDITION_COMBAT_DROPPED                       322
-#define CONST_TGPID_MINIMAP_DETECTOR                             1033
-#define CONST_TGTT_TARGET_ENEMY_AND_SELF                         10805
-#define CONST_BNT_CONDITION_IS_AT_RALLY_POINT                    323
 #define CONST_BNT_CONDITION_PHYSICS_STATE                        326
 #define CONST_BNT_CONDITION_COMBAT_PHYSICS_STATE                 327
 #define CONST_BNT_CONDITION_SQUAD_AVERAGE_DISTANCE               331
@@ -798,8 +809,6 @@ namespace SDK
 #define CONST_BNT_CONDITION_DELTA_GODS_CAPTURE_POINT             425
 #define CONST_TGTT_ATTACK_GROUND_TARGET_BOT                      10382
 #define CONST_BNT_CONDITION_IS_LANEPUSHER_ACTIVE                 426
-#define CONST_ABILITY_MAKOA_ANCHOR                               14181
-#define CONST_BNT_CONDITION_IS_LANEPUSHER_HOSTILE                427
 #define CONST_BNT_CONDITION_DISTANCE_FROM_SQUAD_TARGET           428
 #define CONST_TGPID_AI_ACCURACY_DEG_MISSED                       1889
 #define CONST_BNT_CONDITION_SQUAD_IS_VISIBLE                     430
@@ -841,8 +850,8 @@ namespace SDK
 #define CONST_TGPID_AI_DEVICE_RADIUS                             1487
 #define CONST_GTP_CardTypes                                      1807
 #define CONST_BNT_ACTION_SELECT_LANE_MOVE                        1048587
-#define CONST_TGPID_ASTRO_BUFF                                   2023
 #define CONST_BNT_ACTION_CLEAR_LANE_MOVE_TARGET                  1048590
+#define CONST_TGPID_ASTRO_BUFF                                   2023
 #define CONST_MAX_DJ_BLADES_FACES                                8
 #define CONST_BNT_ACTION_SELECT_COMBAT_TARGETS_TARGET            1048618
 #define CONST_TGPID_PROTECTION_KNOCKUP                           1837
@@ -893,10 +902,13 @@ namespace SDK
 #define CONST_BNT_ACTION_WIGGLE                                  1048715
 #define CONST_TGPID_CUSTOM_VALUE_6                               1596
 #define CONST_BNT_ACTION_MOVE_TO_LANEPUSHER_FRONT                1048716
+#define CONST_ULT_EYE_SOCKET                                     7828
 #define CONST_BNT_ACTION_SET_AIM_DEVICE                          1048717
 #define CONST_GT_Tutorial_QToFrag                                173
 #define CONST_BNT_ACTION_SET_BOT_BEHAVIOR_STATE                  1048718
 #define CONST_BNT_ACTION_SELECT_ALLY_ATTACKER_AS_TARGET          1048722
+#define CONST_DEVICE_ID_CAUTERIZE_SCALING                        29030
+#define CONST_BNT_ACTION_PURCHASE_CARDS                          1048723
 #define CONST_ABILITY_YING_ILLUSION_AUTO                         13332
 #define CONST_BNT_UTILITY_FILTER_GAMESTATE                       268435457
 #define CONST_GTP_ChampionOverview                               1824
@@ -907,14 +919,14 @@ namespace SDK
 #define CONST_BNT_UTILITY_COMBAT_TARGET_DISTANCE_TO_NORMAL       268435465
 #define CONST_GTP_PushObjectiveEnded                             1831
 #define CONST_BNT_UTILITY_FILTER_STAYINTARGETFOV                 268435468
+#define CONST_TGPID_SHIELD_BUFF_PERCENT_ON_CREATE                2152
 #define CONST_MAX_EQUIPPED_SPRAYS                                4
+#define CONST_TGEGC_IGNORE_PARALLEL_COOLDOWN                     18100
+#define CONST_TGPID_LIFESTEAL_PURE                               2154
 #define CONST_TGPID_STEALTH_DISABLED                             141
 #define CONST_TGPID_DAMAGE_DEALT_TO_FRONTLINE_PERC               2064
 #define CONST_BNT_UTILITY_FILTER_DISTANCEFROMPAWN                268435469
 #define CONST_DEFAULT_RANGE                                      150
-#define CONST_GT_Dismounted                                      100
-#define CONST_TG_VV_PACING_TYPE_MANA                             10013
-#define CONST_PHYS_TWEEN_FLAG_ROTATE_TOWARDS_TARGET              2
 #define CONST_PROTECTION_DAMAGE_IMMUNITY_VALUE                   10000
 #define CONST_TGPID_PROJECITLE_GRAVITY_OVERRIDE                  1983
 #define CONST_TGPID_DAMAGE_RADIUS                                6
@@ -925,6 +937,7 @@ namespace SDK
 #define CONST_TGPID_PROXIMITY_DISTANCE                           8
 #define CONST_TGPID_CONFIG_SETTING_SCOPE_SENSITIVITY             2042
 #define CONST_TGPID_FIRE_LOCK_TIME                               437
+#define CONST_TGPID_DAMAGE_CAP                                   2151
 #define CONST_MAX_DIST_WHIZBY_IN_HALF_BUCKS                      5
 #define CONST_TGPID_GP_STARTING_LEVEL                            1427
 #define CONST_TGEGC_WALLHACK                                     10966
@@ -956,6 +969,10 @@ namespace SDK
 #define CONST_TG_ROLE_SUPPORT                                    15060
 #define CONST_TGEA_MAX_EFFECTS                                   16
 #define CONST_TGPID_POLYMORPH_CHICKEN                            1841
+#define CONST_TGPID_MARK_SHOT_FIRING_AT_MARK                     1992
+#define CONST_TGPID_STUNTAUNT                                    1555
+#define CONST_TgPawn_GAMEEVENT_MEMORYUSAGE_POLL                  35
+#define CONST_TGPID_MP5                                          1003
 #define CONST_TGPID_SPAWN_TABLE_ID                               340
 #define CONST_TGPID_PURSUIT_FIRING_AT_TARGET                     1999
 #define CONST_TGPID_ENERGY_CHARGE_MULTIPLIER                     2027
@@ -967,6 +984,10 @@ namespace SDK
 #define CONST_TGPID_POWER_MAGICAL_BOT                            1083
 #define CONST_TGPID_INHAND_EFFECTIVE_RANGE                       1684
 #define CONST_TGPID_DEVICE_MODE_BUILDUP_TIME                     2
+#define CONST_TGPID_LOOT_TABLE_ID                                332
+#define CONST_IMPASSE_SIDE_WALL_SEGMENTS                         2
+#define CONST_TGPID_DEVICE_MODE_FIRE_TIME                        53
+#define CONST_TGPID_ARC_MAX_RANGE                                1058
 #define CONST_TGPID_DEVICE_MODE_TIME_TO_HOLD_BLOCK               258
 #define CONST_TGPID_TIME_TO_DEPLOY_SECS                          279
 #define CONST_TGPID_DEVICE_SHOTS_PER_FIRE                        287
@@ -995,7 +1016,9 @@ namespace SDK
 #define CONST_TGPID_DISORIENT                                    1583
 #define CONST_TGPID_PLACEMENT_METHOD                             180
 #define CONST_TGPID_ENERGY_STUN                                  1652
+#define CONST_AGONY_MAX_DETONATED_ORBS                           5
 #define CONST_TGPID_VISIBLE_THROUGH_WALLS_INSTIGATOR_ONLY        1852
+#define CONST_TG_DEVICE_ID_AUTO_HEAL                             12433
 #define CONST_TGPID_SEE_THROUGH_WALLS                            1771
 #define CONST_TGPID_TEAM_NUMBER                                  175
 #define CONST_TgGame_Paladins_GAMEEVENT_FRAMERATE_POLL           36
@@ -1009,6 +1032,7 @@ namespace SDK
 #define CONST_TGPID_GRAVITY_SCALE                                1820
 #define CONST_TGPID_LIFESTEAL                                    1010
 #define CONST_TGPID_JUMP_HANG                                    1882
+#define CONST_TGPID_WALL_GRABBED_HIT                             2153
 #define CONST_TGPID_BLEEDING                                     1793
 #define CONST_TGPID_APPLY_DOTS_NOW                               1878
 #define CONST_TGPID_LEAPING                                      1899
@@ -1019,8 +1043,10 @@ namespace SDK
 #define CONST_DEVICE_ID_BLADES_NINE_LIVES                        16306
 #define CONST_TGPID_PET_HEALTH_PCT                               2111
 #define CONST_TGPID_POWER_PHYSICAL_PERC                          1047
+#define CONST_CASPIAN_MAX_SWORDS                                 5
 #define CONST_TGPAWN_KINESSA_OVERLAY_ENEMY_FX_ID                 6862
 #define CONST_TGPID_REMOVE_EFFECT                                140
+#define CONST_TGPID_CURRENCY_MULTIPLIER                          2083
 #define CONST_GTP_DieToDeathFog                                  1936
 #define CONST_TGPID_PERSIST_PULSE                                151
 #define CONST_TGEGC_DAZE                                         15009
@@ -1089,9 +1115,6 @@ namespace SDK
 #define CONST_TgPawn_GAMEEVENT_MATCH_STARTED                     0
 #define CONST_DRUID_MAX_ACTIVE_HEAL_BEAMS                        10
 #define CONST_TGPID_CONFIG_SETTING_GAMEPAD_Y_SENSITIVITY         1972
-#define CONST_TgGamePhase_Push_GAMEEVENT_GPUFRAMETIME_POLL       42
-#define CONST_WALL_KNOCKBACK_HIT_CHECK_DISTANCE                  96.0f
-#define CONST_TGEGT_WHILE_HOLDING                                15173
 #define CONST_TGPID_HEADSHOT_DAMAGE_REDUCTION                    2110
 #define CONST_TGPID_BOT_COUNT                                    172
 #define CONST_TgPawn_GAMEEVENT_GAME_SPECIFIC                     1000
@@ -1116,15 +1139,12 @@ namespace SDK
 #define CONST_TgPawn_GAMEEVENT_WEAPON_DAMAGE_MELEE               151
 #define CONST_TGPID_OBJECTIVE_BOT_ID                             301
 #define CONST_TgAIController_BehaviorGod_GAMEEVENT_GPUFRAMETIME_POLL 42
-#define CONST_TGEGT_HIT                                          264
 #define CONST_TGPID_POINTS_PER_SECOND                            326
 #define CONST_TGPID_FIRE_HOLD_TIME                               1757
 #define CONST_TGPID_OBJECTIVE_UNLOCK_DELAY                       331
 #define CONST_TGPID_TAUNT                                        305
 #define CONST_DEFAULT_FX_RADIUS                                  240.0f
 #define CONST_TGPID_BLOCK_FRIENDLY_FIRE                          302
-#define CONST_TgPlayerController_GAMEEVENT_ROUND_ENDED           3
-#define CONST_TGPID_CAPTURE_TIME_RESET                           358
 #define CONST_TGPID_PRIORITY                                     346
 #define CONST_TGPID_OBJECTIVE_COOLDOWN_SECONDS                   409
 #define CONST_TGPID_MINIMUM_LEVEL                                410
@@ -1149,6 +1169,7 @@ namespace SDK
 #define CONST_TGPID_POWER_PHYSICAL_BOT                           1082
 #define CONST_TG_PAWN_GEN_INVIS_FX_ID                            2277
 #define CONST_PLAYER_NOT_TAGGED                                  -1
+#define CONST_MAX_STICKY_BOMBS                                   3
 #define CONST_TGPID_POWER_MAGICAL_PERC                           1046
 #define CONST_TGPID_LIFESTEAL_INSTIGATOR_ONLY                    1898
 #define CONST_TGPID_HEALTH_COST                                  1578
@@ -1180,7 +1201,7 @@ namespace SDK
 #define CONST_TGPID_DAMAGE_TAKEN_PERC_AOE                        1765
 #define CONST_EASY_DIFFICULTY_CONFIG_ID                          63
 #define CONST_TGPID_DAMAGE_TAKEN_PERC_DIRECT                     1949
-#define CONST_TGPID_DAMAGE_CAP_PERC_MAX_HP                       1857
+#define CONST_TGPID_DAMAGE_TAKEN_PERC_MAX_ATTACK                 2155
 #define CONST_GUARDIAN_PHASE_START                               7200.0f
 #define CONST_TGPID_DAMAGE_CAP_PERC_CUR_HP                       1858
 #define CONST_TGPID_DAMAGE_DEALT_PERC                            65
@@ -1188,6 +1209,8 @@ namespace SDK
 #define CONST_TGPID_DAMAGE_DEALT_FLAT                            1875
 #define CONST_TGPID_HEAL_BLOCK                                   1877
 #define CONST_TGPID_STEALTH                                      1416
+#define CONST_TGPID_HEAL_CAP                                     2156
+#define CONST_TGDT_EMOTE                                         15205
 #define CONST_GT_Tutorial_EToUlt                                 176
 #define CONST_TGPID_STEALTH_NO_REVEAL                            1660
 #define CONST_TGPID_BREAK_GRAB                                   1556
@@ -1221,12 +1244,13 @@ namespace SDK
 #define CONST_TGPID_CONFIG_SETTING_GAMEPAD_AIM_ASSIST_FRICTION   1976
 #define CONST_TGPID_CONFIG_SETTING_GAMEPAD_DEAD_ZONE_OUTER       1985
 #define CONST_TGPID_DEATH_FX_TYPE                                2081
+#define CONST_NUM_ITEMS_STORE2                                   12
 #define CONST_TGEGC_LIFT                                         16657
 #define CONST_TgPlayerController_GAMEEVENT_RENDERTHREAD_POLL     40
 #define CONST_PROTECTION_IMMUNITY_VALUE                          100
 #define CONST_TgPawn_GAMEEVENT_PALADINS_PLAYER_KILL              1001
-#define CONST_TGEGT_STOP_FIRING                                  17849
 #define CONST_TgPawn_GAMEEVENT_PALADINS_PLAYER_KILL_NORMAL       2002
+#define CONST_NUM_ITEMS_STORE1                                   4
 #define CONST_TgPawn_GAMEEVENT_MATCH_ENDED                       1
 #define CONST_TGEGC_PERMANENT_REMOVE_ON_DEATH                    16875
 #define CONST_TgPawn_GAMEEVENT_ROUND_STARTED                     2
@@ -1261,11 +1285,13 @@ namespace SDK
 #define CONST_MAX_DEVICE_EQPOINT                                 15
 #define CONST_TgPawn_TG_MOUNT_TYPE_MAX                           3
 #define CONST_TgPawn_TG_EQP_POINT_MAX                            49
+#define CONST_PHYS_TWEEN_FLAG_ROTATE_TOWARDS_TARGET              2
 #define CONST_TG_DEFAULT_CAMERA_CHECK_RADIUS                     15.0f
 #define CONST_TgGamePhase_Push_GAMEEVENT_GENERIC_PARAM_LIST_END  400
 #define CONST_TgPlayerController_GAMEEVENT_PLAYER_LOCATION_POLL  105
 #define CONST_TG_UNOCCLUDED_WEAPON_SOUND_THREAT_DURATION         1.0
 #define CONST_CUE_ATTACKFROMSNIPER_RANGESQR                      1000000
+#define CONST_KINESSA_GEN_LOCK                                   27295
 #define CONST_CUE_ATTACKFROMABOVE_PERIOD                         30.0
 #define CONST_MAX_VISIBLE_THROUGH_STEALTH_INSTIGATORS            12
 #define CONST_TgAIController_BehaviorGod_GAMEEVENT_GAME_SPECIFIC 1000
@@ -1302,7 +1328,6 @@ namespace SDK
 #define CONST_TgPlayerController_GAMEEVENT_GPUFRAMETIME_POLL     42
 #define CONST_TgAIController_BehaviorGod_GAMEEVENT_MATCH_ENDED   1
 #define CONST_TgAIController_BehaviorGod_GAMEEVENT_ROUND_STARTED 2
-#define CONST_TgAIController_BehaviorGod_GAMEEVENT_ROUND_ENDED   3
 #define CONST_TgAIController_BehaviorGod_GAMEEVENT_GAME_OPTION_URL 7
 #define CONST_TgAIController_BehaviorGod_GAMEEVENT_FRAMERATE_POLL 36
 #define CONST_TgAIController_BehaviorGod_GAMEEVENT_NETWORKUSAGEOUT_POLL 38
@@ -1341,7 +1366,6 @@ namespace SDK
 #define CONST_TGDT_TALENT_ULTIMATE                               15437
 #define CONST_HEAL_ALLIES_DEPLOYABLE_ID                          685
 #define CONST_TGDT_TALENT_ABILITY2                               15390
-#define CONST_TGDT_EMOTE                                         15205
 #define CONST_TGDT_TEST_DEVICE                                   10844
 #define CONST_TGEGC_MARKED_WITH_UI                               15294
 #define CONST_TGDT_BASIC_ATTACK                                  10828
@@ -1357,15 +1381,24 @@ namespace SDK
 #define CONST_TGEGC_REDUCED_HEALING                              15368
 #define CONST_TG_AOE_FALLOFF_BEGIN_PERCENT                       70.0f
 #define CONST_TG_VV_PACING_TYPE_ENERGY                           10014
+#define CONST_GT_Dismounted                                      100
+#define CONST_TG_VV_PACING_TYPE_MANA                             10013
 #define CONST_TG_VV_PACING_TYPE_HEALTH                           10692
 #define CONST_TGD_MESH_TYPE_ATTACHED                             856
 #define CONST_TGD_MESH_TYPE_INHAND                               855
+#define CONST_TGEGT_HIT_SPECIAL_INSTANT                          10681
 #define CONST_TGEGT_HIT_SPECIAL_MANAGED                          10036
+#define CONST_TGEGT_HIT                                          264
 #define CONST_TGEGT_SUCCESSFUL_HIT                               759
 #define CONST_GT_Tutorial_StandToCapture                         193
 #define CONST_TgPlayerController_GAMEEVENT_PLAYER_LOGOUT         101
 #define CONST_TGEGT_ACTIVE                                       11073
+#define CONST_TGEGT_FIRED_PER_SHOT                               10030
+#define CONST_TGEGT_STOP_FIRING                                  17849
 #define CONST_TGEGT_PRE_HIT_DELAY                                10455
+#define CONST_TgGamePhase_Push_GAMEEVENT_GPUFRAMETIME_POLL       42
+#define CONST_WALL_KNOCKBACK_HIT_CHECK_DISTANCE                  96.0f
+#define CONST_TGEGT_WHILE_HOLDING                                15173
 #define CONST_TGEGT_WHILE_FIRING                                 263
 #define CONST_TALENT_ID_ASH_FORTRESS_BREAKER                     18556
 #define CONST_DEVICE_VANGUARD_SHIELD                             19876
@@ -1414,11 +1447,11 @@ namespace SDK
 #define CONST_TG_CAPTUREPOINT_FOGHORN_FX_ID                      6694
 #define CONST_TGPAWN_ANDROXUS_SLOWFALL_FX_ID                     6824
 #define CONST_UNKNOWN_PROJECTILE_INSTANCE_ID                     0
+#define CONST_VAMPIRE_COMBO_DEVICE_ID_INHAND                     30610
 #define CONST_FIRST_VALID_PROJECTILE_INSTANCE_ID                 1
 #define CONST_BASE_RESPAWN_TIME_SEC                              5
 #define CONST_MESH_ID_GAUNTLET_ULT_TARGETING                     6824
 #define CONST_DEVICE_ID_BLAST_SHOT                               11450
-#define CONST_MESH_ID_GENERIC_ENCROACHMENT_CONE                  10775
 #define CONST_DEVICE_ID_PROTECTION                               15793
 #define CONST_TgGamePhase_Push_GAMEEVENT_GAME_SPECIFIC           1000
 #define CONST_DEVICE_ID_RECHARGE                                 15794
@@ -1426,6 +1459,8 @@ namespace SDK
 #define CONST_DEVICE_ID_BOOSTER                                  13333
 #define CONST_DEVICE_ID_OWL_STEALTH                              19145
 #define CONST_DEVICE_ID_OWL_SCOPE                                19111
+#define CONST_TGFXLIGHT_MAX_SETTINGS_VALUE                       5
+#define CONST_TALENT_ID_ASSYMETRIC_WARFARE                       26958
 #define CONST_FIREMODE_ID_CASSIE_CROSSBOW                        24356
 #define CONST_TgGamePhase_Push_GAMEEVENT_PLAYER_MATCH_WON        103
 #define CONST_ITEM_SET_BARIK_STEAMTF2                            15338
@@ -1471,6 +1506,8 @@ namespace SDK
 #define CONST_IMANI_SPLITTING_ICE_FX_ID                          12708
 #define CONST_MAEVE_EDM_AFFECTED_CAMERA_EFFECT_FX_ID             9096
 #define CONST_MAEVE_EDM_SELF_CAMERA_EFFECT_FX_ID                 9095
+#define CONST_IMANI_DIGITIZED_RECOLOR_SKIN_ID                    27014
+#define CONST_IMANI_DIGITIZED_SKIN_ID                            26915
 #define CONST_PIP_EDM_WEP_SKIN_ID                                23842
 #define CONST_GT_CaptureThePointGameMode                         116
 #define CONST_STRIX_EDM_WEP_SKIN_ID                              23694
@@ -1484,6 +1521,7 @@ namespace SDK
 #define CONST_CORVUS_TIME_DELAY_TARGET_VALID                     0.1f
 #define CONST_STRIX_EDM_SKIN_ID                                  23693
 #define CONST_MAEVE_EDM_SKIN_ID                                  19275
+#define CONST_MESH_ID_GENERIC_ENCROACHMENT_CONE                  10775
 #define CONST_PIT_MAX_SIZE                                       20
 #define CONST_TGTT_ATTACK_ATTACHED_DEPLOYABLE                    10670
 #define CONST_TgPlayerController_GAMEEVENT_PALADINS_PLAYER_KILL  1001
@@ -1507,6 +1545,8 @@ namespace SDK
 #define CONST_TgPlayerController_GAMEEVENT_PLAYER_TEAMCHANGE     106
 #define CONST_TgPlayerController_GAMEEVENT_PLAYER_KILL_STREAK    107
 #define CONST_TgPlayerController_GAMEEVENT_PLAYER_DEATH          108
+#define CONST_TGPID_SOUL_ARMOR_MAX                               2142
+#define CONST_TgPlayerController_GAMEEVENT_PLAYER_ROUND_WON      109
 #define CONST_TgPlayerController_GAMEEVENT_WEAPON_DAMAGE         150
 #define CONST_TgPlayerController_GAMEEVENT_PLAYER_KILL_NORMAL    200
 #define CONST_TgPlayerController_GAMEEVENT_GENERIC_PARAM_LIST_START 300
@@ -1571,6 +1611,7 @@ namespace SDK
 #define CONST_TGTT_TARGET_ENEMY                                  212
 #define CONST_TGTT_ATTACK_GROUND_TARGET_DEPLOYABLE               10011
 #define CONST_TGTT_ATTACK_GROUND_TARGET                          10032
+#define CONST_BUNNY_DEFAULT_SPIRIT_FRIENDLY_LINK_BEAM_FX_ID_3P   15625
 #define CONST_TGTT_ATTACK_TELEPORT_TO_SPAWN                      1442
 #define CONST_TGTT_ATTACK_PROJECTILE_RANGED                      177
 #define CONST_TGTT_ATTACK_INSTANT_RANGED                         85
@@ -1603,6 +1644,7 @@ namespace SDK
 #define CONST_TGEGC_ROOT                                         10050
 #define CONST_GT_LeveledUp                                       102
 #define CONST_TGEGC_SHIELD_SPECIAL                               15291
+#define CONST_SEVEN_ULT_BEAM_FX_ID                               16229
 #define CONST_GTP_DieToBombKingGrumpy                            1922
 #define CONST_TGEGC_SILENCE                                      10053
 #define CONST_TGEGC_SLOW                                         10048
@@ -1617,6 +1659,8 @@ namespace SDK
 #define CONST_TGEGC_PRESENCE_DOT                                 16637
 #define CONST_TGEGC_FLASH_BANG                                   16658
 #define CONST_TGEGC_PERMANENT                                    16874
+#define CONST_MAX_SIM_PROJ_OVERRIDES                             8
+#define CONST_TGEGC_TRUE_HEALING                                 18170
 #define CONST_TIMER_LIFEDONE                                     1
 #define CONST_DEFAULT_MAX_EFFECT_STACKS                          100
 #define CONST_TGST_ITEM_POWER                                    10552
@@ -1717,7 +1761,6 @@ namespace SDK
 #define CONST_GT_ProgressPayload                                 117
 #define CONST_GT_ContestPayloadDefenders                         119
 #define CONST_GT_PayloadTipBackwards                             120
-#define CONST_GT_CheckpiointsAttackers                           121
 #define CONST_GTP_SiegeCapturePhase                              1903
 #define CONST_GT_SurvivalMatchStarted                            124
 #define CONST_GT_DieToKinessa                                    137
@@ -1808,6 +1851,7 @@ namespace SDK
 #define CONST_ORACLE_SOUL_COLLECTOR_DEVICE_ID                    16610
 #define CONST_ORACLE_SECONDARY_HEAL_BEAM_FX_ID                   7708
 #define CONST_ORACLE_MAX_SECONDARY_HEAL_TARGETS                  4
+#define CONST_ORACLE_AGONY_EFFECT_PERCENT_PER_ORB                5
 #define CONST_RIDER_MAX_MARKED_TARGETS                           5
 #define CONST_MAX_VOODOO_LINKS                                   5
 #define CONST_TGPID_CONFIG_SETTING_GYRO_X_SENSITIVITY            2136
@@ -1823,14 +1867,12 @@ namespace SDK
 #define CONST_TG_CONSUMABLE_MAX                                  2
 #define CONST_TG_GENERAL_STATS_MAX                               4
 #define CONST_TG_PROPS_MAX                                       20
-#define CONST_MAX_SIM_PROJ_OVERRIDES                             8
 #define CONST_TG_MAX_PREMADE_DEPLOYS                             20
 #define CONST_ENEMY_DISTANCE_RADIUS                              800.0f
 #define CONST_TGSKELCON_HOOKCHAIN_TOTALSEGMENTS                  72
 #define CONST_TGSKELCON_HOOKCHAIN_STARTOFFSET                    4
 #define CONST_DEFAULT_AKEVENT_SHUTDOWN_DELAY                     5.0
 #define CONST_INVALID_LIGHTARRAY_INDEX                           -1
-#define CONST_TGFXLIGHT_MAX_SETTINGS_VALUE                       5
 #define CONST_TG_MAX_DISTANCE_FOR_SPAWN_CALCULATION              1600.0f
 #define CONST_TgWeaponMeshActor_TG_EQP_POINT_MAX                 49
 #define CONST_THE_LAW_TARGETTING_BEAM_EXECUTE_FX_ID              7834
@@ -1838,10 +1880,22 @@ namespace SDK
 #define CONST_ORACLE_MAX_BEAM_SEGMENTS                           12
 #define CONST_ORACLE_BEAM_FADE_START_DIST                        800.0f
 #define CONST_MOON_SHARD_MAX_GRABBED_PAWNS                       5
+#define CONST_CASPIAN_SWORDFLAG_ISACTIVE                         1
+#define CONST_CASPIAN_SWORDFLAG_ISFIRED                          2
 #define CONST_DEFAULT_BLOSSOM_FX_RADIUS                          40.0f
+#define CONST_BOMB_QUEEN_BAG_BOMBS                               16
+#define CONST_BUNNY_DEFAULT_SPIRIT_FRIENDLY_LINK_BEAM_FX_ID_1P   15624
+#define CONST_BUNNY_DEFAULT_SPIRIT_ENEMY_LINK_BEAM_FX_ID_1P      15688
+#define CONST_BUNNY_DEFAULT_SPIRIT_LINK_BEAM_BREAK_FX_ID_1P      15681
+#define CONST_BUNNY_GLOBAL_MAX_SPIRIT_LINKS                      3
+#define CONST_BUNNY_JUMP_HEIGHT_INCREASE                         1.5
+#define CONST_MAX_IMANI_DIGITIZED_FACES                          8
 #define CONST_RAUM_LIFESHARD_SMOOTHING_NORMALIZATION             3.334
 #define CONST_RAUM_SHARDFLAG_ISSUCKING                           2
 #define CONST_RAUM_SHARDFLAG_ISACTIVE                            1
+#define CONST_SEVEN_MAX_MARKED_TARGETS                           5
+#define CONST_DEFAULT_ULT_BEAM_FX_ID_1P                          15508
+#define CONST_VAMP_GLOBAL_MAX_MARKS                              2
 
 //---------------------------------------------------------------------------
 //Enums
@@ -2227,7 +2281,10 @@ enum class ERewardValueType : uint8_t
 	RVT_Cheat                      = 19,
 	RVT_Bounty                     = 20,
 	RVT_Gather                     = 21,
-	RVT_MAX                        = 22
+	RVT_Gained                     = 22,
+	RVT_OctaviaPassive             = 23,
+	RVT_CreditItem                 = 24,
+	RVT_MAX                        = 25
 };
 
 
@@ -2315,7 +2372,9 @@ enum class EDeviceFailType : uint8_t
 	DFT_NotOnGround                = 13,
 	DFT_NoAmmo                     = 14,
 	DFT_TransitioningTo1p          = 15,
-	DFT_MAX                        = 16
+	DFT_Polymorphed                = 16,
+	DFT_Mounted                    = 17,
+	DFT_MAX                        = 18
 };
 
 
@@ -2466,7 +2525,9 @@ enum class EDeployableOverlayIcon : uint8_t
 	DOI_DRUID_FOX                  = 21,
 	DOI_DRUID_FOX_LIT              = 22,
 	DOI_TERMINUS_ULT               = 23,
-	DOI_MAX                        = 24
+	DOI_SAATI_DECOY                = 24,
+	DOI_CLUSTER_GRENADE            = 25,
+	DOI_MAX                        = 26
 };
 
 
@@ -2689,7 +2750,8 @@ enum class EDAMAGE_INFO_TYPE : uint8_t
 	DIT_Assist                     = 15,
 	DIT_KillingBlowWrath           = 16,
 	DIT_ShieldDamage               = 17,
-	DIT_MAX                        = 18
+	DIT_CappedDamage               = 18,
+	DIT_MAX                        = 19
 };
 
 
@@ -3232,20 +3294,6 @@ enum class EOverlayMICType : uint8_t
 };
 
 
-// Enum TgGame.TgPawn.TG_TELEPORT_STATE
-enum class ETG_TELEPORT_STATE : uint8_t
-{
-	TELEPORT_NONE                  = 0,
-	TELEPORT_ENTER                 = 1,
-	TELEPORT_EXIT                  = 2,
-	TELEPORT_ENTER_BLINK           = 3,
-	TELEPORT_EXIT_BLINK            = 4,
-	TELEPORT_KINESSA_TRANSPORTER_ENTER = 5,
-	TELEPORT_KINESSA_TRANSPORTER_EXIT = 6,
-	TELEPORT_MAX                   = 7
-};
-
-
 // Enum TgGame.TgCombatActor.DiminishingReturnsProfile
 enum class EDiminishingReturnsProfile : uint8_t
 {
@@ -3487,6 +3535,16 @@ enum class ELocalViewerRangeState : uint8_t
 };
 
 
+// Enum TgGame.TgPawn.UI_SKILL_EQUIP_SLOT
+enum class EUI_SKILL_EQUIP_SLOT : uint8_t
+{
+	UI_SLOT_ONE                    = 0,
+	UI_SLOT_TWO                    = 1,
+	UI_SLOT_THREE                  = 2,
+	UI_SLOT_MAX                    = 3
+};
+
+
 // Enum TgGame.TgProperty.TG_PAWN_PROPERTIES
 enum class ETG_PAWN_PROPERTIES : uint8_t
 {
@@ -3532,110 +3590,113 @@ enum class ETG_PAWN_PROPERTIES : uint8_t
 	TGPIDX_SHIELD                  = 39,
 	TGPIDX_SHIELD_MAX              = 40,
 	TGPIDX_LIFESTEAL               = 41,
-	TGPIDX_LIFESTEAL_INSTIGATOR_ONLY = 42,
-	TGPIDX_LIFESTEAL_TARGET        = 43,
-	TGPIDX_POWER_MAGICAL_BOT       = 44,
-	TGPIDX_POWER_PHYSICAL_BOT      = 45,
-	TGPIDX_PROTECTION_FEAR         = 46,
-	TGPIDX_PROTECTION_KNOCKBACK    = 47,
-	TGPIDX_PROTECTION_KNOCKUP      = 48,
-	TGPIDX_PROTECTION_SILENCE      = 49,
-	TGPIDX_PROTECTION_SLOW         = 50,
-	TGPIDX_PROTECTION_STUN         = 51,
-	TGPIDX_PROTECTION_PULL         = 52,
-	TGPIDX_PROTECTION_CC           = 53,
-	TGPIDX_PROTECTION_ON_FIRE      = 54,
-	TGPIDX_PROTECTION_BLEEDING     = 55,
-	TGPIDX_PROTECTION_POISON       = 56,
-	TGIPDX_PROTECTION_POLYMORPH    = 57,
-	TGIPDX_PROTECTION_LIFT         = 58,
-	TGPIDX_PROTECTION_DOT_DURATION = 59,
-	TGPIDX_PROTECTION_DOT_DURATION_PERC = 60,
-	TGPIDX_PROTECTION_DOT_DAMAGE_PERC = 61,
-	TGPIDX_DEBUFF_IMMUNITY         = 62,
-	TGPIDX_REDUCE_DEBUFF_DURATION  = 63,
-	TGPIDX_CC_IMMUNITY             = 64,
-	TGPIDX_CC_IMMUNITY_SUPERIOR    = 65,
-	TGPIDX_SLOW_IMMUNITY           = 66,
-	TGPIDX_JUMP_PENALTY_IMMUNITY   = 67,
-	TGPIDX_TAUNT                   = 68,
-	TGPIDX_POWER_PHYSICAL_PERC     = 69,
-	TGPIDX_POWER_MAGICAL_PERC      = 70,
-	TGPIDX_HEALING_DEALT_PERC      = 71,
-	TGPIDX_HEALING_TAKEN_PERC      = 72,
-	TGPIDX_HEALING_TAKEN_OTHERS_PERC = 73,
-	TGPIDX_HEALING_DISABLED        = 74,
-	TGPIDX_DAMAGE_TAKEN_PERC       = 75,
-	TGPIDX_HEADSHOT_DAMAGE_REDUCTION = 76,
-	TGPIDX_DAMAGE_DEALT_PERC       = 77,
-	TGPIDX_DAMAGE_DEALT_PERC_BASIC = 78,
-	TGPIDX_DAMAGE_DEALT_PERC_PHYSICAL = 79,
-	TGPIDX_DAMAGE_DEALT_PERC_MAGICAL = 80,
-	TGPIDX_DAMAGE_DEALT_PERC_DEPLOYABLES = 81,
-	TGPIDX_DAMAGE_DEALT_PERC_SHIELDS = 82,
-	TGPIDX_DAMAGE_DEALT_FLAT       = 83,
-	TGPIDX_DAMAGE_DEALT_TO_FRONTLINE_PERC = 84,
-	TGPIDX_POWER_PHYSICAL_ITEM     = 85,
-	TGPIDX_POWER_MAGICAL_ITEM      = 86,
-	TGPIDX_POWER_UTILITY_BOT       = 87,
-	TGPIDX_POWER_UTILITY_ITEM      = 88,
-	TGPIDX_MARKED                  = 89,
-	TGPIDX_MARKED_INHAND           = 90,
-	TGPIDX_MINIMAP_LOS_IGNORED     = 91,
-	TGPIDX_MINIMAP_DETECTOR        = 92,
-	TGPIDX_BLOCK_DAMAGE_PERC       = 93,
-	TGPIDX_FRONTAL_IMMUNITY        = 94,
-	TGPIDX_NO_BACKPEDAL_PENALTY    = 95,
-	TGPIDX_HP5_PERC                = 96,
-	TGPIDX_HP5_PERC_OF_MAX_HEALTH  = 97,
-	TGPIDX_PHYSICAL_IMMUNITY       = 98,
-	TGPIDX_MAGICAL_IMMUNITY        = 99,
-	TGPIDX_DAMAGE_TAKEN_PERC_PHYS  = 100,
-	TGPIDX_DAMAGE_TAKEN_PERC_INHAND = 101,
-	TGPIDX_DAMAGE_TAKEN_PERC_AOE   = 102,
-	TGPIDX_DAMAGE_TAKEN_PERC_DIRECT = 103,
-	TGPIDX_DAMAGE_REDUCTION_PERC_PENETRATION = 104,
-	TGPIDX_HEAL_BLOCK              = 105,
-	TGPIDX_INHAND_RELOAD_SPEED     = 106,
-	TGPIDX_INHAND_AMMO_CAPACITY    = 107,
-	TGPIDX_COMBAT_DURATION_REDUCTION_PERC = 108,
-	TGPIDX_IGNORE_ACTOR_BLOCKING   = 109,
-	TGPIDX_FORCE_3P_VIEW           = 110,
-	TGPIDX_LOCK_INPUT              = 111,
-	TGPIDX_SCALE_MESH              = 112,
-	TGPIDX_SCALE_COLLISION_HEIGHT  = 113,
-	TGPIDX_SCALE_COLLISION_RADIUS  = 114,
-	TGPIDX_CONFUSED                = 115,
-	TGPIDX_NEAR_DAMAGE_PERCENT     = 116,
-	TGPIDX_FAR_DAMAGE_PERCENT      = 117,
-	TGPIDX_BLEEDING                = 118,
-	TGPIDX_ON_FIRE                 = 119,
-	TGPIDX_POISONED                = 120,
-	TGPIDX_FROZEN                  = 121,
-	TGPIDX_INHAND_EFFECTIVE_AOE    = 122,
-	TGPIDX_INHAND_ABSOLUTE_AOE     = 123,
-	TGPIDX_PROC_CHANCE_MODIFIER    = 124,
-	TGPIDX_DOT_DURATION_PERC       = 125,
-	TGPIDX_ETHEREAL                = 126,
-	TGPIDX_INHAND_FIRE_OVERRIDE    = 127,
-	TGPIDX_HEALTH_FLOOR            = 128,
-	TGPIDX_LEAPING                 = 129,
-	TGPIDX_DECOY_AGGRO             = 130,
-	TGPIDX_HAS_HEALING_EFFECT_UI_SELF = 131,
-	TGPIDX_HAS_HEALING_EFFECT_UI_FRIEND = 132,
-	TGPIDX_MARK_SHOT_MARK          = 133,
-	TGPIDX_MARK_SHOT_FIRING_AT_MARK = 134,
-	TGPIDX_PURSUIT_FIRING_AT_TARGET = 135,
-	TGPIDX_MESMERIZE               = 136,
-	TGPIDX_MARKED_FOR_PRESENCE     = 137,
-	TGPIDX_PRESENCE_BUFF           = 138,
-	TGPIDX_DISABLE_RAGDOLL         = 139,
-	TGPIDX_PET_HEALTH_PCT          = 140,
-	TGPIDX_ROOT                    = 141,
-	TGPIDX_SOUL_ARMOR              = 142,
-	TGPIDX_SOUL_ARMOR_MAX          = 143,
-	TGPIDX_MAX                     = 144,
-	TG_PAWN_PROPERTIES_MAX         = 145
+	TGPIDX_LIFESTEAL_PURE          = 42,
+	TGPIDX_LIFESTEAL_INSTIGATOR_ONLY = 43,
+	TGPIDX_LIFESTEAL_TARGET        = 44,
+	TGPIDX_POWER_MAGICAL_BOT       = 45,
+	TGPIDX_POWER_PHYSICAL_BOT      = 46,
+	TGPIDX_PROTECTION_FEAR         = 47,
+	TGPIDX_PROTECTION_KNOCKBACK    = 48,
+	TGPIDX_PROTECTION_KNOCKUP      = 49,
+	TGPIDX_PROTECTION_SILENCE      = 50,
+	TGPIDX_PROTECTION_SLOW         = 51,
+	TGPIDX_PROTECTION_STUN         = 52,
+	TGPIDX_PROTECTION_PULL         = 53,
+	TGPIDX_PROTECTION_CC           = 54,
+	TGPIDX_PROTECTION_ON_FIRE      = 55,
+	TGPIDX_PROTECTION_BLEEDING     = 56,
+	TGPIDX_PROTECTION_POISON       = 57,
+	TGIPDX_PROTECTION_POLYMORPH    = 58,
+	TGIPDX_PROTECTION_LIFT         = 59,
+	TGPIDX_PROTECTION_DOT_DURATION = 60,
+	TGPIDX_PROTECTION_DOT_DURATION_PERC = 61,
+	TGPIDX_PROTECTION_DOT_DAMAGE_PERC = 62,
+	TGPIDX_DEBUFF_IMMUNITY         = 63,
+	TGPIDX_REDUCE_DEBUFF_DURATION  = 64,
+	TGPIDX_CC_IMMUNITY             = 65,
+	TGPIDX_CC_IMMUNITY_SUPERIOR    = 66,
+	TGPIDX_SLOW_IMMUNITY           = 67,
+	TGPIDX_JUMP_PENALTY_IMMUNITY   = 68,
+	TGPIDX_TAUNT                   = 69,
+	TGPIDX_POWER_PHYSICAL_PERC     = 70,
+	TGPIDX_POWER_MAGICAL_PERC      = 71,
+	TGPIDX_HEALING_DEALT_PERC      = 72,
+	TGPIDX_HEALING_TAKEN_PERC      = 73,
+	TGPIDX_HEALING_TAKEN_OTHERS_PERC = 74,
+	TGPIDX_HEALING_DISABLED        = 75,
+	TGPIDX_DAMAGE_TAKEN_PERC       = 76,
+	TGPIDX_HEADSHOT_DAMAGE_REDUCTION = 77,
+	TGPIDX_DAMAGE_DEALT_PERC       = 78,
+	TGPIDX_DAMAGE_DEALT_PERC_BASIC = 79,
+	TGPIDX_DAMAGE_DEALT_PERC_PHYSICAL = 80,
+	TGPIDX_DAMAGE_DEALT_PERC_MAGICAL = 81,
+	TGPIDX_DAMAGE_DEALT_PERC_DEPLOYABLES = 82,
+	TGPIDX_DAMAGE_DEALT_PERC_SHIELDS = 83,
+	TGPIDX_DAMAGE_DEALT_FLAT       = 84,
+	TGPIDX_DAMAGE_DEALT_TO_FRONTLINE_PERC = 85,
+	TGPIDX_POWER_PHYSICAL_ITEM     = 86,
+	TGPIDX_POWER_MAGICAL_ITEM      = 87,
+	TGPIDX_POWER_UTILITY_BOT       = 88,
+	TGPIDX_POWER_UTILITY_ITEM      = 89,
+	TGPIDX_MARKED                  = 90,
+	TGPIDX_MARKED_INHAND           = 91,
+	TGPIDX_MINIMAP_LOS_IGNORED     = 92,
+	TGPIDX_MINIMAP_DETECTOR        = 93,
+	TGPIDX_BLOCK_DAMAGE_PERC       = 94,
+	TGPIDX_FRONTAL_IMMUNITY        = 95,
+	TGPIDX_NO_BACKPEDAL_PENALTY    = 96,
+	TGPIDX_HP5_PERC                = 97,
+	TGPIDX_HP5_PERC_OF_MAX_HEALTH  = 98,
+	TGPIDX_PHYSICAL_IMMUNITY       = 99,
+	TGPIDX_MAGICAL_IMMUNITY        = 100,
+	TGPIDX_DAMAGE_TAKEN_PERC_PHYS  = 101,
+	TGPIDX_DAMAGE_TAKEN_PERC_INHAND = 102,
+	TGPIDX_DAMAGE_TAKEN_PERC_AOE   = 103,
+	TGPIDX_DAMAGE_TAKEN_PERC_DIRECT = 104,
+	TGPIDX_DAMAGE_TAKEN_PERC_MAX_ATTACK = 105,
+	TGPIDX_DAMAGE_REDUCTION_PERC_PENETRATION = 106,
+	TGPIDX_HEAL_BLOCK              = 107,
+	TGPIDX_INHAND_RELOAD_SPEED     = 108,
+	TGPIDX_INHAND_AMMO_CAPACITY    = 109,
+	TGPIDX_COMBAT_DURATION_REDUCTION_PERC = 110,
+	TGPIDX_IGNORE_ACTOR_BLOCKING   = 111,
+	TGPIDX_FORCE_3P_VIEW           = 112,
+	TGPIDX_LOCK_INPUT              = 113,
+	TGPIDX_SCALE_MESH              = 114,
+	TGPIDX_SCALE_COLLISION_HEIGHT  = 115,
+	TGPIDX_SCALE_COLLISION_RADIUS  = 116,
+	TGPIDX_CONFUSED                = 117,
+	TGPIDX_NEAR_DAMAGE_PERCENT     = 118,
+	TGPIDX_FAR_DAMAGE_PERCENT      = 119,
+	TGPIDX_BLEEDING                = 120,
+	TGPIDX_ON_FIRE                 = 121,
+	TGPIDX_POISONED                = 122,
+	TGPIDX_FROZEN                  = 123,
+	TGPIDX_INHAND_EFFECTIVE_AOE    = 124,
+	TGPIDX_INHAND_ABSOLUTE_AOE     = 125,
+	TGPIDX_PROC_CHANCE_MODIFIER    = 126,
+	TGPIDX_DOT_DURATION_PERC       = 127,
+	TGPIDX_ETHEREAL                = 128,
+	TGPIDX_INHAND_FIRE_OVERRIDE    = 129,
+	TGPIDX_HEALTH_FLOOR            = 130,
+	TGPIDX_LEAPING                 = 131,
+	TGPIDX_DECOY_AGGRO             = 132,
+	TGPIDX_HAS_HEALING_EFFECT_UI_SELF = 133,
+	TGPIDX_HAS_HEALING_EFFECT_UI_FRIEND = 134,
+	TGPIDX_MARK_SHOT_MARK          = 135,
+	TGPIDX_MARK_SHOT_FIRING_AT_MARK = 136,
+	TGPIDX_PURSUIT_FIRING_AT_TARGET = 137,
+	TGPIDX_MESMERIZE               = 138,
+	TGPIDX_MARKED_FOR_PRESENCE     = 139,
+	TGPIDX_PRESENCE_BUFF           = 140,
+	TGPIDX_DISABLE_RAGDOLL         = 141,
+	TGPIDX_PET_HEALTH_PCT          = 142,
+	TGPIDX_ROOT                    = 143,
+	TGPIDX_SOUL_ARMOR              = 144,
+	TGPIDX_SOUL_ARMOR_MAX          = 145,
+	TGPIDX_SHIELD_BUFF_PERCENT_ON_CREATE = 146,
+	TGPIDX_MAX                     = 147,
+	TG_PAWN_PROPERTIES_MAX         = 148
 };
 
 
@@ -3647,7 +3708,31 @@ enum class EGrabState : uint8_t
 	GRAB_LazarusRush               = 2,
 	GRAB_VanguardUlt               = 3,
 	GRAB_PullGrab                  = 4,
-	GRAB_MAX                       = 5
+	GRAB_AzaanDash                 = 5,
+	GRAB_MAX                       = 6
+};
+
+
+// Enum TgGame.TgPawn.PawnDamageMitigatorReason
+enum class EPawnDamageMitigatorReason : uint8_t
+{
+	PDMR_None                      = 0,
+	PDMR_BunnyLink                 = 1,
+	PDMR_MAX                       = 2
+};
+
+
+// Enum TgGame.TgPawn.TG_TELEPORT_STATE
+enum class ETG_TELEPORT_STATE : uint8_t
+{
+	TELEPORT_NONE                  = 0,
+	TELEPORT_ENTER                 = 1,
+	TELEPORT_EXIT                  = 2,
+	TELEPORT_ENTER_BLINK           = 3,
+	TELEPORT_EXIT_BLINK            = 4,
+	TELEPORT_KINESSA_TRANSPORTER_ENTER = 5,
+	TELEPORT_KINESSA_TRANSPORTER_EXIT = 6,
+	TELEPORT_MAX                   = 7
 };
 
 
@@ -3658,6 +3743,16 @@ enum class EForcedSilhouetteVisibility : uint8_t
 	FSV_Visible                    = 1,
 	FSV_Hidden                     = 2,
 	FSV_MAX                        = 3
+};
+
+
+// Enum TgGame.TgPawn.EUIHealthBarArmorType
+enum class EUIHealthBarArmorType : uint8_t
+{
+	UIHBAT_Undefined               = 0,
+	UIHBAT_SoulArmor               = 1,
+	UIHBAT_BloodHealth             = 2,
+	UIHBAT_MAX                     = 3
 };
 
 
@@ -3679,6 +3774,16 @@ enum class ETG_PlaySpecialEffect : uint8_t
 	PLAYFX_RiderShieldHit          = 12,
 	PLAYFX_RiderLegMarksExplode    = 13,
 	PLAYFX_MAX                     = 14
+};
+
+
+// Enum TgGame.TgPawn.TG_MARKED_TYPES
+enum class ETG_MARKED_TYPES : uint8_t
+{
+	TG_MARKED_MOJI                 = 0,
+	TG_MARKED_SEVEN                = 1,
+	TG_MARKED_NONE                 = 2,
+	TG_MARKED_MAX                  = 3
 };
 
 
@@ -3709,8 +3814,14 @@ enum class EUITargeters : uint8_t
 	TARGETER_DRUID_LOCKON          = 10,
 	TARGETER_DRUID_FOXAGGRO        = 11,
 	TARGETER_CORVUS_MARK           = 12,
-	TARGETER_YAGORATH_ULT          = 13,
-	TARGETER_MAX                   = 14
+	TARGETER_REI_LINK              = 13,
+	TARGETER_REI_LINKED            = 14,
+	TARGETER_YAGORATH_ULT          = 15,
+	TARGETER_SHADOW_TELEPORT       = 16,
+	TARGETER_SEVEN_ULT             = 17,
+	TARGETER_VAMPIRE_MARK          = 18,
+	TARGETER_VAMPIRE_MARKED        = 19,
+	TARGETER_MAX                   = 20
 };
 
 
@@ -4114,6 +4225,16 @@ enum class ECrossInputMethod : uint8_t
 };
 
 
+// Enum TgGame.TgClientSettings.ESettingHudSkillsOrder
+enum class ESettingHudSkillsOrder : uint8_t
+{
+	SHSO_LEGACY_UNINITIALIZED      = 0,
+	SHSO_NEW                       = 1,
+	SHSO_LEGACY                    = 2,
+	SHSO_MAX                       = 3
+};
+
+
 // Enum TgGame.TgDevice.EDeviceChangeEvent
 enum class EDeviceChangeEvent : uint8_t
 {
@@ -4174,6 +4295,17 @@ enum class EWeaponFireType : uint8_t
 	EWFT_Custom                    = 2,
 	EWFT_None                      = 3,
 	EWFT_MAX                       = 4
+};
+
+
+// Enum TgGame.TgDevice.EBankCooldownReduction
+enum class EBankCooldownReduction : uint8_t
+{
+	BCR_None                       = 0,
+	BCR_Once                       = 1,
+	BCR_Always                     = 2,
+	BCR_Custom                     = 3,
+	BCR_MAX                        = 4
 };
 
 
@@ -4478,6 +4610,14 @@ enum class EZombieModex : uint8_t
 };
 
 
+// Enum TgGame.TgPlayerController.EClientPawnFuncType
+enum class EClientPawnFuncType : uint8_t
+{
+	BOMB_QUEEN_BOMB_BAG_SPAWN      = 0,
+	BOMB_QUEEN_BOMB_BAG_MAX        = 1
+};
+
+
 // Enum TgGame.TgPlayerController.EPlayerInputType
 enum class EPlayerInputType : uint8_t
 {
@@ -4536,7 +4676,8 @@ enum class EHUDOverlay : uint8_t
 	HO_AtlasUlt                    = 3,
 	HO_OwlScope                    = 4,
 	HO_RiderUltVictim              = 5,
-	HO_MAX                         = 6
+	HO_SevenUlt                    = 6,
+	HO_MAX                         = 7
 };
 
 
@@ -4821,8 +4962,9 @@ enum class EeSimProjEvent : uint8_t
 	Proj_HitWall                   = 7,
 	Proj_HideProjectile            = 8,
 	Proj_Fizzle                    = 9,
-	Proj_Bounce                    = 10,
-	Proj_MAX                       = 11
+	Proj_Halt                      = 10,
+	Proj_Bounce                    = 11,
+	Proj_MAX                       = 12
 };
 
 
@@ -5780,6 +5922,16 @@ enum class EBeamState : uint8_t
 };
 
 
+// Enum TgGame.TgAnimBlendByPaladinsCharacter_Azaan.AzaanRetrieveState
+enum class EAzaanRetrieveState : uint8_t
+{
+	AZAAN_STATE_NEUTRAL            = 0,
+	AZAAN_STATE_POSTSLAM           = 1,
+	AZAAN_STATE_POSTULT            = 2,
+	AZAAN_STATE_MAX                = 3
+};
+
+
 // Enum TgGame.TgDevice_YagorathUlt.YagorathUltAnimState
 enum class EYagorathUltAnimState : uint8_t
 {
@@ -5788,6 +5940,29 @@ enum class EYagorathUltAnimState : uint8_t
 	YUAS_EAT                       = 2,
 	YUAS_PullCanceled              = 3,
 	YUAS_MAX                       = 4
+};
+
+
+// Enum TgGame.TgAnimNodeBlendBySevenLatch.EBlendGrapplingHook
+enum class EBlendGrapplingHook : uint8_t
+{
+	BlendGrapplingHook_Flying      = 0,
+	BlendGrapplingHook_Latched     = 1,
+	BlendGrapplingHook_HitEnemy    = 2,
+	BlendGrapplingHook_Normal      = 3,
+	BlendGrapplingHook_MAX         = 4
+};
+
+
+// Enum TgGame.TgDevice_AzaanUlt.AzaanUltAnimState
+enum class EAzaanUltAnimState : uint8_t
+{
+	AzaanUltAnimState_FlyUp        = 0,
+	AzaanUltAnimState_Hover        = 1,
+	AzaanUltAnimState_Fire         = 2,
+	AzaanUltAnimState_Travel       = 3,
+	AzaanUltAnimState_Land         = 4,
+	AzaanUltAnimState_MAX          = 5
 };
 
 
@@ -5811,6 +5986,26 @@ enum class ECorvusUltAnimState : uint8_t
 	CorvusUltAnimState_Fire        = 2,
 	CorvusUltAnimState_NoFire      = 3,
 	CorvusUltAnimState_MAX         = 4
+};
+
+
+// Enum TgGame.TgDeviceForm_ShadowUlt.VatuUltAnimState
+enum class EVatuUltAnimState : uint8_t
+{
+	VatuUltAnimState_Buildup       = 0,
+	VatuUltAnimState_ChargeUp      = 1,
+	VatuUltAnimState_Fire          = 2,
+	VatuUltAnimState_MAX           = 3
+};
+
+
+// Enum TgGame.TgDevice_BunnyLink.EBunnySpiritLinkAnimType
+enum class EBunnySpiritLinkAnimType : uint8_t
+{
+	EBSA_Summon                    = 0,
+	EBSA_Recast                    = 1,
+	EBSA_Break                     = 2,
+	EBSA_MAX                       = 3
 };
 
 
@@ -5845,6 +6040,16 @@ enum class ERaumShardCache : uint8_t
 };
 
 
+// Enum TgGame.TgDevice_SaatiPassive.ESaatiBuffType
+enum class ESaatiBuffType : uint8_t
+{
+	SBT_None                       = 0,
+	SBT_Damage                     = 1,
+	SBT_Movement                   = 2,
+	SBT_MAX                        = 3
+};
+
+
 // Enum TgGame.TgPawn_Tiberius.TigerBladeState
 enum class ETigerBladeState : uint8_t
 {
@@ -5864,6 +6069,17 @@ enum class EYagoTravelState : uint8_t
 	EYTS_ForcedDeceleration        = 2,
 	EYTS_PassiveDeceleration       = 3,
 	EYTS_MAX                       = 4
+};
+
+
+// Enum TgGame.TgPawn_Caspian.ECaspianStackSource
+enum class ECaspianStackSource : uint8_t
+{
+	CSS_None                       = 0,
+	CSS_Inhand                     = 1,
+	CSS_Altfire                    = 2,
+	CSS_Wildcard                   = 3,
+	CSS_MAX                        = 4
 };
 
 
@@ -5907,6 +6123,21 @@ enum class EAvatarCamera : uint8_t
 	EAC_Underwing                  = 1,
 	EAC_Neck                       = 2,
 	EAC_MAX                        = 3
+};
+
+
+// Enum TgGame.TgPawn_Imani.DigitizedImaniFace
+enum class EDigitizedImaniFace : uint8_t
+{
+	eDIF_Base                      = 0,
+	eDIF_Stare                     = 1,
+	eDIF_Eye                       = 2,
+	eDIF_Smile                     = 3,
+	eDIF_Kiss                      = 4,
+	eDIF_Heart                     = 5,
+	eDIF_Death                     = 6,
+	eDIF_UwU                       = 7,
+	eDIF_MAX                       = 8
 };
 
 
@@ -6001,6 +6232,7 @@ struct FExtraDamageInfo
 	unsigned long                                      bCombo : 1;                                               // 0x0000(0x0004)
 	unsigned long                                      bLatent : 1;                                              // 0x0000(0x0004)
 	unsigned long                                      bMarked : 1;                                              // 0x0000(0x0004)
+	unsigned long                                      bCapped : 1;                                              // 0x0000(0x0004)
 	unsigned long                                      bNoInstigator : 1;                                        // 0x0000(0x0004)
 };
 
@@ -6012,6 +6244,15 @@ struct FWeaponMeshSwapStrategy
 	TEnumAsByte<EWeaponMeshSwapRetrieveStrategy>       RetrieveStrategy;                                         // 0x0004(0x0001)
 	unsigned char                                      UnknownData00[0x3];                                       // 0x0005(0x0003) MISSED OFFSET
 	unsigned long                                      bClearEquipPoint : 1;                                     // 0x0008(0x0004)
+};
+
+// ScriptStruct TgGame.TgPlayerController.CLIENT_PAWN_FUNCTION_ARGS
+// 0x000C
+struct FCLIENT_PAWN_FUNCTION_ARGS
+{
+	float                                              fArg1;                                                    // 0x0000(0x0004)
+	float                                              fArg2;                                                    // 0x0004(0x0004)
+	float                                              fArg3;                                                    // 0x0008(0x0004)
 };
 
 // ScriptStruct TgGame.TgPlayerController.BinocularSettings
@@ -6501,6 +6742,14 @@ struct FSkinChildInfo
 	int                                                nChildIndex;                                              // 0x0004(0x0004) (Edit)
 };
 
+// ScriptStruct TgGame.TgAnimBlendByTag.TagInfo
+// 0x000C
+struct FTagInfo
+{
+	struct FName                                       nmTag;                                                    // 0x0000(0x0008) (Edit)
+	int                                                nChildIndex;                                              // 0x0008(0x0004) (Edit)
+};
+
 // ScriptStruct TgGame.TgAnimBlendByWeaponSkin.WeaponSkinChildInfo
 // 0x0008
 struct FWeaponSkinChildInfo
@@ -6703,7 +6952,7 @@ struct FImpactToValidate
 };
 
 // ScriptStruct TgGame.TgDevice.TgQueuedSimulatedProjectileSpawn
-// 0x0058
+// 0x0059
 struct FTgQueuedSimulatedProjectileSpawn
 {
 	float                                              TimeStampToSpawn;                                         // 0x0000(0x0004)
@@ -6720,6 +6969,7 @@ struct FTgQueuedSimulatedProjectileSpawn
 	float                                              AccuracyRandomValue1;                                     // 0x004C(0x0004)
 	float                                              AccuracyRandomValue2;                                     // 0x0050(0x0004)
 	float                                              AccuracyValue;                                            // 0x0054(0x0004)
+	unsigned char                                      ExtraInfo;                                                // 0x0058(0x0001)
 };
 
 // ScriptStruct TgGame.TgDevice.TgQueuedInstantFireShot
@@ -6962,18 +7212,19 @@ struct FCollisionSettingsProjectile
 };
 
 // ScriptStruct TgGame.TgProjectile.TrackingSettings
-// 0x0018
+// 0x001C
 struct FTrackingSettings
 {
 	unsigned long                                      bUsesTracking : 1;                                        // 0x0000(0x0004) (Const)
 	class AActor*                                      mTarget;                                                  // 0x0004(0x0008)
 	float                                              fTurnStrength;                                            // 0x000C(0x0004)
 	float                                              fVertTurnStrength;                                        // 0x0010(0x0004)
-	unsigned long                                      bIgnoreNonTargets : 1;                                    // 0x0014(0x0004)
-	unsigned long                                      bIgnoreWorldIfSeeking : 1;                                // 0x0014(0x0004)
-	unsigned long                                      bIgnoreWorldIfNotSeeking : 1;                             // 0x0014(0x0004)
-	unsigned long                                      bInfiniteRangeWhileTracking : 1;                          // 0x0014(0x0004)
-	unsigned long                                      bDestroyIfTargetDied : 1;                                 // 0x0014(0x0004)
+	float                                              fTrackingProximityDistance;                               // 0x0014(0x0004)
+	unsigned long                                      bIgnoreNonTargets : 1;                                    // 0x0018(0x0004)
+	unsigned long                                      bIgnoreWorldIfSeeking : 1;                                // 0x0018(0x0004)
+	unsigned long                                      bIgnoreWorldIfNotSeeking : 1;                             // 0x0018(0x0004)
+	unsigned long                                      bInfiniteRangeWhileTracking : 1;                          // 0x0018(0x0004)
+	unsigned long                                      bDestroyIfTargetDied : 1;                                 // 0x0018(0x0004)
 };
 
 // ScriptStruct TgGame.TgProj_NonSimulated.LagCompedQueuedHitInfo
@@ -7152,8 +7403,16 @@ struct FLifeTimeCalcInfo
 	float                                              m_fCalculatedLifeTime;                                    // 0x001C(0x0004)
 };
 
+// ScriptStruct TgGame.TgPawn.KnockbackHit
+// 0x0014
+struct FKnockbackHit
+{
+	struct FVector                                     vHitNormal;                                               // 0x0000(0x000C)
+	class AActor*                                      aHitActor;                                                // 0x000C(0x0008)
+};
+
 // ScriptStruct TgGame.TgEffectManager.ReduceActiveCooldownEntry
-// 0x0018
+// 0x001C
 struct FReduceActiveCooldownEntry
 {
 	int                                                nDeviceId;                                                // 0x0000(0x0004)
@@ -7162,6 +7421,7 @@ struct FReduceActiveCooldownEntry
 	unsigned long                                      bPercent : 1;                                             // 0x000C(0x0004)
 	float                                              fApplicationTime;                                         // 0x0010(0x0004)
 	float                                              fCooldownFloor;                                           // 0x0014(0x0004)
+	unsigned long                                      bIgnoreChargeScaling : 1;                                 // 0x0018(0x0004)
 };
 
 // ScriptStruct TgGame.TgEffectManager.EffectListEntry
@@ -7333,6 +7593,14 @@ struct FTOHInfo
 	float                                              fResetTimer;                                              // 0x000C(0x0004)
 };
 
+// ScriptStruct TgGame.TgInvListener_ConsecutiveHitsForDamageBonusByCredits.TrackedDamagedTargets
+// 0x000C
+struct FTrackedDamagedTargets
+{
+	class AActor*                                      pTarget;                                                  // 0x0000(0x0008)
+	float                                              fBonusDamageEndTime;                                      // 0x0008(0x0004)
+};
+
 // ScriptStruct TgGame.TgInvListener_ConsecutiveInhandHits.CIHStack
 // 0x0010
 struct FCIHStack
@@ -7340,6 +7608,14 @@ struct FCIHStack
 	class ATgPawn*                                     pTarget;                                                  // 0x0000(0x0008)
 	int                                                nStackCount;                                              // 0x0008(0x0004)
 	float                                              fLifetime;                                                // 0x000C(0x0004)
+};
+
+// ScriptStruct TgGame.TgInvListener_TakingHitsForDamageBonusByCredits.TrackedBullies
+// 0x000C
+struct FTrackedBullies
+{
+	class AActor*                                      pTarget;                                                  // 0x0000(0x0008)
+	float                                              fBonusDamageEndTime;                                      // 0x0008(0x0004)
 };
 
 // ScriptStruct TgGame.TgObject.MeshAssets
@@ -7498,6 +7774,14 @@ struct FPawnDamagerStruct
 {
 	class ATgPawn*                                     DamagerPawn;                                              // 0x0000(0x0008)
 	float                                              fTimestamp;                                               // 0x0008(0x0004)
+};
+
+// ScriptStruct TgGame.TgPawn.PawnDamageMitigator
+// 0x0009
+struct FPawnDamageMitigator
+{
+	class ATgPawn*                                     MitigatingPawn;                                           // 0x0000(0x0008)
+	TEnumAsByte<EPawnDamageMitigatorReason>            eReason;                                                  // 0x0008(0x0001)
 };
 
 // ScriptStruct TgGame.TgPawn.OverlayMICList
@@ -8370,6 +8654,37 @@ struct FStickyBombPendingDetonate
 	struct FVector                                     vExplodeLocation;                                         // 0x0008(0x000C)
 };
 
+// ScriptStruct TgGame.TgDevice_BunnyHeal.BunnyHealHistoryEntry
+// 0x0018
+struct FBunnyHealHistoryEntry
+{
+	class ATgPawn*                                     TargetPawn;                                               // 0x0000(0x0008)
+	float                                              fBounceDelay;                                             // 0x0008(0x0004)
+	class ATgProj_BunnyHeal*                           HealProj;                                                 // 0x000C(0x0008)
+	unsigned long                                      bValidImpact : 1;                                         // 0x0014(0x0004)
+};
+
+// ScriptStruct TgGame.TgPawn_Bunny.SpiritLink
+// 0x0020
+struct FSpiritLink
+{
+	class ATgPawn*                                     LinkedPawn;                                               // 0x0000(0x0008)
+	float                                              fAddedTimestamp;                                          // 0x0008(0x0004)
+	class UTgBeamHelper*                               LinkBeam1P;                                               // 0x000C(0x0008)
+	class UTgBeamHelper*                               LinkBeam3P;                                               // 0x0014(0x0008)
+	float                                              fSecondsUntilBreak;                                       // 0x001C(0x0004)
+};
+
+// ScriptStruct TgGame.TgPawn_Bunny.BreakingSpiritLink
+// 0x0018
+struct FBreakingSpiritLink
+{
+	class ATgPawn*                                     LinkedPawn;                                               // 0x0000(0x0008)
+	float                                              fAddedTimestamp;                                          // 0x0008(0x0004)
+	class UTgBeamHelper*                               LinkBreakBeam1P;                                          // 0x000C(0x0008)
+	float                                              fLinkBreakBeamTTL;                                        // 0x0014(0x0004)
+};
+
 // ScriptStruct TgGame.TgPawn_Corvus.BeaconInfo
 // 0x008C
 struct FBeaconInfo
@@ -8387,6 +8702,14 @@ struct FArcingFXInfo
 	class AActor*                                      Target;                                                   // 0x0008(0x0008)
 	class UTgSpecialFx*                                ArcingFX;                                                 // 0x0010(0x0008)
 	float                                              fRemainingActiveTime;                                     // 0x0018(0x0004)
+};
+
+// ScriptStruct TgGame.TgPawn_Imani.DigitizedImaniConfig
+// 0x0008
+struct FDigitizedImaniConfig
+{
+	float                                              fShiftX;                                                  // 0x0000(0x0004)
+	float                                              fShiftY;                                                  // 0x0004(0x0004)
 };
 
 // ScriptStruct TgGame.TgDeploy_MoonShardTween.AffectedPawn
@@ -8626,6 +8949,14 @@ struct FRiderMarkedTargetInfo
 	int                                                nMarkedCount;                                             // 0x0004(0x0004)
 };
 
+// ScriptStruct TgGame.TgPawn_Rider.RiderLastMaxMarkedTarget
+// 0x0008
+struct FRiderLastMaxMarkedTarget
+{
+	int                                                nTargetPawnId;                                            // 0x0000(0x0004)
+	float                                              nMaxMarksTimestamp;                                       // 0x0004(0x0004)
+};
+
 // ScriptStruct TgGame.TgDeploy_DredgeF.TargetToTeleport
 // 0x000C
 struct FTargetToTeleport
@@ -8664,6 +8995,83 @@ struct FSavedRewindVals
 	struct FRotator                                    rRotation;                                                // 0x0010(0x000C)
 	float                                              fTime;                                                    // 0x001C(0x0004)
 	unsigned long                                      bCollideWorld : 1;                                        // 0x0020(0x0004)
+};
+
+// ScriptStruct TgGame.TgProj_ShadowStickyBombHoming.HomingBombTrackingTargets
+// 0x000C
+struct FHomingBombTrackingTargets
+{
+	class AActor*                                      PotentialTarget;                                          // 0x0000(0x0008)
+	float                                              fScore;                                                   // 0x0008(0x0004)
+};
+
+// ScriptStruct TgGame.TgDevice_SevenMaskedFear.FearTarget
+// 0x0010
+struct FFearTarget
+{
+	class AActor*                                      HitActor;                                                 // 0x0000(0x0008)
+	float                                              TimeFeared;                                               // 0x0008(0x0004)
+	unsigned long                                      MarkedForFear : 1;                                        // 0x000C(0x0004)
+};
+
+// ScriptStruct TgGame.TgPawn_Seven.SevenMarkedTargetInfo
+// 0x0008
+struct FSevenMarkedTargetInfo
+{
+	int                                                nTargetPawnId;                                            // 0x0000(0x0004)
+	int                                                nMarkedCount;                                             // 0x0004(0x0004)
+};
+
+// ScriptStruct TgGame.TgPawn_Vampire.VampMark
+// 0x0014
+struct FVampMark
+{
+	class ATgPawn*                                     MarkedPawn;                                               // 0x0000(0x0008)
+	float                                              fAddedTimestamp;                                          // 0x0008(0x0004)
+	float                                              fSecondsUntilBreak;                                       // 0x000C(0x0004)
+	float                                              fSecondsApplyNextInterval;                                // 0x0010(0x0004)
+};
+
+// ScriptStruct TgGame.TgDevice_CaspianUlt.CaspianSword
+// 0x002C
+struct FCaspianSword
+{
+	int                                                nNonce;                                                   // 0x0000(0x0004)
+	int                                                nId;                                                      // 0x0004(0x0004)
+	int                                                nPosition;                                                // 0x0008(0x0004)
+	unsigned long                                      bIsActive : 1;                                            // 0x000C(0x0004)
+	unsigned long                                      bIsFired : 1;                                             // 0x000C(0x0004)
+	float                                              fCreatedTimestamp;                                        // 0x0010(0x0004)
+	class ATgProjectile*                               s_SwordProjectile;                                        // 0x0014(0x0008)
+	float                                              c_fSimulatedFireAttempt;                                  // 0x001C(0x0004)
+	unsigned long                                      c_bFxActive : 1;                                          // 0x0020(0x0004)
+	class ATgPropActor*                                c_SwordProp;                                              // 0x0024(0x0008)
+};
+
+// ScriptStruct TgGame.TgPawn_Caspian.CaspianStackCountHistoryEntry
+// 0x000C
+struct FCaspianStackCountHistoryEntry
+{
+	float                                              fTimestamp;                                               // 0x0000(0x0004)
+	TEnumAsByte<ECaspianStackSource>                   eSource;                                                  // 0x0004(0x0001)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0005(0x0003) MISSED OFFSET
+	int                                                nCount;                                                   // 0x0008(0x0004)
+};
+
+// ScriptStruct TgGame.TgPawn_Caspian.CaspianPassiveStack
+// 0x0005
+struct FCaspianPassiveStack
+{
+	float                                              fCreatedTimestamp;                                        // 0x0000(0x0004)
+	TEnumAsByte<ECaspianStackSource>                   eSource;                                                  // 0x0004(0x0001)
+};
+
+// ScriptStruct TgGame.TgPawn_Caspian.CaspianStackConfig
+// 0x0008
+struct FCaspianStackConfig
+{
+	int                                                nMaxStacks;                                               // 0x0000(0x0004)
+	float                                              fStackExpirationTime;                                     // 0x0004(0x0004)
 };
 
 // ScriptStruct TgGame.TgGameplayCurvesSet_TargetAimTracking.TargetAimTrackingDebugVals
@@ -8961,6 +9369,14 @@ struct FTgFxLight
 	struct FPointer                                    m_FxEmitter;                                              // 0x0000(0x0008)
 	class UTgSpecialFx*                                m_OwnerSpecialFx;                                         // 0x0008(0x0008)
 	float                                              m_Score;                                                  // 0x0010(0x0004)
+};
+
+// ScriptStruct TgGame.TgDeviceForm_WallBangFire.SaatiAimInfo
+// 0x0018
+struct FSaatiAimInfo
+{
+	struct FVector                                     CachedAimVector;                                          // 0x0000(0x000C)
+	struct FVector                                     CachedStartLocation;                                      // 0x000C(0x000C)
 };
 
 }

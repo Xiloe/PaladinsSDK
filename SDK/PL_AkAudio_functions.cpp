@@ -1,4 +1,4 @@
-// Paladins (4.1.3942.2) SDK
+// Paladins (3.05) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -13,9 +13,9 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // Function AkAudio.AkAmbientSound.StopPlayback
-// (Iterator, Latent, Singular, NetReliable, Exec, Native, Operator, Static)
+// (PreOperator, Singular, Simulated, Exec, Native, Event, Operator, HasOptionalParms)
 
-void AAkAmbientSound::STATIC_StopPlayback()
+void AAkAmbientSound::StopPlayback()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkAmbientSound.StopPlayback");
 
@@ -31,9 +31,9 @@ void AAkAmbientSound::STATIC_StopPlayback()
 
 
 // Function AkAudio.AkAmbientSound.StartPlayback
-// (Defined, Latent, Singular, NetReliable, Exec, Native, Operator, Static)
+// (Defined, Iterator, Latent, Singular, Simulated, Exec, Native, Event, Operator, HasOptionalParms)
 
-void AAkAmbientSound::STATIC_StartPlayback()
+void AAkAmbientSound::StartPlayback()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function AkAudio.AkAmbientSound.StartPlayback");
 
