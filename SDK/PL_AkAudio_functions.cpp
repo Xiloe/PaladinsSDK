@@ -1,4 +1,4 @@
-// Paladins (3.05) SDK
+// Paladins (5.5) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -13,7 +13,7 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // Function AkAudio.AkAmbientSound.StopPlayback
-// (PreOperator, Singular, Simulated, Exec, Native, Event, Operator, HasOptionalParms)
+// (Defined, Iterator, Latent, Singular, Simulated, Native, Event, HasOptionalParms)
 
 void AAkAmbientSound::StopPlayback()
 {
@@ -31,7 +31,7 @@ void AAkAmbientSound::StopPlayback()
 
 
 // Function AkAudio.AkAmbientSound.StartPlayback
-// (Defined, Iterator, Latent, Singular, Simulated, Exec, Native, Event, Operator, HasOptionalParms)
+// (Iterator, Latent, Singular, Simulated, Native, Event, HasOptionalParms)
 
 void AAkAmbientSound::StartPlayback()
 {

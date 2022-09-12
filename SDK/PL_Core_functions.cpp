@@ -1,4 +1,4 @@
-// Paladins (3.05) SDK
+// Paladins (5.5) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -47,11 +47,11 @@ bool UObject::IsA(UClass* cmp) const
 }
 
 // Function Core.Object.ProfNodeEvent
-// (Final, Defined, Net, Exec, Event)
+// (Final, Latent, Singular, NetReliable, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 EventName                      (Parm, NeedCtorLink)
 
-void UObject::ProfNodeEvent(const struct FString& EventName)
+void UObject::STATIC_ProfNodeEvent(const struct FString& EventName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ProfNodeEvent");
 
@@ -59,6 +59,7 @@ void UObject::ProfNodeEvent(const struct FString& EventName)
 	params.EventName = EventName;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -67,11 +68,11 @@ void UObject::ProfNodeEvent(const struct FString& EventName)
 
 
 // Function Core.Object.ProfNodeSetDepthThreshold
-// (Iterator, Net, Exec, Event)
+// (Defined, Latent, Singular, NetReliable, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // int                            Depth                          (Parm)
 
-void UObject::ProfNodeSetDepthThreshold(int Depth)
+void UObject::STATIC_ProfNodeSetDepthThreshold(int Depth)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ProfNodeSetDepthThreshold");
 
@@ -79,6 +80,7 @@ void UObject::ProfNodeSetDepthThreshold(int Depth)
 	params.Depth = Depth;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -87,11 +89,11 @@ void UObject::ProfNodeSetDepthThreshold(int Depth)
 
 
 // Function Core.Object.ProfNodeSetTimeThresholdSeconds
-// (Final, Iterator, Net, Exec, Event)
+// (Final, Defined, Latent, Singular, NetReliable, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          Threshold                      (Parm)
 
-void UObject::ProfNodeSetTimeThresholdSeconds(float Threshold)
+void UObject::STATIC_ProfNodeSetTimeThresholdSeconds(float Threshold)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ProfNodeSetTimeThresholdSeconds");
 
@@ -99,6 +101,7 @@ void UObject::ProfNodeSetTimeThresholdSeconds(float Threshold)
 	params.Threshold = Threshold;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -107,11 +110,11 @@ void UObject::ProfNodeSetTimeThresholdSeconds(float Threshold)
 
 
 // Function Core.Object.ProfNodeStop
-// (Final, Defined, Iterator, Net, Exec, Event)
+// (Final, Iterator, Latent, Singular, NetReliable, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // int                            AssumedTimerIndex              (OptionalParm, Parm)
 
-void UObject::ProfNodeStop(int AssumedTimerIndex)
+void UObject::STATIC_ProfNodeStop(int AssumedTimerIndex)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ProfNodeStop");
 
@@ -119,6 +122,7 @@ void UObject::ProfNodeStop(int AssumedTimerIndex)
 	params.AssumedTimerIndex = AssumedTimerIndex;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -127,12 +131,12 @@ void UObject::ProfNodeStop(int AssumedTimerIndex)
 
 
 // Function Core.Object.ProfNodeStart
-// (Defined, Iterator, Net, Exec, Event)
+// (Iterator, Latent, Singular, NetReliable, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 TimerName                      (Parm, NeedCtorLink)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UObject::ProfNodeStart(const struct FString& TimerName)
+int UObject::STATIC_ProfNodeStart(const struct FString& TimerName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ProfNodeStart");
 
@@ -140,6 +144,7 @@ int UObject::ProfNodeStart(const struct FString& TimerName)
 	params.TimerName = TimerName;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -150,18 +155,19 @@ int UObject::ProfNodeStart(const struct FString& TimerName)
 
 
 // Function Core.Object.GetStringFromGuid
-// (Final, Iterator, PreOperator, Net, Simulated, Event)
+// (Defined, PreOperator, Singular, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FGuid                   InGuid                         (Const, Parm, OutParm)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString UObject::GetStringFromGuid(struct FGuid* InGuid)
+struct FString UObject::STATIC_GetStringFromGuid(struct FGuid* InGuid)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetStringFromGuid");
 
 	UObject_GetStringFromGuid_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -175,18 +181,19 @@ struct FString UObject::GetStringFromGuid(struct FGuid* InGuid)
 
 
 // Function Core.Object.GetGuidFromString
-// (Latent, Net, Simulated, Event)
+// (Final, Iterator, Singular, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 InGuidString                   (Const, Parm, OutParm, NeedCtorLink)
 // struct FGuid                   ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FGuid UObject::GetGuidFromString(struct FString* InGuidString)
+struct FGuid UObject::STATIC_GetGuidFromString(struct FString* InGuidString)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetGuidFromString");
 
 	UObject_GetGuidFromString_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -200,17 +207,18 @@ struct FGuid UObject::GetGuidFromString(struct FString* InGuidString)
 
 
 // Function Core.Object.CreateGuid
-// (Iterator, PreOperator, Net, NetReliable, Event)
+// (Final, Defined, Latent, Singular, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FGuid                   ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FGuid UObject::CreateGuid()
+struct FGuid UObject::STATIC_CreateGuid()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.CreateGuid");
 
 	UObject_CreateGuid_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -221,18 +229,19 @@ struct FGuid UObject::CreateGuid()
 
 
 // Function Core.Object.IsGuidValid
-// (Final, Singular, NetReliable, Simulated, Event)
+// (Iterator, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FGuid                   InGuid                         (Const, Parm, OutParm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::IsGuidValid(struct FGuid* InGuid)
+bool UObject::STATIC_IsGuidValid(struct FGuid* InGuid)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.IsGuidValid");
 
 	UObject_IsGuidValid_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -246,17 +255,18 @@ bool UObject::IsGuidValid(struct FGuid* InGuid)
 
 
 // Function Core.Object.InvalidateGuid
-// (Final, Defined, PreOperator, NetReliable, Simulated, Event)
+// (Defined, Iterator, PreOperator, Singular, Net, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FGuid                   InGuid                         (Parm, OutParm)
 
-void UObject::InvalidateGuid(struct FGuid* InGuid)
+void UObject::STATIC_InvalidateGuid(struct FGuid* InGuid)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.InvalidateGuid");
 
 	UObject_InvalidateGuid_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -268,17 +278,18 @@ void UObject::InvalidateGuid(struct FGuid* InGuid)
 
 
 // Function Core.Object.GetLanguage
-// (Defined, Latent, Net, Simulated, Event)
+// (Final, Defined, Iterator, Singular, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString UObject::GetLanguage()
+struct FString UObject::STATIC_GetLanguage()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetLanguage");
 
 	UObject_GetLanguage_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -289,18 +300,19 @@ struct FString UObject::GetLanguage()
 
 
 // Function Core.Object.GetRandomOptionSumFrequency
-// (Defined, Iterator, Latent, Net, Simulated, Event)
+// (Final, Defined, Latent, Singular, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // TArray<float>                  FreqList                       (Const, Parm, OutParm, NeedCtorLink)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UObject::GetRandomOptionSumFrequency(TArray<float>* FreqList)
+int UObject::STATIC_GetRandomOptionSumFrequency(TArray<float>* FreqList)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetRandomOptionSumFrequency");
 
 	UObject_GetRandomOptionSumFrequency_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -314,17 +326,18 @@ int UObject::GetRandomOptionSumFrequency(TArray<float>* FreqList)
 
 
 // Function Core.Object.GetBuildChangelistNumber
-// (Defined, Net, Simulated, Event)
+// (Final, Defined, Iterator, Latent, PreOperator, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UObject::GetBuildChangelistNumber()
+int UObject::STATIC_GetBuildChangelistNumber()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetBuildChangelistNumber");
 
 	UObject_GetBuildChangelistNumber_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -335,17 +348,18 @@ int UObject::GetBuildChangelistNumber()
 
 
 // Function Core.Object.GetEngineVersion
-// (Iterator, Net, Simulated, Event)
+// (Final, Singular, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UObject::GetEngineVersion()
+int UObject::STATIC_GetEngineVersion()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetEngineVersion");
 
 	UObject_GetEngineVersion_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -356,7 +370,7 @@ int UObject::GetEngineVersion()
 
 
 // Function Core.Object.GetSystemTime
-// (Defined, Iterator, PreOperator, Net, Simulated, Event)
+// (Final, Defined, PreOperator, Singular, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // int                            Year                           (Parm, OutParm)
 // int                            Month                          (Parm, OutParm)
@@ -367,13 +381,14 @@ int UObject::GetEngineVersion()
 // int                            Sec                            (Parm, OutParm)
 // int                            MSec                           (Parm, OutParm)
 
-void UObject::GetSystemTime(int* Year, int* Month, int* DayOfWeek, int* Day, int* Hour, int* Min, int* Sec, int* MSec)
+void UObject::STATIC_GetSystemTime(int* Year, int* Month, int* DayOfWeek, int* Day, int* Hour, int* Min, int* Sec, int* MSec)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetSystemTime");
 
 	UObject_GetSystemTime_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -399,11 +414,11 @@ void UObject::GetSystemTime(int* Year, int* Month, int* DayOfWeek, int* Day, int
 
 
 // Function Core.Object.TimeStamp
-// (PreOperator, Singular, NetReliable, Exec, Event)
+// (Final, Defined, Iterator, Latent, PreOperator, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString UObject::TimeStamp()
+struct FString UObject::STATIC_TimeStamp()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.TimeStamp");
 
@@ -420,14 +435,14 @@ struct FString UObject::TimeStamp()
 
 
 // Function Core.Object.TransformVectorByRotation
-// (Defined, Iterator, PreOperator, Singular, NetReliable, Exec, Event)
+// (Final, Iterator, Singular, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FRotator                SourceRotation                 (Parm)
 // struct FVector                 SourceVector                   (Parm)
 // bool                           bInverse                       (OptionalParm, Parm)
 // struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector UObject::TransformVectorByRotation(const struct FRotator& SourceRotation, const struct FVector& SourceVector, bool bInverse)
+struct FVector UObject::STATIC_TransformVectorByRotation(const struct FRotator& SourceRotation, const struct FVector& SourceVector, bool bInverse)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.TransformVectorByRotation");
 
@@ -447,17 +462,18 @@ struct FVector UObject::TransformVectorByRotation(const struct FRotator& SourceR
 
 
 // Function Core.Object.GetPackageName
-// (Iterator, Latent, Net, Simulated, Event)
+// (Final, Latent, Singular, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FName                   ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FName UObject::GetPackageName()
+struct FName UObject::STATIC_GetPackageName()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetPackageName");
 
 	UObject_GetPackageName_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -468,17 +484,18 @@ struct FName UObject::GetPackageName()
 
 
 // Function Core.Object.IsPendingKill
-// (Final, Defined, Singular, NetReliable, Simulated, Event)
+// (Defined, Iterator, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::IsPendingKill()
+bool UObject::STATIC_IsPendingKill()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.IsPendingKill");
 
 	UObject_IsPendingKill_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -489,13 +506,13 @@ bool UObject::IsPendingKill()
 
 
 // Function Core.Object.ByteToFloat
-// (Defined, Iterator, PreOperator, Singular, NetReliable, Event)
+// (Final, Iterator, Latent, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // unsigned char                  inputByte                      (Parm)
 // bool                           bSigned                        (OptionalParm, Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::ByteToFloat(unsigned char inputByte, bool bSigned)
+float UObject::STATIC_ByteToFloat(unsigned char inputByte, bool bSigned)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ByteToFloat");
 
@@ -504,6 +521,7 @@ float UObject::ByteToFloat(unsigned char inputByte, bool bSigned)
 	params.bSigned = bSigned;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -514,13 +532,13 @@ float UObject::ByteToFloat(unsigned char inputByte, bool bSigned)
 
 
 // Function Core.Object.FloatToByte
-// (Iterator, PreOperator, Singular, Simulated, Event)
+// (Final, PreOperator, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          inputFloat                     (Parm)
 // bool                           bSigned                        (OptionalParm, Parm)
 // unsigned char                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-unsigned char UObject::FloatToByte(float inputFloat, bool bSigned)
+unsigned char UObject::STATIC_FloatToByte(float inputFloat, bool bSigned)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.FloatToByte");
 
@@ -529,6 +547,7 @@ unsigned char UObject::FloatToByte(float inputFloat, bool bSigned)
 	params.bSigned = bSigned;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -539,12 +558,12 @@ unsigned char UObject::FloatToByte(float inputFloat, bool bSigned)
 
 
 // Function Core.Object.UnwindHeading
-// (Iterator, Latent, PreOperator, Singular, NetReliable, Exec, Event)
+// (Final, Defined, Latent, Singular, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          A                              (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::UnwindHeading(float A)
+float UObject::STATIC_UnwindHeading(float A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.UnwindHeading");
 
@@ -562,13 +581,13 @@ float UObject::UnwindHeading(float A)
 
 
 // Function Core.Object.FindDeltaAngle
-// (Final, Defined, Iterator, Singular, Simulated, Event)
+// (Iterator, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          A1                             (Parm)
 // float                          A2                             (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::FindDeltaAngle(float A1, float A2)
+float UObject::STATIC_FindDeltaAngle(float A1, float A2)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.FindDeltaAngle");
 
@@ -577,6 +596,7 @@ float UObject::FindDeltaAngle(float A1, float A2)
 	params.A2 = A2;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -587,12 +607,12 @@ float UObject::FindDeltaAngle(float A1, float A2)
 
 
 // Function Core.Object.GetHeadingAngle
-// (Final, Latent, Net, Simulated, Event)
+// (Defined, Iterator, Singular, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector                 Dir                            (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::GetHeadingAngle(const struct FVector& Dir)
+float UObject::STATIC_GetHeadingAngle(const struct FVector& Dir)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetHeadingAngle");
 
@@ -600,6 +620,7 @@ float UObject::GetHeadingAngle(const struct FVector& Dir)
 	params.Dir = Dir;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -610,17 +631,18 @@ float UObject::GetHeadingAngle(const struct FVector& Dir)
 
 
 // Function Core.Object.GetAngularDegreesFromRadians
-// (Defined, Iterator, Latent, PreOperator, Singular, Simulated, Event)
+// (Final, Defined, Latent, PreOperator, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector2D               OutFOV                         (Parm, OutParm)
 
-void UObject::GetAngularDegreesFromRadians(struct FVector2D* OutFOV)
+void UObject::STATIC_GetAngularDegreesFromRadians(struct FVector2D* OutFOV)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetAngularDegreesFromRadians");
 
 	UObject_GetAngularDegreesFromRadians_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -632,12 +654,12 @@ void UObject::GetAngularDegreesFromRadians(struct FVector2D* OutFOV)
 
 
 // Function Core.Object.GetAngularFromDotDist
-// (Net, Simulated, Event)
+// (Final, Iterator, Latent, PreOperator, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector2D               OutAngDist                     (Parm, OutParm)
 // struct FVector2D               DotDist                        (Parm)
 
-void UObject::GetAngularFromDotDist(const struct FVector2D& DotDist, struct FVector2D* OutAngDist)
+void UObject::STATIC_GetAngularFromDotDist(const struct FVector2D& DotDist, struct FVector2D* OutAngDist)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetAngularFromDotDist");
 
@@ -645,6 +667,7 @@ void UObject::GetAngularFromDotDist(const struct FVector2D& DotDist, struct FVec
 	params.DotDist = DotDist;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -656,7 +679,7 @@ void UObject::GetAngularFromDotDist(const struct FVector2D& DotDist, struct FVec
 
 
 // Function Core.Object.GetAngularDistance
-// (Final, Defined, Iterator, Latent, PreOperator, Singular, Simulated, Event)
+// (Iterator, Latent, PreOperator, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector2D               OutAngularDist                 (Parm, OutParm)
 // struct FVector                 Direction                      (Parm)
@@ -665,7 +688,7 @@ void UObject::GetAngularFromDotDist(const struct FVector2D& DotDist, struct FVec
 // struct FVector                 AxisZ                          (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::GetAngularDistance(const struct FVector& Direction, const struct FVector& AxisX, const struct FVector& AxisY, const struct FVector& AxisZ, struct FVector2D* OutAngularDist)
+bool UObject::STATIC_GetAngularDistance(const struct FVector& Direction, const struct FVector& AxisX, const struct FVector& AxisY, const struct FVector& AxisZ, struct FVector2D* OutAngularDist)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetAngularDistance");
 
@@ -676,6 +699,7 @@ bool UObject::GetAngularDistance(const struct FVector& Direction, const struct F
 	params.AxisZ = AxisZ;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -689,7 +713,7 @@ bool UObject::GetAngularDistance(const struct FVector& Direction, const struct F
 
 
 // Function Core.Object.GetDotDistance
-// (Final, Defined, Net, Simulated, Event)
+// (Singular, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector2D               OutDotDist                     (Parm, OutParm)
 // struct FVector                 Direction                      (Parm)
@@ -698,7 +722,7 @@ bool UObject::GetAngularDistance(const struct FVector& Direction, const struct F
 // struct FVector                 AxisZ                          (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::GetDotDistance(const struct FVector& Direction, const struct FVector& AxisX, const struct FVector& AxisY, const struct FVector& AxisZ, struct FVector2D* OutDotDist)
+bool UObject::STATIC_GetDotDistance(const struct FVector& Direction, const struct FVector& AxisX, const struct FVector& AxisY, const struct FVector& AxisZ, struct FVector2D* OutDotDist)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetDotDistance");
 
@@ -709,6 +733,7 @@ bool UObject::GetDotDistance(const struct FVector& Direction, const struct FVect
 	params.AxisZ = AxisZ;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -722,7 +747,7 @@ bool UObject::GetDotDistance(const struct FVector& Direction, const struct FVect
 
 
 // Function Core.Object.PointProjectToPlane
-// (Final, Iterator, Latent, PreOperator, Singular, Exec, Event)
+// (Final, Defined, Singular, NetReliable, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector                 Point                          (Parm)
 // struct FVector                 A                              (Parm)
@@ -730,7 +755,7 @@ bool UObject::GetDotDistance(const struct FVector& Direction, const struct FVect
 // struct FVector                 C                              (Parm)
 // struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector UObject::PointProjectToPlane(const struct FVector& Point, const struct FVector& A, const struct FVector& B, const struct FVector& C)
+struct FVector UObject::STATIC_PointProjectToPlane(const struct FVector& Point, const struct FVector& A, const struct FVector& B, const struct FVector& C)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.PointProjectToPlane");
 
@@ -741,6 +766,7 @@ struct FVector UObject::PointProjectToPlane(const struct FVector& Point, const s
 	params.C = C;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -751,7 +777,7 @@ struct FVector UObject::PointProjectToPlane(const struct FVector& Point, const s
 
 
 // Function Core.Object.PointDistToPlane
-// (Defined, Latent, PreOperator, Singular, Exec, Event)
+// (Singular, NetReliable, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector                 Point                          (Parm)
 // struct FRotator                Orientation                    (Parm)
@@ -759,7 +785,7 @@ struct FVector UObject::PointProjectToPlane(const struct FVector& Point, const s
 // struct FVector                 out_ClosestPoint               (OptionalParm, Parm, OutParm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::PointDistToPlane(const struct FVector& Point, const struct FRotator& Orientation, const struct FVector& Origin, struct FVector* out_ClosestPoint)
+float UObject::STATIC_PointDistToPlane(const struct FVector& Point, const struct FRotator& Orientation, const struct FVector& Origin, struct FVector* out_ClosestPoint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.PointDistToPlane");
 
@@ -769,6 +795,7 @@ float UObject::PointDistToPlane(const struct FVector& Point, const struct FRotat
 	params.Origin = Origin;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -782,7 +809,7 @@ float UObject::PointDistToPlane(const struct FVector& Point, const struct FRotat
 
 
 // Function Core.Object.PointDistToSegment
-// (Final, Defined, Latent, PreOperator, Singular, Exec, Event)
+// (Final, Singular, NetReliable, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector                 Point                          (Parm)
 // struct FVector                 StartPoint                     (Parm)
@@ -790,7 +817,7 @@ float UObject::PointDistToPlane(const struct FVector& Point, const struct FRotat
 // struct FVector                 OutClosestPoint                (OptionalParm, Parm, OutParm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::PointDistToSegment(const struct FVector& Point, const struct FVector& StartPoint, const struct FVector& EndPoint, struct FVector* OutClosestPoint)
+float UObject::STATIC_PointDistToSegment(const struct FVector& Point, const struct FVector& StartPoint, const struct FVector& EndPoint, struct FVector* OutClosestPoint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.PointDistToSegment");
 
@@ -800,6 +827,7 @@ float UObject::PointDistToSegment(const struct FVector& Point, const struct FVec
 	params.EndPoint = EndPoint;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -813,7 +841,7 @@ float UObject::PointDistToSegment(const struct FVector& Point, const struct FVec
 
 
 // Function Core.Object.PointDistToLine
-// (Final, Latent, PreOperator, Singular, Exec, Event)
+// (Final, Defined, Iterator, Latent, PreOperator, NetReliable, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector                 Point                          (Parm)
 // struct FVector                 Line                           (Parm)
@@ -821,7 +849,7 @@ float UObject::PointDistToSegment(const struct FVector& Point, const struct FVec
 // struct FVector                 OutClosestPoint                (OptionalParm, Parm, OutParm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::PointDistToLine(const struct FVector& Point, const struct FVector& Line, const struct FVector& Origin, struct FVector* OutClosestPoint)
+float UObject::STATIC_PointDistToLine(const struct FVector& Point, const struct FVector& Line, const struct FVector& Origin, struct FVector* OutClosestPoint)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.PointDistToLine");
 
@@ -831,6 +859,7 @@ float UObject::PointDistToLine(const struct FVector& Point, const struct FVector
 	params.Origin = Origin;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -844,7 +873,7 @@ float UObject::PointDistToLine(const struct FVector& Point, const struct FVector
 
 
 // Function Core.Object.GetPerObjectConfigSections
-// (Final, Iterator, Latent, Net, Simulated, Event)
+// (Defined, Latent, Singular, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // class UClass*                  SearchClass                    (Parm)
 // TArray<struct FString>         out_SectionNames               (Parm, OutParm, NeedCtorLink)
@@ -852,7 +881,7 @@ float UObject::PointDistToLine(const struct FVector& Point, const struct FVector
 // int                            MaxResults                     (OptionalParm, Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::GetPerObjectConfigSections(class UClass* SearchClass, class UObject* ObjectOuter, int MaxResults, TArray<struct FString>* out_SectionNames)
+bool UObject::STATIC_GetPerObjectConfigSections(class UClass* SearchClass, class UObject* ObjectOuter, int MaxResults, TArray<struct FString>* out_SectionNames)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetPerObjectConfigSections");
 
@@ -862,6 +891,7 @@ bool UObject::GetPerObjectConfigSections(class UClass* SearchClass, class UObjec
 	params.MaxResults = MaxResults;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -875,12 +905,12 @@ bool UObject::GetPerObjectConfigSections(class UClass* SearchClass, class UObjec
 
 
 // Function Core.Object.ImportJSON
-// (Defined, PreOperator, Singular, Net, Simulated, Event)
+// (Iterator, PreOperator, Net, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 PropertyName                   (Parm, NeedCtorLink)
 // struct FString                 JSON                           (Const, Parm, OutParm, NeedCtorLink)
 
-void UObject::ImportJSON(const struct FString& PropertyName, struct FString* JSON)
+void UObject::STATIC_ImportJSON(const struct FString& PropertyName, struct FString* JSON)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ImportJSON");
 
@@ -888,6 +918,7 @@ void UObject::ImportJSON(const struct FString& PropertyName, struct FString* JSO
 	params.PropertyName = PropertyName;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -899,15 +930,16 @@ void UObject::ImportJSON(const struct FString& PropertyName, struct FString* JSO
 
 
 // Function Core.Object.StaticSaveConfig
-// (Final, NetReliable, Exec, Event)
+// (PreOperator, Singular, Net, NetReliable, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 
-void UObject::StaticSaveConfig()
+void UObject::STATIC_StaticSaveConfig()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.StaticSaveConfig");
 
 	UObject_StaticSaveConfig_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -916,9 +948,9 @@ void UObject::StaticSaveConfig()
 
 
 // Function Core.Object.SaveConfig
-// (Defined, Iterator, Latent, Singular, NetReliable, Exec, Native, Operator, HasOptionalParms)
+// (Final, PreOperator, Net, NetReliable, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 
-void UObject::SaveConfig()
+void UObject::STATIC_SaveConfig()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.SaveConfig");
 
@@ -934,13 +966,13 @@ void UObject::SaveConfig()
 
 
 // Function Core.Object.FindObject
-// (Latent, Singular, Simulated, Event)
+// (Final, Iterator, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 ObjectName                     (Parm, NeedCtorLink)
 // class UClass*                  ObjectClass                    (Parm)
 // class UObject*                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-class UObject* UObject::FindObject(const struct FString& ObjectName, class UClass* ObjectClass)
+class UObject* UObject::STATIC_FindObject(const struct FString& ObjectName, class UClass* ObjectClass)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.FindObject");
 
@@ -949,6 +981,7 @@ class UObject* UObject::FindObject(const struct FString& ObjectName, class UClas
 	params.ObjectClass = ObjectClass;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -959,14 +992,14 @@ class UObject* UObject::FindObject(const struct FString& ObjectName, class UClas
 
 
 // Function Core.Object.DynamicLoadObject
-// (Iterator, Latent, PreOperator, Singular, Net, NetReliable, Event)
+// (Final, Defined, Iterator, PreOperator, Net, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 ObjectName                     (Parm, NeedCtorLink)
 // class UClass*                  ObjectClass                    (Parm)
 // bool                           MayFail                        (OptionalParm, Parm)
 // class UObject*                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-class UObject* UObject::DynamicLoadObject(const struct FString& ObjectName, class UClass* ObjectClass, bool MayFail)
+class UObject* UObject::STATIC_DynamicLoadObject(const struct FString& ObjectName, class UClass* ObjectClass, bool MayFail)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.DynamicLoadObject");
 
@@ -976,6 +1009,7 @@ class UObject* UObject::DynamicLoadObject(const struct FString& ObjectName, clas
 	params.MayFail = MayFail;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -986,13 +1020,13 @@ class UObject* UObject::DynamicLoadObject(const struct FString& ObjectName, clas
 
 
 // Function Core.Object.GetEnum
-// (Final, Iterator, Net, Simulated, Event)
+// (Defined, Singular, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // class UObject*                 E                              (Parm)
 // int                            I                              (Parm, CoerceParm)
 // struct FName                   ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FName UObject::GetEnum(class UObject* E, int I)
+struct FName UObject::STATIC_GetEnum(class UObject* E, int I)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetEnum");
 
@@ -1001,6 +1035,7 @@ struct FName UObject::GetEnum(class UObject* E, int I)
 	params.I = I;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1011,11 +1046,11 @@ struct FName UObject::GetEnum(class UObject* E, int I)
 
 
 // Function Core.Object.Disable
-// (Latent, NetReliable, Native, Event, HasOptionalParms)
+// (Final, Iterator, Net, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FName                   ProbeFunc                      (Parm)
 
-void UObject::Disable(const struct FName& ProbeFunc)
+void UObject::STATIC_Disable(const struct FName& ProbeFunc)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Disable");
 
@@ -1032,11 +1067,11 @@ void UObject::Disable(const struct FName& ProbeFunc)
 
 
 // Function Core.Object.Enable
-// (Final, Defined, Iterator, NetReliable, Native, Event, HasOptionalParms)
+// (Defined, Iterator, Latent, Singular, Net, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FName                   ProbeFunc                      (Parm)
 
-void UObject::Enable(const struct FName& ProbeFunc)
+void UObject::STATIC_Enable(const struct FName& ProbeFunc)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Enable");
 
@@ -1161,15 +1196,16 @@ void UObject::BeginState(const struct FName& PreviousStateName)
 
 
 // Function Core.Object.DumpStateStack
-// (Defined, Latent, PreOperator, Singular, Net, NetReliable, Event)
+// (Final, Iterator, PreOperator, Net, Exec, Native, Operator, Static, HasOptionalParms, Const)
 
-void UObject::DumpStateStack()
+void UObject::STATIC_DumpStateStack()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.DumpStateStack");
 
 	UObject_DumpStateStack_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1178,11 +1214,11 @@ void UObject::DumpStateStack()
 
 
 // Function Core.Object.PopState
-// (Final, Defined, Iterator, Latent, PreOperator, Singular, Exec, Event)
+// (Final, Iterator, Singular, NetReliable, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // bool                           bPopAll                        (OptionalParm, Parm)
 
-void UObject::PopState(bool bPopAll)
+void UObject::STATIC_PopState(bool bPopAll)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.PopState");
 
@@ -1190,6 +1226,7 @@ void UObject::PopState(bool bPopAll)
 	params.bPopAll = bPopAll;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1198,12 +1235,12 @@ void UObject::PopState(bool bPopAll)
 
 
 // Function Core.Object.PushState
-// (Final, Latent, Net, Exec, Event)
+// (PreOperator, Singular, NetReliable, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FName                   NewState                       (Parm)
 // struct FName                   NewLabel                       (OptionalParm, Parm)
 
-void UObject::PushState(const struct FName& NewState, const struct FName& NewLabel)
+void UObject::STATIC_PushState(const struct FName& NewState, const struct FName& NewLabel)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.PushState");
 
@@ -1212,6 +1249,7 @@ void UObject::PushState(const struct FName& NewState, const struct FName& NewLab
 	params.NewLabel = NewLabel;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1220,17 +1258,18 @@ void UObject::PushState(const struct FName& NewState, const struct FName& NewLab
 
 
 // Function Core.Object.GetStateName
-// (Iterator, PreOperator, Net, Simulated, Event)
+// (Final, PreOperator, Singular, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FName                   ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FName UObject::GetStateName()
+struct FName UObject::STATIC_GetStateName()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetStateName");
 
 	UObject_GetStateName_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1241,13 +1280,13 @@ struct FName UObject::GetStateName()
 
 
 // Function Core.Object.IsChildState
-// (Defined, Iterator, Latent, PreOperator, NetReliable, Simulated, Event)
+// (Final, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FName                   TestState                      (Parm)
 // struct FName                   TestParentState                (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::IsChildState(const struct FName& TestState, const struct FName& TestParentState)
+bool UObject::STATIC_IsChildState(const struct FName& TestState, const struct FName& TestParentState)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.IsChildState");
 
@@ -1256,6 +1295,7 @@ bool UObject::IsChildState(const struct FName& TestState, const struct FName& Te
 	params.TestParentState = TestParentState;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1266,13 +1306,13 @@ bool UObject::IsChildState(const struct FName& TestState, const struct FName& Te
 
 
 // Function Core.Object.IsInState
-// (Defined, Singular, NetReliable, Simulated, Event)
+// (Final, Iterator, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FName                   TestState                      (Parm)
 // bool                           bTestStateStack                (OptionalParm, Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::IsInState(const struct FName& TestState, bool bTestStateStack)
+bool UObject::STATIC_IsInState(const struct FName& TestState, bool bTestStateStack)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.IsInState");
 
@@ -1281,6 +1321,7 @@ bool UObject::IsInState(const struct FName& TestState, bool bTestStateStack)
 	params.bTestStateStack = bTestStateStack;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1291,14 +1332,14 @@ bool UObject::IsInState(const struct FName& TestState, bool bTestStateStack)
 
 
 // Function Core.Object.GotoState
-// (Final, Latent, PreOperator, Net, Simulated, Event)
+// (Defined, Iterator, PreOperator, Singular, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FName                   NewState                       (OptionalParm, Parm)
 // struct FName                   Label                          (OptionalParm, Parm)
 // bool                           bForceEvents                   (OptionalParm, Parm)
 // bool                           bKeepStack                     (OptionalParm, Parm)
 
-void UObject::GotoState(const struct FName& NewState, const struct FName& Label, bool bForceEvents, bool bKeepStack)
+void UObject::STATIC_GotoState(const struct FName& NewState, const struct FName& Label, bool bForceEvents, bool bKeepStack)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GotoState");
 
@@ -1309,6 +1350,7 @@ void UObject::GotoState(const struct FName& NewState, const struct FName& Label,
 	params.bKeepStack = bKeepStack;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1317,17 +1359,18 @@ void UObject::GotoState(const struct FName& NewState, const struct FName& Label,
 
 
 // Function Core.Object.IsUTracing
-// (Final, Iterator, Singular, NetReliable, Simulated, Event)
+// (Latent, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::IsUTracing()
+bool UObject::STATIC_IsUTracing()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.IsUTracing");
 
 	UObject_IsUTracing_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1338,11 +1381,11 @@ bool UObject::IsUTracing()
 
 
 // Function Core.Object.SetUTracing
-// (Defined, PreOperator, Singular, Net, Exec, Event)
+// (Defined, Iterator, Latent, PreOperator, Net, NetReliable, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // bool                           bShouldUTrace                  (Parm)
 
-void UObject::SetUTracing(bool bShouldUTrace)
+void UObject::STATIC_SetUTracing(bool bShouldUTrace)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.SetUTracing");
 
@@ -1350,6 +1393,7 @@ void UObject::SetUTracing(bool bShouldUTrace)
 	params.bShouldUTrace = bShouldUTrace;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1358,17 +1402,18 @@ void UObject::SetUTracing(bool bShouldUTrace)
 
 
 // Function Core.Object.GetFuncName
-// (Final, Defined, Iterator, Net, Simulated, Event)
+// (Iterator, Singular, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FName                   ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FName UObject::GetFuncName()
+struct FName UObject::STATIC_GetFuncName()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetFuncName");
 
 	UObject_GetFuncName_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1379,12 +1424,12 @@ struct FName UObject::GetFuncName()
 
 
 // Function Core.Object.DebugBreak
-// (Final, Defined, Latent, PreOperator, Net, NetReliable, Event)
+// (Final, Defined, PreOperator, Singular, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // int                            UserFlags                      (OptionalParm, Parm)
 // TEnumAsByte<EDebugBreakType>   DebuggerType                   (OptionalParm, Parm)
 
-void UObject::DebugBreak(int UserFlags, TEnumAsByte<EDebugBreakType> DebuggerType)
+void UObject::STATIC_DebugBreak(int UserFlags, TEnumAsByte<EDebugBreakType> DebuggerType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.DebugBreak");
 
@@ -1393,6 +1438,7 @@ void UObject::DebugBreak(int UserFlags, TEnumAsByte<EDebugBreakType> DebuggerTyp
 	params.DebuggerType = DebuggerType;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1401,17 +1447,18 @@ void UObject::DebugBreak(int UserFlags, TEnumAsByte<EDebugBreakType> DebuggerTyp
 
 
 // Function Core.Object.GetScriptTrace
-// (Final, Defined, PreOperator, Net, Simulated, Event)
+// (PreOperator, Singular, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString UObject::GetScriptTrace()
+struct FString UObject::STATIC_GetScriptTrace()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetScriptTrace");
 
 	UObject_GetScriptTrace_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1422,15 +1469,16 @@ struct FString UObject::GetScriptTrace()
 
 
 // Function Core.Object.ScriptTrace
-// (Iterator, Latent, Singular, Net, Exec, Event)
+// (Latent, PreOperator, Net, NetReliable, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 
-void UObject::ScriptTrace()
+void UObject::STATIC_ScriptTrace()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ScriptTrace");
 
 	UObject_ScriptTrace_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1439,12 +1487,12 @@ void UObject::ScriptTrace()
 
 
 // Function Core.Object.ParseLocalizedPropertyPath
-// (Defined, PreOperator, Singular, Exec, Event)
+// (Defined, Iterator, PreOperator, NetReliable, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 PathName                       (Parm, NeedCtorLink)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString UObject::ParseLocalizedPropertyPath(const struct FString& PathName)
+struct FString UObject::STATIC_ParseLocalizedPropertyPath(const struct FString& PathName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ParseLocalizedPropertyPath");
 
@@ -1452,6 +1500,7 @@ struct FString UObject::ParseLocalizedPropertyPath(const struct FString& PathNam
 	params.PathName = PathName;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1462,14 +1511,14 @@ struct FString UObject::ParseLocalizedPropertyPath(const struct FString& PathNam
 
 
 // Function Core.Object.Localize
-// (Iterator, Latent, PreOperator, Singular, NetReliable, Simulated, Event)
+// (Final, Defined, Iterator, Latent, PreOperator, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 SectionName                    (Parm, NeedCtorLink)
 // struct FString                 KeyName                        (Parm, NeedCtorLink)
 // struct FString                 PackageName                    (Parm, NeedCtorLink)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString UObject::Localize(const struct FString& SectionName, const struct FString& KeyName, const struct FString& PackageName)
+struct FString UObject::STATIC_Localize(const struct FString& SectionName, const struct FString& KeyName, const struct FString& PackageName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Localize");
 
@@ -1479,6 +1528,7 @@ struct FString UObject::Localize(const struct FString& SectionName, const struct
 	params.PackageName = PackageName;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1489,11 +1539,11 @@ struct FString UObject::Localize(const struct FString& SectionName, const struct
 
 
 // Function Core.Object.logr
-// (Final, Net, NetReliable, Simulated, Event)
+// (Final, Iterator, Singular, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 S                              (Parm, CoerceParm, NeedCtorLink)
 
-void UObject::logr(const struct FString& S)
+void UObject::STATIC_logr(const struct FString& S)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.logr");
 
@@ -1501,6 +1551,7 @@ void UObject::logr(const struct FString& S)
 	params.S = S;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1509,11 +1560,11 @@ void UObject::logr(const struct FString& S)
 
 
 // Function Core.Object.WarnInternal
-// (Final, Defined, Iterator, PreOperator, Net, NetReliable, Exec, Event)
+// (Defined, Iterator, Net, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 S                              (Parm, CoerceParm, NeedCtorLink)
 
-void UObject::WarnInternal(const struct FString& S)
+void UObject::STATIC_WarnInternal(const struct FString& S)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.WarnInternal");
 
@@ -1529,12 +1580,12 @@ void UObject::WarnInternal(const struct FString& S)
 
 
 // Function Core.Object.LogInternal
-// (Net, NetReliable, Simulated, Event)
+// (Iterator, Singular, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 S                              (Parm, CoerceParm, NeedCtorLink)
 // struct FName                   Tag                            (OptionalParm, Parm)
 
-void UObject::LogInternal(const struct FString& S, const struct FName& Tag)
+void UObject::STATIC_LogInternal(const struct FString& S, const struct FName& Tag)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.LogInternal");
 
@@ -1543,6 +1594,7 @@ void UObject::LogInternal(const struct FString& S, const struct FName& Tag)
 	params.Tag = Tag;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1551,13 +1603,13 @@ void UObject::LogInternal(const struct FString& S, const struct FName& Tag)
 
 
 // Function Core.Object.Subtract_LinearColorLinearColor
-// (Latent, Singular, Event)
+// (Iterator, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FLinearColor            A                              (Parm)
 // struct FLinearColor            B                              (Parm)
 // struct FLinearColor            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FLinearColor UObject::Subtract_LinearColorLinearColor(const struct FLinearColor& A, const struct FLinearColor& B)
+struct FLinearColor UObject::STATIC_Subtract_LinearColorLinearColor(const struct FLinearColor& A, const struct FLinearColor& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Subtract_LinearColorLinearColor");
 
@@ -1566,6 +1618,7 @@ struct FLinearColor UObject::Subtract_LinearColorLinearColor(const struct FLinea
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1576,13 +1629,13 @@ struct FLinearColor UObject::Subtract_LinearColorLinearColor(const struct FLinea
 
 
 // Function Core.Object.Multiply_LinearColorFloat
-// (Defined, Singular, Event)
+// (Defined, Iterator, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FLinearColor            LC                             (Parm)
 // float                          Mult                           (Parm)
 // struct FLinearColor            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FLinearColor UObject::Multiply_LinearColorFloat(const struct FLinearColor& LC, float Mult)
+struct FLinearColor UObject::STATIC_Multiply_LinearColorFloat(const struct FLinearColor& LC, float Mult)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Multiply_LinearColorFloat");
 
@@ -1591,6 +1644,7 @@ struct FLinearColor UObject::Multiply_LinearColorFloat(const struct FLinearColor
 	params.Mult = Mult;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1601,12 +1655,12 @@ struct FLinearColor UObject::Multiply_LinearColorFloat(const struct FLinearColor
 
 
 // Function Core.Object.ColorToLinearColor
-// (Final, Defined, Latent, Net, NetReliable, Event)
+// (Defined, Singular, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FColor                  OldColor                       (Parm)
 // struct FLinearColor            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FLinearColor UObject::ColorToLinearColor(const struct FColor& OldColor)
+struct FLinearColor UObject::STATIC_ColorToLinearColor(const struct FColor& OldColor)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ColorToLinearColor");
 
@@ -1614,6 +1668,7 @@ struct FLinearColor UObject::ColorToLinearColor(const struct FColor& OldColor)
 	params.OldColor = OldColor;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1624,7 +1679,7 @@ struct FLinearColor UObject::ColorToLinearColor(const struct FColor& OldColor)
 
 
 // Function Core.Object.MakeLinearColor
-// (Final, Latent, Net, NetReliable, Simulated, Event)
+// (Final, Iterator, Latent, Singular, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          R                              (Parm)
 // float                          G                              (Parm)
@@ -1632,7 +1687,7 @@ struct FLinearColor UObject::ColorToLinearColor(const struct FColor& OldColor)
 // float                          A                              (Parm)
 // struct FLinearColor            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FLinearColor UObject::MakeLinearColor(float R, float G, float B, float A)
+struct FLinearColor UObject::STATIC_MakeLinearColor(float R, float G, float B, float A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.MakeLinearColor");
 
@@ -1643,6 +1698,7 @@ struct FLinearColor UObject::MakeLinearColor(float R, float G, float B, float A)
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1653,14 +1709,14 @@ struct FLinearColor UObject::MakeLinearColor(float R, float G, float B, float A)
 
 
 // Function Core.Object.LerpColor
-// (Final, PreOperator, Singular, NetReliable, Simulated, Event)
+// (Iterator, PreOperator, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FColor                  A                              (Parm)
 // struct FColor                  B                              (Parm)
 // float                          Alpha                          (Parm)
 // struct FColor                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FColor UObject::LerpColor(const struct FColor& A, const struct FColor& B, float Alpha)
+struct FColor UObject::STATIC_LerpColor(const struct FColor& A, const struct FColor& B, float Alpha)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.LerpColor");
 
@@ -1670,6 +1726,7 @@ struct FColor UObject::LerpColor(const struct FColor& A, const struct FColor& B,
 	params.Alpha = Alpha;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1680,7 +1737,7 @@ struct FColor UObject::LerpColor(const struct FColor& A, const struct FColor& B,
 
 
 // Function Core.Object.MakeColor
-// (Latent, Net, NetReliable, Simulated, Event)
+// (Iterator, Latent, Singular, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // unsigned char                  R                              (Parm)
 // unsigned char                  G                              (Parm)
@@ -1688,7 +1745,7 @@ struct FColor UObject::LerpColor(const struct FColor& A, const struct FColor& B,
 // unsigned char                  A                              (OptionalParm, Parm)
 // struct FColor                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FColor UObject::MakeColor(unsigned char R, unsigned char G, unsigned char B, unsigned char A)
+struct FColor UObject::STATIC_MakeColor(unsigned char R, unsigned char G, unsigned char B, unsigned char A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.MakeColor");
 
@@ -1699,6 +1756,7 @@ struct FColor UObject::MakeColor(unsigned char R, unsigned char G, unsigned char
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1709,13 +1767,13 @@ struct FColor UObject::MakeColor(unsigned char R, unsigned char G, unsigned char
 
 
 // Function Core.Object.Add_ColorColor
-// (Final, Iterator, Singular, Event)
+// (Final, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FColor                  A                              (Parm)
 // struct FColor                  B                              (Parm)
 // struct FColor                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FColor UObject::Add_ColorColor(const struct FColor& A, const struct FColor& B)
+struct FColor UObject::STATIC_Add_ColorColor(const struct FColor& A, const struct FColor& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Add_ColorColor");
 
@@ -1724,6 +1782,7 @@ struct FColor UObject::Add_ColorColor(const struct FColor& A, const struct FColo
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1734,13 +1793,13 @@ struct FColor UObject::Add_ColorColor(const struct FColor& A, const struct FColo
 
 
 // Function Core.Object.Multiply_ColorFloat
-// (Defined, Singular, Event)
+// (Defined, Iterator, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FColor                  A                              (Parm)
 // float                          B                              (Parm)
 // struct FColor                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FColor UObject::Multiply_ColorFloat(const struct FColor& A, float B)
+struct FColor UObject::STATIC_Multiply_ColorFloat(const struct FColor& A, float B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Multiply_ColorFloat");
 
@@ -1749,6 +1808,7 @@ struct FColor UObject::Multiply_ColorFloat(const struct FColor& A, float B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1759,13 +1819,13 @@ struct FColor UObject::Multiply_ColorFloat(const struct FColor& A, float B)
 
 
 // Function Core.Object.Multiply_FloatColor
-// (Defined, Singular, Event)
+// (Defined, Iterator, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          A                              (Parm)
 // struct FColor                  B                              (Parm)
 // struct FColor                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FColor UObject::Multiply_FloatColor(float A, const struct FColor& B)
+struct FColor UObject::STATIC_Multiply_FloatColor(float A, const struct FColor& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Multiply_FloatColor");
 
@@ -1774,6 +1834,7 @@ struct FColor UObject::Multiply_FloatColor(float A, const struct FColor& B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1784,13 +1845,13 @@ struct FColor UObject::Multiply_FloatColor(float A, const struct FColor& B)
 
 
 // Function Core.Object.Subtract_ColorColor
-// (Latent, Singular, Event)
+// (Iterator, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FColor                  A                              (Parm)
 // struct FColor                  B                              (Parm)
 // struct FColor                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FColor UObject::Subtract_ColorColor(const struct FColor& A, const struct FColor& B)
+struct FColor UObject::STATIC_Subtract_ColorColor(const struct FColor& A, const struct FColor& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Subtract_ColorColor");
 
@@ -1799,6 +1860,7 @@ struct FColor UObject::Subtract_ColorColor(const struct FColor& A, const struct 
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1809,13 +1871,13 @@ struct FColor UObject::Subtract_ColorColor(const struct FColor& A, const struct 
 
 
 // Function Core.Object.EvalInterpCurveVector2D
-// (Singular, Simulated, Event)
+// (Iterator, Latent, PreOperator, Singular, Net, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FInterpCurveVector2D    Vector2DCurve                  (Const, Parm, OutParm, NeedCtorLink)
 // float                          InVal                          (Parm)
 // struct FVector2D               ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector2D UObject::EvalInterpCurveVector2D(float InVal, struct FInterpCurveVector2D* Vector2DCurve)
+struct FVector2D UObject::STATIC_EvalInterpCurveVector2D(float InVal, struct FInterpCurveVector2D* Vector2DCurve)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.EvalInterpCurveVector2D");
 
@@ -1823,6 +1885,7 @@ struct FVector2D UObject::EvalInterpCurveVector2D(float InVal, struct FInterpCur
 	params.InVal = InVal;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1836,13 +1899,13 @@ struct FVector2D UObject::EvalInterpCurveVector2D(float InVal, struct FInterpCur
 
 
 // Function Core.Object.EvalInterpCurveVector
-// (Final, Defined, Iterator, Latent, PreOperator, Simulated, Event)
+// (Final, Defined, Latent, PreOperator, Singular, Net, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FInterpCurveVector      VectorCurve                    (Const, Parm, OutParm, NeedCtorLink)
 // float                          InVal                          (Parm)
 // struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector UObject::EvalInterpCurveVector(float InVal, struct FInterpCurveVector* VectorCurve)
+struct FVector UObject::STATIC_EvalInterpCurveVector(float InVal, struct FInterpCurveVector* VectorCurve)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.EvalInterpCurveVector");
 
@@ -1850,6 +1913,7 @@ struct FVector UObject::EvalInterpCurveVector(float InVal, struct FInterpCurveVe
 	params.InVal = InVal;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1863,13 +1927,13 @@ struct FVector UObject::EvalInterpCurveVector(float InVal, struct FInterpCurveVe
 
 
 // Function Core.Object.EvalInterpCurveFloat
-// (Defined, Iterator, Latent, PreOperator, Simulated, Event)
+// (Defined, Latent, PreOperator, Singular, Net, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FInterpCurveFloat       FloatCurve                     (Const, Parm, OutParm, NeedCtorLink)
 // float                          InVal                          (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::EvalInterpCurveFloat(float InVal, struct FInterpCurveFloat* FloatCurve)
+float UObject::STATIC_EvalInterpCurveFloat(float InVal, struct FInterpCurveFloat* FloatCurve)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.EvalInterpCurveFloat");
 
@@ -1877,6 +1941,7 @@ float UObject::EvalInterpCurveFloat(float InVal, struct FInterpCurveFloat* Float
 	params.InVal = InVal;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1890,13 +1955,13 @@ float UObject::EvalInterpCurveFloat(float InVal, struct FInterpCurveFloat* Float
 
 
 // Function Core.Object.vect2d
-// (Final, Defined, Net, NetReliable, Exec, Event)
+// (Defined, PreOperator, Singular, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          InX                            (Parm)
 // float                          InY                            (Parm)
 // struct FVector2D               ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector2D UObject::vect2d(float InX, float InY)
+struct FVector2D UObject::STATIC_vect2d(float InX, float InY)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.vect2d");
 
@@ -1915,14 +1980,14 @@ struct FVector2D UObject::vect2d(float InX, float InY)
 
 
 // Function Core.Object.GetMappedRangeValue
-// (Final, Defined, Latent, Net, Simulated, Event)
+// (Latent, Singular, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector2D               InputRange                     (Parm)
 // struct FVector2D               OutputRange                    (Parm)
 // float                          Value                          (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::GetMappedRangeValue(const struct FVector2D& InputRange, const struct FVector2D& OutputRange, float Value)
+float UObject::STATIC_GetMappedRangeValue(const struct FVector2D& InputRange, const struct FVector2D& OutputRange, float Value)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetMappedRangeValue");
 
@@ -1932,6 +1997,7 @@ float UObject::GetMappedRangeValue(const struct FVector2D& InputRange, const str
 	params.Value = Value;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1942,13 +2008,13 @@ float UObject::GetMappedRangeValue(const struct FVector2D& InputRange, const str
 
 
 // Function Core.Object.GetRangePctByValue
-// (Final, Defined, Iterator, Latent, Net, Simulated, Event)
+// (Iterator, Latent, Singular, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector2D               Range                          (Parm)
 // float                          Value                          (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::GetRangePctByValue(const struct FVector2D& Range, float Value)
+float UObject::STATIC_GetRangePctByValue(const struct FVector2D& Range, float Value)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetRangePctByValue");
 
@@ -1957,6 +2023,7 @@ float UObject::GetRangePctByValue(const struct FVector2D& Range, float Value)
 	params.Value = Value;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1967,13 +2034,13 @@ float UObject::GetRangePctByValue(const struct FVector2D& Range, float Value)
 
 
 // Function Core.Object.GetRangeValueByPct
-// (PreOperator, Net, Simulated, Event)
+// (Final, Iterator, Latent, Singular, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector2D               Range                          (Parm)
 // float                          Pct                            (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::GetRangeValueByPct(const struct FVector2D& Range, float Pct)
+float UObject::STATIC_GetRangeValueByPct(const struct FVector2D& Range, float Pct)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetRangeValueByPct");
 
@@ -1982,6 +2049,7 @@ float UObject::GetRangeValueByPct(const struct FVector2D& Range, float Pct)
 	params.Pct = Pct;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1992,13 +2060,13 @@ float UObject::GetRangeValueByPct(const struct FVector2D& Range, float Pct)
 
 
 // Function Core.Object.SubtractEqual_Vector2DVector2D
-// (Defined, Latent, Singular, Event)
+// (Defined, Iterator, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector2D               A                              (Parm, OutParm)
 // struct FVector2D               B                              (Parm)
 // struct FVector2D               ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector2D UObject::SubtractEqual_Vector2DVector2D(const struct FVector2D& B, struct FVector2D* A)
+struct FVector2D UObject::STATIC_SubtractEqual_Vector2DVector2D(const struct FVector2D& B, struct FVector2D* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.SubtractEqual_Vector2DVector2D");
 
@@ -2006,6 +2074,7 @@ struct FVector2D UObject::SubtractEqual_Vector2DVector2D(const struct FVector2D&
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2019,13 +2088,13 @@ struct FVector2D UObject::SubtractEqual_Vector2DVector2D(const struct FVector2D&
 
 
 // Function Core.Object.AddEqual_Vector2DVector2D
-// (Final, Defined, Iterator, Singular, Event)
+// (Final, Defined, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector2D               A                              (Parm, OutParm)
 // struct FVector2D               B                              (Parm)
 // struct FVector2D               ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector2D UObject::AddEqual_Vector2DVector2D(const struct FVector2D& B, struct FVector2D* A)
+struct FVector2D UObject::STATIC_AddEqual_Vector2DVector2D(const struct FVector2D& B, struct FVector2D* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.AddEqual_Vector2DVector2D");
 
@@ -2033,6 +2102,7 @@ struct FVector2D UObject::AddEqual_Vector2DVector2D(const struct FVector2D& B, s
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2046,13 +2116,13 @@ struct FVector2D UObject::AddEqual_Vector2DVector2D(const struct FVector2D& B, s
 
 
 // Function Core.Object.DivideEqual_Vector2DFloat
-// (Final, Defined, Latent, Singular, Event)
+// (NetReliable, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector2D               A                              (Parm, OutParm)
 // float                          B                              (Parm)
 // struct FVector2D               ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector2D UObject::DivideEqual_Vector2DFloat(float B, struct FVector2D* A)
+struct FVector2D UObject::STATIC_DivideEqual_Vector2DFloat(float B, struct FVector2D* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.DivideEqual_Vector2DFloat");
 
@@ -2060,6 +2130,7 @@ struct FVector2D UObject::DivideEqual_Vector2DFloat(float B, struct FVector2D* A
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2073,13 +2144,13 @@ struct FVector2D UObject::DivideEqual_Vector2DFloat(float B, struct FVector2D* A
 
 
 // Function Core.Object.MultiplyEqual_Vector2DFloat
-// (Iterator, Singular, Event)
+// (Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector2D               A                              (Parm, OutParm)
 // float                          B                              (Parm)
 // struct FVector2D               ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector2D UObject::MultiplyEqual_Vector2DFloat(float B, struct FVector2D* A)
+struct FVector2D UObject::STATIC_MultiplyEqual_Vector2DFloat(float B, struct FVector2D* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.MultiplyEqual_Vector2DFloat");
 
@@ -2087,6 +2158,7 @@ struct FVector2D UObject::MultiplyEqual_Vector2DFloat(float B, struct FVector2D*
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2100,13 +2172,13 @@ struct FVector2D UObject::MultiplyEqual_Vector2DFloat(float B, struct FVector2D*
 
 
 // Function Core.Object.Divide_Vector2DFloat
-// (Iterator, Latent, Net, NetReliable, Native, Event, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector2D               A                              (Parm)
 // float                          B                              (Parm)
 // struct FVector2D               ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector2D UObject::Divide_Vector2DFloat(const struct FVector2D& A, float B)
+struct FVector2D UObject::STATIC_Divide_Vector2DFloat(const struct FVector2D& A, float B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Divide_Vector2DFloat");
 
@@ -2126,13 +2198,13 @@ struct FVector2D UObject::Divide_Vector2DFloat(const struct FVector2D& A, float 
 
 
 // Function Core.Object.Multiply_Vector2DFloat
-// (Defined, Singular, Event)
+// (Defined, Iterator, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector2D               A                              (Parm)
 // float                          B                              (Parm)
 // struct FVector2D               ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector2D UObject::Multiply_Vector2DFloat(const struct FVector2D& A, float B)
+struct FVector2D UObject::STATIC_Multiply_Vector2DFloat(const struct FVector2D& A, float B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Multiply_Vector2DFloat");
 
@@ -2141,6 +2213,7 @@ struct FVector2D UObject::Multiply_Vector2DFloat(const struct FVector2D& A, floa
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2151,13 +2224,13 @@ struct FVector2D UObject::Multiply_Vector2DFloat(const struct FVector2D& A, floa
 
 
 // Function Core.Object.Subtract_Vector2DVector2D
-// (Latent, Singular, Event)
+// (Iterator, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector2D               A                              (Parm)
 // struct FVector2D               B                              (Parm)
 // struct FVector2D               ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector2D UObject::Subtract_Vector2DVector2D(const struct FVector2D& A, const struct FVector2D& B)
+struct FVector2D UObject::STATIC_Subtract_Vector2DVector2D(const struct FVector2D& A, const struct FVector2D& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Subtract_Vector2DVector2D");
 
@@ -2166,6 +2239,7 @@ struct FVector2D UObject::Subtract_Vector2DVector2D(const struct FVector2D& A, c
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2176,13 +2250,13 @@ struct FVector2D UObject::Subtract_Vector2DVector2D(const struct FVector2D& A, c
 
 
 // Function Core.Object.Add_Vector2DVector2D
-// (Final, Iterator, Singular, Event)
+// (Final, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector2D               A                              (Parm)
 // struct FVector2D               B                              (Parm)
 // struct FVector2D               ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector2D UObject::Add_Vector2DVector2D(const struct FVector2D& A, const struct FVector2D& B)
+struct FVector2D UObject::STATIC_Add_Vector2DVector2D(const struct FVector2D& A, const struct FVector2D& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Add_Vector2DVector2D");
 
@@ -2191,6 +2265,7 @@ struct FVector2D UObject::Add_Vector2DVector2D(const struct FVector2D& A, const 
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2201,13 +2276,13 @@ struct FVector2D UObject::Add_Vector2DVector2D(const struct FVector2D& A, const 
 
 
 // Function Core.Object.Subtract_QuatQuat
-// (Latent, Singular, Event)
+// (Iterator, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FQuat                   A                              (Parm)
 // struct FQuat                   B                              (Parm)
 // struct FQuat                   ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FQuat UObject::Subtract_QuatQuat(const struct FQuat& A, const struct FQuat& B)
+struct FQuat UObject::STATIC_Subtract_QuatQuat(const struct FQuat& A, const struct FQuat& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Subtract_QuatQuat");
 
@@ -2216,6 +2291,7 @@ struct FQuat UObject::Subtract_QuatQuat(const struct FQuat& A, const struct FQua
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2226,13 +2302,13 @@ struct FQuat UObject::Subtract_QuatQuat(const struct FQuat& A, const struct FQua
 
 
 // Function Core.Object.Add_QuatQuat
-// (Final, Iterator, Singular, Event)
+// (Final, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FQuat                   A                              (Parm)
 // struct FQuat                   B                              (Parm)
 // struct FQuat                   ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FQuat UObject::Add_QuatQuat(const struct FQuat& A, const struct FQuat& B)
+struct FQuat UObject::STATIC_Add_QuatQuat(const struct FQuat& A, const struct FQuat& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Add_QuatQuat");
 
@@ -2241,6 +2317,7 @@ struct FQuat UObject::Add_QuatQuat(const struct FQuat& A, const struct FQuat& B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2251,7 +2328,7 @@ struct FQuat UObject::Add_QuatQuat(const struct FQuat& A, const struct FQuat& B)
 
 
 // Function Core.Object.QuatSlerp
-// (Final, PreOperator, Net, Exec, Event)
+// (Latent, PreOperator, Singular, NetReliable, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FQuat                   A                              (Parm)
 // struct FQuat                   B                              (Parm)
@@ -2259,7 +2336,7 @@ struct FQuat UObject::Add_QuatQuat(const struct FQuat& A, const struct FQuat& B)
 // bool                           bShortestPath                  (OptionalParm, Parm)
 // struct FQuat                   ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FQuat UObject::QuatSlerp(const struct FQuat& A, const struct FQuat& B, float Alpha, bool bShortestPath)
+struct FQuat UObject::STATIC_QuatSlerp(const struct FQuat& A, const struct FQuat& B, float Alpha, bool bShortestPath)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.QuatSlerp");
 
@@ -2270,6 +2347,7 @@ struct FQuat UObject::QuatSlerp(const struct FQuat& A, const struct FQuat& B, fl
 	params.bShortestPath = bShortestPath;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2280,12 +2358,12 @@ struct FQuat UObject::QuatSlerp(const struct FQuat& A, const struct FQuat& B, fl
 
 
 // Function Core.Object.QuatToRotator
-// (Defined, PreOperator, Net, Exec, Event)
+// (Final, Latent, PreOperator, Singular, NetReliable, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FQuat                   A                              (Parm)
 // struct FRotator                ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FRotator UObject::QuatToRotator(const struct FQuat& A)
+struct FRotator UObject::STATIC_QuatToRotator(const struct FQuat& A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.QuatToRotator");
 
@@ -2293,6 +2371,7 @@ struct FRotator UObject::QuatToRotator(const struct FQuat& A)
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2303,12 +2382,12 @@ struct FRotator UObject::QuatToRotator(const struct FQuat& A)
 
 
 // Function Core.Object.QuatFromRotator
-// (Final, Iterator, Latent, Net, Exec, Event)
+// (Iterator, PreOperator, Singular, NetReliable, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FRotator                A                              (Parm)
 // struct FQuat                   ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FQuat UObject::QuatFromRotator(const struct FRotator& A)
+struct FQuat UObject::STATIC_QuatFromRotator(const struct FRotator& A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.QuatFromRotator");
 
@@ -2316,6 +2395,7 @@ struct FQuat UObject::QuatFromRotator(const struct FRotator& A)
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2326,13 +2406,13 @@ struct FQuat UObject::QuatFromRotator(const struct FRotator& A)
 
 
 // Function Core.Object.QuatFromAxisAndAngle
-// (Iterator, Latent, Net, Exec, Event)
+// (Final, Defined, PreOperator, Singular, NetReliable, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector                 Axis                           (Parm)
 // float                          Angle                          (Parm)
 // struct FQuat                   ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FQuat UObject::QuatFromAxisAndAngle(const struct FVector& Axis, float Angle)
+struct FQuat UObject::STATIC_QuatFromAxisAndAngle(const struct FVector& Axis, float Angle)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.QuatFromAxisAndAngle");
 
@@ -2341,6 +2421,7 @@ struct FQuat UObject::QuatFromAxisAndAngle(const struct FVector& Axis, float Ang
 	params.Angle = Angle;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2351,13 +2432,13 @@ struct FQuat UObject::QuatFromAxisAndAngle(const struct FVector& Axis, float Ang
 
 
 // Function Core.Object.QuatFindBetween
-// (Final, Defined, Latent, Net, Exec, Event)
+// (Defined, PreOperator, Singular, NetReliable, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector                 A                              (Parm)
 // struct FVector                 B                              (Parm)
 // struct FQuat                   ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FQuat UObject::QuatFindBetween(const struct FVector& A, const struct FVector& B)
+struct FQuat UObject::STATIC_QuatFindBetween(const struct FVector& A, const struct FVector& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.QuatFindBetween");
 
@@ -2366,6 +2447,7 @@ struct FQuat UObject::QuatFindBetween(const struct FVector& A, const struct FVec
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2376,13 +2458,13 @@ struct FQuat UObject::QuatFindBetween(const struct FVector& A, const struct FVec
 
 
 // Function Core.Object.QuatRotateVector
-// (PreOperator, Net, Exec, Event)
+// (Final, Defined, Iterator, PreOperator, Singular, NetReliable, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FQuat                   A                              (Parm)
 // struct FVector                 B                              (Parm)
 // struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector UObject::QuatRotateVector(const struct FQuat& A, const struct FVector& B)
+struct FVector UObject::STATIC_QuatRotateVector(const struct FQuat& A, const struct FVector& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.QuatRotateVector");
 
@@ -2391,6 +2473,7 @@ struct FVector UObject::QuatRotateVector(const struct FQuat& A, const struct FVe
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2401,12 +2484,12 @@ struct FVector UObject::QuatRotateVector(const struct FQuat& A, const struct FVe
 
 
 // Function Core.Object.QuatInvert
-// (Defined, Iterator, Latent, Net, Exec, Event)
+// (Final, Iterator, PreOperator, Singular, NetReliable, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FQuat                   A                              (Parm)
 // struct FQuat                   ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FQuat UObject::QuatInvert(const struct FQuat& A)
+struct FQuat UObject::STATIC_QuatInvert(const struct FQuat& A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.QuatInvert");
 
@@ -2414,6 +2497,7 @@ struct FQuat UObject::QuatInvert(const struct FQuat& A)
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2424,13 +2508,13 @@ struct FQuat UObject::QuatInvert(const struct FQuat& A)
 
 
 // Function Core.Object.QuatDot
-// (Defined, Latent, Net, Exec, Event)
+// (Final, PreOperator, Singular, NetReliable, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FQuat                   A                              (Parm)
 // struct FQuat                   B                              (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::QuatDot(const struct FQuat& A, const struct FQuat& B)
+float UObject::STATIC_QuatDot(const struct FQuat& A, const struct FQuat& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.QuatDot");
 
@@ -2439,6 +2523,7 @@ float UObject::QuatDot(const struct FQuat& A, const struct FQuat& B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2449,13 +2534,13 @@ float UObject::QuatDot(const struct FQuat& A, const struct FQuat& B)
 
 
 // Function Core.Object.QuatProduct
-// (Final, Defined, Iterator, Latent, Net, Exec, Event)
+// (Defined, Iterator, PreOperator, Singular, NetReliable, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FQuat                   A                              (Parm)
 // struct FQuat                   B                              (Parm)
 // struct FQuat                   ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FQuat UObject::QuatProduct(const struct FQuat& A, const struct FQuat& B)
+struct FQuat UObject::STATIC_QuatProduct(const struct FQuat& A, const struct FQuat& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.QuatProduct");
 
@@ -2464,6 +2549,7 @@ struct FQuat UObject::QuatProduct(const struct FQuat& A, const struct FQuat& B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2474,13 +2560,13 @@ struct FQuat UObject::QuatProduct(const struct FQuat& A, const struct FQuat& B)
 
 
 // Function Core.Object.MatrixGetAxis
-// (Final, PreOperator, Net, NetReliable, Simulated, Event)
+// (Final, Iterator, PreOperator, Singular, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FMatrix                 TM                             (Parm)
 // TEnumAsByte<EAxis>             Axis                           (Parm)
 // struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector UObject::MatrixGetAxis(const struct FMatrix& TM, TEnumAsByte<EAxis> Axis)
+struct FVector UObject::STATIC_MatrixGetAxis(const struct FMatrix& TM, TEnumAsByte<EAxis> Axis)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.MatrixGetAxis");
 
@@ -2489,6 +2575,7 @@ struct FVector UObject::MatrixGetAxis(const struct FMatrix& TM, TEnumAsByte<EAxi
 	params.Axis = Axis;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2499,12 +2586,12 @@ struct FVector UObject::MatrixGetAxis(const struct FMatrix& TM, TEnumAsByte<EAxi
 
 
 // Function Core.Object.MatrixGetOrigin
-// (Defined, PreOperator, Net, NetReliable, Simulated, Event)
+// (Defined, Iterator, PreOperator, Singular, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FMatrix                 TM                             (Parm)
 // struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector UObject::MatrixGetOrigin(const struct FMatrix& TM)
+struct FVector UObject::STATIC_MatrixGetOrigin(const struct FMatrix& TM)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.MatrixGetOrigin");
 
@@ -2512,6 +2599,7 @@ struct FVector UObject::MatrixGetOrigin(const struct FMatrix& TM)
 	params.TM = TM;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2522,12 +2610,12 @@ struct FVector UObject::MatrixGetOrigin(const struct FMatrix& TM)
 
 
 // Function Core.Object.MatrixGetRotator
-// (Final, Defined, PreOperator, Net, NetReliable, Simulated, Event)
+// (Final, Defined, Iterator, PreOperator, Singular, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FMatrix                 TM                             (Parm)
 // struct FRotator                ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FRotator UObject::MatrixGetRotator(const struct FMatrix& TM)
+struct FRotator UObject::STATIC_MatrixGetRotator(const struct FMatrix& TM)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.MatrixGetRotator");
 
@@ -2535,6 +2623,7 @@ struct FRotator UObject::MatrixGetRotator(const struct FMatrix& TM)
 	params.TM = TM;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2545,12 +2634,12 @@ struct FRotator UObject::MatrixGetRotator(const struct FMatrix& TM)
 
 
 // Function Core.Object.MakeRotationMatrix
-// (Defined, Latent, Net, NetReliable, Simulated, Event)
+// (Defined, Iterator, Latent, Singular, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FRotator                Rotation                       (Parm)
 // struct FMatrix                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FMatrix UObject::MakeRotationMatrix(const struct FRotator& Rotation)
+struct FMatrix UObject::STATIC_MakeRotationMatrix(const struct FRotator& Rotation)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.MakeRotationMatrix");
 
@@ -2558,6 +2647,7 @@ struct FMatrix UObject::MakeRotationMatrix(const struct FRotator& Rotation)
 	params.Rotation = Rotation;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2568,13 +2658,13 @@ struct FMatrix UObject::MakeRotationMatrix(const struct FRotator& Rotation)
 
 
 // Function Core.Object.MakeRotationTranslationMatrix
-// (Final, Defined, Latent, Net, NetReliable, Simulated, Event)
+// (Final, Defined, Iterator, Latent, Singular, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector                 Translation                    (Parm)
 // struct FRotator                Rotation                       (Parm)
 // struct FMatrix                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FMatrix UObject::MakeRotationTranslationMatrix(const struct FVector& Translation, const struct FRotator& Rotation)
+struct FMatrix UObject::STATIC_MakeRotationTranslationMatrix(const struct FVector& Translation, const struct FRotator& Rotation)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.MakeRotationTranslationMatrix");
 
@@ -2583,6 +2673,7 @@ struct FMatrix UObject::MakeRotationTranslationMatrix(const struct FVector& Tran
 	params.Rotation = Rotation;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2593,13 +2684,13 @@ struct FMatrix UObject::MakeRotationTranslationMatrix(const struct FVector& Tran
 
 
 // Function Core.Object.InverseTransformNormal
-// (Latent, PreOperator, NetReliable, Simulated, Event)
+// (Final, Defined, Latent, PreOperator, Singular, Net, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FMatrix                 TM                             (Parm)
 // struct FVector                 A                              (Parm)
 // struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector UObject::InverseTransformNormal(const struct FMatrix& TM, const struct FVector& A)
+struct FVector UObject::STATIC_InverseTransformNormal(const struct FMatrix& TM, const struct FVector& A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.InverseTransformNormal");
 
@@ -2608,6 +2699,7 @@ struct FVector UObject::InverseTransformNormal(const struct FMatrix& TM, const s
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2618,13 +2710,13 @@ struct FVector UObject::InverseTransformNormal(const struct FMatrix& TM, const s
 
 
 // Function Core.Object.TransformNormal
-// (Iterator, PreOperator, Singular, NetReliable, Exec, Event)
+// (Final, Defined, Singular, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FMatrix                 TM                             (Parm)
 // struct FVector                 A                              (Parm)
 // struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector UObject::TransformNormal(const struct FMatrix& TM, const struct FVector& A)
+struct FVector UObject::STATIC_TransformNormal(const struct FMatrix& TM, const struct FVector& A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.TransformNormal");
 
@@ -2643,13 +2735,13 @@ struct FVector UObject::TransformNormal(const struct FMatrix& TM, const struct F
 
 
 // Function Core.Object.InverseTransformVector
-// (Final, Latent, PreOperator, NetReliable, Simulated, Event)
+// (Iterator, Latent, PreOperator, Singular, Net, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FMatrix                 TM                             (Parm)
 // struct FVector                 A                              (Parm)
 // struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector UObject::InverseTransformVector(const struct FMatrix& TM, const struct FVector& A)
+struct FVector UObject::STATIC_InverseTransformVector(const struct FMatrix& TM, const struct FVector& A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.InverseTransformVector");
 
@@ -2658,6 +2750,7 @@ struct FVector UObject::InverseTransformVector(const struct FMatrix& TM, const s
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2668,13 +2761,13 @@ struct FVector UObject::InverseTransformVector(const struct FMatrix& TM, const s
 
 
 // Function Core.Object.TransformVector
-// (Final, Iterator, PreOperator, Singular, NetReliable, Exec, Event)
+// (Iterator, Singular, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FMatrix                 TM                             (Parm)
 // struct FVector                 A                              (Parm)
 // struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector UObject::TransformVector(const struct FMatrix& TM, const struct FVector& A)
+struct FVector UObject::STATIC_TransformVector(const struct FMatrix& TM, const struct FVector& A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.TransformVector");
 
@@ -2693,13 +2786,13 @@ struct FVector UObject::TransformVector(const struct FMatrix& TM, const struct F
 
 
 // Function Core.Object.Multiply_MatrixMatrix
-// (Defined, Singular, Event)
+// (Defined, Iterator, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FMatrix                 A                              (Parm)
 // struct FMatrix                 B                              (Parm)
 // struct FMatrix                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FMatrix UObject::Multiply_MatrixMatrix(const struct FMatrix& A, const struct FMatrix& B)
+struct FMatrix UObject::STATIC_Multiply_MatrixMatrix(const struct FMatrix& A, const struct FMatrix& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Multiply_MatrixMatrix");
 
@@ -2708,6 +2801,7 @@ struct FMatrix UObject::Multiply_MatrixMatrix(const struct FMatrix& A, const str
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2718,13 +2812,13 @@ struct FMatrix UObject::Multiply_MatrixMatrix(const struct FMatrix& A, const str
 
 
 // Function Core.Object.NotEqual_NameName
-// (Iterator, Latent, PreOperator, Event)
+// (PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FName                   A                              (Parm)
 // struct FName                   B                              (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::NotEqual_NameName(const struct FName& A, const struct FName& B)
+bool UObject::STATIC_NotEqual_NameName(const struct FName& A, const struct FName& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.NotEqual_NameName");
 
@@ -2733,6 +2827,7 @@ bool UObject::NotEqual_NameName(const struct FName& A, const struct FName& B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2743,13 +2838,13 @@ bool UObject::NotEqual_NameName(const struct FName& A, const struct FName& B)
 
 
 // Function Core.Object.EqualEqual_NameName
-// (Final, Defined, Iterator, Latent, Singular, Event)
+// (Iterator, NetReliable, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FName                   A                              (Parm)
 // struct FName                   B                              (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::EqualEqual_NameName(const struct FName& A, const struct FName& B)
+bool UObject::STATIC_EqualEqual_NameName(const struct FName& A, const struct FName& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.EqualEqual_NameName");
 
@@ -2758,6 +2853,7 @@ bool UObject::EqualEqual_NameName(const struct FName& A, const struct FName& B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2768,12 +2864,12 @@ bool UObject::EqualEqual_NameName(const struct FName& A, const struct FName& B)
 
 
 // Function Core.Object.IsA
-// (Final, Iterator, Latent, PreOperator, NetReliable, Simulated, Event)
+// (Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FName                   ClassName                      (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::IsA(const struct FName& ClassName)
+bool UObject::STATIC_IsA(const struct FName& ClassName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.IsA");
 
@@ -2781,6 +2877,7 @@ bool UObject::IsA(const struct FName& ClassName)
 	params.ClassName = ClassName;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2791,13 +2888,13 @@ bool UObject::IsA(const struct FName& ClassName)
 
 
 // Function Core.Object.ClassIsChildOf
-// (Final, Defined, Iterator, Net, NetReliable, Event)
+// (Defined, Iterator, Latent, PreOperator, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // class UClass*                  TestClass                      (Parm)
 // class UClass*                  ParentClass                    (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::ClassIsChildOf(class UClass* TestClass, class UClass* ParentClass)
+bool UObject::STATIC_ClassIsChildOf(class UClass* TestClass, class UClass* ParentClass)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ClassIsChildOf");
 
@@ -2806,6 +2903,7 @@ bool UObject::ClassIsChildOf(class UClass* TestClass, class UClass* ParentClass)
 	params.ParentClass = ParentClass;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2816,13 +2914,13 @@ bool UObject::ClassIsChildOf(class UClass* TestClass, class UClass* ParentClass)
 
 
 // Function Core.Object.NotEqual_InterfaceInterface
-// (Iterator, Latent, PreOperator, Event)
+// (PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // TScriptInterface<class UInterface> A                              (Parm)
 // TScriptInterface<class UInterface> B                              (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::NotEqual_InterfaceInterface(const TScriptInterface<class UInterface>& A, const TScriptInterface<class UInterface>& B)
+bool UObject::STATIC_NotEqual_InterfaceInterface(const TScriptInterface<class UInterface>& A, const TScriptInterface<class UInterface>& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.NotEqual_InterfaceInterface");
 
@@ -2831,6 +2929,7 @@ bool UObject::NotEqual_InterfaceInterface(const TScriptInterface<class UInterfac
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2841,13 +2940,13 @@ bool UObject::NotEqual_InterfaceInterface(const TScriptInterface<class UInterfac
 
 
 // Function Core.Object.EqualEqual_InterfaceInterface
-// (Final, Defined, Iterator, Latent, Singular, Event)
+// (Iterator, NetReliable, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // TScriptInterface<class UInterface> A                              (Parm)
 // TScriptInterface<class UInterface> B                              (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::EqualEqual_InterfaceInterface(const TScriptInterface<class UInterface>& A, const TScriptInterface<class UInterface>& B)
+bool UObject::STATIC_EqualEqual_InterfaceInterface(const TScriptInterface<class UInterface>& A, const TScriptInterface<class UInterface>& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.EqualEqual_InterfaceInterface");
 
@@ -2856,6 +2955,7 @@ bool UObject::EqualEqual_InterfaceInterface(const TScriptInterface<class UInterf
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2866,13 +2966,13 @@ bool UObject::EqualEqual_InterfaceInterface(const TScriptInterface<class UInterf
 
 
 // Function Core.Object.NotEqual_ObjectObject
-// (Iterator, Latent, PreOperator, Event)
+// (PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // class UObject*                 A                              (Parm)
 // class UObject*                 B                              (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::NotEqual_ObjectObject(class UObject* A, class UObject* B)
+bool UObject::STATIC_NotEqual_ObjectObject(class UObject* A, class UObject* B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.NotEqual_ObjectObject");
 
@@ -2881,6 +2981,7 @@ bool UObject::NotEqual_ObjectObject(class UObject* A, class UObject* B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2891,13 +2992,13 @@ bool UObject::NotEqual_ObjectObject(class UObject* A, class UObject* B)
 
 
 // Function Core.Object.EqualEqual_ObjectObject
-// (Final, Defined, Iterator, Latent, Singular, Event)
+// (Iterator, NetReliable, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // class UObject*                 A                              (Parm)
 // class UObject*                 B                              (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::EqualEqual_ObjectObject(class UObject* A, class UObject* B)
+bool UObject::STATIC_EqualEqual_ObjectObject(class UObject* A, class UObject* B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.EqualEqual_ObjectObject");
 
@@ -2906,6 +3007,7 @@ bool UObject::EqualEqual_ObjectObject(class UObject* A, class UObject* B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2916,12 +3018,12 @@ bool UObject::EqualEqual_ObjectObject(class UObject* A, class UObject* B)
 
 
 // Function Core.Object.PathName
-// (Defined, PreOperator, Singular, NetReliable, Native, Event, HasOptionalParms)
+// (Latent, PreOperator, NetReliable, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // class UObject*                 CheckObject                    (Parm)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString UObject::PathName(class UObject* CheckObject)
+struct FString UObject::STATIC_PathName(class UObject* CheckObject)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.PathName");
 
@@ -2940,14 +3042,14 @@ struct FString UObject::PathName(class UObject* CheckObject)
 
 
 // Function Core.Object.SplitString
-// (Defined, Latent, PreOperator, Singular, Net, Exec, Event)
+// (Final, Latent, Singular, Net, NetReliable, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 Source                         (Parm, NeedCtorLink)
 // struct FString                 Delimiter                      (OptionalParm, Parm, NeedCtorLink)
 // bool                           bCullEmpty                     (OptionalParm, Parm)
 // TArray<struct FString>         ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-TArray<struct FString> UObject::SplitString(const struct FString& Source, const struct FString& Delimiter, bool bCullEmpty)
+TArray<struct FString> UObject::STATIC_SplitString(const struct FString& Source, const struct FString& Delimiter, bool bCullEmpty)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.SplitString");
 
@@ -2957,6 +3059,7 @@ TArray<struct FString> UObject::SplitString(const struct FString& Source, const 
 	params.bCullEmpty = bCullEmpty;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2967,14 +3070,14 @@ TArray<struct FString> UObject::SplitString(const struct FString& Source, const 
 
 
 // Function Core.Object.ParseStringIntoArray
-// (Final, Defined, PreOperator, Singular, Exec, Event)
+// (Final, Defined, Iterator, PreOperator, NetReliable, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 BaseString                     (Parm, NeedCtorLink)
 // TArray<struct FString>         Pieces                         (Parm, OutParm, NeedCtorLink)
 // struct FString                 delim                          (Parm, NeedCtorLink)
 // bool                           bCullEmpty                     (Parm)
 
-void UObject::ParseStringIntoArray(const struct FString& BaseString, const struct FString& delim, bool bCullEmpty, TArray<struct FString>* Pieces)
+void UObject::STATIC_ParseStringIntoArray(const struct FString& BaseString, const struct FString& delim, bool bCullEmpty, TArray<struct FString>* Pieces)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ParseStringIntoArray");
 
@@ -2984,6 +3087,7 @@ void UObject::ParseStringIntoArray(const struct FString& BaseString, const struc
 	params.bCullEmpty = bCullEmpty;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2995,14 +3099,14 @@ void UObject::ParseStringIntoArray(const struct FString& BaseString, const struc
 
 
 // Function Core.Object.JoinArray
-// (Latent, Singular, NetReliable, Simulated, Event)
+// (Final, Defined, Latent, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // TArray<struct FString>         StringArray                    (Parm, NeedCtorLink)
 // struct FString                 out_Result                     (Parm, OutParm, NeedCtorLink)
 // struct FString                 delim                          (OptionalParm, Parm, NeedCtorLink)
 // bool                           bIgnoreBlanks                  (OptionalParm, Parm)
 
-void UObject::JoinArray(TArray<struct FString> StringArray, const struct FString& delim, bool bIgnoreBlanks, struct FString* out_Result)
+void UObject::STATIC_JoinArray(TArray<struct FString> StringArray, const struct FString& delim, bool bIgnoreBlanks, struct FString* out_Result)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.JoinArray");
 
@@ -3012,6 +3116,7 @@ void UObject::JoinArray(TArray<struct FString> StringArray, const struct FString
 	params.bIgnoreBlanks = bIgnoreBlanks;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3023,12 +3128,12 @@ void UObject::JoinArray(TArray<struct FString> StringArray, const struct FString
 
 
 // Function Core.Object.GetRightMost
-// (Final, PreOperator, Net, Simulated, Event)
+// (Defined, Iterator, Latent, Singular, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 Text                           (Parm, CoerceParm, NeedCtorLink)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString UObject::GetRightMost(const struct FString& Text)
+struct FString UObject::STATIC_GetRightMost(const struct FString& Text)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetRightMost");
 
@@ -3036,6 +3141,7 @@ struct FString UObject::GetRightMost(const struct FString& Text)
 	params.Text = Text;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3046,14 +3152,14 @@ struct FString UObject::GetRightMost(const struct FString& Text)
 
 
 // Function Core.Object.Split
-// (Singular, Net, NetReliable, Simulated, Exec, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, Singular, Net, NetReliable, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 Text                           (Parm, CoerceParm, NeedCtorLink)
 // struct FString                 SplitStr                       (Parm, CoerceParm, NeedCtorLink)
 // bool                           bOmitSplitStr                  (OptionalParm, Parm)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString UObject::Split(const struct FString& Text, const struct FString& SplitStr, bool bOmitSplitStr)
+struct FString UObject::STATIC_Split(const struct FString& Text, const struct FString& SplitStr, bool bOmitSplitStr)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Split");
 
@@ -3063,6 +3169,7 @@ struct FString UObject::Split(const struct FString& Text, const struct FString& 
 	params.bOmitSplitStr = bOmitSplitStr;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3073,7 +3180,7 @@ struct FString UObject::Split(const struct FString& Text, const struct FString& 
 
 
 // Function Core.Object.Repl
-// (Defined, Iterator, Latent, PreOperator, Net, Exec, Event)
+// (Defined, Iterator, Net, NetReliable, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 Src                            (Parm, CoerceParm, NeedCtorLink)
 // struct FString                 Match                          (Parm, CoerceParm, NeedCtorLink)
@@ -3081,7 +3188,7 @@ struct FString UObject::Split(const struct FString& Text, const struct FString& 
 // bool                           bCaseSensitive                 (OptionalParm, Parm)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString UObject::Repl(const struct FString& Src, const struct FString& Match, const struct FString& With, bool bCaseSensitive)
+struct FString UObject::STATIC_Repl(const struct FString& Src, const struct FString& Match, const struct FString& With, bool bCaseSensitive)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Repl");
 
@@ -3092,6 +3199,7 @@ struct FString UObject::Repl(const struct FString& Src, const struct FString& Ma
 	params.bCaseSensitive = bCaseSensitive;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3102,12 +3210,12 @@ struct FString UObject::Repl(const struct FString& Src, const struct FString& Ma
 
 
 // Function Core.Object.Asc
-// (Final, Iterator, PreOperator, Singular, Net, Event)
+// (Defined, Latent, Net, NetReliable, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 S                              (Parm, NeedCtorLink)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UObject::Asc(const struct FString& S)
+int UObject::STATIC_Asc(const struct FString& S)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Asc");
 
@@ -3115,6 +3223,7 @@ int UObject::Asc(const struct FString& S)
 	params.S = S;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3125,12 +3234,12 @@ int UObject::Asc(const struct FString& S)
 
 
 // Function Core.Object.Chr
-// (Defined, Latent, PreOperator, Singular, NetReliable, Event)
+// (Final, PreOperator, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // int                            I                              (Parm)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString UObject::Chr(int I)
+struct FString UObject::STATIC_Chr(int I)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Chr");
 
@@ -3138,6 +3247,7 @@ struct FString UObject::Chr(int I)
 	params.I = I;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3148,12 +3258,12 @@ struct FString UObject::Chr(int I)
 
 
 // Function Core.Object.Locs
-// (Defined, Iterator, Latent, PreOperator, Singular, NetReliable, Simulated, Event)
+// (Defined, Singular, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 S                              (Parm, CoerceParm, NeedCtorLink)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString UObject::Locs(const struct FString& S)
+struct FString UObject::STATIC_Locs(const struct FString& S)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Locs");
 
@@ -3161,6 +3271,7 @@ struct FString UObject::Locs(const struct FString& S)
 	params.S = S;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3171,12 +3282,12 @@ struct FString UObject::Locs(const struct FString& S)
 
 
 // Function Core.Object.Caps
-// (Final, Defined, Iterator, PreOperator, Singular, NetReliable, Event)
+// (Defined, Iterator, Latent, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 S                              (Parm, CoerceParm, NeedCtorLink)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString UObject::Caps(const struct FString& S)
+struct FString UObject::STATIC_Caps(const struct FString& S)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Caps");
 
@@ -3184,6 +3295,7 @@ struct FString UObject::Caps(const struct FString& S)
 	params.S = S;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3194,7 +3306,7 @@ struct FString UObject::Caps(const struct FString& S)
 
 
 // Function Core.Object.Right
-// (Defined, Iterator, PreOperator, Singular, Net, NetReliable, Simulated, Exec, Event, HasOptionalParms)
+// (Defined, PreOperator, Singular, Native, Event, HasOptionalParms)
 // Parameters:
 // struct FString                 S                              (Parm, CoerceParm, NeedCtorLink)
 // int                            I                              (Parm)
@@ -3209,6 +3321,7 @@ struct FString UObject::Right(const struct FString& S, int I)
 	params.I = I;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3219,7 +3332,7 @@ struct FString UObject::Right(const struct FString& S, int I)
 
 
 // Function Core.Object.Left
-// (Iterator, PreOperator, Singular, Net, NetReliable, Simulated, Exec, Event, HasOptionalParms)
+// (PreOperator, Singular, Native, Event, HasOptionalParms)
 // Parameters:
 // struct FString                 S                              (Parm, CoerceParm, NeedCtorLink)
 // int                            I                              (Parm)
@@ -3234,6 +3347,7 @@ struct FString UObject::Left(const struct FString& S, int I)
 	params.I = I;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3244,14 +3358,14 @@ struct FString UObject::Left(const struct FString& S, int I)
 
 
 // Function Core.Object.Mid
-// (Iterator, Latent, PreOperator, Net, NetReliable, Simulated, Event)
+// (Net, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 S                              (Parm, CoerceParm, NeedCtorLink)
 // int                            I                              (Parm)
 // int                            J                              (OptionalParm, Parm)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString UObject::Mid(const struct FString& S, int I, int J)
+struct FString UObject::STATIC_Mid(const struct FString& S, int I, int J)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Mid");
 
@@ -3261,6 +3375,7 @@ struct FString UObject::Mid(const struct FString& S, int I, int J)
 	params.J = J;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3271,7 +3386,7 @@ struct FString UObject::Mid(const struct FString& S, int I, int J)
 
 
 // Function Core.Object.InStr
-// (Defined, Iterator, NetReliable, Simulated, Event)
+// (Latent, Singular, Net, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 S                              (Parm, CoerceParm, NeedCtorLink)
 // struct FString                 T                              (Parm, CoerceParm, NeedCtorLink)
@@ -3280,7 +3395,7 @@ struct FString UObject::Mid(const struct FString& S, int I, int J)
 // int                            StartPos                       (OptionalParm, Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UObject::InStr(const struct FString& S, const struct FString& T, bool bSearchFromRight, bool bIgnoreCase, int StartPos)
+int UObject::STATIC_InStr(const struct FString& S, const struct FString& T, bool bSearchFromRight, bool bIgnoreCase, int StartPos)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.InStr");
 
@@ -3292,6 +3407,7 @@ int UObject::InStr(const struct FString& S, const struct FString& T, bool bSearc
 	params.StartPos = StartPos;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3302,12 +3418,12 @@ int UObject::InStr(const struct FString& S, const struct FString& T, bool bSearc
 
 
 // Function Core.Object.Len
-// (Final, Defined, Iterator, Latent, Singular, NetReliable, Simulated, Event)
+// (Defined, PreOperator, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 S                              (Parm, CoerceParm, NeedCtorLink)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UObject::Len(const struct FString& S)
+int UObject::STATIC_Len(const struct FString& S)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Len");
 
@@ -3315,6 +3431,7 @@ int UObject::Len(const struct FString& S)
 	params.S = S;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3325,13 +3442,13 @@ int UObject::Len(const struct FString& S)
 
 
 // Function Core.Object.SubtractEqual_StrStr
-// (Defined, Latent, Singular, Event)
+// (Defined, Iterator, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 A                              (Parm, OutParm, NeedCtorLink)
 // struct FString                 B                              (Parm, CoerceParm, NeedCtorLink)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString UObject::SubtractEqual_StrStr(const struct FString& B, struct FString* A)
+struct FString UObject::STATIC_SubtractEqual_StrStr(const struct FString& B, struct FString* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.SubtractEqual_StrStr");
 
@@ -3339,6 +3456,7 @@ struct FString UObject::SubtractEqual_StrStr(const struct FString& B, struct FSt
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3352,13 +3470,13 @@ struct FString UObject::SubtractEqual_StrStr(const struct FString& B, struct FSt
 
 
 // Function Core.Object.AtEqual_StrStr
-// (Final, Iterator, PreOperator, Singular, Event)
+// (Defined, Latent, NetReliable, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 A                              (Parm, OutParm, NeedCtorLink)
 // struct FString                 B                              (Parm, CoerceParm, NeedCtorLink)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString UObject::AtEqual_StrStr(const struct FString& B, struct FString* A)
+struct FString UObject::STATIC_AtEqual_StrStr(const struct FString& B, struct FString* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.AtEqual_StrStr");
 
@@ -3366,6 +3484,7 @@ struct FString UObject::AtEqual_StrStr(const struct FString& B, struct FString* 
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3379,13 +3498,13 @@ struct FString UObject::AtEqual_StrStr(const struct FString& B, struct FString* 
 
 
 // Function Core.Object.ConcatEqual_StrStr
-// (Defined, Iterator, Latent, PreOperator, Event)
+// (Defined, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 A                              (Parm, OutParm, NeedCtorLink)
 // struct FString                 B                              (Parm, CoerceParm, NeedCtorLink)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString UObject::ConcatEqual_StrStr(const struct FString& B, struct FString* A)
+struct FString UObject::STATIC_ConcatEqual_StrStr(const struct FString& B, struct FString* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ConcatEqual_StrStr");
 
@@ -3393,6 +3512,7 @@ struct FString UObject::ConcatEqual_StrStr(const struct FString& B, struct FStri
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3406,13 +3526,13 @@ struct FString UObject::ConcatEqual_StrStr(const struct FString& B, struct FStri
 
 
 // Function Core.Object.ComplementEqual_StrStr
-// (Iterator, Singular, Net, NetReliable, Exec, Event)
+// (Iterator, PreOperator, Net, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 A                              (Parm, NeedCtorLink)
 // struct FString                 B                              (Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::ComplementEqual_StrStr(const struct FString& A, const struct FString& B)
+bool UObject::STATIC_ComplementEqual_StrStr(const struct FString& A, const struct FString& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ComplementEqual_StrStr");
 
@@ -3431,13 +3551,13 @@ bool UObject::ComplementEqual_StrStr(const struct FString& A, const struct FStri
 
 
 // Function Core.Object.NotEqual_StrStr
-// (Iterator, Latent, PreOperator, Event)
+// (PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 A                              (Parm, NeedCtorLink)
 // struct FString                 B                              (Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::NotEqual_StrStr(const struct FString& A, const struct FString& B)
+bool UObject::STATIC_NotEqual_StrStr(const struct FString& A, const struct FString& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.NotEqual_StrStr");
 
@@ -3446,6 +3566,7 @@ bool UObject::NotEqual_StrStr(const struct FString& A, const struct FString& B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3456,13 +3577,13 @@ bool UObject::NotEqual_StrStr(const struct FString& A, const struct FString& B)
 
 
 // Function Core.Object.EqualEqual_StrStr
-// (Final, Defined, Iterator, Latent, Singular, Event)
+// (Iterator, NetReliable, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 A                              (Parm, NeedCtorLink)
 // struct FString                 B                              (Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::EqualEqual_StrStr(const struct FString& A, const struct FString& B)
+bool UObject::STATIC_EqualEqual_StrStr(const struct FString& A, const struct FString& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.EqualEqual_StrStr");
 
@@ -3471,6 +3592,7 @@ bool UObject::EqualEqual_StrStr(const struct FString& A, const struct FString& B
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3481,13 +3603,13 @@ bool UObject::EqualEqual_StrStr(const struct FString& A, const struct FString& B
 
 
 // Function Core.Object.GreaterEqual_StrStr
-// (Final, PreOperator, Singular, Event)
+// (Defined, Iterator, NetReliable, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 A                              (Parm, NeedCtorLink)
 // struct FString                 B                              (Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::GreaterEqual_StrStr(const struct FString& A, const struct FString& B)
+bool UObject::STATIC_GreaterEqual_StrStr(const struct FString& A, const struct FString& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GreaterEqual_StrStr");
 
@@ -3496,6 +3618,7 @@ bool UObject::GreaterEqual_StrStr(const struct FString& A, const struct FString&
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3506,13 +3629,13 @@ bool UObject::GreaterEqual_StrStr(const struct FString& A, const struct FString&
 
 
 // Function Core.Object.LessEqual_StrStr
-// (Defined, Iterator, Latent, Singular, Event)
+// (Final, Defined, NetReliable, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 A                              (Parm, NeedCtorLink)
 // struct FString                 B                              (Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::LessEqual_StrStr(const struct FString& A, const struct FString& B)
+bool UObject::STATIC_LessEqual_StrStr(const struct FString& A, const struct FString& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.LessEqual_StrStr");
 
@@ -3521,6 +3644,7 @@ bool UObject::LessEqual_StrStr(const struct FString& A, const struct FString& B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3531,13 +3655,13 @@ bool UObject::LessEqual_StrStr(const struct FString& A, const struct FString& B)
 
 
 // Function Core.Object.Greater_StrStr
-// (PreOperator, Singular, Event)
+// (Final, Iterator, NetReliable, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 A                              (Parm, NeedCtorLink)
 // struct FString                 B                              (Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::Greater_StrStr(const struct FString& A, const struct FString& B)
+bool UObject::STATIC_Greater_StrStr(const struct FString& A, const struct FString& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Greater_StrStr");
 
@@ -3546,6 +3670,7 @@ bool UObject::Greater_StrStr(const struct FString& A, const struct FString& B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3556,13 +3681,13 @@ bool UObject::Greater_StrStr(const struct FString& A, const struct FString& B)
 
 
 // Function Core.Object.Less_StrStr
-// (Iterator, Latent, Singular, Event)
+// (Final, NetReliable, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 A                              (Parm, NeedCtorLink)
 // struct FString                 B                              (Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::Less_StrStr(const struct FString& A, const struct FString& B)
+bool UObject::STATIC_Less_StrStr(const struct FString& A, const struct FString& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Less_StrStr");
 
@@ -3571,6 +3696,7 @@ bool UObject::Less_StrStr(const struct FString& A, const struct FString& B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3581,13 +3707,13 @@ bool UObject::Less_StrStr(const struct FString& A, const struct FString& B)
 
 
 // Function Core.Object.At_StrStr
-// (Iterator, PreOperator, Singular, Event)
+// (Final, Latent, NetReliable, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 A                              (Parm, CoerceParm, NeedCtorLink)
 // struct FString                 B                              (Parm, CoerceParm, NeedCtorLink)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString UObject::At_StrStr(const struct FString& A, const struct FString& B)
+struct FString UObject::STATIC_At_StrStr(const struct FString& A, const struct FString& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.At_StrStr");
 
@@ -3596,6 +3722,7 @@ struct FString UObject::At_StrStr(const struct FString& A, const struct FString&
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3606,13 +3733,13 @@ struct FString UObject::At_StrStr(const struct FString& A, const struct FString&
 
 
 // Function Core.Object.Concat_StrStr
-// (Final, Iterator, Latent, PreOperator, Event)
+// (Final, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 A                              (Parm, CoerceParm, NeedCtorLink)
 // struct FString                 B                              (Parm, CoerceParm, NeedCtorLink)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString UObject::Concat_StrStr(const struct FString& A, const struct FString& B)
+struct FString UObject::STATIC_Concat_StrStr(const struct FString& A, const struct FString& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Concat_StrStr");
 
@@ -3621,6 +3748,7 @@ struct FString UObject::Concat_StrStr(const struct FString& A, const struct FStr
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3631,14 +3759,14 @@ struct FString UObject::Concat_StrStr(const struct FString& A, const struct FStr
 
 
 // Function Core.Object.MakeRotator
-// (Iterator, Latent, Net, NetReliable, Simulated, Event)
+// (PreOperator, Singular, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // int                            Pitch                          (Parm)
 // int                            Yaw                            (Parm)
 // int                            Roll                           (Parm)
 // struct FRotator                ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FRotator UObject::MakeRotator(int Pitch, int Yaw, int Roll)
+struct FRotator UObject::STATIC_MakeRotator(int Pitch, int Yaw, int Roll)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.MakeRotator");
 
@@ -3648,6 +3776,7 @@ struct FRotator UObject::MakeRotator(int Pitch, int Yaw, int Roll)
 	params.Roll = Roll;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3658,7 +3787,7 @@ struct FRotator UObject::MakeRotator(int Pitch, int Yaw, int Roll)
 
 
 // Function Core.Object.SClampRotAxis
-// (Final, Defined, Latent, Singular, Net, Exec, Event)
+// (Final, Defined, Iterator, PreOperator, Net, NetReliable, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          DeltaTime                      (Parm)
 // int                            ViewAxis                       (Parm)
@@ -3668,7 +3797,7 @@ struct FRotator UObject::MakeRotator(int Pitch, int Yaw, int Roll)
 // float                          InterpolationSpeed             (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::SClampRotAxis(float DeltaTime, int ViewAxis, int MaxLimit, int MinLimit, float InterpolationSpeed, int* out_DeltaViewAxis)
+bool UObject::STATIC_SClampRotAxis(float DeltaTime, int ViewAxis, int MaxLimit, int MinLimit, float InterpolationSpeed, int* out_DeltaViewAxis)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.SClampRotAxis");
 
@@ -3680,6 +3809,7 @@ bool UObject::SClampRotAxis(float DeltaTime, int ViewAxis, int MaxLimit, int Min
 	params.InterpolationSpeed = InterpolationSpeed;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3693,14 +3823,14 @@ bool UObject::SClampRotAxis(float DeltaTime, int ViewAxis, int MaxLimit, int Min
 
 
 // Function Core.Object.ClampRotAxisFromRange
-// (Defined, Iterator, Net, NetReliable, Event)
+// (Final, Iterator, Latent, PreOperator, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // int                            Current                        (Parm)
 // int                            Min                            (Parm)
 // int                            Max                            (Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UObject::ClampRotAxisFromRange(int Current, int Min, int Max)
+int UObject::STATIC_ClampRotAxisFromRange(int Current, int Min, int Max)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ClampRotAxisFromRange");
 
@@ -3710,6 +3840,7 @@ int UObject::ClampRotAxisFromRange(int Current, int Min, int Max)
 	params.Max = Max;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3720,14 +3851,14 @@ int UObject::ClampRotAxisFromRange(int Current, int Min, int Max)
 
 
 // Function Core.Object.ClampRotAxisFromBase
-// (Final, Iterator, Net, NetReliable, Event)
+// (Iterator, Latent, PreOperator, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // int                            Current                        (Parm)
 // int                            Center                         (Parm)
 // int                            MaxDelta                       (Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UObject::ClampRotAxisFromBase(int Current, int Center, int MaxDelta)
+int UObject::STATIC_ClampRotAxisFromBase(int Current, int Center, int MaxDelta)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ClampRotAxisFromBase");
 
@@ -3737,6 +3868,7 @@ int UObject::ClampRotAxisFromBase(int Current, int Center, int MaxDelta)
 	params.MaxDelta = MaxDelta;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3747,14 +3879,14 @@ int UObject::ClampRotAxisFromBase(int Current, int Center, int MaxDelta)
 
 
 // Function Core.Object.ClampRotAxis
-// (Iterator, Net, NetReliable, Event)
+// (Final, Defined, Latent, PreOperator, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // int                            ViewAxis                       (Parm)
 // int                            out_DeltaViewAxis              (Parm, OutParm)
 // int                            MaxLimit                       (Parm)
 // int                            MinLimit                       (Parm)
 
-void UObject::ClampRotAxis(int ViewAxis, int MaxLimit, int MinLimit, int* out_DeltaViewAxis)
+void UObject::STATIC_ClampRotAxis(int ViewAxis, int MaxLimit, int MinLimit, int* out_DeltaViewAxis)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ClampRotAxis");
 
@@ -3764,6 +3896,7 @@ void UObject::ClampRotAxis(int ViewAxis, int MaxLimit, int MinLimit, int* out_De
 	params.MinLimit = MinLimit;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3775,12 +3908,12 @@ void UObject::ClampRotAxis(int ViewAxis, int MaxLimit, int MinLimit, int* out_De
 
 
 // Function Core.Object.RSize
-// (Final, Iterator, Singular, Net, Exec, Event)
+// (Final, Defined, Iterator, Latent, Net, NetReliable, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FRotator                R                              (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::RSize(const struct FRotator& R)
+float UObject::STATIC_RSize(const struct FRotator& R)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.RSize");
 
@@ -3788,6 +3921,7 @@ float UObject::RSize(const struct FRotator& R)
 	params.R = R;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3798,13 +3932,13 @@ float UObject::RSize(const struct FRotator& R)
 
 
 // Function Core.Object.RDiff
-// (Final, Defined, Latent, PreOperator, Net, Exec, Event)
+// (Final, Defined, Net, NetReliable, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FRotator                A                              (Parm)
 // struct FRotator                B                              (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::RDiff(const struct FRotator& A, const struct FRotator& B)
+float UObject::STATIC_RDiff(const struct FRotator& A, const struct FRotator& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.RDiff");
 
@@ -3813,6 +3947,7 @@ float UObject::RDiff(const struct FRotator& A, const struct FRotator& B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3823,12 +3958,12 @@ float UObject::RDiff(const struct FRotator& A, const struct FRotator& B)
 
 
 // Function Core.Object.NormalizeRotAxis
-// (Final, Exec, Event)
+// (Final, Iterator, Singular, Net, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // int                            Angle                          (Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UObject::NormalizeRotAxis(int Angle)
+int UObject::STATIC_NormalizeRotAxis(int Angle)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.NormalizeRotAxis");
 
@@ -3836,6 +3971,7 @@ int UObject::NormalizeRotAxis(int Angle)
 	params.Angle = Angle;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3846,7 +3982,7 @@ int UObject::NormalizeRotAxis(int Angle)
 
 
 // Function Core.Object.RInterpTo
-// (Final, Singular, Net, Exec, Event)
+// (Final, Latent, Net, NetReliable, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FRotator                Current                        (Parm)
 // struct FRotator                Target                         (Parm)
@@ -3855,7 +3991,7 @@ int UObject::NormalizeRotAxis(int Angle)
 // bool                           bConstantInterpSpeed           (OptionalParm, Parm)
 // struct FRotator                ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FRotator UObject::RInterpTo(const struct FRotator& Current, const struct FRotator& Target, float DeltaTime, float InterpSpeed, bool bConstantInterpSpeed)
+struct FRotator UObject::STATIC_RInterpTo(const struct FRotator& Current, const struct FRotator& Target, float DeltaTime, float InterpSpeed, bool bConstantInterpSpeed)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.RInterpTo");
 
@@ -3867,6 +4003,7 @@ struct FRotator UObject::RInterpTo(const struct FRotator& Current, const struct 
 	params.bConstantInterpSpeed = bConstantInterpSpeed;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3877,13 +4014,13 @@ struct FRotator UObject::RInterpTo(const struct FRotator& Current, const struct 
 
 
 // Function Core.Object.RTransform
-// (Defined, Iterator, Singular, Net, Exec, Event)
+// (PreOperator, Net, NetReliable, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FRotator                R                              (Parm)
 // struct FRotator                RBasis                         (Parm)
 // struct FRotator                ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FRotator UObject::RTransform(const struct FRotator& R, const struct FRotator& RBasis)
+struct FRotator UObject::STATIC_RTransform(const struct FRotator& R, const struct FRotator& RBasis)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.RTransform");
 
@@ -3892,6 +4029,7 @@ struct FRotator UObject::RTransform(const struct FRotator& R, const struct FRota
 	params.RBasis = RBasis;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3902,7 +4040,7 @@ struct FRotator UObject::RTransform(const struct FRotator& R, const struct FRota
 
 
 // Function Core.Object.RLerp
-// (Defined, Singular, Net, Exec, Event)
+// (Defined, Latent, Net, NetReliable, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FRotator                A                              (Parm)
 // struct FRotator                B                              (Parm)
@@ -3910,7 +4048,7 @@ struct FRotator UObject::RTransform(const struct FRotator& R, const struct FRota
 // bool                           bShortestPath                  (OptionalParm, Parm)
 // struct FRotator                ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FRotator UObject::RLerp(const struct FRotator& A, const struct FRotator& B, float Alpha, bool bShortestPath)
+struct FRotator UObject::STATIC_RLerp(const struct FRotator& A, const struct FRotator& B, float Alpha, bool bShortestPath)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.RLerp");
 
@@ -3921,6 +4059,7 @@ struct FRotator UObject::RLerp(const struct FRotator& A, const struct FRotator& 
 	params.bShortestPath = bShortestPath;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3931,12 +4070,12 @@ struct FRotator UObject::RLerp(const struct FRotator& A, const struct FRotator& 
 
 
 // Function Core.Object.Normalize
-// (Exec, Event)
+// (Iterator, Singular, Net, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FRotator                Rot                            (Parm)
 // struct FRotator                ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FRotator UObject::Normalize(const struct FRotator& Rot)
+struct FRotator UObject::STATIC_Normalize(const struct FRotator& Rot)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Normalize");
 
@@ -3944,6 +4083,7 @@ struct FRotator UObject::Normalize(const struct FRotator& Rot)
 	params.Rot = Rot;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3954,14 +4094,14 @@ struct FRotator UObject::Normalize(const struct FRotator& Rot)
 
 
 // Function Core.Object.OrthoRotation
-// (Defined, Iterator, Latent, PreOperator, Exec, Event)
+// (Defined, NetReliable, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector                 X                              (Parm)
 // struct FVector                 Y                              (Parm)
 // struct FVector                 Z                              (Parm)
 // struct FRotator                ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FRotator UObject::OrthoRotation(const struct FVector& X, const struct FVector& Y, const struct FVector& Z)
+struct FRotator UObject::STATIC_OrthoRotation(const struct FVector& X, const struct FVector& Y, const struct FVector& Z)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.OrthoRotation");
 
@@ -3971,6 +4111,7 @@ struct FRotator UObject::OrthoRotation(const struct FVector& X, const struct FVe
 	params.Z = Z;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3981,12 +4122,12 @@ struct FRotator UObject::OrthoRotation(const struct FVector& X, const struct FVe
 
 
 // Function Core.Object.RotRand
-// (Final, Defined, Singular, Net, Exec, Event)
+// (Final, Iterator, Latent, Net, NetReliable, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // bool                           bRoll                          (OptionalParm, Parm)
 // struct FRotator                ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FRotator UObject::RotRand(bool bRoll)
+struct FRotator UObject::STATIC_RotRand(bool bRoll)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.RotRand");
 
@@ -3994,6 +4135,7 @@ struct FRotator UObject::RotRand(bool bRoll)
 	params.bRoll = bRoll;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4004,13 +4146,13 @@ struct FRotator UObject::RotRand(bool bRoll)
 
 
 // Function Core.Object.GetRotatorAxis
-// (Defined, PreOperator, Net, Simulated, Event)
+// (Final, Defined, Iterator, Latent, Singular, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FRotator                A                              (Parm)
 // int                            Axis                           (Parm)
 // struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector UObject::GetRotatorAxis(const struct FRotator& A, int Axis)
+struct FVector UObject::STATIC_GetRotatorAxis(const struct FRotator& A, int Axis)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetRotatorAxis");
 
@@ -4019,6 +4161,7 @@ struct FVector UObject::GetRotatorAxis(const struct FRotator& A, int Axis)
 	params.Axis = Axis;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4029,14 +4172,14 @@ struct FVector UObject::GetRotatorAxis(const struct FRotator& A, int Axis)
 
 
 // Function Core.Object.GetUnAxes
-// (Final, Defined, Iterator, PreOperator, Net, Simulated, Event)
+// (Iterator, PreOperator, Singular, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FRotator                A                              (Parm)
 // struct FVector                 X                              (Parm, OutParm)
 // struct FVector                 Y                              (Parm, OutParm)
 // struct FVector                 Z                              (Parm, OutParm)
 
-void UObject::GetUnAxes(const struct FRotator& A, struct FVector* X, struct FVector* Y, struct FVector* Z)
+void UObject::STATIC_GetUnAxes(const struct FRotator& A, struct FVector* X, struct FVector* Y, struct FVector* Z)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetUnAxes");
 
@@ -4044,6 +4187,7 @@ void UObject::GetUnAxes(const struct FRotator& A, struct FVector* X, struct FVec
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4059,14 +4203,14 @@ void UObject::GetUnAxes(const struct FRotator& A, struct FVector* X, struct FVec
 
 
 // Function Core.Object.GetAxes
-// (Final, Net, Simulated, Event)
+// (Defined, Iterator, Latent, PreOperator, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FRotator                A                              (Parm)
 // struct FVector                 X                              (Parm, OutParm)
 // struct FVector                 Y                              (Parm, OutParm)
 // struct FVector                 Z                              (Parm, OutParm)
 
-void UObject::GetAxes(const struct FRotator& A, struct FVector* X, struct FVector* Y, struct FVector* Z)
+void UObject::STATIC_GetAxes(const struct FRotator& A, struct FVector* X, struct FVector* Y, struct FVector* Z)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GetAxes");
 
@@ -4074,6 +4218,7 @@ void UObject::GetAxes(const struct FRotator& A, struct FVector* X, struct FVecto
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4089,13 +4234,13 @@ void UObject::GetAxes(const struct FRotator& A, struct FVector* X, struct FVecto
 
 
 // Function Core.Object.ClockwiseFrom_IntInt
-// (Final, Latent, Net, NetReliable, Event)
+// (Singular, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // int                            A                              (Parm)
 // int                            B                              (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::ClockwiseFrom_IntInt(int A, int B)
+bool UObject::STATIC_ClockwiseFrom_IntInt(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ClockwiseFrom_IntInt");
 
@@ -4104,6 +4249,7 @@ bool UObject::ClockwiseFrom_IntInt(int A, int B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4114,13 +4260,13 @@ bool UObject::ClockwiseFrom_IntInt(int A, int B)
 
 
 // Function Core.Object.SubtractEqual_RotatorRotator
-// (Defined, Latent, Singular, Event)
+// (Defined, Iterator, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FRotator                A                              (Parm, OutParm)
 // struct FRotator                B                              (Parm)
 // struct FRotator                ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FRotator UObject::SubtractEqual_RotatorRotator(const struct FRotator& B, struct FRotator* A)
+struct FRotator UObject::STATIC_SubtractEqual_RotatorRotator(const struct FRotator& B, struct FRotator* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.SubtractEqual_RotatorRotator");
 
@@ -4128,6 +4274,7 @@ struct FRotator UObject::SubtractEqual_RotatorRotator(const struct FRotator& B, 
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4141,13 +4288,13 @@ struct FRotator UObject::SubtractEqual_RotatorRotator(const struct FRotator& B, 
 
 
 // Function Core.Object.AddEqual_RotatorRotator
-// (Final, Defined, Iterator, Singular, Event)
+// (Final, Defined, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FRotator                A                              (Parm, OutParm)
 // struct FRotator                B                              (Parm)
 // struct FRotator                ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FRotator UObject::AddEqual_RotatorRotator(const struct FRotator& B, struct FRotator* A)
+struct FRotator UObject::STATIC_AddEqual_RotatorRotator(const struct FRotator& B, struct FRotator* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.AddEqual_RotatorRotator");
 
@@ -4155,6 +4302,7 @@ struct FRotator UObject::AddEqual_RotatorRotator(const struct FRotator& B, struc
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4168,13 +4316,13 @@ struct FRotator UObject::AddEqual_RotatorRotator(const struct FRotator& B, struc
 
 
 // Function Core.Object.Subtract_RotatorRotator
-// (Latent, Singular, Event)
+// (Iterator, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FRotator                A                              (Parm)
 // struct FRotator                B                              (Parm)
 // struct FRotator                ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FRotator UObject::Subtract_RotatorRotator(const struct FRotator& A, const struct FRotator& B)
+struct FRotator UObject::STATIC_Subtract_RotatorRotator(const struct FRotator& A, const struct FRotator& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Subtract_RotatorRotator");
 
@@ -4183,6 +4331,7 @@ struct FRotator UObject::Subtract_RotatorRotator(const struct FRotator& A, const
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4193,13 +4342,13 @@ struct FRotator UObject::Subtract_RotatorRotator(const struct FRotator& A, const
 
 
 // Function Core.Object.Add_RotatorRotator
-// (Final, Iterator, Singular, Event)
+// (Final, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FRotator                A                              (Parm)
 // struct FRotator                B                              (Parm)
 // struct FRotator                ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FRotator UObject::Add_RotatorRotator(const struct FRotator& A, const struct FRotator& B)
+struct FRotator UObject::STATIC_Add_RotatorRotator(const struct FRotator& A, const struct FRotator& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Add_RotatorRotator");
 
@@ -4208,6 +4357,7 @@ struct FRotator UObject::Add_RotatorRotator(const struct FRotator& A, const stru
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4218,13 +4368,13 @@ struct FRotator UObject::Add_RotatorRotator(const struct FRotator& A, const stru
 
 
 // Function Core.Object.DivideEqual_RotatorFloat
-// (Final, Defined, Latent, Singular, Event)
+// (NetReliable, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FRotator                A                              (Parm, OutParm)
 // float                          B                              (Parm)
 // struct FRotator                ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FRotator UObject::DivideEqual_RotatorFloat(float B, struct FRotator* A)
+struct FRotator UObject::STATIC_DivideEqual_RotatorFloat(float B, struct FRotator* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.DivideEqual_RotatorFloat");
 
@@ -4232,6 +4382,7 @@ struct FRotator UObject::DivideEqual_RotatorFloat(float B, struct FRotator* A)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4245,13 +4396,13 @@ struct FRotator UObject::DivideEqual_RotatorFloat(float B, struct FRotator* A)
 
 
 // Function Core.Object.MultiplyEqual_RotatorFloat
-// (Iterator, Singular, Event)
+// (Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FRotator                A                              (Parm, OutParm)
 // float                          B                              (Parm)
 // struct FRotator                ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FRotator UObject::MultiplyEqual_RotatorFloat(float B, struct FRotator* A)
+struct FRotator UObject::STATIC_MultiplyEqual_RotatorFloat(float B, struct FRotator* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.MultiplyEqual_RotatorFloat");
 
@@ -4259,6 +4410,7 @@ struct FRotator UObject::MultiplyEqual_RotatorFloat(float B, struct FRotator* A)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4272,13 +4424,13 @@ struct FRotator UObject::MultiplyEqual_RotatorFloat(float B, struct FRotator* A)
 
 
 // Function Core.Object.Divide_RotatorFloat
-// (Iterator, Latent, Net, NetReliable, Native, Event, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FRotator                A                              (Parm)
 // float                          B                              (Parm)
 // struct FRotator                ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FRotator UObject::Divide_RotatorFloat(const struct FRotator& A, float B)
+struct FRotator UObject::STATIC_Divide_RotatorFloat(const struct FRotator& A, float B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Divide_RotatorFloat");
 
@@ -4298,13 +4450,13 @@ struct FRotator UObject::Divide_RotatorFloat(const struct FRotator& A, float B)
 
 
 // Function Core.Object.Multiply_FloatRotator
-// (Defined, Singular, Event)
+// (Defined, Iterator, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          A                              (Parm)
 // struct FRotator                B                              (Parm)
 // struct FRotator                ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FRotator UObject::Multiply_FloatRotator(float A, const struct FRotator& B)
+struct FRotator UObject::STATIC_Multiply_FloatRotator(float A, const struct FRotator& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Multiply_FloatRotator");
 
@@ -4313,6 +4465,7 @@ struct FRotator UObject::Multiply_FloatRotator(float A, const struct FRotator& B
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4323,13 +4476,13 @@ struct FRotator UObject::Multiply_FloatRotator(float A, const struct FRotator& B
 
 
 // Function Core.Object.Multiply_RotatorFloat
-// (Defined, Singular, Event)
+// (Defined, Iterator, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FRotator                A                              (Parm)
 // float                          B                              (Parm)
 // struct FRotator                ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FRotator UObject::Multiply_RotatorFloat(const struct FRotator& A, float B)
+struct FRotator UObject::STATIC_Multiply_RotatorFloat(const struct FRotator& A, float B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Multiply_RotatorFloat");
 
@@ -4338,6 +4491,7 @@ struct FRotator UObject::Multiply_RotatorFloat(const struct FRotator& A, float B
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4348,13 +4502,13 @@ struct FRotator UObject::Multiply_RotatorFloat(const struct FRotator& A, float B
 
 
 // Function Core.Object.NotEqual_RotatorRotator
-// (Iterator, Latent, PreOperator, Event)
+// (PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FRotator                A                              (Parm)
 // struct FRotator                B                              (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::NotEqual_RotatorRotator(const struct FRotator& A, const struct FRotator& B)
+bool UObject::STATIC_NotEqual_RotatorRotator(const struct FRotator& A, const struct FRotator& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.NotEqual_RotatorRotator");
 
@@ -4363,6 +4517,7 @@ bool UObject::NotEqual_RotatorRotator(const struct FRotator& A, const struct FRo
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4373,13 +4528,13 @@ bool UObject::NotEqual_RotatorRotator(const struct FRotator& A, const struct FRo
 
 
 // Function Core.Object.EqualEqual_RotatorRotator
-// (Final, Defined, Iterator, Latent, Singular, Event)
+// (Iterator, NetReliable, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FRotator                A                              (Parm)
 // struct FRotator                B                              (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::EqualEqual_RotatorRotator(const struct FRotator& A, const struct FRotator& B)
+bool UObject::STATIC_EqualEqual_RotatorRotator(const struct FRotator& A, const struct FRotator& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.EqualEqual_RotatorRotator");
 
@@ -4388,6 +4543,7 @@ bool UObject::EqualEqual_RotatorRotator(const struct FRotator& A, const struct F
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4398,7 +4554,7 @@ bool UObject::EqualEqual_RotatorRotator(const struct FRotator& A, const struct F
 
 
 // Function Core.Object.InCylinder
-// (Final, Defined, Iterator, PreOperator, Singular, Net, Simulated, Event)
+// (Final, Latent, PreOperator, Net, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector                 Origin                         (Parm)
 // struct FRotator                Dir                            (Parm)
@@ -4407,7 +4563,7 @@ bool UObject::EqualEqual_RotatorRotator(const struct FRotator& A, const struct F
 // bool                           bIgnoreZ                       (OptionalParm, Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::InCylinder(const struct FVector& Origin, const struct FRotator& Dir, float Width, const struct FVector& A, bool bIgnoreZ)
+bool UObject::STATIC_InCylinder(const struct FVector& Origin, const struct FRotator& Dir, float Width, const struct FVector& A, bool bIgnoreZ)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.InCylinder");
 
@@ -4419,6 +4575,7 @@ bool UObject::InCylinder(const struct FVector& Origin, const struct FRotator& Di
 	params.bIgnoreZ = bIgnoreZ;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4429,13 +4586,13 @@ bool UObject::InCylinder(const struct FVector& Origin, const struct FRotator& Di
 
 
 // Function Core.Object.NoZDot
-// (Iterator, Latent, Exec, Event)
+// (PreOperator, Singular, Net, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector                 A                              (Parm)
 // struct FVector                 B                              (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::NoZDot(const struct FVector& A, const struct FVector& B)
+float UObject::STATIC_NoZDot(const struct FVector& A, const struct FVector& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.NoZDot");
 
@@ -4444,6 +4601,7 @@ float UObject::NoZDot(const struct FVector& A, const struct FVector& B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4454,13 +4612,13 @@ float UObject::NoZDot(const struct FVector& A, const struct FVector& B)
 
 
 // Function Core.Object.ClampLength
-// (Final, Defined, Net, NetReliable, Event)
+// (Defined, Latent, PreOperator, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector                 V                              (Parm)
 // float                          MaxLength                      (Parm)
 // struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector UObject::ClampLength(const struct FVector& V, float MaxLength)
+struct FVector UObject::STATIC_ClampLength(const struct FVector& V, float MaxLength)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ClampLength");
 
@@ -4469,6 +4627,7 @@ struct FVector UObject::ClampLength(const struct FVector& V, float MaxLength)
 	params.MaxLength = MaxLength;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4479,7 +4638,7 @@ struct FVector UObject::ClampLength(const struct FVector& V, float MaxLength)
 
 
 // Function Core.Object.VInterpTo
-// (Defined, Iterator, Latent, Net, NetReliable, Exec, Event)
+// (Final, Iterator, Latent, PreOperator, Singular, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector                 Current                        (Parm)
 // struct FVector                 Target                         (Parm)
@@ -4487,7 +4646,7 @@ struct FVector UObject::ClampLength(const struct FVector& V, float MaxLength)
 // float                          InterpSpeed                    (Parm)
 // struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector UObject::VInterpTo(const struct FVector& Current, const struct FVector& Target, float DeltaTime, float InterpSpeed)
+struct FVector UObject::STATIC_VInterpTo(const struct FVector& Current, const struct FVector& Target, float DeltaTime, float InterpSpeed)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.VInterpTo");
 
@@ -4508,12 +4667,12 @@ struct FVector UObject::VInterpTo(const struct FVector& Current, const struct FV
 
 
 // Function Core.Object.IsZero
-// (Final, Defined, Iterator, Singular, NetReliable, Simulated, Event)
+// (Defined, Latent, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector                 A                              (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::IsZero(const struct FVector& A)
+bool UObject::STATIC_IsZero(const struct FVector& A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.IsZero");
 
@@ -4521,6 +4680,7 @@ bool UObject::IsZero(const struct FVector& A)
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4531,13 +4691,13 @@ bool UObject::IsZero(const struct FVector& A)
 
 
 // Function Core.Object.ProjectOnTo
-// (Latent, Net, Exec, Event)
+// (Defined, Iterator, Latent, Singular, NetReliable, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector                 X                              (Parm)
 // struct FVector                 Y                              (Parm)
 // struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector UObject::ProjectOnTo(const struct FVector& X, const struct FVector& Y)
+struct FVector UObject::STATIC_ProjectOnTo(const struct FVector& X, const struct FVector& Y)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ProjectOnTo");
 
@@ -4546,6 +4706,7 @@ struct FVector UObject::ProjectOnTo(const struct FVector& X, const struct FVecto
 	params.Y = Y;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4556,13 +4717,13 @@ struct FVector UObject::ProjectOnTo(const struct FVector& X, const struct FVecto
 
 
 // Function Core.Object.MirrorVectorByNormal
-// (Final, Defined, Iterator, Latent, PreOperator, Net, NetReliable, Simulated, Event)
+// (Final, Defined, Net, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector                 InVect                         (Parm)
 // struct FVector                 InNormal                       (Parm)
 // struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector UObject::MirrorVectorByNormal(const struct FVector& InVect, const struct FVector& InNormal)
+struct FVector UObject::STATIC_MirrorVectorByNormal(const struct FVector& InVect, const struct FVector& InNormal)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.MirrorVectorByNormal");
 
@@ -4571,6 +4732,7 @@ struct FVector UObject::MirrorVectorByNormal(const struct FVector& InVect, const
 	params.InNormal = InNormal;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4581,14 +4743,14 @@ struct FVector UObject::MirrorVectorByNormal(const struct FVector& InVect, const
 
 
 // Function Core.Object.VRandCone2
-// (Defined, PreOperator, Net, NetReliable, Exec, Event)
+// (Final, Net, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector                 Dir                            (Parm)
 // float                          HorizontalConeHalfAngleRadians (Parm)
 // float                          VerticalConeHalfAngleRadians   (Parm)
 // struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector UObject::VRandCone2(const struct FVector& Dir, float HorizontalConeHalfAngleRadians, float VerticalConeHalfAngleRadians)
+struct FVector UObject::STATIC_VRandCone2(const struct FVector& Dir, float HorizontalConeHalfAngleRadians, float VerticalConeHalfAngleRadians)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.VRandCone2");
 
@@ -4608,13 +4770,13 @@ struct FVector UObject::VRandCone2(const struct FVector& Dir, float HorizontalCo
 
 
 // Function Core.Object.VRandCone
-// (Final, PreOperator, Net, NetReliable, Exec, Event)
+// (Net, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector                 Dir                            (Parm)
 // float                          ConeHalfAngleRadians           (Parm)
 // struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector UObject::VRandCone(const struct FVector& Dir, float ConeHalfAngleRadians)
+struct FVector UObject::STATIC_VRandCone(const struct FVector& Dir, float ConeHalfAngleRadians)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.VRandCone");
 
@@ -4633,11 +4795,11 @@ struct FVector UObject::VRandCone(const struct FVector& Dir, float ConeHalfAngle
 
 
 // Function Core.Object.VRand
-// (PreOperator, Net, NetReliable, Exec, Event)
+// (Final, Defined, Iterator, Latent, PreOperator, Singular, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector UObject::VRand()
+struct FVector UObject::STATIC_VRand()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.VRand");
 
@@ -4654,14 +4816,14 @@ struct FVector UObject::VRand()
 
 
 // Function Core.Object.VLerp
-// (Final, Defined, Iterator, Latent, Net, NetReliable, Exec, Event)
+// (Defined, Iterator, Latent, PreOperator, Singular, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector                 A                              (Parm)
 // struct FVector                 B                              (Parm)
 // float                          Alpha                          (Parm)
 // struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector UObject::VLerp(const struct FVector& A, const struct FVector& B, float Alpha)
+struct FVector UObject::STATIC_VLerp(const struct FVector& A, const struct FVector& B, float Alpha)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.VLerp");
 
@@ -4681,12 +4843,12 @@ struct FVector UObject::VLerp(const struct FVector& A, const struct FVector& B, 
 
 
 // Function Core.Object.Normal2D
-// (Final, Defined, Iterator, Latent, PreOperator, Singular, Net, NetReliable, Simulated, Event)
+// (Final, Defined, Singular, Net, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector                 A                              (Parm)
 // struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector UObject::Normal2D(const struct FVector& A)
+struct FVector UObject::STATIC_Normal2D(const struct FVector& A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Normal2D");
 
@@ -4694,6 +4856,7 @@ struct FVector UObject::Normal2D(const struct FVector& A)
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4704,7 +4867,7 @@ struct FVector UObject::Normal2D(const struct FVector& A)
 
 
 // Function Core.Object.Normal
-// (Singular, Simulated, Exec, Event, HasOptionalParms)
+// (Iterator, Latent, PreOperator, Net, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // struct FVector                 A                              (Parm)
 // struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
@@ -4727,12 +4890,12 @@ struct FVector UObject::Normal(const struct FVector& A)
 
 
 // Function Core.Object.VSizeSq2D
-// (Defined, Iterator, PreOperator, Net, NetReliable, Exec, Event)
+// (Final, Iterator, Net, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector                 A                              (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::VSizeSq2D(const struct FVector& A)
+float UObject::STATIC_VSizeSq2D(const struct FVector& A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.VSizeSq2D");
 
@@ -4750,12 +4913,12 @@ float UObject::VSizeSq2D(const struct FVector& A)
 
 
 // Function Core.Object.VSizeSq
-// (Final, Iterator, PreOperator, Net, NetReliable, Exec, Event)
+// (Iterator, Net, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector                 A                              (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::VSizeSq(const struct FVector& A)
+float UObject::STATIC_VSizeSq(const struct FVector& A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.VSizeSq");
 
@@ -4773,12 +4936,12 @@ float UObject::VSizeSq(const struct FVector& A)
 
 
 // Function Core.Object.VSize2D
-// (Iterator, PreOperator, Net, NetReliable, Exec, Event)
+// (Final, Defined, Net, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector                 A                              (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::VSize2D(const struct FVector& A)
+float UObject::STATIC_VSize2D(const struct FVector& A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.VSize2D");
 
@@ -4796,12 +4959,12 @@ float UObject::VSize2D(const struct FVector& A)
 
 
 // Function Core.Object.VSize
-// (Final, Defined, PreOperator, Net, NetReliable, Exec, Event)
+// (Defined, Net, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector                 A                              (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::VSize(const struct FVector& A)
+float UObject::STATIC_VSize(const struct FVector& A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.VSize");
 
@@ -4819,13 +4982,13 @@ float UObject::VSize(const struct FVector& A)
 
 
 // Function Core.Object.SubtractEqual_VectorVector
-// (Defined, Latent, Singular, Event)
+// (Defined, Iterator, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector                 A                              (Parm, OutParm)
 // struct FVector                 B                              (Parm)
 // struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector UObject::SubtractEqual_VectorVector(const struct FVector& B, struct FVector* A)
+struct FVector UObject::STATIC_SubtractEqual_VectorVector(const struct FVector& B, struct FVector* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.SubtractEqual_VectorVector");
 
@@ -4833,6 +4996,7 @@ struct FVector UObject::SubtractEqual_VectorVector(const struct FVector& B, stru
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4846,13 +5010,13 @@ struct FVector UObject::SubtractEqual_VectorVector(const struct FVector& B, stru
 
 
 // Function Core.Object.AddEqual_VectorVector
-// (Final, Defined, Iterator, Singular, Event)
+// (Final, Defined, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector                 A                              (Parm, OutParm)
 // struct FVector                 B                              (Parm)
 // struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector UObject::AddEqual_VectorVector(const struct FVector& B, struct FVector* A)
+struct FVector UObject::STATIC_AddEqual_VectorVector(const struct FVector& B, struct FVector* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.AddEqual_VectorVector");
 
@@ -4860,6 +5024,7 @@ struct FVector UObject::AddEqual_VectorVector(const struct FVector& B, struct FV
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4873,13 +5038,13 @@ struct FVector UObject::AddEqual_VectorVector(const struct FVector& B, struct FV
 
 
 // Function Core.Object.DivideEqual_VectorFloat
-// (Final, Defined, Latent, Singular, Event)
+// (NetReliable, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector                 A                              (Parm, OutParm)
 // float                          B                              (Parm)
 // struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector UObject::DivideEqual_VectorFloat(float B, struct FVector* A)
+struct FVector UObject::STATIC_DivideEqual_VectorFloat(float B, struct FVector* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.DivideEqual_VectorFloat");
 
@@ -4887,6 +5052,7 @@ struct FVector UObject::DivideEqual_VectorFloat(float B, struct FVector* A)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4900,13 +5066,13 @@ struct FVector UObject::DivideEqual_VectorFloat(float B, struct FVector* A)
 
 
 // Function Core.Object.MultiplyEqual_VectorVector
-// (Iterator, Singular, Event)
+// (Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector                 A                              (Parm, OutParm)
 // struct FVector                 B                              (Parm)
 // struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector UObject::MultiplyEqual_VectorVector(const struct FVector& B, struct FVector* A)
+struct FVector UObject::STATIC_MultiplyEqual_VectorVector(const struct FVector& B, struct FVector* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.MultiplyEqual_VectorVector");
 
@@ -4914,6 +5080,7 @@ struct FVector UObject::MultiplyEqual_VectorVector(const struct FVector& B, stru
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4927,13 +5094,13 @@ struct FVector UObject::MultiplyEqual_VectorVector(const struct FVector& B, stru
 
 
 // Function Core.Object.MultiplyEqual_VectorFloat
-// (Iterator, Singular, Event)
+// (Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector                 A                              (Parm, OutParm)
 // float                          B                              (Parm)
 // struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector UObject::MultiplyEqual_VectorFloat(float B, struct FVector* A)
+struct FVector UObject::STATIC_MultiplyEqual_VectorFloat(float B, struct FVector* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.MultiplyEqual_VectorFloat");
 
@@ -4941,6 +5108,7 @@ struct FVector UObject::MultiplyEqual_VectorFloat(float B, struct FVector* A)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4954,13 +5122,13 @@ struct FVector UObject::MultiplyEqual_VectorFloat(float B, struct FVector* A)
 
 
 // Function Core.Object.Cross_VectorVector
-// (Final, Iterator, PreOperator, Net, NetReliable, Event)
+// (Iterator, Latent, Singular, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector                 A                              (Parm)
 // struct FVector                 B                              (Parm)
 // struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector UObject::Cross_VectorVector(const struct FVector& A, const struct FVector& B)
+struct FVector UObject::STATIC_Cross_VectorVector(const struct FVector& A, const struct FVector& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Cross_VectorVector");
 
@@ -4969,6 +5137,7 @@ struct FVector UObject::Cross_VectorVector(const struct FVector& A, const struct
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4979,13 +5148,13 @@ struct FVector UObject::Cross_VectorVector(const struct FVector& A, const struct
 
 
 // Function Core.Object.Dot_VectorVector
-// (Final, Defined, Iterator, PreOperator, Singular, Net, NetReliable, Event)
+// (Defined, PreOperator, Net, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector                 A                              (Parm)
 // struct FVector                 B                              (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::Dot_VectorVector(const struct FVector& A, const struct FVector& B)
+float UObject::STATIC_Dot_VectorVector(const struct FVector& A, const struct FVector& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Dot_VectorVector");
 
@@ -4994,6 +5163,7 @@ float UObject::Dot_VectorVector(const struct FVector& A, const struct FVector& B
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5004,13 +5174,13 @@ float UObject::Dot_VectorVector(const struct FVector& A, const struct FVector& B
 
 
 // Function Core.Object.NotEqual_VectorVector
-// (Iterator, Latent, PreOperator, Event)
+// (PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector                 A                              (Parm)
 // struct FVector                 B                              (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::NotEqual_VectorVector(const struct FVector& A, const struct FVector& B)
+bool UObject::STATIC_NotEqual_VectorVector(const struct FVector& A, const struct FVector& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.NotEqual_VectorVector");
 
@@ -5019,6 +5189,7 @@ bool UObject::NotEqual_VectorVector(const struct FVector& A, const struct FVecto
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5029,13 +5200,13 @@ bool UObject::NotEqual_VectorVector(const struct FVector& A, const struct FVecto
 
 
 // Function Core.Object.EqualEqual_VectorVector
-// (Final, Defined, Iterator, Latent, Singular, Event)
+// (Iterator, NetReliable, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector                 A                              (Parm)
 // struct FVector                 B                              (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::EqualEqual_VectorVector(const struct FVector& A, const struct FVector& B)
+bool UObject::STATIC_EqualEqual_VectorVector(const struct FVector& A, const struct FVector& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.EqualEqual_VectorVector");
 
@@ -5044,6 +5215,7 @@ bool UObject::EqualEqual_VectorVector(const struct FVector& A, const struct FVec
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5054,13 +5226,13 @@ bool UObject::EqualEqual_VectorVector(const struct FVector& A, const struct FVec
 
 
 // Function Core.Object.GreaterGreater_VectorRotator
-// (Defined, PreOperator, Singular, Event)
+// (Final, Defined, Iterator, NetReliable, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector                 A                              (Parm)
 // struct FRotator                B                              (Parm)
 // struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector UObject::GreaterGreater_VectorRotator(const struct FVector& A, const struct FRotator& B)
+struct FVector UObject::STATIC_GreaterGreater_VectorRotator(const struct FVector& A, const struct FRotator& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GreaterGreater_VectorRotator");
 
@@ -5069,6 +5241,7 @@ struct FVector UObject::GreaterGreater_VectorRotator(const struct FVector& A, co
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5079,13 +5252,13 @@ struct FVector UObject::GreaterGreater_VectorRotator(const struct FVector& A, co
 
 
 // Function Core.Object.LessLess_VectorRotator
-// (Final, Iterator, Latent, Singular, Event)
+// (Defined, NetReliable, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector                 A                              (Parm)
 // struct FRotator                B                              (Parm)
 // struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector UObject::LessLess_VectorRotator(const struct FVector& A, const struct FRotator& B)
+struct FVector UObject::STATIC_LessLess_VectorRotator(const struct FVector& A, const struct FRotator& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.LessLess_VectorRotator");
 
@@ -5094,6 +5267,7 @@ struct FVector UObject::LessLess_VectorRotator(const struct FVector& A, const st
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5104,13 +5278,13 @@ struct FVector UObject::LessLess_VectorRotator(const struct FVector& A, const st
 
 
 // Function Core.Object.Subtract_VectorVector
-// (Latent, Singular, Event)
+// (Iterator, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector                 A                              (Parm)
 // struct FVector                 B                              (Parm)
 // struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector UObject::Subtract_VectorVector(const struct FVector& A, const struct FVector& B)
+struct FVector UObject::STATIC_Subtract_VectorVector(const struct FVector& A, const struct FVector& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Subtract_VectorVector");
 
@@ -5119,6 +5293,7 @@ struct FVector UObject::Subtract_VectorVector(const struct FVector& A, const str
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5129,13 +5304,13 @@ struct FVector UObject::Subtract_VectorVector(const struct FVector& A, const str
 
 
 // Function Core.Object.Add_VectorVector
-// (Final, Iterator, Singular, Event)
+// (Final, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector                 A                              (Parm)
 // struct FVector                 B                              (Parm)
 // struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector UObject::Add_VectorVector(const struct FVector& A, const struct FVector& B)
+struct FVector UObject::STATIC_Add_VectorVector(const struct FVector& A, const struct FVector& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Add_VectorVector");
 
@@ -5144,6 +5319,7 @@ struct FVector UObject::Add_VectorVector(const struct FVector& A, const struct F
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5154,13 +5330,13 @@ struct FVector UObject::Add_VectorVector(const struct FVector& A, const struct F
 
 
 // Function Core.Object.Divide_VectorFloat
-// (Iterator, Latent, Net, NetReliable, Native, Event, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector                 A                              (Parm)
 // float                          B                              (Parm)
 // struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector UObject::Divide_VectorFloat(const struct FVector& A, float B)
+struct FVector UObject::STATIC_Divide_VectorFloat(const struct FVector& A, float B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Divide_VectorFloat");
 
@@ -5180,13 +5356,13 @@ struct FVector UObject::Divide_VectorFloat(const struct FVector& A, float B)
 
 
 // Function Core.Object.Multiply_VectorVector
-// (Defined, Singular, Event)
+// (Defined, Iterator, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector                 A                              (Parm)
 // struct FVector                 B                              (Parm)
 // struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector UObject::Multiply_VectorVector(const struct FVector& A, const struct FVector& B)
+struct FVector UObject::STATIC_Multiply_VectorVector(const struct FVector& A, const struct FVector& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Multiply_VectorVector");
 
@@ -5195,6 +5371,7 @@ struct FVector UObject::Multiply_VectorVector(const struct FVector& A, const str
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5205,13 +5382,13 @@ struct FVector UObject::Multiply_VectorVector(const struct FVector& A, const str
 
 
 // Function Core.Object.Multiply_FloatVector
-// (Defined, Singular, Event)
+// (Defined, Iterator, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          A                              (Parm)
 // struct FVector                 B                              (Parm)
 // struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector UObject::Multiply_FloatVector(float A, const struct FVector& B)
+struct FVector UObject::STATIC_Multiply_FloatVector(float A, const struct FVector& B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Multiply_FloatVector");
 
@@ -5220,6 +5397,7 @@ struct FVector UObject::Multiply_FloatVector(float A, const struct FVector& B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5230,13 +5408,13 @@ struct FVector UObject::Multiply_FloatVector(float A, const struct FVector& B)
 
 
 // Function Core.Object.Multiply_VectorFloat
-// (Defined, Singular, Event)
+// (Defined, Iterator, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector                 A                              (Parm)
 // float                          B                              (Parm)
 // struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector UObject::Multiply_VectorFloat(const struct FVector& A, float B)
+struct FVector UObject::STATIC_Multiply_VectorFloat(const struct FVector& A, float B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Multiply_VectorFloat");
 
@@ -5245,6 +5423,7 @@ struct FVector UObject::Multiply_VectorFloat(const struct FVector& A, float B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5255,12 +5434,12 @@ struct FVector UObject::Multiply_VectorFloat(const struct FVector& A, float B)
 
 
 // Function Core.Object.Subtract_PreVector
-// (Latent, Singular, Event)
+// (Iterator, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FVector                 A                              (Parm)
 // struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector UObject::Subtract_PreVector(const struct FVector& A)
+struct FVector UObject::STATIC_Subtract_PreVector(const struct FVector& A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Subtract_PreVector");
 
@@ -5268,6 +5447,7 @@ struct FVector UObject::Subtract_PreVector(const struct FVector& A)
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5278,7 +5458,7 @@ struct FVector UObject::Subtract_PreVector(const struct FVector& A)
 
 
 // Function Core.Object.FInterpConstantTo
-// (Final, Latent, Singular, Simulated, Event)
+// (Defined, Iterator, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          Current                        (Parm)
 // float                          Target                         (Parm)
@@ -5286,7 +5466,7 @@ struct FVector UObject::Subtract_PreVector(const struct FVector& A)
 // float                          InterpSpeed                    (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::FInterpConstantTo(float Current, float Target, float DeltaTime, float InterpSpeed)
+float UObject::STATIC_FInterpConstantTo(float Current, float Target, float DeltaTime, float InterpSpeed)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.FInterpConstantTo");
 
@@ -5297,6 +5477,7 @@ float UObject::FInterpConstantTo(float Current, float Target, float DeltaTime, f
 	params.InterpSpeed = InterpSpeed;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5307,7 +5488,7 @@ float UObject::FInterpConstantTo(float Current, float Target, float DeltaTime, f
 
 
 // Function Core.Object.FInterpTo
-// (Final, Iterator, Latent, Singular, Simulated, Event)
+// (Defined, Latent, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          Current                        (Parm)
 // float                          Target                         (Parm)
@@ -5315,7 +5496,7 @@ float UObject::FInterpConstantTo(float Current, float Target, float DeltaTime, f
 // float                          InterpSpeed                    (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::FInterpTo(float Current, float Target, float DeltaTime, float InterpSpeed)
+float UObject::STATIC_FInterpTo(float Current, float Target, float DeltaTime, float InterpSpeed)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.FInterpTo");
 
@@ -5326,6 +5507,7 @@ float UObject::FInterpTo(float Current, float Target, float DeltaTime, float Int
 	params.InterpSpeed = InterpSpeed;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5336,14 +5518,14 @@ float UObject::FInterpTo(float Current, float Target, float DeltaTime, float Int
 
 
 // Function Core.Object.FPctByRange
-// (Latent, PreOperator, Singular, Simulated, Event)
+// (Final, Iterator, PreOperator, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          Value                          (Parm)
 // float                          InMin                          (Parm)
 // float                          InMax                          (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::FPctByRange(float Value, float InMin, float InMax)
+float UObject::STATIC_FPctByRange(float Value, float InMin, float InMax)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.FPctByRange");
 
@@ -5353,6 +5535,7 @@ float UObject::FPctByRange(float Value, float InMin, float InMax)
 	params.InMax = InMax;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5363,13 +5546,13 @@ float UObject::FPctByRange(float Value, float InMin, float InMax)
 
 
 // Function Core.Object.RandRange
-// (Defined, Iterator, PreOperator, Net, Exec, Event)
+// (Defined, Iterator, Latent, PreOperator, Singular, NetReliable, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          InMin                          (Parm)
 // float                          InMax                          (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::RandRange(float InMin, float InMax)
+float UObject::STATIC_RandRange(float InMin, float InMax)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.RandRange");
 
@@ -5378,6 +5561,7 @@ float UObject::RandRange(float InMin, float InMax)
 	params.InMax = InMax;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5388,7 +5572,7 @@ float UObject::RandRange(float InMin, float InMax)
 
 
 // Function Core.Object.FInterpEaseInOut
-// (Final, Defined, Latent, Singular, Simulated, Event)
+// (Latent, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          A                              (Parm)
 // float                          B                              (Parm)
@@ -5396,7 +5580,7 @@ float UObject::RandRange(float InMin, float InMax)
 // float                          Exp                            (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::FInterpEaseInOut(float A, float B, float Alpha, float Exp)
+float UObject::STATIC_FInterpEaseInOut(float A, float B, float Alpha, float Exp)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.FInterpEaseInOut");
 
@@ -5407,6 +5591,7 @@ float UObject::FInterpEaseInOut(float A, float B, float Alpha, float Exp)
 	params.Exp = Exp;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5417,7 +5602,7 @@ float UObject::FInterpEaseInOut(float A, float B, float Alpha, float Exp)
 
 
 // Function Core.Object.FInterpEaseOut
-// (Iterator, Latent, Singular, Simulated, Event)
+// (Final, Latent, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          A                              (Parm)
 // float                          B                              (Parm)
@@ -5425,7 +5610,7 @@ float UObject::FInterpEaseInOut(float A, float B, float Alpha, float Exp)
 // float                          Exp                            (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::FInterpEaseOut(float A, float B, float Alpha, float Exp)
+float UObject::STATIC_FInterpEaseOut(float A, float B, float Alpha, float Exp)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.FInterpEaseOut");
 
@@ -5436,6 +5621,7 @@ float UObject::FInterpEaseOut(float A, float B, float Alpha, float Exp)
 	params.Exp = Exp;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5446,7 +5632,7 @@ float UObject::FInterpEaseOut(float A, float B, float Alpha, float Exp)
 
 
 // Function Core.Object.FInterpEaseIn
-// (Defined, Latent, Singular, Simulated, Event)
+// (Final, Defined, Iterator, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          A                              (Parm)
 // float                          B                              (Parm)
@@ -5454,7 +5640,7 @@ float UObject::FInterpEaseOut(float A, float B, float Alpha, float Exp)
 // float                          Exp                            (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::FInterpEaseIn(float A, float B, float Alpha, float Exp)
+float UObject::STATIC_FInterpEaseIn(float A, float B, float Alpha, float Exp)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.FInterpEaseIn");
 
@@ -5465,6 +5651,7 @@ float UObject::FInterpEaseIn(float A, float B, float Alpha, float Exp)
 	params.Exp = Exp;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5475,7 +5662,7 @@ float UObject::FInterpEaseIn(float A, float B, float Alpha, float Exp)
 
 
 // Function Core.Object.FCubicInterp
-// (Final, Iterator, Singular, Simulated, Event)
+// (Defined, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          P0                             (Parm)
 // float                          T0                             (Parm)
@@ -5484,7 +5671,7 @@ float UObject::FInterpEaseIn(float A, float B, float Alpha, float Exp)
 // float                          A                              (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::FCubicInterp(float P0, float T0, float P1, float T1, float A)
+float UObject::STATIC_FCubicInterp(float P0, float T0, float P1, float T1, float A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.FCubicInterp");
 
@@ -5496,6 +5683,7 @@ float UObject::FCubicInterp(float P0, float T0, float P1, float T1, float A)
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5506,12 +5694,12 @@ float UObject::FCubicInterp(float P0, float T0, float P1, float T1, float A)
 
 
 // Function Core.Object.FCeil
-// (Defined, Singular, Simulated, Event)
+// (Final, Defined, Iterator, Latent, PreOperator, Singular, Net, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          A                              (Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UObject::FCeil(float A)
+int UObject::STATIC_FCeil(float A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.FCeil");
 
@@ -5519,6 +5707,7 @@ int UObject::FCeil(float A)
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5529,12 +5718,12 @@ int UObject::FCeil(float A)
 
 
 // Function Core.Object.FFloor
-// (Defined, Iterator, Singular, Simulated, Event)
+// (Final, Defined, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          A                              (Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UObject::FFloor(float A)
+int UObject::STATIC_FFloor(float A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.FFloor");
 
@@ -5542,6 +5731,7 @@ int UObject::FFloor(float A)
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5552,12 +5742,12 @@ int UObject::FFloor(float A)
 
 
 // Function Core.Object.Round
-// (Iterator, Singular, Net, Exec, Event)
+// (Defined, Iterator, Latent, Net, NetReliable, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          A                              (Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UObject::Round(float A)
+int UObject::STATIC_Round(float A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Round");
 
@@ -5565,6 +5755,7 @@ int UObject::Round(float A)
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5575,14 +5766,14 @@ int UObject::Round(float A)
 
 
 // Function Core.Object.Lerp
-// (PreOperator, Singular, NetReliable, Simulated, Event)
+// (Final, Defined, PreOperator, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          A                              (Parm)
 // float                          B                              (Parm)
 // float                          Alpha                          (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::Lerp(float A, float B, float Alpha)
+float UObject::STATIC_Lerp(float A, float B, float Alpha)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Lerp");
 
@@ -5592,6 +5783,7 @@ float UObject::Lerp(float A, float B, float Alpha)
 	params.Alpha = Alpha;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5602,14 +5794,14 @@ float UObject::Lerp(float A, float B, float Alpha)
 
 
 // Function Core.Object.FClamp
-// (Final, Defined, Singular, Simulated, Event)
+// (NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          V                              (Parm)
 // float                          A                              (Parm)
 // float                          B                              (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::FClamp(float V, float A, float B)
+float UObject::STATIC_FClamp(float V, float A, float B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.FClamp");
 
@@ -5619,6 +5811,7 @@ float UObject::FClamp(float V, float A, float B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5629,13 +5822,13 @@ float UObject::FClamp(float V, float A, float B)
 
 
 // Function Core.Object.FMax
-// (Final, Iterator, PreOperator, Singular, Simulated, Event)
+// (Defined, PreOperator, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          A                              (Parm)
 // float                          B                              (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::FMax(float A, float B)
+float UObject::STATIC_FMax(float A, float B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.FMax");
 
@@ -5644,6 +5837,7 @@ float UObject::FMax(float A, float B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5654,13 +5848,13 @@ float UObject::FMax(float A, float B)
 
 
 // Function Core.Object.FMin
-// (Defined, Iterator, PreOperator, Singular, Simulated, Event)
+// (Final, Defined, PreOperator, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          A                              (Parm)
 // float                          B                              (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::FMin(float A, float B)
+float UObject::STATIC_FMin(float A, float B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.FMin");
 
@@ -5669,6 +5863,7 @@ float UObject::FMin(float A, float B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5679,17 +5874,18 @@ float UObject::FMin(float A, float B)
 
 
 // Function Core.Object.FRand
-// (Final, Defined, Latent, PreOperator, Singular, Simulated, Event)
+// (Latent, PreOperator, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::FRand()
+float UObject::STATIC_FRand()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.FRand");
 
 	UObject_FRand_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5700,12 +5896,12 @@ float UObject::FRand()
 
 
 // Function Core.Object.Square
-// (Iterator, Latent, PreOperator, Singular, Net, Exec, Event)
+// (Final, Defined, Latent, Singular, Net, NetReliable, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          A                              (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::Square(float A)
+float UObject::STATIC_Square(float A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Square");
 
@@ -5713,6 +5909,7 @@ float UObject::Square(float A)
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5723,12 +5920,12 @@ float UObject::Square(float A)
 
 
 // Function Core.Object.Sqrt
-// (Final, Defined, Latent, PreOperator, Singular, Net, Exec, Event)
+// (Defined, Latent, Singular, Net, NetReliable, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          A                              (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::Sqrt(float A)
+float UObject::STATIC_Sqrt(float A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Sqrt");
 
@@ -5736,6 +5933,7 @@ float UObject::Sqrt(float A)
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5746,12 +5944,12 @@ float UObject::Sqrt(float A)
 
 
 // Function Core.Object.Loge
-// (Final, Defined, Iterator, Latent, PreOperator, Singular, NetReliable, Simulated, Event)
+// (Final, Defined, Singular, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          A                              (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::Loge(float A)
+float UObject::STATIC_Loge(float A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Loge");
 
@@ -5759,6 +5957,7 @@ float UObject::Loge(float A)
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5769,12 +5968,12 @@ float UObject::Loge(float A)
 
 
 // Function Core.Object.Exp
-// (Final, Singular, Simulated, Event)
+// (Defined, Iterator, Latent, PreOperator, Singular, Net, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          A                              (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::Exp(float A)
+float UObject::STATIC_Exp(float A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Exp");
 
@@ -5782,6 +5981,7 @@ float UObject::Exp(float A)
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5792,13 +5992,13 @@ float UObject::Exp(float A)
 
 
 // Function Core.Object.Atan2
-// (Defined, NetReliable, Event)
+// (Final, Defined, Iterator, PreOperator, Net, NetReliable, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          A                              (Parm)
 // float                          B                              (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::Atan2(float A, float B)
+float UObject::STATIC_Atan2(float A, float B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Atan2");
 
@@ -5807,6 +6007,7 @@ float UObject::Atan2(float A, float B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5817,12 +6018,12 @@ float UObject::Atan2(float A, float B)
 
 
 // Function Core.Object.Atan
-// (Final, NetReliable, Event)
+// (Defined, Iterator, PreOperator, Net, NetReliable, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          A                              (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::Atan(float A)
+float UObject::STATIC_Atan(float A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Atan");
 
@@ -5830,6 +6031,7 @@ float UObject::Atan(float A)
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5840,12 +6042,12 @@ float UObject::Atan(float A)
 
 
 // Function Core.Object.Tan
-// (Defined, Iterator, Latent, PreOperator, NetReliable, Exec, Event)
+// (Final, Iterator, Latent, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          A                              (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::Tan(float A)
+float UObject::STATIC_Tan(float A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Tan");
 
@@ -5863,12 +6065,12 @@ float UObject::Tan(float A)
 
 
 // Function Core.Object.Acos
-// (Final, Defined, Net, Event)
+// (Latent, PreOperator, NetReliable, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          A                              (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::Acos(float A)
+float UObject::STATIC_Acos(float A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Acos");
 
@@ -5876,6 +6078,7 @@ float UObject::Acos(float A)
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5886,12 +6089,12 @@ float UObject::Acos(float A)
 
 
 // Function Core.Object.Cos
-// (Final, Defined, PreOperator, Net, NetReliable, Event)
+// (Defined, Latent, Singular, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          A                              (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::Cos(float A)
+float UObject::STATIC_Cos(float A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Cos");
 
@@ -5899,6 +6102,7 @@ float UObject::Cos(float A)
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5909,12 +6113,12 @@ float UObject::Cos(float A)
 
 
 // Function Core.Object.Asin
-// (Defined, Iterator, PreOperator, Singular, Net, Event)
+// (Final, Defined, Latent, Net, NetReliable, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          A                              (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::Asin(float A)
+float UObject::STATIC_Asin(float A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Asin");
 
@@ -5922,6 +6126,7 @@ float UObject::Asin(float A)
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5932,12 +6137,12 @@ float UObject::Asin(float A)
 
 
 // Function Core.Object.Sin
-// (Final, Iterator, PreOperator, Singular, Net, Exec, Event)
+// (Final, Singular, Net, NetReliable, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          A                              (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::Sin(float A)
+float UObject::STATIC_Sin(float A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Sin");
 
@@ -5945,6 +6150,7 @@ float UObject::Sin(float A)
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5955,12 +6161,12 @@ float UObject::Sin(float A)
 
 
 // Function Core.Object.Abs
-// (Defined, Latent, PreOperator, Singular, Event)
+// (Final, Defined, Iterator, Latent, NetReliable, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          A                              (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::Abs(float A)
+float UObject::STATIC_Abs(float A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Abs");
 
@@ -5968,6 +6174,7 @@ float UObject::Abs(float A)
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5978,13 +6185,13 @@ float UObject::Abs(float A)
 
 
 // Function Core.Object.SubtractEqual_FloatFloat
-// (Defined, Latent, Singular, Event)
+// (Defined, Iterator, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          A                              (Parm, OutParm)
 // float                          B                              (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::SubtractEqual_FloatFloat(float B, float* A)
+float UObject::STATIC_SubtractEqual_FloatFloat(float B, float* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.SubtractEqual_FloatFloat");
 
@@ -5992,6 +6199,7 @@ float UObject::SubtractEqual_FloatFloat(float B, float* A)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6005,13 +6213,13 @@ float UObject::SubtractEqual_FloatFloat(float B, float* A)
 
 
 // Function Core.Object.AddEqual_FloatFloat
-// (Final, Defined, Iterator, Singular, Event)
+// (Final, Defined, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          A                              (Parm, OutParm)
 // float                          B                              (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::AddEqual_FloatFloat(float B, float* A)
+float UObject::STATIC_AddEqual_FloatFloat(float B, float* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.AddEqual_FloatFloat");
 
@@ -6019,6 +6227,7 @@ float UObject::AddEqual_FloatFloat(float B, float* A)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6032,13 +6241,13 @@ float UObject::AddEqual_FloatFloat(float B, float* A)
 
 
 // Function Core.Object.DivideEqual_FloatFloat
-// (Final, Defined, Latent, Singular, Event)
+// (NetReliable, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          A                              (Parm, OutParm)
 // float                          B                              (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::DivideEqual_FloatFloat(float B, float* A)
+float UObject::STATIC_DivideEqual_FloatFloat(float B, float* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.DivideEqual_FloatFloat");
 
@@ -6046,6 +6255,7 @@ float UObject::DivideEqual_FloatFloat(float B, float* A)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6059,13 +6269,13 @@ float UObject::DivideEqual_FloatFloat(float B, float* A)
 
 
 // Function Core.Object.MultiplyEqual_FloatFloat
-// (Iterator, Singular, Event)
+// (Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          A                              (Parm, OutParm)
 // float                          B                              (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::MultiplyEqual_FloatFloat(float B, float* A)
+float UObject::STATIC_MultiplyEqual_FloatFloat(float B, float* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.MultiplyEqual_FloatFloat");
 
@@ -6073,6 +6283,7 @@ float UObject::MultiplyEqual_FloatFloat(float B, float* A)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6086,13 +6297,13 @@ float UObject::MultiplyEqual_FloatFloat(float B, float* A)
 
 
 // Function Core.Object.NotEqual_FloatFloat
-// (Iterator, Latent, PreOperator, Event)
+// (PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          A                              (Parm)
 // float                          B                              (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::NotEqual_FloatFloat(float A, float B)
+bool UObject::STATIC_NotEqual_FloatFloat(float A, float B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.NotEqual_FloatFloat");
 
@@ -6101,6 +6312,7 @@ bool UObject::NotEqual_FloatFloat(float A, float B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6111,13 +6323,13 @@ bool UObject::NotEqual_FloatFloat(float A, float B)
 
 
 // Function Core.Object.ComplementEqual_FloatFloat
-// (Iterator, Singular, Net, NetReliable, Exec, Event)
+// (Iterator, PreOperator, Net, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          A                              (Parm)
 // float                          B                              (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::ComplementEqual_FloatFloat(float A, float B)
+bool UObject::STATIC_ComplementEqual_FloatFloat(float A, float B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ComplementEqual_FloatFloat");
 
@@ -6136,13 +6348,13 @@ bool UObject::ComplementEqual_FloatFloat(float A, float B)
 
 
 // Function Core.Object.EqualEqual_FloatFloat
-// (Final, Defined, Iterator, Latent, Singular, Event)
+// (Iterator, NetReliable, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          A                              (Parm)
 // float                          B                              (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::EqualEqual_FloatFloat(float A, float B)
+bool UObject::STATIC_EqualEqual_FloatFloat(float A, float B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.EqualEqual_FloatFloat");
 
@@ -6151,6 +6363,7 @@ bool UObject::EqualEqual_FloatFloat(float A, float B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6161,13 +6374,13 @@ bool UObject::EqualEqual_FloatFloat(float A, float B)
 
 
 // Function Core.Object.GreaterEqual_FloatFloat
-// (Final, PreOperator, Singular, Event)
+// (Defined, Iterator, NetReliable, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          A                              (Parm)
 // float                          B                              (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::GreaterEqual_FloatFloat(float A, float B)
+bool UObject::STATIC_GreaterEqual_FloatFloat(float A, float B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GreaterEqual_FloatFloat");
 
@@ -6176,6 +6389,7 @@ bool UObject::GreaterEqual_FloatFloat(float A, float B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6186,13 +6400,13 @@ bool UObject::GreaterEqual_FloatFloat(float A, float B)
 
 
 // Function Core.Object.LessEqual_FloatFloat
-// (Defined, Iterator, Latent, Singular, Event)
+// (Final, Defined, NetReliable, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          A                              (Parm)
 // float                          B                              (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::LessEqual_FloatFloat(float A, float B)
+bool UObject::STATIC_LessEqual_FloatFloat(float A, float B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.LessEqual_FloatFloat");
 
@@ -6201,6 +6415,7 @@ bool UObject::LessEqual_FloatFloat(float A, float B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6211,13 +6426,13 @@ bool UObject::LessEqual_FloatFloat(float A, float B)
 
 
 // Function Core.Object.Greater_FloatFloat
-// (PreOperator, Singular, Event)
+// (Final, Iterator, NetReliable, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          A                              (Parm)
 // float                          B                              (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::Greater_FloatFloat(float A, float B)
+bool UObject::STATIC_Greater_FloatFloat(float A, float B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Greater_FloatFloat");
 
@@ -6226,6 +6441,7 @@ bool UObject::Greater_FloatFloat(float A, float B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6236,13 +6452,13 @@ bool UObject::Greater_FloatFloat(float A, float B)
 
 
 // Function Core.Object.Less_FloatFloat
-// (Iterator, Latent, Singular, Event)
+// (Final, NetReliable, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          A                              (Parm)
 // float                          B                              (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::Less_FloatFloat(float A, float B)
+bool UObject::STATIC_Less_FloatFloat(float A, float B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Less_FloatFloat");
 
@@ -6251,6 +6467,7 @@ bool UObject::Less_FloatFloat(float A, float B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6261,13 +6478,13 @@ bool UObject::Less_FloatFloat(float A, float B)
 
 
 // Function Core.Object.Subtract_FloatFloat
-// (Latent, Singular, Event)
+// (Iterator, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          A                              (Parm)
 // float                          B                              (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::Subtract_FloatFloat(float A, float B)
+float UObject::STATIC_Subtract_FloatFloat(float A, float B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Subtract_FloatFloat");
 
@@ -6276,6 +6493,7 @@ float UObject::Subtract_FloatFloat(float A, float B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6286,13 +6504,13 @@ float UObject::Subtract_FloatFloat(float A, float B)
 
 
 // Function Core.Object.Add_FloatFloat
-// (Final, Iterator, Singular, Event)
+// (Final, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          A                              (Parm)
 // float                          B                              (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::Add_FloatFloat(float A, float B)
+float UObject::STATIC_Add_FloatFloat(float A, float B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Add_FloatFloat");
 
@@ -6301,6 +6519,7 @@ float UObject::Add_FloatFloat(float A, float B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6311,13 +6530,13 @@ float UObject::Add_FloatFloat(float A, float B)
 
 
 // Function Core.Object.Percent_FloatFloat
-// (Final, Defined, Iterator, Latent, PreOperator, Event)
+// (Final, Defined, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          A                              (Parm)
 // float                          B                              (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::Percent_FloatFloat(float A, float B)
+float UObject::STATIC_Percent_FloatFloat(float A, float B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Percent_FloatFloat");
 
@@ -6326,6 +6545,7 @@ float UObject::Percent_FloatFloat(float A, float B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6336,13 +6556,13 @@ float UObject::Percent_FloatFloat(float A, float B)
 
 
 // Function Core.Object.Divide_FloatFloat
-// (Iterator, Latent, Net, NetReliable, Native, Event, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          A                              (Parm)
 // float                          B                              (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::Divide_FloatFloat(float A, float B)
+float UObject::STATIC_Divide_FloatFloat(float A, float B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Divide_FloatFloat");
 
@@ -6362,13 +6582,13 @@ float UObject::Divide_FloatFloat(float A, float B)
 
 
 // Function Core.Object.Multiply_FloatFloat
-// (Defined, Singular, Event)
+// (Defined, Iterator, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          A                              (Parm)
 // float                          B                              (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::Multiply_FloatFloat(float A, float B)
+float UObject::STATIC_Multiply_FloatFloat(float A, float B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Multiply_FloatFloat");
 
@@ -6377,6 +6597,7 @@ float UObject::Multiply_FloatFloat(float A, float B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6387,13 +6608,13 @@ float UObject::Multiply_FloatFloat(float A, float B)
 
 
 // Function Core.Object.MultiplyMultiply_FloatFloat
-// (Final, Defined, Singular, Event)
+// (Final, Defined, Iterator, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          Base                           (Parm)
 // float                          Exp                            (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::MultiplyMultiply_FloatFloat(float Base, float Exp)
+float UObject::STATIC_MultiplyMultiply_FloatFloat(float Base, float Exp)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.MultiplyMultiply_FloatFloat");
 
@@ -6402,6 +6623,7 @@ float UObject::MultiplyMultiply_FloatFloat(float Base, float Exp)
 	params.Exp = Exp;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6412,12 +6634,12 @@ float UObject::MultiplyMultiply_FloatFloat(float Base, float Exp)
 
 
 // Function Core.Object.Subtract_PreFloat
-// (Latent, Singular, Event)
+// (Iterator, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          A                              (Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UObject::Subtract_PreFloat(float A)
+float UObject::STATIC_Subtract_PreFloat(float A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Subtract_PreFloat");
 
@@ -6425,6 +6647,7 @@ float UObject::Subtract_PreFloat(float A)
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6435,12 +6658,12 @@ float UObject::Subtract_PreFloat(float A)
 
 
 // Function Core.Object.ToHex
-// (Defined, PreOperator, Singular, NetReliable, Exec, Event)
+// (Final, Singular, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // int                            A                              (Parm)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString UObject::ToHex(int A)
+struct FString UObject::STATIC_ToHex(int A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.ToHex");
 
@@ -6458,14 +6681,14 @@ struct FString UObject::ToHex(int A)
 
 
 // Function Core.Object.Clamp
-// (Defined, Net, NetReliable, Event)
+// (Final, Latent, PreOperator, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // int                            V                              (Parm)
 // int                            A                              (Parm)
 // int                            B                              (Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UObject::Clamp(int V, int A, int B)
+int UObject::STATIC_Clamp(int V, int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Clamp");
 
@@ -6475,6 +6698,7 @@ int UObject::Clamp(int V, int A, int B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6485,13 +6709,13 @@ int UObject::Clamp(int V, int A, int B)
 
 
 // Function Core.Object.Max
-// (Iterator, PreOperator, Net, NetReliable, Simulated, Event)
+// (Latent, PreOperator, Singular, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // int                            A                              (Parm)
 // int                            B                              (Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UObject::Max(int A, int B)
+int UObject::STATIC_Max(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Max");
 
@@ -6500,6 +6724,7 @@ int UObject::Max(int A, int B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6510,13 +6735,13 @@ int UObject::Max(int A, int B)
 
 
 // Function Core.Object.Min
-// (Final, Iterator, Latent, PreOperator, Net, NetReliable, Simulated, Event)
+// (Final, Net, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // int                            A                              (Parm)
 // int                            B                              (Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UObject::Min(int A, int B)
+int UObject::STATIC_Min(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Min");
 
@@ -6525,6 +6750,7 @@ int UObject::Min(int A, int B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6535,12 +6761,12 @@ int UObject::Min(int A, int B)
 
 
 // Function Core.Object.Rand
-// (Final, Iterator, PreOperator, Net, Exec, Event)
+// (Final, Iterator, Latent, PreOperator, Singular, NetReliable, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // int                            Max                            (Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UObject::Rand(int Max)
+int UObject::STATIC_Rand(int Max)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Rand");
 
@@ -6548,6 +6774,7 @@ int UObject::Rand(int Max)
 	params.Max = Max;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6558,18 +6785,19 @@ int UObject::Rand(int Max)
 
 
 // Function Core.Object.SubtractSubtract_Int
-// (Final, Latent, Singular, Event)
+// (Final, Iterator, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // int                            A                              (Parm, OutParm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UObject::SubtractSubtract_Int(int* A)
+int UObject::STATIC_SubtractSubtract_Int(int* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.SubtractSubtract_Int");
 
 	UObject_SubtractSubtract_Int_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6583,18 +6811,19 @@ int UObject::SubtractSubtract_Int(int* A)
 
 
 // Function Core.Object.AddAdd_Int
-// (Defined, Iterator, Singular, Event)
+// (Defined, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // int                            A                              (Parm, OutParm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UObject::AddAdd_Int(int* A)
+int UObject::STATIC_AddAdd_Int(int* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.AddAdd_Int");
 
 	UObject_AddAdd_Int_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6608,18 +6837,19 @@ int UObject::AddAdd_Int(int* A)
 
 
 // Function Core.Object.SubtractSubtract_PreInt
-// (Final, Latent, Singular, Event)
+// (Final, Iterator, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // int                            A                              (Parm, OutParm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UObject::SubtractSubtract_PreInt(int* A)
+int UObject::STATIC_SubtractSubtract_PreInt(int* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.SubtractSubtract_PreInt");
 
 	UObject_SubtractSubtract_PreInt_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6633,18 +6863,19 @@ int UObject::SubtractSubtract_PreInt(int* A)
 
 
 // Function Core.Object.AddAdd_PreInt
-// (Defined, Iterator, Singular, Event)
+// (Defined, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // int                            A                              (Parm, OutParm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UObject::AddAdd_PreInt(int* A)
+int UObject::STATIC_AddAdd_PreInt(int* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.AddAdd_PreInt");
 
 	UObject_AddAdd_PreInt_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6658,13 +6889,13 @@ int UObject::AddAdd_PreInt(int* A)
 
 
 // Function Core.Object.SubtractEqual_IntInt
-// (Defined, Latent, Singular, Event)
+// (Defined, Iterator, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // int                            A                              (Parm, OutParm)
 // int                            B                              (Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UObject::SubtractEqual_IntInt(int B, int* A)
+int UObject::STATIC_SubtractEqual_IntInt(int B, int* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.SubtractEqual_IntInt");
 
@@ -6672,6 +6903,7 @@ int UObject::SubtractEqual_IntInt(int B, int* A)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6685,13 +6917,13 @@ int UObject::SubtractEqual_IntInt(int B, int* A)
 
 
 // Function Core.Object.AddEqual_IntInt
-// (Final, Defined, Iterator, Singular, Event)
+// (Final, Defined, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // int                            A                              (Parm, OutParm)
 // int                            B                              (Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UObject::AddEqual_IntInt(int B, int* A)
+int UObject::STATIC_AddEqual_IntInt(int B, int* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.AddEqual_IntInt");
 
@@ -6699,6 +6931,7 @@ int UObject::AddEqual_IntInt(int B, int* A)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6712,13 +6945,13 @@ int UObject::AddEqual_IntInt(int B, int* A)
 
 
 // Function Core.Object.DivideEqual_IntFloat
-// (Final, Defined, Latent, Singular, Event)
+// (NetReliable, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // int                            A                              (Parm, OutParm)
 // float                          B                              (Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UObject::DivideEqual_IntFloat(float B, int* A)
+int UObject::STATIC_DivideEqual_IntFloat(float B, int* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.DivideEqual_IntFloat");
 
@@ -6726,6 +6959,7 @@ int UObject::DivideEqual_IntFloat(float B, int* A)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6739,13 +6973,13 @@ int UObject::DivideEqual_IntFloat(float B, int* A)
 
 
 // Function Core.Object.MultiplyEqual_IntFloat
-// (Iterator, Singular, Event)
+// (Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // int                            A                              (Parm, OutParm)
 // float                          B                              (Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UObject::MultiplyEqual_IntFloat(float B, int* A)
+int UObject::STATIC_MultiplyEqual_IntFloat(float B, int* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.MultiplyEqual_IntFloat");
 
@@ -6753,6 +6987,7 @@ int UObject::MultiplyEqual_IntFloat(float B, int* A)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6766,13 +7001,13 @@ int UObject::MultiplyEqual_IntFloat(float B, int* A)
 
 
 // Function Core.Object.Or_IntInt
-// (Final, Singular, Net, NetReliable, Exec, Event)
+// (Final, PreOperator, Net, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // int                            A                              (Parm)
 // int                            B                              (Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UObject::Or_IntInt(int A, int B)
+int UObject::STATIC_Or_IntInt(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Or_IntInt");
 
@@ -6791,13 +7026,13 @@ int UObject::Or_IntInt(int A, int B)
 
 
 // Function Core.Object.Xor_IntInt
-// (Defined, Iterator, PreOperator, Singular, Event)
+// (Final, Defined, Latent, NetReliable, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // int                            A                              (Parm)
 // int                            B                              (Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UObject::Xor_IntInt(int A, int B)
+int UObject::STATIC_Xor_IntInt(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Xor_IntInt");
 
@@ -6806,6 +7041,7 @@ int UObject::Xor_IntInt(int A, int B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6816,13 +7052,13 @@ int UObject::Xor_IntInt(int A, int B)
 
 
 // Function Core.Object.And_IntInt
-// (Singular, Event)
+// (Iterator, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // int                            A                              (Parm)
 // int                            B                              (Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UObject::And_IntInt(int A, int B)
+int UObject::STATIC_And_IntInt(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.And_IntInt");
 
@@ -6831,6 +7067,7 @@ int UObject::And_IntInt(int A, int B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6841,13 +7078,13 @@ int UObject::And_IntInt(int A, int B)
 
 
 // Function Core.Object.NotEqual_IntInt
-// (Iterator, Latent, PreOperator, Event)
+// (PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // int                            A                              (Parm)
 // int                            B                              (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::NotEqual_IntInt(int A, int B)
+bool UObject::STATIC_NotEqual_IntInt(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.NotEqual_IntInt");
 
@@ -6856,6 +7093,7 @@ bool UObject::NotEqual_IntInt(int A, int B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6866,13 +7104,13 @@ bool UObject::NotEqual_IntInt(int A, int B)
 
 
 // Function Core.Object.EqualEqual_IntInt
-// (Final, Defined, Iterator, Latent, Singular, Event)
+// (Iterator, NetReliable, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // int                            A                              (Parm)
 // int                            B                              (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::EqualEqual_IntInt(int A, int B)
+bool UObject::STATIC_EqualEqual_IntInt(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.EqualEqual_IntInt");
 
@@ -6881,6 +7119,7 @@ bool UObject::EqualEqual_IntInt(int A, int B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6891,13 +7130,13 @@ bool UObject::EqualEqual_IntInt(int A, int B)
 
 
 // Function Core.Object.GreaterEqual_IntInt
-// (Final, PreOperator, Singular, Event)
+// (Defined, Iterator, NetReliable, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // int                            A                              (Parm)
 // int                            B                              (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::GreaterEqual_IntInt(int A, int B)
+bool UObject::STATIC_GreaterEqual_IntInt(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GreaterEqual_IntInt");
 
@@ -6906,6 +7145,7 @@ bool UObject::GreaterEqual_IntInt(int A, int B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6916,13 +7156,13 @@ bool UObject::GreaterEqual_IntInt(int A, int B)
 
 
 // Function Core.Object.LessEqual_IntInt
-// (Defined, Iterator, Latent, Singular, Event)
+// (Final, Defined, NetReliable, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // int                            A                              (Parm)
 // int                            B                              (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::LessEqual_IntInt(int A, int B)
+bool UObject::STATIC_LessEqual_IntInt(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.LessEqual_IntInt");
 
@@ -6931,6 +7171,7 @@ bool UObject::LessEqual_IntInt(int A, int B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6941,13 +7182,13 @@ bool UObject::LessEqual_IntInt(int A, int B)
 
 
 // Function Core.Object.Greater_IntInt
-// (PreOperator, Singular, Event)
+// (Final, Iterator, NetReliable, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // int                            A                              (Parm)
 // int                            B                              (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::Greater_IntInt(int A, int B)
+bool UObject::STATIC_Greater_IntInt(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Greater_IntInt");
 
@@ -6956,6 +7197,7 @@ bool UObject::Greater_IntInt(int A, int B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6966,13 +7208,13 @@ bool UObject::Greater_IntInt(int A, int B)
 
 
 // Function Core.Object.Less_IntInt
-// (Iterator, Latent, Singular, Event)
+// (Final, NetReliable, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // int                            A                              (Parm)
 // int                            B                              (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::Less_IntInt(int A, int B)
+bool UObject::STATIC_Less_IntInt(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Less_IntInt");
 
@@ -6981,6 +7223,7 @@ bool UObject::Less_IntInt(int A, int B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6991,13 +7234,13 @@ bool UObject::Less_IntInt(int A, int B)
 
 
 // Function Core.Object.GreaterGreaterGreater_IntInt
-// (Final, Defined, PreOperator, Singular, Event)
+// (Latent, NetReliable, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // int                            A                              (Parm)
 // int                            B                              (Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UObject::GreaterGreaterGreater_IntInt(int A, int B)
+int UObject::STATIC_GreaterGreaterGreater_IntInt(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GreaterGreaterGreater_IntInt");
 
@@ -7006,6 +7249,7 @@ int UObject::GreaterGreaterGreater_IntInt(int A, int B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7016,13 +7260,13 @@ int UObject::GreaterGreaterGreater_IntInt(int A, int B)
 
 
 // Function Core.Object.GreaterGreater_IntInt
-// (Defined, PreOperator, Singular, Event)
+// (Final, Defined, Iterator, NetReliable, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // int                            A                              (Parm)
 // int                            B                              (Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UObject::GreaterGreater_IntInt(int A, int B)
+int UObject::STATIC_GreaterGreater_IntInt(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.GreaterGreater_IntInt");
 
@@ -7031,6 +7275,7 @@ int UObject::GreaterGreater_IntInt(int A, int B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7041,13 +7286,13 @@ int UObject::GreaterGreater_IntInt(int A, int B)
 
 
 // Function Core.Object.LessLess_IntInt
-// (Final, Iterator, Latent, Singular, Event)
+// (Defined, NetReliable, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // int                            A                              (Parm)
 // int                            B                              (Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UObject::LessLess_IntInt(int A, int B)
+int UObject::STATIC_LessLess_IntInt(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.LessLess_IntInt");
 
@@ -7056,6 +7301,7 @@ int UObject::LessLess_IntInt(int A, int B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7066,13 +7312,13 @@ int UObject::LessLess_IntInt(int A, int B)
 
 
 // Function Core.Object.Subtract_IntInt
-// (Latent, Singular, Event)
+// (Iterator, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // int                            A                              (Parm)
 // int                            B                              (Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UObject::Subtract_IntInt(int A, int B)
+int UObject::STATIC_Subtract_IntInt(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Subtract_IntInt");
 
@@ -7081,6 +7327,7 @@ int UObject::Subtract_IntInt(int A, int B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7091,13 +7338,13 @@ int UObject::Subtract_IntInt(int A, int B)
 
 
 // Function Core.Object.Add_IntInt
-// (Final, Iterator, Singular, Event)
+// (Final, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // int                            A                              (Parm)
 // int                            B                              (Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UObject::Add_IntInt(int A, int B)
+int UObject::STATIC_Add_IntInt(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Add_IntInt");
 
@@ -7106,6 +7353,7 @@ int UObject::Add_IntInt(int A, int B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7116,13 +7364,13 @@ int UObject::Add_IntInt(int A, int B)
 
 
 // Function Core.Object.Percent_IntInt
-// (Final, Defined, Iterator, Latent, PreOperator, Event)
+// (Final, Defined, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // int                            A                              (Parm)
 // int                            B                              (Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UObject::Percent_IntInt(int A, int B)
+int UObject::STATIC_Percent_IntInt(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Percent_IntInt");
 
@@ -7131,6 +7379,7 @@ int UObject::Percent_IntInt(int A, int B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7141,13 +7390,13 @@ int UObject::Percent_IntInt(int A, int B)
 
 
 // Function Core.Object.Divide_IntInt
-// (Iterator, Latent, Net, NetReliable, Native, Event, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // int                            A                              (Parm)
 // int                            B                              (Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UObject::Divide_IntInt(int A, int B)
+int UObject::STATIC_Divide_IntInt(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Divide_IntInt");
 
@@ -7167,13 +7416,13 @@ int UObject::Divide_IntInt(int A, int B)
 
 
 // Function Core.Object.Multiply_IntInt
-// (Defined, Singular, Event)
+// (Defined, Iterator, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // int                            A                              (Parm)
 // int                            B                              (Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UObject::Multiply_IntInt(int A, int B)
+int UObject::STATIC_Multiply_IntInt(int A, int B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Multiply_IntInt");
 
@@ -7182,6 +7431,7 @@ int UObject::Multiply_IntInt(int A, int B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7192,12 +7442,12 @@ int UObject::Multiply_IntInt(int A, int B)
 
 
 // Function Core.Object.Subtract_PreInt
-// (Latent, Singular, Event)
+// (Iterator, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // int                            A                              (Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UObject::Subtract_PreInt(int A)
+int UObject::STATIC_Subtract_PreInt(int A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Subtract_PreInt");
 
@@ -7205,6 +7455,7 @@ int UObject::Subtract_PreInt(int A)
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7215,12 +7466,12 @@ int UObject::Subtract_PreInt(int A)
 
 
 // Function Core.Object.Complement_PreInt
-// (Final, Defined, Singular, Net, NetReliable, Exec, Event)
+// (Final, Defined, PreOperator, Net, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // int                            A                              (Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UObject::Complement_PreInt(int A)
+int UObject::STATIC_Complement_PreInt(int A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Complement_PreInt");
 
@@ -7238,18 +7489,19 @@ int UObject::Complement_PreInt(int A)
 
 
 // Function Core.Object.SubtractSubtract_Byte
-// (Final, Latent, Singular, Event)
+// (Final, Iterator, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // unsigned char                  A                              (Parm, OutParm)
 // unsigned char                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-unsigned char UObject::SubtractSubtract_Byte(unsigned char* A)
+unsigned char UObject::STATIC_SubtractSubtract_Byte(unsigned char* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.SubtractSubtract_Byte");
 
 	UObject_SubtractSubtract_Byte_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7263,18 +7515,19 @@ unsigned char UObject::SubtractSubtract_Byte(unsigned char* A)
 
 
 // Function Core.Object.AddAdd_Byte
-// (Defined, Iterator, Singular, Event)
+// (Defined, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // unsigned char                  A                              (Parm, OutParm)
 // unsigned char                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-unsigned char UObject::AddAdd_Byte(unsigned char* A)
+unsigned char UObject::STATIC_AddAdd_Byte(unsigned char* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.AddAdd_Byte");
 
 	UObject_AddAdd_Byte_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7288,18 +7541,19 @@ unsigned char UObject::AddAdd_Byte(unsigned char* A)
 
 
 // Function Core.Object.SubtractSubtract_PreByte
-// (Final, Latent, Singular, Event)
+// (Final, Iterator, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // unsigned char                  A                              (Parm, OutParm)
 // unsigned char                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-unsigned char UObject::SubtractSubtract_PreByte(unsigned char* A)
+unsigned char UObject::STATIC_SubtractSubtract_PreByte(unsigned char* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.SubtractSubtract_PreByte");
 
 	UObject_SubtractSubtract_PreByte_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7313,18 +7567,19 @@ unsigned char UObject::SubtractSubtract_PreByte(unsigned char* A)
 
 
 // Function Core.Object.AddAdd_PreByte
-// (Defined, Iterator, Singular, Event)
+// (Defined, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // unsigned char                  A                              (Parm, OutParm)
 // unsigned char                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-unsigned char UObject::AddAdd_PreByte(unsigned char* A)
+unsigned char UObject::STATIC_AddAdd_PreByte(unsigned char* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.AddAdd_PreByte");
 
 	UObject_AddAdd_PreByte_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7338,13 +7593,13 @@ unsigned char UObject::AddAdd_PreByte(unsigned char* A)
 
 
 // Function Core.Object.SubtractEqual_ByteByte
-// (Defined, Latent, Singular, Event)
+// (Defined, Iterator, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // unsigned char                  A                              (Parm, OutParm)
 // unsigned char                  B                              (Parm)
 // unsigned char                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-unsigned char UObject::SubtractEqual_ByteByte(unsigned char B, unsigned char* A)
+unsigned char UObject::STATIC_SubtractEqual_ByteByte(unsigned char B, unsigned char* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.SubtractEqual_ByteByte");
 
@@ -7352,6 +7607,7 @@ unsigned char UObject::SubtractEqual_ByteByte(unsigned char B, unsigned char* A)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7365,13 +7621,13 @@ unsigned char UObject::SubtractEqual_ByteByte(unsigned char B, unsigned char* A)
 
 
 // Function Core.Object.AddEqual_ByteByte
-// (Final, Defined, Iterator, Singular, Event)
+// (Final, Defined, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // unsigned char                  A                              (Parm, OutParm)
 // unsigned char                  B                              (Parm)
 // unsigned char                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-unsigned char UObject::AddEqual_ByteByte(unsigned char B, unsigned char* A)
+unsigned char UObject::STATIC_AddEqual_ByteByte(unsigned char B, unsigned char* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.AddEqual_ByteByte");
 
@@ -7379,6 +7635,7 @@ unsigned char UObject::AddEqual_ByteByte(unsigned char B, unsigned char* A)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7392,13 +7649,13 @@ unsigned char UObject::AddEqual_ByteByte(unsigned char B, unsigned char* A)
 
 
 // Function Core.Object.DivideEqual_ByteByte
-// (Final, Defined, Latent, Singular, Event)
+// (NetReliable, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // unsigned char                  A                              (Parm, OutParm)
 // unsigned char                  B                              (Parm)
 // unsigned char                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-unsigned char UObject::DivideEqual_ByteByte(unsigned char B, unsigned char* A)
+unsigned char UObject::STATIC_DivideEqual_ByteByte(unsigned char B, unsigned char* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.DivideEqual_ByteByte");
 
@@ -7406,6 +7663,7 @@ unsigned char UObject::DivideEqual_ByteByte(unsigned char B, unsigned char* A)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7419,13 +7677,13 @@ unsigned char UObject::DivideEqual_ByteByte(unsigned char B, unsigned char* A)
 
 
 // Function Core.Object.MultiplyEqual_ByteFloat
-// (Iterator, Singular, Event)
+// (Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // unsigned char                  A                              (Parm, OutParm)
 // float                          B                              (Parm)
 // unsigned char                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-unsigned char UObject::MultiplyEqual_ByteFloat(float B, unsigned char* A)
+unsigned char UObject::STATIC_MultiplyEqual_ByteFloat(float B, unsigned char* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.MultiplyEqual_ByteFloat");
 
@@ -7433,6 +7691,7 @@ unsigned char UObject::MultiplyEqual_ByteFloat(float B, unsigned char* A)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7446,13 +7705,13 @@ unsigned char UObject::MultiplyEqual_ByteFloat(float B, unsigned char* A)
 
 
 // Function Core.Object.MultiplyEqual_ByteByte
-// (Iterator, Singular, Event)
+// (Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // unsigned char                  A                              (Parm, OutParm)
 // unsigned char                  B                              (Parm)
 // unsigned char                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-unsigned char UObject::MultiplyEqual_ByteByte(unsigned char B, unsigned char* A)
+unsigned char UObject::STATIC_MultiplyEqual_ByteByte(unsigned char B, unsigned char* A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.MultiplyEqual_ByteByte");
 
@@ -7460,6 +7719,7 @@ unsigned char UObject::MultiplyEqual_ByteByte(unsigned char B, unsigned char* A)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7473,13 +7733,13 @@ unsigned char UObject::MultiplyEqual_ByteByte(unsigned char B, unsigned char* A)
 
 
 // Function Core.Object.OrOr_BoolBool
-// (Defined, Singular, Net, NetReliable, Exec, Event)
+// (Defined, PreOperator, Net, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // bool                           A                              (Parm)
 // bool                           B                              (Parm, SkipParm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::OrOr_BoolBool(bool A, bool B)
+bool UObject::STATIC_OrOr_BoolBool(bool A, bool B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.OrOr_BoolBool");
 
@@ -7498,13 +7758,13 @@ bool UObject::OrOr_BoolBool(bool A, bool B)
 
 
 // Function Core.Object.XorXor_BoolBool
-// (Final, Defined, Iterator, PreOperator, Singular, Event)
+// (Iterator, Latent, NetReliable, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // bool                           A                              (Parm)
 // bool                           B                              (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::XorXor_BoolBool(bool A, bool B)
+bool UObject::STATIC_XorXor_BoolBool(bool A, bool B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.XorXor_BoolBool");
 
@@ -7513,6 +7773,7 @@ bool UObject::XorXor_BoolBool(bool A, bool B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7523,13 +7784,13 @@ bool UObject::XorXor_BoolBool(bool A, bool B)
 
 
 // Function Core.Object.AndAnd_BoolBool
-// (Final, Singular, Event)
+// (Final, Iterator, PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // bool                           A                              (Parm)
 // bool                           B                              (Parm, SkipParm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::AndAnd_BoolBool(bool A, bool B)
+bool UObject::STATIC_AndAnd_BoolBool(bool A, bool B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.AndAnd_BoolBool");
 
@@ -7538,6 +7799,7 @@ bool UObject::AndAnd_BoolBool(bool A, bool B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7548,13 +7810,13 @@ bool UObject::AndAnd_BoolBool(bool A, bool B)
 
 
 // Function Core.Object.NotEqual_BoolBool
-// (Iterator, Latent, PreOperator, Event)
+// (PreOperator, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // bool                           A                              (Parm)
 // bool                           B                              (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::NotEqual_BoolBool(bool A, bool B)
+bool UObject::STATIC_NotEqual_BoolBool(bool A, bool B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.NotEqual_BoolBool");
 
@@ -7563,6 +7825,7 @@ bool UObject::NotEqual_BoolBool(bool A, bool B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7573,13 +7836,13 @@ bool UObject::NotEqual_BoolBool(bool A, bool B)
 
 
 // Function Core.Object.EqualEqual_BoolBool
-// (Final, Defined, Iterator, Latent, Singular, Event)
+// (Iterator, NetReliable, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // bool                           A                              (Parm)
 // bool                           B                              (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::EqualEqual_BoolBool(bool A, bool B)
+bool UObject::STATIC_EqualEqual_BoolBool(bool A, bool B)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.EqualEqual_BoolBool");
 
@@ -7588,6 +7851,7 @@ bool UObject::EqualEqual_BoolBool(bool A, bool B)
 	params.B = B;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7598,12 +7862,12 @@ bool UObject::EqualEqual_BoolBool(bool A, bool B)
 
 
 // Function Core.Object.Not_PreBool
-// (Final, Defined, Latent, PreOperator, Event)
+// (Final, Defined, Iterator, Latent, Singular, Net, Simulated, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // bool                           A                              (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UObject::Not_PreBool(bool A)
+bool UObject::STATIC_Not_PreBool(bool A)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.Object.Not_PreBool");
 
@@ -7611,6 +7875,7 @@ bool UObject::Not_PreBool(bool A)
 	params.A = A;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7621,13 +7886,13 @@ bool UObject::Not_PreBool(bool A)
 
 
 // Function Core.DistributionVector.GetVectorValue
-// (Latent, PreOperator, Net, Simulated, Event)
+// (Final, Iterator, PreOperator, Singular, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          F                              (OptionalParm, Parm)
 // int                            LastExtreme                    (OptionalParm, Parm)
 // struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector UDistributionVector::GetVectorValue(float F, int LastExtreme)
+struct FVector UDistributionVector::STATIC_GetVectorValue(float F, int LastExtreme)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.DistributionVector.GetVectorValue");
 
@@ -7636,6 +7901,7 @@ struct FVector UDistributionVector::GetVectorValue(float F, int LastExtreme)
 	params.LastExtreme = LastExtreme;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7646,12 +7912,12 @@ struct FVector UDistributionVector::GetVectorValue(float F, int LastExtreme)
 
 
 // Function Core.DistributionFloat.GetFloatValue
-// (Defined, Iterator, Net, Simulated, Event)
+// (Final, Defined, Singular, NetReliable, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // float                          F                              (OptionalParm, Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UDistributionFloat::GetFloatValue(float F)
+float UDistributionFloat::STATIC_GetFloatValue(float F)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function Core.DistributionFloat.GetFloatValue");
 
@@ -7659,6 +7925,7 @@ float UDistributionFloat::GetFloatValue(float F)
 	params.F = F;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 

@@ -1,4 +1,4 @@
-// Paladins (3.05) SDK
+// Paladins (5.5) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -13,7 +13,7 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // Function IpDrv.InternetLink.ResolveFailed
-// (Final, Iterator, PreOperator, Simulated, Exec, Native, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, Net, Simulated, Exec, Native, HasOptionalParms)
 
 void AInternetLink::ResolveFailed()
 {
@@ -31,7 +31,7 @@ void AInternetLink::ResolveFailed()
 
 
 // Function IpDrv.InternetLink.Resolved
-// (Iterator, PreOperator, Simulated, Exec, Native, HasOptionalParms)
+// (Defined, Iterator, Latent, Net, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // struct FIpAddr                 Addr                           (Parm)
 
@@ -52,7 +52,7 @@ void AInternetLink::Resolved(const struct FIpAddr& Addr)
 
 
 // Function IpDrv.InternetLink.GetLocalIP
-// (PreOperator, Singular, NetReliable, Exec, Operator, HasOptionalParms)
+// (Defined, Latent, Singular, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FIpAddr                 Arg                            (Parm, OutParm)
 
@@ -74,7 +74,7 @@ void AInternetLink::GetLocalIP(struct FIpAddr* Arg)
 
 
 // Function IpDrv.InternetLink.StringToIpAddr
-// (Final, Latent, Singular, Simulated, Native, Operator, HasOptionalParms)
+// (Final, Defined, Singular, Simulated, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 Str                            (Parm, NeedCtorLink)
 // struct FIpAddr                 Addr                           (Parm, OutParm)
@@ -88,7 +88,6 @@ bool AInternetLink::StringToIpAddr(const struct FString& Str, struct FIpAddr* Ad
 	params.Str = Str;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -102,7 +101,7 @@ bool AInternetLink::StringToIpAddr(const struct FString& Str, struct FIpAddr* Ad
 
 
 // Function IpDrv.InternetLink.IpAddrToString
-// (Final, Defined, Simulated, Exec, Operator, HasOptionalParms)
+// (Final, Iterator, Latent, PreOperator, Singular, Net, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FIpAddr                 Arg                            (Parm)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
@@ -125,7 +124,7 @@ struct FString AInternetLink::IpAddrToString(const struct FIpAddr& Arg)
 
 
 // Function IpDrv.InternetLink.GetLastError
-// (Final, Iterator, Latent, Singular, NetReliable, Exec, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, Singular, NetReliable, HasOptionalParms)
 // Parameters:
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
@@ -146,7 +145,7 @@ int AInternetLink::GetLastError()
 
 
 // Function IpDrv.InternetLink.Resolve
-// (Final, Iterator, Singular, Net, NetReliable, Native, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, PreOperator, Net, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 Domain                         (Parm, CoerceParm, NeedCtorLink)
 
@@ -158,7 +157,6 @@ void AInternetLink::Resolve(const struct FString& Domain)
 	params.Domain = Domain;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -167,7 +165,7 @@ void AInternetLink::Resolve(const struct FString& Domain)
 
 
 // Function IpDrv.InternetLink.ParseURL
-// (Final, Latent, Net, Native, Operator, HasOptionalParms)
+// (Final, Defined, Net, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 URL                            (Parm, CoerceParm, NeedCtorLink)
 // struct FString                 Addr                           (Parm, OutParm, NeedCtorLink)
@@ -184,7 +182,6 @@ bool AInternetLink::ParseURL(const struct FString& URL, struct FString* Addr, in
 	params.URL = URL;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -204,7 +201,7 @@ bool AInternetLink::ParseURL(const struct FString& URL, struct FString* Addr, in
 
 
 // Function IpDrv.InternetLink.IsDataPending
-// (Defined, Iterator, Simulated, Exec, Operator, HasOptionalParms)
+// (Simulated, HasOptionalParms)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
@@ -225,7 +222,7 @@ bool AInternetLink::IsDataPending()
 
 
 // Function IpDrv.TcpLink.ReceivedBinary
-// (PreOperator, Simulated, Exec, Native, HasOptionalParms)
+// (Defined, Latent, Net, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // int                            Count                          (Parm)
 // unsigned char                  B                              (Parm)
@@ -248,7 +245,7 @@ void ATcpLink::ReceivedBinary(int Count, unsigned char B)
 
 
 // Function IpDrv.TcpLink.ReceivedLine
-// (Final, PreOperator, Simulated, Exec, Native, HasOptionalParms)
+// (Final, Defined, Latent, Net, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // struct FString                 Line                           (Parm, NeedCtorLink)
 
@@ -269,7 +266,7 @@ void ATcpLink::ReceivedLine(const struct FString& Line)
 
 
 // Function IpDrv.TcpLink.ReceivedText
-// (Defined, PreOperator, Simulated, Exec, Native, HasOptionalParms)
+// (Iterator, Latent, Net, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // struct FString                 Text                           (Parm, NeedCtorLink)
 
@@ -290,7 +287,7 @@ void ATcpLink::ReceivedText(const struct FString& Text)
 
 
 // Function IpDrv.TcpLink.Closed
-// (PreOperator, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Defined, Latent, Simulated, Exec, Native, HasOptionalParms)
 
 void ATcpLink::Closed()
 {
@@ -308,7 +305,7 @@ void ATcpLink::Closed()
 
 
 // Function IpDrv.TcpLink.Opened
-// (Final, Defined, Iterator, Latent, Simulated, Exec, Native, HasOptionalParms)
+// (Final, Latent, Net, Simulated, Exec, Native, HasOptionalParms)
 
 void ATcpLink::Opened()
 {
@@ -326,7 +323,7 @@ void ATcpLink::Opened()
 
 
 // Function IpDrv.TcpLink.Accepted
-// (Final, Defined, Iterator, Latent, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Final, Latent, Simulated, Exec, Native, HasOptionalParms)
 
 void ATcpLink::Accepted()
 {
@@ -344,7 +341,7 @@ void ATcpLink::Accepted()
 
 
 // Function IpDrv.TcpLink.ReadBinary
-// (Final, Iterator, Latent, Singular, NetReliable, Native, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, Singular, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // int                            Count                          (Parm)
 // unsigned char                  B                              (Parm, OutParm)
@@ -358,7 +355,6 @@ int ATcpLink::ReadBinary(int Count, unsigned char* B)
 	params.Count = Count;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -372,7 +368,7 @@ int ATcpLink::ReadBinary(int Count, unsigned char* B)
 
 
 // Function IpDrv.TcpLink.ReadText
-// (Iterator, PreOperator, Singular, NetReliable, Native, Operator, HasOptionalParms)
+// (Defined, Iterator, Latent, Singular, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 Str                            (Parm, OutParm, NeedCtorLink)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
@@ -384,7 +380,6 @@ int ATcpLink::ReadText(struct FString* Str)
 	ATcpLink_ReadText_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -446,7 +441,7 @@ int ATcpLink::SendText(const struct FString& Str)
 
 
 // Function IpDrv.TcpLink.IsConnected
-// (Final, Iterator, Simulated, Exec, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, PreOperator, Singular, Net, NetReliable, HasOptionalParms)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
@@ -467,11 +462,11 @@ bool ATcpLink::IsConnected()
 
 
 // Function IpDrv.TcpLink.Close
-// (Final, Iterator, Singular, NetReliable, Native, Event, HasOptionalParms)
+// (Defined, Iterator, Net, NetReliable, Simulated, Native, Event, Operator, Static)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ATcpLink::Close()
+bool ATcpLink::STATIC_Close()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TcpLink.Close");
 
@@ -512,11 +507,11 @@ bool ATcpLink::Open(const struct FIpAddr& Addr)
 
 
 // Function IpDrv.TcpLink.Listen
-// (Defined, Latent, PreOperator, Net, NetReliable, Exec, Native, Event, HasOptionalParms)
+// (Final, Iterator, Latent, Net, NetReliable, Native, Event, Operator, Static)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ATcpLink::Listen()
+bool ATcpLink::STATIC_Listen()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TcpLink.Listen");
 
@@ -534,13 +529,13 @@ bool ATcpLink::Listen()
 
 
 // Function IpDrv.TcpLink.BindPort
-// (Iterator, Latent, NetReliable, Simulated, Operator, HasOptionalParms)
+// (Final, Iterator, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // int                            PortNum                        (OptionalParm, Parm)
 // bool                           bUseNextAvailable              (OptionalParm, Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int ATcpLink::BindPort(int PortNum, bool bUseNextAvailable)
+int ATcpLink::STATIC_BindPort(int PortNum, bool bUseNextAvailable)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TcpLink.BindPort");
 
@@ -549,6 +544,7 @@ int ATcpLink::BindPort(int PortNum, bool bUseNextAvailable)
 	params.bUseNextAvailable = bUseNextAvailable;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -559,7 +555,7 @@ int ATcpLink::BindPort(int PortNum, bool bUseNextAvailable)
 
 
 // Function IpDrv.McpServiceBase.GetUserAuthURL
-// (Defined, Iterator, Net, NetReliable, Exec, Operator, HasOptionalParms)
+// (Net, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
@@ -582,7 +578,7 @@ struct FString UMcpServiceBase::GetUserAuthURL(const struct FString& McpId)
 
 
 // Function IpDrv.McpServiceBase.GetAppAccessURL
-// (Final, Defined, Latent, PreOperator, NetReliable, Exec, Operator, HasOptionalParms)
+// (Final, Iterator, PreOperator, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
@@ -603,7 +599,7 @@ struct FString UMcpServiceBase::GetAppAccessURL()
 
 
 // Function IpDrv.McpServiceBase.GetBaseURL
-// (Final, Iterator, Latent, PreOperator, NetReliable, Exec, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, PreOperator, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
@@ -641,7 +637,7 @@ void UMcpServiceBase::Init()
 
 
 // Function IpDrv.OnlineEventsInterfaceMcp.UploadMatchmakingStats
-// (Iterator, Singular, Net, Simulated, Native, Operator, HasOptionalParms)
+// (Defined, Iterator, Latent, PreOperator, Net, Simulated, Exec, HasOptionalParms)
 // Parameters:
 // struct FUniqueNetId            UniqueId                       (Parm)
 // class UOnlineMatchmakingStats* MMStats                        (Parm)
@@ -656,7 +652,6 @@ bool UOnlineEventsInterfaceMcp::UploadMatchmakingStats(const struct FUniqueNetId
 	params.MMStats = MMStats;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -667,13 +662,13 @@ bool UOnlineEventsInterfaceMcp::UploadMatchmakingStats(const struct FUniqueNetId
 
 
 // Function IpDrv.OnlineEventsInterfaceMcp.UpdatePlaylistPopulation
-// (Final, Iterator, PreOperator, Native, Event, HasOptionalParms)
+// (Defined, Exec, Event, Operator, Static)
 // Parameters:
 // int                            PlaylistId                     (Parm)
 // int                            NumPlayers                     (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineEventsInterfaceMcp::UpdatePlaylistPopulation(int PlaylistId, int NumPlayers)
+bool UOnlineEventsInterfaceMcp::STATIC_UpdatePlaylistPopulation(int PlaylistId, int NumPlayers)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineEventsInterfaceMcp.UpdatePlaylistPopulation");
 
@@ -682,7 +677,6 @@ bool UOnlineEventsInterfaceMcp::UpdatePlaylistPopulation(int PlaylistId, int Num
 	params.NumPlayers = NumPlayers;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -693,13 +687,13 @@ bool UOnlineEventsInterfaceMcp::UpdatePlaylistPopulation(int PlaylistId, int Num
 
 
 // Function IpDrv.OnlineEventsInterfaceMcp.UploadGameplayEventsData
-// (Final, Iterator, Latent, Singular, Native, Event, HasOptionalParms)
+// (Defined, Latent, PreOperator, Exec, Event, Operator, Static)
 // Parameters:
 // struct FUniqueNetId            UniqueId                       (Parm)
 // TArray<unsigned char>          Payload                        (Const, Parm, OutParm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineEventsInterfaceMcp::UploadGameplayEventsData(const struct FUniqueNetId& UniqueId, TArray<unsigned char>* Payload)
+bool UOnlineEventsInterfaceMcp::STATIC_UploadGameplayEventsData(const struct FUniqueNetId& UniqueId, TArray<unsigned char>* Payload)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineEventsInterfaceMcp.UploadGameplayEventsData");
 
@@ -707,7 +701,6 @@ bool UOnlineEventsInterfaceMcp::UploadGameplayEventsData(const struct FUniqueNet
 	params.UniqueId = UniqueId;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -721,7 +714,7 @@ bool UOnlineEventsInterfaceMcp::UploadGameplayEventsData(const struct FUniqueNet
 
 
 // Function IpDrv.OnlineEventsInterfaceMcp.UploadPlayerData
-// (Defined, Iterator, Latent, Singular, Native, Event, HasOptionalParms)
+// (Final, Defined, Latent, PreOperator, Exec, Event, Operator, Static)
 // Parameters:
 // struct FUniqueNetId            UniqueId                       (Parm)
 // struct FString                 PlayerNick                     (Parm, NeedCtorLink)
@@ -729,7 +722,7 @@ bool UOnlineEventsInterfaceMcp::UploadGameplayEventsData(const struct FUniqueNet
 // class UOnlinePlayerStorage*    PlayerStorage                  (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineEventsInterfaceMcp::UploadPlayerData(const struct FUniqueNetId& UniqueId, const struct FString& PlayerNick, class UOnlineProfileSettings* ProfileSettings, class UOnlinePlayerStorage* PlayerStorage)
+bool UOnlineEventsInterfaceMcp::STATIC_UploadPlayerData(const struct FUniqueNetId& UniqueId, const struct FString& PlayerNick, class UOnlineProfileSettings* ProfileSettings, class UOnlinePlayerStorage* PlayerStorage)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineEventsInterfaceMcp.UploadPlayerData");
 
@@ -740,7 +733,6 @@ bool UOnlineEventsInterfaceMcp::UploadPlayerData(const struct FUniqueNetId& Uniq
 	params.PlayerStorage = PlayerStorage;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -751,13 +743,13 @@ bool UOnlineEventsInterfaceMcp::UploadPlayerData(const struct FUniqueNetId& Uniq
 
 
 // Function IpDrv.OnlineNewsInterfaceMcp.GetNews
-// (Final, Defined, PreOperator, Singular, Net, NetReliable, Exec, Event, Static)
+// (Defined, Iterator, Latent, NetReliable, Event, Operator)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // TEnumAsByte<EOnlineNewsType>   NewsType                       (Parm)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString UOnlineNewsInterfaceMcp::STATIC_GetNews(unsigned char LocalUserNum, TEnumAsByte<EOnlineNewsType> NewsType)
+struct FString UOnlineNewsInterfaceMcp::GetNews(unsigned char LocalUserNum, TEnumAsByte<EOnlineNewsType> NewsType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineNewsInterfaceMcp.GetNews");
 
@@ -776,7 +768,7 @@ struct FString UOnlineNewsInterfaceMcp::STATIC_GetNews(unsigned char LocalUserNu
 
 
 // Function IpDrv.OnlineNewsInterfaceMcp.ClearReadNewsCompletedDelegate
-// (Final, Defined, Iterator, Singular, Net, Native, Event, Operator)
+// (Defined, Iterator, Latent, Singular, Net, NetReliable, Simulated, Event)
 // Parameters:
 // struct FScriptDelegate         ReadGameNewsDelegate           (Parm, NeedCtorLink)
 
@@ -788,7 +780,6 @@ void UOnlineNewsInterfaceMcp::ClearReadNewsCompletedDelegate(const struct FScrip
 	params.ReadGameNewsDelegate = ReadGameNewsDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -797,11 +788,11 @@ void UOnlineNewsInterfaceMcp::ClearReadNewsCompletedDelegate(const struct FScrip
 
 
 // Function IpDrv.OnlineNewsInterfaceMcp.AddReadNewsCompletedDelegate
-// (Defined, PreOperator, Singular, NetReliable, Native, Event)
+// (Final, PreOperator, Singular, Exec, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         ReadNewsDelegate               (Parm, NeedCtorLink)
 
-void UOnlineNewsInterfaceMcp::AddReadNewsCompletedDelegate(const struct FScriptDelegate& ReadNewsDelegate)
+void UOnlineNewsInterfaceMcp::STATIC_AddReadNewsCompletedDelegate(const struct FScriptDelegate& ReadNewsDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineNewsInterfaceMcp.AddReadNewsCompletedDelegate");
 
@@ -809,7 +800,6 @@ void UOnlineNewsInterfaceMcp::AddReadNewsCompletedDelegate(const struct FScriptD
 	params.ReadNewsDelegate = ReadNewsDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -818,7 +808,7 @@ void UOnlineNewsInterfaceMcp::AddReadNewsCompletedDelegate(const struct FScriptD
 
 
 // Function IpDrv.OnlineNewsInterfaceMcp.OnReadNewsCompleted
-// (Defined, Latent, PreOperator, Singular, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Iterator, PreOperator, Singular, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // bool                           bWasSuccessful                 (Parm)
 // TEnumAsByte<EOnlineNewsType>   NewsType                       (Parm)
@@ -841,7 +831,7 @@ void UOnlineNewsInterfaceMcp::OnReadNewsCompleted(bool bWasSuccessful, TEnumAsBy
 
 
 // Function IpDrv.OnlineNewsInterfaceMcp.ReadNews
-// (Final, Iterator, Latent, PreOperator, Net, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
+// (Iterator, Singular, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // TEnumAsByte<EOnlineNewsType>   NewsType                       (Parm)
@@ -867,7 +857,7 @@ bool UOnlineNewsInterfaceMcp::STATIC_ReadNews(unsigned char LocalUserNum, TEnumA
 
 
 // Function IpDrv.OnlineTitleFileDownloadBase.GetUrlForFile
-// (Defined, Net, NetReliable, Exec, Operator, HasOptionalParms)
+// (Iterator, Latent, PreOperator, Singular, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 Filename                       (Parm, NeedCtorLink)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
@@ -890,7 +880,7 @@ struct FString UOnlineTitleFileDownloadBase::GetUrlForFile(const struct FString&
 
 
 // Function IpDrv.OnlineTitleFileDownloadBase.ClearRequestTitleFileListCompleteDelegate
-// (Final, Defined, Latent, PreOperator, Singular, Net, Native, Event, Operator)
+// (Defined, Exec, Event)
 // Parameters:
 // struct FScriptDelegate         RequestTitleFileListDelegate   (Parm, NeedCtorLink)
 
@@ -902,7 +892,6 @@ void UOnlineTitleFileDownloadBase::ClearRequestTitleFileListCompleteDelegate(con
 	params.RequestTitleFileListDelegate = RequestTitleFileListDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -911,11 +900,11 @@ void UOnlineTitleFileDownloadBase::ClearRequestTitleFileListCompleteDelegate(con
 
 
 // Function IpDrv.OnlineTitleFileDownloadBase.AddRequestTitleFileListCompleteDelegate
-// (Iterator, Net, NetReliable, Native, Event)
+// (Final, Defined, Net, Exec, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         RequestTitleFileListDelegate   (Parm, NeedCtorLink)
 
-void UOnlineTitleFileDownloadBase::AddRequestTitleFileListCompleteDelegate(const struct FScriptDelegate& RequestTitleFileListDelegate)
+void UOnlineTitleFileDownloadBase::STATIC_AddRequestTitleFileListCompleteDelegate(const struct FScriptDelegate& RequestTitleFileListDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadBase.AddRequestTitleFileListCompleteDelegate");
 
@@ -923,7 +912,6 @@ void UOnlineTitleFileDownloadBase::AddRequestTitleFileListCompleteDelegate(const
 	params.RequestTitleFileListDelegate = RequestTitleFileListDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -932,7 +920,7 @@ void UOnlineTitleFileDownloadBase::AddRequestTitleFileListCompleteDelegate(const
 
 
 // Function IpDrv.OnlineTitleFileDownloadBase.OnRequestTitleFileListComplete
-// (Defined, Simulated, Exec, Native, HasOptionalParms)
+// (Iterator, Latent, PreOperator, Singular, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // bool                           bWasSuccessful                 (Parm)
 // TArray<struct FString>         FilePaths                      (Parm, NeedCtorLink)
@@ -955,17 +943,18 @@ void UOnlineTitleFileDownloadBase::OnRequestTitleFileListComplete(bool bWasSucce
 
 
 // Function IpDrv.OnlineTitleFileDownloadBase.RequestTitleFileList
-// (Latent, Simulated, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, Net, NetReliable, Exec, Native, Event, Static)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineTitleFileDownloadBase::RequestTitleFileList()
+bool UOnlineTitleFileDownloadBase::STATIC_RequestTitleFileList()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadBase.RequestTitleFileList");
 
 	UOnlineTitleFileDownloadBase_RequestTitleFileList_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -976,7 +965,7 @@ bool UOnlineTitleFileDownloadBase::RequestTitleFileList()
 
 
 // Function IpDrv.OnlineTitleFileDownloadBase.ClearDownloadedFile
-// (Defined, PreOperator, Native, Event, Operator)
+// (Final, Latent, PreOperator, NetReliable, Simulated, Event)
 // Parameters:
 // struct FString                 Filename                       (Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
@@ -989,7 +978,6 @@ bool UOnlineTitleFileDownloadBase::ClearDownloadedFile(const struct FString& Fil
 	params.Filename = Filename;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1000,7 +988,7 @@ bool UOnlineTitleFileDownloadBase::ClearDownloadedFile(const struct FString& Fil
 
 
 // Function IpDrv.OnlineTitleFileDownloadBase.ClearDownloadedFiles
-// (Final, Defined, PreOperator, Native, Event, Operator)
+// (Defined, Latent, PreOperator, NetReliable, Simulated, Event)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
@@ -1011,7 +999,6 @@ bool UOnlineTitleFileDownloadBase::ClearDownloadedFiles()
 	UOnlineTitleFileDownloadBase_ClearDownloadedFiles_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1022,12 +1009,12 @@ bool UOnlineTitleFileDownloadBase::ClearDownloadedFiles()
 
 
 // Function IpDrv.OnlineTitleFileDownloadBase.GetTitleFileState
-// (Final, Latent, Net, NetReliable, Simulated, Exec, Event, Static)
+// (Iterator, Singular, Net, Simulated, Event, Operator)
 // Parameters:
 // struct FString                 Filename                       (Parm, NeedCtorLink)
 // TEnumAsByte<EOnlineEnumerationReadState> ReturnValue                    (Parm, OutParm, ReturnParm)
 
-TEnumAsByte<EOnlineEnumerationReadState> UOnlineTitleFileDownloadBase::STATIC_GetTitleFileState(const struct FString& Filename)
+TEnumAsByte<EOnlineEnumerationReadState> UOnlineTitleFileDownloadBase::GetTitleFileState(const struct FString& Filename)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadBase.GetTitleFileState");
 
@@ -1045,13 +1032,13 @@ TEnumAsByte<EOnlineEnumerationReadState> UOnlineTitleFileDownloadBase::STATIC_Ge
 
 
 // Function IpDrv.OnlineTitleFileDownloadBase.GetTitleFileContents
-// (Defined, Iterator, Net, NetReliable, Simulated, Exec, Event, Static)
+// (Final, Singular, Net, Simulated, Event, Operator)
 // Parameters:
 // struct FString                 Filename                       (Parm, NeedCtorLink)
 // TArray<unsigned char>          FileContents                   (Parm, OutParm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineTitleFileDownloadBase::STATIC_GetTitleFileContents(const struct FString& Filename, TArray<unsigned char>* FileContents)
+bool UOnlineTitleFileDownloadBase::GetTitleFileContents(const struct FString& Filename, TArray<unsigned char>* FileContents)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadBase.GetTitleFileContents");
 
@@ -1072,7 +1059,7 @@ bool UOnlineTitleFileDownloadBase::STATIC_GetTitleFileContents(const struct FStr
 
 
 // Function IpDrv.OnlineTitleFileDownloadBase.ClearReadTitleFileCompleteDelegate
-// (PreOperator, Singular, Net, Native, Event, Operator)
+// (Final, Defined, Iterator, PreOperator, Singular, Net, NetReliable, Simulated, Event)
 // Parameters:
 // struct FScriptDelegate         ReadTitleFileCompleteDelegate  (Parm, NeedCtorLink)
 
@@ -1084,7 +1071,6 @@ void UOnlineTitleFileDownloadBase::ClearReadTitleFileCompleteDelegate(const stru
 	params.ReadTitleFileCompleteDelegate = ReadTitleFileCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1093,11 +1079,11 @@ void UOnlineTitleFileDownloadBase::ClearReadTitleFileCompleteDelegate(const stru
 
 
 // Function IpDrv.OnlineTitleFileDownloadBase.AddReadTitleFileCompleteDelegate
-// (Final, Defined, Latent, PreOperator, Singular, NetReliable, Native, Event)
+// (Defined, Latent, PreOperator, Singular, Exec, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         ReadTitleFileCompleteDelegate  (Parm, NeedCtorLink)
 
-void UOnlineTitleFileDownloadBase::AddReadTitleFileCompleteDelegate(const struct FScriptDelegate& ReadTitleFileCompleteDelegate)
+void UOnlineTitleFileDownloadBase::STATIC_AddReadTitleFileCompleteDelegate(const struct FScriptDelegate& ReadTitleFileCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadBase.AddReadTitleFileCompleteDelegate");
 
@@ -1105,7 +1091,6 @@ void UOnlineTitleFileDownloadBase::AddReadTitleFileCompleteDelegate(const struct
 	params.ReadTitleFileCompleteDelegate = ReadTitleFileCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1114,7 +1099,7 @@ void UOnlineTitleFileDownloadBase::AddReadTitleFileCompleteDelegate(const struct
 
 
 // Function IpDrv.OnlineTitleFileDownloadBase.ReadTitleFile
-// (Defined, Iterator, PreOperator, Singular, Net, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
+// (Final, Iterator, Latent, PreOperator, Singular, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // struct FString                 FileToRead                     (Parm, NeedCtorLink)
 // TEnumAsByte<EOnlineFileType>   FileType                       (OptionalParm, Parm)
@@ -1140,7 +1125,7 @@ bool UOnlineTitleFileDownloadBase::STATIC_ReadTitleFile(const struct FString& Fi
 
 
 // Function IpDrv.OnlineTitleFileDownloadBase.OnReadTitleFileComplete
-// (Final, PreOperator, Singular, Net, NetReliable, Simulated, Native, Event, Static)
+// (Final, Defined, PreOperator, Singular, Net, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // bool                           bWasSuccessful                 (Parm)
 // struct FString                 Filename                       (Parm, NeedCtorLink)
@@ -1163,7 +1148,7 @@ void UOnlineTitleFileDownloadBase::STATIC_OnReadTitleFileComplete(bool bWasSucce
 
 
 // Function IpDrv.OnlineTitleFileDownloadMcp.ClearDownloadedFile
-// (Defined, PreOperator, Native, Event, Operator)
+// (Final, Latent, PreOperator, NetReliable, Simulated, Event)
 // Parameters:
 // struct FString                 Filename                       (Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
@@ -1176,7 +1161,6 @@ bool UOnlineTitleFileDownloadMcp::ClearDownloadedFile(const struct FString& File
 	params.Filename = Filename;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1187,7 +1171,7 @@ bool UOnlineTitleFileDownloadMcp::ClearDownloadedFile(const struct FString& File
 
 
 // Function IpDrv.OnlineTitleFileDownloadMcp.ClearDownloadedFiles
-// (Final, Defined, PreOperator, Native, Event, Operator)
+// (Defined, Latent, PreOperator, NetReliable, Simulated, Event)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
@@ -1198,7 +1182,6 @@ bool UOnlineTitleFileDownloadMcp::ClearDownloadedFiles()
 	UOnlineTitleFileDownloadMcp_ClearDownloadedFiles_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1209,12 +1192,12 @@ bool UOnlineTitleFileDownloadMcp::ClearDownloadedFiles()
 
 
 // Function IpDrv.OnlineTitleFileDownloadMcp.GetTitleFileState
-// (Final, Latent, Net, NetReliable, Simulated, Exec, Event, Static)
+// (Iterator, Singular, Net, Simulated, Event, Operator)
 // Parameters:
 // struct FString                 Filename                       (Parm, NeedCtorLink)
 // TEnumAsByte<EOnlineEnumerationReadState> ReturnValue                    (Parm, OutParm, ReturnParm)
 
-TEnumAsByte<EOnlineEnumerationReadState> UOnlineTitleFileDownloadMcp::STATIC_GetTitleFileState(const struct FString& Filename)
+TEnumAsByte<EOnlineEnumerationReadState> UOnlineTitleFileDownloadMcp::GetTitleFileState(const struct FString& Filename)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadMcp.GetTitleFileState");
 
@@ -1232,13 +1215,13 @@ TEnumAsByte<EOnlineEnumerationReadState> UOnlineTitleFileDownloadMcp::STATIC_Get
 
 
 // Function IpDrv.OnlineTitleFileDownloadMcp.GetTitleFileContents
-// (Defined, Iterator, Net, NetReliable, Simulated, Exec, Event, Static)
+// (Final, Singular, Net, Simulated, Event, Operator)
 // Parameters:
 // struct FString                 Filename                       (Parm, NeedCtorLink)
 // TArray<unsigned char>          FileContents                   (Parm, OutParm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineTitleFileDownloadMcp::STATIC_GetTitleFileContents(const struct FString& Filename, TArray<unsigned char>* FileContents)
+bool UOnlineTitleFileDownloadMcp::GetTitleFileContents(const struct FString& Filename, TArray<unsigned char>* FileContents)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadMcp.GetTitleFileContents");
 
@@ -1259,7 +1242,7 @@ bool UOnlineTitleFileDownloadMcp::STATIC_GetTitleFileContents(const struct FStri
 
 
 // Function IpDrv.OnlineTitleFileDownloadMcp.ReadTitleFile
-// (Defined, Iterator, PreOperator, Singular, Net, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
+// (Final, Iterator, Latent, PreOperator, Singular, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // struct FString                 FileToRead                     (Parm, NeedCtorLink)
 // TEnumAsByte<EOnlineFileType>   FileType                       (OptionalParm, Parm)
@@ -1285,7 +1268,7 @@ bool UOnlineTitleFileDownloadMcp::STATIC_ReadTitleFile(const struct FString& Fil
 
 
 // Function IpDrv.OnlineTitleFileDownloadWeb.GetUrlForFile
-// (Defined, Net, NetReliable, Exec, Operator, HasOptionalParms)
+// (Iterator, Latent, PreOperator, Singular, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 Filename                       (Parm, NeedCtorLink)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
@@ -1308,7 +1291,7 @@ struct FString UOnlineTitleFileDownloadWeb::GetUrlForFile(const struct FString& 
 
 
 // Function IpDrv.OnlineTitleFileDownloadWeb.OnFileListReceived
-// (Defined, Latent, PreOperator, Singular, Net, NetReliable, Simulated, Exec, Operator, HasOptionalParms)
+// (Iterator, PreOperator, Singular, Net, NetReliable, Simulated, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   Request                        (Parm)
 // class UHttpResponseInterface*  Response                       (Parm)
@@ -1332,17 +1315,18 @@ void UOnlineTitleFileDownloadWeb::OnFileListReceived(class UHttpRequestInterface
 
 
 // Function IpDrv.OnlineTitleFileDownloadWeb.RequestTitleFileList
-// (Latent, Simulated, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, Net, NetReliable, Exec, Native, Event, Static)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineTitleFileDownloadWeb::RequestTitleFileList()
+bool UOnlineTitleFileDownloadWeb::STATIC_RequestTitleFileList()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadWeb.RequestTitleFileList");
 
 	UOnlineTitleFileDownloadWeb_RequestTitleFileList_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1353,7 +1337,7 @@ bool UOnlineTitleFileDownloadWeb::RequestTitleFileList()
 
 
 // Function IpDrv.OnlineTitleFileDownloadWeb.ClearDownloadedFile
-// (Defined, PreOperator, Native, Event, Operator)
+// (Final, Latent, PreOperator, NetReliable, Simulated, Event)
 // Parameters:
 // struct FString                 Filename                       (Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
@@ -1366,7 +1350,6 @@ bool UOnlineTitleFileDownloadWeb::ClearDownloadedFile(const struct FString& File
 	params.Filename = Filename;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1377,7 +1360,7 @@ bool UOnlineTitleFileDownloadWeb::ClearDownloadedFile(const struct FString& File
 
 
 // Function IpDrv.OnlineTitleFileDownloadWeb.ClearDownloadedFiles
-// (Final, Defined, PreOperator, Native, Event, Operator)
+// (Defined, Latent, PreOperator, NetReliable, Simulated, Event)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
@@ -1388,7 +1371,6 @@ bool UOnlineTitleFileDownloadWeb::ClearDownloadedFiles()
 	UOnlineTitleFileDownloadWeb_ClearDownloadedFiles_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1399,12 +1381,12 @@ bool UOnlineTitleFileDownloadWeb::ClearDownloadedFiles()
 
 
 // Function IpDrv.OnlineTitleFileDownloadWeb.GetTitleFileState
-// (Final, Latent, Net, NetReliable, Simulated, Exec, Event, Static)
+// (Iterator, Singular, Net, Simulated, Event, Operator)
 // Parameters:
 // struct FString                 Filename                       (Parm, NeedCtorLink)
 // TEnumAsByte<EOnlineEnumerationReadState> ReturnValue                    (Parm, OutParm, ReturnParm)
 
-TEnumAsByte<EOnlineEnumerationReadState> UOnlineTitleFileDownloadWeb::STATIC_GetTitleFileState(const struct FString& Filename)
+TEnumAsByte<EOnlineEnumerationReadState> UOnlineTitleFileDownloadWeb::GetTitleFileState(const struct FString& Filename)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadWeb.GetTitleFileState");
 
@@ -1422,13 +1404,13 @@ TEnumAsByte<EOnlineEnumerationReadState> UOnlineTitleFileDownloadWeb::STATIC_Get
 
 
 // Function IpDrv.OnlineTitleFileDownloadWeb.GetTitleFileContents
-// (Defined, Iterator, Net, NetReliable, Simulated, Exec, Event, Static)
+// (Final, Singular, Net, Simulated, Event, Operator)
 // Parameters:
 // struct FString                 Filename                       (Parm, NeedCtorLink)
 // TArray<unsigned char>          FileContents                   (Parm, OutParm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineTitleFileDownloadWeb::STATIC_GetTitleFileContents(const struct FString& Filename, TArray<unsigned char>* FileContents)
+bool UOnlineTitleFileDownloadWeb::GetTitleFileContents(const struct FString& Filename, TArray<unsigned char>* FileContents)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineTitleFileDownloadWeb.GetTitleFileContents");
 
@@ -1449,7 +1431,7 @@ bool UOnlineTitleFileDownloadWeb::STATIC_GetTitleFileContents(const struct FStri
 
 
 // Function IpDrv.OnlineTitleFileDownloadWeb.TriggerDelegates
-// (Latent, Net, Simulated, Native, Operator, HasOptionalParms)
+// (Defined, Net, Simulated, Exec, HasOptionalParms)
 // Parameters:
 // bool                           bSuccess                       (Parm)
 // struct FString                 FileRead                       (Parm, NeedCtorLink)
@@ -1463,7 +1445,6 @@ void UOnlineTitleFileDownloadWeb::TriggerDelegates(bool bSuccess, const struct F
 	params.FileRead = FileRead;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1472,7 +1453,7 @@ void UOnlineTitleFileDownloadWeb::TriggerDelegates(bool bSuccess, const struct F
 
 
 // Function IpDrv.OnlineTitleFileDownloadWeb.OnFileDownloadComplete
-// (Final, Latent, PreOperator, Singular, Net, NetReliable, Simulated, Exec, Operator, HasOptionalParms)
+// (Final, Defined, PreOperator, Singular, Net, NetReliable, Simulated, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   Request                        (Parm)
 // class UHttpResponseInterface*  Response                       (Parm)
@@ -1496,7 +1477,7 @@ void UOnlineTitleFileDownloadWeb::OnFileDownloadComplete(class UHttpRequestInter
 
 
 // Function IpDrv.OnlineTitleFileDownloadWeb.ReadTitleFile
-// (Defined, Iterator, PreOperator, Singular, Net, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
+// (Final, Iterator, Latent, PreOperator, Singular, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // struct FString                 FileToRead                     (Parm, NeedCtorLink)
 // TEnumAsByte<EOnlineFileType>   FileType                       (OptionalParm, Parm)
@@ -1522,7 +1503,7 @@ bool UOnlineTitleFileDownloadWeb::STATIC_ReadTitleFile(const struct FString& Fil
 
 
 // Function IpDrv.OnlineTitleFileDownloadWeb.UncompressTitleFileContents
-// (Iterator, PreOperator, Net, Simulated, Native, Operator, HasOptionalParms)
+// (Defined, Iterator, Latent, Net, Simulated, Exec, HasOptionalParms)
 // Parameters:
 // TEnumAsByte<EMcpFileCompressionType> FileCompressionType            (Parm)
 // TArray<unsigned char>          CompressedFileContents         (Const, Parm, OutParm, NeedCtorLink)
@@ -1537,7 +1518,6 @@ bool UOnlineTitleFileDownloadWeb::UncompressTitleFileContents(TEnumAsByte<EMcpFi
 	params.FileCompressionType = FileCompressionType;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1553,12 +1533,12 @@ bool UOnlineTitleFileDownloadWeb::UncompressTitleFileContents(TEnumAsByte<EMcpFi
 
 
 // Function IpDrv.TitleFileDownloadCache.DeleteTitleFile
-// (Final, Defined, Iterator, Singular, Simulated, Static)
+// (Latent, PreOperator, Singular, NetReliable, Exec, Native, Event)
 // Parameters:
 // struct FString                 Filename                       (Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UTitleFileDownloadCache::STATIC_DeleteTitleFile(const struct FString& Filename)
+bool UTitleFileDownloadCache::DeleteTitleFile(const struct FString& Filename)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TitleFileDownloadCache.DeleteTitleFile");
 
@@ -1566,6 +1546,7 @@ bool UTitleFileDownloadCache::STATIC_DeleteTitleFile(const struct FString& Filen
 	params.Filename = Filename;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1576,12 +1557,12 @@ bool UTitleFileDownloadCache::STATIC_DeleteTitleFile(const struct FString& Filen
 
 
 // Function IpDrv.TitleFileDownloadCache.DeleteTitleFiles
-// (Latent, Singular, Simulated, Static)
+// (Final, Latent, PreOperator, Singular, NetReliable, Exec, Native, Event)
 // Parameters:
 // float                          MaxAgeSeconds                  (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UTitleFileDownloadCache::STATIC_DeleteTitleFiles(float MaxAgeSeconds)
+bool UTitleFileDownloadCache::DeleteTitleFiles(float MaxAgeSeconds)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TitleFileDownloadCache.DeleteTitleFiles");
 
@@ -1589,6 +1570,7 @@ bool UTitleFileDownloadCache::STATIC_DeleteTitleFiles(float MaxAgeSeconds)
 	params.MaxAgeSeconds = MaxAgeSeconds;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1599,7 +1581,7 @@ bool UTitleFileDownloadCache::STATIC_DeleteTitleFiles(float MaxAgeSeconds)
 
 
 // Function IpDrv.TitleFileDownloadCache.ClearCachedFile
-// (Final, Iterator, Latent, Singular, Net, NetReliable, Simulated, Exec, Event, Operator)
+// (Iterator, PreOperator, Singular, Net, Simulated, Event)
 // Parameters:
 // struct FString                 Filename                       (Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
@@ -1622,7 +1604,7 @@ bool UTitleFileDownloadCache::ClearCachedFile(const struct FString& Filename)
 
 
 // Function IpDrv.TitleFileDownloadCache.ClearCachedFiles
-// (Defined, Iterator, Latent, Singular, Net, NetReliable, Simulated, Exec, Event, Operator)
+// (Final, Iterator, PreOperator, Singular, Net, Simulated, Event)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
@@ -1643,12 +1625,12 @@ bool UTitleFileDownloadCache::ClearCachedFiles()
 
 
 // Function IpDrv.TitleFileDownloadCache.GetTitleFileLogicalName
-// (Latent, Net, NetReliable, Simulated, Exec, Event, Static)
+// (Final, Defined, Singular, Net, Simulated, Event, Operator)
 // Parameters:
 // struct FString                 Filename                       (Parm, NeedCtorLink)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString UTitleFileDownloadCache::STATIC_GetTitleFileLogicalName(const struct FString& Filename)
+struct FString UTitleFileDownloadCache::GetTitleFileLogicalName(const struct FString& Filename)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TitleFileDownloadCache.GetTitleFileLogicalName");
 
@@ -1666,12 +1648,12 @@ struct FString UTitleFileDownloadCache::STATIC_GetTitleFileLogicalName(const str
 
 
 // Function IpDrv.TitleFileDownloadCache.GetTitleFileHash
-// (Final, Defined, Iterator, Net, NetReliable, Simulated, Exec, Event, Static)
+// (Defined, Singular, Net, Simulated, Event, Operator)
 // Parameters:
 // struct FString                 Filename                       (Parm, NeedCtorLink)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString UTitleFileDownloadCache::STATIC_GetTitleFileHash(const struct FString& Filename)
+struct FString UTitleFileDownloadCache::GetTitleFileHash(const struct FString& Filename)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TitleFileDownloadCache.GetTitleFileHash");
 
@@ -1689,12 +1671,12 @@ struct FString UTitleFileDownloadCache::STATIC_GetTitleFileHash(const struct FSt
 
 
 // Function IpDrv.TitleFileDownloadCache.GetTitleFileState
-// (Final, Latent, Net, NetReliable, Simulated, Exec, Event, Static)
+// (Iterator, Singular, Net, Simulated, Event, Operator)
 // Parameters:
 // struct FString                 Filename                       (Parm, NeedCtorLink)
 // TEnumAsByte<EOnlineEnumerationReadState> ReturnValue                    (Parm, OutParm, ReturnParm)
 
-TEnumAsByte<EOnlineEnumerationReadState> UTitleFileDownloadCache::STATIC_GetTitleFileState(const struct FString& Filename)
+TEnumAsByte<EOnlineEnumerationReadState> UTitleFileDownloadCache::GetTitleFileState(const struct FString& Filename)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TitleFileDownloadCache.GetTitleFileState");
 
@@ -1712,13 +1694,13 @@ TEnumAsByte<EOnlineEnumerationReadState> UTitleFileDownloadCache::STATIC_GetTitl
 
 
 // Function IpDrv.TitleFileDownloadCache.GetTitleFileContents
-// (Defined, Iterator, Net, NetReliable, Simulated, Exec, Event, Static)
+// (Final, Singular, Net, Simulated, Event, Operator)
 // Parameters:
 // struct FString                 Filename                       (Parm, NeedCtorLink)
 // TArray<unsigned char>          FileContents                   (Parm, OutParm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UTitleFileDownloadCache::STATIC_GetTitleFileContents(const struct FString& Filename, TArray<unsigned char>* FileContents)
+bool UTitleFileDownloadCache::GetTitleFileContents(const struct FString& Filename, TArray<unsigned char>* FileContents)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TitleFileDownloadCache.GetTitleFileContents");
 
@@ -1739,7 +1721,7 @@ bool UTitleFileDownloadCache::STATIC_GetTitleFileContents(const struct FString& 
 
 
 // Function IpDrv.TitleFileDownloadCache.ClearSaveTitleFileCompleteDelegate
-// (Final, Iterator, Latent, PreOperator, Singular, Net, Native, Event, Operator)
+// (Iterator, Exec, Event)
 // Parameters:
 // struct FScriptDelegate         SaveCompleteDelegate           (Parm, NeedCtorLink)
 
@@ -1751,7 +1733,6 @@ void UTitleFileDownloadCache::ClearSaveTitleFileCompleteDelegate(const struct FS
 	params.SaveCompleteDelegate = SaveCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1760,11 +1741,11 @@ void UTitleFileDownloadCache::ClearSaveTitleFileCompleteDelegate(const struct FS
 
 
 // Function IpDrv.TitleFileDownloadCache.AddSaveTitleFileCompleteDelegate
-// (Final, Latent, Net, NetReliable, Native, Event)
+// (Latent, Net, Exec, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         SaveCompleteDelegate           (Parm, NeedCtorLink)
 
-void UTitleFileDownloadCache::AddSaveTitleFileCompleteDelegate(const struct FScriptDelegate& SaveCompleteDelegate)
+void UTitleFileDownloadCache::STATIC_AddSaveTitleFileCompleteDelegate(const struct FScriptDelegate& SaveCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TitleFileDownloadCache.AddSaveTitleFileCompleteDelegate");
 
@@ -1772,7 +1753,6 @@ void UTitleFileDownloadCache::AddSaveTitleFileCompleteDelegate(const struct FScr
 	params.SaveCompleteDelegate = SaveCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1781,7 +1761,7 @@ void UTitleFileDownloadCache::AddSaveTitleFileCompleteDelegate(const struct FScr
 
 
 // Function IpDrv.TitleFileDownloadCache.OnSaveTitleFileComplete
-// (Latent, Simulated, Exec, Native, HasOptionalParms)
+// (Defined, Net, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // bool                           bWasSuccessful                 (Parm)
 // struct FString                 Filename                       (Parm, NeedCtorLink)
@@ -1804,14 +1784,14 @@ void UTitleFileDownloadCache::OnSaveTitleFileComplete(bool bWasSuccessful, const
 
 
 // Function IpDrv.TitleFileDownloadCache.SaveTitleFile
-// (Final, Defined, PreOperator, Net, Exec, HasOptionalParms)
+// (Singular, Operator, Static)
 // Parameters:
 // struct FString                 Filename                       (Parm, NeedCtorLink)
 // struct FString                 LogicalName                    (Parm, NeedCtorLink)
 // TArray<unsigned char>          FileContents                   (Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UTitleFileDownloadCache::SaveTitleFile(const struct FString& Filename, const struct FString& LogicalName, TArray<unsigned char> FileContents)
+bool UTitleFileDownloadCache::STATIC_SaveTitleFile(const struct FString& Filename, const struct FString& LogicalName, TArray<unsigned char> FileContents)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TitleFileDownloadCache.SaveTitleFile");
 
@@ -1831,7 +1811,7 @@ bool UTitleFileDownloadCache::SaveTitleFile(const struct FString& Filename, cons
 
 
 // Function IpDrv.TitleFileDownloadCache.ClearLoadTitleFileCompleteDelegate
-// (PreOperator, Singular, Native, Event, Operator)
+// (Final, Defined, Iterator, PreOperator, Singular, NetReliable, Simulated, Event)
 // Parameters:
 // struct FScriptDelegate         LoadCompleteDelegate           (Parm, NeedCtorLink)
 
@@ -1843,7 +1823,6 @@ void UTitleFileDownloadCache::ClearLoadTitleFileCompleteDelegate(const struct FS
 	params.LoadCompleteDelegate = LoadCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1852,11 +1831,11 @@ void UTitleFileDownloadCache::ClearLoadTitleFileCompleteDelegate(const struct FS
 
 
 // Function IpDrv.TitleFileDownloadCache.AddLoadTitleFileCompleteDelegate
-// (Final, Iterator, PreOperator, Singular, Net, Native, Event)
+// (Iterator, PreOperator, Singular, Net, NetReliable, Simulated, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         LoadCompleteDelegate           (Parm, NeedCtorLink)
 
-void UTitleFileDownloadCache::AddLoadTitleFileCompleteDelegate(const struct FScriptDelegate& LoadCompleteDelegate)
+void UTitleFileDownloadCache::STATIC_AddLoadTitleFileCompleteDelegate(const struct FScriptDelegate& LoadCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TitleFileDownloadCache.AddLoadTitleFileCompleteDelegate");
 
@@ -1864,7 +1843,6 @@ void UTitleFileDownloadCache::AddLoadTitleFileCompleteDelegate(const struct FScr
 	params.LoadCompleteDelegate = LoadCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1873,7 +1851,7 @@ void UTitleFileDownloadCache::AddLoadTitleFileCompleteDelegate(const struct FScr
 
 
 // Function IpDrv.TitleFileDownloadCache.OnLoadTitleFileComplete
-// (PreOperator, Singular, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Defined, Latent, Singular, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // bool                           bWasSuccessful                 (Parm)
 // struct FString                 Filename                       (Parm, NeedCtorLink)
@@ -1896,12 +1874,12 @@ void UTitleFileDownloadCache::OnLoadTitleFileComplete(bool bWasSuccessful, const
 
 
 // Function IpDrv.TitleFileDownloadCache.LoadTitleFile
-// (Final, Defined, Net, NetReliable, Simulated, Operator, Static)
+// (Iterator, Latent, Singular, Net, Simulated, Exec, Native, Event, Operator)
 // Parameters:
 // struct FString                 Filename                       (Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UTitleFileDownloadCache::STATIC_LoadTitleFile(const struct FString& Filename)
+bool UTitleFileDownloadCache::LoadTitleFile(const struct FString& Filename)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.TitleFileDownloadCache.LoadTitleFile");
 
@@ -1909,6 +1887,7 @@ bool UTitleFileDownloadCache::STATIC_LoadTitleFile(const struct FString& Filenam
 	params.Filename = Filename;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1919,13 +1898,13 @@ bool UTitleFileDownloadCache::STATIC_LoadTitleFile(const struct FString& Filenam
 
 
 // Function IpDrv.McpMessageBase.CacheMessageContents
-// (Final, Latent, Singular, NetReliable, Simulated, Operator, HasOptionalParms)
+// (Defined, Singular, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // TArray<unsigned char>          MessageContents                (Const, Parm, OutParm, NeedCtorLink)
 // struct FString                 MessageId                      (Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UMcpMessageBase::CacheMessageContents(const struct FString& MessageId, TArray<unsigned char>* MessageContents)
+bool UMcpMessageBase::STATIC_CacheMessageContents(const struct FString& MessageId, TArray<unsigned char>* MessageContents)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpMessageBase.CacheMessageContents");
 
@@ -1933,6 +1912,7 @@ bool UMcpMessageBase::CacheMessageContents(const struct FString& MessageId, TArr
 	params.MessageId = MessageId;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1946,11 +1926,11 @@ bool UMcpMessageBase::CacheMessageContents(const struct FString& MessageId, TArr
 
 
 // Function IpDrv.McpMessageBase.CacheMessage
-// (Latent, Singular, NetReliable, Simulated, Operator, HasOptionalParms)
+// (Final, Singular, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // struct FMcpMessage             Message                        (Parm, NeedCtorLink)
 
-void UMcpMessageBase::CacheMessage(const struct FMcpMessage& Message)
+void UMcpMessageBase::STATIC_CacheMessage(const struct FMcpMessage& Message)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpMessageBase.CacheMessage");
 
@@ -1958,6 +1938,7 @@ void UMcpMessageBase::CacheMessage(const struct FMcpMessage& Message)
 	params.Message = Message;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1966,7 +1947,7 @@ void UMcpMessageBase::CacheMessage(const struct FMcpMessage& Message)
 
 
 // Function IpDrv.McpMessageBase.GetMessageContents
-// (Final, Iterator, PreOperator, Singular, NetReliable, Exec, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, Singular, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 MessageId                      (Parm, NeedCtorLink)
 // TArray<unsigned char>          MessageContents                (Parm, OutParm, NeedCtorLink)
@@ -1993,7 +1974,7 @@ bool UMcpMessageBase::GetMessageContents(const struct FString& MessageId, TArray
 
 
 // Function IpDrv.McpMessageBase.OnQueryMessageContentsComplete
-// (Final, Defined, Iterator, PreOperator, Singular, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Final, PreOperator, Singular, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // struct FString                 MessageId                      (Parm, NeedCtorLink)
 // bool                           bWasSuccessful                 (Parm)
@@ -2018,7 +1999,7 @@ void UMcpMessageBase::OnQueryMessageContentsComplete(const struct FString& Messa
 
 
 // Function IpDrv.McpMessageBase.QueryMessageContents
-// (Singular, NetReliable, Native, Operator, HasOptionalParms)
+// (Defined, Latent, PreOperator, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 MessageId                      (Parm, NeedCtorLink)
 
@@ -2030,7 +2011,6 @@ void UMcpMessageBase::QueryMessageContents(const struct FString& MessageId)
 	params.MessageId = MessageId;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2039,7 +2019,7 @@ void UMcpMessageBase::QueryMessageContents(const struct FString& MessageId)
 
 
 // Function IpDrv.McpMessageBase.GetMessageList
-// (Defined, Iterator, PreOperator, Singular, NetReliable, Exec, Operator, HasOptionalParms)
+// (PreOperator, Singular, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 ToUniqueUserId                 (Parm, NeedCtorLink)
 // struct FMcpMessageList         MessageList                    (Parm, OutParm, NeedCtorLink)
@@ -2063,7 +2043,7 @@ void UMcpMessageBase::GetMessageList(const struct FString& ToUniqueUserId, struc
 
 
 // Function IpDrv.McpMessageBase.OnQueryMessagesComplete
-// (Latent, PreOperator, Singular, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Defined, PreOperator, Singular, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // struct FString                 UserId                         (Parm, NeedCtorLink)
 // bool                           bWasSuccessful                 (Parm)
@@ -2088,7 +2068,7 @@ void UMcpMessageBase::OnQueryMessagesComplete(const struct FString& UserId, bool
 
 
 // Function IpDrv.McpMessageBase.QueryMessages
-// (Defined, Singular, NetReliable, Native, Operator, HasOptionalParms)
+// (Iterator, Latent, PreOperator, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 ToUniqueUserId                 (Parm, NeedCtorLink)
 // struct FString                 TitleId                        (Parm, NeedCtorLink)
@@ -2102,7 +2082,6 @@ void UMcpMessageBase::QueryMessages(const struct FString& ToUniqueUserId, const 
 	params.TitleId = TitleId;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2111,7 +2090,7 @@ void UMcpMessageBase::QueryMessages(const struct FString& ToUniqueUserId, const 
 
 
 // Function IpDrv.McpMessageBase.OnDeleteMessageComplete
-// (Singular, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Defined, Latent, PreOperator, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // struct FString                 MessageId                      (Parm, NeedCtorLink)
 // bool                           bWasSuccessful                 (Parm)
@@ -2136,11 +2115,11 @@ void UMcpMessageBase::OnDeleteMessageComplete(const struct FString& MessageId, b
 
 
 // Function IpDrv.McpMessageBase.DeleteMessage
-// (Defined, Singular, Simulated, Static)
+// (Final, Defined, PreOperator, Singular, NetReliable, Exec, Native, Event)
 // Parameters:
 // struct FString                 MessageId                      (Parm, NeedCtorLink)
 
-void UMcpMessageBase::STATIC_DeleteMessage(const struct FString& MessageId)
+void UMcpMessageBase::DeleteMessage(const struct FString& MessageId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpMessageBase.DeleteMessage");
 
@@ -2148,6 +2127,7 @@ void UMcpMessageBase::STATIC_DeleteMessage(const struct FString& MessageId)
 	params.MessageId = MessageId;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2156,7 +2136,7 @@ void UMcpMessageBase::STATIC_DeleteMessage(const struct FString& MessageId)
 
 
 // Function IpDrv.McpMessageBase.OnCreateMessageComplete
-// (Iterator, Latent, PreOperator, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Defined, Iterator, PreOperator, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // struct FMcpMessage             Message                        (Parm, NeedCtorLink)
 // bool                           bWasSuccessful                 (Parm)
@@ -2181,7 +2161,7 @@ void UMcpMessageBase::OnCreateMessageComplete(const struct FMcpMessage& Message,
 
 
 // Function IpDrv.McpMessageBase.CreateMessage
-// (Final, Defined, Iterator, Latent, Singular, Net, NetReliable, Simulated, Operator, HasOptionalParms)
+// (Latent, Singular, Net, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // TArray<struct FString>         ToUniqueUserIds                (Const, Parm, OutParm, NeedCtorLink)
 // struct FString                 FromUniqueUserId               (Parm, NeedCtorLink)
@@ -2192,7 +2172,7 @@ void UMcpMessageBase::OnCreateMessageComplete(const struct FMcpMessage& Message,
 // struct FString                 ValidUntil                     (Parm, NeedCtorLink)
 // TArray<unsigned char>          MessageContents                (Const, Parm, OutParm, NeedCtorLink)
 
-void UMcpMessageBase::CreateMessage(const struct FString& FromUniqueUserId, const struct FString& FromFriendlyName, const struct FString& MessageType, const struct FString& TitleId, const struct FString& PushMessage, const struct FString& ValidUntil, TArray<struct FString>* ToUniqueUserIds, TArray<unsigned char>* MessageContents)
+void UMcpMessageBase::STATIC_CreateMessage(const struct FString& FromUniqueUserId, const struct FString& FromFriendlyName, const struct FString& MessageType, const struct FString& TitleId, const struct FString& PushMessage, const struct FString& ValidUntil, TArray<struct FString>* ToUniqueUserIds, TArray<unsigned char>* MessageContents)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpMessageBase.CreateMessage");
 
@@ -2205,6 +2185,7 @@ void UMcpMessageBase::CreateMessage(const struct FString& FromUniqueUserId, cons
 	params.ValidUntil = ValidUntil;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2218,17 +2199,18 @@ void UMcpMessageBase::CreateMessage(const struct FString& FromUniqueUserId, cons
 
 
 // Function IpDrv.McpMessageBase.CreateInstance
-// (Defined, Iterator, Latent, Singular, Net, NetReliable, Simulated, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, Singular, Net, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // class UMcpMessageBase*         ReturnValue                    (Parm, OutParm, ReturnParm)
 
-class UMcpMessageBase* UMcpMessageBase::CreateInstance()
+class UMcpMessageBase* UMcpMessageBase::STATIC_CreateInstance()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpMessageBase.CreateInstance");
 
 	UMcpMessageBase_CreateInstance_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2239,13 +2221,13 @@ class UMcpMessageBase* UMcpMessageBase::CreateInstance()
 
 
 // Function IpDrv.McpMessageManager.CacheMessageContents
-// (Final, Latent, Singular, NetReliable, Simulated, Operator, HasOptionalParms)
+// (Defined, Singular, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // TArray<unsigned char>          MessageContents                (Const, Parm, OutParm, NeedCtorLink)
 // struct FString                 MessageId                      (Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UMcpMessageManager::CacheMessageContents(const struct FString& MessageId, TArray<unsigned char>* MessageContents)
+bool UMcpMessageManager::STATIC_CacheMessageContents(const struct FString& MessageId, TArray<unsigned char>* MessageContents)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpMessageManager.CacheMessageContents");
 
@@ -2253,6 +2235,7 @@ bool UMcpMessageManager::CacheMessageContents(const struct FString& MessageId, T
 	params.MessageId = MessageId;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2266,7 +2249,7 @@ bool UMcpMessageManager::CacheMessageContents(const struct FString& MessageId, T
 
 
 // Function IpDrv.McpMessageManager.GetMessageById
-// (Iterator, PreOperator, Singular, NetReliable, Exec, Operator, HasOptionalParms)
+// (Defined, Iterator, Latent, Singular, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 MessageId                      (Parm, NeedCtorLink)
 // struct FMcpMessage             Message                        (Parm, OutParm, NeedCtorLink)
@@ -2293,11 +2276,11 @@ bool UMcpMessageManager::GetMessageById(const struct FString& MessageId, struct 
 
 
 // Function IpDrv.McpMessageManager.CacheMessage
-// (Latent, Singular, NetReliable, Simulated, Operator, HasOptionalParms)
+// (Final, Singular, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // struct FMcpMessage             Message                        (Parm, NeedCtorLink)
 
-void UMcpMessageManager::CacheMessage(const struct FMcpMessage& Message)
+void UMcpMessageManager::STATIC_CacheMessage(const struct FMcpMessage& Message)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpMessageManager.CacheMessage");
 
@@ -2305,6 +2288,7 @@ void UMcpMessageManager::CacheMessage(const struct FMcpMessage& Message)
 	params.Message = Message;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2313,7 +2297,7 @@ void UMcpMessageManager::CacheMessage(const struct FMcpMessage& Message)
 
 
 // Function IpDrv.McpMessageManager.GetMessageContents
-// (Final, Iterator, PreOperator, Singular, NetReliable, Exec, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, Singular, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 MessageId                      (Parm, NeedCtorLink)
 // TArray<unsigned char>          MessageContents                (Parm, OutParm, NeedCtorLink)
@@ -2340,7 +2324,7 @@ bool UMcpMessageManager::GetMessageContents(const struct FString& MessageId, TAr
 
 
 // Function IpDrv.McpMessageManager.OnQueryMessageContentsRequestComplete
-// (Final, Iterator, PreOperator, Native, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, Exec, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   OriginalRequest                (Parm)
 // class UHttpResponseInterface*  HttpResponse                   (Parm)
@@ -2356,7 +2340,6 @@ void UMcpMessageManager::OnQueryMessageContentsRequestComplete(class UHttpReques
 	params.bWasSuccessful = bWasSuccessful;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2365,7 +2348,7 @@ void UMcpMessageManager::OnQueryMessageContentsRequestComplete(class UHttpReques
 
 
 // Function IpDrv.McpMessageManager.QueryMessageContents
-// (Singular, NetReliable, Native, Operator, HasOptionalParms)
+// (Defined, Latent, PreOperator, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 MessageId                      (Parm, NeedCtorLink)
 
@@ -2377,7 +2360,6 @@ void UMcpMessageManager::QueryMessageContents(const struct FString& MessageId)
 	params.MessageId = MessageId;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2386,7 +2368,7 @@ void UMcpMessageManager::QueryMessageContents(const struct FString& MessageId)
 
 
 // Function IpDrv.McpMessageManager.GetMessageList
-// (Defined, Iterator, PreOperator, Singular, NetReliable, Exec, Operator, HasOptionalParms)
+// (PreOperator, Singular, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 ToUniqueUserId                 (Parm, NeedCtorLink)
 // struct FMcpMessageList         MessageList                    (Parm, OutParm, NeedCtorLink)
@@ -2410,7 +2392,7 @@ void UMcpMessageManager::GetMessageList(const struct FString& ToUniqueUserId, st
 
 
 // Function IpDrv.McpMessageManager.OnQueryMessagesRequestComplete
-// (Defined, Iterator, PreOperator, Native, Operator, HasOptionalParms)
+// (PreOperator, Exec, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   OriginalRequest                (Parm)
 // class UHttpResponseInterface*  HttpResponse                   (Parm)
@@ -2426,7 +2408,6 @@ void UMcpMessageManager::OnQueryMessagesRequestComplete(class UHttpRequestInterf
 	params.bWasSuccessful = bWasSuccessful;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2435,7 +2416,7 @@ void UMcpMessageManager::OnQueryMessagesRequestComplete(class UHttpRequestInterf
 
 
 // Function IpDrv.McpMessageManager.QueryMessages
-// (Defined, Singular, NetReliable, Native, Operator, HasOptionalParms)
+// (Iterator, Latent, PreOperator, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 ToUniqueUserId                 (Parm, NeedCtorLink)
 // struct FString                 TitleId                        (Parm, NeedCtorLink)
@@ -2449,7 +2430,6 @@ void UMcpMessageManager::QueryMessages(const struct FString& ToUniqueUserId, con
 	params.TitleId = TitleId;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2458,7 +2438,7 @@ void UMcpMessageManager::QueryMessages(const struct FString& ToUniqueUserId, con
 
 
 // Function IpDrv.McpMessageManager.OnDeleteMessageRequestComplete
-// (Defined, Iterator, Latent, Singular, Net, NetReliable, Simulated, Exec, Operator, HasOptionalParms)
+// (Latent, Singular, Net, NetReliable, Simulated, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   OriginalRequest                (Parm)
 // class UHttpResponseInterface*  HttpResponse                   (Parm)
@@ -2482,11 +2462,11 @@ void UMcpMessageManager::OnDeleteMessageRequestComplete(class UHttpRequestInterf
 
 
 // Function IpDrv.McpMessageManager.DeleteMessage
-// (Defined, Singular, Simulated, Static)
+// (Final, Defined, PreOperator, Singular, NetReliable, Exec, Native, Event)
 // Parameters:
 // struct FString                 MessageId                      (Parm, NeedCtorLink)
 
-void UMcpMessageManager::STATIC_DeleteMessage(const struct FString& MessageId)
+void UMcpMessageManager::DeleteMessage(const struct FString& MessageId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpMessageManager.DeleteMessage");
 
@@ -2494,6 +2474,7 @@ void UMcpMessageManager::STATIC_DeleteMessage(const struct FString& MessageId)
 	params.MessageId = MessageId;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2502,7 +2483,7 @@ void UMcpMessageManager::STATIC_DeleteMessage(const struct FString& MessageId)
 
 
 // Function IpDrv.McpMessageManager.OnCreateMessageRequestComplete
-// (Final, Iterator, Singular, Net, NetReliable, Simulated, Exec, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, PreOperator, Net, NetReliable, Simulated, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   CreateMessageRequest           (Parm)
 // class UHttpResponseInterface*  HttpResponse                   (Parm)
@@ -2526,7 +2507,7 @@ void UMcpMessageManager::OnCreateMessageRequestComplete(class UHttpRequestInterf
 
 
 // Function IpDrv.McpMessageManager.CreateMessage
-// (Final, Defined, Iterator, Latent, Singular, Net, NetReliable, Simulated, Operator, HasOptionalParms)
+// (Latent, Singular, Net, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // TArray<struct FString>         ToUniqueUserIds                (Const, Parm, OutParm, NeedCtorLink)
 // struct FString                 FromUniqueUserId               (Parm, NeedCtorLink)
@@ -2537,7 +2518,7 @@ void UMcpMessageManager::OnCreateMessageRequestComplete(class UHttpRequestInterf
 // struct FString                 ValidUntil                     (Parm, NeedCtorLink)
 // TArray<unsigned char>          MessageContents                (Const, Parm, OutParm, NeedCtorLink)
 
-void UMcpMessageManager::CreateMessage(const struct FString& FromUniqueUserId, const struct FString& FromFriendlyName, const struct FString& MessageType, const struct FString& TitleId, const struct FString& PushMessage, const struct FString& ValidUntil, TArray<struct FString>* ToUniqueUserIds, TArray<unsigned char>* MessageContents)
+void UMcpMessageManager::STATIC_CreateMessage(const struct FString& FromUniqueUserId, const struct FString& FromFriendlyName, const struct FString& MessageType, const struct FString& TitleId, const struct FString& PushMessage, const struct FString& ValidUntil, TArray<struct FString>* ToUniqueUserIds, TArray<unsigned char>* MessageContents)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpMessageManager.CreateMessage");
 
@@ -2550,6 +2531,7 @@ void UMcpMessageManager::CreateMessage(const struct FString& FromUniqueUserId, c
 	params.ValidUntil = ValidUntil;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2563,7 +2545,7 @@ void UMcpMessageManager::CreateMessage(const struct FString& FromUniqueUserId, c
 
 
 // Function IpDrv.McpMessageManager.FinishedAsyncUncompression
-// (Defined, PreOperator, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Iterator, Latent, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // bool                           bWasSuccessful                 (Parm)
 // TArray<unsigned char>          UncompressedMessageContents    (Const, Parm, OutParm, NeedCtorLink)
@@ -2590,7 +2572,7 @@ void UMcpMessageManager::FinishedAsyncUncompression(bool bWasSuccessful, const s
 
 
 // Function IpDrv.McpMessageManager.StartAsyncUncompression
-// (Iterator, Latent, PreOperator, Simulated, Native, Operator, HasOptionalParms)
+// (Defined, Iterator, PreOperator, Simulated, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 MessageId                      (Parm, NeedCtorLink)
 // TEnumAsByte<EMcpMessageCompressionType> MessageCompressionType         (Parm)
@@ -2606,7 +2588,6 @@ bool UMcpMessageManager::StartAsyncUncompression(const struct FString& MessageId
 	params.MessageCompressionType = MessageCompressionType;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2620,7 +2601,7 @@ bool UMcpMessageManager::StartAsyncUncompression(const struct FString& MessageId
 
 
 // Function IpDrv.McpMessageManager.StartAsyncCompression
-// (Final, Defined, Latent, PreOperator, Simulated, Native, Operator, HasOptionalParms)
+// (Final, Iterator, PreOperator, Simulated, Exec, HasOptionalParms)
 // Parameters:
 // TEnumAsByte<EMcpMessageCompressionType> MessageCompressionType         (Parm)
 // TArray<unsigned char>          MessageContent                 (Const, Parm, OutParm, NeedCtorLink)
@@ -2636,7 +2617,6 @@ bool UMcpMessageManager::StartAsyncCompression(TEnumAsByte<EMcpMessageCompressio
 	params.Request = Request;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2650,7 +2630,7 @@ bool UMcpMessageManager::StartAsyncCompression(TEnumAsByte<EMcpMessageCompressio
 
 
 // Function IpDrv.McpUserCloudFileDownload.ClearAllDelegates
-// (Defined, Singular, Net, NetReliable, Simulated, Exec, Event, Operator)
+// (Final, Latent, Singular, Net, Simulated, Event)
 
 void UMcpUserCloudFileDownload::ClearAllDelegates()
 {
@@ -2667,7 +2647,7 @@ void UMcpUserCloudFileDownload::ClearAllDelegates()
 
 
 // Function IpDrv.McpUserCloudFileDownload.ClearDeleteUserFileCompleteDelegate
-// (Iterator, Latent, Native, Event, Operator)
+// (Final, Defined, PreOperator, NetReliable, Simulated, Event)
 // Parameters:
 // struct FScriptDelegate         DeleteUserFileCompleteDelegate (Parm, NeedCtorLink)
 
@@ -2679,7 +2659,6 @@ void UMcpUserCloudFileDownload::ClearDeleteUserFileCompleteDelegate(const struct
 	params.DeleteUserFileCompleteDelegate = DeleteUserFileCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2688,11 +2667,11 @@ void UMcpUserCloudFileDownload::ClearDeleteUserFileCompleteDelegate(const struct
 
 
 // Function IpDrv.McpUserCloudFileDownload.AddDeleteUserFileCompleteDelegate
-// (Net, Native, Event)
+// (Final, Defined, Iterator, Latent, PreOperator, Singular, NetReliable, Simulated, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         DeleteUserFileCompleteDelegate (Parm, NeedCtorLink)
 
-void UMcpUserCloudFileDownload::AddDeleteUserFileCompleteDelegate(const struct FScriptDelegate& DeleteUserFileCompleteDelegate)
+void UMcpUserCloudFileDownload::STATIC_AddDeleteUserFileCompleteDelegate(const struct FScriptDelegate& DeleteUserFileCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserCloudFileDownload.AddDeleteUserFileCompleteDelegate");
 
@@ -2700,7 +2679,6 @@ void UMcpUserCloudFileDownload::AddDeleteUserFileCompleteDelegate(const struct F
 	params.DeleteUserFileCompleteDelegate = DeleteUserFileCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2709,13 +2687,13 @@ void UMcpUserCloudFileDownload::AddDeleteUserFileCompleteDelegate(const struct F
 
 
 // Function IpDrv.McpUserCloudFileDownload.CallDeleteUserFileCompleteDelegates
-// (Final, Defined, Latent, Singular, NetReliable, Simulated, Operator, HasOptionalParms)
+// (Iterator, Singular, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // bool                           bWasSuccessful                 (Parm)
 // struct FString                 UserId                         (Parm, NeedCtorLink)
 // struct FString                 Filename                       (Parm, NeedCtorLink)
 
-void UMcpUserCloudFileDownload::CallDeleteUserFileCompleteDelegates(bool bWasSuccessful, const struct FString& UserId, const struct FString& Filename)
+void UMcpUserCloudFileDownload::STATIC_CallDeleteUserFileCompleteDelegates(bool bWasSuccessful, const struct FString& UserId, const struct FString& Filename)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserCloudFileDownload.CallDeleteUserFileCompleteDelegates");
 
@@ -2725,6 +2703,7 @@ void UMcpUserCloudFileDownload::CallDeleteUserFileCompleteDelegates(bool bWasSuc
 	params.Filename = Filename;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2733,7 +2712,7 @@ void UMcpUserCloudFileDownload::CallDeleteUserFileCompleteDelegates(bool bWasSuc
 
 
 // Function IpDrv.McpUserCloudFileDownload.OnDeleteUserFileComplete
-// (Defined, Iterator, Latent, Net, NetReliable, Simulated, Native, Event, Static)
+// (PreOperator, Net, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // bool                           bWasSuccessful                 (Parm)
 // struct FString                 UserId                         (Parm, NeedCtorLink)
@@ -2758,7 +2737,7 @@ void UMcpUserCloudFileDownload::STATIC_OnDeleteUserFileComplete(bool bWasSuccess
 
 
 // Function IpDrv.McpUserCloudFileDownload.OnHTTPRequestDeleteUserFileComplete
-// (Final, Defined, Latent, PreOperator, Singular, Net, NetReliable, Simulated, Exec, Operator, HasOptionalParms)
+// (Final, Iterator, PreOperator, Singular, Net, NetReliable, Simulated, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   Request                        (Parm)
 // class UHttpResponseInterface*  Response                       (Parm)
@@ -2782,7 +2761,7 @@ void UMcpUserCloudFileDownload::OnHTTPRequestDeleteUserFileComplete(class UHttpR
 
 
 // Function IpDrv.McpUserCloudFileDownload.DeleteUserFile
-// (Final, Latent, Singular, Simulated, Static)
+// (Defined, Latent, PreOperator, Singular, NetReliable, Exec, Native, Event)
 // Parameters:
 // struct FString                 UserId                         (Parm, NeedCtorLink)
 // struct FString                 Filename                       (Parm, NeedCtorLink)
@@ -2790,7 +2769,7 @@ void UMcpUserCloudFileDownload::OnHTTPRequestDeleteUserFileComplete(class UHttpR
 // bool                           bShouldLocallyDelete           (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UMcpUserCloudFileDownload::STATIC_DeleteUserFile(const struct FString& UserId, const struct FString& Filename, bool bShouldCloudDelete, bool bShouldLocallyDelete)
+bool UMcpUserCloudFileDownload::DeleteUserFile(const struct FString& UserId, const struct FString& Filename, bool bShouldCloudDelete, bool bShouldLocallyDelete)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserCloudFileDownload.DeleteUserFile");
 
@@ -2801,6 +2780,7 @@ bool UMcpUserCloudFileDownload::STATIC_DeleteUserFile(const struct FString& User
 	params.bShouldLocallyDelete = bShouldLocallyDelete;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2811,7 +2791,7 @@ bool UMcpUserCloudFileDownload::STATIC_DeleteUserFile(const struct FString& User
 
 
 // Function IpDrv.McpUserCloudFileDownload.ClearWriteUserFileCompleteDelegate
-// (Final, Defined, Latent, PreOperator, NetReliable, Native, Event, Operator)
+// (Defined, Singular, Exec, Event)
 // Parameters:
 // struct FScriptDelegate         WriteUserFileCompleteDelegate  (Parm, NeedCtorLink)
 
@@ -2823,7 +2803,6 @@ void UMcpUserCloudFileDownload::ClearWriteUserFileCompleteDelegate(const struct 
 	params.WriteUserFileCompleteDelegate = WriteUserFileCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2832,11 +2811,11 @@ void UMcpUserCloudFileDownload::ClearWriteUserFileCompleteDelegate(const struct 
 
 
 // Function IpDrv.McpUserCloudFileDownload.AddWriteUserFileCompleteDelegate
-// (Final, Defined, PreOperator, Singular, Net, NetReliable, Native, Event)
+// (Defined, PreOperator, Singular, Net, Exec, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         WriteUserFileCompleteDelegate  (Parm, NeedCtorLink)
 
-void UMcpUserCloudFileDownload::AddWriteUserFileCompleteDelegate(const struct FScriptDelegate& WriteUserFileCompleteDelegate)
+void UMcpUserCloudFileDownload::STATIC_AddWriteUserFileCompleteDelegate(const struct FScriptDelegate& WriteUserFileCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserCloudFileDownload.AddWriteUserFileCompleteDelegate");
 
@@ -2844,7 +2823,6 @@ void UMcpUserCloudFileDownload::AddWriteUserFileCompleteDelegate(const struct FS
 	params.WriteUserFileCompleteDelegate = WriteUserFileCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2853,13 +2831,13 @@ void UMcpUserCloudFileDownload::AddWriteUserFileCompleteDelegate(const struct FS
 
 
 // Function IpDrv.McpUserCloudFileDownload.CallWriteUserFileCompleteDelegates
-// (Defined, Iterator, Latent, Singular, NetReliable, Simulated, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, Singular, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // bool                           bWasSuccessful                 (Parm)
 // struct FString                 UserId                         (Parm, NeedCtorLink)
 // struct FString                 Filename                       (Parm, NeedCtorLink)
 
-void UMcpUserCloudFileDownload::CallWriteUserFileCompleteDelegates(bool bWasSuccessful, const struct FString& UserId, const struct FString& Filename)
+void UMcpUserCloudFileDownload::STATIC_CallWriteUserFileCompleteDelegates(bool bWasSuccessful, const struct FString& UserId, const struct FString& Filename)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserCloudFileDownload.CallWriteUserFileCompleteDelegates");
 
@@ -2869,6 +2847,7 @@ void UMcpUserCloudFileDownload::CallWriteUserFileCompleteDelegates(bool bWasSucc
 	params.Filename = Filename;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2877,7 +2856,7 @@ void UMcpUserCloudFileDownload::CallWriteUserFileCompleteDelegates(bool bWasSucc
 
 
 // Function IpDrv.McpUserCloudFileDownload.OnWriteUserFileComplete
-// (Defined, Iterator, Exec, Native, Event, Static)
+// (Latent, Exec, Native, Event, Static)
 // Parameters:
 // bool                           bWasSuccessful                 (Parm)
 // struct FString                 UserId                         (Parm, NeedCtorLink)
@@ -2902,7 +2881,7 @@ void UMcpUserCloudFileDownload::STATIC_OnWriteUserFileComplete(bool bWasSuccessf
 
 
 // Function IpDrv.McpUserCloudFileDownload.OnHTTPRequestWriteUserFileComplete
-// (Defined, Iterator, Latent, PreOperator, Singular, Net, NetReliable, Simulated, Exec, Operator, HasOptionalParms)
+// (Latent, PreOperator, Singular, Net, NetReliable, Simulated, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   Request                        (Parm)
 // class UHttpResponseInterface*  Response                       (Parm)
@@ -2926,7 +2905,7 @@ void UMcpUserCloudFileDownload::OnHTTPRequestWriteUserFileComplete(class UHttpRe
 
 
 // Function IpDrv.McpUserCloudFileDownload.GetUserFileIndexForRequest
-// (Latent, Net, NetReliable, Exec, Operator, HasOptionalParms)
+// (Defined, Net, NetReliable, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   Request                        (Parm)
 // int                            UserIdx                        (Parm, OutParm)
@@ -2953,14 +2932,14 @@ void UMcpUserCloudFileDownload::GetUserFileIndexForRequest(class UHttpRequestInt
 
 
 // Function IpDrv.McpUserCloudFileDownload.WriteUserFile
-// (Final, Latent, PreOperator, Singular, Exec, Native, Event, HasOptionalParms)
+// (Iterator, Latent, Singular, Native, Event, Operator, Static)
 // Parameters:
 // struct FString                 UserId                         (Parm, NeedCtorLink)
 // struct FString                 Filename                       (Parm, NeedCtorLink)
 // TArray<unsigned char>          FileContents                   (Const, Parm, OutParm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UMcpUserCloudFileDownload::WriteUserFile(const struct FString& UserId, const struct FString& Filename, TArray<unsigned char>* FileContents)
+bool UMcpUserCloudFileDownload::STATIC_WriteUserFile(const struct FString& UserId, const struct FString& Filename, TArray<unsigned char>* FileContents)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserCloudFileDownload.WriteUserFile");
 
@@ -2983,7 +2962,7 @@ bool UMcpUserCloudFileDownload::WriteUserFile(const struct FString& UserId, cons
 
 
 // Function IpDrv.McpUserCloudFileDownload.ClearReadUserFileCompleteDelegate
-// (Final, PreOperator, Singular, Net, Native, Event, Operator)
+// (Latent, PreOperator, Singular, Net, NetReliable, Simulated, Event)
 // Parameters:
 // struct FScriptDelegate         ReadUserFileCompleteDelegate   (Parm, NeedCtorLink)
 
@@ -2995,7 +2974,6 @@ void UMcpUserCloudFileDownload::ClearReadUserFileCompleteDelegate(const struct F
 	params.ReadUserFileCompleteDelegate = ReadUserFileCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3004,11 +2982,11 @@ void UMcpUserCloudFileDownload::ClearReadUserFileCompleteDelegate(const struct F
 
 
 // Function IpDrv.McpUserCloudFileDownload.AddReadUserFileCompleteDelegate
-// (Iterator, Latent, PreOperator, Singular, NetReliable, Native, Event)
+// (Final, Defined, Latent, PreOperator, Singular, Exec, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         ReadUserFileCompleteDelegate   (Parm, NeedCtorLink)
 
-void UMcpUserCloudFileDownload::AddReadUserFileCompleteDelegate(const struct FScriptDelegate& ReadUserFileCompleteDelegate)
+void UMcpUserCloudFileDownload::STATIC_AddReadUserFileCompleteDelegate(const struct FScriptDelegate& ReadUserFileCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserCloudFileDownload.AddReadUserFileCompleteDelegate");
 
@@ -3016,7 +2994,6 @@ void UMcpUserCloudFileDownload::AddReadUserFileCompleteDelegate(const struct FSc
 	params.ReadUserFileCompleteDelegate = ReadUserFileCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3025,13 +3002,13 @@ void UMcpUserCloudFileDownload::AddReadUserFileCompleteDelegate(const struct FSc
 
 
 // Function IpDrv.McpUserCloudFileDownload.CallReadUserFileCompleteDelegates
-// (Final, Iterator, Latent, Singular, NetReliable, Simulated, Operator, HasOptionalParms)
+// (Defined, Iterator, Singular, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // bool                           bWasSuccessful                 (Parm)
 // struct FString                 UserId                         (Parm, NeedCtorLink)
 // struct FString                 Filename                       (Parm, NeedCtorLink)
 
-void UMcpUserCloudFileDownload::CallReadUserFileCompleteDelegates(bool bWasSuccessful, const struct FString& UserId, const struct FString& Filename)
+void UMcpUserCloudFileDownload::STATIC_CallReadUserFileCompleteDelegates(bool bWasSuccessful, const struct FString& UserId, const struct FString& Filename)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserCloudFileDownload.CallReadUserFileCompleteDelegates");
 
@@ -3041,6 +3018,7 @@ void UMcpUserCloudFileDownload::CallReadUserFileCompleteDelegates(bool bWasSucce
 	params.Filename = Filename;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3049,7 +3027,7 @@ void UMcpUserCloudFileDownload::CallReadUserFileCompleteDelegates(bool bWasSucce
 
 
 // Function IpDrv.McpUserCloudFileDownload.OnReadUserFileComplete
-// (Defined, PreOperator, Singular, Net, NetReliable, Simulated, Native, Event, Static)
+// (Iterator, PreOperator, Singular, Net, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // bool                           bWasSuccessful                 (Parm)
 // struct FString                 UserId                         (Parm, NeedCtorLink)
@@ -3074,7 +3052,7 @@ void UMcpUserCloudFileDownload::STATIC_OnReadUserFileComplete(bool bWasSuccessfu
 
 
 // Function IpDrv.McpUserCloudFileDownload.OnHTTPRequestReadUserFileComplete
-// (Final, Iterator, Latent, PreOperator, Singular, Net, NetReliable, Simulated, Exec, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, PreOperator, Singular, Net, NetReliable, Simulated, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   Request                        (Parm)
 // class UHttpResponseInterface*  Response                       (Parm)
@@ -3098,7 +3076,7 @@ void UMcpUserCloudFileDownload::OnHTTPRequestReadUserFileComplete(class UHttpReq
 
 
 // Function IpDrv.McpUserCloudFileDownload.ReadUserFile
-// (Final, Latent, PreOperator, Singular, Net, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
+// (Net, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // struct FString                 UserId                         (Parm, NeedCtorLink)
 // struct FString                 Filename                       (Parm, NeedCtorLink)
@@ -3124,12 +3102,12 @@ bool UMcpUserCloudFileDownload::STATIC_ReadUserFile(const struct FString& UserId
 
 
 // Function IpDrv.McpUserCloudFileDownload.GetUserFileList
-// (Final, Singular, Net, NetReliable, Simulated, Exec, Event, Static)
+// (Iterator, Latent, PreOperator, Singular, Net, Simulated, Event, Operator)
 // Parameters:
 // struct FString                 UserId                         (Parm, NeedCtorLink)
 // TArray<struct FEmsFile>        UserFiles                      (Parm, OutParm, NeedCtorLink)
 
-void UMcpUserCloudFileDownload::STATIC_GetUserFileList(const struct FString& UserId, TArray<struct FEmsFile>* UserFiles)
+void UMcpUserCloudFileDownload::GetUserFileList(const struct FString& UserId, TArray<struct FEmsFile>* UserFiles)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserCloudFileDownload.GetUserFileList");
 
@@ -3148,7 +3126,7 @@ void UMcpUserCloudFileDownload::STATIC_GetUserFileList(const struct FString& Use
 
 
 // Function IpDrv.McpUserCloudFileDownload.ClearEnumerateUserFileCompleteDelegate
-// (Final, Iterator, PreOperator, Native, Event, Operator)
+// (Iterator, Latent, PreOperator, NetReliable, Simulated, Event)
 // Parameters:
 // struct FScriptDelegate         EnumerateUserFileCompleteDelegate (Parm, NeedCtorLink)
 
@@ -3160,7 +3138,6 @@ void UMcpUserCloudFileDownload::ClearEnumerateUserFileCompleteDelegate(const str
 	params.EnumerateUserFileCompleteDelegate = EnumerateUserFileCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3169,16 +3146,38 @@ void UMcpUserCloudFileDownload::ClearEnumerateUserFileCompleteDelegate(const str
 
 
 // Function IpDrv.McpUserCloudFileDownload.AddEnumerateUserFileCompleteDelegate
-// (Latent, Net, Native, Event)
+// (Final, Defined, Iterator, Net, NetReliable, Simulated, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         EnumerateUserFileCompleteDelegate (Parm, NeedCtorLink)
 
-void UMcpUserCloudFileDownload::AddEnumerateUserFileCompleteDelegate(const struct FScriptDelegate& EnumerateUserFileCompleteDelegate)
+void UMcpUserCloudFileDownload::STATIC_AddEnumerateUserFileCompleteDelegate(const struct FScriptDelegate& EnumerateUserFileCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserCloudFileDownload.AddEnumerateUserFileCompleteDelegate");
 
 	UMcpUserCloudFileDownload_AddEnumerateUserFileCompleteDelegate_Params params;
 	params.EnumerateUserFileCompleteDelegate = EnumerateUserFileCompleteDelegate;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function IpDrv.McpUserCloudFileDownload.CallEnumerateUserFileCompleteDelegates
+// (Final, Iterator, Singular, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
+// Parameters:
+// bool                           bWasSuccessful                 (Parm)
+// struct FString                 UserId                         (Parm, NeedCtorLink)
+
+void UMcpUserCloudFileDownload::STATIC_CallEnumerateUserFileCompleteDelegates(bool bWasSuccessful, const struct FString& UserId)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserCloudFileDownload.CallEnumerateUserFileCompleteDelegates");
+
+	UMcpUserCloudFileDownload_CallEnumerateUserFileCompleteDelegates_Params params;
+	params.bWasSuccessful = bWasSuccessful;
+	params.UserId = UserId;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -3189,30 +3188,8 @@ void UMcpUserCloudFileDownload::AddEnumerateUserFileCompleteDelegate(const struc
 }
 
 
-// Function IpDrv.McpUserCloudFileDownload.CallEnumerateUserFileCompleteDelegates
-// (Iterator, Latent, Singular, NetReliable, Simulated, Operator, HasOptionalParms)
-// Parameters:
-// bool                           bWasSuccessful                 (Parm)
-// struct FString                 UserId                         (Parm, NeedCtorLink)
-
-void UMcpUserCloudFileDownload::CallEnumerateUserFileCompleteDelegates(bool bWasSuccessful, const struct FString& UserId)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserCloudFileDownload.CallEnumerateUserFileCompleteDelegates");
-
-	UMcpUserCloudFileDownload_CallEnumerateUserFileCompleteDelegates_Params params;
-	params.bWasSuccessful = bWasSuccessful;
-	params.UserId = UserId;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
 // Function IpDrv.McpUserCloudFileDownload.OnEnumerateUserFilesComplete
-// (PreOperator, Net, NetReliable, Simulated, Native, Event, Static)
+// (Defined, PreOperator, Net, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // bool                           bWasSuccessful                 (Parm)
 // struct FString                 UserId                         (Parm, NeedCtorLink)
@@ -3235,7 +3212,7 @@ void UMcpUserCloudFileDownload::STATIC_OnEnumerateUserFilesComplete(bool bWasSuc
 
 
 // Function IpDrv.McpUserCloudFileDownload.OnHTTPRequestEnumerateUserFilesComplete
-// (Iterator, Latent, PreOperator, Singular, Net, NetReliable, Simulated, Exec, Operator, HasOptionalParms)
+// (Defined, Iterator, PreOperator, Singular, Net, NetReliable, Simulated, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   Request                        (Parm)
 // class UHttpResponseInterface*  Response                       (Parm)
@@ -3259,11 +3236,11 @@ void UMcpUserCloudFileDownload::OnHTTPRequestEnumerateUserFilesComplete(class UH
 
 
 // Function IpDrv.McpUserCloudFileDownload.EnumerateUserFiles
-// (Defined, Latent, PreOperator, Singular, Net, NetReliable, Native, Static)
+// (Defined, Iterator, Latent, NetReliable, Exec, Operator)
 // Parameters:
 // struct FString                 UserId                         (Parm, NeedCtorLink)
 
-void UMcpUserCloudFileDownload::STATIC_EnumerateUserFiles(const struct FString& UserId)
+void UMcpUserCloudFileDownload::EnumerateUserFiles(const struct FString& UserId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserCloudFileDownload.EnumerateUserFiles");
 
@@ -3271,7 +3248,6 @@ void UMcpUserCloudFileDownload::STATIC_EnumerateUserFiles(const struct FString& 
 	params.UserId = UserId;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3280,7 +3256,7 @@ void UMcpUserCloudFileDownload::STATIC_EnumerateUserFiles(const struct FString& 
 
 
 // Function IpDrv.McpUserCloudFileDownload.ClearFile
-// (Final, Defined, Iterator, PreOperator, Native, Event, Operator)
+// (Defined, Iterator, Latent, PreOperator, NetReliable, Simulated, Event)
 // Parameters:
 // struct FString                 UserId                         (Parm, NeedCtorLink)
 // struct FString                 Filename                       (Parm, NeedCtorLink)
@@ -3295,7 +3271,6 @@ bool UMcpUserCloudFileDownload::ClearFile(const struct FString& UserId, const st
 	params.Filename = Filename;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3306,7 +3281,7 @@ bool UMcpUserCloudFileDownload::ClearFile(const struct FString& UserId, const st
 
 
 // Function IpDrv.McpUserCloudFileDownload.ClearFiles
-// (Latent, PreOperator, Native, Event, Operator)
+// (Final, Defined, Iterator, Latent, PreOperator, NetReliable, Simulated, Event)
 // Parameters:
 // struct FString                 UserId                         (Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
@@ -3319,7 +3294,6 @@ bool UMcpUserCloudFileDownload::ClearFiles(const struct FString& UserId)
 	params.UserId = UserId;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3330,14 +3304,14 @@ bool UMcpUserCloudFileDownload::ClearFiles(const struct FString& UserId)
 
 
 // Function IpDrv.McpUserCloudFileDownload.GetFileContents
-// (Final, Iterator, NetReliable, Exec, Event, Static)
+// (Singular, Event, Operator)
 // Parameters:
 // struct FString                 UserId                         (Parm, NeedCtorLink)
 // struct FString                 Filename                       (Parm, NeedCtorLink)
 // TArray<unsigned char>          FileContents                   (Parm, OutParm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UMcpUserCloudFileDownload::STATIC_GetFileContents(const struct FString& UserId, const struct FString& Filename, TArray<unsigned char>* FileContents)
+bool UMcpUserCloudFileDownload::GetFileContents(const struct FString& UserId, const struct FString& Filename, TArray<unsigned char>* FileContents)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserCloudFileDownload.GetFileContents");
 
@@ -3359,7 +3333,7 @@ bool UMcpUserCloudFileDownload::STATIC_GetFileContents(const struct FString& Use
 
 
 // Function IpDrv.MeshBeacon.DestroyBeacon
-// (Final, PreOperator, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Final, Defined, Latent, Simulated, Exec, Native, HasOptionalParms)
 
 void UMeshBeacon::DestroyBeacon()
 {
@@ -3377,7 +3351,7 @@ void UMeshBeacon::DestroyBeacon()
 
 
 // Function IpDrv.MeshBeaconClient.SendHostNewGameSessionResponse
-// (Defined, Iterator, Simulated, Native, Operator, HasOptionalParms)
+// (Simulated, Exec, HasOptionalParms)
 // Parameters:
 // bool                           bSuccess                       (Parm)
 // struct FName                   SessionName                    (Parm)
@@ -3395,7 +3369,6 @@ bool UMeshBeaconClient::SendHostNewGameSessionResponse(bool bSuccess, const stru
 	params.SearchClass = SearchClass;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3409,7 +3382,7 @@ bool UMeshBeaconClient::SendHostNewGameSessionResponse(bool bSuccess, const stru
 
 
 // Function IpDrv.MeshBeaconClient.OnCreateNewSessionRequestReceived
-// (Final, Iterator, Latent, PreOperator, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Final, Defined, Iterator, PreOperator, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // class UClass*                  SearchClass                    (Parm)
@@ -3436,7 +3409,7 @@ void UMeshBeaconClient::OnCreateNewSessionRequestReceived(const struct FName& Se
 
 
 // Function IpDrv.MeshBeaconClient.OnTravelRequestReceived
-// (Final, Defined, Latent, Simulated, Exec, Native, HasOptionalParms)
+// (Final, Iterator, Net, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // class UClass*                  SearchClass                    (Parm)
@@ -3463,7 +3436,7 @@ void UMeshBeaconClient::OnTravelRequestReceived(const struct FName& SessionName,
 
 
 // Function IpDrv.MeshBeaconClient.OnReceivedBandwidthTestResults
-// (Defined, Iterator, Latent, PreOperator, Singular, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Latent, PreOperator, Singular, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // TEnumAsByte<EMeshBeaconBandwidthTestType> TestType                       (Parm)
 // TEnumAsByte<EMeshBeaconBandwidthTestResult> TestResult                     (Parm)
@@ -3490,7 +3463,7 @@ void UMeshBeaconClient::OnReceivedBandwidthTestResults(TEnumAsByte<EMeshBeaconBa
 
 
 // Function IpDrv.MeshBeaconClient.OnReceivedBandwidthTestRequest
-// (Final, Iterator, Latent, PreOperator, Singular, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Final, Defined, Iterator, PreOperator, Singular, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // TEnumAsByte<EMeshBeaconBandwidthTestType> TestType                       (Parm)
 
@@ -3511,7 +3484,7 @@ void UMeshBeaconClient::OnReceivedBandwidthTestRequest(TEnumAsByte<EMeshBeaconBa
 
 
 // Function IpDrv.MeshBeaconClient.OnConnectionRequestResult
-// (Final, Defined, Latent, PreOperator, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Final, Iterator, PreOperator, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // TEnumAsByte<EMeshBeaconConnectionResult> ConnectionResult               (Parm)
 
@@ -3532,13 +3505,13 @@ void UMeshBeaconClient::OnConnectionRequestResult(TEnumAsByte<EMeshBeaconConnect
 
 
 // Function IpDrv.MeshBeaconClient.BeginBandwidthTest
-// (Defined, Latent, NetReliable, Simulated, Operator, HasOptionalParms)
+// (Final, Defined, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // TEnumAsByte<EMeshBeaconBandwidthTestType> TestType                       (Parm)
 // int                            TestBufferSize                 (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UMeshBeaconClient::BeginBandwidthTest(TEnumAsByte<EMeshBeaconBandwidthTestType> TestType, int TestBufferSize)
+bool UMeshBeaconClient::STATIC_BeginBandwidthTest(TEnumAsByte<EMeshBeaconBandwidthTestType> TestType, int TestBufferSize)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconClient.BeginBandwidthTest");
 
@@ -3547,6 +3520,7 @@ bool UMeshBeaconClient::BeginBandwidthTest(TEnumAsByte<EMeshBeaconBandwidthTestT
 	params.TestBufferSize = TestBufferSize;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3557,7 +3531,7 @@ bool UMeshBeaconClient::BeginBandwidthTest(TEnumAsByte<EMeshBeaconBandwidthTestT
 
 
 // Function IpDrv.MeshBeaconClient.RequestConnection
-// (Defined, Iterator, PreOperator, Net, NetReliable, Native, Operator, HasOptionalParms)
+// (PreOperator, Net, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // struct FOnlineGameSearchResult DesiredHost                    (Const, Parm, OutParm)
 // struct FClientConnectionRequest ClientRequest                  (Const, Parm, OutParm, NeedCtorLink)
@@ -3572,7 +3546,6 @@ bool UMeshBeaconClient::RequestConnection(bool bRegisterSecureAddress, struct FO
 	params.bRegisterSecureAddress = bRegisterSecureAddress;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3588,7 +3561,7 @@ bool UMeshBeaconClient::RequestConnection(bool bRegisterSecureAddress, struct FO
 
 
 // Function IpDrv.MeshBeaconClient.DestroyBeacon
-// (Final, PreOperator, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Final, Defined, Latent, Simulated, Exec, Native, HasOptionalParms)
 
 void UMeshBeaconClient::DestroyBeacon()
 {
@@ -3606,7 +3579,7 @@ void UMeshBeaconClient::DestroyBeacon()
 
 
 // Function IpDrv.MeshBeaconHost.OnReceivedClientCreateNewSessionResult
-// (Simulated, Exec, Native, HasOptionalParms)
+// (Defined, Latent, PreOperator, Singular, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // bool                           bSucceeded                     (Parm)
 // struct FName                   SessionName                    (Parm)
@@ -3635,7 +3608,7 @@ void UMeshBeaconHost::OnReceivedClientCreateNewSessionResult(bool bSucceeded, co
 
 
 // Function IpDrv.MeshBeaconHost.RequestClientCreateNewSession
-// (Final, Iterator, PreOperator, Net, NetReliable, Native, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, Net, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // struct FUniqueNetId            PlayerNetId                    (Parm)
 // struct FName                   SessionName                    (Parm)
@@ -3653,7 +3626,6 @@ bool UMeshBeaconHost::RequestClientCreateNewSession(const struct FUniqueNetId& P
 	params.SearchClass = SearchClass;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3667,7 +3639,7 @@ bool UMeshBeaconHost::RequestClientCreateNewSession(const struct FUniqueNetId& P
 
 
 // Function IpDrv.MeshBeaconHost.TellClientsToTravel
-// (Final, Defined, PreOperator, Singular, Simulated, Native, Operator, HasOptionalParms)
+// (Final, Iterator, Latent, Singular, Simulated, Exec, HasOptionalParms)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // class UClass*                  SearchClass                    (Parm)
@@ -3682,7 +3654,6 @@ void UMeshBeaconHost::TellClientsToTravel(const struct FName& SessionName, class
 	params.SearchClass = SearchClass;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3694,7 +3665,7 @@ void UMeshBeaconHost::TellClientsToTravel(const struct FName& SessionName, class
 
 
 // Function IpDrv.MeshBeaconHost.OnAllPendingPlayersConnected
-// (Final, Defined, Iterator, PreOperator, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Final, PreOperator, Simulated, Exec, Native, HasOptionalParms)
 
 void UMeshBeaconHost::OnAllPendingPlayersConnected()
 {
@@ -3712,18 +3683,19 @@ void UMeshBeaconHost::OnAllPendingPlayersConnected()
 
 
 // Function IpDrv.MeshBeaconHost.AllPlayersConnected
-// (Final, Latent, Singular, Net, Simulated, Operator, HasOptionalParms)
+// (Defined, Singular, Net, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // TArray<struct FUniqueNetId>    Players                        (Const, Parm, OutParm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UMeshBeaconHost::AllPlayersConnected(TArray<struct FUniqueNetId>* Players)
+bool UMeshBeaconHost::STATIC_AllPlayersConnected(TArray<struct FUniqueNetId>* Players)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconHost.AllPlayersConnected");
 
 	UMeshBeaconHost_AllPlayersConnected_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3737,7 +3709,7 @@ bool UMeshBeaconHost::AllPlayersConnected(TArray<struct FUniqueNetId>* Players)
 
 
 // Function IpDrv.MeshBeaconHost.GetConnectionIndexForPlayer
-// (Defined, Singular, NetReliable, Exec, Operator, HasOptionalParms)
+// (Iterator, Latent, PreOperator, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FUniqueNetId            PlayerNetId                    (Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
@@ -3760,7 +3732,7 @@ int UMeshBeaconHost::GetConnectionIndexForPlayer(const struct FUniqueNetId& Play
 
 
 // Function IpDrv.MeshBeaconHost.SetPendingPlayerConnections
-// (PreOperator, Simulated, Native, Operator, HasOptionalParms)
+// (Defined, Latent, Simulated, Exec, HasOptionalParms)
 // Parameters:
 // TArray<struct FUniqueNetId>    Players                        (Const, Parm, OutParm, NeedCtorLink)
 
@@ -3771,7 +3743,6 @@ void UMeshBeaconHost::SetPendingPlayerConnections(TArray<struct FUniqueNetId>* P
 	UMeshBeaconHost_SetPendingPlayerConnections_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3783,7 +3754,7 @@ void UMeshBeaconHost::SetPendingPlayerConnections(TArray<struct FUniqueNetId>* P
 
 
 // Function IpDrv.MeshBeaconHost.OnFinishedBandwidthTest
-// (Final, Iterator, Singular, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, PreOperator, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // struct FUniqueNetId            PlayerNetId                    (Parm)
 // TEnumAsByte<EMeshBeaconBandwidthTestType> TestType                       (Parm)
@@ -3812,7 +3783,7 @@ void UMeshBeaconHost::OnFinishedBandwidthTest(const struct FUniqueNetId& PlayerN
 
 
 // Function IpDrv.MeshBeaconHost.OnStartedBandwidthTest
-// (Final, Latent, Simulated, Exec, Native, HasOptionalParms)
+// (Final, Defined, Net, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // struct FUniqueNetId            PlayerNetId                    (Parm)
 // TEnumAsByte<EMeshBeaconBandwidthTestType> TestType                       (Parm)
@@ -3835,7 +3806,7 @@ void UMeshBeaconHost::OnStartedBandwidthTest(const struct FUniqueNetId& PlayerNe
 
 
 // Function IpDrv.MeshBeaconHost.OnReceivedClientConnectionRequest
-// (Final, Defined, Iterator, Latent, PreOperator, Singular, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Final, Latent, PreOperator, Singular, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // struct FClientMeshBeaconConnection NewClientConnection            (Const, Parm, OutParm, NeedCtorLink)
 
@@ -3858,11 +3829,11 @@ void UMeshBeaconHost::OnReceivedClientConnectionRequest(struct FClientMeshBeacon
 
 
 // Function IpDrv.MeshBeaconHost.AllowBandwidthTesting
-// (Latent, Singular, Net, Simulated, Operator, HasOptionalParms)
+// (Final, Singular, Net, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // bool                           bEnabled                       (Parm)
 
-void UMeshBeaconHost::AllowBandwidthTesting(bool bEnabled)
+void UMeshBeaconHost::STATIC_AllowBandwidthTesting(bool bEnabled)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconHost.AllowBandwidthTesting");
 
@@ -3870,6 +3841,7 @@ void UMeshBeaconHost::AllowBandwidthTesting(bool bEnabled)
 	params.bEnabled = bEnabled;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3878,15 +3850,16 @@ void UMeshBeaconHost::AllowBandwidthTesting(bool bEnabled)
 
 
 // Function IpDrv.MeshBeaconHost.CancelPendingBandwidthTests
-// (Defined, PreOperator, Singular, NetReliable, Simulated, Operator, HasOptionalParms)
+// (Final, Defined, Latent, Singular, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 
-void UMeshBeaconHost::CancelPendingBandwidthTests()
+void UMeshBeaconHost::STATIC_CancelPendingBandwidthTests()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconHost.CancelPendingBandwidthTests");
 
 	UMeshBeaconHost_CancelPendingBandwidthTests_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3895,7 +3868,7 @@ void UMeshBeaconHost::CancelPendingBandwidthTests()
 
 
 // Function IpDrv.MeshBeaconHost.HasPendingBandwidthTest
-// (Defined, Singular, Net, NetReliable, Exec, Operator, HasOptionalParms)
+// (Iterator, Latent, PreOperator, Net, NetReliable, HasOptionalParms)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
@@ -3916,15 +3889,16 @@ bool UMeshBeaconHost::HasPendingBandwidthTest()
 
 
 // Function IpDrv.MeshBeaconHost.CancelInProgressBandwidthTests
-// (PreOperator, Singular, NetReliable, Simulated, Operator, HasOptionalParms)
+// (Final, Latent, Singular, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 
-void UMeshBeaconHost::CancelInProgressBandwidthTests()
+void UMeshBeaconHost::STATIC_CancelInProgressBandwidthTests()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.MeshBeaconHost.CancelInProgressBandwidthTests");
 
 	UMeshBeaconHost_CancelInProgressBandwidthTests_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3933,7 +3907,7 @@ void UMeshBeaconHost::CancelInProgressBandwidthTests()
 
 
 // Function IpDrv.MeshBeaconHost.HasInProgressBandwidthTest
-// (Final, Singular, Net, NetReliable, Exec, Operator, HasOptionalParms)
+// (Final, Defined, Latent, PreOperator, Net, NetReliable, HasOptionalParms)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
@@ -3954,7 +3928,7 @@ bool UMeshBeaconHost::HasInProgressBandwidthTest()
 
 
 // Function IpDrv.MeshBeaconHost.RequestClientBandwidthTest
-// (Iterator, PreOperator, Net, NetReliable, Native, Operator, HasOptionalParms)
+// (Defined, Iterator, Latent, Net, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // struct FUniqueNetId            PlayerNetId                    (Parm)
 // TEnumAsByte<EMeshBeaconBandwidthTestType> TestType                       (Parm)
@@ -3971,7 +3945,6 @@ bool UMeshBeaconHost::RequestClientBandwidthTest(const struct FUniqueNetId& Play
 	params.TestBufferSize = TestBufferSize;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3982,7 +3955,7 @@ bool UMeshBeaconHost::RequestClientBandwidthTest(const struct FUniqueNetId& Play
 
 
 // Function IpDrv.MeshBeaconHost.DestroyBeacon
-// (Final, PreOperator, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Final, Defined, Latent, Simulated, Exec, Native, HasOptionalParms)
 
 void UMeshBeaconHost::DestroyBeacon()
 {
@@ -4000,7 +3973,7 @@ void UMeshBeaconHost::DestroyBeacon()
 
 
 // Function IpDrv.MeshBeaconHost.InitHostBeacon
-// (Defined, Iterator, PreOperator, Singular, Net, NetReliable, Exec, Operator, HasOptionalParms)
+// (PreOperator, Singular, Net, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FUniqueNetId            InOwningPlayerId               (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
@@ -4023,7 +3996,7 @@ bool UMeshBeaconHost::InitHostBeacon(const struct FUniqueNetId& InOwningPlayerId
 
 
 // Function IpDrv.OnlineSubsystemCommonImpl.GetRegisteredPlayers
-// (Final, Defined, Iterator, Latent, PreOperator, Singular, NetReliable, Exec, Operator, HasOptionalParms)
+// (Final, Latent, PreOperator, Singular, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // TArray<struct FUniqueNetId>    OutRegisteredPlayers           (Parm, OutParm, NeedCtorLink)
@@ -4047,7 +4020,7 @@ void UOnlineSubsystemCommonImpl::GetRegisteredPlayers(const struct FName& Sessio
 
 
 // Function IpDrv.OnlineSubsystemCommonImpl.IsPlayerInSession
-// (Latent, Simulated, Exec, Operator, HasOptionalParms)
+// (Defined, Simulated, HasOptionalParms)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // struct FUniqueNetId            PlayerID                       (Parm)
@@ -4072,7 +4045,7 @@ bool UOnlineSubsystemCommonImpl::IsPlayerInSession(const struct FName& SessionNa
 
 
 // Function IpDrv.OnlineSubsystemCommonImpl.GetPlayerNicknameFromIndex
-// (Iterator, PreOperator, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Defined, Iterator, Latent, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // int                            UserIndex                      (Parm)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
@@ -4096,13 +4069,13 @@ struct FString UOnlineSubsystemCommonImpl::GetPlayerNicknameFromIndex(int UserIn
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.GetServerAddr
-// (Final, Iterator, Latent, PreOperator, Singular, Net, Simulated, Exec, Event, Static)
+// (Latent, PreOperator, Simulated, Event, Operator)
 // Parameters:
 // struct FIpAddr                 OutServerIP                    (Parm, OutParm)
 // int                            OutServerPort                  (Parm, OutParm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineAuthInterfaceImpl::STATIC_GetServerAddr(struct FIpAddr* OutServerIP, int* OutServerPort)
+bool UOnlineAuthInterfaceImpl::GetServerAddr(struct FIpAddr* OutServerIP, int* OutServerPort)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.GetServerAddr");
 
@@ -4124,12 +4097,12 @@ bool UOnlineAuthInterfaceImpl::STATIC_GetServerAddr(struct FIpAddr* OutServerIP,
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.GetServerUniqueId
-// (NetReliable, Simulated, Exec, Event, Static)
+// (Final, Defined, Latent, PreOperator, Simulated, Event, Operator)
 // Parameters:
 // struct FUniqueNetId            OutServerUID                   (Parm, OutParm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineAuthInterfaceImpl::STATIC_GetServerUniqueId(struct FUniqueNetId* OutServerUID)
+bool UOnlineAuthInterfaceImpl::GetServerUniqueId(struct FUniqueNetId* OutServerUID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.GetServerUniqueId");
 
@@ -4149,13 +4122,13 @@ bool UOnlineAuthInterfaceImpl::STATIC_GetServerUniqueId(struct FUniqueNetId* Out
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.FindLocalServerAuthSession
-// (Defined, Iterator, Latent, Net, Simulated, Exec, Native, Static)
+// (Iterator, Singular, Net, NetReliable, Native, Operator)
 // Parameters:
 // class UPlayer*                 ClientConnection               (Parm)
 // struct FLocalAuthSession       OutSessionInfo                 (Parm, OutParm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineAuthInterfaceImpl::STATIC_FindLocalServerAuthSession(class UPlayer* ClientConnection, struct FLocalAuthSession* OutSessionInfo)
+bool UOnlineAuthInterfaceImpl::FindLocalServerAuthSession(class UPlayer* ClientConnection, struct FLocalAuthSession* OutSessionInfo)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.FindLocalServerAuthSession");
 
@@ -4177,13 +4150,13 @@ bool UOnlineAuthInterfaceImpl::STATIC_FindLocalServerAuthSession(class UPlayer* 
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.FindServerAuthSession
-// (Latent, Singular, Net, Simulated, Exec, Native, Static)
+// (Defined, Iterator, Latent, PreOperator, Singular, Net, NetReliable, Native, Operator)
 // Parameters:
 // class UPlayer*                 ServerConnection               (Parm)
 // struct FAuthSession            OutSessionInfo                 (Parm, OutParm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineAuthInterfaceImpl::STATIC_FindServerAuthSession(class UPlayer* ServerConnection, struct FAuthSession* OutSessionInfo)
+bool UOnlineAuthInterfaceImpl::FindServerAuthSession(class UPlayer* ServerConnection, struct FAuthSession* OutSessionInfo)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.FindServerAuthSession");
 
@@ -4205,13 +4178,13 @@ bool UOnlineAuthInterfaceImpl::STATIC_FindServerAuthSession(class UPlayer* Serve
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.FindLocalClientAuthSession
-// (Iterator, Latent, Net, Simulated, Exec, Native, Static)
+// (Defined, Singular, Net, NetReliable, Native, Operator)
 // Parameters:
 // class UPlayer*                 ServerConnection               (Parm)
 // struct FLocalAuthSession       OutSessionInfo                 (Parm, OutParm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineAuthInterfaceImpl::STATIC_FindLocalClientAuthSession(class UPlayer* ServerConnection, struct FLocalAuthSession* OutSessionInfo)
+bool UOnlineAuthInterfaceImpl::FindLocalClientAuthSession(class UPlayer* ServerConnection, struct FLocalAuthSession* OutSessionInfo)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.FindLocalClientAuthSession");
 
@@ -4233,13 +4206,13 @@ bool UOnlineAuthInterfaceImpl::STATIC_FindLocalClientAuthSession(class UPlayer* 
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.FindClientAuthSession
-// (Final, Defined, PreOperator, Singular, Simulated, Exec, Native, Static)
+// (Final, Latent, Net, NetReliable, Native, Operator)
 // Parameters:
 // class UPlayer*                 ClientConnection               (Parm)
 // struct FAuthSession            OutSessionInfo                 (Parm, OutParm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineAuthInterfaceImpl::STATIC_FindClientAuthSession(class UPlayer* ClientConnection, struct FAuthSession* OutSessionInfo)
+bool UOnlineAuthInterfaceImpl::FindClientAuthSession(class UPlayer* ClientConnection, struct FAuthSession* OutSessionInfo)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.FindClientAuthSession");
 
@@ -4261,18 +4234,17 @@ bool UOnlineAuthInterfaceImpl::STATIC_FindClientAuthSession(class UPlayer* Clien
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.AllLocalServerAuthSessions
-// (Final, Defined, Iterator, PreOperator, Net, Simulated, Native, Event)
+// (Final, Defined, Iterator, PreOperator, Net, NetReliable, Exec, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FLocalAuthSession       OutSessionInfo                 (Parm, OutParm)
 
-void UOnlineAuthInterfaceImpl::AllLocalServerAuthSessions(struct FLocalAuthSession* OutSessionInfo)
+void UOnlineAuthInterfaceImpl::STATIC_AllLocalServerAuthSessions(struct FLocalAuthSession* OutSessionInfo)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.AllLocalServerAuthSessions");
 
 	UOnlineAuthInterfaceImpl_AllLocalServerAuthSessions_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4284,18 +4256,17 @@ void UOnlineAuthInterfaceImpl::AllLocalServerAuthSessions(struct FLocalAuthSessi
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.AllServerAuthSessions
-// (PreOperator, Singular, Net, Simulated, Native, Event)
+// (PreOperator, Singular, Net, NetReliable, Exec, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FAuthSession            OutSessionInfo                 (Parm, OutParm)
 
-void UOnlineAuthInterfaceImpl::AllServerAuthSessions(struct FAuthSession* OutSessionInfo)
+void UOnlineAuthInterfaceImpl::STATIC_AllServerAuthSessions(struct FAuthSession* OutSessionInfo)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.AllServerAuthSessions");
 
 	UOnlineAuthInterfaceImpl_AllServerAuthSessions_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4307,18 +4278,17 @@ void UOnlineAuthInterfaceImpl::AllServerAuthSessions(struct FAuthSession* OutSes
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.AllLocalClientAuthSessions
-// (Defined, Iterator, PreOperator, Net, Simulated, Native, Event)
+// (Defined, Iterator, PreOperator, Net, NetReliable, Exec, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FLocalAuthSession       OutSessionInfo                 (Parm, OutParm)
 
-void UOnlineAuthInterfaceImpl::AllLocalClientAuthSessions(struct FLocalAuthSession* OutSessionInfo)
+void UOnlineAuthInterfaceImpl::STATIC_AllLocalClientAuthSessions(struct FLocalAuthSession* OutSessionInfo)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.AllLocalClientAuthSessions");
 
 	UOnlineAuthInterfaceImpl_AllLocalClientAuthSessions_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4330,18 +4300,17 @@ void UOnlineAuthInterfaceImpl::AllLocalClientAuthSessions(struct FLocalAuthSessi
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.AllClientAuthSessions
-// (Final, Defined, Iterator, Latent, Net, Simulated, Native, Event)
+// (Final, Defined, Iterator, Latent, Net, NetReliable, Exec, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FAuthSession            OutSessionInfo                 (Parm, OutParm)
 
-void UOnlineAuthInterfaceImpl::AllClientAuthSessions(struct FAuthSession* OutSessionInfo)
+void UOnlineAuthInterfaceImpl::STATIC_AllClientAuthSessions(struct FAuthSession* OutSessionInfo)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.AllClientAuthSessions");
 
 	UOnlineAuthInterfaceImpl_AllClientAuthSessions_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4353,16 +4322,15 @@ void UOnlineAuthInterfaceImpl::AllClientAuthSessions(struct FAuthSession* OutSes
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.EndAllRemoteServerAuthSessions
-// (Iterator, PreOperator, Singular, NetReliable, Native, Static)
+// (Latent, Net, Exec, Operator)
 
-void UOnlineAuthInterfaceImpl::STATIC_EndAllRemoteServerAuthSessions()
+void UOnlineAuthInterfaceImpl::EndAllRemoteServerAuthSessions()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.EndAllRemoteServerAuthSessions");
 
 	UOnlineAuthInterfaceImpl_EndAllRemoteServerAuthSessions_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4371,16 +4339,15 @@ void UOnlineAuthInterfaceImpl::STATIC_EndAllRemoteServerAuthSessions()
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.EndAllLocalServerAuthSessions
-// (Defined, PreOperator, Singular, NetReliable, Native, Static)
+// (Defined, Iterator, Net, Exec, Operator)
 
-void UOnlineAuthInterfaceImpl::STATIC_EndAllLocalServerAuthSessions()
+void UOnlineAuthInterfaceImpl::EndAllLocalServerAuthSessions()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.EndAllLocalServerAuthSessions");
 
 	UOnlineAuthInterfaceImpl_EndAllLocalServerAuthSessions_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4389,12 +4356,12 @@ void UOnlineAuthInterfaceImpl::STATIC_EndAllLocalServerAuthSessions()
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.EndRemoteServerAuthSession
-// (PreOperator, Net, NetReliable, Native, Static)
+// (Iterator, Singular, Net, Exec, Operator)
 // Parameters:
 // struct FUniqueNetId            ServerUID                      (Parm)
 // struct FIpAddr                 ServerIP                       (Parm)
 
-void UOnlineAuthInterfaceImpl::STATIC_EndRemoteServerAuthSession(const struct FUniqueNetId& ServerUID, const struct FIpAddr& ServerIP)
+void UOnlineAuthInterfaceImpl::EndRemoteServerAuthSession(const struct FUniqueNetId& ServerUID, const struct FIpAddr& ServerIP)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.EndRemoteServerAuthSession");
 
@@ -4403,7 +4370,6 @@ void UOnlineAuthInterfaceImpl::STATIC_EndRemoteServerAuthSession(const struct FU
 	params.ServerIP = ServerIP;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4412,12 +4378,12 @@ void UOnlineAuthInterfaceImpl::STATIC_EndRemoteServerAuthSession(const struct FU
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.EndLocalServerAuthSession
-// (Final, Defined, Iterator, Latent, PreOperator, Singular, NetReliable, Native, Static)
+// (Final, Defined, PreOperator, Net, Exec, Operator)
 // Parameters:
 // struct FUniqueNetId            ClientUID                      (Parm)
 // struct FIpAddr                 ClientIP                       (Parm)
 
-void UOnlineAuthInterfaceImpl::STATIC_EndLocalServerAuthSession(const struct FUniqueNetId& ClientUID, const struct FIpAddr& ClientIP)
+void UOnlineAuthInterfaceImpl::EndLocalServerAuthSession(const struct FUniqueNetId& ClientUID, const struct FIpAddr& ClientIP)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.EndLocalServerAuthSession");
 
@@ -4426,7 +4392,6 @@ void UOnlineAuthInterfaceImpl::STATIC_EndLocalServerAuthSession(const struct FUn
 	params.ClientIP = ClientIP;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4435,14 +4400,14 @@ void UOnlineAuthInterfaceImpl::STATIC_EndLocalServerAuthSession(const struct FUn
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.VerifyServerAuthSession
-// (Final, Latent, PreOperator, Net, NetReliable, Native, Event, HasOptionalParms)
+// (Defined, Iterator, Net, NetReliable, Exec, Event, Operator, Static)
 // Parameters:
 // struct FUniqueNetId            ServerUID                      (Parm)
 // struct FIpAddr                 ServerIP                       (Parm)
 // int                            AuthTicketUID                  (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineAuthInterfaceImpl::VerifyServerAuthSession(const struct FUniqueNetId& ServerUID, const struct FIpAddr& ServerIP, int AuthTicketUID)
+bool UOnlineAuthInterfaceImpl::STATIC_VerifyServerAuthSession(const struct FUniqueNetId& ServerUID, const struct FIpAddr& ServerIP, int AuthTicketUID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.VerifyServerAuthSession");
 
@@ -4452,7 +4417,6 @@ bool UOnlineAuthInterfaceImpl::VerifyServerAuthSession(const struct FUniqueNetId
 	params.AuthTicketUID = AuthTicketUID;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4463,7 +4427,7 @@ bool UOnlineAuthInterfaceImpl::VerifyServerAuthSession(const struct FUniqueNetId
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.CreateServerAuthSession
-// (Iterator, Net, NetReliable, Exec, Native, Event, Operator)
+// (PreOperator, Net, Native, Event)
 // Parameters:
 // struct FUniqueNetId            ClientUID                      (Parm)
 // struct FIpAddr                 ClientIP                       (Parm)
@@ -4495,16 +4459,15 @@ bool UOnlineAuthInterfaceImpl::CreateServerAuthSession(const struct FUniqueNetId
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.EndAllRemoteClientAuthSessions
-// (Final, Defined, PreOperator, Singular, NetReliable, Native, Static)
+// (Final, Defined, Iterator, Net, Exec, Operator)
 
-void UOnlineAuthInterfaceImpl::STATIC_EndAllRemoteClientAuthSessions()
+void UOnlineAuthInterfaceImpl::EndAllRemoteClientAuthSessions()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.EndAllRemoteClientAuthSessions");
 
 	UOnlineAuthInterfaceImpl_EndAllRemoteClientAuthSessions_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4513,16 +4476,15 @@ void UOnlineAuthInterfaceImpl::STATIC_EndAllRemoteClientAuthSessions()
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.EndAllLocalClientAuthSessions
-// (Final, PreOperator, Singular, NetReliable, Native, Static)
+// (Final, Iterator, Net, Exec, Operator)
 
-void UOnlineAuthInterfaceImpl::STATIC_EndAllLocalClientAuthSessions()
+void UOnlineAuthInterfaceImpl::EndAllLocalClientAuthSessions()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.EndAllLocalClientAuthSessions");
 
 	UOnlineAuthInterfaceImpl_EndAllLocalClientAuthSessions_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4531,12 +4493,12 @@ void UOnlineAuthInterfaceImpl::STATIC_EndAllLocalClientAuthSessions()
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.EndRemoteClientAuthSession
-// (Final, Defined, Iterator, Latent, Net, NetReliable, Native, Static)
+// (Final, Defined, Singular, Net, Exec, Operator)
 // Parameters:
 // struct FUniqueNetId            ClientUID                      (Parm)
 // struct FIpAddr                 ClientIP                       (Parm)
 
-void UOnlineAuthInterfaceImpl::STATIC_EndRemoteClientAuthSession(const struct FUniqueNetId& ClientUID, const struct FIpAddr& ClientIP)
+void UOnlineAuthInterfaceImpl::EndRemoteClientAuthSession(const struct FUniqueNetId& ClientUID, const struct FIpAddr& ClientIP)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.EndRemoteClientAuthSession");
 
@@ -4545,7 +4507,6 @@ void UOnlineAuthInterfaceImpl::STATIC_EndRemoteClientAuthSession(const struct FU
 	params.ClientIP = ClientIP;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4554,13 +4515,13 @@ void UOnlineAuthInterfaceImpl::STATIC_EndRemoteClientAuthSession(const struct FU
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.EndLocalClientAuthSession
-// (Defined, Iterator, Latent, PreOperator, Singular, NetReliable, Native, Static)
+// (Defined, PreOperator, Net, Exec, Operator)
 // Parameters:
 // struct FUniqueNetId            ServerUID                      (Parm)
 // struct FIpAddr                 ServerIP                       (Parm)
 // int                            ServerPort                     (Parm)
 
-void UOnlineAuthInterfaceImpl::STATIC_EndLocalClientAuthSession(const struct FUniqueNetId& ServerUID, const struct FIpAddr& ServerIP, int ServerPort)
+void UOnlineAuthInterfaceImpl::EndLocalClientAuthSession(const struct FUniqueNetId& ServerUID, const struct FIpAddr& ServerIP, int ServerPort)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.EndLocalClientAuthSession");
 
@@ -4570,7 +4531,6 @@ void UOnlineAuthInterfaceImpl::STATIC_EndLocalClientAuthSession(const struct FUn
 	params.ServerPort = ServerPort;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4579,7 +4539,7 @@ void UOnlineAuthInterfaceImpl::STATIC_EndLocalClientAuthSession(const struct FUn
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.VerifyClientAuthSession
-// (Final, Iterator, PreOperator, Net, NetReliable, Native, Event, HasOptionalParms)
+// (Defined, Net, NetReliable, Exec, Event, Operator, Static)
 // Parameters:
 // struct FUniqueNetId            ClientUID                      (Parm)
 // struct FIpAddr                 ClientIP                       (Parm)
@@ -4587,7 +4547,7 @@ void UOnlineAuthInterfaceImpl::STATIC_EndLocalClientAuthSession(const struct FUn
 // int                            AuthTicketUID                  (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineAuthInterfaceImpl::VerifyClientAuthSession(const struct FUniqueNetId& ClientUID, const struct FIpAddr& ClientIP, int ClientPort, int AuthTicketUID)
+bool UOnlineAuthInterfaceImpl::STATIC_VerifyClientAuthSession(const struct FUniqueNetId& ClientUID, const struct FIpAddr& ClientIP, int ClientPort, int AuthTicketUID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.VerifyClientAuthSession");
 
@@ -4598,7 +4558,6 @@ bool UOnlineAuthInterfaceImpl::VerifyClientAuthSession(const struct FUniqueNetId
 	params.AuthTicketUID = AuthTicketUID;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4609,7 +4568,7 @@ bool UOnlineAuthInterfaceImpl::VerifyClientAuthSession(const struct FUniqueNetId
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.CreateClientAuthSession
-// (Final, PreOperator, Singular, NetReliable, Exec, Native, Event, Operator)
+// (Final, Iterator, Latent, PreOperator, Singular, Native, Event)
 // Parameters:
 // struct FUniqueNetId            ServerUID                      (Parm)
 // struct FIpAddr                 ServerIP                       (Parm)
@@ -4643,11 +4602,11 @@ bool UOnlineAuthInterfaceImpl::CreateClientAuthSession(const struct FUniqueNetId
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.SendServerAuthRetryRequest
-// (Final, Defined, Net, Simulated, Exec, HasOptionalParms)
+// (Final, Iterator, PreOperator, Simulated, Operator, Static)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineAuthInterfaceImpl::SendServerAuthRetryRequest()
+bool UOnlineAuthInterfaceImpl::STATIC_SendServerAuthRetryRequest()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.SendServerAuthRetryRequest");
 
@@ -4664,12 +4623,12 @@ bool UOnlineAuthInterfaceImpl::SendServerAuthRetryRequest()
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.SendClientAuthEndSessionRequest
-// (Latent, Singular, Simulated, Exec, HasOptionalParms)
+// (Defined, Latent, PreOperator, Singular, Net, NetReliable, Operator, Static)
 // Parameters:
 // class UPlayer*                 ClientConnection               (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineAuthInterfaceImpl::SendClientAuthEndSessionRequest(class UPlayer* ClientConnection)
+bool UOnlineAuthInterfaceImpl::STATIC_SendClientAuthEndSessionRequest(class UPlayer* ClientConnection)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.SendClientAuthEndSessionRequest");
 
@@ -4687,13 +4646,13 @@ bool UOnlineAuthInterfaceImpl::SendClientAuthEndSessionRequest(class UPlayer* Cl
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.SendServerAuthResponse
-// (Defined, Net, Simulated, Exec, HasOptionalParms)
+// (Iterator, PreOperator, Simulated, Operator, Static)
 // Parameters:
 // class UPlayer*                 ClientConnection               (Parm)
 // int                            AuthTicketUID                  (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineAuthInterfaceImpl::SendServerAuthResponse(class UPlayer* ClientConnection, int AuthTicketUID)
+bool UOnlineAuthInterfaceImpl::STATIC_SendServerAuthResponse(class UPlayer* ClientConnection, int AuthTicketUID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.SendServerAuthResponse");
 
@@ -4712,12 +4671,12 @@ bool UOnlineAuthInterfaceImpl::SendServerAuthResponse(class UPlayer* ClientConne
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.SendClientAuthResponse
-// (Defined, Latent, Singular, Simulated, Exec, HasOptionalParms)
+// (Iterator, Latent, PreOperator, Singular, Net, NetReliable, Operator, Static)
 // Parameters:
 // int                            AuthTicketUID                  (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineAuthInterfaceImpl::SendClientAuthResponse(int AuthTicketUID)
+bool UOnlineAuthInterfaceImpl::STATIC_SendClientAuthResponse(int AuthTicketUID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.SendClientAuthResponse");
 
@@ -4735,12 +4694,12 @@ bool UOnlineAuthInterfaceImpl::SendClientAuthResponse(int AuthTicketUID)
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.SendServerAuthRequest
-// (Final, Net, Simulated, Exec, HasOptionalParms)
+// (Final, Defined, PreOperator, Simulated, Operator, Static)
 // Parameters:
 // struct FUniqueNetId            ServerUID                      (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineAuthInterfaceImpl::SendServerAuthRequest(const struct FUniqueNetId& ServerUID)
+bool UOnlineAuthInterfaceImpl::STATIC_SendServerAuthRequest(const struct FUniqueNetId& ServerUID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.SendServerAuthRequest");
 
@@ -4758,13 +4717,13 @@ bool UOnlineAuthInterfaceImpl::SendServerAuthRequest(const struct FUniqueNetId& 
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.SendClientAuthRequest
-// (Final, Latent, Singular, Simulated, Exec, HasOptionalParms)
+// (Final, Defined, Latent, PreOperator, Singular, Net, NetReliable, Operator, Static)
 // Parameters:
 // class UPlayer*                 ClientConnection               (Parm)
 // struct FUniqueNetId            ClientUID                      (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineAuthInterfaceImpl::SendClientAuthRequest(class UPlayer* ClientConnection, const struct FUniqueNetId& ClientUID)
+bool UOnlineAuthInterfaceImpl::STATIC_SendClientAuthRequest(class UPlayer* ClientConnection, const struct FUniqueNetId& ClientUID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.SendClientAuthRequest");
 
@@ -4783,7 +4742,7 @@ bool UOnlineAuthInterfaceImpl::SendClientAuthRequest(class UPlayer* ClientConnec
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.ClearServerConnectionCloseDelegate
-// (Final, Defined, NetReliable, Native, Event, Operator)
+// (Defined, Latent, Exec, Event)
 // Parameters:
 // struct FScriptDelegate         ServerConnectionCloseDelegate  (Parm, NeedCtorLink)
 
@@ -4795,7 +4754,6 @@ void UOnlineAuthInterfaceImpl::ClearServerConnectionCloseDelegate(const struct F
 	params.ServerConnectionCloseDelegate = ServerConnectionCloseDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4804,11 +4762,11 @@ void UOnlineAuthInterfaceImpl::ClearServerConnectionCloseDelegate(const struct F
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.AddServerConnectionCloseDelegate
-// (Final, PreOperator, Net, NetReliable, Native, Event)
+// (PreOperator, Net, Exec, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         ServerConnectionCloseDelegate  (Parm, NeedCtorLink)
 
-void UOnlineAuthInterfaceImpl::AddServerConnectionCloseDelegate(const struct FScriptDelegate& ServerConnectionCloseDelegate)
+void UOnlineAuthInterfaceImpl::STATIC_AddServerConnectionCloseDelegate(const struct FScriptDelegate& ServerConnectionCloseDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.AddServerConnectionCloseDelegate");
 
@@ -4816,7 +4774,6 @@ void UOnlineAuthInterfaceImpl::AddServerConnectionCloseDelegate(const struct FSc
 	params.ServerConnectionCloseDelegate = ServerConnectionCloseDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4825,7 +4782,7 @@ void UOnlineAuthInterfaceImpl::AddServerConnectionCloseDelegate(const struct FSc
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.OnServerConnectionClose
-// (Latent, NetReliable, Simulated, Native, HasOptionalParms)
+// (Defined, Net, NetReliable, Simulated, Native, HasOptionalParms)
 // Parameters:
 // class UPlayer*                 ServerConnection               (Parm)
 
@@ -4846,7 +4803,7 @@ void UOnlineAuthInterfaceImpl::OnServerConnectionClose(class UPlayer* ServerConn
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.ClearClientConnectionCloseDelegate
-// (Latent, PreOperator, Singular, Net, NetReliable, Simulated, Exec, Event, Operator)
+// (Final, Defined, Iterator, Latent, PreOperator, Singular, Net, Simulated, Event)
 // Parameters:
 // struct FScriptDelegate         ClientConnectionCloseDelegate  (Parm, NeedCtorLink)
 
@@ -4866,11 +4823,11 @@ void UOnlineAuthInterfaceImpl::ClearClientConnectionCloseDelegate(const struct F
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.AddClientConnectionCloseDelegate
-// (PreOperator, Singular, Native, Event)
+// (Final, Defined, Iterator, Latent, Singular, NetReliable, Simulated, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         ClientConnectionCloseDelegate  (Parm, NeedCtorLink)
 
-void UOnlineAuthInterfaceImpl::AddClientConnectionCloseDelegate(const struct FScriptDelegate& ClientConnectionCloseDelegate)
+void UOnlineAuthInterfaceImpl::STATIC_AddClientConnectionCloseDelegate(const struct FScriptDelegate& ClientConnectionCloseDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.AddClientConnectionCloseDelegate");
 
@@ -4878,7 +4835,6 @@ void UOnlineAuthInterfaceImpl::AddClientConnectionCloseDelegate(const struct FSc
 	params.ClientConnectionCloseDelegate = ClientConnectionCloseDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4887,7 +4843,7 @@ void UOnlineAuthInterfaceImpl::AddClientConnectionCloseDelegate(const struct FSc
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.OnClientConnectionClose
-// (Iterator, Latent, Singular, Net, Simulated, Native, HasOptionalParms)
+// (Defined, Iterator, Singular, NetReliable, Simulated, Native, HasOptionalParms)
 // Parameters:
 // class UPlayer*                 ClientConnection               (Parm)
 
@@ -4908,7 +4864,7 @@ void UOnlineAuthInterfaceImpl::OnClientConnectionClose(class UPlayer* ClientConn
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.ClearServerAuthRetryRequestDelegate
-// (Defined, NetReliable, Native, Event, Operator)
+// (Final, Latent, Exec, Event)
 // Parameters:
 // struct FScriptDelegate         ServerAuthRetryRequestDelegate (Parm, NeedCtorLink)
 
@@ -4920,7 +4876,6 @@ void UOnlineAuthInterfaceImpl::ClearServerAuthRetryRequestDelegate(const struct 
 	params.ServerAuthRetryRequestDelegate = ServerAuthRetryRequestDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4929,11 +4884,11 @@ void UOnlineAuthInterfaceImpl::ClearServerAuthRetryRequestDelegate(const struct 
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.AddServerAuthRetryRequestDelegate
-// (PreOperator, Net, NetReliable, Native, Event)
+// (Final, Defined, Iterator, Latent, Net, Exec, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         ServerAuthRetryRequestDelegate (Parm, NeedCtorLink)
 
-void UOnlineAuthInterfaceImpl::AddServerAuthRetryRequestDelegate(const struct FScriptDelegate& ServerAuthRetryRequestDelegate)
+void UOnlineAuthInterfaceImpl::STATIC_AddServerAuthRetryRequestDelegate(const struct FScriptDelegate& ServerAuthRetryRequestDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.AddServerAuthRetryRequestDelegate");
 
@@ -4941,7 +4896,6 @@ void UOnlineAuthInterfaceImpl::AddServerAuthRetryRequestDelegate(const struct FS
 	params.ServerAuthRetryRequestDelegate = ServerAuthRetryRequestDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4950,7 +4904,7 @@ void UOnlineAuthInterfaceImpl::AddServerAuthRetryRequestDelegate(const struct FS
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.OnServerAuthRetryRequest
-// (Final, Defined, Iterator, NetReliable, Simulated, Native, HasOptionalParms)
+// (Final, Net, NetReliable, Simulated, Native, HasOptionalParms)
 // Parameters:
 // class UPlayer*                 ClientConnection               (Parm)
 
@@ -4971,7 +4925,7 @@ void UOnlineAuthInterfaceImpl::OnServerAuthRetryRequest(class UPlayer* ClientCon
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.ClearClientAuthEndSessionRequestDelegate
-// (Final, Iterator, PreOperator, Singular, Net, NetReliable, Simulated, Exec, Event, Operator)
+// (Iterator, Latent, PreOperator, Singular, Net, Simulated, Event)
 // Parameters:
 // struct FScriptDelegate         ClientAuthEndSessionRequestDelegate (Parm, NeedCtorLink)
 
@@ -4991,11 +4945,11 @@ void UOnlineAuthInterfaceImpl::ClearClientAuthEndSessionRequestDelegate(const st
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.AddClientAuthEndSessionRequestDelegate
-// (Final, Iterator, Latent, Singular, Native, Event)
+// (Iterator, Latent, Singular, NetReliable, Simulated, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         ClientAuthEndSessionRequestDelegate (Parm, NeedCtorLink)
 
-void UOnlineAuthInterfaceImpl::AddClientAuthEndSessionRequestDelegate(const struct FScriptDelegate& ClientAuthEndSessionRequestDelegate)
+void UOnlineAuthInterfaceImpl::STATIC_AddClientAuthEndSessionRequestDelegate(const struct FScriptDelegate& ClientAuthEndSessionRequestDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.AddClientAuthEndSessionRequestDelegate");
 
@@ -5003,7 +4957,6 @@ void UOnlineAuthInterfaceImpl::AddClientAuthEndSessionRequestDelegate(const stru
 	params.ClientAuthEndSessionRequestDelegate = ClientAuthEndSessionRequestDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5012,7 +4965,7 @@ void UOnlineAuthInterfaceImpl::AddClientAuthEndSessionRequestDelegate(const stru
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.OnClientAuthEndSessionRequest
-// (Final, Latent, Singular, Net, Simulated, Native, HasOptionalParms)
+// (Final, Defined, Singular, NetReliable, Simulated, Native, HasOptionalParms)
 // Parameters:
 // class UPlayer*                 ServerConnection               (Parm)
 
@@ -5033,7 +4986,7 @@ void UOnlineAuthInterfaceImpl::OnClientAuthEndSessionRequest(class UPlayer* Serv
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.ClearServerAuthCompleteDelegate
-// (Final, Defined, Iterator, Latent, PreOperator, Singular, Net, Native, Event, Operator)
+// (Defined, Iterator, Exec, Event)
 // Parameters:
 // struct FScriptDelegate         ServerAuthCompleteDelegate     (Parm, NeedCtorLink)
 
@@ -5045,7 +4998,6 @@ void UOnlineAuthInterfaceImpl::ClearServerAuthCompleteDelegate(const struct FScr
 	params.ServerAuthCompleteDelegate = ServerAuthCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5054,11 +5006,11 @@ void UOnlineAuthInterfaceImpl::ClearServerAuthCompleteDelegate(const struct FScr
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.AddServerAuthCompleteDelegate
-// (Final, Iterator, Latent, Net, NetReliable, Native, Event)
+// (Iterator, Latent, Net, Exec, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         ServerAuthCompleteDelegate     (Parm, NeedCtorLink)
 
-void UOnlineAuthInterfaceImpl::AddServerAuthCompleteDelegate(const struct FScriptDelegate& ServerAuthCompleteDelegate)
+void UOnlineAuthInterfaceImpl::STATIC_AddServerAuthCompleteDelegate(const struct FScriptDelegate& ServerAuthCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.AddServerAuthCompleteDelegate");
 
@@ -5066,7 +5018,6 @@ void UOnlineAuthInterfaceImpl::AddServerAuthCompleteDelegate(const struct FScrip
 	params.ServerAuthCompleteDelegate = ServerAuthCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5075,7 +5026,7 @@ void UOnlineAuthInterfaceImpl::AddServerAuthCompleteDelegate(const struct FScrip
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.OnServerAuthComplete
-// (Iterator, NetReliable, Simulated, Native, HasOptionalParms)
+// (Defined, Iterator, Latent, PreOperator, Singular, NetReliable, Simulated, Native, HasOptionalParms)
 // Parameters:
 // bool                           bSuccess                       (Parm)
 // struct FUniqueNetId            ServerUID                      (Parm)
@@ -5102,7 +5053,7 @@ void UOnlineAuthInterfaceImpl::OnServerAuthComplete(bool bSuccess, const struct 
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.ClearClientAuthCompleteDelegate
-// (Iterator, PreOperator, Singular, Net, NetReliable, Simulated, Exec, Event, Operator)
+// (Final, Defined, Latent, PreOperator, Singular, Net, Simulated, Event)
 // Parameters:
 // struct FScriptDelegate         ClientAuthCompleteDelegate     (Parm, NeedCtorLink)
 
@@ -5122,11 +5073,11 @@ void UOnlineAuthInterfaceImpl::ClearClientAuthCompleteDelegate(const struct FScr
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.AddClientAuthCompleteDelegate
-// (Iterator, Latent, Singular, Native, Event)
+// (Final, Defined, Latent, Singular, NetReliable, Simulated, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         ClientAuthCompleteDelegate     (Parm, NeedCtorLink)
 
-void UOnlineAuthInterfaceImpl::AddClientAuthCompleteDelegate(const struct FScriptDelegate& ClientAuthCompleteDelegate)
+void UOnlineAuthInterfaceImpl::STATIC_AddClientAuthCompleteDelegate(const struct FScriptDelegate& ClientAuthCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.AddClientAuthCompleteDelegate");
 
@@ -5134,7 +5085,6 @@ void UOnlineAuthInterfaceImpl::AddClientAuthCompleteDelegate(const struct FScrip
 	params.ClientAuthCompleteDelegate = ClientAuthCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5143,7 +5093,7 @@ void UOnlineAuthInterfaceImpl::AddClientAuthCompleteDelegate(const struct FScrip
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.OnClientAuthComplete
-// (Latent, Singular, Net, Simulated, Native, HasOptionalParms)
+// (Defined, Singular, NetReliable, Simulated, Native, HasOptionalParms)
 // Parameters:
 // bool                           bSuccess                       (Parm)
 // struct FUniqueNetId            ClientUID                      (Parm)
@@ -5170,7 +5120,7 @@ void UOnlineAuthInterfaceImpl::OnClientAuthComplete(bool bSuccess, const struct 
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.ClearServerAuthResponseDelegate
-// (Final, NetReliable, Native, Event, Operator)
+// (Latent, Exec, Event)
 // Parameters:
 // struct FScriptDelegate         ServerAuthResponseDelegate     (Parm, NeedCtorLink)
 
@@ -5182,7 +5132,6 @@ void UOnlineAuthInterfaceImpl::ClearServerAuthResponseDelegate(const struct FScr
 	params.ServerAuthResponseDelegate = ServerAuthResponseDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5191,11 +5140,11 @@ void UOnlineAuthInterfaceImpl::ClearServerAuthResponseDelegate(const struct FScr
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.AddServerAuthResponseDelegate
-// (Final, Defined, Iterator, Latent, Net, NetReliable, Native, Event)
+// (Defined, Iterator, Latent, Net, Exec, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         ServerAuthResponseDelegate     (Parm, NeedCtorLink)
 
-void UOnlineAuthInterfaceImpl::AddServerAuthResponseDelegate(const struct FScriptDelegate& ServerAuthResponseDelegate)
+void UOnlineAuthInterfaceImpl::STATIC_AddServerAuthResponseDelegate(const struct FScriptDelegate& ServerAuthResponseDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.AddServerAuthResponseDelegate");
 
@@ -5203,7 +5152,6 @@ void UOnlineAuthInterfaceImpl::AddServerAuthResponseDelegate(const struct FScrip
 	params.ServerAuthResponseDelegate = ServerAuthResponseDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5212,7 +5160,7 @@ void UOnlineAuthInterfaceImpl::AddServerAuthResponseDelegate(const struct FScrip
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.OnServerAuthResponse
-// (Defined, Iterator, NetReliable, Simulated, Native, HasOptionalParms)
+// (Net, NetReliable, Simulated, Native, HasOptionalParms)
 // Parameters:
 // struct FUniqueNetId            ServerUID                      (Parm)
 // struct FIpAddr                 ServerIP                       (Parm)
@@ -5237,7 +5185,7 @@ void UOnlineAuthInterfaceImpl::OnServerAuthResponse(const struct FUniqueNetId& S
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.ClearClientAuthResponseDelegate
-// (Final, Defined, Iterator, PreOperator, Singular, Net, NetReliable, Simulated, Exec, Event, Operator)
+// (Defined, Iterator, Latent, PreOperator, Singular, Net, Simulated, Event)
 // Parameters:
 // struct FScriptDelegate         ClientAuthResponseDelegate     (Parm, NeedCtorLink)
 
@@ -5257,11 +5205,11 @@ void UOnlineAuthInterfaceImpl::ClearClientAuthResponseDelegate(const struct FScr
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.AddClientAuthResponseDelegate
-// (Final, Defined, Iterator, Latent, Singular, Native, Event)
+// (Defined, Iterator, Latent, Singular, NetReliable, Simulated, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         ClientAuthResponseDelegate     (Parm, NeedCtorLink)
 
-void UOnlineAuthInterfaceImpl::AddClientAuthResponseDelegate(const struct FScriptDelegate& ClientAuthResponseDelegate)
+void UOnlineAuthInterfaceImpl::STATIC_AddClientAuthResponseDelegate(const struct FScriptDelegate& ClientAuthResponseDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.AddClientAuthResponseDelegate");
 
@@ -5269,7 +5217,6 @@ void UOnlineAuthInterfaceImpl::AddClientAuthResponseDelegate(const struct FScrip
 	params.ClientAuthResponseDelegate = ClientAuthResponseDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5278,7 +5225,7 @@ void UOnlineAuthInterfaceImpl::AddClientAuthResponseDelegate(const struct FScrip
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.OnClientAuthResponse
-// (Final, Defined, Latent, Singular, Net, Simulated, Native, HasOptionalParms)
+// (Final, Iterator, Singular, NetReliable, Simulated, Native, HasOptionalParms)
 // Parameters:
 // struct FUniqueNetId            ClientUID                      (Parm)
 // struct FIpAddr                 ClientIP                       (Parm)
@@ -5303,7 +5250,7 @@ void UOnlineAuthInterfaceImpl::OnClientAuthResponse(const struct FUniqueNetId& C
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.ClearServerAuthRequestDelegate
-// (NetReliable, Native, Event, Operator)
+// (Final, Defined, Iterator, Exec, Event)
 // Parameters:
 // struct FScriptDelegate         ServerAuthRequestDelegate      (Parm, NeedCtorLink)
 
@@ -5315,7 +5262,6 @@ void UOnlineAuthInterfaceImpl::ClearServerAuthRequestDelegate(const struct FScri
 	params.ServerAuthRequestDelegate = ServerAuthRequestDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5324,11 +5270,11 @@ void UOnlineAuthInterfaceImpl::ClearServerAuthRequestDelegate(const struct FScri
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.AddServerAuthRequestDelegate
-// (Defined, Iterator, Latent, Net, NetReliable, Native, Event)
+// (Final, Iterator, Latent, Net, Exec, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         ServerAuthRequestDelegate      (Parm, NeedCtorLink)
 
-void UOnlineAuthInterfaceImpl::AddServerAuthRequestDelegate(const struct FScriptDelegate& ServerAuthRequestDelegate)
+void UOnlineAuthInterfaceImpl::STATIC_AddServerAuthRequestDelegate(const struct FScriptDelegate& ServerAuthRequestDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.AddServerAuthRequestDelegate");
 
@@ -5336,7 +5282,6 @@ void UOnlineAuthInterfaceImpl::AddServerAuthRequestDelegate(const struct FScript
 	params.ServerAuthRequestDelegate = ServerAuthRequestDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5345,7 +5290,7 @@ void UOnlineAuthInterfaceImpl::AddServerAuthRequestDelegate(const struct FScript
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.OnServerAuthRequest
-// (Final, Iterator, NetReliable, Simulated, Native, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, PreOperator, Singular, NetReliable, Simulated, Native, HasOptionalParms)
 // Parameters:
 // class UPlayer*                 ClientConnection               (Parm)
 // struct FUniqueNetId            ClientUID                      (Parm)
@@ -5372,7 +5317,7 @@ void UOnlineAuthInterfaceImpl::OnServerAuthRequest(class UPlayer* ClientConnecti
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.ClearClientAuthRequestDelegate
-// (Defined, Iterator, PreOperator, Singular, Net, NetReliable, Simulated, Exec, Event, Operator)
+// (Final, Iterator, Latent, PreOperator, Singular, Net, Simulated, Event)
 // Parameters:
 // struct FScriptDelegate         ClientAuthRequestDelegate      (Parm, NeedCtorLink)
 
@@ -5392,11 +5337,11 @@ void UOnlineAuthInterfaceImpl::ClearClientAuthRequestDelegate(const struct FScri
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.AddClientAuthRequestDelegate
-// (Defined, Iterator, Latent, Singular, Native, Event)
+// (Final, Iterator, Latent, Singular, NetReliable, Simulated, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         ClientAuthRequestDelegate      (Parm, NeedCtorLink)
 
-void UOnlineAuthInterfaceImpl::AddClientAuthRequestDelegate(const struct FScriptDelegate& ClientAuthRequestDelegate)
+void UOnlineAuthInterfaceImpl::STATIC_AddClientAuthRequestDelegate(const struct FScriptDelegate& ClientAuthRequestDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.AddClientAuthRequestDelegate");
 
@@ -5404,7 +5349,6 @@ void UOnlineAuthInterfaceImpl::AddClientAuthRequestDelegate(const struct FScript
 	params.ClientAuthRequestDelegate = ClientAuthRequestDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5413,7 +5357,7 @@ void UOnlineAuthInterfaceImpl::AddClientAuthRequestDelegate(const struct FScript
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.OnClientAuthRequest
-// (Defined, Latent, Singular, Net, Simulated, Native, HasOptionalParms)
+// (Iterator, Singular, NetReliable, Simulated, Native, HasOptionalParms)
 // Parameters:
 // struct FUniqueNetId            ServerUID                      (Parm)
 // struct FIpAddr                 ServerIP                       (Parm)
@@ -5440,7 +5384,7 @@ void UOnlineAuthInterfaceImpl::OnClientAuthRequest(const struct FUniqueNetId& Se
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.ClearAuthReadyDelegate
-// (Final, Latent, Singular, Net, NetReliable, Simulated, Exec, Event, Operator)
+// (PreOperator, Singular, Net, Simulated, Event)
 // Parameters:
 // struct FScriptDelegate         AuthReadyDelegate              (Parm, NeedCtorLink)
 
@@ -5460,11 +5404,11 @@ void UOnlineAuthInterfaceImpl::ClearAuthReadyDelegate(const struct FScriptDelega
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.AddAuthReadyDelegate
-// (Final, Iterator, Singular, Native, Event)
+// (Iterator, Singular, NetReliable, Simulated, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         AuthReadyDelegate              (Parm, NeedCtorLink)
 
-void UOnlineAuthInterfaceImpl::AddAuthReadyDelegate(const struct FScriptDelegate& AuthReadyDelegate)
+void UOnlineAuthInterfaceImpl::STATIC_AddAuthReadyDelegate(const struct FScriptDelegate& AuthReadyDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.AddAuthReadyDelegate");
 
@@ -5472,7 +5416,6 @@ void UOnlineAuthInterfaceImpl::AddAuthReadyDelegate(const struct FScriptDelegate
 	params.AuthReadyDelegate = AuthReadyDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5481,7 +5424,7 @@ void UOnlineAuthInterfaceImpl::AddAuthReadyDelegate(const struct FScriptDelegate
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.OnAuthReady
-// (Final, Iterator, Singular, Net, Simulated, Native, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, PreOperator, NetReliable, Simulated, Native, HasOptionalParms)
 
 void UOnlineAuthInterfaceImpl::OnAuthReady()
 {
@@ -5499,11 +5442,11 @@ void UOnlineAuthInterfaceImpl::OnAuthReady()
 
 
 // Function IpDrv.OnlineAuthInterfaceImpl.IsReady
-// (Defined, Singular, NetReliable, Simulated, Exec, Native, Event, Static)
+// (Final, Net, Simulated, Native, Event, Operator)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineAuthInterfaceImpl::STATIC_IsReady()
+bool UOnlineAuthInterfaceImpl::IsReady()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineAuthInterfaceImpl.IsReady");
 
@@ -5521,7 +5464,7 @@ bool UOnlineAuthInterfaceImpl::STATIC_IsReady()
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearGetUserConnectionInfoCompleteDelegate
-// (Latent, Singular, Native, Event, Operator)
+// (Final, Defined, Iterator, Latent, Singular, NetReliable, Simulated, Event)
 // Parameters:
 // struct FScriptDelegate         GetUserConnectionInfoCompleteDelegate (Parm, NeedCtorLink)
 
@@ -5533,7 +5476,6 @@ void UOnlineGameInterfaceImpl::ClearGetUserConnectionInfoCompleteDelegate(const 
 	params.GetUserConnectionInfoCompleteDelegate = GetUserConnectionInfoCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5542,11 +5484,11 @@ void UOnlineGameInterfaceImpl::ClearGetUserConnectionInfoCompleteDelegate(const 
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.AddGetUserConnectionInfoCompleteDelegate
-// (Final, Iterator, Latent, PreOperator, Net, Native, Event)
+// (Iterator, Latent, PreOperator, Net, NetReliable, Simulated, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         GetUserConnectionInfoCompleteDelegate (Parm, NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddGetUserConnectionInfoCompleteDelegate(const struct FScriptDelegate& GetUserConnectionInfoCompleteDelegate)
+void UOnlineGameInterfaceImpl::STATIC_AddGetUserConnectionInfoCompleteDelegate(const struct FScriptDelegate& GetUserConnectionInfoCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddGetUserConnectionInfoCompleteDelegate");
 
@@ -5554,7 +5496,6 @@ void UOnlineGameInterfaceImpl::AddGetUserConnectionInfoCompleteDelegate(const st
 	params.GetUserConnectionInfoCompleteDelegate = GetUserConnectionInfoCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5563,7 +5504,7 @@ void UOnlineGameInterfaceImpl::AddGetUserConnectionInfoCompleteDelegate(const st
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.OnGetUserConnectionInfoComplete
-// (Final, Defined, Latent, Singular, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Final, Iterator, Singular, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // TArray<struct FSessionMemberInfo> OutMemberInfo                  (Parm, NeedCtorLink)
 // bool                           bWasSuccessful                 (Parm)
@@ -5586,12 +5527,12 @@ void UOnlineGameInterfaceImpl::OnGetUserConnectionInfoComplete(TArray<struct FSe
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.GetUserConnectionInfoAsync
-// (Singular, Net, NetReliable, Simulated, Exec, Event, Static)
+// (Final, Defined, Latent, PreOperator, Singular, Net, Simulated, Event, Operator)
 // Parameters:
 // TArray<struct FString>         UserNames                      (Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::STATIC_GetUserConnectionInfoAsync(TArray<struct FString> UserNames)
+bool UOnlineGameInterfaceImpl::GetUserConnectionInfoAsync(TArray<struct FString> UserNames)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.GetUserConnectionInfoAsync");
 
@@ -5609,7 +5550,7 @@ bool UOnlineGameInterfaceImpl::STATIC_GetUserConnectionInfoAsync(TArray<struct F
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearGetSessionMemberInfoCompleteDelegate
-// (Defined, Iterator, Singular, Native, Event, Operator)
+// (Final, Iterator, Latent, Singular, NetReliable, Simulated, Event)
 // Parameters:
 // struct FScriptDelegate         GetSessionMemberInfoCompleteDelegate (Parm, NeedCtorLink)
 
@@ -5621,7 +5562,6 @@ void UOnlineGameInterfaceImpl::ClearGetSessionMemberInfoCompleteDelegate(const s
 	params.GetSessionMemberInfoCompleteDelegate = GetSessionMemberInfoCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5630,11 +5570,11 @@ void UOnlineGameInterfaceImpl::ClearGetSessionMemberInfoCompleteDelegate(const s
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.AddGetSessionMemberInfoCompleteDelegate
-// (Final, Defined, Latent, PreOperator, Net, Native, Event)
+// (Defined, Latent, PreOperator, Net, NetReliable, Simulated, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         GetSessionMemberInfoCompleteDelegate (Parm, NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddGetSessionMemberInfoCompleteDelegate(const struct FScriptDelegate& GetSessionMemberInfoCompleteDelegate)
+void UOnlineGameInterfaceImpl::STATIC_AddGetSessionMemberInfoCompleteDelegate(const struct FScriptDelegate& GetSessionMemberInfoCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddGetSessionMemberInfoCompleteDelegate");
 
@@ -5642,7 +5582,6 @@ void UOnlineGameInterfaceImpl::AddGetSessionMemberInfoCompleteDelegate(const str
 	params.GetSessionMemberInfoCompleteDelegate = GetSessionMemberInfoCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5651,7 +5590,7 @@ void UOnlineGameInterfaceImpl::AddGetSessionMemberInfoCompleteDelegate(const str
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.OnGetSessionMemberInfoComplete
-// (Defined, Latent, Singular, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Iterator, Singular, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // TArray<struct FSessionMemberInfo> OutMemberInfo                  (Parm, NeedCtorLink)
 // bool                           bWasSuccessful                 (Parm)
@@ -5674,13 +5613,13 @@ void UOnlineGameInterfaceImpl::OnGetSessionMemberInfoComplete(TArray<struct FSes
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.GetCurrentSessionMemberInfo
-// (Defined, Latent, PreOperator, Net, Exec, Event, Static)
+// (Final, Iterator, PreOperator, Singular, Net, NetReliable, Simulated, Exec, Native, Operator)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // TArray<struct FSessionMemberInfo> OutMemberInfo                  (Parm, OutParm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::STATIC_GetCurrentSessionMemberInfo(const struct FName& SessionName, TArray<struct FSessionMemberInfo>* OutMemberInfo)
+bool UOnlineGameInterfaceImpl::GetCurrentSessionMemberInfo(const struct FName& SessionName, TArray<struct FSessionMemberInfo>* OutMemberInfo)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.GetCurrentSessionMemberInfo");
 
@@ -5688,6 +5627,7 @@ bool UOnlineGameInterfaceImpl::STATIC_GetCurrentSessionMemberInfo(const struct F
 	params.SessionName = SessionName;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5701,13 +5641,13 @@ bool UOnlineGameInterfaceImpl::STATIC_GetCurrentSessionMemberInfo(const struct F
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.GetCurrentSessionMemberInfoAsync
-// (Final, Defined, Latent, PreOperator, Net, Exec, Event, Static)
+// (Defined, Iterator, PreOperator, Singular, Net, NetReliable, Simulated, Exec, Native, Operator)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FName                   SessionName                    (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::STATIC_GetCurrentSessionMemberInfoAsync(unsigned char LocalUserNum, const struct FName& SessionName)
+bool UOnlineGameInterfaceImpl::GetCurrentSessionMemberInfoAsync(unsigned char LocalUserNum, const struct FName& SessionName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.GetCurrentSessionMemberInfoAsync");
 
@@ -5716,6 +5656,7 @@ bool UOnlineGameInterfaceImpl::STATIC_GetCurrentSessionMemberInfoAsync(unsigned 
 	params.SessionName = SessionName;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5726,15 +5667,16 @@ bool UOnlineGameInterfaceImpl::STATIC_GetCurrentSessionMemberInfoAsync(unsigned 
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.RunBandwidthTest
-// (Final, Latent, PreOperator, Exec, HasOptionalParms)
+// (Defined, Iterator, Singular, Net, NetReliable, Simulated, Exec, Native, Event, Static)
 
-void UOnlineGameInterfaceImpl::RunBandwidthTest()
+void UOnlineGameInterfaceImpl::STATIC_RunBandwidthTest()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.RunBandwidthTest");
 
 	UOnlineGameInterfaceImpl_RunBandwidthTest_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5743,11 +5685,11 @@ void UOnlineGameInterfaceImpl::RunBandwidthTest()
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.IsAllowedToNetworkHost
-// (Defined, Iterator, Latent, PreOperator, Singular, Simulated, Exec, Native, Event, Static)
+// (Final, Iterator, Latent, PreOperator, Net, NetReliable, Native, Event, Operator)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::STATIC_IsAllowedToNetworkHost()
+bool UOnlineGameInterfaceImpl::IsAllowedToNetworkHost()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.IsAllowedToNetworkHost");
 
@@ -5765,7 +5707,7 @@ bool UOnlineGameInterfaceImpl::STATIC_IsAllowedToNetworkHost()
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearGetRoomIdFromTitleServiceDelegate
-// (Final, Iterator, Singular, Native, Event, Operator)
+// (Iterator, Latent, Singular, NetReliable, Simulated, Event)
 // Parameters:
 // struct FScriptDelegate         InDelegate                     (Parm, NeedCtorLink)
 
@@ -5777,7 +5719,6 @@ void UOnlineGameInterfaceImpl::ClearGetRoomIdFromTitleServiceDelegate(const stru
 	params.InDelegate = InDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5786,11 +5727,11 @@ void UOnlineGameInterfaceImpl::ClearGetRoomIdFromTitleServiceDelegate(const stru
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.AddGetRoomIdFromTitleServiceDelegate
-// (Defined, Latent, PreOperator, Net, Native, Event)
+// (Final, Latent, PreOperator, Net, NetReliable, Simulated, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         InDelegate                     (Parm, NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddGetRoomIdFromTitleServiceDelegate(const struct FScriptDelegate& InDelegate)
+void UOnlineGameInterfaceImpl::STATIC_AddGetRoomIdFromTitleServiceDelegate(const struct FScriptDelegate& InDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddGetRoomIdFromTitleServiceDelegate");
 
@@ -5798,7 +5739,6 @@ void UOnlineGameInterfaceImpl::AddGetRoomIdFromTitleServiceDelegate(const struct
 	params.InDelegate = InDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5807,11 +5747,11 @@ void UOnlineGameInterfaceImpl::AddGetRoomIdFromTitleServiceDelegate(const struct
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.GetRoomIdFromSessionId
-// (PreOperator, Singular, Net, Simulated, Exec, Event, Static)
+// (Final, Defined, Latent, Simulated, Event, Operator)
 // Parameters:
 // struct FString                 SessionId                      (Parm, NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::STATIC_GetRoomIdFromSessionId(const struct FString& SessionId)
+void UOnlineGameInterfaceImpl::GetRoomIdFromSessionId(const struct FString& SessionId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.GetRoomIdFromSessionId");
 
@@ -5827,11 +5767,11 @@ void UOnlineGameInterfaceImpl::STATIC_GetRoomIdFromSessionId(const struct FStrin
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.GetRoomIdFromTitleService
-// (Final, PreOperator, Singular, Net, Simulated, Exec, Event, Static)
+// (Iterator, Latent, Simulated, Event, Operator)
 // Parameters:
 // struct FQWord                  DataId                         (Parm)
 
-void UOnlineGameInterfaceImpl::STATIC_GetRoomIdFromTitleService(const struct FQWord& DataId)
+void UOnlineGameInterfaceImpl::GetRoomIdFromTitleService(const struct FQWord& DataId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.GetRoomIdFromTitleService");
 
@@ -5847,7 +5787,7 @@ void UOnlineGameInterfaceImpl::STATIC_GetRoomIdFromTitleService(const struct FQW
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.OnGetRoomIdFromTitleService
-// (Final, Latent, Singular, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Final, Defined, Singular, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // struct FQWord                  RoomId                         (Parm)
 
@@ -5868,11 +5808,11 @@ void UOnlineGameInterfaceImpl::OnGetRoomIdFromTitleService(const struct FQWord& 
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.GetRoomId
-// (Final, Defined, Iterator, Latent, Singular, Net, Simulated, Exec, Event, Static)
+// (Defined, Latent, Simulated, Event, Operator)
 // Parameters:
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString UOnlineGameInterfaceImpl::STATIC_GetRoomId()
+struct FString UOnlineGameInterfaceImpl::GetRoomId()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.GetRoomId");
 
@@ -5889,12 +5829,12 @@ struct FString UOnlineGameInterfaceImpl::STATIC_GetRoomId()
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.SendPlayerList
-// (Final, Defined, Latent, PreOperator, Singular, Simulated, Exec, HasOptionalParms)
+// (Final, Iterator, Latent, Simulated, Operator, Static)
 // Parameters:
 // TArray<class APlayerReplicationInfo*> Players                        (Const, Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::SendPlayerList(TArray<class APlayerReplicationInfo*> Players)
+bool UOnlineGameInterfaceImpl::STATIC_SendPlayerList(TArray<class APlayerReplicationInfo*> Players)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.SendPlayerList");
 
@@ -5912,7 +5852,7 @@ bool UOnlineGameInterfaceImpl::SendPlayerList(TArray<class APlayerReplicationInf
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearGetNumberOfCurrentPlayersCompleteDelegate
-// (Iterator, Singular, Native, Event, Operator)
+// (Final, Defined, Latent, Singular, NetReliable, Simulated, Event)
 // Parameters:
 // struct FScriptDelegate         GetNumberOfCurrentPlayersCompleteDelegate (Parm, NeedCtorLink)
 
@@ -5924,7 +5864,6 @@ void UOnlineGameInterfaceImpl::ClearGetNumberOfCurrentPlayersCompleteDelegate(co
 	params.GetNumberOfCurrentPlayersCompleteDelegate = GetNumberOfCurrentPlayersCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5933,11 +5872,11 @@ void UOnlineGameInterfaceImpl::ClearGetNumberOfCurrentPlayersCompleteDelegate(co
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.AddGetNumberOfCurrentPlayersCompleteDelegate
-// (Final, Latent, PreOperator, Net, Native, Event)
+// (Latent, PreOperator, Net, NetReliable, Simulated, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         GetNumberOfCurrentPlayersCompleteDelegate (Parm, NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddGetNumberOfCurrentPlayersCompleteDelegate(const struct FScriptDelegate& GetNumberOfCurrentPlayersCompleteDelegate)
+void UOnlineGameInterfaceImpl::STATIC_AddGetNumberOfCurrentPlayersCompleteDelegate(const struct FScriptDelegate& GetNumberOfCurrentPlayersCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddGetNumberOfCurrentPlayersCompleteDelegate");
 
@@ -5945,7 +5884,6 @@ void UOnlineGameInterfaceImpl::AddGetNumberOfCurrentPlayersCompleteDelegate(cons
 	params.GetNumberOfCurrentPlayersCompleteDelegate = GetNumberOfCurrentPlayersCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5954,7 +5892,7 @@ void UOnlineGameInterfaceImpl::AddGetNumberOfCurrentPlayersCompleteDelegate(cons
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.OnGetNumberOfCurrentPlayersComplete
-// (Final, Defined, Iterator, PreOperator, Net, NetReliable, Simulated, Native, Event, Static)
+// (Final, Latent, PreOperator, Net, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // int                            TotalPlayers                   (Parm)
 
@@ -5975,11 +5913,11 @@ void UOnlineGameInterfaceImpl::STATIC_OnGetNumberOfCurrentPlayersComplete(int To
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.GetNumberOfCurrentPlayersCached
-// (Defined, Iterator, Latent, PreOperator, Singular, Net, NetReliable, Exec, Event, Static)
+// (Final, Latent, PreOperator, NetReliable, Event, Operator)
 // Parameters:
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UOnlineGameInterfaceImpl::STATIC_GetNumberOfCurrentPlayersCached()
+int UOnlineGameInterfaceImpl::GetNumberOfCurrentPlayersCached()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.GetNumberOfCurrentPlayersCached");
 
@@ -5996,11 +5934,11 @@ int UOnlineGameInterfaceImpl::STATIC_GetNumberOfCurrentPlayersCached()
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.GetNumberOfCurrentPlayers
-// (Final, Iterator, Latent, PreOperator, Singular, Net, NetReliable, Exec, Event, Static)
+// (Latent, PreOperator, NetReliable, Event, Operator)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::STATIC_GetNumberOfCurrentPlayers()
+bool UOnlineGameInterfaceImpl::GetNumberOfCurrentPlayers()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.GetNumberOfCurrentPlayers");
 
@@ -6017,7 +5955,7 @@ bool UOnlineGameInterfaceImpl::STATIC_GetNumberOfCurrentPlayers()
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearQosStatusChangedDelegate
-// (Final, Iterator, PreOperator, Net, Native, Event, Operator)
+// (Iterator, Latent, PreOperator, Net, NetReliable, Simulated, Event)
 // Parameters:
 // struct FScriptDelegate         QosStatusChangedDelegate       (Parm, NeedCtorLink)
 
@@ -6029,7 +5967,6 @@ void UOnlineGameInterfaceImpl::ClearQosStatusChangedDelegate(const struct FScrip
 	params.QosStatusChangedDelegate = QosStatusChangedDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6038,11 +5975,11 @@ void UOnlineGameInterfaceImpl::ClearQosStatusChangedDelegate(const struct FScrip
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.AddQosStatusChangedDelegate
-// (Defined, Iterator, Latent, PreOperator, NetReliable, Native, Event)
+// (Final, Iterator, Latent, PreOperator, Exec, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         QosStatusChangedDelegate       (Parm, NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddQosStatusChangedDelegate(const struct FScriptDelegate& QosStatusChangedDelegate)
+void UOnlineGameInterfaceImpl::STATIC_AddQosStatusChangedDelegate(const struct FScriptDelegate& QosStatusChangedDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddQosStatusChangedDelegate");
 
@@ -6050,7 +5987,6 @@ void UOnlineGameInterfaceImpl::AddQosStatusChangedDelegate(const struct FScriptD
 	params.QosStatusChangedDelegate = QosStatusChangedDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6059,7 +5995,7 @@ void UOnlineGameInterfaceImpl::AddQosStatusChangedDelegate(const struct FScriptD
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.OnQosStatusChanged
-// (Defined, Iterator, PreOperator, Singular, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (PreOperator, Singular, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // int                            NumComplete                    (Parm)
 // int                            NumTotal                       (Parm)
@@ -6082,7 +6018,7 @@ void UOnlineGameInterfaceImpl::OnQosStatusChanged(int NumComplete, int NumTotal)
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.BindPlatformSpecificSessionToSearch
-// (Iterator, Latent, NetReliable, Simulated, Exec, Operator)
+// (PreOperator, Simulated)
 // Parameters:
 // unsigned char                  SearchingPlayerNum             (Parm)
 // class UOnlineGameSearch*       SearchSettings                 (Parm)
@@ -6109,7 +6045,7 @@ bool UOnlineGameInterfaceImpl::BindPlatformSpecificSessionToSearch(unsigned char
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.ReadPlatformSpecificSessionInfoBySessionName
-// (Latent, Singular, Net, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
+// (Final, Defined, Iterator, Latent, Singular, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // unsigned char                  PlatformSpecificInfo           (Parm, OutParm)
@@ -6137,7 +6073,7 @@ bool UOnlineGameInterfaceImpl::STATIC_ReadPlatformSpecificSessionInfoBySessionNa
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.ReadPlatformSpecificSessionInfo
-// (Final, Defined, Iterator, Singular, Net, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
+// (Defined, Iterator, Latent, Singular, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // struct FOnlineGameSearchResult DesiredGame                    (Const, Parm, OutParm)
 // unsigned char                  PlatformSpecificInfo           (Parm, OutParm)
@@ -6166,7 +6102,7 @@ bool UOnlineGameInterfaceImpl::STATIC_ReadPlatformSpecificSessionInfo(struct FOn
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.QueryNonAdvertisedData
-// (Defined, Latent, Singular, Simulated, Exec, Native, Event, Operator, Static)
+// (Final, PreOperator, Singular, Net, NetReliable, Native, Event, Static)
 // Parameters:
 // int                            StartAt                        (Parm)
 // int                            NumberToQuery                  (Parm)
@@ -6192,7 +6128,7 @@ bool UOnlineGameInterfaceImpl::STATIC_QueryNonAdvertisedData(int StartAt, int Nu
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearJoinMigratedOnlineGameCompleteDelegate
-// (Final, Defined, Latent, Singular, Native, Event, Operator)
+// (Defined, PreOperator, Singular, NetReliable, Simulated, Event)
 // Parameters:
 // struct FScriptDelegate         JoinMigratedOnlineGameCompleteDelegate (Parm, NeedCtorLink)
 
@@ -6204,7 +6140,6 @@ void UOnlineGameInterfaceImpl::ClearJoinMigratedOnlineGameCompleteDelegate(const
 	params.JoinMigratedOnlineGameCompleteDelegate = JoinMigratedOnlineGameCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6213,11 +6148,11 @@ void UOnlineGameInterfaceImpl::ClearJoinMigratedOnlineGameCompleteDelegate(const
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.AddJoinMigratedOnlineGameCompleteDelegate
-// (Final, PreOperator, Singular, Net, Native, Event)
+// (PreOperator, Singular, Net, NetReliable, Simulated, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         JoinMigratedOnlineGameCompleteDelegate (Parm, NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddJoinMigratedOnlineGameCompleteDelegate(const struct FScriptDelegate& JoinMigratedOnlineGameCompleteDelegate)
+void UOnlineGameInterfaceImpl::STATIC_AddJoinMigratedOnlineGameCompleteDelegate(const struct FScriptDelegate& JoinMigratedOnlineGameCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddJoinMigratedOnlineGameCompleteDelegate");
 
@@ -6225,7 +6160,6 @@ void UOnlineGameInterfaceImpl::AddJoinMigratedOnlineGameCompleteDelegate(const s
 	params.JoinMigratedOnlineGameCompleteDelegate = JoinMigratedOnlineGameCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6234,7 +6168,7 @@ void UOnlineGameInterfaceImpl::AddJoinMigratedOnlineGameCompleteDelegate(const s
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.OnJoinMigratedOnlineGameComplete
-// (Defined, Iterator, Latent, Singular, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Latent, Singular, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // bool                           bWasSuccessful                 (Parm)
@@ -6257,14 +6191,14 @@ void UOnlineGameInterfaceImpl::OnJoinMigratedOnlineGameComplete(const struct FNa
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.JoinMigratedOnlineGame
-// (Final, Defined, Iterator, Latent, PreOperator, Net, NetReliable, Simulated, Exec, Native, Event, Static)
+// (Defined, Iterator, Latent, PreOperator, Singular, Net, Simulated, Native, Event, Operator)
 // Parameters:
 // unsigned char                  PlayerNum                      (Parm)
 // struct FName                   SessionName                    (Parm)
 // struct FOnlineGameSearchResult DesiredGame                    (Const, Parm, OutParm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::STATIC_JoinMigratedOnlineGame(unsigned char PlayerNum, const struct FName& SessionName, struct FOnlineGameSearchResult* DesiredGame)
+bool UOnlineGameInterfaceImpl::JoinMigratedOnlineGame(unsigned char PlayerNum, const struct FName& SessionName, struct FOnlineGameSearchResult* DesiredGame)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.JoinMigratedOnlineGame");
 
@@ -6287,7 +6221,7 @@ bool UOnlineGameInterfaceImpl::STATIC_JoinMigratedOnlineGame(unsigned char Playe
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearMigrateOnlineGameCompleteDelegate
-// (Final, Defined, Latent, PreOperator, Singular, Native, Event, Operator)
+// (Defined, Net, NetReliable, Simulated, Event)
 // Parameters:
 // struct FScriptDelegate         MigrateOnlineGameCompleteDelegate (Parm, NeedCtorLink)
 
@@ -6299,7 +6233,6 @@ void UOnlineGameInterfaceImpl::ClearMigrateOnlineGameCompleteDelegate(const stru
 	params.MigrateOnlineGameCompleteDelegate = MigrateOnlineGameCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6308,11 +6241,11 @@ void UOnlineGameInterfaceImpl::ClearMigrateOnlineGameCompleteDelegate(const stru
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.AddMigrateOnlineGameCompleteDelegate
-// (Final, NetReliable, Native, Event)
+// (Exec, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         MigrateOnlineGameCompleteDelegate (Parm, NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddMigrateOnlineGameCompleteDelegate(const struct FScriptDelegate& MigrateOnlineGameCompleteDelegate)
+void UOnlineGameInterfaceImpl::STATIC_AddMigrateOnlineGameCompleteDelegate(const struct FScriptDelegate& MigrateOnlineGameCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddMigrateOnlineGameCompleteDelegate");
 
@@ -6320,7 +6253,6 @@ void UOnlineGameInterfaceImpl::AddMigrateOnlineGameCompleteDelegate(const struct
 	params.MigrateOnlineGameCompleteDelegate = MigrateOnlineGameCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6329,7 +6261,7 @@ void UOnlineGameInterfaceImpl::AddMigrateOnlineGameCompleteDelegate(const struct
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.OnMigrateOnlineGameComplete
-// (Final, Defined, PreOperator, Singular, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Final, Iterator, Latent, Singular, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // bool                           bWasSuccessful                 (Parm)
@@ -6352,7 +6284,7 @@ void UOnlineGameInterfaceImpl::OnMigrateOnlineGameComplete(const struct FName& S
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.MigrateOnlineGame
-// (Final, Singular, NetReliable, Native, Operator, Static)
+// (Final, PreOperator, Net, Exec, Static)
 // Parameters:
 // unsigned char                  HostingPlayerNum               (Parm)
 // struct FName                   SessionName                    (Parm)
@@ -6367,7 +6299,6 @@ bool UOnlineGameInterfaceImpl::STATIC_MigrateOnlineGame(unsigned char HostingPla
 	params.SessionName = SessionName;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6378,7 +6309,7 @@ bool UOnlineGameInterfaceImpl::STATIC_MigrateOnlineGame(unsigned char HostingPla
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearRecalculateSkillRatingCompleteDelegate
-// (Defined, PreOperator, Singular, Net, Native, Event, Operator)
+// (Final, Latent, PreOperator, Singular, Net, NetReliable, Simulated, Event)
 // Parameters:
 // struct FScriptDelegate         RecalculateSkillRatingGameCompleteDelegate (Parm, NeedCtorLink)
 
@@ -6390,7 +6321,6 @@ void UOnlineGameInterfaceImpl::ClearRecalculateSkillRatingCompleteDelegate(const
 	params.RecalculateSkillRatingGameCompleteDelegate = RecalculateSkillRatingGameCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6399,11 +6329,11 @@ void UOnlineGameInterfaceImpl::ClearRecalculateSkillRatingCompleteDelegate(const
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.AddRecalculateSkillRatingCompleteDelegate
-// (Final, Iterator, Latent, PreOperator, Singular, NetReliable, Native, Event)
+// (Iterator, Latent, PreOperator, Singular, Exec, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         RecalculateSkillRatingCompleteDelegate (Parm, NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddRecalculateSkillRatingCompleteDelegate(const struct FScriptDelegate& RecalculateSkillRatingCompleteDelegate)
+void UOnlineGameInterfaceImpl::STATIC_AddRecalculateSkillRatingCompleteDelegate(const struct FScriptDelegate& RecalculateSkillRatingCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddRecalculateSkillRatingCompleteDelegate");
 
@@ -6411,7 +6341,6 @@ void UOnlineGameInterfaceImpl::AddRecalculateSkillRatingCompleteDelegate(const s
 	params.RecalculateSkillRatingCompleteDelegate = RecalculateSkillRatingCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6420,7 +6349,7 @@ void UOnlineGameInterfaceImpl::AddRecalculateSkillRatingCompleteDelegate(const s
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.OnRecalculateSkillRatingComplete
-// (Iterator, Latent, PreOperator, Singular, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Defined, Iterator, PreOperator, Singular, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // bool                           bWasSuccessful                 (Parm)
@@ -6443,13 +6372,13 @@ void UOnlineGameInterfaceImpl::OnRecalculateSkillRatingComplete(const struct FNa
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.RecalculateSkillRating
-// (Final, Defined, Latent, PreOperator, HasOptionalParms)
+// (Defined, Singular, Net, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // TArray<struct FUniqueNetId>    Players                        (Const, Parm, OutParm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::RecalculateSkillRating(const struct FName& SessionName, TArray<struct FUniqueNetId>* Players)
+bool UOnlineGameInterfaceImpl::STATIC_RecalculateSkillRating(const struct FName& SessionName, TArray<struct FUniqueNetId>* Players)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.RecalculateSkillRating");
 
@@ -6457,6 +6386,7 @@ bool UOnlineGameInterfaceImpl::RecalculateSkillRating(const struct FName& Sessio
 	params.SessionName = SessionName;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6470,13 +6400,13 @@ bool UOnlineGameInterfaceImpl::RecalculateSkillRating(const struct FName& Sessio
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.AcceptGameInvite
-// (Final, Defined, Singular, NetReliable, Simulated, Exec, Event)
+// (Final, Singular, Simulated, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FName                   SessionName                    (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::AcceptGameInvite(unsigned char LocalUserNum, const struct FName& SessionName)
+bool UOnlineGameInterfaceImpl::STATIC_AcceptGameInvite(unsigned char LocalUserNum, const struct FName& SessionName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AcceptGameInvite");
 
@@ -6495,7 +6425,7 @@ bool UOnlineGameInterfaceImpl::AcceptGameInvite(unsigned char LocalUserNum, cons
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearGameInviteAcceptedDelegate
-// (Final, Singular, Native, Event, Operator)
+// (Latent, Singular, NetReliable, Simulated, Event)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FScriptDelegate         GameInviteAcceptedDelegate     (Parm, NeedCtorLink)
@@ -6509,7 +6439,6 @@ void UOnlineGameInterfaceImpl::ClearGameInviteAcceptedDelegate(unsigned char Loc
 	params.GameInviteAcceptedDelegate = GameInviteAcceptedDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6518,12 +6447,12 @@ void UOnlineGameInterfaceImpl::ClearGameInviteAcceptedDelegate(unsigned char Loc
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.AddGameInviteAcceptedDelegate
-// (Defined, Iterator, PreOperator, Net, Native, Event)
+// (Final, Iterator, PreOperator, Net, NetReliable, Simulated, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FScriptDelegate         GameInviteAcceptedDelegate     (Parm, NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddGameInviteAcceptedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& GameInviteAcceptedDelegate)
+void UOnlineGameInterfaceImpl::STATIC_AddGameInviteAcceptedDelegate(unsigned char LocalUserNum, const struct FScriptDelegate& GameInviteAcceptedDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddGameInviteAcceptedDelegate");
 
@@ -6532,7 +6461,6 @@ void UOnlineGameInterfaceImpl::AddGameInviteAcceptedDelegate(unsigned char Local
 	params.GameInviteAcceptedDelegate = GameInviteAcceptedDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6541,7 +6469,7 @@ void UOnlineGameInterfaceImpl::AddGameInviteAcceptedDelegate(unsigned char Local
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.OnGameInviteAccepted
-// (Defined, Iterator, Singular, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Singular, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // struct FOnlineGameSearchResult InviteResult                   (Const, Parm, OutParm)
 
@@ -6564,12 +6492,12 @@ void UOnlineGameInterfaceImpl::OnGameInviteAccepted(struct FOnlineGameSearchResu
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.GetArbitratedPlayers
-// (Final, Defined, Iterator, Exec, Event, Static)
+// (Defined, Singular, NetReliable, Simulated, Exec, Native, Operator)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // TArray<struct FOnlineArbitrationRegistrant> ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-TArray<struct FOnlineArbitrationRegistrant> UOnlineGameInterfaceImpl::STATIC_GetArbitratedPlayers(const struct FName& SessionName)
+TArray<struct FOnlineArbitrationRegistrant> UOnlineGameInterfaceImpl::GetArbitratedPlayers(const struct FName& SessionName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.GetArbitratedPlayers");
 
@@ -6577,6 +6505,7 @@ TArray<struct FOnlineArbitrationRegistrant> UOnlineGameInterfaceImpl::STATIC_Get
 	params.SessionName = SessionName;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6587,7 +6516,7 @@ TArray<struct FOnlineArbitrationRegistrant> UOnlineGameInterfaceImpl::STATIC_Get
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearArbitrationRegistrationCompleteDelegate
-// (Final, Defined, Iterator, Singular, Net, NetReliable, Simulated, Exec, Event, Operator)
+// (Defined, Iterator, Latent, Singular, Net, Simulated, Event)
 // Parameters:
 // struct FScriptDelegate         ArbitrationRegistrationCompleteDelegate (Parm, NeedCtorLink)
 
@@ -6607,11 +6536,11 @@ void UOnlineGameInterfaceImpl::ClearArbitrationRegistrationCompleteDelegate(cons
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.AddArbitrationRegistrationCompleteDelegate
-// (Iterator, Singular, Native, Event)
+// (Final, Defined, Singular, NetReliable, Simulated, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         ArbitrationRegistrationCompleteDelegate (Parm, NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddArbitrationRegistrationCompleteDelegate(const struct FScriptDelegate& ArbitrationRegistrationCompleteDelegate)
+void UOnlineGameInterfaceImpl::STATIC_AddArbitrationRegistrationCompleteDelegate(const struct FScriptDelegate& ArbitrationRegistrationCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddArbitrationRegistrationCompleteDelegate");
 
@@ -6619,7 +6548,6 @@ void UOnlineGameInterfaceImpl::AddArbitrationRegistrationCompleteDelegate(const 
 	params.ArbitrationRegistrationCompleteDelegate = ArbitrationRegistrationCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6628,7 +6556,7 @@ void UOnlineGameInterfaceImpl::AddArbitrationRegistrationCompleteDelegate(const 
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.OnArbitrationRegistrationComplete
-// (Latent, PreOperator, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Defined, PreOperator, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // bool                           bWasSuccessful                 (Parm)
@@ -6651,12 +6579,12 @@ void UOnlineGameInterfaceImpl::OnArbitrationRegistrationComplete(const struct FN
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.RegisterForArbitration
-// (Defined, Iterator, Singular, Net, HasOptionalParms)
+// (Final, Iterator, Latent, Singular, Exec, Native, Event, Static)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::RegisterForArbitration(const struct FName& SessionName)
+bool UOnlineGameInterfaceImpl::STATIC_RegisterForArbitration(const struct FName& SessionName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.RegisterForArbitration");
 
@@ -6664,6 +6592,7 @@ bool UOnlineGameInterfaceImpl::RegisterForArbitration(const struct FName& Sessio
 	params.SessionName = SessionName;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6674,7 +6603,7 @@ bool UOnlineGameInterfaceImpl::RegisterForArbitration(const struct FName& Sessio
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearEndOnlineGameCompleteDelegate
-// (Iterator, PreOperator, Native, Event, Operator)
+// (Final, Defined, Latent, PreOperator, NetReliable, Simulated, Event)
 // Parameters:
 // struct FScriptDelegate         EndOnlineGameCompleteDelegate  (Parm, NeedCtorLink)
 
@@ -6686,7 +6615,6 @@ void UOnlineGameInterfaceImpl::ClearEndOnlineGameCompleteDelegate(const struct F
 	params.EndOnlineGameCompleteDelegate = EndOnlineGameCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6695,11 +6623,11 @@ void UOnlineGameInterfaceImpl::ClearEndOnlineGameCompleteDelegate(const struct F
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.AddEndOnlineGameCompleteDelegate
-// (Final, Defined, Iterator, Net, Native, Event)
+// (Defined, Iterator, Net, NetReliable, Simulated, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         EndOnlineGameCompleteDelegate  (Parm, NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddEndOnlineGameCompleteDelegate(const struct FScriptDelegate& EndOnlineGameCompleteDelegate)
+void UOnlineGameInterfaceImpl::STATIC_AddEndOnlineGameCompleteDelegate(const struct FScriptDelegate& EndOnlineGameCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddEndOnlineGameCompleteDelegate");
 
@@ -6707,7 +6635,6 @@ void UOnlineGameInterfaceImpl::AddEndOnlineGameCompleteDelegate(const struct FSc
 	params.EndOnlineGameCompleteDelegate = EndOnlineGameCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6716,7 +6643,7 @@ void UOnlineGameInterfaceImpl::AddEndOnlineGameCompleteDelegate(const struct FSc
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.OnEndOnlineGameComplete
-// (Final, Defined, Singular, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Final, Iterator, Latent, PreOperator, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // bool                           bWasSuccessful                 (Parm)
@@ -6739,12 +6666,12 @@ void UOnlineGameInterfaceImpl::OnEndOnlineGameComplete(const struct FName& Sessi
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.EndOnlineGame
-// (Final, Defined, Net, NetReliable, Native, Static)
+// (Final, Defined, Iterator, PreOperator, Net, Exec, Operator)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::STATIC_EndOnlineGame(const struct FName& SessionName)
+bool UOnlineGameInterfaceImpl::EndOnlineGame(const struct FName& SessionName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.EndOnlineGame");
 
@@ -6752,7 +6679,6 @@ bool UOnlineGameInterfaceImpl::STATIC_EndOnlineGame(const struct FName& SessionN
 	params.SessionName = SessionName;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6763,7 +6689,7 @@ bool UOnlineGameInterfaceImpl::STATIC_EndOnlineGame(const struct FName& SessionN
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearStartOnlineGameCompleteDelegate
-// (Final, Defined, Latent, NetReliable, Native, Event, Operator)
+// (Defined, PreOperator, Exec, Event)
 // Parameters:
 // struct FScriptDelegate         StartOnlineGameCompleteDelegate (Parm, NeedCtorLink)
 
@@ -6775,7 +6701,6 @@ void UOnlineGameInterfaceImpl::ClearStartOnlineGameCompleteDelegate(const struct
 	params.StartOnlineGameCompleteDelegate = StartOnlineGameCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6784,11 +6709,11 @@ void UOnlineGameInterfaceImpl::ClearStartOnlineGameCompleteDelegate(const struct
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.AddStartOnlineGameCompleteDelegate
-// (Iterator, Latent, PreOperator, Net, NetReliable, Native, Event)
+// (Final, Defined, Latent, PreOperator, Net, Exec, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         StartOnlineGameCompleteDelegate (Parm, NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddStartOnlineGameCompleteDelegate(const struct FScriptDelegate& StartOnlineGameCompleteDelegate)
+void UOnlineGameInterfaceImpl::STATIC_AddStartOnlineGameCompleteDelegate(const struct FScriptDelegate& StartOnlineGameCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddStartOnlineGameCompleteDelegate");
 
@@ -6796,7 +6721,6 @@ void UOnlineGameInterfaceImpl::AddStartOnlineGameCompleteDelegate(const struct F
 	params.StartOnlineGameCompleteDelegate = StartOnlineGameCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6805,7 +6729,7 @@ void UOnlineGameInterfaceImpl::AddStartOnlineGameCompleteDelegate(const struct F
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.OnStartOnlineGameComplete
-// (Defined, Latent, Simulated, Exec, Native, HasOptionalParms)
+// (Iterator, Net, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // bool                           bWasSuccessful                 (Parm)
@@ -6828,12 +6752,12 @@ void UOnlineGameInterfaceImpl::OnStartOnlineGameComplete(const struct FName& Ses
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.StartOnlineGame
-// (Defined, Latent, Singular, Net, NetReliable, Simulated, Exec, Native, HasOptionalParms)
+// (Iterator, Latent, Net, NetReliable, Simulated, Native, Operator, Static)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::StartOnlineGame(const struct FName& SessionName)
+bool UOnlineGameInterfaceImpl::STATIC_StartOnlineGame(const struct FName& SessionName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.StartOnlineGame");
 
@@ -6852,11 +6776,11 @@ bool UOnlineGameInterfaceImpl::StartOnlineGame(const struct FName& SessionName)
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.RetrieveGameSettingsForIP
-// (Latent, PreOperator, Net, Simulated, HasOptionalParms)
+// (Defined, Singular, Simulated, Exec, Native, Event, Static)
 // Parameters:
 // struct FString                 IPAddress                      (Parm, NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::RetrieveGameSettingsForIP(const struct FString& IPAddress)
+void UOnlineGameInterfaceImpl::STATIC_RetrieveGameSettingsForIP(const struct FString& IPAddress)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.RetrieveGameSettingsForIP");
 
@@ -6864,6 +6788,7 @@ void UOnlineGameInterfaceImpl::RetrieveGameSettingsForIP(const struct FString& I
 	params.IPAddress = IPAddress;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6872,7 +6797,7 @@ void UOnlineGameInterfaceImpl::RetrieveGameSettingsForIP(const struct FString& I
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearOnRetrieveGameSettingsForIPDelegate
-// (Net, Native, Event, Operator)
+// (Final, Defined, Iterator, Net, NetReliable, Simulated, Event)
 // Parameters:
 // struct FScriptDelegate         RetrieveIPDelegate             (Parm, NeedCtorLink)
 
@@ -6884,7 +6809,6 @@ void UOnlineGameInterfaceImpl::ClearOnRetrieveGameSettingsForIPDelegate(const st
 	params.RetrieveIPDelegate = RetrieveIPDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6893,11 +6817,11 @@ void UOnlineGameInterfaceImpl::ClearOnRetrieveGameSettingsForIPDelegate(const st
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.AddOnRetrieveGameSettingsForIPDelegate
-// (Defined, Latent, NetReliable, Native, Event)
+// (Final, Latent, Exec, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         NewRetrieveIPDelegate          (Parm, NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddOnRetrieveGameSettingsForIPDelegate(const struct FScriptDelegate& NewRetrieveIPDelegate)
+void UOnlineGameInterfaceImpl::STATIC_AddOnRetrieveGameSettingsForIPDelegate(const struct FScriptDelegate& NewRetrieveIPDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddOnRetrieveGameSettingsForIPDelegate");
 
@@ -6905,7 +6829,6 @@ void UOnlineGameInterfaceImpl::AddOnRetrieveGameSettingsForIPDelegate(const stru
 	params.NewRetrieveIPDelegate = NewRetrieveIPDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6914,7 +6837,7 @@ void UOnlineGameInterfaceImpl::AddOnRetrieveGameSettingsForIPDelegate(const stru
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.OnRetrievedGameSettingsForIP
-// (Final, Defined, Iterator, Simulated, Exec, Native, HasOptionalParms)
+// (Final, Net, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // bool                           bSuccessful                    (Parm)
 // struct FOnlineGameSearchResult ConnectResult                  (Const, Parm, OutParm)
@@ -6939,7 +6862,7 @@ void UOnlineGameInterfaceImpl::OnRetrievedGameSettingsForIP(bool bSuccessful, st
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearUnregisterPlayerCompleteDelegate
-// (Final, PreOperator, NetReliable, Native, Event, Operator)
+// (Latent, PreOperator, Exec, Event)
 // Parameters:
 // struct FScriptDelegate         UnregisterPlayerCompleteDelegate (Parm, NeedCtorLink)
 
@@ -6951,7 +6874,6 @@ void UOnlineGameInterfaceImpl::ClearUnregisterPlayerCompleteDelegate(const struc
 	params.UnregisterPlayerCompleteDelegate = UnregisterPlayerCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6960,11 +6882,11 @@ void UOnlineGameInterfaceImpl::ClearUnregisterPlayerCompleteDelegate(const struc
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.AddUnregisterPlayerCompleteDelegate
-// (Latent, Singular, Net, NetReliable, Native, Event)
+// (Final, Defined, Iterator, Singular, Net, Exec, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         UnregisterPlayerCompleteDelegate (Parm, NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddUnregisterPlayerCompleteDelegate(const struct FScriptDelegate& UnregisterPlayerCompleteDelegate)
+void UOnlineGameInterfaceImpl::STATIC_AddUnregisterPlayerCompleteDelegate(const struct FScriptDelegate& UnregisterPlayerCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddUnregisterPlayerCompleteDelegate");
 
@@ -6972,7 +6894,6 @@ void UOnlineGameInterfaceImpl::AddUnregisterPlayerCompleteDelegate(const struct 
 	params.UnregisterPlayerCompleteDelegate = UnregisterPlayerCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6981,7 +6902,7 @@ void UOnlineGameInterfaceImpl::AddUnregisterPlayerCompleteDelegate(const struct 
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.OnUnregisterPlayerComplete
-// (Iterator, Latent, Simulated, Exec, Native, HasOptionalParms)
+// (Defined, Iterator, Net, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // struct FUniqueNetId            PlayerID                       (Parm)
@@ -7006,13 +6927,13 @@ void UOnlineGameInterfaceImpl::OnUnregisterPlayerComplete(const struct FName& Se
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.UnregisterPlayers
-// (Final, Defined, Iterator, PreOperator, Net, NetReliable, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Defined, Net, NetReliable, Simulated, Event, Operator, Static)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // TArray<struct FUniqueNetId>    Players                        (Const, Parm, OutParm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::UnregisterPlayers(const struct FName& SessionName, TArray<struct FUniqueNetId>* Players)
+bool UOnlineGameInterfaceImpl::STATIC_UnregisterPlayers(const struct FName& SessionName, TArray<struct FUniqueNetId>* Players)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.UnregisterPlayers");
 
@@ -7033,13 +6954,13 @@ bool UOnlineGameInterfaceImpl::UnregisterPlayers(const struct FName& SessionName
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.UnregisterPlayer
-// (Iterator, PreOperator, Net, NetReliable, Simulated, Exec, Event, HasOptionalParms)
+// (Net, NetReliable, Simulated, Event, Operator, Static)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // struct FUniqueNetId            PlayerID                       (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::UnregisterPlayer(const struct FName& SessionName, const struct FUniqueNetId& PlayerID)
+bool UOnlineGameInterfaceImpl::STATIC_UnregisterPlayer(const struct FName& SessionName, const struct FUniqueNetId& PlayerID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.UnregisterPlayer");
 
@@ -7058,7 +6979,7 @@ bool UOnlineGameInterfaceImpl::UnregisterPlayer(const struct FName& SessionName,
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearRegisterPlayerCompleteDelegate
-// (Defined, Latent, PreOperator, Singular, Net, Native, Event, Operator)
+// (Final, Exec, Event)
 // Parameters:
 // struct FScriptDelegate         RegisterPlayerCompleteDelegate (Parm, NeedCtorLink)
 
@@ -7070,7 +6991,6 @@ void UOnlineGameInterfaceImpl::ClearRegisterPlayerCompleteDelegate(const struct 
 	params.RegisterPlayerCompleteDelegate = RegisterPlayerCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7079,11 +6999,11 @@ void UOnlineGameInterfaceImpl::ClearRegisterPlayerCompleteDelegate(const struct 
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.AddRegisterPlayerCompleteDelegate
-// (Final, Defined, Net, NetReliable, Native, Event)
+// (Defined, Net, Exec, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         RegisterPlayerCompleteDelegate (Parm, NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddRegisterPlayerCompleteDelegate(const struct FScriptDelegate& RegisterPlayerCompleteDelegate)
+void UOnlineGameInterfaceImpl::STATIC_AddRegisterPlayerCompleteDelegate(const struct FScriptDelegate& RegisterPlayerCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddRegisterPlayerCompleteDelegate");
 
@@ -7091,7 +7011,6 @@ void UOnlineGameInterfaceImpl::AddRegisterPlayerCompleteDelegate(const struct FS
 	params.RegisterPlayerCompleteDelegate = RegisterPlayerCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7100,7 +7019,7 @@ void UOnlineGameInterfaceImpl::AddRegisterPlayerCompleteDelegate(const struct FS
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.OnRegisterPlayerComplete
-// (Final, Simulated, Exec, Native, HasOptionalParms)
+// (Final, Defined, Latent, PreOperator, Singular, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // struct FUniqueNetId            PlayerID                       (Parm)
@@ -7125,13 +7044,13 @@ void UOnlineGameInterfaceImpl::OnRegisterPlayerComplete(const struct FName& Sess
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.RegisterPlayers
-// (Defined, Iterator, Latent, Singular, Net, HasOptionalParms)
+// (Final, Iterator, PreOperator, Singular, Exec, Native, Event, Static)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // TArray<struct FUniqueNetId>    Players                        (Const, Parm, OutParm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::RegisterPlayers(const struct FName& SessionName, TArray<struct FUniqueNetId>* Players)
+bool UOnlineGameInterfaceImpl::STATIC_RegisterPlayers(const struct FName& SessionName, TArray<struct FUniqueNetId>* Players)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.RegisterPlayers");
 
@@ -7139,6 +7058,7 @@ bool UOnlineGameInterfaceImpl::RegisterPlayers(const struct FName& SessionName, 
 	params.SessionName = SessionName;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7152,14 +7072,14 @@ bool UOnlineGameInterfaceImpl::RegisterPlayers(const struct FName& SessionName, 
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.RegisterPlayer
-// (Final, Defined, Latent, Singular, Net, HasOptionalParms)
+// (Defined, PreOperator, Singular, Exec, Native, Event, Static)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // struct FUniqueNetId            PlayerID                       (Parm)
 // bool                           bWasInvited                    (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::RegisterPlayer(const struct FName& SessionName, const struct FUniqueNetId& PlayerID, bool bWasInvited)
+bool UOnlineGameInterfaceImpl::STATIC_RegisterPlayer(const struct FName& SessionName, const struct FUniqueNetId& PlayerID, bool bWasInvited)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.RegisterPlayer");
 
@@ -7169,6 +7089,7 @@ bool UOnlineGameInterfaceImpl::RegisterPlayer(const struct FName& SessionName, c
 	params.bWasInvited = bWasInvited;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7179,13 +7100,13 @@ bool UOnlineGameInterfaceImpl::RegisterPlayer(const struct FName& SessionName, c
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.GetResolvedConnectString
-// (Final, Defined, Latent, Singular, Net, Simulated, Exec, Event, Static)
+// (Defined, Iterator, Simulated, Event, Operator)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // struct FString                 ConnectInfo                    (Parm, OutParm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::STATIC_GetResolvedConnectString(const struct FName& SessionName, struct FString* ConnectInfo)
+bool UOnlineGameInterfaceImpl::GetResolvedConnectString(const struct FName& SessionName, struct FString* ConnectInfo)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.GetResolvedConnectString");
 
@@ -7206,7 +7127,7 @@ bool UOnlineGameInterfaceImpl::STATIC_GetResolvedConnectString(const struct FNam
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearQuerySessionsForUserCompleteDelegate
-// (Final, Defined, Iterator, PreOperator, Net, Native, Event, Operator)
+// (Defined, Iterator, Latent, PreOperator, Net, NetReliable, Simulated, Event)
 // Parameters:
 // struct FScriptDelegate         QuerySessionsForUserCompleteDelegate (Parm, NeedCtorLink)
 
@@ -7218,7 +7139,6 @@ void UOnlineGameInterfaceImpl::ClearQuerySessionsForUserCompleteDelegate(const s
 	params.QuerySessionsForUserCompleteDelegate = QuerySessionsForUserCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7227,11 +7147,11 @@ void UOnlineGameInterfaceImpl::ClearQuerySessionsForUserCompleteDelegate(const s
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.AddQuerySessionsForUserCompleteDelegate
-// (Singular, NetReliable, Native, Event)
+// (Final, Defined, Iterator, Latent, PreOperator, Exec, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         QuerySessionsForUserCompleteDelegate (Parm, NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddQuerySessionsForUserCompleteDelegate(const struct FScriptDelegate& QuerySessionsForUserCompleteDelegate)
+void UOnlineGameInterfaceImpl::STATIC_AddQuerySessionsForUserCompleteDelegate(const struct FScriptDelegate& QuerySessionsForUserCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddQuerySessionsForUserCompleteDelegate");
 
@@ -7239,7 +7159,6 @@ void UOnlineGameInterfaceImpl::AddQuerySessionsForUserCompleteDelegate(const str
 	params.QuerySessionsForUserCompleteDelegate = QuerySessionsForUserCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7248,7 +7167,7 @@ void UOnlineGameInterfaceImpl::AddQuerySessionsForUserCompleteDelegate(const str
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.OnQuerySessionsForUserComplete
-// (Final, Latent, PreOperator, Singular, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Final, Defined, PreOperator, Singular, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // unsigned char                  LocalPlayerNum                 (Parm)
 // bool                           bWasSuccessful                 (Parm)
@@ -7271,7 +7190,7 @@ void UOnlineGameInterfaceImpl::OnQuerySessionsForUserComplete(unsigned char Loca
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.QuerySessionsByKeyword
-// (Iterator, Latent, Singular, Simulated, Exec, Native, Event, Operator, Static)
+// (Final, Defined, PreOperator, Singular, Net, NetReliable, Native, Event, Static)
 // Parameters:
 // unsigned char                  LocalPlayerNum                 (Parm)
 // struct FString                 Keyword                        (Parm, NeedCtorLink)
@@ -7299,7 +7218,7 @@ bool UOnlineGameInterfaceImpl::STATIC_QuerySessionsByKeyword(unsigned char Local
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.QuerySessionsForUser
-// (Final, Iterator, Latent, Singular, Simulated, Exec, Native, Event, Operator, Static)
+// (Iterator, PreOperator, Singular, Net, NetReliable, Native, Event, Static)
 // Parameters:
 // unsigned char                  LocalPlayerNum                 (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
@@ -7323,11 +7242,11 @@ bool UOnlineGameInterfaceImpl::STATIC_QuerySessionsForUser(unsigned char LocalPl
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.LeaveAllOnlineSessions
-// (Defined, Singular, Net, NetReliable, Operator, Static)
+// (Defined, Iterator, NetReliable, Exec, Native, Event, Operator)
 // Parameters:
 // bool                           bClearSessionIfHost            (OptionalParm, Parm)
 
-void UOnlineGameInterfaceImpl::STATIC_LeaveAllOnlineSessions(bool bClearSessionIfHost)
+void UOnlineGameInterfaceImpl::LeaveAllOnlineSessions(bool bClearSessionIfHost)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.LeaveAllOnlineSessions");
 
@@ -7335,6 +7254,7 @@ void UOnlineGameInterfaceImpl::STATIC_LeaveAllOnlineSessions(bool bClearSessionI
 	params.bClearSessionIfHost = bClearSessionIfHost;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7343,14 +7263,14 @@ void UOnlineGameInterfaceImpl::STATIC_LeaveAllOnlineSessions(bool bClearSessionI
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.LeaveOnlineSession
-// (Final, Defined, Singular, Net, NetReliable, Operator, Static)
+// (Final, Defined, Iterator, NetReliable, Exec, Native, Event, Operator)
 // Parameters:
 // unsigned char                  LocalPlayerNum                 (Parm)
 // struct FName                   SessionName                    (Parm)
 // bool                           bClearSessionIfHost            (OptionalParm, Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::STATIC_LeaveOnlineSession(unsigned char LocalPlayerNum, const struct FName& SessionName, bool bClearSessionIfHost)
+bool UOnlineGameInterfaceImpl::LeaveOnlineSession(unsigned char LocalPlayerNum, const struct FName& SessionName, bool bClearSessionIfHost)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.LeaveOnlineSession");
 
@@ -7360,6 +7280,7 @@ bool UOnlineGameInterfaceImpl::STATIC_LeaveOnlineSession(unsigned char LocalPlay
 	params.bClearSessionIfHost = bClearSessionIfHost;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7370,7 +7291,7 @@ bool UOnlineGameInterfaceImpl::STATIC_LeaveOnlineSession(unsigned char LocalPlay
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearMatchStatusChangedDelegate
-// (Final, Latent, PreOperator, Singular, Native, Event, Operator)
+// (Net, NetReliable, Simulated, Event)
 // Parameters:
 // struct FScriptDelegate         MatchStatusChangedDelegate     (Parm, NeedCtorLink)
 
@@ -7382,7 +7303,6 @@ void UOnlineGameInterfaceImpl::ClearMatchStatusChangedDelegate(const struct FScr
 	params.MatchStatusChangedDelegate = MatchStatusChangedDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7391,11 +7311,11 @@ void UOnlineGameInterfaceImpl::ClearMatchStatusChangedDelegate(const struct FScr
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.AddMatchStatusChangedDelegate
-// (Final, Defined, Iterator, Latent, PreOperator, Singular, Net, Native, Event)
+// (Defined, Iterator, Latent, PreOperator, Singular, Net, NetReliable, Simulated, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         MatchStatusChangedDelegate     (Parm, NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddMatchStatusChangedDelegate(const struct FScriptDelegate& MatchStatusChangedDelegate)
+void UOnlineGameInterfaceImpl::STATIC_AddMatchStatusChangedDelegate(const struct FScriptDelegate& MatchStatusChangedDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddMatchStatusChangedDelegate");
 
@@ -7403,7 +7323,6 @@ void UOnlineGameInterfaceImpl::AddMatchStatusChangedDelegate(const struct FScrip
 	params.MatchStatusChangedDelegate = MatchStatusChangedDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7412,7 +7331,7 @@ void UOnlineGameInterfaceImpl::AddMatchStatusChangedDelegate(const struct FScrip
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.OnMatchStatusChanged
-// (Defined, PreOperator, Singular, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Iterator, Latent, Singular, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // unsigned char                  Status                         (Parm)
@@ -7435,7 +7354,7 @@ void UOnlineGameInterfaceImpl::OnMatchStatusChanged(const struct FName& SessionN
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearGamePlayersChangedDelegate
-// (Defined, Singular, Native, Event, Operator)
+// (Final, Latent, Singular, NetReliable, Simulated, Event)
 // Parameters:
 // struct FScriptDelegate         GamePlayersChangedDelegate     (Parm, NeedCtorLink)
 
@@ -7447,7 +7366,6 @@ void UOnlineGameInterfaceImpl::ClearGamePlayersChangedDelegate(const struct FScr
 	params.GamePlayersChangedDelegate = GamePlayersChangedDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7456,11 +7374,11 @@ void UOnlineGameInterfaceImpl::ClearGamePlayersChangedDelegate(const struct FScr
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.AddGamePlayersChangedDelegate
-// (Final, Defined, Iterator, PreOperator, Net, Native, Event)
+// (Defined, Iterator, PreOperator, Net, NetReliable, Simulated, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         GamePlayersChangedDelegate     (Parm, NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddGamePlayersChangedDelegate(const struct FScriptDelegate& GamePlayersChangedDelegate)
+void UOnlineGameInterfaceImpl::STATIC_AddGamePlayersChangedDelegate(const struct FScriptDelegate& GamePlayersChangedDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddGamePlayersChangedDelegate");
 
@@ -7468,7 +7386,6 @@ void UOnlineGameInterfaceImpl::AddGamePlayersChangedDelegate(const struct FScrip
 	params.GamePlayersChangedDelegate = GamePlayersChangedDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7477,7 +7394,7 @@ void UOnlineGameInterfaceImpl::AddGamePlayersChangedDelegate(const struct FScrip
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.OnGamePlayersChanged
-// (Final, Defined, Iterator, Singular, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Final, Singular, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // TArray<struct FUniqueNetId>    Players                        (Parm, NeedCtorLink)
@@ -7500,7 +7417,7 @@ void UOnlineGameInterfaceImpl::OnGamePlayersChanged(const struct FName& SessionN
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearAcceptPendingGameSessionCompleteDelegate
-// (Final, Defined, Latent, PreOperator, Net, NetReliable, Simulated, Exec, Event, Operator)
+// (Defined, Singular, Net, Simulated, Event)
 // Parameters:
 // struct FScriptDelegate         AcceptPendingGameSessionCompleteDelegate (Parm, NeedCtorLink)
 
@@ -7520,11 +7437,11 @@ void UOnlineGameInterfaceImpl::ClearAcceptPendingGameSessionCompleteDelegate(con
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.AddAcceptPendingGameSessionCompleteDelegate
-// (Final, Iterator, Latent, PreOperator, Native, Event)
+// (Iterator, Latent, PreOperator, NetReliable, Simulated, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         AcceptPendingGameSessionCompleteDelegate (Parm, NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddAcceptPendingGameSessionCompleteDelegate(const struct FScriptDelegate& AcceptPendingGameSessionCompleteDelegate)
+void UOnlineGameInterfaceImpl::STATIC_AddAcceptPendingGameSessionCompleteDelegate(const struct FScriptDelegate& AcceptPendingGameSessionCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddAcceptPendingGameSessionCompleteDelegate");
 
@@ -7532,7 +7449,6 @@ void UOnlineGameInterfaceImpl::AddAcceptPendingGameSessionCompleteDelegate(const
 	params.AcceptPendingGameSessionCompleteDelegate = AcceptPendingGameSessionCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7541,7 +7457,7 @@ void UOnlineGameInterfaceImpl::AddAcceptPendingGameSessionCompleteDelegate(const
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.OnAcceptPendingGameSessionComplete
-// (Final, Iterator, PreOperator, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // bool                           bWasSuccessful                 (Parm)
@@ -7564,11 +7480,11 @@ void UOnlineGameInterfaceImpl::OnAcceptPendingGameSessionComplete(const struct F
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.AcceptPendingGameSession
-// (Iterator, Singular, NetReliable, Simulated, Exec, Event)
+// (Defined, Singular, Simulated, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 
-void UOnlineGameInterfaceImpl::AcceptPendingGameSession(const struct FName& SessionName)
+void UOnlineGameInterfaceImpl::STATIC_AcceptPendingGameSession(const struct FName& SessionName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AcceptPendingGameSession");
 
@@ -7584,7 +7500,7 @@ void UOnlineGameInterfaceImpl::AcceptPendingGameSession(const struct FName& Sess
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearGameSessionReadyDelegate
-// (Final, Defined, Singular, Native, Event, Operator)
+// (Defined, Latent, Singular, NetReliable, Simulated, Event)
 // Parameters:
 // struct FScriptDelegate         GameSessionReadyDelegate       (Parm, NeedCtorLink)
 
@@ -7596,7 +7512,6 @@ void UOnlineGameInterfaceImpl::ClearGameSessionReadyDelegate(const struct FScrip
 	params.GameSessionReadyDelegate = GameSessionReadyDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7605,11 +7520,11 @@ void UOnlineGameInterfaceImpl::ClearGameSessionReadyDelegate(const struct FScrip
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.AddGameSessionReadyDelegate
-// (Latent, PreOperator, Net, Native, Event)
+// (Final, Defined, Iterator, PreOperator, Net, NetReliable, Simulated, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         GameSessionReadyDelegate       (Parm, NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddGameSessionReadyDelegate(const struct FScriptDelegate& GameSessionReadyDelegate)
+void UOnlineGameInterfaceImpl::STATIC_AddGameSessionReadyDelegate(const struct FScriptDelegate& GameSessionReadyDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddGameSessionReadyDelegate");
 
@@ -7617,7 +7532,6 @@ void UOnlineGameInterfaceImpl::AddGameSessionReadyDelegate(const struct FScriptD
 	params.GameSessionReadyDelegate = GameSessionReadyDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7626,7 +7540,7 @@ void UOnlineGameInterfaceImpl::AddGameSessionReadyDelegate(const struct FScriptD
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.OnGameSessionReady
-// (Latent, Singular, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Defined, Singular, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 
@@ -7647,7 +7561,7 @@ void UOnlineGameInterfaceImpl::OnGameSessionReady(const struct FName& SessionNam
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearUpdateSessionPropertiesCompleteDelegate
-// (Iterator, PreOperator, NetReliable, Native, Event, Operator)
+// (Final, Defined, Latent, PreOperator, Exec, Event)
 // Parameters:
 // struct FScriptDelegate         UpdateSessionPropertiesCompleteDelegate (Parm, NeedCtorLink)
 
@@ -7659,7 +7573,6 @@ void UOnlineGameInterfaceImpl::ClearUpdateSessionPropertiesCompleteDelegate(cons
 	params.UpdateSessionPropertiesCompleteDelegate = UpdateSessionPropertiesCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7668,11 +7581,11 @@ void UOnlineGameInterfaceImpl::ClearUpdateSessionPropertiesCompleteDelegate(cons
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.AddUpdateSessionPropertiesCompleteDelegate
-// (Final, Defined, Latent, Singular, Net, NetReliable, Native, Event)
+// (Defined, Latent, Singular, Net, Exec, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         UpdateSessionPropertiesCompleteDelegate (Parm, NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddUpdateSessionPropertiesCompleteDelegate(const struct FScriptDelegate& UpdateSessionPropertiesCompleteDelegate)
+void UOnlineGameInterfaceImpl::STATIC_AddUpdateSessionPropertiesCompleteDelegate(const struct FScriptDelegate& UpdateSessionPropertiesCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddUpdateSessionPropertiesCompleteDelegate");
 
@@ -7680,7 +7593,6 @@ void UOnlineGameInterfaceImpl::AddUpdateSessionPropertiesCompleteDelegate(const 
 	params.UpdateSessionPropertiesCompleteDelegate = UpdateSessionPropertiesCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7689,7 +7601,7 @@ void UOnlineGameInterfaceImpl::AddUpdateSessionPropertiesCompleteDelegate(const 
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.OnUpdateSessionPropertiesComplete
-// (Defined, Iterator, Latent, Simulated, Exec, Native, HasOptionalParms)
+// (Latent, Net, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // bool                           bWasSuccessful                 (Parm)
@@ -7712,13 +7624,13 @@ void UOnlineGameInterfaceImpl::OnUpdateSessionPropertiesComplete(const struct FN
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.UpdateSessionProperties
-// (Final, Defined, Latent, PreOperator, Native, Event, HasOptionalParms)
+// (Latent, Exec, Event, Operator, Static)
 // Parameters:
 // unsigned char                  ScoutingUserNum                (Parm)
 // struct FName                   SessionName                    (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::UpdateSessionProperties(unsigned char ScoutingUserNum, const struct FName& SessionName)
+bool UOnlineGameInterfaceImpl::STATIC_UpdateSessionProperties(unsigned char ScoutingUserNum, const struct FName& SessionName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.UpdateSessionProperties");
 
@@ -7727,7 +7639,6 @@ bool UOnlineGameInterfaceImpl::UpdateSessionProperties(unsigned char ScoutingUse
 	params.SessionName = SessionName;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7738,13 +7649,13 @@ bool UOnlineGameInterfaceImpl::UpdateSessionProperties(unsigned char ScoutingUse
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.DeleteCustomMemberProperty
-// (Final, Defined, Latent, PreOperator, Simulated, Static)
+// (Iterator, Latent, Singular, NetReliable, Exec, Native, Event)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // struct FString                 PropertyName                   (Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::STATIC_DeleteCustomMemberProperty(const struct FName& SessionName, const struct FString& PropertyName)
+bool UOnlineGameInterfaceImpl::DeleteCustomMemberProperty(const struct FName& SessionName, const struct FString& PropertyName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.DeleteCustomMemberProperty");
 
@@ -7753,6 +7664,7 @@ bool UOnlineGameInterfaceImpl::STATIC_DeleteCustomMemberProperty(const struct FN
 	params.PropertyName = PropertyName;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7763,14 +7675,14 @@ bool UOnlineGameInterfaceImpl::STATIC_DeleteCustomMemberProperty(const struct FN
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.SetCustomMemberProperty
-// (Final, Defined, Latent, Net, Native, HasOptionalParms)
+// (Singular, Exec, Operator, Static)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // struct FString                 PropertyName                   (Parm, NeedCtorLink)
 // struct FString                 PropertyValue                  (Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::SetCustomMemberProperty(const struct FName& SessionName, const struct FString& PropertyName, const struct FString& PropertyValue)
+bool UOnlineGameInterfaceImpl::STATIC_SetCustomMemberProperty(const struct FName& SessionName, const struct FString& PropertyName, const struct FString& PropertyValue)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.SetCustomMemberProperty");
 
@@ -7780,7 +7692,6 @@ bool UOnlineGameInterfaceImpl::SetCustomMemberProperty(const struct FName& Sessi
 	params.PropertyValue = PropertyValue;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7791,46 +7702,19 @@ bool UOnlineGameInterfaceImpl::SetCustomMemberProperty(const struct FName& Sessi
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.DeleteCustomSessionProperty
-// (Iterator, Latent, PreOperator, Simulated, Static)
+// (Final, Iterator, Latent, Singular, NetReliable, Exec, Native, Event)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // struct FString                 PropertyName                   (Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::STATIC_DeleteCustomSessionProperty(const struct FName& SessionName, const struct FString& PropertyName)
+bool UOnlineGameInterfaceImpl::DeleteCustomSessionProperty(const struct FName& SessionName, const struct FString& PropertyName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.DeleteCustomSessionProperty");
 
 	UOnlineGameInterfaceImpl_DeleteCustomSessionProperty_Params params;
 	params.SessionName = SessionName;
 	params.PropertyName = PropertyName;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function IpDrv.OnlineGameInterfaceImpl.SetCustomSessionProperty
-// (Iterator, Latent, Net, Native, HasOptionalParms)
-// Parameters:
-// struct FName                   SessionName                    (Parm)
-// struct FString                 PropertyName                   (Parm, NeedCtorLink)
-// struct FString                 PropertyValue                  (Parm, NeedCtorLink)
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
-
-bool UOnlineGameInterfaceImpl::SetCustomSessionProperty(const struct FName& SessionName, const struct FString& PropertyName, const struct FString& PropertyValue)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.SetCustomSessionProperty");
-
-	UOnlineGameInterfaceImpl_SetCustomSessionProperty_Params params;
-	params.SessionName = SessionName;
-	params.PropertyName = PropertyName;
-	params.PropertyValue = PropertyValue;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -7843,8 +7727,35 @@ bool UOnlineGameInterfaceImpl::SetCustomSessionProperty(const struct FName& Sess
 }
 
 
+// Function IpDrv.OnlineGameInterfaceImpl.SetCustomSessionProperty
+// (Final, Singular, Exec, Operator, Static)
+// Parameters:
+// struct FName                   SessionName                    (Parm)
+// struct FString                 PropertyName                   (Parm, NeedCtorLink)
+// struct FString                 PropertyValue                  (Parm, NeedCtorLink)
+// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+
+bool UOnlineGameInterfaceImpl::STATIC_SetCustomSessionProperty(const struct FName& SessionName, const struct FString& PropertyName, const struct FString& PropertyValue)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.SetCustomSessionProperty");
+
+	UOnlineGameInterfaceImpl_SetCustomSessionProperty_Params params;
+	params.SessionName = SessionName;
+	params.PropertyName = PropertyName;
+	params.PropertyValue = PropertyValue;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function IpDrv.OnlineGameInterfaceImpl.ClearMultiplayerSessionChangeDelegate
-// (Iterator, Latent, PreOperator, Singular, Native, Event, Operator)
+// (Final, Defined, Net, NetReliable, Simulated, Event)
 // Parameters:
 // struct FScriptDelegate         MultiplayerSessionChangeDelegate (Parm, NeedCtorLink)
 
@@ -7856,7 +7767,6 @@ void UOnlineGameInterfaceImpl::ClearMultiplayerSessionChangeDelegate(const struc
 	params.MultiplayerSessionChangeDelegate = MultiplayerSessionChangeDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7865,11 +7775,11 @@ void UOnlineGameInterfaceImpl::ClearMultiplayerSessionChangeDelegate(const struc
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.AddMultiplayerSessionChangeDelegate
-// (Final, Defined, NetReliable, Native, Event)
+// (Defined, Exec, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         MultiplayerSessionChangeDelegate (Parm, NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddMultiplayerSessionChangeDelegate(const struct FScriptDelegate& MultiplayerSessionChangeDelegate)
+void UOnlineGameInterfaceImpl::STATIC_AddMultiplayerSessionChangeDelegate(const struct FScriptDelegate& MultiplayerSessionChangeDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddMultiplayerSessionChangeDelegate");
 
@@ -7877,7 +7787,6 @@ void UOnlineGameInterfaceImpl::AddMultiplayerSessionChangeDelegate(const struct 
 	params.MultiplayerSessionChangeDelegate = MultiplayerSessionChangeDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7886,7 +7795,7 @@ void UOnlineGameInterfaceImpl::AddMultiplayerSessionChangeDelegate(const struct 
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.OnMultiplayerSessionChange
-// (Iterator, PreOperator, Singular, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Defined, Iterator, Latent, Singular, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // struct FSessionUpdateInfo      SessionChanges                 (Parm, NeedCtorLink)
@@ -7909,7 +7818,7 @@ void UOnlineGameInterfaceImpl::OnMultiplayerSessionChange(const struct FName& Se
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearAddSessionMemberCompleteDelegate
-// (Singular, Net, NetReliable, Simulated, Exec, Event, Operator)
+// (Final, Defined, Iterator, Singular, Net, Simulated, Event)
 // Parameters:
 // struct FScriptDelegate         AddSessionMemberCompleteDelegate (Parm, NeedCtorLink)
 
@@ -7929,11 +7838,11 @@ void UOnlineGameInterfaceImpl::ClearAddSessionMemberCompleteDelegate(const struc
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.AddAddSessionMemberCompleteDelegate
-// (Final, Singular, Native, Event)
+// (Singular, NetReliable, Simulated, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         AddSessionMemberCompleteDelegate (Parm, NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddAddSessionMemberCompleteDelegate(const struct FScriptDelegate& AddSessionMemberCompleteDelegate)
+void UOnlineGameInterfaceImpl::STATIC_AddAddSessionMemberCompleteDelegate(const struct FScriptDelegate& AddSessionMemberCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddAddSessionMemberCompleteDelegate");
 
@@ -7941,7 +7850,6 @@ void UOnlineGameInterfaceImpl::AddAddSessionMemberCompleteDelegate(const struct 
 	params.AddSessionMemberCompleteDelegate = AddSessionMemberCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7950,7 +7858,7 @@ void UOnlineGameInterfaceImpl::AddAddSessionMemberCompleteDelegate(const struct 
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.OnAddSessionMemberComplete
-// (Defined, Iterator, PreOperator, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (PreOperator, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // bool                           bWasSuccessful                 (Parm)
@@ -7973,14 +7881,14 @@ void UOnlineGameInterfaceImpl::OnAddSessionMemberComplete(const struct FName& Se
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.AddSessionMembers
-// (Final, Iterator, PreOperator, Net, NetReliable, Native, Event)
+// (Iterator, PreOperator, Net, Exec, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // unsigned char                  ScoutingPlayerNum              (Parm)
 // struct FName                   SessionName                    (Parm)
 // TArray<struct FUniqueNetId>    Members                        (Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::AddSessionMembers(unsigned char ScoutingPlayerNum, const struct FName& SessionName, TArray<struct FUniqueNetId> Members)
+bool UOnlineGameInterfaceImpl::STATIC_AddSessionMembers(unsigned char ScoutingPlayerNum, const struct FName& SessionName, TArray<struct FUniqueNetId> Members)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddSessionMembers");
 
@@ -7990,7 +7898,6 @@ bool UOnlineGameInterfaceImpl::AddSessionMembers(unsigned char ScoutingPlayerNum
 	params.Members = Members;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -8001,14 +7908,14 @@ bool UOnlineGameInterfaceImpl::AddSessionMembers(unsigned char ScoutingPlayerNum
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.AddSessionMember
-// (Defined, PreOperator, Net, NetReliable, Native, Event)
+// (Final, PreOperator, Net, Exec, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // unsigned char                  ScoutingPlayerNum              (Parm)
 // struct FName                   SessionName                    (Parm)
 // struct FUniqueNetId            Member                         (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::AddSessionMember(unsigned char ScoutingPlayerNum, const struct FName& SessionName, const struct FUniqueNetId& Member)
+bool UOnlineGameInterfaceImpl::STATIC_AddSessionMember(unsigned char ScoutingPlayerNum, const struct FName& SessionName, const struct FUniqueNetId& Member)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddSessionMember");
 
@@ -8018,7 +7925,6 @@ bool UOnlineGameInterfaceImpl::AddSessionMember(unsigned char ScoutingPlayerNum,
 	params.Member = Member;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -8029,14 +7935,14 @@ bool UOnlineGameInterfaceImpl::AddSessionMember(unsigned char ScoutingPlayerNum,
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.AddSessionMemberByString
-// (Final, Defined, PreOperator, Net, NetReliable, Native, Event)
+// (Defined, PreOperator, Net, Exec, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // unsigned char                  ScoutingPlayerNum              (Parm)
 // struct FName                   SessionName                    (Parm)
 // struct FString                 Member                         (Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::AddSessionMemberByString(unsigned char ScoutingPlayerNum, const struct FName& SessionName, const struct FString& Member)
+bool UOnlineGameInterfaceImpl::STATIC_AddSessionMemberByString(unsigned char ScoutingPlayerNum, const struct FName& SessionName, const struct FString& Member)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddSessionMemberByString");
 
@@ -8046,7 +7952,6 @@ bool UOnlineGameInterfaceImpl::AddSessionMemberByString(unsigned char ScoutingPl
 	params.Member = Member;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -8057,7 +7962,7 @@ bool UOnlineGameInterfaceImpl::AddSessionMemberByString(unsigned char ScoutingPl
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.CreateOnlineSessionWithTemplate
-// (Defined, Iterator, Latent, PreOperator, Singular, NetReliable, Exec, Native, Event, Operator)
+// (Defined, Latent, Net, Native, Event)
 // Parameters:
 // unsigned char                  ScoutingPlayerNum              (Parm)
 // struct FName                   SessionName                    (Parm)
@@ -8089,12 +7994,12 @@ bool UOnlineGameInterfaceImpl::CreateOnlineSessionWithTemplate(unsigned char Sco
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.InitiatedSessionSearch
-// (Final, Defined, Iterator, Latent, PreOperator, Exec, Native, Event, Static)
+// (Defined, Iterator, Latent, PreOperator, Singular, NetReliable, Simulated, Exec, Event, Operator)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::STATIC_InitiatedSessionSearch(const struct FName& SessionName)
+bool UOnlineGameInterfaceImpl::InitiatedSessionSearch(const struct FName& SessionName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.InitiatedSessionSearch");
 
@@ -8102,7 +8007,6 @@ bool UOnlineGameInterfaceImpl::STATIC_InitiatedSessionSearch(const struct FName&
 	params.SessionName = SessionName;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -8113,12 +8017,12 @@ bool UOnlineGameInterfaceImpl::STATIC_InitiatedSessionSearch(const struct FName&
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.IsHostOfSession
-// (Final, Iterator, Latent, Singular, Net, Simulated, Exec, Native, Event, Static)
+// (Iterator, Latent, Simulated, Native, Event, Operator)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::STATIC_IsHostOfSession(const struct FName& SessionName)
+bool UOnlineGameInterfaceImpl::IsHostOfSession(const struct FName& SessionName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.IsHostOfSession");
 
@@ -8137,7 +8041,7 @@ bool UOnlineGameInterfaceImpl::STATIC_IsHostOfSession(const struct FName& Sessio
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearMatchmakeOnlineGameWithPartyCompleteDelegate
-// (Latent, PreOperator, Singular, Native, Event, Operator)
+// (Final, Defined, Iterator, Latent, PreOperator, Singular, NetReliable, Simulated, Event)
 // Parameters:
 // struct FScriptDelegate         MatchmakeOnlineGameWithPartyCompleteDelegate (Parm, NeedCtorLink)
 
@@ -8149,7 +8053,6 @@ void UOnlineGameInterfaceImpl::ClearMatchmakeOnlineGameWithPartyCompleteDelegate
 	params.MatchmakeOnlineGameWithPartyCompleteDelegate = MatchmakeOnlineGameWithPartyCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -8158,11 +8061,11 @@ void UOnlineGameInterfaceImpl::ClearMatchmakeOnlineGameWithPartyCompleteDelegate
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.AddMatchmakeOnlineGameWithPartyCompleteDelegate
-// (Defined, Iterator, Latent, PreOperator, Singular, Net, Native, Event)
+// (Final, Iterator, Latent, PreOperator, Singular, Net, NetReliable, Simulated, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         MatchmakeOnlineGameWithPartyCompleteDelegate (Parm, NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddMatchmakeOnlineGameWithPartyCompleteDelegate(const struct FScriptDelegate& MatchmakeOnlineGameWithPartyCompleteDelegate)
+void UOnlineGameInterfaceImpl::STATIC_AddMatchmakeOnlineGameWithPartyCompleteDelegate(const struct FScriptDelegate& MatchmakeOnlineGameWithPartyCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddMatchmakeOnlineGameWithPartyCompleteDelegate");
 
@@ -8170,7 +8073,6 @@ void UOnlineGameInterfaceImpl::AddMatchmakeOnlineGameWithPartyCompleteDelegate(c
 	params.MatchmakeOnlineGameWithPartyCompleteDelegate = MatchmakeOnlineGameWithPartyCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -8179,7 +8081,7 @@ void UOnlineGameInterfaceImpl::AddMatchmakeOnlineGameWithPartyCompleteDelegate(c
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.OnMatchmakeOnlineGameWithPartyComplete
-// (Final, PreOperator, Singular, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Final, Defined, Latent, Singular, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // bool                           bWasSuccessful                 (Parm)
@@ -8202,7 +8104,7 @@ void UOnlineGameInterfaceImpl::OnMatchmakeOnlineGameWithPartyComplete(const stru
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.MatchmakeOnlineGameWithParty
-// (Final, Net, Simulated, Exec, Operator, Static)
+// (Defined, Iterator, Latent, Singular, Net, NetReliable, Static)
 // Parameters:
 // unsigned char                  ScoutingPlayerNum              (Parm)
 // struct FName                   SessionName                    (Parm)
@@ -8229,7 +8131,7 @@ bool UOnlineGameInterfaceImpl::STATIC_MatchmakeOnlineGameWithParty(unsigned char
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearCreateOnlineGameWithPartyCompleteDelegate
-// (Defined, Native, Event, Operator)
+// (Final, Latent, NetReliable, Simulated, Event)
 // Parameters:
 // struct FScriptDelegate         CreateOnlineGameWithPartyCompleteDelegate (Parm, NeedCtorLink)
 
@@ -8241,7 +8143,6 @@ void UOnlineGameInterfaceImpl::ClearCreateOnlineGameWithPartyCompleteDelegate(co
 	params.CreateOnlineGameWithPartyCompleteDelegate = CreateOnlineGameWithPartyCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -8250,11 +8151,11 @@ void UOnlineGameInterfaceImpl::ClearCreateOnlineGameWithPartyCompleteDelegate(co
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.AddCreateOnlineGameWithPartyCompleteDelegate
-// (Final, Defined, Latent, PreOperator, Singular, Native, Event)
+// (Defined, Latent, PreOperator, Singular, NetReliable, Simulated, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         CreateOnlineGameWithPartyCompleteDelegate (Parm, NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddCreateOnlineGameWithPartyCompleteDelegate(const struct FScriptDelegate& CreateOnlineGameWithPartyCompleteDelegate)
+void UOnlineGameInterfaceImpl::STATIC_AddCreateOnlineGameWithPartyCompleteDelegate(const struct FScriptDelegate& CreateOnlineGameWithPartyCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddCreateOnlineGameWithPartyCompleteDelegate");
 
@@ -8262,7 +8163,6 @@ void UOnlineGameInterfaceImpl::AddCreateOnlineGameWithPartyCompleteDelegate(cons
 	params.CreateOnlineGameWithPartyCompleteDelegate = CreateOnlineGameWithPartyCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -8271,7 +8171,7 @@ void UOnlineGameInterfaceImpl::AddCreateOnlineGameWithPartyCompleteDelegate(cons
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.OnCreateOnlineGameWithPartyComplete
-// (Final, Defined, Iterator, Latent, PreOperator, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Final, Latent, PreOperator, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // bool                           bWasSuccessful                 (Parm)
@@ -8294,7 +8194,7 @@ void UOnlineGameInterfaceImpl::OnCreateOnlineGameWithPartyComplete(const struct 
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.CreateOnlineGameWithParty
-// (Iterator, Latent, PreOperator, Singular, NetReliable, Exec, Native, Event, Operator)
+// (Latent, Net, Native, Event)
 // Parameters:
 // unsigned char                  ScoutingPlayerNum              (Parm)
 // struct FName                   SessionName                    (Parm)
@@ -8322,7 +8222,7 @@ bool UOnlineGameInterfaceImpl::CreateOnlineGameWithParty(unsigned char ScoutingP
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearJoinOnlineGameCompleteDelegate
-// (Iterator, Latent, Singular, Native, Event, Operator)
+// (Final, Defined, PreOperator, Singular, NetReliable, Simulated, Event)
 // Parameters:
 // struct FScriptDelegate         JoinOnlineGameCompleteDelegate (Parm, NeedCtorLink)
 
@@ -8334,7 +8234,6 @@ void UOnlineGameInterfaceImpl::ClearJoinOnlineGameCompleteDelegate(const struct 
 	params.JoinOnlineGameCompleteDelegate = JoinOnlineGameCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -8343,11 +8242,11 @@ void UOnlineGameInterfaceImpl::ClearJoinOnlineGameCompleteDelegate(const struct 
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.AddJoinOnlineGameCompleteDelegate
-// (Defined, PreOperator, Singular, Net, Native, Event)
+// (Final, PreOperator, Singular, Net, NetReliable, Simulated, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         JoinOnlineGameCompleteDelegate (Parm, NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddJoinOnlineGameCompleteDelegate(const struct FScriptDelegate& JoinOnlineGameCompleteDelegate)
+void UOnlineGameInterfaceImpl::STATIC_AddJoinOnlineGameCompleteDelegate(const struct FScriptDelegate& JoinOnlineGameCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddJoinOnlineGameCompleteDelegate");
 
@@ -8355,7 +8254,6 @@ void UOnlineGameInterfaceImpl::AddJoinOnlineGameCompleteDelegate(const struct FS
 	params.JoinOnlineGameCompleteDelegate = JoinOnlineGameCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -8364,7 +8262,7 @@ void UOnlineGameInterfaceImpl::AddJoinOnlineGameCompleteDelegate(const struct FS
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.OnJoinOnlineGameComplete
-// (Final, Defined, Iterator, Latent, Singular, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Final, Latent, Singular, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // bool                           bWasSuccessful                 (Parm)
@@ -8387,11 +8285,11 @@ void UOnlineGameInterfaceImpl::OnJoinOnlineGameComplete(const struct FName& Sess
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.IsCurrentRoomOwner
-// (Final, Defined, PreOperator, Net, Simulated, Exec, Native, Event, Static)
+// (Defined, PreOperator, Singular, Net, NetReliable, Native, Event, Operator)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::STATIC_IsCurrentRoomOwner()
+bool UOnlineGameInterfaceImpl::IsCurrentRoomOwner()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.IsCurrentRoomOwner");
 
@@ -8409,12 +8307,12 @@ bool UOnlineGameInterfaceImpl::STATIC_IsCurrentRoomOwner()
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.SetRankedReadyStatus
-// (Final, Defined, PreOperator, Singular, Net, NetReliable, Native, HasOptionalParms)
+// (Defined, Latent, Net, NetReliable, Exec, Operator, Static)
 // Parameters:
 // bool                           bReady                         (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::SetRankedReadyStatus(bool bReady)
+bool UOnlineGameInterfaceImpl::STATIC_SetRankedReadyStatus(bool bReady)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.SetRankedReadyStatus");
 
@@ -8422,7 +8320,6 @@ bool UOnlineGameInterfaceImpl::SetRankedReadyStatus(bool bReady)
 	params.bReady = bReady;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -8433,11 +8330,11 @@ bool UOnlineGameInterfaceImpl::SetRankedReadyStatus(bool bReady)
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.IsJoinOperationInProgress
-// (Final, Defined, Latent, PreOperator, Singular, Net, Simulated, Exec, Native, Event, Static)
+// (Defined, Latent, PreOperator, Simulated, Native, Event, Operator)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::STATIC_IsJoinOperationInProgress()
+bool UOnlineGameInterfaceImpl::IsJoinOperationInProgress()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.IsJoinOperationInProgress");
 
@@ -8455,13 +8352,13 @@ bool UOnlineGameInterfaceImpl::STATIC_IsJoinOperationInProgress()
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.JoinOnlineGameByMatchingParams
-// (Defined, Singular, Net, NetReliable, Simulated, Exec, Native, Event, Static)
+// (Final, NetReliable, Simulated, Native, Event, Operator)
 // Parameters:
 // struct FQWord                  RoomId                         (Parm)
 // class UOnlineGameSettings*     JoinedGameSettings             (Parm, OutParm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::STATIC_JoinOnlineGameByMatchingParams(const struct FQWord& RoomId, class UOnlineGameSettings** JoinedGameSettings)
+bool UOnlineGameInterfaceImpl::JoinOnlineGameByMatchingParams(const struct FQWord& RoomId, class UOnlineGameSettings** JoinedGameSettings)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.JoinOnlineGameByMatchingParams");
 
@@ -8483,7 +8380,7 @@ bool UOnlineGameInterfaceImpl::STATIC_JoinOnlineGameByMatchingParams(const struc
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.OnMapChangeComplete
-// (Final, Defined, Iterator, Latent, PreOperator, Singular, Net, Simulated, Event, Operator, Static)
+// (Iterator, Latent, PreOperator, Singular, Simulated, Exec, Native, Static)
 
 void UOnlineGameInterfaceImpl::STATIC_OnMapChangeComplete()
 {
@@ -8492,6 +8389,7 @@ void UOnlineGameInterfaceImpl::STATIC_OnMapChangeComplete()
 	UOnlineGameInterfaceImpl_OnMapChangeComplete_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -8500,7 +8398,7 @@ void UOnlineGameInterfaceImpl::STATIC_OnMapChangeComplete()
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.OnMapChangePending
-// (NetReliable, Simulated, Event, Operator, Static)
+// (Final, Iterator, Latent, PreOperator, Singular, Simulated, Exec, Native, Static)
 
 void UOnlineGameInterfaceImpl::STATIC_OnMapChangePending()
 {
@@ -8509,6 +8407,7 @@ void UOnlineGameInterfaceImpl::STATIC_OnMapChangePending()
 	UOnlineGameInterfaceImpl_OnMapChangePending_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -8517,14 +8416,14 @@ void UOnlineGameInterfaceImpl::STATIC_OnMapChangePending()
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.JoinOnlineGameBySessionHandle
-// (Final, Defined, Singular, Net, NetReliable, Simulated, Exec, Native, Event, Static)
+// (Defined, NetReliable, Simulated, Native, Event, Operator)
 // Parameters:
 // unsigned char                  PlayerNum                      (Parm)
 // struct FName                   SessionName                    (Parm)
 // struct FString                 InSessionGuid                  (Const, Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::STATIC_JoinOnlineGameBySessionHandle(unsigned char PlayerNum, const struct FName& SessionName, const struct FString& InSessionGuid)
+bool UOnlineGameInterfaceImpl::JoinOnlineGameBySessionHandle(unsigned char PlayerNum, const struct FName& SessionName, const struct FString& InSessionGuid)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.JoinOnlineGameBySessionHandle");
 
@@ -8545,14 +8444,14 @@ bool UOnlineGameInterfaceImpl::STATIC_JoinOnlineGameBySessionHandle(unsigned cha
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.JoinOnlineGame
-// (Final, Singular, Net, NetReliable, Simulated, Exec, Native, Event, Static)
+// (NetReliable, Simulated, Native, Event, Operator)
 // Parameters:
 // unsigned char                  PlayerNum                      (Parm)
 // struct FName                   SessionName                    (Parm)
 // struct FOnlineGameSearchResult DesiredGame                    (Const, Parm, OutParm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::STATIC_JoinOnlineGame(unsigned char PlayerNum, const struct FName& SessionName, struct FOnlineGameSearchResult* DesiredGame)
+bool UOnlineGameInterfaceImpl::JoinOnlineGame(unsigned char PlayerNum, const struct FName& SessionName, struct FOnlineGameSearchResult* DesiredGame)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.JoinOnlineGame");
 
@@ -8575,12 +8474,12 @@ bool UOnlineGameInterfaceImpl::STATIC_JoinOnlineGame(unsigned char PlayerNum, co
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.FreeSearchResults
-// (Final, Defined, Iterator, Singular, Net, NetReliable, Event, Static)
+// (NetReliable, Exec, Native, Operator)
 // Parameters:
 // class UOnlineGameSearch*       Search                         (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::STATIC_FreeSearchResults(class UOnlineGameSearch* Search)
+bool UOnlineGameInterfaceImpl::FreeSearchResults(class UOnlineGameSearch* Search)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.FreeSearchResults");
 
@@ -8588,6 +8487,7 @@ bool UOnlineGameInterfaceImpl::STATIC_FreeSearchResults(class UOnlineGameSearch*
 	params.Search = Search;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -8598,7 +8498,7 @@ bool UOnlineGameInterfaceImpl::STATIC_FreeSearchResults(class UOnlineGameSearch*
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearCancelFindOnlineGamesCompleteDelegate
-// (Defined, PreOperator, Singular, Net, NetReliable, Simulated, Exec, Event, Operator)
+// (Final, Latent, PreOperator, Singular, Net, Simulated, Event)
 // Parameters:
 // struct FScriptDelegate         CancelFindOnlineGamesCompleteDelegate (Parm, NeedCtorLink)
 
@@ -8618,11 +8518,11 @@ void UOnlineGameInterfaceImpl::ClearCancelFindOnlineGamesCompleteDelegate(const 
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.AddCancelFindOnlineGamesCompleteDelegate
-// (Final, Latent, Singular, Native, Event)
+// (Latent, Singular, NetReliable, Simulated, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         CancelFindOnlineGamesCompleteDelegate (Parm, NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddCancelFindOnlineGamesCompleteDelegate(const struct FScriptDelegate& CancelFindOnlineGamesCompleteDelegate)
+void UOnlineGameInterfaceImpl::STATIC_AddCancelFindOnlineGamesCompleteDelegate(const struct FScriptDelegate& CancelFindOnlineGamesCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddCancelFindOnlineGamesCompleteDelegate");
 
@@ -8630,7 +8530,6 @@ void UOnlineGameInterfaceImpl::AddCancelFindOnlineGamesCompleteDelegate(const st
 	params.CancelFindOnlineGamesCompleteDelegate = CancelFindOnlineGamesCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -8639,7 +8538,7 @@ void UOnlineGameInterfaceImpl::AddCancelFindOnlineGamesCompleteDelegate(const st
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.OnCancelFindOnlineGamesComplete
-// (Final, Latent, PreOperator, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Final, Defined, PreOperator, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // bool                           bWasSuccessful                 (Parm)
 
@@ -8660,7 +8559,7 @@ void UOnlineGameInterfaceImpl::OnCancelFindOnlineGamesComplete(bool bWasSuccessf
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.CancelFindOnlineGames
-// (Final, Latent, Singular, Net, NetReliable, Exec, Event, Operator)
+// (Final, Defined, Iterator, Latent, Singular, Net, Event)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
@@ -8681,7 +8580,7 @@ bool UOnlineGameInterfaceImpl::CancelFindOnlineGames()
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearFindOnlineGamesCompleteDelegate
-// (Defined, Latent, PreOperator, Native, Event, Operator)
+// (Final, Singular, NetReliable, Simulated, Event)
 // Parameters:
 // struct FScriptDelegate         FindOnlineGamesCompleteDelegate (Parm, NeedCtorLink)
 
@@ -8693,7 +8592,6 @@ void UOnlineGameInterfaceImpl::ClearFindOnlineGamesCompleteDelegate(const struct
 	params.FindOnlineGamesCompleteDelegate = FindOnlineGamesCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -8702,11 +8600,11 @@ void UOnlineGameInterfaceImpl::ClearFindOnlineGamesCompleteDelegate(const struct
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.AddFindOnlineGamesCompleteDelegate
-// (Final, Iterator, Latent, Net, Native, Event)
+// (Iterator, Latent, Net, NetReliable, Simulated, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         FindOnlineGamesCompleteDelegate (Parm, NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddFindOnlineGamesCompleteDelegate(const struct FScriptDelegate& FindOnlineGamesCompleteDelegate)
+void UOnlineGameInterfaceImpl::STATIC_AddFindOnlineGamesCompleteDelegate(const struct FScriptDelegate& FindOnlineGamesCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddFindOnlineGamesCompleteDelegate");
 
@@ -8714,7 +8612,6 @@ void UOnlineGameInterfaceImpl::AddFindOnlineGamesCompleteDelegate(const struct F
 	params.FindOnlineGamesCompleteDelegate = FindOnlineGamesCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -8723,13 +8620,13 @@ void UOnlineGameInterfaceImpl::AddFindOnlineGamesCompleteDelegate(const struct F
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.FindOnlineGames
-// (Final, Defined, PreOperator, Net, Simulated, Exec, Native, Static)
+// (Final, Latent, Singular, Net, NetReliable, Native, Operator)
 // Parameters:
 // unsigned char                  SearchingPlayerNum             (Parm)
 // class UOnlineGameSearch*       SearchSettings                 (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::STATIC_FindOnlineGames(unsigned char SearchingPlayerNum, class UOnlineGameSearch* SearchSettings)
+bool UOnlineGameInterfaceImpl::FindOnlineGames(unsigned char SearchingPlayerNum, class UOnlineGameSearch* SearchSettings)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.FindOnlineGames");
 
@@ -8749,7 +8646,7 @@ bool UOnlineGameInterfaceImpl::STATIC_FindOnlineGames(unsigned char SearchingPla
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearDestroyOnlineGameCompleteDelegate
-// (Final, Iterator, Latent, Native, Event, Operator)
+// (Iterator, PreOperator, NetReliable, Simulated, Event)
 // Parameters:
 // struct FScriptDelegate         DestroyOnlineGameCompleteDelegate (Parm, NeedCtorLink)
 
@@ -8761,7 +8658,6 @@ void UOnlineGameInterfaceImpl::ClearDestroyOnlineGameCompleteDelegate(const stru
 	params.DestroyOnlineGameCompleteDelegate = DestroyOnlineGameCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -8770,11 +8666,11 @@ void UOnlineGameInterfaceImpl::ClearDestroyOnlineGameCompleteDelegate(const stru
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.AddDestroyOnlineGameCompleteDelegate
-// (Final, Net, Native, Event)
+// (Net, NetReliable, Simulated, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         DestroyOnlineGameCompleteDelegate (Parm, NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddDestroyOnlineGameCompleteDelegate(const struct FScriptDelegate& DestroyOnlineGameCompleteDelegate)
+void UOnlineGameInterfaceImpl::STATIC_AddDestroyOnlineGameCompleteDelegate(const struct FScriptDelegate& DestroyOnlineGameCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddDestroyOnlineGameCompleteDelegate");
 
@@ -8782,7 +8678,6 @@ void UOnlineGameInterfaceImpl::AddDestroyOnlineGameCompleteDelegate(const struct
 	params.DestroyOnlineGameCompleteDelegate = DestroyOnlineGameCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -8791,7 +8686,7 @@ void UOnlineGameInterfaceImpl::AddDestroyOnlineGameCompleteDelegate(const struct
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.OnDestroyOnlineGameComplete
-// (Defined, Singular, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Iterator, Latent, PreOperator, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // bool                           bWasSuccessful                 (Parm)
@@ -8814,12 +8709,12 @@ void UOnlineGameInterfaceImpl::OnDestroyOnlineGameComplete(const struct FName& S
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.DestroyOnlineGame
-// (Iterator, Latent, Singular, Net, Simulated, Static)
+// (Final, Iterator, Latent, PreOperator, Singular, Net, NetReliable, Exec, Native, Event)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::STATIC_DestroyOnlineGame(const struct FName& SessionName)
+bool UOnlineGameInterfaceImpl::DestroyOnlineGame(const struct FName& SessionName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.DestroyOnlineGame");
 
@@ -8827,6 +8722,7 @@ bool UOnlineGameInterfaceImpl::STATIC_DestroyOnlineGame(const struct FName& Sess
 	params.SessionName = SessionName;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -8837,7 +8733,7 @@ bool UOnlineGameInterfaceImpl::STATIC_DestroyOnlineGame(const struct FName& Sess
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearUpdateOnlineGameCompleteDelegate
-// (Final, Defined, PreOperator, NetReliable, Native, Event, Operator)
+// (Defined, Latent, PreOperator, Exec, Event)
 // Parameters:
 // struct FScriptDelegate         UpdateOnlineGameCompleteDelegate (Parm, NeedCtorLink)
 
@@ -8849,7 +8745,6 @@ void UOnlineGameInterfaceImpl::ClearUpdateOnlineGameCompleteDelegate(const struc
 	params.UpdateOnlineGameCompleteDelegate = UpdateOnlineGameCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -8858,11 +8753,11 @@ void UOnlineGameInterfaceImpl::ClearUpdateOnlineGameCompleteDelegate(const struc
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.AddUpdateOnlineGameCompleteDelegate
-// (Defined, Latent, Singular, Net, NetReliable, Native, Event)
+// (Final, Latent, Singular, Net, Exec, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         UpdateOnlineGameCompleteDelegate (Parm, NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddUpdateOnlineGameCompleteDelegate(const struct FScriptDelegate& UpdateOnlineGameCompleteDelegate)
+void UOnlineGameInterfaceImpl::STATIC_AddUpdateOnlineGameCompleteDelegate(const struct FScriptDelegate& UpdateOnlineGameCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddUpdateOnlineGameCompleteDelegate");
 
@@ -8870,7 +8765,6 @@ void UOnlineGameInterfaceImpl::AddUpdateOnlineGameCompleteDelegate(const struct 
 	params.UpdateOnlineGameCompleteDelegate = UpdateOnlineGameCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -8879,7 +8773,7 @@ void UOnlineGameInterfaceImpl::AddUpdateOnlineGameCompleteDelegate(const struct 
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.OnUpdateOnlineGameComplete
-// (Final, Iterator, Latent, Simulated, Exec, Native, HasOptionalParms)
+// (Final, Defined, Iterator, Net, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // bool                           bWasSuccessful                 (Parm)
@@ -8902,14 +8796,14 @@ void UOnlineGameInterfaceImpl::OnUpdateOnlineGameComplete(const struct FName& Se
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.UpdateOnlineGame
-// (PreOperator, Native, Event, HasOptionalParms)
+// (Final, Iterator, Latent, PreOperator, Singular, Net, NetReliable, Simulated, Event, Operator, Static)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // class UOnlineGameSettings*     UpdatedGameSettings            (Parm)
 // bool                           bShouldRefreshOnlineData       (OptionalParm, Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UOnlineGameInterfaceImpl::UpdateOnlineGame(const struct FName& SessionName, class UOnlineGameSettings* UpdatedGameSettings, bool bShouldRefreshOnlineData)
+bool UOnlineGameInterfaceImpl::STATIC_UpdateOnlineGame(const struct FName& SessionName, class UOnlineGameSettings* UpdatedGameSettings, bool bShouldRefreshOnlineData)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.UpdateOnlineGame");
 
@@ -8919,7 +8813,6 @@ bool UOnlineGameInterfaceImpl::UpdateOnlineGame(const struct FName& SessionName,
 	params.bShouldRefreshOnlineData = bShouldRefreshOnlineData;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -8930,7 +8823,7 @@ bool UOnlineGameInterfaceImpl::UpdateOnlineGame(const struct FName& SessionName,
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.ClearCreateOnlineGameCompleteDelegate
-// (Final, Native, Event, Operator)
+// (Latent, NetReliable, Simulated, Event)
 // Parameters:
 // struct FScriptDelegate         CreateOnlineGameCompleteDelegate (Parm, NeedCtorLink)
 
@@ -8942,7 +8835,6 @@ void UOnlineGameInterfaceImpl::ClearCreateOnlineGameCompleteDelegate(const struc
 	params.CreateOnlineGameCompleteDelegate = CreateOnlineGameCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -8951,11 +8843,11 @@ void UOnlineGameInterfaceImpl::ClearCreateOnlineGameCompleteDelegate(const struc
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.AddCreateOnlineGameCompleteDelegate
-// (Defined, Latent, PreOperator, Singular, Native, Event)
+// (Final, Latent, PreOperator, Singular, NetReliable, Simulated, Event, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // struct FScriptDelegate         CreateOnlineGameCompleteDelegate (Parm, NeedCtorLink)
 
-void UOnlineGameInterfaceImpl::AddCreateOnlineGameCompleteDelegate(const struct FScriptDelegate& CreateOnlineGameCompleteDelegate)
+void UOnlineGameInterfaceImpl::STATIC_AddCreateOnlineGameCompleteDelegate(const struct FScriptDelegate& CreateOnlineGameCompleteDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.AddCreateOnlineGameCompleteDelegate");
 
@@ -8963,7 +8855,6 @@ void UOnlineGameInterfaceImpl::AddCreateOnlineGameCompleteDelegate(const struct 
 	params.CreateOnlineGameCompleteDelegate = CreateOnlineGameCompleteDelegate;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -8972,7 +8863,7 @@ void UOnlineGameInterfaceImpl::AddCreateOnlineGameCompleteDelegate(const struct 
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.OnCreateOnlineGameComplete
-// (Defined, Iterator, Latent, PreOperator, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Latent, PreOperator, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // bool                           bWasSuccessful                 (Parm)
@@ -8995,7 +8886,7 @@ void UOnlineGameInterfaceImpl::OnCreateOnlineGameComplete(const struct FName& Se
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.CreateOnlineGame
-// (Defined, Latent, PreOperator, Singular, NetReliable, Exec, Native, Event, Operator)
+// (Defined, Iterator, Net, Native, Event)
 // Parameters:
 // unsigned char                  HostingPlayerNum               (Parm)
 // struct FName                   SessionName                    (Parm)
@@ -9023,11 +8914,11 @@ bool UOnlineGameInterfaceImpl::CreateOnlineGame(unsigned char HostingPlayerNum, 
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.GetGameSearch
-// (Defined, Singular, NetReliable, Exec, Event, Static)
+// (Final, Iterator, Latent, PreOperator, Singular, Event, Operator)
 // Parameters:
 // class UOnlineGameSearch*       ReturnValue                    (Parm, OutParm, ReturnParm)
 
-class UOnlineGameSearch* UOnlineGameInterfaceImpl::STATIC_GetGameSearch()
+class UOnlineGameSearch* UOnlineGameInterfaceImpl::GetGameSearch()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.GetGameSearch");
 
@@ -9044,12 +8935,12 @@ class UOnlineGameSearch* UOnlineGameInterfaceImpl::STATIC_GetGameSearch()
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.GetGameSettings
-// (Iterator, Singular, NetReliable, Exec, Event, Static)
+// (Final, Defined, Iterator, Latent, PreOperator, Singular, Event, Operator)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // class UOnlineGameSettings*     ReturnValue                    (Parm, OutParm, ReturnParm)
 
-class UOnlineGameSettings* UOnlineGameInterfaceImpl::STATIC_GetGameSettings(const struct FName& SessionName)
+class UOnlineGameSettings* UOnlineGameInterfaceImpl::GetGameSettings(const struct FName& SessionName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineGameInterfaceImpl.GetGameSettings");
 
@@ -9067,7 +8958,7 @@ class UOnlineGameSettings* UOnlineGameInterfaceImpl::STATIC_GetGameSettings(cons
 
 
 // Function IpDrv.OnlineGameInterfaceImpl.OnFindOnlineGamesComplete
-// (Iterator, Singular, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Defined, Iterator, Latent, PreOperator, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // bool                           bWasSuccessful                 (Parm)
 
@@ -9088,7 +8979,7 @@ void UOnlineGameInterfaceImpl::OnFindOnlineGamesComplete(bool bWasSuccessful)
 
 
 // Function IpDrv.OnlineImageDownloaderWebHelper.SaveImageToTempDir
-// (Final, Iterator, Latent, PreOperator, Singular, Net, NetReliable, Native, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, PreOperator, Singular, Net, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 Filename                       (Const, Parm, NeedCtorLink)
 // TArray<unsigned char>          ImageData                      (Const, Parm, NeedCtorLink)
@@ -9103,7 +8994,6 @@ bool UOnlineImageDownloaderWebHelper::SaveImageToTempDir(const struct FString& F
 	params.ImageData = ImageData;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -9114,7 +9004,7 @@ bool UOnlineImageDownloaderWebHelper::SaveImageToTempDir(const struct FString& F
 
 
 // Function IpDrv.OnlineImageDownloaderWebHelper.LoadImageFromTempDir
-// (Iterator, Latent, Singular, Simulated, Exec, Operator, HasOptionalParms)
+// (Defined, Iterator, Singular, Simulated, HasOptionalParms)
 // Parameters:
 // struct FString                 Filename                       (Const, Parm, NeedCtorLink)
 // TArray<unsigned char>          ImageData                      (Parm, OutParm, NeedCtorLink)
@@ -9141,7 +9031,7 @@ bool UOnlineImageDownloaderWebHelper::LoadImageFromTempDir(const struct FString&
 
 
 // Function IpDrv.OnlinePlaylistManager.ParseDataCenterId
-// (Final, Defined, Net, Native, Operator, HasOptionalParms)
+// (Final, Iterator, Latent, PreOperator, Singular, Exec, HasOptionalParms)
 // Parameters:
 // TArray<unsigned char>          Data                           (Const, Parm, OutParm, NeedCtorLink)
 
@@ -9152,7 +9042,6 @@ void UOnlinePlaylistManager::ParseDataCenterId(TArray<unsigned char>* Data)
 	UOnlinePlaylistManager_ParseDataCenterId_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -9164,7 +9053,7 @@ void UOnlinePlaylistManager::ParseDataCenterId(TArray<unsigned char>* Data)
 
 
 // Function IpDrv.OnlinePlaylistManager.OnReadDataCenterIdComplete
-// (Defined, Iterator, Latent, PreOperator, Native, Operator, HasOptionalParms)
+// (Latent, PreOperator, Exec, HasOptionalParms)
 // Parameters:
 // bool                           bWasSuccessful                 (Parm)
 // struct FString                 Filename                       (Parm, NeedCtorLink)
@@ -9178,7 +9067,6 @@ void UOnlinePlaylistManager::OnReadDataCenterIdComplete(bool bWasSuccessful, con
 	params.Filename = Filename;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -9187,7 +9075,7 @@ void UOnlinePlaylistManager::OnReadDataCenterIdComplete(bool bWasSuccessful, con
 
 
 // Function IpDrv.OnlinePlaylistManager.ReadDataCenterId
-// (Defined, Iterator, Latent, Singular, NetReliable, Native, Operator, HasOptionalParms)
+// (Latent, Singular, NetReliable, Exec, HasOptionalParms)
 
 void UOnlinePlaylistManager::ReadDataCenterId()
 {
@@ -9196,7 +9084,6 @@ void UOnlinePlaylistManager::ReadDataCenterId()
 	UOnlinePlaylistManager_ReadDataCenterId_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -9205,7 +9092,7 @@ void UOnlinePlaylistManager::ReadDataCenterId()
 
 
 // Function IpDrv.OnlinePlaylistManager.SendPlaylistPopulationUpdate
-// (Defined, Iterator, PreOperator, Simulated, Exec, Native, HasOptionalParms)
+// (PreOperator, Net, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // int                            NumPlayers                     (Parm)
 
@@ -9226,7 +9113,7 @@ void UOnlinePlaylistManager::SendPlaylistPopulationUpdate(int NumPlayers)
 
 
 // Function IpDrv.OnlinePlaylistManager.GetPopulationInfoFromPlaylist
-// (Defined, Iterator, Latent, PreOperator, Singular, NetReliable, Exec, Operator, HasOptionalParms)
+// (Latent, PreOperator, Singular, NetReliable, HasOptionalParms)
 // Parameters:
 // int                            PlaylistId                     (Parm)
 // int                            WorldwideTotal                 (Parm, OutParm)
@@ -9253,7 +9140,7 @@ void UOnlinePlaylistManager::GetPopulationInfoFromPlaylist(int PlaylistId, int* 
 
 
 // Function IpDrv.OnlinePlaylistManager.ParsePlaylistPopulationData
-// (Final, Defined, Iterator, Net, Native, Operator, HasOptionalParms)
+// (Final, Net, Exec, HasOptionalParms)
 // Parameters:
 // TArray<unsigned char>          Data                           (Const, Parm, OutParm, NeedCtorLink)
 
@@ -9264,7 +9151,6 @@ void UOnlinePlaylistManager::ParsePlaylistPopulationData(TArray<unsigned char>* 
 	UOnlinePlaylistManager_ParsePlaylistPopulationData_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -9276,7 +9162,7 @@ void UOnlinePlaylistManager::ParsePlaylistPopulationData(TArray<unsigned char>* 
 
 
 // Function IpDrv.OnlinePlaylistManager.OnPlaylistPopulationDataUpdated
-// (Final, Iterator, PreOperator, Singular, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, Singular, Simulated, Exec, Native, HasOptionalParms)
 
 void UOnlinePlaylistManager::OnPlaylistPopulationDataUpdated()
 {
@@ -9294,7 +9180,7 @@ void UOnlinePlaylistManager::OnPlaylistPopulationDataUpdated()
 
 
 // Function IpDrv.OnlinePlaylistManager.OnReadPlaylistPopulationComplete
-// (Final, Defined, Iterator, Latent, PreOperator, Native, Operator, HasOptionalParms)
+// (Final, Latent, PreOperator, Exec, HasOptionalParms)
 // Parameters:
 // bool                           bWasSuccessful                 (Parm)
 // struct FString                 Filename                       (Parm, NeedCtorLink)
@@ -9308,7 +9194,6 @@ void UOnlinePlaylistManager::OnReadPlaylistPopulationComplete(bool bWasSuccessfu
 	params.Filename = Filename;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -9317,7 +9202,7 @@ void UOnlinePlaylistManager::OnReadPlaylistPopulationComplete(bool bWasSuccessfu
 
 
 // Function IpDrv.OnlinePlaylistManager.ReadPlaylistPopulation
-// (Final, PreOperator, Singular, NetReliable, Native, Operator, HasOptionalParms)
+// (Final, Defined, Latent, Singular, NetReliable, Exec, HasOptionalParms)
 
 void UOnlinePlaylistManager::ReadPlaylistPopulation()
 {
@@ -9326,7 +9211,6 @@ void UOnlinePlaylistManager::ReadPlaylistPopulation()
 	UOnlinePlaylistManager_ReadPlaylistPopulation_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -9335,7 +9219,7 @@ void UOnlinePlaylistManager::ReadPlaylistPopulation()
 
 
 // Function IpDrv.OnlinePlaylistManager.Reset
-// (Final, Defined, Latent, PreOperator, Net, NetReliable, Simulated, Native, HasOptionalParms)
+// (Final, Iterator, PreOperator, Exec, Native, HasOptionalParms)
 
 void UOnlinePlaylistManager::Reset()
 {
@@ -9353,7 +9237,7 @@ void UOnlinePlaylistManager::Reset()
 
 
 // Function IpDrv.OnlinePlaylistManager.GetContentIdsFromPlaylist
-// (Final, Defined, Singular, NetReliable, Exec, Operator, HasOptionalParms)
+// (Final, Iterator, Latent, PreOperator, NetReliable, HasOptionalParms)
 // Parameters:
 // int                            PlaylistId                     (Parm)
 // TArray<int>                    ContentIds                     (Parm, OutParm, NeedCtorLink)
@@ -9377,7 +9261,7 @@ void UOnlinePlaylistManager::GetContentIdsFromPlaylist(int PlaylistId, TArray<in
 
 
 // Function IpDrv.OnlinePlaylistManager.GetInventorySwapFromPlaylist
-// (Iterator, Latent, Singular, NetReliable, Exec, Operator, HasOptionalParms)
+// (Defined, Iterator, Singular, NetReliable, HasOptionalParms)
 // Parameters:
 // int                            PlaylistId                     (Parm)
 // class UClass*                  SourceInventory                (Parm)
@@ -9402,7 +9286,7 @@ class UClass* UOnlinePlaylistManager::GetInventorySwapFromPlaylist(int PlaylistI
 
 
 // Function IpDrv.OnlinePlaylistManager.GetMapCycleFromPlaylist
-// (Final, PreOperator, Singular, NetReliable, Exec, Operator, HasOptionalParms)
+// (Final, Defined, Latent, Singular, NetReliable, HasOptionalParms)
 // Parameters:
 // int                            PlaylistId                     (Parm)
 // TArray<struct FName>           MapCycle                       (Parm, OutParm, NeedCtorLink)
@@ -9426,7 +9310,7 @@ void UOnlinePlaylistManager::GetMapCycleFromPlaylist(int PlaylistId, TArray<stru
 
 
 // Function IpDrv.OnlinePlaylistManager.GetUrlFromPlaylist
-// (Final, Defined, Net, NetReliable, Exec, Operator, HasOptionalParms)
+// (Final, Iterator, Latent, PreOperator, Singular, NetReliable, HasOptionalParms)
 // Parameters:
 // int                            PlaylistId                     (Parm)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
@@ -9449,7 +9333,7 @@ struct FString UOnlinePlaylistManager::GetUrlFromPlaylist(int PlaylistId)
 
 
 // Function IpDrv.OnlinePlaylistManager.GetMatchType
-// (Defined, PreOperator, Singular, NetReliable, Exec, Operator, HasOptionalParms)
+// (Iterator, Latent, Singular, NetReliable, HasOptionalParms)
 // Parameters:
 // int                            PlaylistId                     (Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
@@ -9472,7 +9356,7 @@ int UOnlinePlaylistManager::GetMatchType(int PlaylistId)
 
 
 // Function IpDrv.OnlinePlaylistManager.IsPlaylistArbitrated
-// (Final, Latent, Simulated, Exec, Operator, HasOptionalParms)
+// (Final, Defined, Simulated, HasOptionalParms)
 // Parameters:
 // int                            PlaylistId                     (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
@@ -9495,7 +9379,7 @@ bool UOnlinePlaylistManager::IsPlaylistArbitrated(int PlaylistId)
 
 
 // Function IpDrv.OnlinePlaylistManager.GetLoadBalanceIdFromPlaylist
-// (Final, Defined, Iterator, Latent, Singular, NetReliable, Exec, Operator, HasOptionalParms)
+// (Final, Latent, Singular, NetReliable, HasOptionalParms)
 // Parameters:
 // int                            PlaylistId                     (Parm)
 // int                            LoadBalanceId                  (Parm, OutParm)
@@ -9519,7 +9403,7 @@ void UOnlinePlaylistManager::GetLoadBalanceIdFromPlaylist(int PlaylistId, int* L
 
 
 // Function IpDrv.OnlinePlaylistManager.GetTeamInfoFromPlaylist
-// (Final, Net, NetReliable, Exec, Operator, HasOptionalParms)
+// (Final, Defined, Latent, PreOperator, Singular, NetReliable, HasOptionalParms)
 // Parameters:
 // int                            PlaylistId                     (Parm)
 // int                            TeamSize                       (Parm, OutParm)
@@ -9549,7 +9433,7 @@ void UOnlinePlaylistManager::GetTeamInfoFromPlaylist(int PlaylistId, int* TeamSi
 
 
 // Function IpDrv.OnlinePlaylistManager.PlaylistSupportsDedicatedServers
-// (Final, Defined, Iterator, PreOperator, Singular, Net, Native, Operator, HasOptionalParms)
+// (Final, PreOperator, Singular, Net, Exec, HasOptionalParms)
 // Parameters:
 // int                            PlaylistId                     (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
@@ -9562,7 +9446,6 @@ bool UOnlinePlaylistManager::PlaylistSupportsDedicatedServers(int PlaylistId)
 	params.PlaylistId = PlaylistId;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -9573,7 +9456,7 @@ bool UOnlinePlaylistManager::PlaylistSupportsDedicatedServers(int PlaylistId)
 
 
 // Function IpDrv.OnlinePlaylistManager.HasAnyGameSettings
-// (Final, Defined, Iterator, Latent, PreOperator, Net, NetReliable, Exec, Operator, HasOptionalParms)
+// (Final, Latent, PreOperator, Net, NetReliable, HasOptionalParms)
 // Parameters:
 // int                            PlaylistId                     (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
@@ -9596,13 +9479,13 @@ bool UOnlinePlaylistManager::HasAnyGameSettings(int PlaylistId)
 
 
 // Function IpDrv.OnlinePlaylistManager.GetGameSettings
-// (Iterator, Singular, NetReliable, Exec, Event, Static)
+// (Final, Defined, Iterator, Latent, PreOperator, Singular, Event, Operator)
 // Parameters:
 // int                            PlaylistId                     (Parm)
 // int                            GameSettingsId                 (Parm)
 // class UOnlineGameSettings*     ReturnValue                    (Parm, OutParm, ReturnParm)
 
-class UOnlineGameSettings* UOnlinePlaylistManager::STATIC_GetGameSettings(int PlaylistId, int GameSettingsId)
+class UOnlineGameSettings* UOnlinePlaylistManager::GetGameSettings(int PlaylistId, int GameSettingsId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlinePlaylistManager.GetGameSettings");
 
@@ -9621,7 +9504,7 @@ class UOnlineGameSettings* UOnlinePlaylistManager::STATIC_GetGameSettings(int Pl
 
 
 // Function IpDrv.OnlinePlaylistManager.FinalizePlaylistObjects
-// (Iterator, Latent, NetReliable, Exec, Operator, HasOptionalParms)
+// (Defined, Iterator, NetReliable, HasOptionalParms)
 
 void UOnlinePlaylistManager::FinalizePlaylistObjects()
 {
@@ -9638,7 +9521,7 @@ void UOnlinePlaylistManager::FinalizePlaylistObjects()
 
 
 // Function IpDrv.OnlinePlaylistManager.OnReadTitleFileComplete
-// (Final, PreOperator, Singular, Net, NetReliable, Simulated, Native, Event, Static)
+// (Final, Defined, PreOperator, Singular, Net, NetReliable, Simulated, Native, Event, Static)
 // Parameters:
 // bool                           bWasSuccessful                 (Parm)
 // struct FString                 Filename                       (Parm, NeedCtorLink)
@@ -9661,7 +9544,7 @@ void UOnlinePlaylistManager::STATIC_OnReadTitleFileComplete(bool bWasSuccessful,
 
 
 // Function IpDrv.OnlinePlaylistManager.ShouldRefreshPlaylists
-// (Defined, PreOperator, Simulated, Native, Operator, HasOptionalParms)
+// (Iterator, Latent, Simulated, Exec, HasOptionalParms)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
@@ -9672,7 +9555,6 @@ bool UOnlinePlaylistManager::ShouldRefreshPlaylists()
 	UOnlinePlaylistManager_ShouldRefreshPlaylists_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -9683,7 +9565,7 @@ bool UOnlinePlaylistManager::ShouldRefreshPlaylists()
 
 
 // Function IpDrv.OnlinePlaylistManager.DetermineFilesToDownload
-// (Final, Latent, Singular, Exec, Operator, HasOptionalParms)
+// (Final, Defined, Singular, HasOptionalParms)
 
 void UOnlinePlaylistManager::DetermineFilesToDownload()
 {
@@ -9700,7 +9582,7 @@ void UOnlinePlaylistManager::DetermineFilesToDownload()
 
 
 // Function IpDrv.OnlinePlaylistManager.DownloadPlaylist
-// (Final, Defined, PreOperator, Singular, Exec, Operator, HasOptionalParms)
+// (Final, Iterator, Latent, Singular, HasOptionalParms)
 
 void UOnlinePlaylistManager::DownloadPlaylist()
 {
@@ -9717,7 +9599,7 @@ void UOnlinePlaylistManager::DownloadPlaylist()
 
 
 // Function IpDrv.OnlinePlaylistManager.OnReadPlaylistComplete
-// (Final, Defined, Latent, PreOperator, Singular, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Final, Iterator, PreOperator, Singular, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // bool                           bWasSuccessful                 (Parm)
 
@@ -9738,7 +9620,7 @@ void UOnlinePlaylistManager::OnReadPlaylistComplete(bool bWasSuccessful)
 
 
 // Function IpDrv.PartyBeacon.OnDestroyComplete
-// (Final, Singular, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Final, Defined, Latent, PreOperator, Simulated, Exec, Native, HasOptionalParms)
 
 void UPartyBeacon::OnDestroyComplete()
 {
@@ -9756,7 +9638,7 @@ void UPartyBeacon::OnDestroyComplete()
 
 
 // Function IpDrv.PartyBeacon.DestroyBeacon
-// (Final, PreOperator, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Final, Defined, Latent, Simulated, Exec, Native, HasOptionalParms)
 
 void UPartyBeacon::DestroyBeacon()
 {
@@ -9774,7 +9656,7 @@ void UPartyBeacon::DestroyBeacon()
 
 
 // Function IpDrv.PartyBeaconClient.DestroyBeacon
-// (Final, PreOperator, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Final, Defined, Latent, Simulated, Exec, Native, HasOptionalParms)
 
 void UPartyBeaconClient::DestroyBeacon()
 {
@@ -9792,12 +9674,12 @@ void UPartyBeaconClient::DestroyBeacon()
 
 
 // Function IpDrv.PartyBeaconClient.CancelReservation
-// (Final, Defined, PreOperator, Singular, NetReliable, Simulated, Operator, HasOptionalParms)
+// (Iterator, Latent, Singular, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // struct FUniqueNetId            CancellingPartyLeader          (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UPartyBeaconClient::CancelReservation(const struct FUniqueNetId& CancellingPartyLeader)
+bool UPartyBeaconClient::STATIC_CancelReservation(const struct FUniqueNetId& CancellingPartyLeader)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeaconClient.CancelReservation");
 
@@ -9805,6 +9687,7 @@ bool UPartyBeaconClient::CancelReservation(const struct FUniqueNetId& Cancelling
 	params.CancellingPartyLeader = CancellingPartyLeader;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -9815,7 +9698,7 @@ bool UPartyBeaconClient::CancelReservation(const struct FUniqueNetId& Cancelling
 
 
 // Function IpDrv.PartyBeaconClient.RequestReservationUpdate
-// (Final, Defined, Latent, PreOperator, Net, NetReliable, Native, Operator, HasOptionalParms)
+// (Final, Iterator, PreOperator, Net, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // struct FOnlineGameSearchResult DesiredHost                    (Const, Parm, OutParm)
 // struct FUniqueNetId            RequestingPartyLeader          (Parm)
@@ -9830,7 +9713,6 @@ bool UPartyBeaconClient::RequestReservationUpdate(const struct FUniqueNetId& Req
 	params.RequestingPartyLeader = RequestingPartyLeader;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -9846,7 +9728,7 @@ bool UPartyBeaconClient::RequestReservationUpdate(const struct FUniqueNetId& Req
 
 
 // Function IpDrv.PartyBeaconClient.RequestReservation
-// (Defined, Latent, PreOperator, Net, NetReliable, Native, Operator, HasOptionalParms)
+// (Iterator, PreOperator, Net, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // struct FOnlineGameSearchResult DesiredHost                    (Const, Parm, OutParm)
 // struct FUniqueNetId            RequestingPartyLeader          (Parm)
@@ -9861,7 +9743,6 @@ bool UPartyBeaconClient::RequestReservation(const struct FUniqueNetId& Requestin
 	params.RequestingPartyLeader = RequestingPartyLeader;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -9877,7 +9758,7 @@ bool UPartyBeaconClient::RequestReservation(const struct FUniqueNetId& Requestin
 
 
 // Function IpDrv.PartyBeaconClient.OnHostHasCancelled
-// (Iterator, Latent, Singular, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Defined, Iterator, Singular, Simulated, Exec, Native, HasOptionalParms)
 
 void UPartyBeaconClient::OnHostHasCancelled()
 {
@@ -9895,7 +9776,7 @@ void UPartyBeaconClient::OnHostHasCancelled()
 
 
 // Function IpDrv.PartyBeaconClient.OnHostIsReady
-// (Final, Iterator, Latent, Singular, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Final, Defined, Iterator, Singular, Simulated, Exec, Native, HasOptionalParms)
 
 void UPartyBeaconClient::OnHostIsReady()
 {
@@ -9913,7 +9794,7 @@ void UPartyBeaconClient::OnHostIsReady()
 
 
 // Function IpDrv.PartyBeaconClient.OnTravelRequestReceived
-// (Final, Defined, Latent, Simulated, Exec, Native, HasOptionalParms)
+// (Final, Iterator, Net, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // class UClass*                  SearchClass                    (Parm)
@@ -9938,7 +9819,7 @@ void UPartyBeaconClient::OnTravelRequestReceived(const struct FName& SessionName
 
 
 // Function IpDrv.PartyBeaconClient.OnReservationCountUpdated
-// (Iterator, Simulated, Exec, Native, HasOptionalParms)
+// (Defined, Iterator, Latent, PreOperator, Singular, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // int                            ReservationRemaining           (Parm)
 
@@ -9959,7 +9840,7 @@ void UPartyBeaconClient::OnReservationCountUpdated(int ReservationRemaining)
 
 
 // Function IpDrv.PartyBeaconClient.OnReservationRequestComplete
-// (Final, Iterator, Simulated, Exec, Native, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, PreOperator, Singular, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // TEnumAsByte<EPartyReservationResult> ReservationResult              (Parm)
 
@@ -9980,7 +9861,7 @@ void UPartyBeaconClient::OnReservationRequestComplete(TEnumAsByte<EPartyReservat
 
 
 // Function IpDrv.PartyBeaconHost.GetMaxAvailableTeamSize
-// (Final, Defined, PreOperator, Singular, NetReliable, Exec, Operator, HasOptionalParms)
+// (Final, Iterator, Latent, Singular, NetReliable, HasOptionalParms)
 // Parameters:
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
@@ -10001,7 +9882,7 @@ int UPartyBeaconHost::GetMaxAvailableTeamSize()
 
 
 // Function IpDrv.PartyBeaconHost.GetPartyLeaders
-// (Final, Defined, Latent, PreOperator, Singular, NetReliable, Exec, Operator, HasOptionalParms)
+// (Final, Iterator, PreOperator, Singular, NetReliable, HasOptionalParms)
 // Parameters:
 // TArray<struct FUniqueNetId>    PartyLeaders                   (Parm, OutParm, NeedCtorLink)
 
@@ -10023,7 +9904,7 @@ void UPartyBeaconHost::GetPartyLeaders(TArray<struct FUniqueNetId>* PartyLeaders
 
 
 // Function IpDrv.PartyBeaconHost.GetPlayers
-// (Iterator, Latent, PreOperator, Singular, NetReliable, Exec, Operator, HasOptionalParms)
+// (Defined, Iterator, PreOperator, Singular, NetReliable, HasOptionalParms)
 // Parameters:
 // TArray<struct FUniqueNetId>    Players                        (Parm, OutParm, NeedCtorLink)
 
@@ -10045,11 +9926,11 @@ void UPartyBeaconHost::GetPlayers(TArray<struct FUniqueNetId>* Players)
 
 
 // Function IpDrv.PartyBeaconHost.AppendReservationSkillsToSearch
-// (Defined, Latent, Singular, Net, Simulated, Operator, HasOptionalParms)
+// (Final, Defined, Singular, Net, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // class UOnlineGameSearch*       Search                         (Parm)
 
-void UPartyBeaconHost::AppendReservationSkillsToSearch(class UOnlineGameSearch* Search)
+void UPartyBeaconHost::STATIC_AppendReservationSkillsToSearch(class UOnlineGameSearch* Search)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeaconHost.AppendReservationSkillsToSearch");
 
@@ -10057,6 +9938,7 @@ void UPartyBeaconHost::AppendReservationSkillsToSearch(class UOnlineGameSearch* 
 	params.Search = Search;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -10065,7 +9947,7 @@ void UPartyBeaconHost::AppendReservationSkillsToSearch(class UOnlineGameSearch* 
 
 
 // Function IpDrv.PartyBeaconHost.UnregisterParty
-// (Final, Defined, Iterator, PreOperator, Simulated, Exec, Native, HasOptionalParms)
+// (Final, PreOperator, Net, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // struct FUniqueNetId            PartyLeader                    (Parm)
 
@@ -10086,7 +9968,7 @@ void UPartyBeaconHost::UnregisterParty(const struct FUniqueNetId& PartyLeader)
 
 
 // Function IpDrv.PartyBeaconHost.UnregisterPartyMembers
-// (Latent, PreOperator, Simulated, Exec, Native, HasOptionalParms)
+// (Defined, PreOperator, Net, Simulated, Exec, Native, HasOptionalParms)
 
 void UPartyBeaconHost::UnregisterPartyMembers()
 {
@@ -10104,7 +9986,7 @@ void UPartyBeaconHost::UnregisterPartyMembers()
 
 
 // Function IpDrv.PartyBeaconHost.RegisterPartyMembers
-// (Final, Defined, PreOperator, Simulated, Exec, Native, HasOptionalParms)
+// (Final, Iterator, Latent, Net, Simulated, Exec, Native, HasOptionalParms)
 
 void UPartyBeaconHost::RegisterPartyMembers()
 {
@@ -10122,17 +10004,18 @@ void UPartyBeaconHost::RegisterPartyMembers()
 
 
 // Function IpDrv.PartyBeaconHost.AreReservationsFull
-// (Defined, PreOperator, Singular, Net, Simulated, Operator, HasOptionalParms)
+// (Final, Defined, Latent, Singular, Net, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UPartyBeaconHost::AreReservationsFull()
+bool UPartyBeaconHost::STATIC_AreReservationsFull()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeaconHost.AreReservationsFull");
 
 	UPartyBeaconHost_AreReservationsFull_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -10143,7 +10026,7 @@ bool UPartyBeaconHost::AreReservationsFull()
 
 
 // Function IpDrv.PartyBeaconHost.TellClientsHostHasCancelled
-// (Final, PreOperator, Singular, Simulated, Native, Operator, HasOptionalParms)
+// (Final, Defined, Latent, Singular, Simulated, Exec, HasOptionalParms)
 
 void UPartyBeaconHost::TellClientsHostHasCancelled()
 {
@@ -10152,7 +10035,6 @@ void UPartyBeaconHost::TellClientsHostHasCancelled()
 	UPartyBeaconHost_TellClientsHostHasCancelled_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -10161,7 +10043,7 @@ void UPartyBeaconHost::TellClientsHostHasCancelled()
 
 
 // Function IpDrv.PartyBeaconHost.TellClientsHostIsReady
-// (Defined, PreOperator, Singular, Simulated, Native, Operator, HasOptionalParms)
+// (Iterator, Latent, Singular, Simulated, Exec, HasOptionalParms)
 
 void UPartyBeaconHost::TellClientsHostIsReady()
 {
@@ -10170,7 +10052,6 @@ void UPartyBeaconHost::TellClientsHostIsReady()
 	UPartyBeaconHost_TellClientsHostIsReady_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -10179,7 +10060,7 @@ void UPartyBeaconHost::TellClientsHostIsReady()
 
 
 // Function IpDrv.PartyBeaconHost.TellClientsToTravel
-// (Final, Defined, PreOperator, Singular, Simulated, Native, Operator, HasOptionalParms)
+// (Final, Iterator, Latent, Singular, Simulated, Exec, HasOptionalParms)
 // Parameters:
 // struct FName                   SessionName                    (Parm)
 // class UClass*                  SearchClass                    (Parm)
@@ -10195,7 +10076,6 @@ void UPartyBeaconHost::TellClientsToTravel(const struct FName& SessionName, clas
 	params.PlatformSpecificInfo = PlatformSpecificInfo;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -10204,7 +10084,7 @@ void UPartyBeaconHost::TellClientsToTravel(const struct FName& SessionName, clas
 
 
 // Function IpDrv.PartyBeaconHost.DestroyBeacon
-// (Final, PreOperator, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Final, Defined, Latent, Simulated, Exec, Native, HasOptionalParms)
 
 void UPartyBeaconHost::DestroyBeacon()
 {
@@ -10222,7 +10102,7 @@ void UPartyBeaconHost::DestroyBeacon()
 
 
 // Function IpDrv.PartyBeaconHost.OnClientCancellationReceived
-// (Defined, Latent, PreOperator, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Iterator, PreOperator, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // struct FUniqueNetId            PartyLeader                    (Parm)
 
@@ -10243,7 +10123,7 @@ void UPartyBeaconHost::OnClientCancellationReceived(const struct FUniqueNetId& P
 
 
 // Function IpDrv.PartyBeaconHost.OnReservationsFull
-// (Defined, Iterator, Simulated, Exec, Native, HasOptionalParms)
+// (Net, Simulated, Exec, Native, HasOptionalParms)
 
 void UPartyBeaconHost::OnReservationsFull()
 {
@@ -10261,7 +10141,7 @@ void UPartyBeaconHost::OnReservationsFull()
 
 
 // Function IpDrv.PartyBeaconHost.OnReservationChange
-// (Final, Defined, Simulated, Exec, Native, HasOptionalParms)
+// (Final, Iterator, Latent, PreOperator, Singular, Simulated, Exec, Native, HasOptionalParms)
 
 void UPartyBeaconHost::OnReservationChange()
 {
@@ -10279,7 +10159,7 @@ void UPartyBeaconHost::OnReservationChange()
 
 
 // Function IpDrv.PartyBeaconHost.HandlePlayerLogout
-// (Iterator, Latent, PreOperator, Net, NetReliable, Exec, Operator, HasOptionalParms)
+// (Defined, Iterator, PreOperator, Net, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FUniqueNetId            PlayerID                       (Parm)
 // bool                           bMaintainParty                 (Parm)
@@ -10301,7 +10181,7 @@ void UPartyBeaconHost::HandlePlayerLogout(const struct FUniqueNetId& PlayerID, b
 
 
 // Function IpDrv.PartyBeaconHost.GetExistingReservation
-// (Iterator, Singular, NetReliable, Exec, Operator, HasOptionalParms)
+// (Defined, Iterator, Latent, PreOperator, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FUniqueNetId            PartyLeader                    (Const, Parm, OutParm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
@@ -10326,7 +10206,7 @@ int UPartyBeaconHost::GetExistingReservation(struct FUniqueNetId* PartyLeader)
 
 
 // Function IpDrv.PartyBeaconHost.UpdatePartyReservationEntry
-// (Final, Singular, Net, Simulated, Native, Operator, HasOptionalParms)
+// (Final, Defined, Latent, PreOperator, Net, Simulated, Exec, HasOptionalParms)
 // Parameters:
 // struct FUniqueNetId            PartyLeader                    (Parm)
 // TArray<struct FPlayerReservation> PlayerMembers                  (Const, Parm, OutParm, NeedCtorLink)
@@ -10338,6 +10218,37 @@ TEnumAsByte<EPartyReservationResult> UPartyBeaconHost::UpdatePartyReservationEnt
 
 	UPartyBeaconHost_UpdatePartyReservationEntry_Params params;
 	params.PartyLeader = PartyLeader;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	if (PlayerMembers != nullptr)
+		*PlayerMembers = params.PlayerMembers;
+
+	return params.ReturnValue;
+}
+
+
+// Function IpDrv.PartyBeaconHost.AddPartyReservationEntry
+// (Defined, Iterator, Latent, PreOperator, Net, Simulated, Exec, Native, Event, Operator, Static)
+// Parameters:
+// struct FUniqueNetId            PartyLeader                    (Parm)
+// TArray<struct FPlayerReservation> PlayerMembers                  (Const, Parm, OutParm, NeedCtorLink)
+// int                            TeamNum                        (Parm)
+// bool                           bIsHost                        (Parm)
+// TEnumAsByte<EPartyReservationResult> ReturnValue                    (Parm, OutParm, ReturnParm)
+
+TEnumAsByte<EPartyReservationResult> UPartyBeaconHost::STATIC_AddPartyReservationEntry(const struct FUniqueNetId& PartyLeader, int TeamNum, bool bIsHost, TArray<struct FPlayerReservation>* PlayerMembers)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeaconHost.AddPartyReservationEntry");
+
+	UPartyBeaconHost_AddPartyReservationEntry_Params params;
+	params.PartyLeader = PartyLeader;
+	params.TeamNum = TeamNum;
+	params.bIsHost = bIsHost;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -10353,39 +10264,8 @@ TEnumAsByte<EPartyReservationResult> UPartyBeaconHost::UpdatePartyReservationEnt
 }
 
 
-// Function IpDrv.PartyBeaconHost.AddPartyReservationEntry
-// (Final, Iterator, Singular, Net, Simulated, Operator, HasOptionalParms)
-// Parameters:
-// struct FUniqueNetId            PartyLeader                    (Parm)
-// TArray<struct FPlayerReservation> PlayerMembers                  (Const, Parm, OutParm, NeedCtorLink)
-// int                            TeamNum                        (Parm)
-// bool                           bIsHost                        (Parm)
-// TEnumAsByte<EPartyReservationResult> ReturnValue                    (Parm, OutParm, ReturnParm)
-
-TEnumAsByte<EPartyReservationResult> UPartyBeaconHost::AddPartyReservationEntry(const struct FUniqueNetId& PartyLeader, int TeamNum, bool bIsHost, TArray<struct FPlayerReservation>* PlayerMembers)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.PartyBeaconHost.AddPartyReservationEntry");
-
-	UPartyBeaconHost_AddPartyReservationEntry_Params params;
-	params.PartyLeader = PartyLeader;
-	params.TeamNum = TeamNum;
-	params.bIsHost = bIsHost;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	if (PlayerMembers != nullptr)
-		*PlayerMembers = params.PlayerMembers;
-
-	return params.ReturnValue;
-}
-
-
 // Function IpDrv.PartyBeaconHost.InitHostBeacon
-// (Defined, Iterator, PreOperator, Singular, Net, NetReliable, Exec, Operator, HasOptionalParms)
+// (PreOperator, Singular, Net, NetReliable, HasOptionalParms)
 // Parameters:
 // int                            InNumTeams                     (Parm)
 // int                            InNumPlayersPerTeam            (Parm)
@@ -10416,7 +10296,7 @@ bool UPartyBeaconHost::InitHostBeacon(int InNumTeams, int InNumPlayersPerTeam, i
 
 
 // Function IpDrv.PartyBeaconHost.PauseReservationRequests
-// (Final, Defined, Iterator, Latent, Net, Native, Operator, HasOptionalParms)
+// (Final, Latent, Net, Exec, HasOptionalParms)
 // Parameters:
 // bool                           bPause                         (Parm)
 
@@ -10428,7 +10308,6 @@ void UPartyBeaconHost::PauseReservationRequests(bool bPause)
 	params.bPause = bPause;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -10437,7 +10316,7 @@ void UPartyBeaconHost::PauseReservationRequests(bool bPause)
 
 
 // Function IpDrv.WebRequest.GetHexDigit
-// (Latent, Singular, NetReliable, Exec, Operator, HasOptionalParms)
+// (Defined, Singular, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 D                              (Parm, NeedCtorLink)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
@@ -10460,13 +10339,13 @@ int UWebRequest::GetHexDigit(const struct FString& D)
 
 
 // Function IpDrv.WebRequest.DecodeFormData
-// (Final, Exec, Operator, HasOptionalParms)
+// (Defined, Latent, PreOperator, Singular, Net, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // struct FString                 Data                           (Parm, NeedCtorLink)
 // int                            MaxValueLength                 (OptionalParm, Parm)
 // int                            MaxLineLength                  (OptionalParm, Parm)
 
-void UWebRequest::DecodeFormData(const struct FString& Data, int MaxValueLength, int MaxLineLength)
+void UWebRequest::STATIC_DecodeFormData(const struct FString& Data, int MaxValueLength, int MaxLineLength)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebRequest.DecodeFormData");
 
@@ -10476,6 +10355,7 @@ void UWebRequest::DecodeFormData(const struct FString& Data, int MaxValueLength,
 	params.MaxLineLength = MaxLineLength;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -10484,7 +10364,7 @@ void UWebRequest::DecodeFormData(const struct FString& Data, int MaxValueLength,
 
 
 // Function IpDrv.WebRequest.ProcessHeaderString
-// (Final, Defined, NetReliable, Native, Operator, HasOptionalParms)
+// (Final, Iterator, Latent, PreOperator, Singular, Net, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 S                              (Parm, NeedCtorLink)
 
@@ -10496,7 +10376,6 @@ void UWebRequest::ProcessHeaderString(const struct FString& S)
 	params.S = S;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -10505,7 +10384,7 @@ void UWebRequest::ProcessHeaderString(const struct FString& S)
 
 
 // Function IpDrv.WebRequest.Dump
-// (Final, Iterator, PreOperator, Singular, Exec, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, Singular, HasOptionalParms)
 
 void UWebRequest::Dump()
 {
@@ -10522,7 +10401,7 @@ void UWebRequest::Dump()
 
 
 // Function IpDrv.WebRequest.GetVariables
-// (Final, Iterator, Latent, Net, NetReliable, Exec, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, Net, NetReliable, HasOptionalParms)
 // Parameters:
 // TArray<struct FString>         varNames                       (Parm, OutParm, NeedCtorLink)
 
@@ -10544,14 +10423,14 @@ void UWebRequest::GetVariables(TArray<struct FString>* varNames)
 
 
 // Function IpDrv.WebRequest.GetVariableNumber
-// (Final, Defined, Iterator, Latent, Operator, HasOptionalParms)
+// (Final, Iterator, Exec, Native, Event, Operator, Static)
 // Parameters:
 // struct FString                 VariableName                   (Parm, NeedCtorLink)
 // int                            Number                         (Parm)
 // struct FString                 DefaultValue                   (OptionalParm, Parm, NeedCtorLink)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString UWebRequest::GetVariableNumber(const struct FString& VariableName, int Number, const struct FString& DefaultValue)
+struct FString UWebRequest::STATIC_GetVariableNumber(const struct FString& VariableName, int Number, const struct FString& DefaultValue)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebRequest.GetVariableNumber");
 
@@ -10561,6 +10440,7 @@ struct FString UWebRequest::GetVariableNumber(const struct FString& VariableName
 	params.DefaultValue = DefaultValue;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -10571,7 +10451,7 @@ struct FString UWebRequest::GetVariableNumber(const struct FString& VariableName
 
 
 // Function IpDrv.WebRequest.GetVariableCount
-// (Iterator, Latent, Net, NetReliable, Exec, Operator, HasOptionalParms)
+// (Defined, Iterator, Net, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 VariableName                   (Parm, NeedCtorLink)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
@@ -10594,13 +10474,13 @@ int UWebRequest::GetVariableCount(const struct FString& VariableName)
 
 
 // Function IpDrv.WebRequest.GetVariable
-// (Final, Latent, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, PreOperator, Singular, Net, NetReliable, Simulated, Native, Event, Operator, Static)
 // Parameters:
 // struct FString                 VariableName                   (Parm, NeedCtorLink)
 // struct FString                 DefaultValue                   (OptionalParm, Parm, NeedCtorLink)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString UWebRequest::GetVariable(const struct FString& VariableName, const struct FString& DefaultValue)
+struct FString UWebRequest::STATIC_GetVariable(const struct FString& VariableName, const struct FString& DefaultValue)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebRequest.GetVariable");
 
@@ -10609,6 +10489,7 @@ struct FString UWebRequest::GetVariable(const struct FString& VariableName, cons
 	params.DefaultValue = DefaultValue;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -10619,12 +10500,12 @@ struct FString UWebRequest::GetVariable(const struct FString& VariableName, cons
 
 
 // Function IpDrv.WebRequest.AddVariable
-// (Final, Defined, Iterator, Singular, Net, Simulated, Operator, HasOptionalParms)
+// (Singular, Net, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // struct FString                 VariableName                   (Parm, NeedCtorLink)
 // struct FString                 Value                          (Parm, CoerceParm, NeedCtorLink)
 
-void UWebRequest::AddVariable(const struct FString& VariableName, const struct FString& Value)
+void UWebRequest::STATIC_AddVariable(const struct FString& VariableName, const struct FString& Value)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebRequest.AddVariable");
 
@@ -10633,6 +10514,7 @@ void UWebRequest::AddVariable(const struct FString& VariableName, const struct F
 	params.Value = Value;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -10641,11 +10523,11 @@ void UWebRequest::AddVariable(const struct FString& VariableName, const struct F
 
 
 // Function IpDrv.WebRequest.GetHeaders
-// (Final, PreOperator, Singular, NetReliable, Exec, Event, Static)
+// (Iterator, Latent, Net, Event, Operator)
 // Parameters:
 // TArray<struct FString>         Headers                        (Parm, OutParm, NeedCtorLink)
 
-void UWebRequest::STATIC_GetHeaders(TArray<struct FString>* Headers)
+void UWebRequest::GetHeaders(TArray<struct FString>* Headers)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebRequest.GetHeaders");
 
@@ -10663,13 +10545,13 @@ void UWebRequest::STATIC_GetHeaders(TArray<struct FString>* Headers)
 
 
 // Function IpDrv.WebRequest.GetHeader
-// (PreOperator, Singular, NetReliable, Exec, Event, Static)
+// (Final, Defined, Latent, Net, Event, Operator)
 // Parameters:
 // struct FString                 HeaderName                     (Parm, NeedCtorLink)
 // struct FString                 DefaultValue                   (OptionalParm, Parm, NeedCtorLink)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString UWebRequest::STATIC_GetHeader(const struct FString& HeaderName, const struct FString& DefaultValue)
+struct FString UWebRequest::GetHeader(const struct FString& HeaderName, const struct FString& DefaultValue)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebRequest.GetHeader");
 
@@ -10688,12 +10570,12 @@ struct FString UWebRequest::STATIC_GetHeader(const struct FString& HeaderName, c
 
 
 // Function IpDrv.WebRequest.AddHeader
-// (Final, Singular, Net, Simulated, Operator, HasOptionalParms)
+// (Defined, Latent, PreOperator, Net, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // struct FString                 HeaderName                     (Parm, NeedCtorLink)
 // struct FString                 Value                          (Parm, CoerceParm, NeedCtorLink)
 
-void UWebRequest::AddHeader(const struct FString& HeaderName, const struct FString& Value)
+void UWebRequest::STATIC_AddHeader(const struct FString& HeaderName, const struct FString& Value)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebRequest.AddHeader");
 
@@ -10702,6 +10584,7 @@ void UWebRequest::AddHeader(const struct FString& HeaderName, const struct FStri
 	params.Value = Value;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -10710,7 +10593,7 @@ void UWebRequest::AddHeader(const struct FString& HeaderName, const struct FStri
 
 
 // Function IpDrv.WebRequest.EncodeBase64
-// (Final, Latent, Net, Exec, Operator, HasOptionalParms)
+// (Final, Defined, Net, HasOptionalParms)
 // Parameters:
 // struct FString                 Decoded                        (Parm, NeedCtorLink)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
@@ -10733,38 +10616,17 @@ struct FString UWebRequest::EncodeBase64(const struct FString& Decoded)
 
 
 // Function IpDrv.WebRequest.DecodeBase64
-// (Final, Defined, Iterator, Latent, PreOperator, Singular, Net, NetReliable, Simulated, Operator, HasOptionalParms)
+// (Latent, PreOperator, Singular, Net, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // struct FString                 Encoded                        (Parm, NeedCtorLink)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString UWebRequest::DecodeBase64(const struct FString& Encoded)
+struct FString UWebRequest::STATIC_DecodeBase64(const struct FString& Encoded)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebRequest.DecodeBase64");
 
 	UWebRequest_DecodeBase64_Params params;
 	params.Encoded = Encoded;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-
-	return params.ReturnValue;
-}
-
-
-// Function IpDrv.WebResponse.SentResponse
-// (Latent, Simulated, Native, Operator, HasOptionalParms)
-// Parameters:
-// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
-
-bool UWebResponse::SentResponse()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebResponse.SentResponse");
-
-	UWebResponse_SentResponse_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -10777,12 +10639,33 @@ bool UWebResponse::SentResponse()
 }
 
 
-// Function IpDrv.WebResponse.SentText
-// (PreOperator, Net, Simulated, Exec, HasOptionalParms)
+// Function IpDrv.WebResponse.SentResponse
+// (Defined, Simulated, Exec, HasOptionalParms)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UWebResponse::SentText()
+bool UWebResponse::SentResponse()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebResponse.SentResponse");
+
+	UWebResponse_SentResponse_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
+// Function IpDrv.WebResponse.SentText
+// (Defined, Singular, Simulated, Operator, Static)
+// Parameters:
+// bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
+
+bool UWebResponse::STATIC_SentText()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebResponse.SentText");
 
@@ -10799,7 +10682,7 @@ bool UWebResponse::SentText()
 
 
 // Function IpDrv.WebResponse.Redirect
-// (Net, NetReliable, Native, Operator, HasOptionalParms)
+// (Defined, Latent, PreOperator, Singular, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 URL                            (Parm, NeedCtorLink)
 
@@ -10811,7 +10694,6 @@ void UWebResponse::Redirect(const struct FString& URL)
 	params.URL = URL;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -10820,7 +10702,7 @@ void UWebResponse::Redirect(const struct FString& URL)
 
 
 // Function IpDrv.WebResponse.SendStandardHeaders
-// (Final, Defined, Iterator, Simulated, Native, Operator, HasOptionalParms)
+// (Final, Simulated, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 ContentType                    (OptionalParm, Parm, NeedCtorLink)
 // bool                           bCache                         (OptionalParm, Parm)
@@ -10834,7 +10716,6 @@ void UWebResponse::SendStandardHeaders(const struct FString& ContentType, bool b
 	params.bCache = bCache;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -10843,7 +10724,7 @@ void UWebResponse::SendStandardHeaders(const struct FString& ContentType, bool b
 
 
 // Function IpDrv.WebResponse.HTTPError
-// (Final, Latent, Singular, Net, NetReliable, Exec, Operator, HasOptionalParms)
+// (Final, Defined, Singular, Net, NetReliable, HasOptionalParms)
 // Parameters:
 // int                            ErrorNum                       (Parm)
 // struct FString                 Data                           (OptionalParm, Parm, NeedCtorLink)
@@ -10865,13 +10746,35 @@ void UWebResponse::HTTPError(int ErrorNum, const struct FString& Data)
 
 
 // Function IpDrv.WebResponse.SendHeaders
-// (Final, Iterator, Simulated, Native, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, PreOperator, Singular, Net, NetReliable, Exec, HasOptionalParms)
 
 void UWebResponse::SendHeaders()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebResponse.SendHeaders");
 
 	UWebResponse_SendHeaders_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function IpDrv.WebResponse.AddHeader
+// (Defined, Latent, PreOperator, Net, Simulated, Exec, Native, Event, Operator, Static)
+// Parameters:
+// struct FString                 Header                         (Parm, NeedCtorLink)
+// bool                           bReplace                       (OptionalParm, Parm)
+
+void UWebResponse::STATIC_AddHeader(const struct FString& Header, bool bReplace)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebResponse.AddHeader");
+
+	UWebResponse_AddHeader_Params params;
+	params.Header = Header;
+	params.bReplace = bReplace;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -10882,30 +10785,8 @@ void UWebResponse::SendHeaders()
 }
 
 
-// Function IpDrv.WebResponse.AddHeader
-// (Final, Singular, Net, Simulated, Operator, HasOptionalParms)
-// Parameters:
-// struct FString                 Header                         (Parm, NeedCtorLink)
-// bool                           bReplace                       (OptionalParm, Parm)
-
-void UWebResponse::AddHeader(const struct FString& Header, bool bReplace)
-{
-	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebResponse.AddHeader");
-
-	UWebResponse_AddHeader_Params params;
-	params.Header = Header;
-	params.bReplace = bReplace;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
 // Function IpDrv.WebResponse.HTTPHeader
-// (Defined, Latent, Singular, Net, NetReliable, Exec, Operator, HasOptionalParms)
+// (Iterator, Singular, Net, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 Header                         (Parm, NeedCtorLink)
 
@@ -10925,7 +10806,7 @@ void UWebResponse::HTTPHeader(const struct FString& Header)
 
 
 // Function IpDrv.WebResponse.HttpResponse
-// (Final, Defined, Iterator, Latent, Singular, Net, NetReliable, Exec, Operator, HasOptionalParms)
+// (Final, Latent, Singular, Net, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 Header                         (Parm, NeedCtorLink)
 
@@ -10945,7 +10826,7 @@ void UWebResponse::HttpResponse(const struct FString& Header)
 
 
 // Function IpDrv.WebResponse.FailAuthentication
-// (Iterator, Latent, PreOperator, Singular, Net, Exec, Operator, HasOptionalParms)
+// (Defined, Iterator, PreOperator, Singular, Net, HasOptionalParms)
 // Parameters:
 // struct FString                 Realm                          (Parm, NeedCtorLink)
 
@@ -10965,7 +10846,7 @@ void UWebResponse::FailAuthentication(const struct FString& Realm)
 
 
 // Function IpDrv.WebResponse.SendCachedFile
-// (Final, Defined, Simulated, Native, Operator, HasOptionalParms)
+// (Final, Iterator, Latent, PreOperator, Singular, Net, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 Filename                       (Parm, NeedCtorLink)
 // struct FString                 ContentType                    (OptionalParm, Parm, NeedCtorLink)
@@ -10980,7 +10861,6 @@ bool UWebResponse::SendCachedFile(const struct FString& Filename, const struct F
 	params.ContentType = ContentType;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -11035,7 +10915,7 @@ void UWebResponse::SendText(const struct FString& Text, bool bNoCRLF)
 
 
 // Function IpDrv.WebResponse.Dump
-// (Final, Iterator, PreOperator, Singular, Exec, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, Singular, HasOptionalParms)
 
 void UWebResponse::Dump()
 {
@@ -11052,7 +10932,7 @@ void UWebResponse::Dump()
 
 
 // Function IpDrv.WebResponse.GetHTTPExpiration
-// (Final, Latent, Singular, NetReliable, Exec, Operator, HasOptionalParms)
+// (Final, Defined, Singular, NetReliable, HasOptionalParms)
 // Parameters:
 // int                            OffsetSeconds                  (OptionalParm, Parm)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
@@ -11075,7 +10955,7 @@ struct FString UWebResponse::GetHTTPExpiration(int OffsetSeconds)
 
 
 // Function IpDrv.WebResponse.LoadParsedUHTM
-// (Final, Iterator, Latent, Singular, Simulated, Exec, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, Singular, Simulated, HasOptionalParms)
 // Parameters:
 // struct FString                 Filename                       (Parm, NeedCtorLink)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
@@ -11098,7 +10978,7 @@ struct FString UWebResponse::LoadParsedUHTM(const struct FString& Filename)
 
 
 // Function IpDrv.WebResponse.IncludeBinaryFile
-// (Defined, PreOperator, Singular, Net, NetReliable, Exec, Operator, HasOptionalParms)
+// (Iterator, Latent, Singular, Net, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 Filename                       (Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
@@ -11121,7 +11001,7 @@ bool UWebResponse::IncludeBinaryFile(const struct FString& Filename)
 
 
 // Function IpDrv.WebResponse.IncludeUHTM
-// (Final, Defined, PreOperator, Singular, Net, NetReliable, Exec, Operator, HasOptionalParms)
+// (Final, Iterator, Latent, Singular, Net, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 Filename                       (Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
@@ -11144,15 +11024,16 @@ bool UWebResponse::IncludeUHTM(const struct FString& Filename)
 
 
 // Function IpDrv.WebResponse.ClearSubst
-// (Final, Iterator, Net, NetReliable, Simulated, Operator, HasOptionalParms)
+// (Defined, Iterator, Latent, PreOperator, Singular, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 
-void UWebResponse::ClearSubst()
+void UWebResponse::STATIC_ClearSubst()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebResponse.ClearSubst");
 
 	UWebResponse_ClearSubst_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -11161,7 +11042,7 @@ void UWebResponse::ClearSubst()
 
 
 // Function IpDrv.WebResponse.Subst
-// (Defined, Latent, Singular, Simulated, Native, Operator, HasOptionalParms)
+// (Iterator, Singular, Simulated, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 Variable                       (Parm, NeedCtorLink)
 // struct FString                 Value                          (Parm, CoerceParm, NeedCtorLink)
@@ -11177,7 +11058,6 @@ void UWebResponse::Subst(const struct FString& Variable, const struct FString& V
 	params.bClear = bClear;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -11186,7 +11066,7 @@ void UWebResponse::Subst(const struct FString& Variable, const struct FString& V
 
 
 // Function IpDrv.WebResponse.FileExists
-// (Iterator, NetReliable, Exec, Operator, HasOptionalParms)
+// (Defined, Iterator, Latent, PreOperator, Singular, Net, HasOptionalParms)
 // Parameters:
 // struct FString                 Filename                       (Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
@@ -11209,7 +11089,7 @@ bool UWebResponse::FileExists(const struct FString& Filename)
 
 
 // Function IpDrv.UIDataStore_OnlinePlaylists.GetMatchTypeForPlaylistId
-// (Final, Defined, PreOperator, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Final, Iterator, Latent, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // int                            PlaylistId                     (Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
@@ -11233,7 +11113,7 @@ int UUIDataStore_OnlinePlaylists::GetMatchTypeForPlaylistId(int PlaylistId)
 
 
 // Function IpDrv.UIDataStore_OnlinePlaylists.GetOnlinePlaylistProvider
-// (Final, Latent, PreOperator, Singular, NetReliable, Exec, Operator, HasOptionalParms)
+// (Final, Defined, PreOperator, Singular, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FName                   ProviderTag                    (Parm)
 // int                            PlaylistId                     (Parm)
@@ -11262,7 +11142,7 @@ class UOnlinePlaylistProvider* UUIDataStore_OnlinePlaylists::GetOnlinePlaylistPr
 
 
 // Function IpDrv.UIDataStore_OnlinePlaylists.GetPlaylistProvider
-// (Final, Iterator, Latent, PreOperator, Singular, NetReliable, Exec, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, PreOperator, Singular, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FName                   ProviderTag                    (Parm)
 // int                            ProviderIndex                  (Parm)
@@ -11291,13 +11171,13 @@ bool UUIDataStore_OnlinePlaylists::GetPlaylistProvider(const struct FName& Provi
 
 
 // Function IpDrv.UIDataStore_OnlinePlaylists.GetResourceProviders
-// (Iterator, Latent, Singular, Net, Simulated, Exec, Event, Static)
+// (Final, Defined, Iterator, Simulated, Event, Operator)
 // Parameters:
 // struct FName                   ProviderTag                    (Parm)
 // TArray<class UUIResourceDataProvider*> out_Providers                  (Parm, OutParm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UUIDataStore_OnlinePlaylists::STATIC_GetResourceProviders(const struct FName& ProviderTag, TArray<class UUIResourceDataProvider*>* out_Providers)
+bool UUIDataStore_OnlinePlaylists::GetResourceProviders(const struct FName& ProviderTag, TArray<class UUIResourceDataProvider*>* out_Providers)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.UIDataStore_OnlinePlaylists.GetResourceProviders");
 
@@ -11335,7 +11215,7 @@ void UUIDataStore_OnlinePlaylists::Init()
 
 
 // Function IpDrv.WebApplication.PostQuery
-// (Final, Defined, Latent, PreOperator, Singular, Net, Native, Operator, HasOptionalParms)
+// (Final, Iterator, PreOperator, Singular, Net, Exec, HasOptionalParms)
 // Parameters:
 // class UWebRequest*             Request                        (Parm)
 // class UWebResponse*            Response                       (Parm)
@@ -11349,7 +11229,6 @@ void UWebApplication::PostQuery(class UWebRequest* Request, class UWebResponse* 
 	params.Response = Response;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -11358,7 +11237,7 @@ void UWebApplication::PostQuery(class UWebRequest* Request, class UWebResponse* 
 
 
 // Function IpDrv.WebApplication.Query
-// (Final, Defined, Iterator, Singular, Simulated, Exec, Native, Event, Operator, Static)
+// (Defined, Iterator, Latent, Singular, Net, NetReliable, Native, Event, Static)
 // Parameters:
 // class UWebRequest*             Request                        (Parm)
 // class UWebResponse*            Response                       (Parm)
@@ -11381,7 +11260,7 @@ void UWebApplication::STATIC_Query(class UWebRequest* Request, class UWebRespons
 
 
 // Function IpDrv.WebApplication.PreQuery
-// (Iterator, Latent, PreOperator, Singular, Net, Native, Operator, HasOptionalParms)
+// (Defined, Iterator, PreOperator, Singular, Net, Exec, HasOptionalParms)
 // Parameters:
 // class UWebRequest*             Request                        (Parm)
 // class UWebResponse*            Response                       (Parm)
@@ -11396,7 +11275,6 @@ bool UWebApplication::PreQuery(class UWebRequest* Request, class UWebResponse* R
 	params.Response = Response;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -11407,15 +11285,16 @@ bool UWebApplication::PreQuery(class UWebRequest* Request, class UWebResponse* R
 
 
 // Function IpDrv.WebApplication.CleanupApp
-// (Final, Net, NetReliable, Simulated, Operator, HasOptionalParms)
+// (Defined, Latent, PreOperator, Singular, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 
-void UWebApplication::CleanupApp()
+void UWebApplication::STATIC_CleanupApp()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebApplication.CleanupApp");
 
 	UWebApplication_CleanupApp_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -11424,7 +11303,7 @@ void UWebApplication::CleanupApp()
 
 
 // Function IpDrv.WebApplication.Cleanup
-// (Iterator, PreOperator, Net, NetReliable, Simulated, Exec, Event, Operator)
+// (Final, Defined, Latent, PreOperator, Net, Simulated, Event)
 
 void UWebApplication::Cleanup()
 {
@@ -11458,7 +11337,7 @@ void UWebApplication::Init()
 
 
 // Function IpDrv.WebServer.GetApplication
-// (Iterator, Latent, PreOperator, NetReliable, Exec, Operator, HasOptionalParms)
+// (Defined, Iterator, PreOperator, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 URI                            (Parm, NeedCtorLink)
 // struct FString                 SubURI                         (Parm, OutParm, NeedCtorLink)
@@ -11559,7 +11438,7 @@ void AWebServer::PostBeginPlay()
 
 
 // Function IpDrv.HelloWeb.Query
-// (Final, Defined, Iterator, Singular, Simulated, Exec, Native, Event, Operator, Static)
+// (Defined, Iterator, Latent, Singular, Net, NetReliable, Native, Event, Static)
 // Parameters:
 // class UWebRequest*             Request                        (Parm)
 // class UWebResponse*            Response                       (Parm)
@@ -11599,7 +11478,7 @@ void UHelloWeb::Init()
 
 
 // Function IpDrv.ImageServer.Query
-// (Final, Defined, Iterator, Singular, Simulated, Exec, Native, Event, Operator, Static)
+// (Defined, Iterator, Latent, Singular, Net, NetReliable, Native, Event, Static)
 // Parameters:
 // class UWebRequest*             Request                        (Parm)
 // class UWebResponse*            Response                       (Parm)
@@ -11622,7 +11501,7 @@ void UImageServer::STATIC_Query(class UWebRequest* Request, class UWebResponse* 
 
 
 // Function IpDrv.McpServiceConfig.GetUserAuthTicket
-// (Final, Iterator, Net, NetReliable, Exec, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, PreOperator, Singular, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
@@ -11645,7 +11524,7 @@ struct FString UMcpServiceConfig::GetUserAuthTicket(const struct FString& McpId)
 
 
 // Function IpDrv.McpClashMobBase.UpdateChallengeUserReward
-// (Iterator, Latent, PreOperator, Net, Simulated, Native, Operator, HasOptionalParms)
+// (Defined, Iterator, PreOperator, Net, Simulated, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 UniqueChallengeId              (Parm, NeedCtorLink)
 // struct FString                 UniqueUserId                   (Parm, NeedCtorLink)
@@ -11661,7 +11540,6 @@ void UMcpClashMobBase::UpdateChallengeUserReward(const struct FString& UniqueCha
 	params.UserReward = UserReward;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -11670,7 +11548,7 @@ void UMcpClashMobBase::UpdateChallengeUserReward(const struct FString& UniqueCha
 
 
 // Function IpDrv.McpClashMobBase.OnUpdateChallengeUserRewardComplete
-// (Defined, Iterator, Latent, Singular, Native, Operator, HasOptionalParms)
+// (Latent, Singular, Exec, HasOptionalParms)
 // Parameters:
 // bool                           bWasSuccessful                 (Parm)
 // struct FString                 UniqueChallengeId              (Parm, NeedCtorLink)
@@ -11688,7 +11566,6 @@ void UMcpClashMobBase::OnUpdateChallengeUserRewardComplete(bool bWasSuccessful, 
 	params.Error = Error;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -11697,7 +11574,7 @@ void UMcpClashMobBase::OnUpdateChallengeUserRewardComplete(bool bWasSuccessful, 
 
 
 // Function IpDrv.McpClashMobBase.UpdateChallengeUserProgress
-// (Final, Defined, Latent, PreOperator, Net, Simulated, Native, Operator, HasOptionalParms)
+// (Final, Iterator, PreOperator, Net, Simulated, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 UniqueChallengeId              (Parm, NeedCtorLink)
 // struct FString                 UniqueUserId                   (Parm, NeedCtorLink)
@@ -11715,7 +11592,6 @@ void UMcpClashMobBase::UpdateChallengeUserProgress(const struct FString& UniqueC
 	params.GoalProgress = GoalProgress;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -11724,7 +11600,7 @@ void UMcpClashMobBase::UpdateChallengeUserProgress(const struct FString& UniqueC
 
 
 // Function IpDrv.McpClashMobBase.OnUpdateChallengeUserProgressComplete
-// (Iterator, Latent, Singular, Native, Operator, HasOptionalParms)
+// (Defined, Iterator, Singular, Exec, HasOptionalParms)
 // Parameters:
 // bool                           bWasSuccessful                 (Parm)
 // struct FString                 UniqueChallengeId              (Parm, NeedCtorLink)
@@ -11742,7 +11618,6 @@ void UMcpClashMobBase::OnUpdateChallengeUserProgressComplete(bool bWasSuccessful
 	params.Error = Error;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -11751,7 +11626,7 @@ void UMcpClashMobBase::OnUpdateChallengeUserProgressComplete(bool bWasSuccessful
 
 
 // Function IpDrv.McpClashMobBase.GetChallengeUserStatus
-// (Final, Singular, NetReliable, Exec, Operator, HasOptionalParms)
+// (Final, Defined, Latent, PreOperator, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 UniqueChallengeId              (Parm, NeedCtorLink)
 // struct FString                 UniqueUserId                   (Parm, NeedCtorLink)
@@ -11777,7 +11652,7 @@ void UMcpClashMobBase::GetChallengeUserStatus(const struct FString& UniqueChalle
 
 
 // Function IpDrv.McpClashMobBase.QueryChallengeMultiUserStatus
-// (Final, Iterator, PreOperator, NetReliable, Native, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 UniqueChallengeId              (Parm, NeedCtorLink)
 // struct FString                 UniqueUserId                   (Parm, NeedCtorLink)
@@ -11792,7 +11667,6 @@ void UMcpClashMobBase::QueryChallengeMultiUserStatus(const struct FString& Uniqu
 	params.UniqueUserId = UniqueUserId;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -11804,7 +11678,7 @@ void UMcpClashMobBase::QueryChallengeMultiUserStatus(const struct FString& Uniqu
 
 
 // Function IpDrv.McpClashMobBase.QueryChallengeUserStatus
-// (Defined, Iterator, PreOperator, NetReliable, Native, Operator, HasOptionalParms)
+// (PreOperator, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 UniqueChallengeId              (Parm, NeedCtorLink)
 // struct FString                 UniqueUserId                   (Parm, NeedCtorLink)
@@ -11818,7 +11692,6 @@ void UMcpClashMobBase::QueryChallengeUserStatus(const struct FString& UniqueChal
 	params.UniqueUserId = UniqueUserId;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -11827,7 +11700,7 @@ void UMcpClashMobBase::QueryChallengeUserStatus(const struct FString& UniqueChal
 
 
 // Function IpDrv.McpClashMobBase.OnQueryChallengeUserStatusComplete
-// (Final, Defined, Latent, Native, Operator, HasOptionalParms)
+// (Final, Iterator, Exec, HasOptionalParms)
 // Parameters:
 // bool                           bWasSuccessful                 (Parm)
 // struct FString                 UniqueChallengeId              (Parm, NeedCtorLink)
@@ -11845,7 +11718,6 @@ void UMcpClashMobBase::OnQueryChallengeUserStatusComplete(bool bWasSuccessful, c
 	params.Error = Error;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -11854,12 +11726,12 @@ void UMcpClashMobBase::OnQueryChallengeUserStatusComplete(bool bWasSuccessful, c
 
 
 // Function IpDrv.McpClashMobBase.AcceptChallenge
-// (Final, Defined, Iterator, PreOperator, Net, Simulated, Operator, HasOptionalParms)
+// (PreOperator, Net, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // struct FString                 UniqueChallengeId              (Parm, NeedCtorLink)
 // struct FString                 UniqueUserId                   (Parm, NeedCtorLink)
 
-void UMcpClashMobBase::AcceptChallenge(const struct FString& UniqueChallengeId, const struct FString& UniqueUserId)
+void UMcpClashMobBase::STATIC_AcceptChallenge(const struct FString& UniqueChallengeId, const struct FString& UniqueUserId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobBase.AcceptChallenge");
 
@@ -11868,6 +11740,7 @@ void UMcpClashMobBase::AcceptChallenge(const struct FString& UniqueChallengeId, 
 	params.UniqueUserId = UniqueUserId;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -11876,7 +11749,7 @@ void UMcpClashMobBase::AcceptChallenge(const struct FString& UniqueChallengeId, 
 
 
 // Function IpDrv.McpClashMobBase.OnAcceptChallengeComplete
-// (Final, Latent, PreOperator, Net, NetReliable, Simulated, Exec, Operator, HasOptionalParms)
+// (Final, Defined, PreOperator, Net, NetReliable, Simulated, HasOptionalParms)
 // Parameters:
 // bool                           bWasSuccessful                 (Parm)
 // struct FString                 UniqueChallengeId              (Parm, NeedCtorLink)
@@ -11902,7 +11775,7 @@ void UMcpClashMobBase::OnAcceptChallengeComplete(bool bWasSuccessful, const stru
 
 
 // Function IpDrv.McpClashMobBase.DeleteCachedChallengeFile
-// (Iterator, Latent, PreOperator, Exec, Operator, HasOptionalParms)
+// (Final, Iterator, PreOperator, HasOptionalParms)
 // Parameters:
 // struct FString                 UniqueChallengeId              (Parm, NeedCtorLink)
 // struct FString                 DLName                         (Parm, NeedCtorLink)
@@ -11924,12 +11797,12 @@ void UMcpClashMobBase::DeleteCachedChallengeFile(const struct FString& UniqueCha
 
 
 // Function IpDrv.McpClashMobBase.ClearCachedChallengeFile
-// (Final, Defined, Net, NetReliable, Simulated, Operator, HasOptionalParms)
+// (Iterator, Latent, PreOperator, Singular, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // struct FString                 UniqueChallengeId              (Parm, NeedCtorLink)
 // struct FString                 DLName                         (Parm, NeedCtorLink)
 
-void UMcpClashMobBase::ClearCachedChallengeFile(const struct FString& UniqueChallengeId, const struct FString& DLName)
+void UMcpClashMobBase::STATIC_ClearCachedChallengeFile(const struct FString& UniqueChallengeId, const struct FString& DLName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobBase.ClearCachedChallengeFile");
 
@@ -11938,6 +11811,7 @@ void UMcpClashMobBase::ClearCachedChallengeFile(const struct FString& UniqueChal
 	params.DLName = DLName;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -11946,7 +11820,7 @@ void UMcpClashMobBase::ClearCachedChallengeFile(const struct FString& UniqueChal
 
 
 // Function IpDrv.McpClashMobBase.GetChallengeFileContents
-// (Defined, Iterator, Latent, PreOperator, NetReliable, Exec, Operator, HasOptionalParms)
+// (Latent, PreOperator, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 UniqueChallengeId              (Parm, NeedCtorLink)
 // struct FString                 DLName                         (Parm, NeedCtorLink)
@@ -11972,7 +11846,7 @@ void UMcpClashMobBase::GetChallengeFileContents(const struct FString& UniqueChal
 
 
 // Function IpDrv.McpClashMobBase.DownloadChallengeFile
-// (Final, Defined, Iterator, Latent, Singular, Exec, Operator, HasOptionalParms)
+// (Final, Latent, Singular, HasOptionalParms)
 // Parameters:
 // struct FString                 UniqueChallengeId              (Parm, NeedCtorLink)
 // struct FString                 DLName                         (Parm, NeedCtorLink)
@@ -11994,7 +11868,7 @@ void UMcpClashMobBase::DownloadChallengeFile(const struct FString& UniqueChallen
 
 
 // Function IpDrv.McpClashMobBase.GetChallengeFileList
-// (Final, Defined, Iterator, Latent, PreOperator, NetReliable, Exec, Operator, HasOptionalParms)
+// (Final, Latent, PreOperator, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 UniqueChallengeId              (Parm, NeedCtorLink)
 // TArray<struct FMcpClashMobChallengeFile> OutChallengeFiles              (Parm, OutParm, NeedCtorLink)
@@ -12018,7 +11892,7 @@ void UMcpClashMobBase::GetChallengeFileList(const struct FString& UniqueChalleng
 
 
 // Function IpDrv.McpClashMobBase.OnDownloadChallengeFileComplete
-// (Final, Iterator, PreOperator, Singular, Net, NetReliable, Simulated, Exec, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, Singular, Net, NetReliable, Simulated, HasOptionalParms)
 // Parameters:
 // bool                           bWasSuccessful                 (Parm)
 // struct FString                 UniqueChallengeId              (Parm, NeedCtorLink)
@@ -12046,7 +11920,7 @@ void UMcpClashMobBase::OnDownloadChallengeFileComplete(bool bWasSuccessful, cons
 
 
 // Function IpDrv.McpClashMobBase.GetChallengeList
-// (Singular, NetReliable, Exec, Operator, HasOptionalParms)
+// (Defined, Latent, PreOperator, NetReliable, HasOptionalParms)
 // Parameters:
 // TArray<struct FMcpClashMobChallengeEvent> OutChallengeEvents             (Parm, OutParm, NeedCtorLink)
 
@@ -12068,7 +11942,7 @@ void UMcpClashMobBase::GetChallengeList(TArray<struct FMcpClashMobChallengeEvent
 
 
 // Function IpDrv.McpClashMobBase.QueryChallengeList
-// (Iterator, PreOperator, NetReliable, Native, Operator, HasOptionalParms)
+// (Defined, Iterator, Latent, NetReliable, Exec, HasOptionalParms)
 
 void UMcpClashMobBase::QueryChallengeList()
 {
@@ -12077,7 +11951,6 @@ void UMcpClashMobBase::QueryChallengeList()
 	UMcpClashMobBase_QueryChallengeList_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -12086,7 +11959,7 @@ void UMcpClashMobBase::QueryChallengeList()
 
 
 // Function IpDrv.McpClashMobBase.OnQueryChallengeListComplete
-// (Final, Defined, Iterator, Native, Operator, HasOptionalParms)
+// (Final, Exec, HasOptionalParms)
 // Parameters:
 // bool                           bWasSuccessful                 (Parm)
 // struct FString                 Error                          (Parm, NeedCtorLink)
@@ -12100,7 +11973,6 @@ void UMcpClashMobBase::OnQueryChallengeListComplete(bool bWasSuccessful, const s
 	params.Error = Error;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -12109,17 +11981,18 @@ void UMcpClashMobBase::OnQueryChallengeListComplete(bool bWasSuccessful, const s
 
 
 // Function IpDrv.McpClashMobBase.CreateInstance
-// (Defined, Iterator, Latent, Singular, Net, NetReliable, Simulated, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, Singular, Net, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // class UMcpClashMobBase*        ReturnValue                    (Parm, OutParm, ReturnParm)
 
-class UMcpClashMobBase* UMcpClashMobBase::CreateInstance()
+class UMcpClashMobBase* UMcpClashMobBase::STATIC_CreateInstance()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobBase.CreateInstance");
 
 	UMcpClashMobBase_CreateInstance_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -12130,7 +12003,7 @@ class UMcpClashMobBase* UMcpClashMobBase::CreateInstance()
 
 
 // Function IpDrv.McpClashMobFileDownload.GetUrlForFile
-// (Defined, Net, NetReliable, Exec, Operator, HasOptionalParms)
+// (Iterator, Latent, PreOperator, Singular, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 Filename                       (Parm, NeedCtorLink)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
@@ -12153,7 +12026,7 @@ struct FString UMcpClashMobFileDownload::GetUrlForFile(const struct FString& Fil
 
 
 // Function IpDrv.McpClashMobManager.OnUpdateChallengeUserRewardHTTPRequestComplete
-// (Final, Defined, Iterator, Latent, Singular, Native, Operator, HasOptionalParms)
+// (Final, Latent, Singular, Exec, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   Request                        (Parm)
 // class UHttpResponseInterface*  Response                       (Parm)
@@ -12169,7 +12042,6 @@ void UMcpClashMobManager::OnUpdateChallengeUserRewardHTTPRequestComplete(class U
 	params.bWasSuccessful = bWasSuccessful;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -12178,7 +12050,7 @@ void UMcpClashMobManager::OnUpdateChallengeUserRewardHTTPRequestComplete(class U
 
 
 // Function IpDrv.McpClashMobManager.UpdateChallengeUserReward
-// (Iterator, Latent, PreOperator, Net, Simulated, Native, Operator, HasOptionalParms)
+// (Defined, Iterator, PreOperator, Net, Simulated, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 UniqueChallengeId              (Parm, NeedCtorLink)
 // struct FString                 UniqueUserId                   (Parm, NeedCtorLink)
@@ -12194,7 +12066,6 @@ void UMcpClashMobManager::UpdateChallengeUserReward(const struct FString& Unique
 	params.UserReward = UserReward;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -12203,7 +12074,7 @@ void UMcpClashMobManager::UpdateChallengeUserReward(const struct FString& Unique
 
 
 // Function IpDrv.McpClashMobManager.OnUpdateChallengeUserProgressHTTPRequestComplete
-// (Final, Iterator, Latent, Singular, Native, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, Singular, Exec, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   Request                        (Parm)
 // class UHttpResponseInterface*  Response                       (Parm)
@@ -12219,7 +12090,6 @@ void UMcpClashMobManager::OnUpdateChallengeUserProgressHTTPRequestComplete(class
 	params.bWasSuccessful = bWasSuccessful;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -12228,7 +12098,7 @@ void UMcpClashMobManager::OnUpdateChallengeUserProgressHTTPRequestComplete(class
 
 
 // Function IpDrv.McpClashMobManager.UpdateChallengeUserProgress
-// (Final, Defined, Latent, PreOperator, Net, Simulated, Native, Operator, HasOptionalParms)
+// (Final, Iterator, PreOperator, Net, Simulated, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 UniqueChallengeId              (Parm, NeedCtorLink)
 // struct FString                 UniqueUserId                   (Parm, NeedCtorLink)
@@ -12246,7 +12116,6 @@ void UMcpClashMobManager::UpdateChallengeUserProgress(const struct FString& Uniq
 	params.GoalProgress = GoalProgress;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -12255,7 +12124,7 @@ void UMcpClashMobManager::UpdateChallengeUserProgress(const struct FString& Uniq
 
 
 // Function IpDrv.McpClashMobManager.GetChallengeUserStatus
-// (Final, Singular, NetReliable, Exec, Operator, HasOptionalParms)
+// (Final, Defined, Latent, PreOperator, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 UniqueChallengeId              (Parm, NeedCtorLink)
 // struct FString                 UniqueUserId                   (Parm, NeedCtorLink)
@@ -12281,7 +12150,7 @@ void UMcpClashMobManager::GetChallengeUserStatus(const struct FString& UniqueCha
 
 
 // Function IpDrv.McpClashMobManager.OnQueryChallengeMultiStatusHTTPRequestComplete
-// (Final, Latent, Native, Operator, HasOptionalParms)
+// (Final, Defined, Exec, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   Request                        (Parm)
 // class UHttpResponseInterface*  Response                       (Parm)
@@ -12297,7 +12166,6 @@ void UMcpClashMobManager::OnQueryChallengeMultiStatusHTTPRequestComplete(class U
 	params.bWasSuccessful = bWasSuccessful;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -12306,7 +12174,7 @@ void UMcpClashMobManager::OnQueryChallengeMultiStatusHTTPRequestComplete(class U
 
 
 // Function IpDrv.McpClashMobManager.QueryChallengeMultiUserStatus
-// (Final, Iterator, PreOperator, NetReliable, Native, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 UniqueChallengeId              (Parm, NeedCtorLink)
 // struct FString                 UniqueUserId                   (Parm, NeedCtorLink)
@@ -12321,7 +12189,6 @@ void UMcpClashMobManager::QueryChallengeMultiUserStatus(const struct FString& Un
 	params.UniqueUserId = UniqueUserId;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -12333,7 +12200,7 @@ void UMcpClashMobManager::QueryChallengeMultiUserStatus(const struct FString& Un
 
 
 // Function IpDrv.McpClashMobManager.OnQueryChallengeStatusHTTPRequestComplete
-// (Defined, Latent, Native, Operator, HasOptionalParms)
+// (Iterator, Exec, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   Request                        (Parm)
 // class UHttpResponseInterface*  Response                       (Parm)
@@ -12349,7 +12216,6 @@ void UMcpClashMobManager::OnQueryChallengeStatusHTTPRequestComplete(class UHttpR
 	params.bWasSuccessful = bWasSuccessful;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -12358,7 +12224,7 @@ void UMcpClashMobManager::OnQueryChallengeStatusHTTPRequestComplete(class UHttpR
 
 
 // Function IpDrv.McpClashMobManager.QueryChallengeUserStatus
-// (Defined, Iterator, PreOperator, NetReliable, Native, Operator, HasOptionalParms)
+// (PreOperator, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 UniqueChallengeId              (Parm, NeedCtorLink)
 // struct FString                 UniqueUserId                   (Parm, NeedCtorLink)
@@ -12372,7 +12238,6 @@ void UMcpClashMobManager::QueryChallengeUserStatus(const struct FString& UniqueC
 	params.UniqueUserId = UniqueUserId;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -12381,7 +12246,7 @@ void UMcpClashMobManager::QueryChallengeUserStatus(const struct FString& UniqueC
 
 
 // Function IpDrv.McpClashMobManager.OnAcceptChallengeHTTPRequestComplete
-// (Defined, Latent, PreOperator, Net, NetReliable, Simulated, Exec, Operator, HasOptionalParms)
+// (Iterator, PreOperator, Net, NetReliable, Simulated, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   Request                        (Parm)
 // class UHttpResponseInterface*  Response                       (Parm)
@@ -12405,12 +12270,12 @@ void UMcpClashMobManager::OnAcceptChallengeHTTPRequestComplete(class UHttpReques
 
 
 // Function IpDrv.McpClashMobManager.AcceptChallenge
-// (Final, Defined, Iterator, PreOperator, Net, Simulated, Operator, HasOptionalParms)
+// (PreOperator, Net, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // struct FString                 UniqueChallengeId              (Parm, NeedCtorLink)
 // struct FString                 UniqueUserId                   (Parm, NeedCtorLink)
 
-void UMcpClashMobManager::AcceptChallenge(const struct FString& UniqueChallengeId, const struct FString& UniqueUserId)
+void UMcpClashMobManager::STATIC_AcceptChallenge(const struct FString& UniqueChallengeId, const struct FString& UniqueUserId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobManager.AcceptChallenge");
 
@@ -12419,6 +12284,7 @@ void UMcpClashMobManager::AcceptChallenge(const struct FString& UniqueChallengeI
 	params.UniqueUserId = UniqueUserId;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -12427,7 +12293,7 @@ void UMcpClashMobManager::AcceptChallenge(const struct FString& UniqueChallengeI
 
 
 // Function IpDrv.McpClashMobManager.DeleteCachedChallengeFile
-// (Iterator, Latent, PreOperator, Exec, Operator, HasOptionalParms)
+// (Final, Iterator, PreOperator, HasOptionalParms)
 // Parameters:
 // struct FString                 UniqueChallengeId              (Parm, NeedCtorLink)
 // struct FString                 DLName                         (Parm, NeedCtorLink)
@@ -12449,12 +12315,12 @@ void UMcpClashMobManager::DeleteCachedChallengeFile(const struct FString& Unique
 
 
 // Function IpDrv.McpClashMobManager.ClearCachedChallengeFile
-// (Final, Defined, Net, NetReliable, Simulated, Operator, HasOptionalParms)
+// (Iterator, Latent, PreOperator, Singular, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // struct FString                 UniqueChallengeId              (Parm, NeedCtorLink)
 // struct FString                 DLName                         (Parm, NeedCtorLink)
 
-void UMcpClashMobManager::ClearCachedChallengeFile(const struct FString& UniqueChallengeId, const struct FString& DLName)
+void UMcpClashMobManager::STATIC_ClearCachedChallengeFile(const struct FString& UniqueChallengeId, const struct FString& DLName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpClashMobManager.ClearCachedChallengeFile");
 
@@ -12463,6 +12329,7 @@ void UMcpClashMobManager::ClearCachedChallengeFile(const struct FString& UniqueC
 	params.DLName = DLName;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -12471,7 +12338,7 @@ void UMcpClashMobManager::ClearCachedChallengeFile(const struct FString& UniqueC
 
 
 // Function IpDrv.McpClashMobManager.GetChallengeFileContents
-// (Defined, Iterator, Latent, PreOperator, NetReliable, Exec, Operator, HasOptionalParms)
+// (Latent, PreOperator, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 UniqueChallengeId              (Parm, NeedCtorLink)
 // struct FString                 DLName                         (Parm, NeedCtorLink)
@@ -12497,7 +12364,7 @@ void UMcpClashMobManager::GetChallengeFileContents(const struct FString& UniqueC
 
 
 // Function IpDrv.McpClashMobManager.OnDownloadMcpFileComplete
-// (Defined, Iterator, PreOperator, Singular, Net, NetReliable, Simulated, Exec, Operator, HasOptionalParms)
+// (PreOperator, Singular, Net, NetReliable, Simulated, HasOptionalParms)
 // Parameters:
 // bool                           bWasSuccessful                 (Parm)
 // struct FString                 DLName                         (Parm, NeedCtorLink)
@@ -12519,7 +12386,7 @@ void UMcpClashMobManager::OnDownloadMcpFileComplete(bool bWasSuccessful, const s
 
 
 // Function IpDrv.McpClashMobManager.OnLoadCachedFileComplete
-// (Final, Defined, Native, Operator, HasOptionalParms)
+// (Final, Iterator, Latent, PreOperator, Singular, Net, NetReliable, Simulated, HasOptionalParms)
 // Parameters:
 // bool                           bWasSuccessful                 (Parm)
 // struct FString                 DLName                         (Parm, NeedCtorLink)
@@ -12533,7 +12400,6 @@ void UMcpClashMobManager::OnLoadCachedFileComplete(bool bWasSuccessful, const st
 	params.DLName = DLName;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -12542,7 +12408,7 @@ void UMcpClashMobManager::OnLoadCachedFileComplete(bool bWasSuccessful, const st
 
 
 // Function IpDrv.McpClashMobManager.DownloadChallengeFile
-// (Final, Defined, Iterator, Latent, Singular, Exec, Operator, HasOptionalParms)
+// (Final, Latent, Singular, HasOptionalParms)
 // Parameters:
 // struct FString                 UniqueChallengeId              (Parm, NeedCtorLink)
 // struct FString                 DLName                         (Parm, NeedCtorLink)
@@ -12564,7 +12430,7 @@ void UMcpClashMobManager::DownloadChallengeFile(const struct FString& UniqueChal
 
 
 // Function IpDrv.McpClashMobManager.GetChallengeFileList
-// (Final, Defined, Iterator, Latent, PreOperator, NetReliable, Exec, Operator, HasOptionalParms)
+// (Final, Latent, PreOperator, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 UniqueChallengeId              (Parm, NeedCtorLink)
 // TArray<struct FMcpClashMobChallengeFile> OutChallengeFiles              (Parm, OutParm, NeedCtorLink)
@@ -12588,7 +12454,7 @@ void UMcpClashMobManager::GetChallengeFileList(const struct FString& UniqueChall
 
 
 // Function IpDrv.McpClashMobManager.GetChallengeList
-// (Singular, NetReliable, Exec, Operator, HasOptionalParms)
+// (Defined, Latent, PreOperator, NetReliable, HasOptionalParms)
 // Parameters:
 // TArray<struct FMcpClashMobChallengeEvent> OutChallengeEvents             (Parm, OutParm, NeedCtorLink)
 
@@ -12610,7 +12476,7 @@ void UMcpClashMobManager::GetChallengeList(TArray<struct FMcpClashMobChallengeEv
 
 
 // Function IpDrv.McpClashMobManager.OnQueryChallengeListHTTPRequestComplete
-// (Latent, Native, Operator, HasOptionalParms)
+// (Defined, Exec, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   Request                        (Parm)
 // class UHttpResponseInterface*  Response                       (Parm)
@@ -12626,7 +12492,6 @@ void UMcpClashMobManager::OnQueryChallengeListHTTPRequestComplete(class UHttpReq
 	params.bWasSuccessful = bWasSuccessful;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -12635,7 +12500,7 @@ void UMcpClashMobManager::OnQueryChallengeListHTTPRequestComplete(class UHttpReq
 
 
 // Function IpDrv.McpClashMobManager.QueryChallengeList
-// (Iterator, PreOperator, NetReliable, Native, Operator, HasOptionalParms)
+// (Defined, Iterator, Latent, NetReliable, Exec, HasOptionalParms)
 
 void UMcpClashMobManager::QueryChallengeList()
 {
@@ -12644,7 +12509,6 @@ void UMcpClashMobManager::QueryChallengeList()
 	UMcpClashMobManager_QueryChallengeList_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -12670,7 +12534,7 @@ void UMcpClashMobManager::Init()
 
 
 // Function IpDrv.McpGroupsBase.OnAcceptGroupInviteComplete
-// (Final, Defined, Latent, PreOperator, Net, NetReliable, Simulated, Exec, Operator, HasOptionalParms)
+// (Final, Iterator, PreOperator, Net, NetReliable, Simulated, HasOptionalParms)
 // Parameters:
 // struct FString                 GroupID                        (Parm, NeedCtorLink)
 // bool                           bWasSuccessful                 (Parm)
@@ -12694,13 +12558,13 @@ void UMcpGroupsBase::OnAcceptGroupInviteComplete(const struct FString& GroupID, 
 
 
 // Function IpDrv.McpGroupsBase.AcceptGroupInvite
-// (Final, Latent, PreOperator, Net, Simulated, Operator, HasOptionalParms)
+// (Defined, PreOperator, Net, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // struct FString                 UniqueUserId                   (Parm, NeedCtorLink)
 // struct FString                 GroupID                        (Parm, NeedCtorLink)
 // bool                           bShouldAccept                  (Parm)
 
-void UMcpGroupsBase::AcceptGroupInvite(const struct FString& UniqueUserId, const struct FString& GroupID, bool bShouldAccept)
+void UMcpGroupsBase::STATIC_AcceptGroupInvite(const struct FString& UniqueUserId, const struct FString& GroupID, bool bShouldAccept)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsBase.AcceptGroupInvite");
 
@@ -12710,6 +12574,7 @@ void UMcpGroupsBase::AcceptGroupInvite(const struct FString& UniqueUserId, const
 	params.bShouldAccept = bShouldAccept;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -12718,7 +12583,7 @@ void UMcpGroupsBase::AcceptGroupInvite(const struct FString& UniqueUserId, const
 
 
 // Function IpDrv.McpGroupsBase.GetGroupInviteList
-// (Final, Iterator, Singular, NetReliable, Exec, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, PreOperator, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 UserId                         (Parm, NeedCtorLink)
 // struct FMcpGroupList           InviteList                     (Parm, OutParm, NeedCtorLink)
@@ -12742,7 +12607,7 @@ void UMcpGroupsBase::GetGroupInviteList(const struct FString& UserId, struct FMc
 
 
 // Function IpDrv.McpGroupsBase.OnQueryGroupInvitesComplete
-// (Iterator, Latent, Native, Operator, HasOptionalParms)
+// (Defined, Iterator, Exec, HasOptionalParms)
 // Parameters:
 // bool                           bWasSuccessful                 (Parm)
 // struct FString                 Error                          (Parm, NeedCtorLink)
@@ -12756,7 +12621,6 @@ void UMcpGroupsBase::OnQueryGroupInvitesComplete(bool bWasSuccessful, const stru
 	params.Error = Error;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -12765,7 +12629,7 @@ void UMcpGroupsBase::OnQueryGroupInvitesComplete(bool bWasSuccessful, const stru
 
 
 // Function IpDrv.McpGroupsBase.QueryGroupInvites
-// (Final, Defined, Iterator, PreOperator, NetReliable, Native, Operator, HasOptionalParms)
+// (Final, PreOperator, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 UniqueUserId                   (Parm, NeedCtorLink)
 
@@ -12777,7 +12641,6 @@ void UMcpGroupsBase::QueryGroupInvites(const struct FString& UniqueUserId)
 	params.UniqueUserId = UniqueUserId;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -12786,7 +12649,7 @@ void UMcpGroupsBase::QueryGroupInvites(const struct FString& UniqueUserId)
 
 
 // Function IpDrv.McpGroupsBase.OnDeleteAllGroupsComplete
-// (Latent, Singular, Net, NetReliable, Simulated, Exec, Operator, HasOptionalParms)
+// (Defined, Singular, Net, NetReliable, Simulated, HasOptionalParms)
 // Parameters:
 // struct FString                 RequesterId                    (Parm, NeedCtorLink)
 // bool                           bWasSuccessful                 (Parm)
@@ -12810,7 +12673,7 @@ void UMcpGroupsBase::OnDeleteAllGroupsComplete(const struct FString& RequesterId
 
 
 // Function IpDrv.McpGroupsBase.DeleteAllGroups
-// (Defined, Latent, PreOperator, Exec, Operator, HasOptionalParms)
+// (Final, Defined, PreOperator, HasOptionalParms)
 // Parameters:
 // struct FString                 OwnerId                        (Parm, NeedCtorLink)
 
@@ -12830,7 +12693,7 @@ void UMcpGroupsBase::DeleteAllGroups(const struct FString& OwnerId)
 
 
 // Function IpDrv.McpGroupsBase.OnRemoveGroupMembersComplete
-// (Latent, Singular, Native, Operator, HasOptionalParms)
+// (Defined, Singular, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 GroupID                        (Parm, NeedCtorLink)
 // bool                           bWasSuccessful                 (Parm)
@@ -12846,7 +12709,6 @@ void UMcpGroupsBase::OnRemoveGroupMembersComplete(const struct FString& GroupID,
 	params.Error = Error;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -12855,7 +12717,7 @@ void UMcpGroupsBase::OnRemoveGroupMembersComplete(const struct FString& GroupID,
 
 
 // Function IpDrv.McpGroupsBase.RemoveGroupMembers
-// (Final, Defined, Latent, Net, NetReliable, Native, Operator, HasOptionalParms)
+// (Final, Iterator, Net, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 OwnerId                        (Parm, NeedCtorLink)
 // struct FString                 GroupID                        (Parm, NeedCtorLink)
@@ -12870,7 +12732,6 @@ void UMcpGroupsBase::RemoveGroupMembers(const struct FString& OwnerId, const str
 	params.GroupID = GroupID;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -12882,7 +12743,7 @@ void UMcpGroupsBase::RemoveGroupMembers(const struct FString& OwnerId, const str
 
 
 // Function IpDrv.McpGroupsBase.OnAddGroupMembersComplete
-// (Final, Iterator, Latent, PreOperator, Net, NetReliable, Simulated, Exec, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, PreOperator, Net, NetReliable, Simulated, HasOptionalParms)
 // Parameters:
 // struct FString                 GroupID                        (Parm, NeedCtorLink)
 // bool                           bWasSuccessful                 (Parm)
@@ -12906,14 +12767,14 @@ void UMcpGroupsBase::OnAddGroupMembersComplete(const struct FString& GroupID, bo
 
 
 // Function IpDrv.McpGroupsBase.AddGroupMembers
-// (Final, Defined, Iterator, Latent, PreOperator, Net, Simulated, Operator, HasOptionalParms)
+// (Latent, PreOperator, Net, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // struct FString                 OwnerId                        (Parm, NeedCtorLink)
 // struct FString                 GroupID                        (Parm, NeedCtorLink)
 // TArray<struct FString>         MemberIds                      (Const, Parm, OutParm, NeedCtorLink)
 // bool                           bRequiresAcceptance            (Parm)
 
-void UMcpGroupsBase::AddGroupMembers(const struct FString& OwnerId, const struct FString& GroupID, bool bRequiresAcceptance, TArray<struct FString>* MemberIds)
+void UMcpGroupsBase::STATIC_AddGroupMembers(const struct FString& OwnerId, const struct FString& GroupID, bool bRequiresAcceptance, TArray<struct FString>* MemberIds)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsBase.AddGroupMembers");
 
@@ -12923,6 +12784,7 @@ void UMcpGroupsBase::AddGroupMembers(const struct FString& OwnerId, const struct
 	params.bRequiresAcceptance = bRequiresAcceptance;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -12934,7 +12796,7 @@ void UMcpGroupsBase::AddGroupMembers(const struct FString& OwnerId, const struct
 
 
 // Function IpDrv.McpGroupsBase.GetGroupMembers
-// (Final, Defined, Iterator, Singular, NetReliable, Exec, Operator, HasOptionalParms)
+// (Final, Singular, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 GroupID                        (Parm, NeedCtorLink)
 // TArray<struct FMcpGroupMember> GroupMembers                   (Parm, OutParm, NeedCtorLink)
@@ -12958,7 +12820,7 @@ void UMcpGroupsBase::GetGroupMembers(const struct FString& GroupID, TArray<struc
 
 
 // Function IpDrv.McpGroupsBase.OnQueryGroupMembersComplete
-// (Final, Iterator, Latent, Native, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 GroupID                        (Parm, NeedCtorLink)
 // bool                           bWasSuccessful                 (Parm)
@@ -12974,7 +12836,6 @@ void UMcpGroupsBase::OnQueryGroupMembersComplete(const struct FString& GroupID, 
 	params.Error = Error;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -12983,7 +12844,7 @@ void UMcpGroupsBase::OnQueryGroupMembersComplete(const struct FString& GroupID, 
 
 
 // Function IpDrv.McpGroupsBase.QueryGroupMembers
-// (Latent, PreOperator, NetReliable, Native, Operator, HasOptionalParms)
+// (Defined, PreOperator, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 UniqueUserId                   (Parm, NeedCtorLink)
 // struct FString                 GroupID                        (Parm, NeedCtorLink)
@@ -12997,7 +12858,6 @@ void UMcpGroupsBase::QueryGroupMembers(const struct FString& UniqueUserId, const
 	params.GroupID = GroupID;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -13006,7 +12866,7 @@ void UMcpGroupsBase::QueryGroupMembers(const struct FString& UniqueUserId, const
 
 
 // Function IpDrv.McpGroupsBase.GetGroupList
-// (Defined, Iterator, Singular, NetReliable, Exec, Operator, HasOptionalParms)
+// (Singular, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 UserId                         (Parm, NeedCtorLink)
 // struct FMcpGroupList           GroupList                      (Parm, OutParm, NeedCtorLink)
@@ -13030,7 +12890,7 @@ void UMcpGroupsBase::GetGroupList(const struct FString& UserId, struct FMcpGroup
 
 
 // Function IpDrv.McpGroupsBase.OnQueryGroupsComplete
-// (Final, Defined, Iterator, Latent, Native, Operator, HasOptionalParms)
+// (Final, Latent, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 UserId                         (Parm, NeedCtorLink)
 // bool                           bWasSuccessful                 (Parm)
@@ -13046,7 +12906,6 @@ void UMcpGroupsBase::OnQueryGroupsComplete(const struct FString& UserId, bool bW
 	params.Error = Error;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -13055,7 +12914,7 @@ void UMcpGroupsBase::OnQueryGroupsComplete(const struct FString& UserId, bool bW
 
 
 // Function IpDrv.McpGroupsBase.QueryGroups
-// (Defined, Latent, PreOperator, NetReliable, Native, Operator, HasOptionalParms)
+// (Iterator, PreOperator, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 RequesterId                    (Parm, NeedCtorLink)
 
@@ -13067,7 +12926,6 @@ void UMcpGroupsBase::QueryGroups(const struct FString& RequesterId)
 	params.RequesterId = RequesterId;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -13076,7 +12934,7 @@ void UMcpGroupsBase::QueryGroups(const struct FString& RequesterId)
 
 
 // Function IpDrv.McpGroupsBase.OnDeleteGroupComplete
-// (Defined, Latent, Singular, Net, NetReliable, Simulated, Exec, Operator, HasOptionalParms)
+// (Iterator, Singular, Net, NetReliable, Simulated, HasOptionalParms)
 // Parameters:
 // struct FString                 GroupID                        (Parm, NeedCtorLink)
 // bool                           bWasSuccessful                 (Parm)
@@ -13100,7 +12958,7 @@ void UMcpGroupsBase::OnDeleteGroupComplete(const struct FString& GroupID, bool b
 
 
 // Function IpDrv.McpGroupsBase.DeleteGroup
-// (Defined, Iterator, Latent, NetReliable, Simulated, Native, Event, HasOptionalParms)
+// (Defined, Iterator, PreOperator, HasOptionalParms)
 // Parameters:
 // struct FString                 UniqueUserId                   (Parm, NeedCtorLink)
 // struct FString                 GroupID                        (Parm, NeedCtorLink)
@@ -13114,7 +12972,6 @@ void UMcpGroupsBase::DeleteGroup(const struct FString& UniqueUserId, const struc
 	params.GroupID = GroupID;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -13123,7 +12980,7 @@ void UMcpGroupsBase::DeleteGroup(const struct FString& UniqueUserId, const struc
 
 
 // Function IpDrv.McpGroupsBase.OnCreateGroupComplete
-// (Final, Defined, Singular, Net, NetReliable, Simulated, Exec, Operator, HasOptionalParms)
+// (Final, Iterator, Latent, PreOperator, Net, NetReliable, Simulated, HasOptionalParms)
 // Parameters:
 // struct FMcpGroup               Group                          (Parm, NeedCtorLink)
 // bool                           bWasSuccessful                 (Parm)
@@ -13147,12 +13004,12 @@ void UMcpGroupsBase::OnCreateGroupComplete(const struct FMcpGroup& Group, bool b
 
 
 // Function IpDrv.McpGroupsBase.CreateGroup
-// (Iterator, Latent, Singular, Net, NetReliable, Simulated, Operator, HasOptionalParms)
+// (Final, Iterator, Singular, Net, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // struct FString                 OwnerId                        (Parm, NeedCtorLink)
 // struct FString                 GroupName                      (Parm, NeedCtorLink)
 
-void UMcpGroupsBase::CreateGroup(const struct FString& OwnerId, const struct FString& GroupName)
+void UMcpGroupsBase::STATIC_CreateGroup(const struct FString& OwnerId, const struct FString& GroupName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsBase.CreateGroup");
 
@@ -13161,6 +13018,7 @@ void UMcpGroupsBase::CreateGroup(const struct FString& OwnerId, const struct FSt
 	params.GroupName = GroupName;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -13169,17 +13027,18 @@ void UMcpGroupsBase::CreateGroup(const struct FString& OwnerId, const struct FSt
 
 
 // Function IpDrv.McpGroupsBase.CreateInstance
-// (Defined, Iterator, Latent, Singular, Net, NetReliable, Simulated, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, Singular, Net, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // class UMcpGroupsBase*          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-class UMcpGroupsBase* UMcpGroupsBase::CreateInstance()
+class UMcpGroupsBase* UMcpGroupsBase::STATIC_CreateInstance()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsBase.CreateInstance");
 
 	UMcpGroupsBase_CreateInstance_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -13190,13 +13049,13 @@ class UMcpGroupsBase* UMcpGroupsBase::CreateInstance()
 
 
 // Function IpDrv.McpGroupsManager.CacheGroupMember
-// (Final, Defined, Iterator, Singular, NetReliable, Simulated, Operator, HasOptionalParms)
+// (Singular, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // struct FString                 MemberId                       (Parm, NeedCtorLink)
 // struct FString                 GroupID                        (Parm, NeedCtorLink)
 // TEnumAsByte<EMcpGroupAcceptState> AcceptState                    (Parm)
 
-void UMcpGroupsManager::CacheGroupMember(const struct FString& MemberId, const struct FString& GroupID, TEnumAsByte<EMcpGroupAcceptState> AcceptState)
+void UMcpGroupsManager::STATIC_CacheGroupMember(const struct FString& MemberId, const struct FString& GroupID, TEnumAsByte<EMcpGroupAcceptState> AcceptState)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsManager.CacheGroupMember");
 
@@ -13206,6 +13065,7 @@ void UMcpGroupsManager::CacheGroupMember(const struct FString& MemberId, const s
 	params.AcceptState = AcceptState;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -13214,12 +13074,12 @@ void UMcpGroupsManager::CacheGroupMember(const struct FString& MemberId, const s
 
 
 // Function IpDrv.McpGroupsManager.CacheGroup
-// (Defined, Iterator, Singular, NetReliable, Simulated, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, PreOperator, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // struct FString                 RequesterId                    (Parm, NeedCtorLink)
 // struct FMcpGroup               Group                          (Parm, NeedCtorLink)
 
-void UMcpGroupsManager::CacheGroup(const struct FString& RequesterId, const struct FMcpGroup& Group)
+void UMcpGroupsManager::STATIC_CacheGroup(const struct FString& RequesterId, const struct FMcpGroup& Group)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsManager.CacheGroup");
 
@@ -13228,6 +13088,7 @@ void UMcpGroupsManager::CacheGroup(const struct FString& RequesterId, const stru
 	params.Group = Group;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -13236,7 +13097,7 @@ void UMcpGroupsManager::CacheGroup(const struct FString& RequesterId, const stru
 
 
 // Function IpDrv.McpGroupsManager.OnAcceptGroupInviteRequestComplete
-// (Iterator, Latent, PreOperator, Net, NetReliable, Simulated, Exec, Operator, HasOptionalParms)
+// (Defined, Iterator, PreOperator, Net, NetReliable, Simulated, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   OriginalRequest                (Parm)
 // class UHttpResponseInterface*  HttpResponse                   (Parm)
@@ -13260,13 +13121,13 @@ void UMcpGroupsManager::OnAcceptGroupInviteRequestComplete(class UHttpRequestInt
 
 
 // Function IpDrv.McpGroupsManager.AcceptGroupInvite
-// (Final, Latent, PreOperator, Net, Simulated, Operator, HasOptionalParms)
+// (Defined, PreOperator, Net, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // struct FString                 UniqueUserId                   (Parm, NeedCtorLink)
 // struct FString                 GroupID                        (Parm, NeedCtorLink)
 // bool                           bShouldAccept                  (Parm)
 
-void UMcpGroupsManager::AcceptGroupInvite(const struct FString& UniqueUserId, const struct FString& GroupID, bool bShouldAccept)
+void UMcpGroupsManager::STATIC_AcceptGroupInvite(const struct FString& UniqueUserId, const struct FString& GroupID, bool bShouldAccept)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsManager.AcceptGroupInvite");
 
@@ -13276,6 +13137,7 @@ void UMcpGroupsManager::AcceptGroupInvite(const struct FString& UniqueUserId, co
 	params.bShouldAccept = bShouldAccept;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -13284,7 +13146,7 @@ void UMcpGroupsManager::AcceptGroupInvite(const struct FString& UniqueUserId, co
 
 
 // Function IpDrv.McpGroupsManager.OnDeleteAllGroupsRequestComplete
-// (Final, Latent, Singular, Net, NetReliable, Simulated, Exec, Operator, HasOptionalParms)
+// (Final, Defined, Singular, Net, NetReliable, Simulated, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   OriginalRequest                (Parm)
 // class UHttpResponseInterface*  HttpResponse                   (Parm)
@@ -13308,7 +13170,7 @@ void UMcpGroupsManager::OnDeleteAllGroupsRequestComplete(class UHttpRequestInter
 
 
 // Function IpDrv.McpGroupsManager.DeleteAllGroups
-// (Defined, Latent, PreOperator, Exec, Operator, HasOptionalParms)
+// (Final, Defined, PreOperator, HasOptionalParms)
 // Parameters:
 // struct FString                 UniqueUserId                   (Parm, NeedCtorLink)
 
@@ -13328,7 +13190,7 @@ void UMcpGroupsManager::DeleteAllGroups(const struct FString& UniqueUserId)
 
 
 // Function IpDrv.McpGroupsManager.OnRemoveGroupMembersRequestComplete
-// (Final, Latent, Singular, Native, Operator, HasOptionalParms)
+// (Final, Defined, Singular, Exec, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   OriginalRequest                (Parm)
 // class UHttpResponseInterface*  HttpResponse                   (Parm)
@@ -13344,7 +13206,6 @@ void UMcpGroupsManager::OnRemoveGroupMembersRequestComplete(class UHttpRequestIn
 	params.bWasSuccessful = bWasSuccessful;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -13353,7 +13214,7 @@ void UMcpGroupsManager::OnRemoveGroupMembersRequestComplete(class UHttpRequestIn
 
 
 // Function IpDrv.McpGroupsManager.RemoveGroupMembers
-// (Final, Defined, Latent, Net, NetReliable, Native, Operator, HasOptionalParms)
+// (Final, Iterator, Net, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 UniqueUserId                   (Parm, NeedCtorLink)
 // struct FString                 GroupID                        (Parm, NeedCtorLink)
@@ -13368,7 +13229,6 @@ void UMcpGroupsManager::RemoveGroupMembers(const struct FString& UniqueUserId, c
 	params.GroupID = GroupID;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -13380,7 +13240,7 @@ void UMcpGroupsManager::RemoveGroupMembers(const struct FString& UniqueUserId, c
 
 
 // Function IpDrv.McpGroupsManager.OnAddGroupMembersRequestComplete
-// (Defined, Iterator, Latent, PreOperator, Net, NetReliable, Simulated, Exec, Operator, HasOptionalParms)
+// (Latent, PreOperator, Net, NetReliable, Simulated, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   OriginalRequest                (Parm)
 // class UHttpResponseInterface*  HttpResponse                   (Parm)
@@ -13404,14 +13264,14 @@ void UMcpGroupsManager::OnAddGroupMembersRequestComplete(class UHttpRequestInter
 
 
 // Function IpDrv.McpGroupsManager.AddGroupMembers
-// (Final, Defined, Iterator, Latent, PreOperator, Net, Simulated, Operator, HasOptionalParms)
+// (Latent, PreOperator, Net, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // struct FString                 UniqueUserId                   (Parm, NeedCtorLink)
 // struct FString                 GroupID                        (Parm, NeedCtorLink)
 // TArray<struct FString>         MemberIds                      (Const, Parm, OutParm, NeedCtorLink)
 // bool                           bRequiresAcceptance            (Parm)
 
-void UMcpGroupsManager::AddGroupMembers(const struct FString& UniqueUserId, const struct FString& GroupID, bool bRequiresAcceptance, TArray<struct FString>* MemberIds)
+void UMcpGroupsManager::STATIC_AddGroupMembers(const struct FString& UniqueUserId, const struct FString& GroupID, bool bRequiresAcceptance, TArray<struct FString>* MemberIds)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsManager.AddGroupMembers");
 
@@ -13421,6 +13281,7 @@ void UMcpGroupsManager::AddGroupMembers(const struct FString& UniqueUserId, cons
 	params.bRequiresAcceptance = bRequiresAcceptance;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -13432,7 +13293,7 @@ void UMcpGroupsManager::AddGroupMembers(const struct FString& UniqueUserId, cons
 
 
 // Function IpDrv.McpGroupsManager.GetGroupMembers
-// (Final, Defined, Iterator, Singular, NetReliable, Exec, Operator, HasOptionalParms)
+// (Final, Singular, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 GroupID                        (Parm, NeedCtorLink)
 // TArray<struct FMcpGroupMember> GroupMembers                   (Parm, OutParm, NeedCtorLink)
@@ -13456,7 +13317,7 @@ void UMcpGroupsManager::GetGroupMembers(const struct FString& GroupID, TArray<st
 
 
 // Function IpDrv.McpGroupsManager.OnQueryGroupMembersRequestComplete
-// (Defined, Iterator, Latent, Native, Operator, HasOptionalParms)
+// (Latent, Exec, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   OriginalRequest                (Parm)
 // class UHttpResponseInterface*  HttpResponse                   (Parm)
@@ -13472,7 +13333,6 @@ void UMcpGroupsManager::OnQueryGroupMembersRequestComplete(class UHttpRequestInt
 	params.bWasSuccessful = bWasSuccessful;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -13481,7 +13341,7 @@ void UMcpGroupsManager::OnQueryGroupMembersRequestComplete(class UHttpRequestInt
 
 
 // Function IpDrv.McpGroupsManager.QueryGroupMembers
-// (Latent, PreOperator, NetReliable, Native, Operator, HasOptionalParms)
+// (Defined, PreOperator, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 UniqueUserId                   (Parm, NeedCtorLink)
 // struct FString                 GroupID                        (Parm, NeedCtorLink)
@@ -13495,7 +13355,6 @@ void UMcpGroupsManager::QueryGroupMembers(const struct FString& UniqueUserId, co
 	params.GroupID = GroupID;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -13504,7 +13363,7 @@ void UMcpGroupsManager::QueryGroupMembers(const struct FString& UniqueUserId, co
 
 
 // Function IpDrv.McpGroupsManager.GetGroupList
-// (Defined, Iterator, Singular, NetReliable, Exec, Operator, HasOptionalParms)
+// (Singular, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 UserId                         (Parm, NeedCtorLink)
 // struct FMcpGroupList           GroupList                      (Parm, OutParm, NeedCtorLink)
@@ -13528,7 +13387,7 @@ void UMcpGroupsManager::GetGroupList(const struct FString& UserId, struct FMcpGr
 
 
 // Function IpDrv.McpGroupsManager.OnQueryGroupsRequestComplete
-// (PreOperator, Native, Operator, HasOptionalParms)
+// (Defined, Latent, Exec, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   OriginalRequest                (Parm)
 // class UHttpResponseInterface*  HttpResponse                   (Parm)
@@ -13544,7 +13403,6 @@ void UMcpGroupsManager::OnQueryGroupsRequestComplete(class UHttpRequestInterface
 	params.bWasSuccessful = bWasSuccessful;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -13553,7 +13411,7 @@ void UMcpGroupsManager::OnQueryGroupsRequestComplete(class UHttpRequestInterface
 
 
 // Function IpDrv.McpGroupsManager.QueryGroups
-// (Defined, Latent, PreOperator, NetReliable, Native, Operator, HasOptionalParms)
+// (Iterator, PreOperator, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 RequesterId                    (Parm, NeedCtorLink)
 
@@ -13565,7 +13423,6 @@ void UMcpGroupsManager::QueryGroups(const struct FString& RequesterId)
 	params.RequesterId = RequesterId;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -13574,7 +13431,7 @@ void UMcpGroupsManager::QueryGroups(const struct FString& RequesterId)
 
 
 // Function IpDrv.McpGroupsManager.OnDeleteGroupRequestComplete
-// (Final, Defined, Latent, Singular, Net, NetReliable, Simulated, Exec, Operator, HasOptionalParms)
+// (Final, Iterator, Singular, Net, NetReliable, Simulated, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   OriginalRequest                (Parm)
 // class UHttpResponseInterface*  HttpResponse                   (Parm)
@@ -13598,7 +13455,7 @@ void UMcpGroupsManager::OnDeleteGroupRequestComplete(class UHttpRequestInterface
 
 
 // Function IpDrv.McpGroupsManager.DeleteGroup
-// (Defined, Iterator, Latent, NetReliable, Simulated, Native, Event, HasOptionalParms)
+// (Defined, Iterator, PreOperator, HasOptionalParms)
 // Parameters:
 // struct FString                 UniqueUserId                   (Parm, NeedCtorLink)
 // struct FString                 GroupID                        (Parm, NeedCtorLink)
@@ -13612,7 +13469,6 @@ void UMcpGroupsManager::DeleteGroup(const struct FString& UniqueUserId, const st
 	params.GroupID = GroupID;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -13621,7 +13477,7 @@ void UMcpGroupsManager::DeleteGroup(const struct FString& UniqueUserId, const st
 
 
 // Function IpDrv.McpGroupsManager.OnCreateGroupRequestComplete
-// (Iterator, Singular, Net, NetReliable, Simulated, Exec, Operator, HasOptionalParms)
+// (Defined, Iterator, Latent, PreOperator, Net, NetReliable, Simulated, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   CreateGroupRequest             (Parm)
 // class UHttpResponseInterface*  HttpResponse                   (Parm)
@@ -13645,12 +13501,12 @@ void UMcpGroupsManager::OnCreateGroupRequestComplete(class UHttpRequestInterface
 
 
 // Function IpDrv.McpGroupsManager.CreateGroup
-// (Iterator, Latent, Singular, Net, NetReliable, Simulated, Operator, HasOptionalParms)
+// (Final, Iterator, Singular, Net, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // struct FString                 UniqueUserId                   (Parm, NeedCtorLink)
 // struct FString                 GroupName                      (Parm, NeedCtorLink)
 
-void UMcpGroupsManager::CreateGroup(const struct FString& UniqueUserId, const struct FString& GroupName)
+void UMcpGroupsManager::STATIC_CreateGroup(const struct FString& UniqueUserId, const struct FString& GroupName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpGroupsManager.CreateGroup");
 
@@ -13659,6 +13515,7 @@ void UMcpGroupsManager::CreateGroup(const struct FString& UniqueUserId, const st
 	params.GroupName = GroupName;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -13667,7 +13524,7 @@ void UMcpGroupsManager::CreateGroup(const struct FString& UniqueUserId, const st
 
 
 // Function IpDrv.McpIdMappingBase.GetIdMappings
-// (Defined, Latent, Singular, NetReliable, Exec, Operator, HasOptionalParms)
+// (Iterator, Singular, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 ExternalType                   (Parm, NeedCtorLink)
 // TArray<struct FMcpIdMapping>   IDMappings                     (Parm, OutParm, NeedCtorLink)
@@ -13691,7 +13548,7 @@ void UMcpIdMappingBase::GetIdMappings(const struct FString& ExternalType, TArray
 
 
 // Function IpDrv.McpIdMappingBase.OnQueryMappingsComplete
-// (Final, Defined, PreOperator, Native, Operator, HasOptionalParms)
+// (Final, Iterator, Latent, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 ExternalType                   (Parm, NeedCtorLink)
 // bool                           bWasSuccessful                 (Parm)
@@ -13707,7 +13564,6 @@ void UMcpIdMappingBase::OnQueryMappingsComplete(const struct FString& ExternalTy
 	params.Error = Error;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -13716,7 +13572,7 @@ void UMcpIdMappingBase::OnQueryMappingsComplete(const struct FString& ExternalTy
 
 
 // Function IpDrv.McpIdMappingBase.QueryMappings
-// (Final, Defined, Iterator, Latent, PreOperator, NetReliable, Native, Operator, HasOptionalParms)
+// (Final, Latent, PreOperator, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // TArray<struct FString>         ExternalIds                    (Const, Parm, OutParm, NeedCtorLink)
 // struct FString                 ExternalType                   (Parm, NeedCtorLink)
@@ -13729,7 +13585,6 @@ void UMcpIdMappingBase::QueryMappings(const struct FString& ExternalType, TArray
 	params.ExternalType = ExternalType;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -13741,7 +13596,7 @@ void UMcpIdMappingBase::QueryMappings(const struct FString& ExternalType, TArray
 
 
 // Function IpDrv.McpIdMappingBase.OnAddMappingComplete
-// (Final, Defined, Iterator, Latent, PreOperator, Net, NetReliable, Simulated, Exec, Operator, HasOptionalParms)
+// (Final, Latent, PreOperator, Net, NetReliable, Simulated, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 ExternalId                     (Parm, NeedCtorLink)
@@ -13769,13 +13624,13 @@ void UMcpIdMappingBase::OnAddMappingComplete(const struct FString& McpId, const 
 
 
 // Function IpDrv.McpIdMappingBase.AddMapping
-// (Defined, Singular, Net, Simulated, Operator, HasOptionalParms)
+// (Final, Defined, Latent, PreOperator, Net, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 ExternalId                     (Parm, NeedCtorLink)
 // struct FString                 ExternalType                   (Parm, NeedCtorLink)
 
-void UMcpIdMappingBase::AddMapping(const struct FString& McpId, const struct FString& ExternalId, const struct FString& ExternalType)
+void UMcpIdMappingBase::STATIC_AddMapping(const struct FString& McpId, const struct FString& ExternalId, const struct FString& ExternalType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpIdMappingBase.AddMapping");
 
@@ -13785,6 +13640,7 @@ void UMcpIdMappingBase::AddMapping(const struct FString& McpId, const struct FSt
 	params.ExternalType = ExternalType;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -13793,17 +13649,18 @@ void UMcpIdMappingBase::AddMapping(const struct FString& McpId, const struct FSt
 
 
 // Function IpDrv.McpIdMappingBase.CreateInstance
-// (Defined, Iterator, Latent, Singular, Net, NetReliable, Simulated, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, Singular, Net, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // class UMcpIdMappingBase*       ReturnValue                    (Parm, OutParm, ReturnParm)
 
-class UMcpIdMappingBase* UMcpIdMappingBase::CreateInstance()
+class UMcpIdMappingBase* UMcpIdMappingBase::STATIC_CreateInstance()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpIdMappingBase.CreateInstance");
 
 	UMcpIdMappingBase_CreateInstance_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -13814,7 +13671,7 @@ class UMcpIdMappingBase* UMcpIdMappingBase::CreateInstance()
 
 
 // Function IpDrv.McpIdMappingManager.GetIdMappings
-// (Defined, Latent, Singular, NetReliable, Exec, Operator, HasOptionalParms)
+// (Iterator, Singular, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 ExternalType                   (Parm, NeedCtorLink)
 // TArray<struct FMcpIdMapping>   IDMappings                     (Parm, OutParm, NeedCtorLink)
@@ -13838,7 +13695,7 @@ void UMcpIdMappingManager::GetIdMappings(const struct FString& ExternalType, TAr
 
 
 // Function IpDrv.McpIdMappingManager.OnQueryMappingsRequestComplete
-// (Iterator, PreOperator, Native, Operator, HasOptionalParms)
+// (Defined, Iterator, Latent, Exec, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   Request                        (Parm)
 // class UHttpResponseInterface*  Response                       (Parm)
@@ -13854,7 +13711,6 @@ void UMcpIdMappingManager::OnQueryMappingsRequestComplete(class UHttpRequestInte
 	params.bWasSuccessful = bWasSuccessful;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -13863,7 +13719,7 @@ void UMcpIdMappingManager::OnQueryMappingsRequestComplete(class UHttpRequestInte
 
 
 // Function IpDrv.McpIdMappingManager.QueryMappings
-// (Final, Defined, Iterator, Latent, PreOperator, NetReliable, Native, Operator, HasOptionalParms)
+// (Final, Latent, PreOperator, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // TArray<struct FString>         ExternalIds                    (Const, Parm, OutParm, NeedCtorLink)
 // struct FString                 ExternalType                   (Parm, NeedCtorLink)
@@ -13876,7 +13732,6 @@ void UMcpIdMappingManager::QueryMappings(const struct FString& ExternalType, TAr
 	params.ExternalType = ExternalType;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -13888,7 +13743,7 @@ void UMcpIdMappingManager::QueryMappings(const struct FString& ExternalType, TAr
 
 
 // Function IpDrv.McpIdMappingManager.OnAddMappingRequestComplete
-// (Singular, Net, NetReliable, Simulated, Exec, Operator, HasOptionalParms)
+// (Defined, Latent, PreOperator, Net, NetReliable, Simulated, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   Request                        (Parm)
 // class UHttpResponseInterface*  Response                       (Parm)
@@ -13912,13 +13767,13 @@ void UMcpIdMappingManager::OnAddMappingRequestComplete(class UHttpRequestInterfa
 
 
 // Function IpDrv.McpIdMappingManager.AddMapping
-// (Defined, Singular, Net, Simulated, Operator, HasOptionalParms)
+// (Final, Defined, Latent, PreOperator, Net, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 ExternalId                     (Parm, NeedCtorLink)
 // struct FString                 ExternalType                   (Parm, NeedCtorLink)
 
-void UMcpIdMappingManager::AddMapping(const struct FString& McpId, const struct FString& ExternalId, const struct FString& ExternalType)
+void UMcpIdMappingManager::STATIC_AddMapping(const struct FString& McpId, const struct FString& ExternalId, const struct FString& ExternalType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpIdMappingManager.AddMapping");
 
@@ -13928,6 +13783,7 @@ void UMcpIdMappingManager::AddMapping(const struct FString& McpId, const struct 
 	params.ExternalType = ExternalType;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -13936,7 +13792,7 @@ void UMcpIdMappingManager::AddMapping(const struct FString& McpId, const struct 
 
 
 // Function IpDrv.McpManagedValueManagerBase.OnDeleteValueComplete
-// (Final, Defined, PreOperator, Singular, Net, NetReliable, Simulated, Exec, Operator, HasOptionalParms)
+// (Final, Iterator, Latent, Singular, Net, NetReliable, Simulated, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlot                       (Parm, NeedCtorLink)
@@ -13964,7 +13820,7 @@ void UMcpManagedValueManagerBase::OnDeleteValueComplete(const struct FString& Mc
 
 
 // Function IpDrv.McpManagedValueManagerBase.DeleteValue
-// (Iterator, Singular, Exec, Operator, HasOptionalParms)
+// (Defined, Iterator, Latent, PreOperator, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlot                       (Parm, NeedCtorLink)
@@ -13988,7 +13844,7 @@ void UMcpManagedValueManagerBase::DeleteValue(const struct FString& McpId, const
 
 
 // Function IpDrv.McpManagedValueManagerBase.OnUpdateValueComplete
-// (PreOperator, Singular, Native, Operator, HasOptionalParms)
+// (Defined, Latent, Singular, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlot                       (Parm, NeedCtorLink)
@@ -14010,7 +13866,6 @@ void UMcpManagedValueManagerBase::OnUpdateValueComplete(const struct FString& Mc
 	params.Error = Error;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -14019,7 +13874,7 @@ void UMcpManagedValueManagerBase::OnUpdateValueComplete(const struct FString& Mc
 
 
 // Function IpDrv.McpManagedValueManagerBase.UpdateValue
-// (Defined, Singular, Net, Simulated, Native, Operator, HasOptionalParms)
+// (Iterator, Latent, PreOperator, Net, Simulated, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlot                       (Parm, NeedCtorLink)
@@ -14037,7 +13892,6 @@ void UMcpManagedValueManagerBase::UpdateValue(const struct FString& McpId, const
 	params.Value = Value;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -14046,7 +13900,7 @@ void UMcpManagedValueManagerBase::UpdateValue(const struct FString& McpId, const
 
 
 // Function IpDrv.McpManagedValueManagerBase.GetValue
-// (Defined, Latent, Net, NetReliable, Exec, Operator, HasOptionalParms)
+// (Iterator, Net, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlot                       (Parm, NeedCtorLink)
@@ -14073,7 +13927,7 @@ int UMcpManagedValueManagerBase::GetValue(const struct FString& McpId, const str
 
 
 // Function IpDrv.McpManagedValueManagerBase.GetValues
-// (Final, Defined, Latent, Net, NetReliable, Exec, Operator, HasOptionalParms)
+// (Final, Iterator, Net, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlot                       (Parm, NeedCtorLink)
@@ -14098,7 +13952,7 @@ TArray<struct FManagedValue> UMcpManagedValueManagerBase::GetValues(const struct
 
 
 // Function IpDrv.McpManagedValueManagerBase.OnReadSaveSlotComplete
-// (Singular, Native, Operator, HasOptionalParms)
+// (Defined, Latent, PreOperator, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlot                       (Parm, NeedCtorLink)
@@ -14116,7 +13970,6 @@ void UMcpManagedValueManagerBase::OnReadSaveSlotComplete(const struct FString& M
 	params.Error = Error;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -14125,7 +13978,7 @@ void UMcpManagedValueManagerBase::OnReadSaveSlotComplete(const struct FString& M
 
 
 // Function IpDrv.McpManagedValueManagerBase.ReadSaveSlot
-// (Defined, PreOperator, Singular, NetReliable, Native, Operator, HasOptionalParms)
+// (Iterator, Latent, Singular, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlot                       (Parm, NeedCtorLink)
@@ -14139,7 +13992,6 @@ void UMcpManagedValueManagerBase::ReadSaveSlot(const struct FString& McpId, cons
 	params.SaveSlot = SaveSlot;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -14148,7 +14000,7 @@ void UMcpManagedValueManagerBase::ReadSaveSlot(const struct FString& McpId, cons
 
 
 // Function IpDrv.McpManagedValueManagerBase.OnCreateSaveSlotComplete
-// (Defined, Iterator, Singular, Net, NetReliable, Simulated, Exec, Operator, HasOptionalParms)
+// (Singular, Net, NetReliable, Simulated, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlot                       (Parm, NeedCtorLink)
@@ -14174,12 +14026,12 @@ void UMcpManagedValueManagerBase::OnCreateSaveSlotComplete(const struct FString&
 
 
 // Function IpDrv.McpManagedValueManagerBase.CreateSaveSlot
-// (Final, Defined, PreOperator, Singular, Net, NetReliable, Simulated, Operator, HasOptionalParms)
+// (Iterator, Latent, Singular, Net, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlot                       (Parm, NeedCtorLink)
 
-void UMcpManagedValueManagerBase::CreateSaveSlot(const struct FString& McpId, const struct FString& SaveSlot)
+void UMcpManagedValueManagerBase::STATIC_CreateSaveSlot(const struct FString& McpId, const struct FString& SaveSlot)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpManagedValueManagerBase.CreateSaveSlot");
 
@@ -14188,6 +14040,7 @@ void UMcpManagedValueManagerBase::CreateSaveSlot(const struct FString& McpId, co
 	params.SaveSlot = SaveSlot;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -14196,17 +14049,18 @@ void UMcpManagedValueManagerBase::CreateSaveSlot(const struct FString& McpId, co
 
 
 // Function IpDrv.McpManagedValueManagerBase.CreateInstance
-// (Defined, Iterator, Latent, Singular, Net, NetReliable, Simulated, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, Singular, Net, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // class UMcpManagedValueManagerBase* ReturnValue                    (Parm, OutParm, ReturnParm)
 
-class UMcpManagedValueManagerBase* UMcpManagedValueManagerBase::CreateInstance()
+class UMcpManagedValueManagerBase* UMcpManagedValueManagerBase::STATIC_CreateInstance()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpManagedValueManagerBase.CreateInstance");
 
 	UMcpManagedValueManagerBase_CreateInstance_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -14217,7 +14071,7 @@ class UMcpManagedValueManagerBase* UMcpManagedValueManagerBase::CreateInstance()
 
 
 // Function IpDrv.McpManagedValueManager.OnDeleteValueRequestComplete
-// (Iterator, PreOperator, Singular, Net, NetReliable, Simulated, Exec, Operator, HasOptionalParms)
+// (Defined, Iterator, Latent, Singular, Net, NetReliable, Simulated, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   Request                        (Parm)
 // class UHttpResponseInterface*  Response                       (Parm)
@@ -14241,7 +14095,7 @@ void UMcpManagedValueManager::OnDeleteValueRequestComplete(class UHttpRequestInt
 
 
 // Function IpDrv.McpManagedValueManager.DeleteValue
-// (Iterator, Singular, Exec, Operator, HasOptionalParms)
+// (Defined, Iterator, Latent, PreOperator, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlot                       (Parm, NeedCtorLink)
@@ -14265,7 +14119,7 @@ void UMcpManagedValueManager::DeleteValue(const struct FString& McpId, const str
 
 
 // Function IpDrv.McpManagedValueManager.OnUpdateValueRequestComplete
-// (Final, PreOperator, Singular, Native, Operator, HasOptionalParms)
+// (Final, Defined, Latent, Singular, Exec, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   Request                        (Parm)
 // class UHttpResponseInterface*  Response                       (Parm)
@@ -14281,7 +14135,6 @@ void UMcpManagedValueManager::OnUpdateValueRequestComplete(class UHttpRequestInt
 	params.bWasSuccessful = bWasSuccessful;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -14290,7 +14143,7 @@ void UMcpManagedValueManager::OnUpdateValueRequestComplete(class UHttpRequestInt
 
 
 // Function IpDrv.McpManagedValueManager.UpdateValue
-// (Defined, Singular, Net, Simulated, Native, Operator, HasOptionalParms)
+// (Iterator, Latent, PreOperator, Net, Simulated, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlot                       (Parm, NeedCtorLink)
@@ -14308,7 +14161,6 @@ void UMcpManagedValueManager::UpdateValue(const struct FString& McpId, const str
 	params.Value = Value;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -14317,7 +14169,7 @@ void UMcpManagedValueManager::UpdateValue(const struct FString& McpId, const str
 
 
 // Function IpDrv.McpManagedValueManager.GetValue
-// (Defined, Latent, Net, NetReliable, Exec, Operator, HasOptionalParms)
+// (Iterator, Net, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlot                       (Parm, NeedCtorLink)
@@ -14344,7 +14196,7 @@ int UMcpManagedValueManager::GetValue(const struct FString& McpId, const struct 
 
 
 // Function IpDrv.McpManagedValueManager.GetValues
-// (Final, Defined, Latent, Net, NetReliable, Exec, Operator, HasOptionalParms)
+// (Final, Iterator, Net, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlot                       (Parm, NeedCtorLink)
@@ -14369,7 +14221,7 @@ TArray<struct FManagedValue> UMcpManagedValueManager::GetValues(const struct FSt
 
 
 // Function IpDrv.McpManagedValueManager.OnReadSaveSlotRequestComplete
-// (Final, Singular, Native, Operator, HasOptionalParms)
+// (Final, Defined, Latent, PreOperator, Exec, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   Request                        (Parm)
 // class UHttpResponseInterface*  Response                       (Parm)
@@ -14385,7 +14237,6 @@ void UMcpManagedValueManager::OnReadSaveSlotRequestComplete(class UHttpRequestIn
 	params.bWasSuccessful = bWasSuccessful;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -14394,7 +14245,7 @@ void UMcpManagedValueManager::OnReadSaveSlotRequestComplete(class UHttpRequestIn
 
 
 // Function IpDrv.McpManagedValueManager.ReadSaveSlot
-// (Defined, PreOperator, Singular, NetReliable, Native, Operator, HasOptionalParms)
+// (Iterator, Latent, Singular, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlot                       (Parm, NeedCtorLink)
@@ -14408,7 +14259,6 @@ void UMcpManagedValueManager::ReadSaveSlot(const struct FString& McpId, const st
 	params.SaveSlot = SaveSlot;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -14417,7 +14267,7 @@ void UMcpManagedValueManager::ReadSaveSlot(const struct FString& McpId, const st
 
 
 // Function IpDrv.McpManagedValueManager.ParseValuesForSaveSlot
-// (Defined, Latent, Net, Native, Operator, HasOptionalParms)
+// (Iterator, Net, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlot                       (Parm, NeedCtorLink)
@@ -14433,7 +14283,6 @@ void UMcpManagedValueManager::ParseValuesForSaveSlot(const struct FString& McpId
 	params.JsonPayload = JsonPayload;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -14442,7 +14291,7 @@ void UMcpManagedValueManager::ParseValuesForSaveSlot(const struct FString& McpId
 
 
 // Function IpDrv.McpManagedValueManager.FindSaveSlotIndex
-// (Final, Defined, Iterator, Latent, NetReliable, Exec, Operator, HasOptionalParms)
+// (Final, Latent, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlot                       (Parm, NeedCtorLink)
@@ -14467,7 +14316,7 @@ int UMcpManagedValueManager::FindSaveSlotIndex(const struct FString& McpId, cons
 
 
 // Function IpDrv.McpManagedValueManager.OnCreateSaveSlotRequestComplete
-// (Final, Defined, Iterator, Singular, Net, NetReliable, Simulated, Exec, Operator, HasOptionalParms)
+// (Final, Singular, Net, NetReliable, Simulated, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   Request                        (Parm)
 // class UHttpResponseInterface*  Response                       (Parm)
@@ -14491,12 +14340,12 @@ void UMcpManagedValueManager::OnCreateSaveSlotRequestComplete(class UHttpRequest
 
 
 // Function IpDrv.McpManagedValueManager.CreateSaveSlot
-// (Final, Defined, PreOperator, Singular, Net, NetReliable, Simulated, Operator, HasOptionalParms)
+// (Iterator, Latent, Singular, Net, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlot                       (Parm, NeedCtorLink)
 
-void UMcpManagedValueManager::CreateSaveSlot(const struct FString& McpId, const struct FString& SaveSlot)
+void UMcpManagedValueManager::STATIC_CreateSaveSlot(const struct FString& McpId, const struct FString& SaveSlot)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpManagedValueManager.CreateSaveSlot");
 
@@ -14505,6 +14354,7 @@ void UMcpManagedValueManager::CreateSaveSlot(const struct FString& McpId, const 
 	params.SaveSlot = SaveSlot;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -14513,7 +14363,7 @@ void UMcpManagedValueManager::CreateSaveSlot(const struct FString& McpId, const 
 
 
 // Function IpDrv.McpServerTimeBase.GetLastServerTime
-// (Defined, Iterator, Latent, Singular, NetReliable, Exec, Operator, HasOptionalParms)
+// (Latent, Singular, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
@@ -14534,7 +14384,7 @@ struct FString UMcpServerTimeBase::GetLastServerTime()
 
 
 // Function IpDrv.McpServerTimeBase.OnQueryServerTimeComplete
-// (Final, Latent, PreOperator, Native, Operator, HasOptionalParms)
+// (Final, Defined, PreOperator, Exec, HasOptionalParms)
 // Parameters:
 // bool                           bWasSuccessful                 (Parm)
 // struct FString                 DateTimeStr                    (Parm, NeedCtorLink)
@@ -14550,7 +14400,6 @@ void UMcpServerTimeBase::OnQueryServerTimeComplete(bool bWasSuccessful, const st
 	params.Error = Error;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -14559,7 +14408,7 @@ void UMcpServerTimeBase::OnQueryServerTimeComplete(bool bWasSuccessful, const st
 
 
 // Function IpDrv.McpServerTimeBase.QueryServerTime
-// (Final, Iterator, Singular, NetReliable, Native, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, PreOperator, NetReliable, Exec, HasOptionalParms)
 
 void UMcpServerTimeBase::QueryServerTime()
 {
@@ -14568,7 +14417,6 @@ void UMcpServerTimeBase::QueryServerTime()
 	UMcpServerTimeBase_QueryServerTime_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -14577,17 +14425,18 @@ void UMcpServerTimeBase::QueryServerTime()
 
 
 // Function IpDrv.McpServerTimeBase.CreateInstance
-// (Defined, Iterator, Latent, Singular, Net, NetReliable, Simulated, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, Singular, Net, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // class UMcpServerTimeBase*      ReturnValue                    (Parm, OutParm, ReturnParm)
 
-class UMcpServerTimeBase* UMcpServerTimeBase::CreateInstance()
+class UMcpServerTimeBase* UMcpServerTimeBase::STATIC_CreateInstance()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpServerTimeBase.CreateInstance");
 
 	UMcpServerTimeBase_CreateInstance_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -14598,7 +14447,7 @@ class UMcpServerTimeBase* UMcpServerTimeBase::CreateInstance()
 
 
 // Function IpDrv.McpServerTimeManager.GetLastServerTime
-// (Defined, Iterator, Latent, Singular, NetReliable, Exec, Operator, HasOptionalParms)
+// (Latent, Singular, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
@@ -14619,7 +14468,7 @@ struct FString UMcpServerTimeManager::GetLastServerTime()
 
 
 // Function IpDrv.McpServerTimeManager.OnQueryServerTimeHTTPRequestComplete
-// (Defined, Latent, PreOperator, Native, Operator, HasOptionalParms)
+// (Iterator, PreOperator, Exec, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   Request                        (Parm)
 // class UHttpResponseInterface*  Response                       (Parm)
@@ -14635,7 +14484,6 @@ void UMcpServerTimeManager::OnQueryServerTimeHTTPRequestComplete(class UHttpRequ
 	params.bWasSuccessful = bWasSuccessful;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -14644,7 +14492,7 @@ void UMcpServerTimeManager::OnQueryServerTimeHTTPRequestComplete(class UHttpRequ
 
 
 // Function IpDrv.McpServerTimeManager.QueryServerTime
-// (Final, Iterator, Singular, NetReliable, Native, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, PreOperator, NetReliable, Exec, HasOptionalParms)
 
 void UMcpServerTimeManager::QueryServerTime()
 {
@@ -14653,7 +14501,6 @@ void UMcpServerTimeManager::QueryServerTime()
 	UMcpServerTimeManager_QueryServerTime_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -14662,7 +14509,7 @@ void UMcpServerTimeManager::QueryServerTime()
 
 
 // Function IpDrv.McpUserInventoryBase.OnRecordIapComplete
-// (Defined, Singular, Native, Operator, HasOptionalParms)
+// (Iterator, Latent, PreOperator, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlotId                     (Parm, NeedCtorLink)
@@ -14682,7 +14529,6 @@ void UMcpUserInventoryBase::OnRecordIapComplete(const struct FString& McpId, con
 	params.Error = Error;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -14691,7 +14537,7 @@ void UMcpUserInventoryBase::OnRecordIapComplete(const struct FString& McpId, con
 
 
 // Function IpDrv.McpUserInventoryBase.RecordIap
-// (Defined, Iterator, Latent, PreOperator, Singular, NetReliable, Native, Operator, HasOptionalParms)
+// (Latent, PreOperator, Singular, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlotId                     (Parm, NeedCtorLink)
@@ -14707,7 +14553,6 @@ void UMcpUserInventoryBase::RecordIap(const struct FString& McpId, const struct 
 	params.Receipt = Receipt;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -14716,7 +14561,7 @@ void UMcpUserInventoryBase::RecordIap(const struct FString& McpId, const struct 
 
 
 // Function IpDrv.McpUserInventoryBase.OnDeleteItemComplete
-// (Iterator, Latent, Singular, Net, NetReliable, Simulated, Exec, Operator, HasOptionalParms)
+// (Defined, Iterator, Singular, Net, NetReliable, Simulated, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlotId                     (Parm, NeedCtorLink)
@@ -14744,7 +14589,7 @@ void UMcpUserInventoryBase::OnDeleteItemComplete(const struct FString& McpId, co
 
 
 // Function IpDrv.McpUserInventoryBase.DeleteItem
-// (Defined, Iterator, Latent, PreOperator, Exec, Operator, HasOptionalParms)
+// (Latent, PreOperator, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlotId                     (Parm, NeedCtorLink)
@@ -14770,7 +14615,7 @@ void UMcpUserInventoryBase::DeleteItem(const struct FString& McpId, const struct
 
 
 // Function IpDrv.McpUserInventoryBase.OnConsumeItemComplete
-// (Final, Singular, Net, NetReliable, Simulated, Exec, Operator, HasOptionalParms)
+// (Final, Defined, Latent, PreOperator, Net, NetReliable, Simulated, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlotId                     (Parm, NeedCtorLink)
@@ -14800,7 +14645,7 @@ void UMcpUserInventoryBase::OnConsumeItemComplete(const struct FString& McpId, c
 
 
 // Function IpDrv.McpUserInventoryBase.ConsumeItem
-// (Defined, Iterator, Singular, Net, NetReliable, Simulated, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, PreOperator, Net, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlotId                     (Parm, NeedCtorLink)
@@ -14808,7 +14653,7 @@ void UMcpUserInventoryBase::OnConsumeItemComplete(const struct FString& McpId, c
 // int                            Quantity                       (Parm)
 // int                            StoreVersion                   (Parm)
 
-void UMcpUserInventoryBase::ConsumeItem(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& InstanceItemId, int Quantity, int StoreVersion)
+void UMcpUserInventoryBase::STATIC_ConsumeItem(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& InstanceItemId, int Quantity, int StoreVersion)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryBase.ConsumeItem");
 
@@ -14820,6 +14665,7 @@ void UMcpUserInventoryBase::ConsumeItem(const struct FString& McpId, const struc
 	params.StoreVersion = StoreVersion;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -14828,7 +14674,7 @@ void UMcpUserInventoryBase::ConsumeItem(const struct FString& McpId, const struc
 
 
 // Function IpDrv.McpUserInventoryBase.OnEarnItemComplete
-// (Final, Defined, Iterator, PreOperator, Singular, Net, NetReliable, Simulated, Exec, Operator, HasOptionalParms)
+// (Final, PreOperator, Singular, Net, NetReliable, Simulated, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlotId                     (Parm, NeedCtorLink)
@@ -14858,7 +14704,7 @@ void UMcpUserInventoryBase::OnEarnItemComplete(const struct FString& McpId, cons
 
 
 // Function IpDrv.McpUserInventoryBase.EarnItem
-// (Defined, Iterator, PreOperator, Singular, Exec, Operator, HasOptionalParms)
+// (PreOperator, Singular, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlotId                     (Parm, NeedCtorLink)
@@ -14886,7 +14732,7 @@ void UMcpUserInventoryBase::EarnItem(const struct FString& McpId, const struct F
 
 
 // Function IpDrv.McpUserInventoryBase.OnSellItemComplete
-// (Defined, Latent, Singular, Native, Operator, HasOptionalParms)
+// (Iterator, Singular, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlotId                     (Parm, NeedCtorLink)
@@ -14908,7 +14754,6 @@ void UMcpUserInventoryBase::OnSellItemComplete(const struct FString& McpId, cons
 	params.Error = Error;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -14917,7 +14762,7 @@ void UMcpUserInventoryBase::OnSellItemComplete(const struct FString& McpId, cons
 
 
 // Function IpDrv.McpUserInventoryBase.SellItem
-// (Defined, Simulated, Native, Operator, HasOptionalParms)
+// (Iterator, Latent, PreOperator, Singular, Net, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlotId                     (Parm, NeedCtorLink)
@@ -14938,7 +14783,6 @@ void UMcpUserInventoryBase::SellItem(const struct FString& McpId, const struct F
 	params.StoreVersion = StoreVersion;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -14950,7 +14794,7 @@ void UMcpUserInventoryBase::SellItem(const struct FString& McpId, const struct F
 
 
 // Function IpDrv.McpUserInventoryBase.OnPurchaseItemComplete
-// (Final, Iterator, Native, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, PreOperator, Singular, Net, NetReliable, Simulated, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlotId                     (Parm, NeedCtorLink)
@@ -14972,7 +14816,6 @@ void UMcpUserInventoryBase::OnPurchaseItemComplete(const struct FString& McpId, 
 	params.Error = Error;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -14981,7 +14824,7 @@ void UMcpUserInventoryBase::OnPurchaseItemComplete(const struct FString& McpId, 
 
 
 // Function IpDrv.McpUserInventoryBase.PurchaseItem
-// (Final, Defined, Iterator, Latent, NetReliable, Native, Operator, HasOptionalParms)
+// (Final, Latent, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlotId                     (Parm, NeedCtorLink)
@@ -15005,7 +14848,6 @@ void UMcpUserInventoryBase::PurchaseItem(const struct FString& McpId, const stru
 	params.Scalar = Scalar;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -15014,7 +14856,7 @@ void UMcpUserInventoryBase::PurchaseItem(const struct FString& McpId, const stru
 
 
 // Function IpDrv.McpUserInventoryBase.GetInventoryItem
-// (Final, Defined, Latent, Singular, NetReliable, Exec, Operator, HasOptionalParms)
+// (Final, Iterator, Singular, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlotId                     (Parm, NeedCtorLink)
@@ -15045,7 +14887,7 @@ bool UMcpUserInventoryBase::GetInventoryItem(const struct FString& McpId, const 
 
 
 // Function IpDrv.McpUserInventoryBase.GetInventoryItems
-// (Net, Simulated, Exec, Event, HasOptionalParms)
+// (Iterator, Latent, PreOperator, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlotId                     (Parm, NeedCtorLink)
@@ -15071,7 +14913,7 @@ void UMcpUserInventoryBase::GetInventoryItems(const struct FString& McpId, const
 
 
 // Function IpDrv.McpUserInventoryBase.OnQueryInventoryItemsComplete
-// (Final, PreOperator, Native, Operator, HasOptionalParms)
+// (Final, Defined, Latent, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlotId                     (Parm, NeedCtorLink)
@@ -15089,7 +14931,6 @@ void UMcpUserInventoryBase::OnQueryInventoryItemsComplete(const struct FString& 
 	params.Error = Error;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -15098,7 +14939,7 @@ void UMcpUserInventoryBase::OnQueryInventoryItemsComplete(const struct FString& 
 
 
 // Function IpDrv.McpUserInventoryBase.QueryInventoryItems
-// (Iterator, Latent, PreOperator, NetReliable, Native, Operator, HasOptionalParms)
+// (Defined, Iterator, PreOperator, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlotId                     (Parm, NeedCtorLink)
@@ -15112,7 +14953,6 @@ void UMcpUserInventoryBase::QueryInventoryItems(const struct FString& McpId, con
 	params.SaveSlotId = SaveSlotId;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -15121,7 +14961,7 @@ void UMcpUserInventoryBase::QueryInventoryItems(const struct FString& McpId, con
 
 
 // Function IpDrv.McpUserInventoryBase.OnQuerySaveSlotListComplete
-// (Final, Defined, Iterator, PreOperator, Native, Operator, HasOptionalParms)
+// (Final, PreOperator, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // bool                           bWasSuccessful                 (Parm)
@@ -15137,7 +14977,6 @@ void UMcpUserInventoryBase::OnQuerySaveSlotListComplete(const struct FString& Mc
 	params.Error = Error;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -15146,7 +14985,7 @@ void UMcpUserInventoryBase::OnQuerySaveSlotListComplete(const struct FString& Mc
 
 
 // Function IpDrv.McpUserInventoryBase.GetSaveSlotList
-// (Net, NetReliable, Exec, Operator, HasOptionalParms)
+// (Defined, Latent, PreOperator, Singular, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // TArray<struct FString>         ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
@@ -15169,7 +15008,7 @@ TArray<struct FString> UMcpUserInventoryBase::GetSaveSlotList(const struct FStri
 
 
 // Function IpDrv.McpUserInventoryBase.QuerySaveSlotList
-// (Iterator, Singular, NetReliable, Native, Operator, HasOptionalParms)
+// (Defined, Iterator, Latent, PreOperator, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 
@@ -15181,7 +15020,6 @@ void UMcpUserInventoryBase::QuerySaveSlotList(const struct FString& McpId)
 	params.McpId = McpId;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -15190,7 +15028,7 @@ void UMcpUserInventoryBase::QuerySaveSlotList(const struct FString& McpId)
 
 
 // Function IpDrv.McpUserInventoryBase.OnDeleteSaveSlotComplete
-// (Final, Defined, Iterator, Latent, Singular, Net, NetReliable, Simulated, Exec, Operator, HasOptionalParms)
+// (Final, Latent, Singular, Net, NetReliable, Simulated, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlotId                     (Parm, NeedCtorLink)
@@ -15216,7 +15054,7 @@ void UMcpUserInventoryBase::OnDeleteSaveSlotComplete(const struct FString& McpId
 
 
 // Function IpDrv.McpUserInventoryBase.DeleteSaveSlot
-// (Singular, Exec, Operator, HasOptionalParms)
+// (Defined, Latent, PreOperator, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlotId                     (Parm, NeedCtorLink)
@@ -15238,7 +15076,7 @@ void UMcpUserInventoryBase::DeleteSaveSlot(const struct FString& McpId, const st
 
 
 // Function IpDrv.McpUserInventoryBase.OnCreateSaveSlotComplete
-// (Defined, Iterator, Singular, Net, NetReliable, Simulated, Exec, Operator, HasOptionalParms)
+// (Singular, Net, NetReliable, Simulated, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlotId                     (Parm, NeedCtorLink)
@@ -15264,13 +15102,13 @@ void UMcpUserInventoryBase::OnCreateSaveSlotComplete(const struct FString& McpId
 
 
 // Function IpDrv.McpUserInventoryBase.CreateSaveSlot
-// (Final, Defined, PreOperator, Singular, Net, NetReliable, Simulated, Operator, HasOptionalParms)
+// (Iterator, Latent, Singular, Net, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlotId                     (Parm, NeedCtorLink)
 // struct FString                 ParentSaveSlotId               (OptionalParm, Parm, NeedCtorLink)
 
-void UMcpUserInventoryBase::CreateSaveSlot(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& ParentSaveSlotId)
+void UMcpUserInventoryBase::STATIC_CreateSaveSlot(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& ParentSaveSlotId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryBase.CreateSaveSlot");
 
@@ -15280,6 +15118,7 @@ void UMcpUserInventoryBase::CreateSaveSlot(const struct FString& McpId, const st
 	params.ParentSaveSlotId = ParentSaveSlotId;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -15288,17 +15127,18 @@ void UMcpUserInventoryBase::CreateSaveSlot(const struct FString& McpId, const st
 
 
 // Function IpDrv.McpUserInventoryBase.CreateInstance
-// (Defined, Iterator, Latent, Singular, Net, NetReliable, Simulated, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, Singular, Net, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // class UMcpUserInventoryBase*   ReturnValue                    (Parm, OutParm, ReturnParm)
 
-class UMcpUserInventoryBase* UMcpUserInventoryBase::CreateInstance()
+class UMcpUserInventoryBase* UMcpUserInventoryBase::STATIC_CreateInstance()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryBase.CreateInstance");
 
 	UMcpUserInventoryBase_CreateInstance_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -15309,7 +15149,7 @@ class UMcpUserInventoryBase* UMcpUserInventoryBase::CreateInstance()
 
 
 // Function IpDrv.McpUserInventoryManager.OnRecordIapRequestComplete
-// (Final, Defined, Singular, Native, Operator, HasOptionalParms)
+// (Final, Iterator, Latent, PreOperator, Exec, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   Request                        (Parm)
 // class UHttpResponseInterface*  Response                       (Parm)
@@ -15325,7 +15165,6 @@ void UMcpUserInventoryManager::OnRecordIapRequestComplete(class UHttpRequestInte
 	params.bWasSuccessful = bWasSuccessful;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -15334,7 +15173,7 @@ void UMcpUserInventoryManager::OnRecordIapRequestComplete(class UHttpRequestInte
 
 
 // Function IpDrv.McpUserInventoryManager.RecordIap
-// (Defined, Iterator, Latent, PreOperator, Singular, NetReliable, Native, Operator, HasOptionalParms)
+// (Latent, PreOperator, Singular, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlotId                     (Parm, NeedCtorLink)
@@ -15350,7 +15189,6 @@ void UMcpUserInventoryManager::RecordIap(const struct FString& McpId, const stru
 	params.Receipt = Receipt;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -15359,7 +15197,7 @@ void UMcpUserInventoryManager::RecordIap(const struct FString& McpId, const stru
 
 
 // Function IpDrv.McpUserInventoryManager.OnDeleteItemRequestComplete
-// (Final, Iterator, Latent, Singular, Net, NetReliable, Simulated, Exec, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, Singular, Net, NetReliable, Simulated, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   Request                        (Parm)
 // class UHttpResponseInterface*  Response                       (Parm)
@@ -15383,7 +15221,7 @@ void UMcpUserInventoryManager::OnDeleteItemRequestComplete(class UHttpRequestInt
 
 
 // Function IpDrv.McpUserInventoryManager.DeleteItem
-// (Defined, Iterator, Latent, PreOperator, Exec, Operator, HasOptionalParms)
+// (Latent, PreOperator, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlotId                     (Parm, NeedCtorLink)
@@ -15409,7 +15247,7 @@ void UMcpUserInventoryManager::DeleteItem(const struct FString& McpId, const str
 
 
 // Function IpDrv.McpUserInventoryManager.OnConsumeItemRequestComplete
-// (Defined, Singular, Net, NetReliable, Simulated, Exec, Operator, HasOptionalParms)
+// (Iterator, Latent, PreOperator, Net, NetReliable, Simulated, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   Request                        (Parm)
 // class UHttpResponseInterface*  Response                       (Parm)
@@ -15433,7 +15271,7 @@ void UMcpUserInventoryManager::OnConsumeItemRequestComplete(class UHttpRequestIn
 
 
 // Function IpDrv.McpUserInventoryManager.ConsumeItem
-// (Defined, Iterator, Singular, Net, NetReliable, Simulated, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, PreOperator, Net, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlotId                     (Parm, NeedCtorLink)
@@ -15441,7 +15279,7 @@ void UMcpUserInventoryManager::OnConsumeItemRequestComplete(class UHttpRequestIn
 // int                            Quantity                       (Parm)
 // int                            StoreVersion                   (Parm)
 
-void UMcpUserInventoryManager::ConsumeItem(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& InstanceItemId, int Quantity, int StoreVersion)
+void UMcpUserInventoryManager::STATIC_ConsumeItem(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& InstanceItemId, int Quantity, int StoreVersion)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryManager.ConsumeItem");
 
@@ -15453,6 +15291,7 @@ void UMcpUserInventoryManager::ConsumeItem(const struct FString& McpId, const st
 	params.StoreVersion = StoreVersion;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -15461,7 +15300,7 @@ void UMcpUserInventoryManager::ConsumeItem(const struct FString& McpId, const st
 
 
 // Function IpDrv.McpUserInventoryManager.OnEarnItemRequestComplete
-// (Latent, PreOperator, Singular, Net, NetReliable, Simulated, Exec, Operator, HasOptionalParms)
+// (Defined, PreOperator, Singular, Net, NetReliable, Simulated, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   Request                        (Parm)
 // class UHttpResponseInterface*  Response                       (Parm)
@@ -15485,7 +15324,7 @@ void UMcpUserInventoryManager::OnEarnItemRequestComplete(class UHttpRequestInter
 
 
 // Function IpDrv.McpUserInventoryManager.EarnItem
-// (Defined, Iterator, PreOperator, Singular, Exec, Operator, HasOptionalParms)
+// (PreOperator, Singular, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlotId                     (Parm, NeedCtorLink)
@@ -15513,7 +15352,7 @@ void UMcpUserInventoryManager::EarnItem(const struct FString& McpId, const struc
 
 
 // Function IpDrv.McpUserInventoryManager.OnSellItemRequestComplete
-// (Final, Defined, Latent, Singular, Native, Operator, HasOptionalParms)
+// (Final, Iterator, Singular, Exec, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   Request                        (Parm)
 // class UHttpResponseInterface*  Response                       (Parm)
@@ -15529,7 +15368,6 @@ void UMcpUserInventoryManager::OnSellItemRequestComplete(class UHttpRequestInter
 	params.bWasSuccessful = bWasSuccessful;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -15538,7 +15376,7 @@ void UMcpUserInventoryManager::OnSellItemRequestComplete(class UHttpRequestInter
 
 
 // Function IpDrv.McpUserInventoryManager.SellItem
-// (Defined, Simulated, Native, Operator, HasOptionalParms)
+// (Iterator, Latent, PreOperator, Singular, Net, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlotId                     (Parm, NeedCtorLink)
@@ -15559,7 +15397,6 @@ void UMcpUserInventoryManager::SellItem(const struct FString& McpId, const struc
 	params.StoreVersion = StoreVersion;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -15571,7 +15408,7 @@ void UMcpUserInventoryManager::SellItem(const struct FString& McpId, const struc
 
 
 // Function IpDrv.McpUserInventoryManager.OnPurchaseItemRequestComplete
-// (Defined, Iterator, Native, Operator, HasOptionalParms)
+// (Exec, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   Request                        (Parm)
 // class UHttpResponseInterface*  Response                       (Parm)
@@ -15587,7 +15424,6 @@ void UMcpUserInventoryManager::OnPurchaseItemRequestComplete(class UHttpRequestI
 	params.bWasSuccessful = bWasSuccessful;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -15596,7 +15432,7 @@ void UMcpUserInventoryManager::OnPurchaseItemRequestComplete(class UHttpRequestI
 
 
 // Function IpDrv.McpUserInventoryManager.PurchaseItem
-// (Final, Defined, Iterator, Latent, NetReliable, Native, Operator, HasOptionalParms)
+// (Final, Latent, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlotId                     (Parm, NeedCtorLink)
@@ -15620,7 +15456,6 @@ void UMcpUserInventoryManager::PurchaseItem(const struct FString& McpId, const s
 	params.Scalar = Scalar;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -15629,7 +15464,7 @@ void UMcpUserInventoryManager::PurchaseItem(const struct FString& McpId, const s
 
 
 // Function IpDrv.McpUserInventoryManager.FindItemRequest
-// (Final, Iterator, Latent, NetReliable, Exec, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlotId                     (Parm, NeedCtorLink)
@@ -15660,7 +15495,7 @@ int UMcpUserInventoryManager::FindItemRequest(const struct FString& McpId, const
 
 
 // Function IpDrv.McpUserInventoryManager.FindSaveSlotRequest
-// (PreOperator, NetReliable, Exec, Operator, HasOptionalParms)
+// (Defined, Latent, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlotId                     (Parm, NeedCtorLink)
@@ -15689,7 +15524,7 @@ int UMcpUserInventoryManager::FindSaveSlotRequest(const struct FString& McpId, c
 
 
 // Function IpDrv.McpUserInventoryManager.FindSaveSlotIndex
-// (Final, Defined, Iterator, Latent, NetReliable, Exec, Operator, HasOptionalParms)
+// (Final, Latent, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlotId                     (Parm, NeedCtorLink)
@@ -15714,7 +15549,7 @@ int UMcpUserInventoryManager::FindSaveSlotIndex(const struct FString& McpId, con
 
 
 // Function IpDrv.McpUserInventoryManager.ParseSaveSlotList
-// (Latent, Net, Native, Operator, HasOptionalParms)
+// (Defined, Net, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 JsonPayload                    (Parm, NeedCtorLink)
@@ -15728,7 +15563,6 @@ void UMcpUserInventoryManager::ParseSaveSlotList(const struct FString& McpId, co
 	params.JsonPayload = JsonPayload;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -15737,7 +15571,7 @@ void UMcpUserInventoryManager::ParseSaveSlotList(const struct FString& McpId, co
 
 
 // Function IpDrv.McpUserInventoryManager.ParseInventoryForSaveSlot
-// (Defined, Iterator, Net, Native, Operator, HasOptionalParms)
+// (Net, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlotId                     (Parm, NeedCtorLink)
@@ -15754,7 +15588,6 @@ TArray<struct FString> UMcpUserInventoryManager::ParseInventoryForSaveSlot(const
 	params.JsonPayload = JsonPayload;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -15765,7 +15598,7 @@ TArray<struct FString> UMcpUserInventoryManager::ParseInventoryForSaveSlot(const
 
 
 // Function IpDrv.McpUserInventoryManager.GetInventoryItem
-// (Final, Defined, Latent, Singular, NetReliable, Exec, Operator, HasOptionalParms)
+// (Final, Iterator, Singular, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlotId                     (Parm, NeedCtorLink)
@@ -15796,7 +15629,7 @@ bool UMcpUserInventoryManager::GetInventoryItem(const struct FString& McpId, con
 
 
 // Function IpDrv.McpUserInventoryManager.GetInventoryItems
-// (Net, Simulated, Exec, Event, HasOptionalParms)
+// (Iterator, Latent, PreOperator, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlotId                     (Parm, NeedCtorLink)
@@ -15822,7 +15655,7 @@ void UMcpUserInventoryManager::GetInventoryItems(const struct FString& McpId, co
 
 
 // Function IpDrv.McpUserInventoryManager.OnQueryInventoryItemsRequestComplete
-// (Defined, PreOperator, Native, Operator, HasOptionalParms)
+// (Iterator, Latent, Exec, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   Request                        (Parm)
 // class UHttpResponseInterface*  Response                       (Parm)
@@ -15838,7 +15671,6 @@ void UMcpUserInventoryManager::OnQueryInventoryItemsRequestComplete(class UHttpR
 	params.bWasSuccessful = bWasSuccessful;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -15847,7 +15679,7 @@ void UMcpUserInventoryManager::OnQueryInventoryItemsRequestComplete(class UHttpR
 
 
 // Function IpDrv.McpUserInventoryManager.QueryInventoryItems
-// (Iterator, Latent, PreOperator, NetReliable, Native, Operator, HasOptionalParms)
+// (Defined, Iterator, PreOperator, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlotId                     (Parm, NeedCtorLink)
@@ -15861,7 +15693,6 @@ void UMcpUserInventoryManager::QueryInventoryItems(const struct FString& McpId, 
 	params.SaveSlotId = SaveSlotId;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -15870,7 +15701,7 @@ void UMcpUserInventoryManager::QueryInventoryItems(const struct FString& McpId, 
 
 
 // Function IpDrv.McpUserInventoryManager.GetSaveSlotList
-// (Net, NetReliable, Exec, Operator, HasOptionalParms)
+// (Defined, Latent, PreOperator, Singular, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // TArray<struct FString>         ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
@@ -15893,7 +15724,7 @@ TArray<struct FString> UMcpUserInventoryManager::GetSaveSlotList(const struct FS
 
 
 // Function IpDrv.McpUserInventoryManager.OnQuerySaveSlotListRequestComplete
-// (Latent, PreOperator, Native, Operator, HasOptionalParms)
+// (Defined, PreOperator, Exec, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   Request                        (Parm)
 // class UHttpResponseInterface*  Response                       (Parm)
@@ -15909,7 +15740,6 @@ void UMcpUserInventoryManager::OnQuerySaveSlotListRequestComplete(class UHttpReq
 	params.bWasSuccessful = bWasSuccessful;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -15918,7 +15748,7 @@ void UMcpUserInventoryManager::OnQuerySaveSlotListRequestComplete(class UHttpReq
 
 
 // Function IpDrv.McpUserInventoryManager.QuerySaveSlotList
-// (Iterator, Singular, NetReliable, Native, Operator, HasOptionalParms)
+// (Defined, Iterator, Latent, PreOperator, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 
@@ -15930,7 +15760,6 @@ void UMcpUserInventoryManager::QuerySaveSlotList(const struct FString& McpId)
 	params.McpId = McpId;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -15939,7 +15768,7 @@ void UMcpUserInventoryManager::QuerySaveSlotList(const struct FString& McpId)
 
 
 // Function IpDrv.McpUserInventoryManager.OnDeleteSaveSlotRequestComplete
-// (PreOperator, Singular, Net, NetReliable, Simulated, Exec, Operator, HasOptionalParms)
+// (Defined, Latent, Singular, Net, NetReliable, Simulated, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   Request                        (Parm)
 // class UHttpResponseInterface*  Response                       (Parm)
@@ -15963,7 +15792,7 @@ void UMcpUserInventoryManager::OnDeleteSaveSlotRequestComplete(class UHttpReques
 
 
 // Function IpDrv.McpUserInventoryManager.DeleteSaveSlot
-// (Singular, Exec, Operator, HasOptionalParms)
+// (Defined, Latent, PreOperator, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlotId                     (Parm, NeedCtorLink)
@@ -15985,7 +15814,7 @@ void UMcpUserInventoryManager::DeleteSaveSlot(const struct FString& McpId, const
 
 
 // Function IpDrv.McpUserInventoryManager.OnCreateSaveSlotRequestComplete
-// (Final, Defined, Iterator, Singular, Net, NetReliable, Simulated, Exec, Operator, HasOptionalParms)
+// (Final, Singular, Net, NetReliable, Simulated, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   Request                        (Parm)
 // class UHttpResponseInterface*  Response                       (Parm)
@@ -16009,13 +15838,13 @@ void UMcpUserInventoryManager::OnCreateSaveSlotRequestComplete(class UHttpReques
 
 
 // Function IpDrv.McpUserInventoryManager.CreateSaveSlot
-// (Final, Defined, PreOperator, Singular, Net, NetReliable, Simulated, Operator, HasOptionalParms)
+// (Iterator, Latent, Singular, Net, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 SaveSlotId                     (Parm, NeedCtorLink)
 // struct FString                 ParentSaveSlotId               (OptionalParm, Parm, NeedCtorLink)
 
-void UMcpUserInventoryManager::CreateSaveSlot(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& ParentSaveSlotId)
+void UMcpUserInventoryManager::STATIC_CreateSaveSlot(const struct FString& McpId, const struct FString& SaveSlotId, const struct FString& ParentSaveSlotId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserInventoryManager.CreateSaveSlot");
 
@@ -16025,6 +15854,7 @@ void UMcpUserInventoryManager::CreateSaveSlot(const struct FString& McpId, const
 	params.ParentSaveSlotId = ParentSaveSlotId;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -16033,7 +15863,7 @@ void UMcpUserInventoryManager::CreateSaveSlot(const struct FString& McpId, const
 
 
 // Function IpDrv.McpUserManagerBase.OnDeleteUserComplete
-// (Final, PreOperator, Singular, Net, NetReliable, Simulated, Exec, Operator, HasOptionalParms)
+// (Final, Defined, Latent, Singular, Net, NetReliable, Simulated, HasOptionalParms)
 // Parameters:
 // bool                           bWasSuccessful                 (Parm)
 // struct FString                 Error                          (Parm, NeedCtorLink)
@@ -16055,7 +15885,7 @@ void UMcpUserManagerBase::OnDeleteUserComplete(bool bWasSuccessful, const struct
 
 
 // Function IpDrv.McpUserManagerBase.DeleteUser
-// (Final, Singular, Exec, Operator, HasOptionalParms)
+// (Final, Defined, Latent, PreOperator, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 
@@ -16075,7 +15905,7 @@ void UMcpUserManagerBase::DeleteUser(const struct FString& McpId)
 
 
 // Function IpDrv.McpUserManagerBase.GetUser
-// (Iterator, Net, NetReliable, Exec, Operator, HasOptionalParms)
+// (Defined, Iterator, Latent, PreOperator, Singular, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FMcpUserStatus          User                           (Parm, OutParm, NeedCtorLink)
@@ -16102,7 +15932,7 @@ bool UMcpUserManagerBase::GetUser(const struct FString& McpId, struct FMcpUserSt
 
 
 // Function IpDrv.McpUserManagerBase.GetUsers
-// (Final, Latent, Net, NetReliable, Exec, Operator, HasOptionalParms)
+// (Final, Defined, Net, NetReliable, HasOptionalParms)
 // Parameters:
 // TArray<struct FMcpUserStatus>  Users                          (Parm, OutParm, NeedCtorLink)
 
@@ -16124,7 +15954,7 @@ void UMcpUserManagerBase::GetUsers(TArray<struct FMcpUserStatus>* Users)
 
 
 // Function IpDrv.McpUserManagerBase.OnQueryUsersComplete
-// (Iterator, Latent, PreOperator, Native, Operator, HasOptionalParms)
+// (Defined, Iterator, PreOperator, Exec, HasOptionalParms)
 // Parameters:
 // bool                           bWasSuccessful                 (Parm)
 // struct FString                 Error                          (Parm, NeedCtorLink)
@@ -16138,7 +15968,6 @@ void UMcpUserManagerBase::OnQueryUsersComplete(bool bWasSuccessful, const struct
 	params.Error = Error;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -16147,7 +15976,7 @@ void UMcpUserManagerBase::OnQueryUsersComplete(bool bWasSuccessful, const struct
 
 
 // Function IpDrv.McpUserManagerBase.QueryUsers
-// (Final, Defined, Iterator, Singular, NetReliable, Native, Operator, HasOptionalParms)
+// (Final, Singular, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // TArray<struct FString>         McpIds                         (Const, Parm, OutParm, NeedCtorLink)
 
@@ -16158,7 +15987,6 @@ void UMcpUserManagerBase::QueryUsers(TArray<struct FString>* McpIds)
 	UMcpUserManagerBase_QueryUsers_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -16170,7 +15998,7 @@ void UMcpUserManagerBase::QueryUsers(TArray<struct FString>* McpIds)
 
 
 // Function IpDrv.McpUserManagerBase.QueryUser
-// (Defined, Iterator, Singular, NetReliable, Native, Operator, HasOptionalParms)
+// (Singular, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // bool                           bShouldUpdateLastActive        (OptionalParm, Parm)
@@ -16184,7 +16012,6 @@ void UMcpUserManagerBase::QueryUser(const struct FString& McpId, bool bShouldUpd
 	params.bShouldUpdateLastActive = bShouldUpdateLastActive;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -16193,7 +16020,7 @@ void UMcpUserManagerBase::QueryUser(const struct FString& McpId, bool bShouldUpd
 
 
 // Function IpDrv.McpUserManagerBase.OnRegisterUserComplete
-// (Iterator, Singular, Native, Operator, HasOptionalParms)
+// (Defined, Iterator, Latent, PreOperator, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // struct FString                 UDID                           (Parm, NeedCtorLink)
@@ -16211,7 +16038,6 @@ void UMcpUserManagerBase::OnRegisterUserComplete(const struct FString& McpId, co
 	params.Error = Error;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -16220,7 +16046,7 @@ void UMcpUserManagerBase::OnRegisterUserComplete(const struct FString& McpId, co
 
 
 // Function IpDrv.McpUserManagerBase.RegisterUserFacebook
-// (Final, Iterator, Net, NetReliable, Native, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, PreOperator, Singular, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 FacebookId                     (Parm, NeedCtorLink)
 // struct FString                 FacebookAuthToken              (Parm, NeedCtorLink)
@@ -16238,7 +16064,6 @@ void UMcpUserManagerBase::RegisterUserFacebook(const struct FString& FacebookId,
 	params.ExistingMcpAuth = ExistingMcpAuth;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -16247,7 +16072,7 @@ void UMcpUserManagerBase::RegisterUserFacebook(const struct FString& FacebookId,
 
 
 // Function IpDrv.McpUserManagerBase.RegisterUserEmail
-// (Final, Defined, Net, NetReliable, Native, Operator, HasOptionalParms)
+// (Final, Iterator, Latent, PreOperator, Singular, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 Email                          (Parm, NeedCtorLink)
 // struct FString                 PasswordHash                   (Parm, NeedCtorLink)
@@ -16265,7 +16090,6 @@ void UMcpUserManagerBase::RegisterUserEmail(const struct FString& Email, const s
 	params.ExistingMcpAuth = ExistingMcpAuth;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -16274,7 +16098,7 @@ void UMcpUserManagerBase::RegisterUserEmail(const struct FString& Email, const s
 
 
 // Function IpDrv.McpUserManagerBase.RegisterUserGenerated
-// (Defined, Iterator, Net, NetReliable, Native, Operator, HasOptionalParms)
+// (Net, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 UDID                           (Parm, NeedCtorLink)
 // struct FString                 ExistingMcpAuth                (OptionalParm, Parm, NeedCtorLink)
@@ -16288,7 +16112,6 @@ void UMcpUserManagerBase::RegisterUserGenerated(const struct FString& UDID, cons
 	params.ExistingMcpAuth = ExistingMcpAuth;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -16297,17 +16120,18 @@ void UMcpUserManagerBase::RegisterUserGenerated(const struct FString& UDID, cons
 
 
 // Function IpDrv.McpUserManagerBase.CreateInstance
-// (Defined, Iterator, Latent, Singular, Net, NetReliable, Simulated, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, Singular, Net, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // class UMcpUserManagerBase*     ReturnValue                    (Parm, OutParm, ReturnParm)
 
-class UMcpUserManagerBase* UMcpUserManagerBase::CreateInstance()
+class UMcpUserManagerBase* UMcpUserManagerBase::STATIC_CreateInstance()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.McpUserManagerBase.CreateInstance");
 
 	UMcpUserManagerBase_CreateInstance_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -16318,7 +16142,7 @@ class UMcpUserManagerBase* UMcpUserManagerBase::CreateInstance()
 
 
 // Function IpDrv.McpUserManager.OnDeleteUserRequestComplete
-// (Defined, PreOperator, Singular, Net, NetReliable, Simulated, Exec, Operator, HasOptionalParms)
+// (Iterator, Latent, Singular, Net, NetReliable, Simulated, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   Request                        (Parm)
 // class UHttpResponseInterface*  Response                       (Parm)
@@ -16342,7 +16166,7 @@ void UMcpUserManager::OnDeleteUserRequestComplete(class UHttpRequestInterface* R
 
 
 // Function IpDrv.McpUserManager.DeleteUser
-// (Final, Singular, Exec, Operator, HasOptionalParms)
+// (Final, Defined, Latent, PreOperator, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 
@@ -16362,7 +16186,7 @@ void UMcpUserManager::DeleteUser(const struct FString& McpId)
 
 
 // Function IpDrv.McpUserManager.GetUsers
-// (Final, Latent, Net, NetReliable, Exec, Operator, HasOptionalParms)
+// (Final, Defined, Net, NetReliable, HasOptionalParms)
 // Parameters:
 // TArray<struct FMcpUserStatus>  Users                          (Parm, OutParm, NeedCtorLink)
 
@@ -16384,7 +16208,7 @@ void UMcpUserManager::GetUsers(TArray<struct FMcpUserStatus>* Users)
 
 
 // Function IpDrv.McpUserManager.OnQueryUsersRequestComplete
-// (Final, Iterator, Latent, PreOperator, Native, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, PreOperator, Exec, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   Request                        (Parm)
 // class UHttpResponseInterface*  Response                       (Parm)
@@ -16400,7 +16224,6 @@ void UMcpUserManager::OnQueryUsersRequestComplete(class UHttpRequestInterface* R
 	params.bWasSuccessful = bWasSuccessful;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -16409,7 +16232,7 @@ void UMcpUserManager::OnQueryUsersRequestComplete(class UHttpRequestInterface* R
 
 
 // Function IpDrv.McpUserManager.QueryUsers
-// (Final, Defined, Iterator, Singular, NetReliable, Native, Operator, HasOptionalParms)
+// (Final, Singular, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // TArray<struct FString>         McpIds                         (Const, Parm, OutParm, NeedCtorLink)
 
@@ -16420,7 +16243,6 @@ void UMcpUserManager::QueryUsers(TArray<struct FString>* McpIds)
 	UMcpUserManager_QueryUsers_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -16432,7 +16254,7 @@ void UMcpUserManager::QueryUsers(TArray<struct FString>* McpIds)
 
 
 // Function IpDrv.McpUserManager.OnQueryUserRequestComplete
-// (Final, Defined, Latent, PreOperator, Native, Operator, HasOptionalParms)
+// (Final, Iterator, PreOperator, Exec, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   Request                        (Parm)
 // class UHttpResponseInterface*  Response                       (Parm)
@@ -16448,7 +16270,6 @@ void UMcpUserManager::OnQueryUserRequestComplete(class UHttpRequestInterface* Re
 	params.bWasSuccessful = bWasSuccessful;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -16457,7 +16278,7 @@ void UMcpUserManager::OnQueryUserRequestComplete(class UHttpRequestInterface* Re
 
 
 // Function IpDrv.McpUserManager.QueryUser
-// (Defined, Iterator, Singular, NetReliable, Native, Operator, HasOptionalParms)
+// (Singular, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 McpId                          (Parm, NeedCtorLink)
 // bool                           bShouldUpdateLastActive        (OptionalParm, Parm)
@@ -16471,7 +16292,6 @@ void UMcpUserManager::QueryUser(const struct FString& McpId, bool bShouldUpdateL
 	params.bShouldUpdateLastActive = bShouldUpdateLastActive;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -16480,7 +16300,7 @@ void UMcpUserManager::QueryUser(const struct FString& McpId, bool bShouldUpdateL
 
 
 // Function IpDrv.McpUserManager.OnRegisterUserFacebookRequestComplete
-// (Defined, Iterator, Singular, Native, Operator, HasOptionalParms)
+// (Singular, Exec, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   Request                        (Parm)
 // class UHttpResponseInterface*  Response                       (Parm)
@@ -16496,7 +16316,6 @@ void UMcpUserManager::OnRegisterUserFacebookRequestComplete(class UHttpRequestIn
 	params.bWasSuccessful = bWasSuccessful;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -16505,7 +16324,7 @@ void UMcpUserManager::OnRegisterUserFacebookRequestComplete(class UHttpRequestIn
 
 
 // Function IpDrv.McpUserManager.RegisterUserFacebook
-// (Final, Iterator, Net, NetReliable, Native, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, PreOperator, Singular, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 FacebookId                     (Parm, NeedCtorLink)
 // struct FString                 FacebookAuthToken              (Parm, NeedCtorLink)
@@ -16523,7 +16342,6 @@ void UMcpUserManager::RegisterUserFacebook(const struct FString& FacebookId, con
 	params.ExistingMcpAuth = ExistingMcpAuth;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -16532,7 +16350,7 @@ void UMcpUserManager::RegisterUserFacebook(const struct FString& FacebookId, con
 
 
 // Function IpDrv.McpUserManager.OnRegisterUserEmailRequestComplete
-// (Final, Iterator, Singular, Native, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, PreOperator, Exec, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   Request                        (Parm)
 // class UHttpResponseInterface*  Response                       (Parm)
@@ -16548,7 +16366,6 @@ void UMcpUserManager::OnRegisterUserEmailRequestComplete(class UHttpRequestInter
 	params.bWasSuccessful = bWasSuccessful;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -16557,7 +16374,7 @@ void UMcpUserManager::OnRegisterUserEmailRequestComplete(class UHttpRequestInter
 
 
 // Function IpDrv.McpUserManager.RegisterUserEmail
-// (Final, Defined, Net, NetReliable, Native, Operator, HasOptionalParms)
+// (Final, Iterator, Latent, PreOperator, Singular, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 Email                          (Parm, NeedCtorLink)
 // struct FString                 PasswordHash                   (Parm, NeedCtorLink)
@@ -16575,7 +16392,6 @@ void UMcpUserManager::RegisterUserEmail(const struct FString& Email, const struc
 	params.ExistingMcpAuth = ExistingMcpAuth;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -16584,7 +16400,7 @@ void UMcpUserManager::RegisterUserEmail(const struct FString& Email, const struc
 
 
 // Function IpDrv.McpUserManager.OnRegisterUserRequestComplete
-// (Final, Defined, Iterator, Singular, Native, Operator, HasOptionalParms)
+// (Final, Singular, Exec, HasOptionalParms)
 // Parameters:
 // class UHttpRequestInterface*   Request                        (Parm)
 // class UHttpResponseInterface*  Response                       (Parm)
@@ -16600,7 +16416,6 @@ void UMcpUserManager::OnRegisterUserRequestComplete(class UHttpRequestInterface*
 	params.bWasSuccessful = bWasSuccessful;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -16609,7 +16424,7 @@ void UMcpUserManager::OnRegisterUserRequestComplete(class UHttpRequestInterface*
 
 
 // Function IpDrv.McpUserManager.RegisterUserGenerated
-// (Defined, Iterator, Net, NetReliable, Native, Operator, HasOptionalParms)
+// (Net, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 UDID                           (Parm, NeedCtorLink)
 // struct FString                 ExistingMcpAuth                (OptionalParm, Parm, NeedCtorLink)
@@ -16623,7 +16438,6 @@ void UMcpUserManager::RegisterUserGenerated(const struct FString& UDID, const st
 	params.ExistingMcpAuth = ExistingMcpAuth;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -16632,7 +16446,7 @@ void UMcpUserManager::RegisterUserGenerated(const struct FString& UDID, const st
 
 
 // Function IpDrv.OnlineImageDownloaderWeb.DebugDraw
-// (Final, Defined, Singular, Simulated, Exec, Native, HasOptionalParms)
+// (Final, Iterator, Latent, PreOperator, Net, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // class UCanvas*                 Canvas                         (Parm)
 
@@ -16653,7 +16467,7 @@ void UOnlineImageDownloaderWeb::DebugDraw(class UCanvas* Canvas)
 
 
 // Function IpDrv.OnlineImageDownloaderWeb.OnDownloadComplete
-// (Final, Iterator, PreOperator, Singular, Simulated, Event, Operator, Static)
+// (Defined, PreOperator, Singular, Net, NetReliable, Exec, Native, Static)
 // Parameters:
 // class UHttpRequestInterface*   OriginalRequest                (Parm)
 // class UHttpResponseInterface*  Response                       (Parm)
@@ -16669,6 +16483,7 @@ void UOnlineImageDownloaderWeb::STATIC_OnDownloadComplete(class UHttpRequestInte
 	params.bDidSucceed = bDidSucceed;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -16677,7 +16492,7 @@ void UOnlineImageDownloaderWeb::STATIC_OnDownloadComplete(class UHttpRequestInte
 
 
 // Function IpDrv.OnlineImageDownloaderWeb.DownloadNextImage
-// (Defined, PreOperator, Singular, Exec, Operator, HasOptionalParms)
+// (Iterator, Latent, Singular, HasOptionalParms)
 
 void UOnlineImageDownloaderWeb::DownloadNextImage()
 {
@@ -16694,15 +16509,16 @@ void UOnlineImageDownloaderWeb::DownloadNextImage()
 
 
 // Function IpDrv.OnlineImageDownloaderWeb.ClearAllDownloads
-// (Defined, Net, NetReliable, Simulated, Operator, HasOptionalParms)
+// (Final, Defined, Latent, PreOperator, Singular, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 
-void UOnlineImageDownloaderWeb::ClearAllDownloads()
+void UOnlineImageDownloaderWeb::STATIC_ClearAllDownloads()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineImageDownloaderWeb.ClearAllDownloads");
 
 	UOnlineImageDownloaderWeb_ClearAllDownloads_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -16711,11 +16527,11 @@ void UOnlineImageDownloaderWeb::ClearAllDownloads()
 
 
 // Function IpDrv.OnlineImageDownloaderWeb.ClearDownloads
-// (Iterator, Net, NetReliable, Simulated, Operator, HasOptionalParms)
+// (Final, Iterator, Latent, PreOperator, Singular, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 // Parameters:
 // TArray<struct FString>         URLs                           (Parm, NeedCtorLink)
 
-void UOnlineImageDownloaderWeb::ClearDownloads(TArray<struct FString> URLs)
+void UOnlineImageDownloaderWeb::STATIC_ClearDownloads(TArray<struct FString> URLs)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.OnlineImageDownloaderWeb.ClearDownloads");
 
@@ -16723,6 +16539,7 @@ void UOnlineImageDownloaderWeb::ClearDownloads(TArray<struct FString> URLs)
 	params.URLs = URLs;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -16731,7 +16548,7 @@ void UOnlineImageDownloaderWeb::ClearDownloads(TArray<struct FString> URLs)
 
 
 // Function IpDrv.OnlineImageDownloaderWeb.GetNumPendingDownloads
-// (Final, Defined, Iterator, PreOperator, Singular, NetReliable, Exec, Operator, HasOptionalParms)
+// (Final, PreOperator, Singular, NetReliable, HasOptionalParms)
 // Parameters:
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
@@ -16752,7 +16569,7 @@ int UOnlineImageDownloaderWeb::GetNumPendingDownloads()
 
 
 // Function IpDrv.OnlineImageDownloaderWeb.RequestOnlineImages
-// (Final, Latent, PreOperator, Net, NetReliable, Native, Operator, HasOptionalParms)
+// (Final, Defined, PreOperator, Net, NetReliable, Exec, HasOptionalParms)
 // Parameters:
 // TArray<struct FString>         URLs                           (Parm, NeedCtorLink)
 
@@ -16764,7 +16581,6 @@ void UOnlineImageDownloaderWeb::RequestOnlineImages(TArray<struct FString> URLs)
 	params.URLs = URLs;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -16773,7 +16589,7 @@ void UOnlineImageDownloaderWeb::RequestOnlineImages(TArray<struct FString> URLs)
 
 
 // Function IpDrv.OnlineImageDownloaderWeb.GetOpenDownloadImagesSlot
-// (Defined, Latent, PreOperator, Singular, NetReliable, Exec, Operator, HasOptionalParms)
+// (Iterator, PreOperator, Singular, NetReliable, HasOptionalParms)
 // Parameters:
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
@@ -16794,7 +16610,7 @@ int UOnlineImageDownloaderWeb::GetOpenDownloadImagesSlot()
 
 
 // Function IpDrv.OnlineImageDownloaderWeb.GetOnlineImageTexture
-// (Latent, PreOperator, Singular, NetReliable, Exec, Operator, HasOptionalParms)
+// (Defined, PreOperator, Singular, NetReliable, HasOptionalParms)
 // Parameters:
 // struct FString                 URL                            (Parm, NeedCtorLink)
 // class UTexture*                ReturnValue                    (Parm, OutParm, ReturnParm)
@@ -16817,7 +16633,7 @@ class UTexture* UOnlineImageDownloaderWeb::GetOnlineImageTexture(const struct FS
 
 
 // Function IpDrv.OnlineImageDownloaderWeb.OnOnlineImageDownloaded
-// (Iterator, Native, Operator, HasOptionalParms)
+// (Defined, Iterator, Latent, PreOperator, Singular, Net, NetReliable, Simulated, HasOptionalParms)
 // Parameters:
 // struct FOnlineImageDownload    CachedEntry                    (Parm, NeedCtorLink)
 
@@ -16829,7 +16645,6 @@ void UOnlineImageDownloaderWeb::OnOnlineImageDownloaded(const struct FOnlineImag
 	params.CachedEntry = CachedEntry;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -16838,7 +16653,7 @@ void UOnlineImageDownloaderWeb::OnOnlineImageDownloaded(const struct FOnlineImag
 
 
 // Function IpDrv.WebConnection.IsHanging
-// (Final, Defined, Iterator, Simulated, Exec, Operator, HasOptionalParms)
+// (Final, Simulated, HasOptionalParms)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
@@ -16859,7 +16674,7 @@ bool AWebConnection::IsHanging()
 
 
 // Function IpDrv.WebConnection.Cleanup
-// (Iterator, PreOperator, Net, NetReliable, Simulated, Exec, Event, Operator)
+// (Final, Defined, Latent, PreOperator, Net, Simulated, Event)
 
 void AWebConnection::Cleanup()
 {
@@ -16876,15 +16691,16 @@ void AWebConnection::Cleanup()
 
 
 // Function IpDrv.WebConnection.CheckRawBytes
-// (Net, NetReliable, Simulated, Operator, HasOptionalParms)
+// (Final, Latent, PreOperator, Singular, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 
-void AWebConnection::CheckRawBytes()
+void AWebConnection::STATIC_CheckRawBytes()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebConnection.CheckRawBytes");
 
 	AWebConnection_CheckRawBytes_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -16893,7 +16709,7 @@ void AWebConnection::CheckRawBytes()
 
 
 // Function IpDrv.WebConnection.EndOfHeaders
-// (Final, Iterator, Latent, Net, Exec, Operator, HasOptionalParms)
+// (Final, Defined, Iterator, Net, HasOptionalParms)
 
 void AWebConnection::EndOfHeaders()
 {
@@ -16910,15 +16726,16 @@ void AWebConnection::EndOfHeaders()
 
 
 // Function IpDrv.WebConnection.CreateResponseObject
-// (Defined, PreOperator, Singular, Net, NetReliable, Simulated, Operator, HasOptionalParms)
+// (Final, Defined, Latent, Singular, Net, NetReliable, Simulated, Exec, Native, Event, Operator, Static)
 
-void AWebConnection::CreateResponseObject()
+void AWebConnection::STATIC_CreateResponseObject()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function IpDrv.WebConnection.CreateResponseObject");
 
 	AWebConnection_CreateResponseObject_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -16927,7 +16744,7 @@ void AWebConnection::CreateResponseObject()
 
 
 // Function IpDrv.WebConnection.ProcessPost
-// (Iterator, NetReliable, Native, Operator, HasOptionalParms)
+// (Defined, Iterator, Latent, PreOperator, Singular, Net, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 S                              (Parm, NeedCtorLink)
 
@@ -16939,7 +16756,6 @@ void AWebConnection::ProcessPost(const struct FString& S)
 	params.S = S;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -16948,7 +16764,7 @@ void AWebConnection::ProcessPost(const struct FString& S)
 
 
 // Function IpDrv.WebConnection.ProcessGet
-// (Final, NetReliable, Native, Operator, HasOptionalParms)
+// (Final, Defined, Latent, PreOperator, Singular, Net, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 S                              (Parm, NeedCtorLink)
 
@@ -16960,7 +16776,6 @@ void AWebConnection::ProcessGet(const struct FString& S)
 	params.S = S;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -16969,7 +16784,7 @@ void AWebConnection::ProcessGet(const struct FString& S)
 
 
 // Function IpDrv.WebConnection.ProcessHead
-// (Defined, NetReliable, Native, Operator, HasOptionalParms)
+// (Iterator, Latent, PreOperator, Singular, Net, Exec, HasOptionalParms)
 // Parameters:
 // struct FString                 S                              (Parm, NeedCtorLink)
 
@@ -16981,7 +16796,6 @@ void AWebConnection::ProcessHead(const struct FString& S)
 	params.S = S;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -16990,7 +16804,7 @@ void AWebConnection::ProcessHead(const struct FString& S)
 
 
 // Function IpDrv.WebConnection.ReceivedLine
-// (Final, PreOperator, Simulated, Exec, Native, HasOptionalParms)
+// (Final, Defined, Latent, Net, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // struct FString                 S                              (Parm, NeedCtorLink)
 
@@ -17011,7 +16825,7 @@ void AWebConnection::ReceivedLine(const struct FString& S)
 
 
 // Function IpDrv.WebConnection.ReceivedText
-// (Defined, PreOperator, Simulated, Exec, Native, HasOptionalParms)
+// (Iterator, Latent, Net, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // struct FString                 Text                           (Parm, NeedCtorLink)
 
@@ -17050,7 +16864,7 @@ void AWebConnection::Timer()
 
 
 // Function IpDrv.WebConnection.Closed
-// (PreOperator, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Defined, Latent, Simulated, Exec, Native, HasOptionalParms)
 
 void AWebConnection::Closed()
 {
@@ -17068,7 +16882,7 @@ void AWebConnection::Closed()
 
 
 // Function IpDrv.WebConnection.Accepted
-// (Final, Defined, Iterator, Latent, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Final, Latent, Simulated, Exec, Native, HasOptionalParms)
 
 void AWebConnection::Accepted()
 {

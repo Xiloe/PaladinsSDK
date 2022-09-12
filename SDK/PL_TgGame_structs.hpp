@@ -1,16 +1,16 @@
 #pragma once
 
-// Paladins (3.05) SDK
+// Paladins (5.5) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
 #endif
 
 #include "PL_Basic.hpp"
-#include "PL_GameFramework_classes.hpp"
 #include "PL_Core_classes.hpp"
 #include "PL_Engine_classes.hpp"
 #include "PL_PlatformCommon_classes.hpp"
+#include "PL_GameFramework_classes.hpp"
 #include "PL_AkAudio_classes.hpp"
 
 namespace SDK
@@ -74,6 +74,7 @@ namespace SDK
 #define CONST_CHAMPION_ID_MAKOA                                  2288
 #define CONST_TGPID_NUGGET_STEALER_FULL_HP                       1827
 #define CONST_PALADINS_COLOR_DARK                                0x243745
+#define CONST_CASPIAN_ULT_PROJ_ID                                761
 #define CONST_CHAMPION_ID_WILLO                                  2393
 #define CONST_VV_BOT_RANK_GUARDIAN                               10124
 #define CONST_TGPID_KNOCKSTRAIGHT                                2036
@@ -1393,6 +1394,7 @@ namespace SDK
 #define CONST_GT_Tutorial_StandToCapture                         193
 #define CONST_TgPlayerController_GAMEEVENT_PLAYER_LOGOUT         101
 #define CONST_TGEGT_ACTIVE                                       11073
+#define CONST_CASPIAN_MAX_STACKS_FOR_Q_ABILITY                   8
 #define CONST_TGEGT_FIRED_PER_SHOT                               10030
 #define CONST_TGEGT_STOP_FIRING                                  17849
 #define CONST_TGEGT_PRE_HIT_DELAY                                10455
@@ -1420,6 +1422,7 @@ namespace SDK
 #define CONST_TGFXMAT_HAIR                                       616
 #define CONST_DEVICE_ABSORPTION_FIELD                            19478
 #define CONST_TGFXMAT_GENERIC                                    615
+#define CONST_LILLITH_ULT_FX_COUNT                               4
 #define CONST_TGFXT_PRIORITY_SPAWN_SORTORDER                     15
 #define CONST_TGFXT_PRIORITY_FLAME                               838
 #define CONST_GTP_SurvivalMatchStarted                           1850
@@ -1582,6 +1585,7 @@ namespace SDK
 #define CONST_DEVICE_SHATTER_FALL                                19836
 #define CONST_GT_AssaultGameMode                                 115
 #define CONST_CARD_PLAYING_GOD                                   19976
+#define CONST_sampledist                                         128
 #define CONST_CARD_STONE_STRENGTH                                20063
 #define CONST_TgGame_Paladins_GAMEEVENT_MATCH_STARTED            0
 #define CONST_DEVICE_ID_DROGOZ_THRUST                            13328
@@ -1635,6 +1639,7 @@ namespace SDK
 #define CONST_TGEGC_DAMAGE_BUFF                                  17732
 #define CONST_TGEGC_JUMP_PENALTY                                 11068
 #define CONST_TGEGC_KNOCKBACK                                    10052
+#define CONST_listenerdist                                       256
 #define CONST_GTP_DieToViktorFragGrenade                         1932
 #define CONST_TGEGC_MOVEMENT_SPEED_BUFF                          15062
 #define CONST_TGEGC_ON_FIRE                                      10858
@@ -1650,6 +1655,7 @@ namespace SDK
 #define CONST_TGEGC_SLOW                                         10048
 #define CONST_TGEGC_STUN                                         10049
 #define CONST_TGEGC_STUN_TAUNT                                   10649
+#define CONST_listenerextent                                     64
 #define CONST_TGEGC_WEAKEN                                       15071
 #define CONST_TGEGC_LEX_REVEAL                                   15506
 #define CONST_TGEGC_SOUL_ORB_STACK                               15547
@@ -5966,6 +5972,17 @@ enum class EAzaanUltAnimState : uint8_t
 };
 
 
+// Enum TgGame.TgDeviceForm_CaspianMovement.CaspianMovementAnimState
+enum class ECaspianMovementAnimState : uint8_t
+{
+	CaspianMovementAnimState_Start = 0,
+	CaspianMovementAnimState_Charge = 1,
+	CaspianMovementAnimState_Whirl = 2,
+	CaspianMovementAnimState_End   = 3,
+	CaspianMovementAnimState_MAX   = 4
+};
+
+
 // Enum TgGame.TgDevice_CorrupterUlt.CorrupterUltAnimState
 enum class ECorrupterUltAnimState : uint8_t
 {
@@ -6189,6 +6206,15 @@ enum class EMOONSHARD_WITHIN_RANGE : uint8_t
 //---------------------------------------------------------------------------
 //Script Structs
 //---------------------------------------------------------------------------
+
+// ScriptStruct TgGame.OcclusionBuilderVolume.OcclusionBuilderSample
+// 0x0060
+struct FOcclusionBuilderSample
+{
+	struct FVector                                     Normal;                                                   // 0x0000(0x000C)
+	struct FVector                                     Position;                                                 // 0x000C(0x000C)
+	struct FMap_Mirror                                 visible_samples;                                          // 0x0018(0x0048) (Native)
+};
 
 // ScriptStruct TgGame.TgAIDirector.SkillLevelRawData
 // 0x0028
@@ -9032,22 +9058,6 @@ struct FVampMark
 	float                                              fSecondsApplyNextInterval;                                // 0x0010(0x0004)
 };
 
-// ScriptStruct TgGame.TgDevice_CaspianUlt.CaspianSword
-// 0x002C
-struct FCaspianSword
-{
-	int                                                nNonce;                                                   // 0x0000(0x0004)
-	int                                                nId;                                                      // 0x0004(0x0004)
-	int                                                nPosition;                                                // 0x0008(0x0004)
-	unsigned long                                      bIsActive : 1;                                            // 0x000C(0x0004)
-	unsigned long                                      bIsFired : 1;                                             // 0x000C(0x0004)
-	float                                              fCreatedTimestamp;                                        // 0x0010(0x0004)
-	class ATgProjectile*                               s_SwordProjectile;                                        // 0x0014(0x0008)
-	float                                              c_fSimulatedFireAttempt;                                  // 0x001C(0x0004)
-	unsigned long                                      c_bFxActive : 1;                                          // 0x0020(0x0004)
-	class ATgPropActor*                                c_SwordProp;                                              // 0x0024(0x0008)
-};
-
 // ScriptStruct TgGame.TgPawn_Caspian.CaspianStackCountHistoryEntry
 // 0x000C
 struct FCaspianStackCountHistoryEntry
@@ -9072,6 +9082,22 @@ struct FCaspianStackConfig
 {
 	int                                                nMaxStacks;                                               // 0x0000(0x0004)
 	float                                              fStackExpirationTime;                                     // 0x0004(0x0004)
+};
+
+// ScriptStruct TgGame.TgPawn_Caspian.CaspianSword
+// 0x002C
+struct FCaspianSword
+{
+	int                                                nNonce;                                                   // 0x0000(0x0004)
+	int                                                nId;                                                      // 0x0004(0x0004)
+	int                                                nPosition;                                                // 0x0008(0x0004)
+	unsigned long                                      bIsActive : 1;                                            // 0x000C(0x0004)
+	unsigned long                                      bIsFired : 1;                                             // 0x000C(0x0004)
+	float                                              fCreatedTimestamp;                                        // 0x0010(0x0004)
+	class ATgProjectile*                               s_SwordProjectile;                                        // 0x0014(0x0008)
+	float                                              c_fSimulatedFireAttempt;                                  // 0x001C(0x0004)
+	unsigned long                                      c_bFxActive : 1;                                          // 0x0020(0x0004)
+	class ATgPropActor*                                c_SwordProp;                                              // 0x0024(0x0008)
 };
 
 // ScriptStruct TgGame.TgGameplayCurvesSet_TargetAimTracking.TargetAimTrackingDebugVals

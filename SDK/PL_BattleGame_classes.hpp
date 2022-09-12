@@ -1,6 +1,6 @@
 #pragma once
 
-// Paladins (3.05) SDK
+// Paladins (5.5) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -42,7 +42,7 @@ public:
 	}
 
 
-	void STATIC_BattlePlayerControllerFunction();
+	void BattlePlayerControllerFunction();
 };
 
 

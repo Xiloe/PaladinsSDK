@@ -1,4 +1,4 @@
-// Paladins (3.05) SDK
+// Paladins (5.5) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -13,7 +13,7 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // Function TgClient.TgBrowserManager.AccountLink
-// (Defined, Latent, Singular, Simulated, Exec, Event, HasOptionalParms)
+// (Defined, Iterator, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
 
 void UTgBrowserManager::AccountLink()
 {
@@ -30,7 +30,7 @@ void UTgBrowserManager::AccountLink()
 
 
 // Function TgClient.TgBrowserManager.LaunchTournament
-// (Final, Latent, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Iterator, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 
 void UTgBrowserManager::LaunchTournament()
 {
@@ -47,7 +47,7 @@ void UTgBrowserManager::LaunchTournament()
 
 
 // Function TgClient.TgBrowserManager.TwitchSignup
-// (Final, Defined, Iterator, Latent, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Defined, Latent, Singular, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 
 void UTgBrowserManager::TwitchSignup()
 {
@@ -64,7 +64,7 @@ void UTgBrowserManager::TwitchSignup()
 
 
 // Function TgClient.TgBrowserManager.TwitchHelp
-// (Defined, Iterator, Latent, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Defined, Latent, Singular, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 
 void UTgBrowserManager::TwitchHelp()
 {
@@ -81,7 +81,7 @@ void UTgBrowserManager::TwitchHelp()
 
 
 // Function TgClient.TgBrowserManager.PlayerStats
-// (Defined, Iterator, Latent, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Defined, Latent, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // struct FString                 sPlayerName                    (Parm, NeedCtorLink)
 
@@ -101,7 +101,7 @@ void UTgBrowserManager::PlayerStats(const struct FString& sPlayerName)
 
 
 // Function TgClient.TgBrowserManager.RecruitPromo
-// (Iterator, PreOperator, Net, Simulated, Exec, Event, HasOptionalParms)
+// (PreOperator, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 
 void UTgBrowserManager::RecruitPromo()
 {
@@ -118,7 +118,7 @@ void UTgBrowserManager::RecruitPromo()
 
 
 // Function TgClient.TgBrowserManager.TwitterPromo
-// (PreOperator, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Iterator, Latent, Singular, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 
 void UTgBrowserManager::TwitterPromo()
 {
@@ -135,7 +135,7 @@ void UTgBrowserManager::TwitterPromo()
 
 
 // Function TgClient.TgBrowserManager.FacebookPromo
-// (Final, Defined, Latent, PreOperator, Singular, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Defined, Iterator, PreOperator, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
 
 void UTgBrowserManager::FacebookPromo()
 {
@@ -152,7 +152,7 @@ void UTgBrowserManager::FacebookPromo()
 
 
 // Function TgClient.TgBrowserManager.RankedRules
-// (PreOperator, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Iterator, Latent, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 
 void UTgBrowserManager::RankedRules()
 {
@@ -169,7 +169,7 @@ void UTgBrowserManager::RankedRules()
 
 
 // Function TgClient.TgBrowserManager.GodPack
-// (Defined, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Defined, Iterator, Latent, PreOperator, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
 
 void UTgBrowserManager::GodPack()
 {
@@ -186,7 +186,7 @@ void UTgBrowserManager::GodPack()
 
 
 // Function TgClient.TgBrowserManager.SubmitBugReport
-// (Final, Defined, Iterator, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Defined, Singular, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // struct FString                 sPlayerName                    (Parm, NeedCtorLink)
 
@@ -206,7 +206,7 @@ void UTgBrowserManager::SubmitBugReport(const struct FString& sPlayerName)
 
 
 // Function TgClient.TgBrowserManager.RecoverUsername
-// (Final, Defined, PreOperator, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 
 void UTgBrowserManager::RecoverUsername()
 {
@@ -223,7 +223,7 @@ void UTgBrowserManager::RecoverUsername()
 
 
 // Function TgClient.TgBrowserManager.RecoverPassword
-// (Defined, PreOperator, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Defined, Iterator, Latent, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 
 void UTgBrowserManager::RecoverPassword()
 {
@@ -240,7 +240,7 @@ void UTgBrowserManager::RecoverPassword()
 
 
 // Function TgClient.TgBrowserManager.CreateAccount
-// (Final, Defined, Iterator, PreOperator, Singular, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Defined, PreOperator, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
 
 void UTgBrowserManager::CreateAccount()
 {
@@ -257,7 +257,7 @@ void UTgBrowserManager::CreateAccount()
 
 
 // Function TgClient.TgBrowserManager.ActivateKey
-// (Final, Defined, Latent, Singular, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Defined, Iterator, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
 
 void UTgBrowserManager::ActivateKey()
 {
@@ -274,7 +274,7 @@ void UTgBrowserManager::ActivateKey()
 
 
 // Function TgClient.TgBrowserManager.Profile
-// (Final, Defined, Iterator, Latent, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Defined, Latent, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 
 void UTgBrowserManager::Profile()
 {
@@ -291,7 +291,7 @@ void UTgBrowserManager::Profile()
 
 
 // Function TgClient.TgBrowserManager.Support
-// (Latent, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Iterator, Singular, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 
 void UTgBrowserManager::Support()
 {
@@ -308,7 +308,7 @@ void UTgBrowserManager::Support()
 
 
 // Function TgClient.TgBrowserManager.Booster
-// (Defined, Iterator, Latent, Singular, Simulated, Exec, Event, HasOptionalParms)
+// (Defined, Latent, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
 
 void UTgBrowserManager::Booster()
 {
@@ -325,7 +325,7 @@ void UTgBrowserManager::Booster()
 
 
 // Function TgClient.TgBrowserManager.Store
-// (Defined, Iterator, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Defined, Singular, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 
 void UTgBrowserManager::Store()
 {
@@ -342,7 +342,7 @@ void UTgBrowserManager::Store()
 
 
 // Function TgClient.TgBrowserManager.Gold
-// (Final, Defined, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, PreOperator, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
 
 void UTgBrowserManager::Gold()
 {
@@ -359,7 +359,7 @@ void UTgBrowserManager::Gold()
 
 
 // Function TgClient.TgBrowserManager.Alert
-// (Final, Iterator, Latent, Singular, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Latent, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
 
 void UTgBrowserManager::Alert()
 {
@@ -376,7 +376,7 @@ void UTgBrowserManager::Alert()
 
 
 // Function TgClient.TgBrowserManager.SetContainer
-// (Defined, Singular, Net, NetReliable, Exec, Event, Operator, HasOptionalParms, Const)
+// (Latent, Net, Simulated, Event, HasOptionalParms, Const)
 // Parameters:
 // class UUIWebBrowser*           pContainer                     (Parm)
 
@@ -396,7 +396,7 @@ void UTgBrowserManager::SetContainer(class UUIWebBrowser* pContainer)
 
 
 // Function TgClient.TgBrowserManager.ResizeView
-// (Final, Iterator, Latent, Net, Exec, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, PreOperator, Singular, NetReliable, Event, HasOptionalParms, Const)
 
 void UTgBrowserManager::ResizeView()
 {
@@ -413,9 +413,9 @@ void UTgBrowserManager::ResizeView()
 
 
 // Function TgClient.TgBrowserManager.Close
-// (Final, Iterator, Singular, NetReliable, Native, Event, HasOptionalParms)
+// (Defined, Iterator, Net, NetReliable, Simulated, Native, Event, Operator, Static)
 
-void UTgBrowserManager::Close()
+void UTgBrowserManager::STATIC_Close()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgBrowserManager.Close");
 
@@ -431,7 +431,7 @@ void UTgBrowserManager::Close()
 
 
 // Function TgClient.TgBrowserManager.OpenVideo
-// (Defined, Singular, Net, Simulated, Event, Operator, HasOptionalParms, Const)
+// (Latent, Net, NetReliable, Simulated, Exec, Native, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 URL                            (Parm, NeedCtorLink)
 // bool                           bAddName                       (OptionalParm, Parm)
@@ -445,6 +445,7 @@ void UTgBrowserManager::OpenVideo(const struct FString& URL, bool bAddName)
 	params.bAddName = bAddName;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -453,7 +454,7 @@ void UTgBrowserManager::OpenVideo(const struct FString& URL, bool bAddName)
 
 
 // Function TgClient.TgBrowserManager.OpenURL
-// (Iterator, Latent, Net, NetReliable, Simulated, Native, Event, Operator, HasOptionalParms)
+// (Final, Latent, Net, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // struct FString                 URL                            (Parm, NeedCtorLink)
 // bool                           bShowNavButtons                (OptionalParm, Parm)
@@ -469,7 +470,6 @@ void UTgBrowserManager::OpenURL(const struct FString& URL, bool bShowNavButtons,
 	params.bSetFocus = bSetFocus;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -478,12 +478,12 @@ void UTgBrowserManager::OpenURL(const struct FString& URL, bool bShowNavButtons,
 
 
 // Function TgClient.TgBrowserManager.ExternalOpenURL
-// (Final, Defined, Iterator, Singular, Net, Simulated, Native, HasOptionalParms, Const)
+// (Defined, Iterator, Latent, Net, NetReliable, Simulated, Exec, Operator, Static, Const)
 // Parameters:
 // struct FString                 URL                            (Parm, NeedCtorLink)
 // bool                           bAddLang                       (OptionalParm, Parm)
 
-void UTgBrowserManager::ExternalOpenURL(const struct FString& URL, bool bAddLang)
+void UTgBrowserManager::STATIC_ExternalOpenURL(const struct FString& URL, bool bAddLang)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgBrowserManager.ExternalOpenURL");
 
@@ -492,7 +492,6 @@ void UTgBrowserManager::ExternalOpenURL(const struct FString& URL, bool bAddLang
 	params.bAddLang = bAddLang;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -501,11 +500,11 @@ void UTgBrowserManager::ExternalOpenURL(const struct FString& URL, bool bAddLang
 
 
 // Function TgClient.TgBrowserManager.IsBrowserLoaded
-// (Iterator, Latent, Net, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Final, Defined, PreOperator, Singular, NetReliable, Simulated, Native, Operator, Static, Const)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UTgBrowserManager::IsBrowserLoaded()
+bool UTgBrowserManager::STATIC_IsBrowserLoaded()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgBrowserManager.IsBrowserLoaded");
 
@@ -523,7 +522,7 @@ bool UTgBrowserManager::IsBrowserLoaded()
 
 
 // Function TgClient.TgClientHUD.TestShowCursor
-// (Defined, Latent, PreOperator, Singular, Net, Simulated, Exec, Event, Operator, HasOptionalParms, Const)
+// (Singular, Net, NetReliable, Simulated, Event, HasOptionalParms, Const)
 // Parameters:
 // bool                           bShow                          (Parm)
 
@@ -543,16 +542,15 @@ void ATgClientHUD::TestShowCursor(bool bShow)
 
 
 // Function TgClient.TgClientHUD.DebugPictureInPicture
-// (Iterator, Latent, PreOperator, Singular, Native, HasOptionalParms, Const)
+// (Iterator, Singular, NetReliable, Exec, Operator, Static, Const)
 
-void ATgClientHUD::DebugPictureInPicture()
+void ATgClientHUD::STATIC_DebugPictureInPicture()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgClientHUD.DebugPictureInPicture");
 
 	ATgClientHUD_DebugPictureInPicture_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -561,7 +559,7 @@ void ATgClientHUD::DebugPictureInPicture()
 
 
 // Function TgClient.TgClientHUD.CreateTestPortraits
-// (Defined, Iterator, Singular, Native, HasOptionalParms, Const)
+// (Defined, Iterator, Latent, NetReliable, Exec, Operator, Static, Const)
 // Parameters:
 // class UPComPictureInPictureScene* Scene                          (Parm)
 // struct FString                 BotName                        (Const, Parm, OutParm, NeedCtorLink)
@@ -569,7 +567,7 @@ void ATgClientHUD::DebugPictureInPicture()
 // struct FVector                 LookAtOffset                   (Parm)
 // float                          FOV                            (Parm)
 
-void ATgClientHUD::CreateTestPortraits(class UPComPictureInPictureScene* Scene, const struct FVector& ViewOffset, const struct FVector& LookAtOffset, float FOV, struct FString* BotName)
+void ATgClientHUD::STATIC_CreateTestPortraits(class UPComPictureInPictureScene* Scene, const struct FVector& ViewOffset, const struct FVector& LookAtOffset, float FOV, struct FString* BotName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgClientHUD.CreateTestPortraits");
 
@@ -580,7 +578,6 @@ void ATgClientHUD::CreateTestPortraits(class UPComPictureInPictureScene* Scene, 
 	params.FOV = FOV;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -592,7 +589,7 @@ void ATgClientHUD::CreateTestPortraits(class UPComPictureInPictureScene* Scene, 
 
 
 // Function TgClient.TgClientHUD.TestPictureInPicturePortraits
-// (Final, Latent, PreOperator, Singular, Net, Simulated, Exec, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Iterator, Latent, PreOperator, Net, NetReliable, Simulated, Event, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 BotName                        (Parm, NeedCtorLink)
 
@@ -612,7 +609,7 @@ void ATgClientHUD::TestPictureInPicturePortraits(const struct FString& BotName)
 
 
 // Function TgClient.TgClientHUD.TestPictureInPictureBasic
-// (Latent, PreOperator, Singular, Net, Simulated, Exec, Event, Operator, HasOptionalParms, Const)
+// (Defined, Iterator, Latent, PreOperator, Net, NetReliable, Simulated, Event, HasOptionalParms, Const)
 
 void ATgClientHUD::TestPictureInPictureBasic()
 {
@@ -629,7 +626,7 @@ void ATgClientHUD::TestPictureInPictureBasic()
 
 
 // Function TgClient.TgClientHUD.PostRender
-// (Iterator, Latent, Singular, NetReliable, Simulated, Native, HasOptionalParms)
+// (Defined, Iterator, Singular, Net, NetReliable, Simulated, Native, HasOptionalParms)
 
 void ATgClientHUD::PostRender()
 {
@@ -664,7 +661,7 @@ void ATgClientHUD::PostBeginPlay()
 
 
 // Function TgClient.TgClientHUD.IsHidden
-// (Latent, Singular, Simulated, Native, HasOptionalParms)
+// (Defined, Singular, Net, Simulated, Native, HasOptionalParms)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
@@ -686,7 +683,7 @@ bool ATgClientHUD::IsHidden()
 
 
 // Function TgClient.TgClientHUD.SetGamepadForced
-// (Latent, Singular, Net, NetReliable, Exec, Event, Operator, HasOptionalParms, Const)
+// (Defined, Iterator, Latent, Net, Simulated, Event, HasOptionalParms, Const)
 // Parameters:
 // bool                           bEnabled                       (Parm)
 
@@ -706,7 +703,7 @@ void ATgClientHUD::SetGamepadForced(bool bEnabled)
 
 
 // Function TgClient.TgClientHUD.TogglePushToTalk
-// (Iterator, Latent, PreOperator, NetReliable, Simulated, Exec, Event, Operator, HasOptionalParms, Const)
+// (Defined, Exec, Event, HasOptionalParms, Const)
 // Parameters:
 // bool                           bEnable                        (Parm)
 
@@ -726,7 +723,7 @@ void ATgClientHUD::TogglePushToTalk(bool bEnable)
 
 
 // Function TgClient.TgClientHUD.ToggleDevMenu
-// (Final, Latent, PreOperator, NetReliable, Simulated, Exec, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Iterator, Latent, PreOperator, Singular, Net, NetReliable, Simulated, Event, HasOptionalParms, Const)
 
 void ATgClientHUD::ToggleDevMenu()
 {
@@ -743,11 +740,11 @@ void ATgClientHUD::ToggleDevMenu()
 
 
 // Function TgClient.TgClientHUD.LogLTIPrices
-// (PreOperator, NetReliable, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Final, Defined, Iterator, PreOperator, Singular, Net, NetReliable, Simulated, Native, Operator, Static, Const)
 // Parameters:
 // int                            nLTI                           (Parm)
 
-void ATgClientHUD::LogLTIPrices(int nLTI)
+void ATgClientHUD::STATIC_LogLTIPrices(int nLTI)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgClientHUD.LogLTIPrices");
 
@@ -764,11 +761,11 @@ void ATgClientHUD::LogLTIPrices(int nLTI)
 
 
 // Function TgClient.TgClientHUD.LogItemPrices
-// (Final, Defined, Iterator, Latent, NetReliable, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Defined, Iterator, PreOperator, Singular, Net, NetReliable, Simulated, Native, Operator, Static, Const)
 // Parameters:
 // int                            nItemId                        (Parm)
 
-void ATgClientHUD::LogItemPrices(int nItemId)
+void ATgClientHUD::STATIC_LogItemPrices(int nItemId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgClientHUD.LogItemPrices");
 
@@ -785,16 +782,15 @@ void ATgClientHUD::LogItemPrices(int nItemId)
 
 
 // Function TgClient.TgClientHUD.DumpScenesToLog
-// (Final, Defined, NetReliable, Native, HasOptionalParms, Const)
+// (Final, Defined, Latent, Singular, Net, NetReliable, Exec, Operator, Static, Const)
 
-void ATgClientHUD::DumpScenesToLog()
+void ATgClientHUD::STATIC_DumpScenesToLog()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgClientHUD.DumpScenesToLog");
 
 	ATgClientHUD_DumpScenesToLog_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -803,7 +799,7 @@ void ATgClientHUD::DumpScenesToLog()
 
 
 // Function TgClient.TgClientHUD.TestDidIt
-// (Defined, Iterator, PreOperator, Singular, Net, Simulated, Exec, Event, Operator, HasOptionalParms, Const)
+// (Iterator, Latent, PreOperator, Net, NetReliable, Simulated, Event, HasOptionalParms, Const)
 // Parameters:
 // int                            nActivityId                    (Parm)
 // int                            nCount                         (Parm)
@@ -825,7 +821,7 @@ void ATgClientHUD::TestDidIt(int nActivityId, int nCount)
 
 
 // Function TgClient.TgClientHUD.ResetViewCenterPoint
-// (Iterator, Latent, Net, Exec, Event, Operator, HasOptionalParms, Const)
+// (Defined, PreOperator, Singular, NetReliable, Event, HasOptionalParms, Const)
 
 void ATgClientHUD::ResetViewCenterPoint()
 {
@@ -842,16 +838,15 @@ void ATgClientHUD::ResetViewCenterPoint()
 
 
 // Function TgClient.TgClientHUD.ShowHUD
-// (Final, Defined, Iterator, Latent, Net, NetReliable, Simulated, Native, HasOptionalParms)
+// (Latent, Singular, NetReliable, Simulated, Exec, Operator, Static)
 
-void ATgClientHUD::ShowHUD()
+void ATgClientHUD::STATIC_ShowHUD()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgClientHUD.ShowHUD");
 
 	ATgClientHUD_ShowHUD_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -860,16 +855,15 @@ void ATgClientHUD::ShowHUD()
 
 
 // Function TgClient.TgClientHUD.HideHUD
-// (Iterator, Net, NetReliable, Native, Event, Static)
+// (Defined, Singular, Net, Exec, Event, Operator)
 
-void ATgClientHUD::STATIC_HideHUD()
+void ATgClientHUD::HideHUD()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgClientHUD.HideHUD");
 
 	ATgClientHUD_HideHUD_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -878,9 +872,9 @@ void ATgClientHUD::STATIC_HideHUD()
 
 
 // Function TgClient.TgClientHUD.ToggleHUD
-// (Defined, PreOperator, NetReliable, Exec, Event, HasOptionalParms)
+// (Defined, Latent, PreOperator, Singular, Net, Event, Operator, Static)
 
-void ATgClientHUD::ToggleHUD()
+void ATgClientHUD::STATIC_ToggleHUD()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgClientHUD.ToggleHUD");
 
@@ -895,7 +889,7 @@ void ATgClientHUD::ToggleHUD()
 
 
 // Function TgClient.TgClientHUD.TryToBack
-// (Defined, Iterator, Singular, NetReliable, Simulated, Exec, Event, Operator, HasOptionalParms, Const)
+// (Iterator, Latent, Exec, Event, HasOptionalParms, Const)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
@@ -916,14 +910,14 @@ bool ATgClientHUD::TryToBack()
 
 
 // Function TgClient.TgClientHUD.ShowHit
-// (Latent, PreOperator, NetReliable, Simulated, Native, Static, Const)
+// (Final, Singular, NetReliable, Simulated, Exec, Operator, Const)
 // Parameters:
 // class AActor*                  Target                         (Parm)
 // float                          fDamageAmount                  (Parm)
 // bool                           bIsShieldHit                   (Parm)
 // struct FExtraDamageInfo        ExtraInfo                      (Const, Parm, OutParm)
 
-void ATgClientHUD::STATIC_ShowHit(class AActor* Target, float fDamageAmount, bool bIsShieldHit, struct FExtraDamageInfo* ExtraInfo)
+void ATgClientHUD::ShowHit(class AActor* Target, float fDamageAmount, bool bIsShieldHit, struct FExtraDamageInfo* ExtraInfo)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgClientHUD.ShowHit");
 
@@ -933,7 +927,6 @@ void ATgClientHUD::STATIC_ShowHit(class AActor* Target, float fDamageAmount, boo
 	params.bIsShieldHit = bIsShieldHit;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -945,16 +938,33 @@ void ATgClientHUD::STATIC_ShowHit(class AActor* Target, float fDamageAmount, boo
 
 
 // Function TgClient.TgClientHUD.ShowCursor
-// (Final, PreOperator, NetReliable, Simulated, Native, Static, Const)
+// (Defined, Latent, PreOperator, NetReliable, Simulated, Exec, Operator, Const)
 // Parameters:
 // bool                           bShow                          (Parm)
 
-void ATgClientHUD::STATIC_ShowCursor(bool bShow)
+void ATgClientHUD::ShowCursor(bool bShow)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgClientHUD.ShowCursor");
 
 	ATgClientHUD_ShowCursor_Params params;
 	params.bShow = bShow;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TgClient.TgClientHUD.EndDoubleClick
+// (Iterator, PreOperator, Singular, NetReliable, Exec, Native, Event, HasOptionalParms, Const)
+
+void ATgClientHUD::EndDoubleClick()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgClientHUD.EndDoubleClick");
+
+	ATgClientHUD_EndDoubleClick_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -965,25 +975,8 @@ void ATgClientHUD::STATIC_ShowCursor(bool bShow)
 }
 
 
-// Function TgClient.TgClientHUD.EndDoubleClick
-// (Final, Iterator, Latent, Net, Static, HasOptionalParms, Const)
-
-void ATgClientHUD::STATIC_EndDoubleClick()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgClientHUD.EndDoubleClick");
-
-	ATgClientHUD_EndDoubleClick_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
 // Function TgClient.TgClientHUD.IsLoggedIn
-// (Defined, Latent, Singular, Simulated, Native, HasOptionalParms)
+// (Iterator, Singular, Net, Simulated, Native, HasOptionalParms)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
@@ -1005,7 +998,7 @@ bool ATgClientHUD::IsLoggedIn()
 
 
 // Function TgClient.TgClientHUD.IsInGame
-// (Final, Defined, Iterator, Latent, Net, Simulated, Native, Event, Operator, HasOptionalParms)
+// (Iterator, Latent, Net, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
@@ -1016,7 +1009,6 @@ bool ATgClientHUD::IsInGame()
 	ATgClientHUD_IsInGame_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1027,7 +1019,7 @@ bool ATgClientHUD::IsInGame()
 
 
 // Function TgClient.TgClientHUD.RemoveSceneFromStack
-// (Latent, Net, Exec, Event, Operator, HasOptionalParms, Const)
+// (Defined, Iterator, Latent, Singular, NetReliable, Event, HasOptionalParms, Const)
 // Parameters:
 // class UTgGfxScene*             pScene                         (Parm)
 // bool                           bPopAll                        (OptionalParm, Parm)
@@ -1052,12 +1044,12 @@ bool ATgClientHUD::RemoveSceneFromStack(class UTgGfxScene* pScene, bool bPopAll)
 
 
 // Function TgClient.TgClientHUD.PopToScene
-// (Final, Iterator, PreOperator, Singular, NetReliable, Simulated, Native, Static, HasOptionalParms, Const)
+// (Final, Defined, Latent, Net, Native, Operator, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 sName                          (Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ATgClientHUD::STATIC_PopToScene(const struct FString& sName)
+bool ATgClientHUD::PopToScene(const struct FString& sName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgClientHUD.PopToScene");
 
@@ -1076,12 +1068,12 @@ bool ATgClientHUD::STATIC_PopToScene(const struct FString& sName)
 
 
 // Function TgClient.TgClientHUD.ClearScenes
-// (Final, Latent, PreOperator, Native, HasOptionalParms, Const)
+// (Final, NetReliable, Exec, Operator, Static, Const)
 // Parameters:
 // unsigned char                  ePreviousState                 (OptionalParm, Parm)
 // unsigned char                  eTargetState                   (OptionalParm, Parm)
 
-void ATgClientHUD::ClearScenes(unsigned char ePreviousState, unsigned char eTargetState)
+void ATgClientHUD::STATIC_ClearScenes(unsigned char ePreviousState, unsigned char eTargetState)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgClientHUD.ClearScenes");
 
@@ -1090,7 +1082,6 @@ void ATgClientHUD::ClearScenes(unsigned char ePreviousState, unsigned char eTarg
 	params.eTargetState = eTargetState;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1099,7 +1090,7 @@ void ATgClientHUD::ClearScenes(unsigned char ePreviousState, unsigned char eTarg
 
 
 // Function TgClient.TgClientHUD.PopScene
-// (Final, PreOperator, Net, NetReliable, Simulated, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Iterator, PreOperator, Singular, Event, HasOptionalParms, Const)
 // Parameters:
 // int                            nIndex                         (OptionalParm, Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
@@ -1122,7 +1113,7 @@ bool ATgClientHUD::PopScene(int nIndex)
 
 
 // Function TgClient.TgClientHUD.PushScene
-// (Latent, PreOperator, Exec, Event, Operator, HasOptionalParms, Const)
+// (Defined, Iterator, Latent, PreOperator, Singular, Net, Event, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 sName                          (Parm, NeedCtorLink)
 // bool                           bSkipPrivilegeCheck            (OptionalParm, Parm)
@@ -1147,16 +1138,15 @@ bool ATgClientHUD::PushScene(const struct FString& sName, bool bSkipPrivilegeChe
 
 
 // Function TgClient.TgClientHUD.Initialize
-// (Final, Defined, Latent, Exec, Native, Event, Static)
+// (Defined, Latent, Singular, NetReliable, Simulated, Exec, Event, Operator)
 
-void ATgClientHUD::STATIC_Initialize()
+void ATgClientHUD::Initialize()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgClientHUD.Initialize");
 
 	ATgClientHUD_Initialize_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1165,11 +1155,11 @@ void ATgClientHUD::STATIC_Initialize()
 
 
 // Function TgClient.TgData_Cards.Initialize
-// (Final, Defined, Latent, Exec, Native, Event, Static)
+// (Defined, Latent, Singular, NetReliable, Simulated, Exec, Event, Operator)
 // Parameters:
 // class UUIGameMoviePlayer*      pMoviePlayer                   (Parm)
 
-void UTgData_Cards::STATIC_Initialize(class UUIGameMoviePlayer* pMoviePlayer)
+void UTgData_Cards::Initialize(class UUIGameMoviePlayer* pMoviePlayer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgData_Cards.Initialize");
 
@@ -1177,7 +1167,6 @@ void UTgData_Cards::STATIC_Initialize(class UUIGameMoviePlayer* pMoviePlayer)
 	params.pMoviePlayer = pMoviePlayer;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1186,7 +1175,7 @@ void UTgData_Cards::STATIC_Initialize(class UUIGameMoviePlayer* pMoviePlayer)
 
 
 // Function TgClient.TgDataChunk.usc_Unsubscribe
-// (Final, Defined, Simulated, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Final, Latent, Singular, Net, Simulated, Native, Event, HasOptionalParms, Const)
 
 void UTgDataChunk::usc_Unsubscribe()
 {
@@ -1204,7 +1193,7 @@ void UTgDataChunk::usc_Unsubscribe()
 
 
 // Function TgClient.TgDataChunk.usc_Subscribe
-// (Iterator, Latent, PreOperator, Singular, Net, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Defined, Singular, Net, Simulated, Native, Event, HasOptionalParms, Const)
 
 void UTgDataChunk::usc_Subscribe()
 {
@@ -1222,7 +1211,7 @@ void UTgDataChunk::usc_Subscribe()
 
 
 // Function TgClient.TgDataChunk.usc_Unsubscribe_Delegate
-// (Final, Defined, Iterator, PreOperator, NetReliable, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Defined, PreOperator, Net, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 
 void UTgDataChunk::usc_Unsubscribe_Delegate()
 {
@@ -1239,7 +1228,7 @@ void UTgDataChunk::usc_Unsubscribe_Delegate()
 
 
 // Function TgClient.TgDataChunk.usc_Subscribe_Delegate
-// (Final, Iterator, PreOperator, NetReliable, Simulated, Exec, Event, HasOptionalParms)
+// (Final, PreOperator, Net, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 
 void UTgDataChunk::usc_Subscribe_Delegate()
 {
@@ -1256,11 +1245,11 @@ void UTgDataChunk::usc_Subscribe_Delegate()
 
 
 // Function TgClient.TgDataChunk.GetPlayerController
-// (Defined, Iterator, Singular, Exec, Native, HasOptionalParms, Const)
+// (Final, Iterator, Latent, NetReliable, Native, Operator, Static, Const)
 // Parameters:
 // class ATgPlayerController*     ReturnValue                    (Parm, OutParm, ReturnParm)
 
-class ATgPlayerController* UTgDataChunk::GetPlayerController()
+class ATgPlayerController* UTgDataChunk::STATIC_GetPlayerController()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgDataChunk.GetPlayerController");
 
@@ -1278,7 +1267,7 @@ class ATgPlayerController* UTgDataChunk::GetPlayerController()
 
 
 // Function TgClient.TgDataChunk.NotifyMapChange
-// (Final, Simulated, Event, Operator, HasOptionalParms, Const)
+// (Latent, Singular, Net, Simulated, Exec, Native, HasOptionalParms, Const)
 
 void UTgDataChunk::NotifyMapChange()
 {
@@ -1287,6 +1276,7 @@ void UTgDataChunk::NotifyMapChange()
 	UTgDataChunk_NotifyMapChange_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1295,11 +1285,11 @@ void UTgDataChunk::NotifyMapChange()
 
 
 // Function TgClient.TgDataChunk.IsSubscribed
-// (Iterator, Latent, PreOperator, Net, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Final, Defined, Net, NetReliable, Simulated, Native, Operator, Static, Const)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UTgDataChunk::IsSubscribed()
+bool UTgDataChunk::STATIC_IsSubscribed()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgDataChunk.IsSubscribed");
 
@@ -1317,7 +1307,7 @@ bool UTgDataChunk::IsSubscribed()
 
 
 // Function TgClient.TgDataChunk.SetDirty
-// (Final, Defined, Net, Exec, Native, Event, Operator, HasOptionalParms)
+// (Final, Net, Native, Event, HasOptionalParms)
 
 void UTgDataChunk::SetDirty()
 {
@@ -1335,13 +1325,13 @@ void UTgDataChunk::SetDirty()
 
 
 // Function TgClient.TgDataChunk.GetField
-// (Iterator, Latent, PreOperator, Exec, Native, HasOptionalParms, Const)
+// (Final, Defined, NetReliable, Native, Operator, Static, Const)
 // Parameters:
 // struct FString                 FieldName                      (Parm, NeedCtorLink)
 // struct FASValue                NewValue                       (Parm, OutParm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UTgDataChunk::GetField(const struct FString& FieldName, struct FASValue* NewValue)
+bool UTgDataChunk::STATIC_GetField(const struct FString& FieldName, struct FASValue* NewValue)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgDataChunk.GetField");
 
@@ -1363,7 +1353,7 @@ bool UTgDataChunk::GetField(const struct FString& FieldName, struct FASValue* Ne
 
 
 // Function TgClient.TgDataChunk.SetField
-// (Final, Defined, Iterator, Singular, Net, NetReliable, Exec, Event, Operator, HasOptionalParms, Const)
+// (Final, Iterator, Latent, Net, Simulated, Event, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 FieldName                      (Parm, NeedCtorLink)
 // struct FASValue                NewValue                       (Const, Parm, OutParm, NeedCtorLink)
@@ -1392,12 +1382,12 @@ bool UTgDataChunk::SetField(const struct FString& FieldName, bool bCreateIfMissi
 
 
 // Function TgClient.TgDataChunk.AddField
-// (Iterator, Latent, PreOperator, Net, Simulated, Exec, HasOptionalParms, Const)
+// (Iterator, Net, NetReliable, Simulated, Operator, Static, Const)
 // Parameters:
 // struct FString                 FieldName                      (Parm, NeedCtorLink)
 // struct FASValue                NewValue                       (Const, Parm, OutParm, NeedCtorLink)
 
-void UTgDataChunk::AddField(const struct FString& FieldName, struct FASValue* NewValue)
+void UTgDataChunk::STATIC_AddField(const struct FString& FieldName, struct FASValue* NewValue)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgDataChunk.AddField");
 
@@ -1416,7 +1406,7 @@ void UTgDataChunk::AddField(const struct FString& FieldName, struct FASValue* Ne
 
 
 // Function TgClient.TgDataChunk.ClearDelegates
-// (Final, Latent, Native, Event, Operator)
+// (PreOperator, NetReliable, Simulated, Event)
 
 void UTgDataChunk::ClearDelegates()
 {
@@ -1425,7 +1415,6 @@ void UTgDataChunk::ClearDelegates()
 	UTgDataChunk_ClearDelegates_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1434,7 +1423,7 @@ void UTgDataChunk::ClearDelegates()
 
 
 // Function TgClient.TgDataChunk.SetDelegates
-// (Final, Iterator, Singular, Net, NetReliable, Exec, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Latent, Net, Simulated, Event, HasOptionalParms, Const)
 
 void UTgDataChunk::SetDelegates()
 {
@@ -1451,7 +1440,7 @@ void UTgDataChunk::SetDelegates()
 
 
 // Function TgClient.TgDataChunk.RemoveChild
-// (Final, Defined, Iterator, Net, Exec, Event, Operator, HasOptionalParms, Const)
+// (Final, Iterator, Latent, Singular, NetReliable, Event, HasOptionalParms, Const)
 // Parameters:
 // class UTgDataChunk*            Child                          (Parm)
 // bool                           bClearDelegates                (OptionalParm, Parm)
@@ -1473,11 +1462,11 @@ void UTgDataChunk::RemoveChild(class UTgDataChunk* Child, bool bClearDelegates)
 
 
 // Function TgClient.TgDataChunk.AddChild
-// (Final, Latent, PreOperator, Net, Simulated, Exec, HasOptionalParms, Const)
+// (Final, Net, NetReliable, Simulated, Operator, Static, Const)
 // Parameters:
 // class UTgDataChunk*            Child                          (Parm)
 
-void UTgDataChunk::AddChild(class UTgDataChunk* Child)
+void UTgDataChunk::STATIC_AddChild(class UTgDataChunk* Child)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgDataChunk.AddChild");
 
@@ -1493,16 +1482,15 @@ void UTgDataChunk::AddChild(class UTgDataChunk* Child)
 
 
 // Function TgClient.TgDataChunk.DataUpdateEvent
-// (Final, Latent, PreOperator, Singular, Native, HasOptionalParms, Const)
+// (Final, Singular, NetReliable, Exec, Operator, Static, Const)
 
-void UTgDataChunk::DataUpdateEvent()
+void UTgDataChunk::STATIC_DataUpdateEvent()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgDataChunk.DataUpdateEvent");
 
 	UTgDataChunk_DataUpdateEvent_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1511,7 +1499,7 @@ void UTgDataChunk::DataUpdateEvent()
 
 
 // Function TgClient.TgDataChunk.Update
-// (Defined, Iterator, Singular, Net, Exec, Native, HasOptionalParms)
+// (Singular, NetReliable, Exec, Native, HasOptionalParms)
 // Parameters:
 // float                          DeltaTime                      (Parm)
 // bool                           bSkipCallback                  (OptionalParm, Parm)
@@ -1534,12 +1522,12 @@ void UTgDataChunk::Update(float DeltaTime, bool bSkipCallback)
 
 
 // Function TgClient.TgDataChunk.InitializeData
-// (Final, Defined, Net, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Defined, Latent, Singular, NetReliable, Simulated, Native, Operator, Static, Const)
 // Parameters:
 // class UTgDataHandler*          Handler                        (Parm)
 // class UTgDataChunk*            parentChunk                    (Parm)
 
-void UTgDataChunk::InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk)
+void UTgDataChunk::STATIC_InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgDataChunk.InitializeData");
 
@@ -1557,7 +1545,7 @@ void UTgDataChunk::InitializeData(class UTgDataHandler* Handler, class UTgDataCh
 
 
 // Function TgClient.TgDataHandler.NotifyMapChange
-// (Final, Simulated, Event, Operator, HasOptionalParms, Const)
+// (Latent, Singular, Net, Simulated, Exec, Native, HasOptionalParms, Const)
 
 void UTgDataHandler::NotifyMapChange()
 {
@@ -1566,6 +1554,7 @@ void UTgDataHandler::NotifyMapChange()
 	UTgDataHandler_NotifyMapChange_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1574,7 +1563,7 @@ void UTgDataHandler::NotifyMapChange()
 
 
 // Function TgClient.TgDataHandler.Update
-// (Defined, Iterator, Singular, Net, Exec, Native, HasOptionalParms)
+// (Singular, NetReliable, Exec, Native, HasOptionalParms)
 // Parameters:
 // float                          DeltaTime                      (Parm)
 
@@ -1595,11 +1584,11 @@ void UTgDataHandler::Update(float DeltaTime)
 
 
 // Function TgClient.TgDataHandler.InitializeDataHandler
-// (Iterator, Net, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Final, Defined, Latent, Singular, NetReliable, Simulated, Native, Operator, Static, Const)
 // Parameters:
 // class UUIMoviePlayer*          mp                             (Parm)
 
-void UTgDataHandler::InitializeDataHandler(class UUIMoviePlayer* mp)
+void UTgDataHandler::STATIC_InitializeDataHandler(class UUIMoviePlayer* mp)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgDataHandler.InitializeDataHandler");
 
@@ -1641,7 +1630,7 @@ bool UTgGameViewportClient::Init(struct FString* OutError)
 
 
 // Function TgClient.TgGameViewportClient.LayoutPlayers
-// (Final, Defined, PreOperator, Singular, Simulated, Native, HasOptionalParms)
+// (Final, Iterator, Latent, Singular, Net, Simulated, Native, HasOptionalParms)
 
 void UTgGameViewportClient::LayoutPlayers()
 {
@@ -1659,7 +1648,7 @@ void UTgGameViewportClient::LayoutPlayers()
 
 
 // Function TgClient.TgGameViewportClient.GetSubtitleRegion
-// (Final, Iterator, Simulated, Native, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, PreOperator, Singular, Simulated, Native, HasOptionalParms)
 // Parameters:
 // struct FVector2D               MinPos                         (Parm, OutParm)
 // struct FVector2D               MaxPos                         (Parm, OutParm)
@@ -1685,7 +1674,7 @@ void UTgGameViewportClient::GetSubtitleRegion(struct FVector2D* MinPos, struct F
 
 
 // Function TgClient.TgGameViewportClient.PostRender
-// (Iterator, Latent, Singular, NetReliable, Simulated, Native, HasOptionalParms)
+// (Defined, Iterator, Singular, Net, NetReliable, Simulated, Native, HasOptionalParms)
 // Parameters:
 // class UCanvas*                 Canvas                         (Parm)
 
@@ -1706,7 +1695,7 @@ void UTgGameViewportClient::PostRender(class UCanvas* Canvas)
 
 
 // Function TgClient.TgGameViewportClient.GameSessionEnded
-// (Final, Defined, PreOperator, Net, NetReliable, Native, HasOptionalParms)
+// (Final, Iterator, Latent, Simulated, Native, HasOptionalParms)
 
 void UTgGameViewportClient::GameSessionEnded()
 {
@@ -1724,9 +1713,9 @@ void UTgGameViewportClient::GameSessionEnded()
 
 
 // Function TgClient.TgGameViewportClient.InitTgGameViewportClient
-// (Latent, Net, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Final, Defined, Iterator, Latent, Singular, NetReliable, Simulated, Native, Operator, Static, Const)
 
-void UTgGameViewportClient::InitTgGameViewportClient()
+void UTgGameViewportClient::STATIC_InitTgGameViewportClient()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGameViewportClient.InitTgGameViewportClient");
 
@@ -1742,11 +1731,11 @@ void UTgGameViewportClient::InitTgGameViewportClient()
 
 
 // Function TgClient.TgGameViewportClient.IsGfxMovieCapturingMouseInput
-// (Final, Defined, Iterator, PreOperator, Net, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Defined, Iterator, Latent, PreOperator, Singular, NetReliable, Simulated, Native, Operator, Static, Const)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UTgGameViewportClient::IsGfxMovieCapturingMouseInput()
+bool UTgGameViewportClient::STATIC_IsGfxMovieCapturingMouseInput()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGameViewportClient.IsGfxMovieCapturingMouseInput");
 
@@ -1764,7 +1753,7 @@ bool UTgGameViewportClient::IsGfxMovieCapturingMouseInput()
 
 
 // Function TgClient.TgGameViewportClient.NativeGameSessionEnded
-// (Defined, Latent, PreOperator, NetReliable, Event, Operator, HasOptionalParms, Const)
+// (Final, Simulated, Exec, Native, HasOptionalParms, Const)
 
 void UTgGameViewportClient::NativeGameSessionEnded()
 {
@@ -1773,6 +1762,7 @@ void UTgGameViewportClient::NativeGameSessionEnded()
 	UTgGameViewportClient_NativeGameSessionEnded_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -1781,11 +1771,11 @@ void UTgGameViewportClient::NativeGameSessionEnded()
 
 
 // Function TgClient.TgGameViewportClient.DrawTransition
-// (Defined, Latent, PreOperator, Simulated, Exec, Static)
+// (Final, Defined, Latent, Singular, NetReliable, Operator)
 // Parameters:
 // class UCanvas*                 Canvas                         (Parm)
 
-void UTgGameViewportClient::STATIC_DrawTransition(class UCanvas* Canvas)
+void UTgGameViewportClient::DrawTransition(class UCanvas* Canvas)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGameViewportClient.DrawTransition");
 
@@ -1801,7 +1791,7 @@ void UTgGameViewportClient::STATIC_DrawTransition(class UCanvas* Canvas)
 
 
 // Function TgClient.TgGfxFriendManagement.Reinit
-// (Final, Defined, Iterator, PreOperator, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Defined, PreOperator, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 
 void UTgGfxFriendManagement::Reinit()
 {
@@ -1818,9 +1808,9 @@ void UTgGfxFriendManagement::Reinit()
 
 
 // Function TgClient.TgGfxFriendManagement.ASC_Reinit
-// (Final, Iterator, PreOperator, Singular, Net, Simulated, Exec, HasOptionalParms, Const)
+// (Final, Iterator, Latent, PreOperator, Net, NetReliable, Simulated, Operator, Static, Const)
 
-void UTgGfxFriendManagement::ASC_Reinit()
+void UTgGfxFriendManagement::STATIC_ASC_Reinit()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGfxFriendManagement.ASC_Reinit");
 
@@ -1835,7 +1825,7 @@ void UTgGfxFriendManagement::ASC_Reinit()
 
 
 // Function TgClient.TgGfxFriendManagement.ErrorFeedback
-// (Defined, Latent, PreOperator, Singular, Simulated, Exec, Event, HasOptionalParms)
+// (Defined, Iterator, PreOperator, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // struct FString                 ErrMsg                         (Parm, NeedCtorLink)
 
@@ -1855,11 +1845,11 @@ void UTgGfxFriendManagement::ErrorFeedback(const struct FString& ErrMsg)
 
 
 // Function TgClient.TgGfxFriendManagement.ASC_ErrorFeedback
-// (Iterator, PreOperator, Singular, Net, Simulated, Exec, HasOptionalParms, Const)
+// (Iterator, Latent, PreOperator, Net, NetReliable, Simulated, Operator, Static, Const)
 // Parameters:
 // struct FString                 ErrMsg                         (Parm, NeedCtorLink)
 
-void UTgGfxFriendManagement::ASC_ErrorFeedback(const struct FString& ErrMsg)
+void UTgGfxFriendManagement::STATIC_ASC_ErrorFeedback(const struct FString& ErrMsg)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGfxFriendManagement.ASC_ErrorFeedback");
 
@@ -1875,7 +1865,7 @@ void UTgGfxFriendManagement::ASC_ErrorFeedback(const struct FString& ErrMsg)
 
 
 // Function TgClient.TgGfxFriendManagement.USC_Resize
-// (Final, Defined, Iterator, PreOperator, Singular, Net, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Final, Iterator, Latent, PreOperator, Net, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // class UGFxObject*              pObj                           (Parm)
 
@@ -1896,7 +1886,7 @@ void UTgGfxFriendManagement::USC_Resize(class UGFxObject* pObj)
 
 
 // Function TgClient.TgGfxFriendManagement.USC_ToggleDND
-// (Simulated, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Defined, Iterator, Singular, Net, Simulated, Native, Event, HasOptionalParms, Const)
 
 void UTgGfxFriendManagement::USC_ToggleDND()
 {
@@ -1914,7 +1904,7 @@ void UTgGfxFriendManagement::USC_ToggleDND()
 
 
 // Function TgClient.TgGfxFriendManagement.USC_UpdateStatusMessage
-// (Iterator, Simulated, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Defined, Latent, Singular, Net, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 sStatus                        (Parm, NeedCtorLink)
 
@@ -1935,7 +1925,7 @@ void UTgGfxFriendManagement::USC_UpdateStatusMessage(const struct FString& sStat
 
 
 // Function TgClient.TgGfxFriendManagement.USC_InviteToClan
-// (PreOperator, Singular, Net, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Defined, Iterator, PreOperator, Net, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 sPlayerName                    (Parm, NeedCtorLink)
 
@@ -1956,7 +1946,7 @@ void UTgGfxFriendManagement::USC_InviteToClan(const struct FString& sPlayerName)
 
 
 // Function TgClient.TgGfxFriendManagement.USC_BlockByString
-// (Iterator, Latent, PreOperator, Net, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Defined, Net, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 sPlayerName                    (Parm, NeedCtorLink)
 
@@ -1977,7 +1967,7 @@ void UTgGfxFriendManagement::USC_BlockByString(const struct FString& sPlayerName
 
 
 // Function TgClient.TgGfxFriendManagement.USC_InviteFriendByString
-// (Final, Defined, Iterator, Latent, Singular, Net, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Final, Iterator, PreOperator, Net, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 sPlayerName                    (Parm, NeedCtorLink)
 
@@ -1998,7 +1988,7 @@ void UTgGfxFriendManagement::USC_InviteFriendByString(const struct FString& sPla
 
 
 // Function TgClient.TgGfxFriendManagement.USC_AddPlayerNote
-// (Final, Defined, Latent, PreOperator, Net, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Final, Net, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // int                            nPlayerId                      (Parm)
 // struct FString                 sPlayerNote                    (Parm, NeedCtorLink)
@@ -2021,7 +2011,7 @@ void UTgGfxFriendManagement::USC_AddPlayerNote(int nPlayerId, const struct FStri
 
 
 // Function TgClient.TgGfxFriendManagement.USC_RemoveBlocked
-// (Iterator, PreOperator, Singular, Net, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Defined, Latent, PreOperator, Net, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // int                            nPlayerId                      (Parm)
 
@@ -2042,7 +2032,7 @@ void UTgGfxFriendManagement::USC_RemoveBlocked(int nPlayerId)
 
 
 // Function TgClient.TgGfxFriendManagement.USC_PartyKick
-// (Final, Defined, PreOperator, Singular, Net, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Final, Latent, PreOperator, Net, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // int                            nPlayerId                      (Parm)
 
@@ -2063,7 +2053,7 @@ void UTgGfxFriendManagement::USC_PartyKick(int nPlayerId)
 
 
 // Function TgClient.TgGfxFriendManagement.USC_PartyInvite
-// (Defined, PreOperator, Singular, Net, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Latent, PreOperator, Net, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // int                            nPlayerId                      (Parm)
 
@@ -2084,7 +2074,7 @@ void UTgGfxFriendManagement::USC_PartyInvite(int nPlayerId)
 
 
 // Function TgClient.TgGfxFriendManagement.USC_WatchFriend
-// (Latent, Simulated, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Defined, Iterator, Latent, Singular, Net, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // int                            nPlayerId                      (Parm)
 
@@ -2105,7 +2095,7 @@ void UTgGfxFriendManagement::USC_WatchFriend(int nPlayerId)
 
 
 // Function TgClient.TgGfxFriendManagement.USC_SpectatePlayer
-// (Final, Defined, Latent, PreOperator, Singular, Net, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Final, Singular, Net, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // int                            nPlayerId                      (Parm)
 
@@ -2126,7 +2116,7 @@ void UTgGfxFriendManagement::USC_SpectatePlayer(int nPlayerId)
 
 
 // Function TgClient.TgGfxFriendManagement.USC_ViewPlayerClan
-// (Defined, Iterator, Simulated, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Iterator, Latent, Singular, Net, Simulated, Native, Event, HasOptionalParms, Const)
 
 void UTgGfxFriendManagement::USC_ViewPlayerClan()
 {
@@ -2144,7 +2134,7 @@ void UTgGfxFriendManagement::USC_ViewPlayerClan()
 
 
 // Function TgClient.TgGfxFriendManagement.USC_ViewPlayerProfile
-// (Final, Defined, Iterator, Simulated, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Final, Iterator, Latent, Singular, Net, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 sPlayerName                    (Parm, NeedCtorLink)
 
@@ -2165,7 +2155,7 @@ void UTgGfxFriendManagement::USC_ViewPlayerProfile(const struct FString& sPlayer
 
 
 // Function TgClient.TgGfxFriendManagement.USC_CancelAllFriendRequests
-// (Final, Iterator, Latent, PreOperator, Net, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Net, Simulated, Native, Event, HasOptionalParms, Const)
 
 void UTgGfxFriendManagement::USC_CancelAllFriendRequests()
 {
@@ -2183,7 +2173,7 @@ void UTgGfxFriendManagement::USC_CancelAllFriendRequests()
 
 
 // Function TgClient.TgGfxFriendManagement.USC_CancelFriendRequest
-// (Final, Defined, Iterator, Latent, PreOperator, Net, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Final, Iterator, Net, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // int                            nPlayerId                      (Parm)
 
@@ -2204,7 +2194,7 @@ void UTgGfxFriendManagement::USC_CancelFriendRequest(int nPlayerId)
 
 
 // Function TgClient.TgGfxFriendManagement.USC_AcceptAllFriendRequests
-// (Latent, PreOperator, Net, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Defined, Iterator, Latent, PreOperator, Singular, Simulated, Native, Event, HasOptionalParms, Const)
 
 void UTgGfxFriendManagement::USC_AcceptAllFriendRequests()
 {
@@ -2222,7 +2212,7 @@ void UTgGfxFriendManagement::USC_AcceptAllFriendRequests()
 
 
 // Function TgClient.TgGfxFriendManagement.USC_AcceptFriendRequest
-// (Defined, Latent, PreOperator, Net, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Net, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // int                            nPlayerId                      (Parm)
 
@@ -2243,7 +2233,7 @@ void UTgGfxFriendManagement::USC_AcceptFriendRequest(int nPlayerId)
 
 
 // Function TgClient.TgGfxFriendManagement.USC_CancelClanInvite
-// (Defined, Iterator, Latent, PreOperator, Net, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Iterator, Net, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // int                            nClanId                        (Parm)
 
@@ -2264,7 +2254,7 @@ void UTgGfxFriendManagement::USC_CancelClanInvite(int nClanId)
 
 
 // Function TgClient.TgGfxFriendManagement.USC_AcceptClanInvite
-// (Final, Latent, PreOperator, Net, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Iterator, Latent, PreOperator, Singular, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // int                            nClanId                        (Parm)
 
@@ -2285,7 +2275,7 @@ void UTgGfxFriendManagement::USC_AcceptClanInvite(int nClanId)
 
 
 // Function TgClient.TgGfxFriendManagement.USC_CancelInvite
-// (Singular, Net, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Defined, Iterator, Net, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // int                            nPlayerId                      (Parm)
 
@@ -2306,7 +2296,7 @@ void UTgGfxFriendManagement::USC_CancelInvite(int nPlayerId)
 
 
 // Function TgClient.TgGfxFriendManagement.USC_InviteFriend
-// (Defined, Iterator, Latent, Singular, Net, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Iterator, PreOperator, Net, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // int                            nPlayerId                      (Parm)
 
@@ -2327,7 +2317,7 @@ void UTgGfxFriendManagement::USC_InviteFriend(int nPlayerId)
 
 
 // Function TgClient.TgGfxFriendManagement.USC_GetListData
-// (Final, Defined, Latent, Singular, Net, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Final, PreOperator, Net, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // int                            nId                            (Parm)
 
@@ -2348,7 +2338,7 @@ void UTgGfxFriendManagement::USC_GetListData(int nId)
 
 
 // Function TgClient.TgGfxFriendManagement.USC_SearchByString
-// (Final, Latent, PreOperator, Singular, Net, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Iterator, Latent, PreOperator, Net, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 PlayerName                     (Parm, NeedCtorLink)
 
@@ -2369,7 +2359,7 @@ void UTgGfxFriendManagement::USC_SearchByString(const struct FString& PlayerName
 
 
 // Function TgClient.TgGfxFriendManagement.USC_MessageFriend
-// (Final, PreOperator, Singular, Net, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Iterator, PreOperator, Net, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // int                            nPlayerId                      (Parm)
 // struct FString                 sPlayerName                    (Parm, NeedCtorLink)
@@ -2392,7 +2382,7 @@ void UTgGfxFriendManagement::USC_MessageFriend(int nPlayerId, const struct FStri
 
 
 // Function TgClient.TgGfxFriendManagement.USC_RemoveFriend
-// (Final, Iterator, PreOperator, Singular, Net, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Latent, PreOperator, Net, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // int                            nPlayerId                      (Parm)
 
@@ -2413,7 +2403,7 @@ void UTgGfxFriendManagement::USC_RemoveFriend(int nPlayerId)
 
 
 // Function TgClient.TgGfxFriendManagement.USC_GetFriendsData
-// (Defined, Latent, Singular, Net, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (PreOperator, Net, Simulated, Native, Event, HasOptionalParms, Const)
 
 void UTgGfxFriendManagement::USC_GetFriendsData()
 {
@@ -2431,7 +2421,7 @@ void UTgGfxFriendManagement::USC_GetFriendsData()
 
 
 // Function TgClient.TgGfxFriendManagement.USC_Resize_Delegate
-// (Final, Iterator, Latent, NetReliable, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Latent, Net, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // class UGFxObject*              pObj                           (Parm)
 
@@ -2451,7 +2441,7 @@ void UTgGfxFriendManagement::USC_Resize_Delegate(class UGFxObject* pObj)
 
 
 // Function TgClient.TgGfxFriendManagement.USC_ToggleDND_Delegate
-// (Defined, Iterator, PreOperator, NetReliable, Simulated, Exec, Event, HasOptionalParms)
+// (Defined, PreOperator, Net, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 
 void UTgGfxFriendManagement::USC_ToggleDND_Delegate()
 {
@@ -2468,7 +2458,7 @@ void UTgGfxFriendManagement::USC_ToggleDND_Delegate()
 
 
 // Function TgClient.TgGfxFriendManagement.USC_UpdateStatusMessage_Delegate
-// (Latent, PreOperator, NetReliable, Simulated, Exec, Event, HasOptionalParms)
+// (Iterator, PreOperator, Net, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // struct FString                 sStatus                        (Parm, NeedCtorLink)
 
@@ -2488,7 +2478,7 @@ void UTgGfxFriendManagement::USC_UpdateStatusMessage_Delegate(const struct FStri
 
 
 // Function TgClient.TgGfxFriendManagement.USC_InviteToClan_Delegate
-// (Final, Defined, Iterator, NetReliable, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Defined, Net, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // struct FString                 sPlayerName                    (Parm, NeedCtorLink)
 
@@ -2508,7 +2498,7 @@ void UTgGfxFriendManagement::USC_InviteToClan_Delegate(const struct FString& sPl
 
 
 // Function TgClient.TgGfxFriendManagement.USC_BlockByString_Delegate
-// (Iterator, Latent, PreOperator, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Latent, PreOperator, Singular, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // struct FString                 sPlayerName                    (Parm, NeedCtorLink)
 
@@ -2528,7 +2518,7 @@ void UTgGfxFriendManagement::USC_BlockByString_Delegate(const struct FString& sP
 
 
 // Function TgClient.TgGfxFriendManagement.USC_InviteFriendByString_Delegate
-// (Defined, Iterator, NetReliable, Simulated, Exec, Event, HasOptionalParms)
+// (Defined, Net, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // struct FString                 sPlayerName                    (Parm, NeedCtorLink)
 
@@ -2548,7 +2538,7 @@ void UTgGfxFriendManagement::USC_InviteFriendByString_Delegate(const struct FStr
 
 
 // Function TgClient.TgGfxFriendManagement.USC_AddPlayerNote_Delegate
-// (Final, Defined, Latent, PreOperator, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Defined, Iterator, PreOperator, Singular, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // int                            nPlayerId                      (Parm)
 // struct FString                 sPlayerNote                    (Parm, NeedCtorLink)
@@ -2570,7 +2560,7 @@ void UTgGfxFriendManagement::USC_AddPlayerNote_Delegate(int nPlayerId, const str
 
 
 // Function TgClient.TgGfxFriendManagement.USC_RemoveBlocked_Delegate
-// (Final, Defined, Latent, NetReliable, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Defined, Iterator, Net, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // int                            nPlayerId                      (Parm)
 
@@ -2590,7 +2580,7 @@ void UTgGfxFriendManagement::USC_RemoveBlocked_Delegate(int nPlayerId)
 
 
 // Function TgClient.TgGfxFriendManagement.USC_PartyKick_Delegate
-// (Defined, Latent, NetReliable, Simulated, Exec, Event, HasOptionalParms)
+// (Defined, Iterator, Net, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // int                            nPlayerId                      (Parm)
 
@@ -2610,7 +2600,7 @@ void UTgGfxFriendManagement::USC_PartyKick_Delegate(int nPlayerId)
 
 
 // Function TgClient.TgGfxFriendManagement.USC_PartyInvite_Delegate
-// (Final, Latent, NetReliable, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Iterator, Net, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // int                            nPlayerId                      (Parm)
 
@@ -2630,7 +2620,7 @@ void UTgGfxFriendManagement::USC_PartyInvite_Delegate(int nPlayerId)
 
 
 // Function TgClient.TgGfxFriendManagement.USC_WatchFriend_Delegate
-// (Final, Defined, Latent, PreOperator, NetReliable, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Defined, Iterator, PreOperator, Net, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // int                            nPlayerId                      (Parm)
 
@@ -2650,7 +2640,7 @@ void UTgGfxFriendManagement::USC_WatchFriend_Delegate(int nPlayerId)
 
 
 // Function TgClient.TgGfxFriendManagement.USC_SpectatePlayer_Delegate
-// (Iterator, PreOperator, NetReliable, Simulated, Exec, Event, HasOptionalParms)
+// (PreOperator, Net, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // int                            nPlayerId                      (Parm)
 
@@ -2670,7 +2660,7 @@ void UTgGfxFriendManagement::USC_SpectatePlayer_Delegate(int nPlayerId)
 
 
 // Function TgClient.TgGfxFriendManagement.USC_ViewPlayerClan_Delegate
-// (Final, Latent, PreOperator, NetReliable, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Iterator, PreOperator, Net, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 
 void UTgGfxFriendManagement::USC_ViewPlayerClan_Delegate()
 {
@@ -2687,7 +2677,7 @@ void UTgGfxFriendManagement::USC_ViewPlayerClan_Delegate()
 
 
 // Function TgClient.TgGfxFriendManagement.USC_ViewPlayerProfile_Delegate
-// (Defined, Latent, PreOperator, NetReliable, Simulated, Exec, Event, HasOptionalParms)
+// (Defined, Iterator, PreOperator, Net, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // struct FString                 sPlayerName                    (Parm, NeedCtorLink)
 
@@ -2707,7 +2697,7 @@ void UTgGfxFriendManagement::USC_ViewPlayerProfile_Delegate(const struct FString
 
 
 // Function TgClient.TgGfxFriendManagement.USC_CancelAllFriendRequests_Delegate
-// (Final, Iterator, Latent, PreOperator, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Latent, PreOperator, Singular, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 
 void UTgGfxFriendManagement::USC_CancelAllFriendRequests_Delegate()
 {
@@ -2724,7 +2714,7 @@ void UTgGfxFriendManagement::USC_CancelAllFriendRequests_Delegate()
 
 
 // Function TgClient.TgGfxFriendManagement.USC_CancelFriendRequest_Delegate
-// (Final, Defined, Iterator, Latent, PreOperator, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Defined, Latent, PreOperator, Singular, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // int                            nPlayerId                      (Parm)
 
@@ -2744,7 +2734,7 @@ void UTgGfxFriendManagement::USC_CancelFriendRequest_Delegate(int nPlayerId)
 
 
 // Function TgClient.TgGfxFriendManagement.USC_AcceptAllFriendRequests_Delegate
-// (Latent, PreOperator, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Iterator, PreOperator, Singular, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 
 void UTgGfxFriendManagement::USC_AcceptAllFriendRequests_Delegate()
 {
@@ -2761,7 +2751,7 @@ void UTgGfxFriendManagement::USC_AcceptAllFriendRequests_Delegate()
 
 
 // Function TgClient.TgGfxFriendManagement.USC_AcceptFriendRequest_Delegate
-// (Defined, Latent, PreOperator, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Defined, Iterator, PreOperator, Singular, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // int                            nPlayerId                      (Parm)
 
@@ -2781,7 +2771,7 @@ void UTgGfxFriendManagement::USC_AcceptFriendRequest_Delegate(int nPlayerId)
 
 
 // Function TgClient.TgGfxFriendManagement.USC_CancelClanInvite_Delegate
-// (Defined, Iterator, Latent, PreOperator, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Defined, Latent, PreOperator, Singular, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // int                            nClanId                        (Parm)
 
@@ -2801,7 +2791,7 @@ void UTgGfxFriendManagement::USC_CancelClanInvite_Delegate(int nClanId)
 
 
 // Function TgClient.TgGfxFriendManagement.USC_AcceptClanInvite_Delegate
-// (Final, Latent, PreOperator, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Iterator, PreOperator, Singular, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // int                            nClanId                        (Parm)
 
@@ -2821,7 +2811,7 @@ void UTgGfxFriendManagement::USC_AcceptClanInvite_Delegate(int nClanId)
 
 
 // Function TgClient.TgGfxFriendManagement.USC_CancelInvite_Delegate
-// (NetReliable, Simulated, Exec, Event, HasOptionalParms)
+// (Iterator, Latent, PreOperator, Singular, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // int                            nPlayerId                      (Parm)
 
@@ -2841,7 +2831,7 @@ void UTgGfxFriendManagement::USC_CancelInvite_Delegate(int nPlayerId)
 
 
 // Function TgClient.TgGfxFriendManagement.USC_InviteFriend_Delegate
-// (Final, Iterator, NetReliable, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Net, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // int                            nPlayerId                      (Parm)
 
@@ -2861,7 +2851,7 @@ void UTgGfxFriendManagement::USC_InviteFriend_Delegate(int nPlayerId)
 
 
 // Function TgClient.TgGfxFriendManagement.USC_GetListData_Delegate
-// (Iterator, NetReliable, Simulated, Exec, Event, HasOptionalParms)
+// (Net, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // int                            nId                            (Parm)
 
@@ -2881,7 +2871,7 @@ void UTgGfxFriendManagement::USC_GetListData_Delegate(int nId)
 
 
 // Function TgClient.TgGfxFriendManagement.USC_SearchByString_Delegate
-// (Defined, Iterator, Latent, NetReliable, Simulated, Exec, Event, HasOptionalParms)
+// (Defined, Latent, Net, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // struct FString                 PlayerName                     (Parm, NeedCtorLink)
 
@@ -2901,7 +2891,7 @@ void UTgGfxFriendManagement::USC_SearchByString_Delegate(const struct FString& P
 
 
 // Function TgClient.TgGfxFriendManagement.USC_MessageFriend_Delegate
-// (Latent, NetReliable, Simulated, Exec, Event, HasOptionalParms)
+// (Iterator, Net, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // int                            nPlayerId                      (Parm)
 // struct FString                 sPlayerName                    (Parm, NeedCtorLink)
@@ -2923,7 +2913,7 @@ void UTgGfxFriendManagement::USC_MessageFriend_Delegate(int nPlayerId, const str
 
 
 // Function TgClient.TgGfxFriendManagement.USC_RemoveFriend_Delegate
-// (Iterator, Latent, NetReliable, Simulated, Exec, Event, HasOptionalParms)
+// (Latent, Net, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // int                            nPlayerId                      (Parm)
 
@@ -2943,7 +2933,7 @@ void UTgGfxFriendManagement::USC_RemoveFriend_Delegate(int nPlayerId)
 
 
 // Function TgClient.TgGfxFriendManagement.USC_GetFriendsData_Delegate
-// (Final, Defined, NetReliable, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, PreOperator, Singular, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 
 void UTgGfxFriendManagement::USC_GetFriendsData_Delegate()
 {
@@ -2960,11 +2950,11 @@ void UTgGfxFriendManagement::USC_GetFriendsData_Delegate()
 
 
 // Function TgClient.TgRewardCenterManager.Initialize
-// (Final, Defined, Latent, Exec, Native, Event, Static)
+// (Defined, Latent, Singular, NetReliable, Simulated, Exec, Event, Operator)
 // Parameters:
 // class UUIGameMoviePlayer*      pMoviePlayer                   (Parm)
 
-void UTgRewardCenterManager::STATIC_Initialize(class UUIGameMoviePlayer* pMoviePlayer)
+void UTgRewardCenterManager::Initialize(class UUIGameMoviePlayer* pMoviePlayer)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgRewardCenterManager.Initialize");
 
@@ -2972,7 +2962,6 @@ void UTgRewardCenterManager::STATIC_Initialize(class UUIGameMoviePlayer* pMovieP
 	params.pMoviePlayer = pMoviePlayer;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -2981,12 +2970,12 @@ void UTgRewardCenterManager::STATIC_Initialize(class UUIGameMoviePlayer* pMovieP
 
 
 // Function TgClient.TgStreamManager.GetFeatureDescription
-// (Defined, Latent, PreOperator, Exec, Native, HasOptionalParms, Const)
+// (Final, NetReliable, Native, Operator, Static, Const)
 // Parameters:
 // int                            Count                          (OptionalParm, Parm)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString UTgStreamManager::GetFeatureDescription(int Count)
+struct FString UTgStreamManager::STATIC_GetFeatureDescription(int Count)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgStreamManager.GetFeatureDescription");
 
@@ -3005,12 +2994,12 @@ struct FString UTgStreamManager::GetFeatureDescription(int Count)
 
 
 // Function TgClient.TgStreamManager.GetFeatureName
-// (Final, Defined, Latent, PreOperator, Exec, Native, HasOptionalParms, Const)
+// (Defined, NetReliable, Native, Operator, Static, Const)
 // Parameters:
 // int                            Count                          (OptionalParm, Parm)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString UTgStreamManager::GetFeatureName(int Count)
+struct FString UTgStreamManager::STATIC_GetFeatureName(int Count)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgStreamManager.GetFeatureName");
 
@@ -3029,11 +3018,11 @@ struct FString UTgStreamManager::GetFeatureName(int Count)
 
 
 // Function TgClient.TgStreamManager.HaveFeature
-// (Final, Defined, Iterator, PreOperator, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Defined, Iterator, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, Const)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UTgStreamManager::HaveFeature()
+bool UTgStreamManager::STATIC_HaveFeature()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgStreamManager.HaveFeature");
 
@@ -3051,12 +3040,12 @@ bool UTgStreamManager::HaveFeature()
 
 
 // Function TgClient.TgStreamManager.IsLiveAtIndex
-// (Latent, PreOperator, Net, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Final, Defined, Iterator, Latent, PreOperator, Singular, NetReliable, Simulated, Native, Operator, Static, Const)
 // Parameters:
 // int                            Index                          (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UTgStreamManager::IsLiveAtIndex(int Index)
+bool UTgStreamManager::STATIC_IsLiveAtIndex(int Index)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgStreamManager.IsLiveAtIndex");
 
@@ -3075,12 +3064,12 @@ bool UTgStreamManager::IsLiveAtIndex(int Index)
 
 
 // Function TgClient.TgStreamManager.GetDescriptionAtIndex
-// (Latent, PreOperator, Exec, Native, HasOptionalParms, Const)
+// (Final, Defined, Iterator, Latent, PreOperator, Singular, Net, Native, Operator, Static, Const)
 // Parameters:
 // int                            Index                          (Parm)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString UTgStreamManager::GetDescriptionAtIndex(int Index)
+struct FString UTgStreamManager::STATIC_GetDescriptionAtIndex(int Index)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgStreamManager.GetDescriptionAtIndex");
 
@@ -3099,12 +3088,12 @@ struct FString UTgStreamManager::GetDescriptionAtIndex(int Index)
 
 
 // Function TgClient.TgStreamManager.GetViewersAtIndex
-// (Defined, Iterator, Latent, Singular, Exec, Native, HasOptionalParms, Const)
+// (Final, Iterator, PreOperator, NetReliable, Native, Operator, Static, Const)
 // Parameters:
 // int                            Index                          (Parm)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString UTgStreamManager::GetViewersAtIndex(int Index)
+struct FString UTgStreamManager::STATIC_GetViewersAtIndex(int Index)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgStreamManager.GetViewersAtIndex");
 
@@ -3123,12 +3112,12 @@ struct FString UTgStreamManager::GetViewersAtIndex(int Index)
 
 
 // Function TgClient.TgStreamManager.GetTitleAtIndex
-// (Defined, Latent, Singular, Exec, Native, HasOptionalParms, Const)
+// (Final, PreOperator, NetReliable, Native, Operator, Static, Const)
 // Parameters:
 // int                            Index                          (Parm)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString UTgStreamManager::GetTitleAtIndex(int Index)
+struct FString UTgStreamManager::STATIC_GetTitleAtIndex(int Index)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgStreamManager.GetTitleAtIndex");
 
@@ -3147,12 +3136,12 @@ struct FString UTgStreamManager::GetTitleAtIndex(int Index)
 
 
 // Function TgClient.TgStreamManager.IsStream
-// (Final, Defined, Latent, PreOperator, Net, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Defined, Net, NetReliable, Simulated, Native, Operator, Static, Const)
 // Parameters:
 // int                            Index                          (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UTgStreamManager::IsStream(int Index)
+bool UTgStreamManager::STATIC_IsStream(int Index)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgStreamManager.IsStream");
 
@@ -3171,12 +3160,12 @@ bool UTgStreamManager::IsStream(int Index)
 
 
 // Function TgClient.TgStreamManager.GetTypeCountWatching
-// (Final, Iterator, Latent, Singular, Exec, Native, HasOptionalParms, Const)
+// (Iterator, PreOperator, NetReliable, Native, Operator, Static, Const)
 // Parameters:
 // TEnumAsByte<ESTREAMTYPE>       Type                           (Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UTgStreamManager::GetTypeCountWatching(TEnumAsByte<ESTREAMTYPE> Type)
+int UTgStreamManager::STATIC_GetTypeCountWatching(TEnumAsByte<ESTREAMTYPE> Type)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgStreamManager.GetTypeCountWatching");
 
@@ -3195,12 +3184,12 @@ int UTgStreamManager::GetTypeCountWatching(TEnumAsByte<ESTREAMTYPE> Type)
 
 
 // Function TgClient.TgStreamManager.GetTypeCount
-// (Iterator, Latent, Singular, Exec, Native, HasOptionalParms, Const)
+// (Final, Defined, PreOperator, NetReliable, Native, Operator, Static, Const)
 // Parameters:
 // TEnumAsByte<ESTREAMTYPE>       Type                           (Parm)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UTgStreamManager::GetTypeCount(TEnumAsByte<ESTREAMTYPE> Type)
+int UTgStreamManager::STATIC_GetTypeCount(TEnumAsByte<ESTREAMTYPE> Type)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgStreamManager.GetTypeCount");
 
@@ -3219,7 +3208,7 @@ int UTgStreamManager::GetTypeCount(TEnumAsByte<ESTREAMTYPE> Type)
 
 
 // Function TgClient.TgStreamManager.LiveSort
-// (Defined, Latent, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Defined, Iterator, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // struct FGameStream             A                              (Parm, NeedCtorLink)
 // struct FGameStream             B                              (Parm, NeedCtorLink)
@@ -3244,7 +3233,7 @@ int UTgStreamManager::LiveSort(const struct FGameStream& A, const struct FGameSt
 
 
 // Function TgClient.TgStreamManager.FeaturedSort
-// (Iterator, Latent, PreOperator, Singular, Simulated, Exec, Event, HasOptionalParms)
+// (Latent, PreOperator, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // struct FGameStream             A                              (Parm, NeedCtorLink)
 // struct FGameStream             B                              (Parm, NeedCtorLink)
@@ -3269,7 +3258,7 @@ int UTgStreamManager::FeaturedSort(const struct FGameStream& A, const struct FGa
 
 
 // Function TgClient.TgStreamManager.ViewerSort
-// (Iterator, Latent, PreOperator, NetReliable, Simulated, Exec, Event, HasOptionalParms)
+// (Latent, PreOperator, Net, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // struct FGameStream             A                              (Parm, NeedCtorLink)
 // struct FGameStream             B                              (Parm, NeedCtorLink)
@@ -3294,7 +3283,7 @@ int UTgStreamManager::ViewerSort(const struct FGameStream& A, const struct FGame
 
 
 // Function TgClient.TgStreamManager.ResolveChannelName
-// (Final, Latent, PreOperator, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Iterator, PreOperator, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // struct FString                 sChannel                       (Parm, NeedCtorLink)
 
@@ -3314,7 +3303,7 @@ void UTgStreamManager::ResolveChannelName(const struct FString& sChannel)
 
 
 // Function TgClient.TgStreamManager.CompleteUpdate
-// (Final, Iterator, PreOperator, Singular, Simulated, Exec, Event, HasOptionalParms)
+// (Final, PreOperator, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
 
 void UTgStreamManager::CompleteUpdate()
 {
@@ -3331,7 +3320,7 @@ void UTgStreamManager::CompleteUpdate()
 
 
 // Function TgClient.TgStreamManager.ViewStreamIndex
-// (Final, Iterator, Latent, PreOperator, NetReliable, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Latent, PreOperator, Net, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // int                            surfaceId                      (Parm)
 // int                            Index                          (Parm)
@@ -3372,11 +3361,11 @@ bool UTgStreamManager::ViewStreamIndex(int surfaceId, int Index, bool external, 
 
 
 // Function TgClient.TgStreamManager.HasSpecialStreams
-// (Final, Iterator, PreOperator, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Iterator, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, Const)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UTgStreamManager::HasSpecialStreams()
+bool UTgStreamManager::STATIC_HasSpecialStreams()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgStreamManager.HasSpecialStreams");
 
@@ -3394,7 +3383,7 @@ bool UTgStreamManager::HasSpecialStreams()
 
 
 // Function TgClient.TgStreamManager.OpenPlayerStream
-// (Singular, Net, Simulated, Event, Operator, HasOptionalParms, Const)
+// (Defined, Iterator, Net, NetReliable, Simulated, Exec, Native, HasOptionalParms, Const)
 // Parameters:
 // int                            nPlayerId                      (Parm)
 // bool                           external                       (Parm)
@@ -3421,6 +3410,7 @@ bool UTgStreamManager::OpenPlayerStream(int nPlayerId, bool external, float X, f
 	params.heightReal = heightReal;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3431,7 +3421,7 @@ bool UTgStreamManager::OpenPlayerStream(int nPlayerId, bool external, float X, f
 
 
 // Function TgClient.TgStreamManager.OpenStream
-// (Final, Singular, Net, Simulated, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Iterator, Net, NetReliable, Simulated, Exec, Native, HasOptionalParms, Const)
 // Parameters:
 // int                            surfaceId                      (Parm)
 // struct FString                 URL                            (Parm, NeedCtorLink)
@@ -3462,6 +3452,7 @@ bool UTgStreamManager::OpenStream(int surfaceId, const struct FString& URL, bool
 	params.joinChat = joinChat;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3472,9 +3463,9 @@ bool UTgStreamManager::OpenStream(int surfaceId, const struct FString& URL, bool
 
 
 // Function TgClient.TgStreamManager.LoadStreams
-// (Defined, NetReliable, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Final, Latent, Singular, Net, NetReliable, Simulated, Native, Operator, Static, Const)
 
-void UTgStreamManager::LoadStreams()
+void UTgStreamManager::STATIC_LoadStreams()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgStreamManager.LoadStreams");
 
@@ -3490,7 +3481,7 @@ void UTgStreamManager::LoadStreams()
 
 
 // Function TgClient.TgSynchronizedTimer.IsPaused
-// (Latent, Simulated, Event, HasOptionalParms)
+// (Iterator, Net, Simulated, Event, HasOptionalParms)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
@@ -3511,11 +3502,11 @@ bool UTgSynchronizedTimer::IsPaused()
 
 
 // Function TgClient.TgSynchronizedTimer.IsRunning
-// (Final, Latent, PreOperator, Net, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Net, NetReliable, Simulated, Native, Operator, Static, Const)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UTgSynchronizedTimer::IsRunning()
+bool UTgSynchronizedTimer::STATIC_IsRunning()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgSynchronizedTimer.IsRunning");
 
@@ -3533,12 +3524,12 @@ bool UTgSynchronizedTimer::IsRunning()
 
 
 // Function TgClient.TgSynchronizedTimer.EventCallback
-// (Iterator, Singular, Net, Simulated, Native, HasOptionalParms, Const)
+// (Final, Defined, Latent, Net, NetReliable, Simulated, Exec, Operator, Static, Const)
 // Parameters:
 // int                            nTimerId                       (Parm)
 // TEnumAsByte<ETGT_EVENT>        eEvent                         (Parm)
 
-void UTgSynchronizedTimer::EventCallback(int nTimerId, TEnumAsByte<ETGT_EVENT> eEvent)
+void UTgSynchronizedTimer::STATIC_EventCallback(int nTimerId, TEnumAsByte<ETGT_EVENT> eEvent)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgSynchronizedTimer.EventCallback");
 
@@ -3547,7 +3538,6 @@ void UTgSynchronizedTimer::EventCallback(int nTimerId, TEnumAsByte<ETGT_EVENT> e
 	params.eEvent = eEvent;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3556,11 +3546,11 @@ void UTgSynchronizedTimer::EventCallback(int nTimerId, TEnumAsByte<ETGT_EVENT> e
 
 
 // Function TgClient.TgSynchronizedTimer.ExpireTimer
-// (Final, Iterator, Singular, Net, Simulated, Native, HasOptionalParms, Const)
+// (Iterator, Latent, Net, NetReliable, Simulated, Exec, Operator, Static, Const)
 // Parameters:
 // bool                           bFromCallback                  (OptionalParm, Parm)
 
-void UTgSynchronizedTimer::ExpireTimer(bool bFromCallback)
+void UTgSynchronizedTimer::STATIC_ExpireTimer(bool bFromCallback)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgSynchronizedTimer.ExpireTimer");
 
@@ -3568,7 +3558,6 @@ void UTgSynchronizedTimer::ExpireTimer(bool bFromCallback)
 	params.bFromCallback = bFromCallback;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3577,7 +3566,7 @@ void UTgSynchronizedTimer::ExpireTimer(bool bFromCallback)
 
 
 // Function TgClient.TgSynchronizedTimer.UpdateTimer
-// (Net, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Defined, Iterator, Singular, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // float                          fElapsed                       (Parm)
 // float                          fTotal                         (Parm)
@@ -3604,11 +3593,11 @@ void UTgSynchronizedTimer::UpdateTimer(float fElapsed, float fTotal, bool bPause
 
 
 // Function TgClient.TgSynchronizedTimer.StartTimer
-// (Final, Event, HasOptionalParms)
+// (Final, Defined, Singular, Net, NetReliable, Simulated, Native, Operator, Static)
 // Parameters:
 // float                          fSeconds                       (Parm)
 
-void UTgSynchronizedTimer::StartTimer(float fSeconds)
+void UTgSynchronizedTimer::STATIC_StartTimer(float fSeconds)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgSynchronizedTimer.StartTimer");
 
@@ -3616,6 +3605,7 @@ void UTgSynchronizedTimer::StartTimer(float fSeconds)
 	params.fSeconds = fSeconds;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3624,7 +3614,7 @@ void UTgSynchronizedTimer::StartTimer(float fSeconds)
 
 
 // Function TgClient.UIDataShop.GetMarketplaceProductsByType
-// (Final, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Iterator, Latent, PreOperator, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // class UUIGameMoviePlayer*      pMoviePlayer                   (Parm)
 // TEnumAsByte<EMediaItemType>    MediaType                      (Parm)
@@ -3653,7 +3643,7 @@ TEnumAsByte<EOnlineEnumerationReadState> UUIDataShop::GetMarketplaceProductsByTy
 
 
 // Function TgClient.UIDataShop.StoreDLCItemData
-// (PreOperator, Net, Simulated, Exec, Event, Operator, HasOptionalParms, Const)
+// (Defined, Iterator, PreOperator, Singular, NetReliable, Simulated, Event, HasOptionalParms, Const)
 
 void UUIDataShop::StoreDLCItemData()
 {
@@ -3670,7 +3660,7 @@ void UUIDataShop::StoreDLCItemData()
 
 
 // Function TgClient.UIHudSpectator.SendGraphData
-// (Iterator, Latent, PreOperator, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Latent, PreOperator, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // class UGFxObject*              Obj                            (Parm)
 
@@ -3690,7 +3680,7 @@ void UUIHudSpectator::SendGraphData(class UGFxObject* Obj)
 
 
 // Function TgClient.UIHudSpectator.UpdateGraph
-// (Final, Iterator, Latent, Singular, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, PreOperator, Simulated, Native, Event, HasOptionalParms, Const)
 
 void UUIHudSpectator::UpdateGraph()
 {
@@ -3708,11 +3698,11 @@ void UUIHudSpectator::UpdateGraph()
 
 
 // Function TgClient.UIHudSpectator.Initialize
-// (Final, Defined, Latent, Exec, Native, Event, Static)
+// (Defined, Latent, Singular, NetReliable, Simulated, Exec, Event, Operator)
 // Parameters:
 // class UUIGameMoviePlayer*      pParentMovie                   (Parm)
 
-void UUIHudSpectator::STATIC_Initialize(class UUIGameMoviePlayer* pParentMovie)
+void UUIHudSpectator::Initialize(class UUIGameMoviePlayer* pParentMovie)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIHudSpectator.Initialize");
 
@@ -3720,7 +3710,6 @@ void UUIHudSpectator::STATIC_Initialize(class UUIGameMoviePlayer* pParentMovie)
 	params.pParentMovie = pParentMovie;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -3729,7 +3718,7 @@ void UUIHudSpectator::STATIC_Initialize(class UUIGameMoviePlayer* pParentMovie)
 
 
 // Function TgClient.UIMoviePlayer.SetMarketplaceVisibility
-// (Final, Iterator, Latent, PreOperator, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Latent, PreOperator, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // bool                           Visible                        (Parm)
 // unsigned char                  IconPosition                   (OptionalParm, Parm)
@@ -3751,7 +3740,7 @@ void UUIMoviePlayer::SetMarketplaceVisibility(bool Visible, unsigned char IconPo
 
 
 // Function TgClient.UIMoviePlayer.usc_ClipboardCopy
-// (Defined, Singular, Net, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Latent, Net, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 Str                            (Parm, NeedCtorLink)
 
@@ -3772,7 +3761,7 @@ void UUIMoviePlayer::usc_ClipboardCopy(const struct FString& Str)
 
 
 // Function TgClient.UIMoviePlayer.usc_ClipboardPaste
-// (Final, Defined, Singular, Net, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Final, Latent, Net, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
@@ -3794,9 +3783,9 @@ struct FString UUIMoviePlayer::usc_ClipboardPaste()
 
 
 // Function TgClient.UIMoviePlayer.InitOSSRef
-// (Final, Iterator, Net, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Iterator, Latent, Singular, NetReliable, Simulated, Native, Operator, Static, Const)
 
-void UUIMoviePlayer::InitOSSRef()
+void UUIMoviePlayer::STATIC_InitOSSRef()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIMoviePlayer.InitOSSRef");
 
@@ -3832,7 +3821,7 @@ void UUIMoviePlayer::Init(class ULocalPlayer* LocPlay)
 
 
 // Function TgClient.UIMoviePlayer.usc_IME_Exists
-// (Iterator, Latent, Singular, Net, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Defined, PreOperator, Net, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
@@ -3854,7 +3843,7 @@ bool UUIMoviePlayer::usc_IME_Exists()
 
 
 // Function TgClient.UIMoviePlayer.usc_IME_SetEnabled
-// (Final, Iterator, Latent, Singular, Net, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, PreOperator, Net, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // bool                           bEnabled                       (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
@@ -3878,7 +3867,7 @@ bool UUIMoviePlayer::usc_IME_SetEnabled(bool bEnabled)
 
 
 // Function TgClient.UIMoviePlayer.usc_TranslateMsg
-// (Final, Simulated, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Iterator, Singular, Net, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 Identifier                     (Parm, NeedCtorLink)
 // struct FString                 SectionName                    (Parm, NeedCtorLink)
@@ -3904,7 +3893,7 @@ struct FString UUIMoviePlayer::usc_TranslateMsg(const struct FString& Identifier
 
 
 // Function TgClient.UIMoviePlayer.usc_TranslateMsgId
-// (Defined, Simulated, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Latent, Singular, Net, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // int                            nId                            (Parm)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
@@ -3928,7 +3917,7 @@ struct FString UUIMoviePlayer::usc_TranslateMsgId(int nId)
 
 
 // Function TgClient.UIMoviePlayer.ShowTransitionScene
-// (Final, Iterator, Simulated, Exec, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Latent, Singular, Net, Simulated, Event, HasOptionalParms, Const)
 // Parameters:
 // bool                           bShow                          (Parm)
 
@@ -3948,7 +3937,7 @@ void UUIMoviePlayer::ShowTransitionScene(bool bShow)
 
 
 // Function TgClient.UIMoviePlayer.usc_toggle_key_capture
-// (Defined, Iterator, Latent, PreOperator, Singular, Net, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Iterator, Singular, Net, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // bool                           bCapture                       (Parm)
 
@@ -3969,7 +3958,7 @@ void UUIMoviePlayer::usc_toggle_key_capture(bool bCapture)
 
 
 // Function TgClient.UIMoviePlayer.usc_toggle_cursor
-// (Final, Iterator, Latent, PreOperator, Singular, Net, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Singular, Net, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // bool                           bShow                          (Parm)
 
@@ -3990,7 +3979,7 @@ void UUIMoviePlayer::usc_toggle_cursor(bool bShow)
 
 
 // Function TgClient.UIMoviePlayer.usc_Console_Command
-// (Iterator, Singular, Net, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Defined, Latent, Net, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 Cmd                            (Parm, NeedCtorLink)
 
@@ -4011,7 +4000,7 @@ void UUIMoviePlayer::usc_Console_Command(const struct FString& Cmd)
 
 
 // Function TgClient.UIMoviePlayer.usc_Data_Handler_Created
-// (Final, Iterator, Singular, Net, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Latent, Net, Simulated, Native, Event, HasOptionalParms, Const)
 
 void UUIMoviePlayer::usc_Data_Handler_Created()
 {
@@ -4029,7 +4018,7 @@ void UUIMoviePlayer::usc_Data_Handler_Created()
 
 
 // Function TgClient.UIMoviePlayer.QuitGame
-// (Iterator, PreOperator, Singular, Exec, Event, Operator, HasOptionalParms, Const)
+// (Defined, Latent, PreOperator, NetReliable, Event, HasOptionalParms, Const)
 
 void UUIMoviePlayer::QuitGame()
 {
@@ -4046,7 +4035,7 @@ void UUIMoviePlayer::QuitGame()
 
 
 // Function TgClient.UIMoviePlayer.UnregisterEngineCallbacks
-// (Final, Iterator, Latent, PreOperator, Singular, Net, Exec, Operator, Static, Const)
+// (Defined, Latent, NetReliable, Static, Const)
 
 void UUIMoviePlayer::STATIC_UnregisterEngineCallbacks()
 {
@@ -4063,15 +4052,16 @@ void UUIMoviePlayer::STATIC_UnregisterEngineCallbacks()
 
 
 // Function TgClient.UIMoviePlayer.RegisterEngineCallbacks
-// (Defined, Iterator, Latent, Static, Const)
+// (Iterator, PreOperator, Exec, Native, Event, Const)
 
-void UUIMoviePlayer::STATIC_RegisterEngineCallbacks()
+void UUIMoviePlayer::RegisterEngineCallbacks()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIMoviePlayer.RegisterEngineCallbacks");
 
 	UUIMoviePlayer_RegisterEngineCallbacks_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4080,7 +4070,7 @@ void UUIMoviePlayer::STATIC_RegisterEngineCallbacks()
 
 
 // Function TgClient.UIMoviePlayer.GetTranslatedKeyBind
-// (Final, Defined, Latent, Singular, Exec, Native, HasOptionalParms, Const)
+// (Defined, PreOperator, NetReliable, Native, Operator, Static, Const)
 // Parameters:
 // struct FString                 Command                        (Parm, NeedCtorLink)
 // int                            nAlternate                     (OptionalParm, Parm)
@@ -4089,7 +4079,7 @@ void UUIMoviePlayer::STATIC_RegisterEngineCallbacks()
 // bool                           bLocalizeGamepad               (OptionalParm, Parm)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString UUIMoviePlayer::GetTranslatedKeyBind(const struct FString& Command, int nAlternate, bool bLocalizeKB, bool bLocalizeMouse, bool bLocalizeGamepad)
+struct FString UUIMoviePlayer::STATIC_GetTranslatedKeyBind(const struct FString& Command, int nAlternate, bool bLocalizeKB, bool bLocalizeMouse, bool bLocalizeGamepad)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIMoviePlayer.GetTranslatedKeyBind");
 
@@ -4112,7 +4102,7 @@ struct FString UUIMoviePlayer::GetTranslatedKeyBind(const struct FString& Comman
 
 
 // Function TgClient.UIMoviePlayer.UpdateViewportForSafeAreas
-// (Defined, Net, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Latent, Singular, Simulated, Native, Event, HasOptionalParms, Const)
 
 void UUIMoviePlayer::UpdateViewportForSafeAreas()
 {
@@ -4130,7 +4120,7 @@ void UUIMoviePlayer::UpdateViewportForSafeAreas()
 
 
 // Function TgClient.UIMoviePlayer.NativeTick
-// (Final, Defined, Latent, PreOperator, NetReliable, Event, Operator, HasOptionalParms, Const)
+// (Defined, Simulated, Exec, Native, HasOptionalParms, Const)
 // Parameters:
 // float                          DeltaTime                      (Parm)
 
@@ -4142,6 +4132,7 @@ void UUIMoviePlayer::NativeTick(float DeltaTime)
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4150,9 +4141,9 @@ void UUIMoviePlayer::NativeTick(float DeltaTime)
 
 
 // Function TgClient.UIMoviePlayer.InitializeDataHandler
-// (Iterator, Net, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Final, Defined, Latent, Singular, NetReliable, Simulated, Native, Operator, Static, Const)
 
-void UUIMoviePlayer::InitializeDataHandler()
+void UUIMoviePlayer::STATIC_InitializeDataHandler()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIMoviePlayer.InitializeDataHandler");
 
@@ -4168,7 +4159,7 @@ void UUIMoviePlayer::InitializeDataHandler()
 
 
 // Function TgClient.UIMoviePlayer.PostInit
-// (Latent, Singular, NetReliable, Simulated, Native, HasOptionalParms)
+// (Defined, Singular, Net, NetReliable, Simulated, Native, HasOptionalParms)
 
 void UUIMoviePlayer::PostInit()
 {
@@ -4186,7 +4177,7 @@ void UUIMoviePlayer::PostInit()
 
 
 // Function TgClient.UIMoviePlayer.OnClose
-// (Defined, Iterator, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Simulated, Exec, Native, HasOptionalParms)
 
 void UUIMoviePlayer::OnClose()
 {
@@ -4204,11 +4195,11 @@ void UUIMoviePlayer::OnClose()
 
 
 // Function TgClient.UIMoviePlayer.GetPlayerOwner
-// (Iterator, PreOperator, Singular, Simulated, Exec, Event, Static)
+// (Final, Defined, Iterator, Latent, Net, NetReliable, Event, Operator)
 // Parameters:
 // class ATgPlayerController*     ReturnValue                    (Parm, OutParm, ReturnParm)
 
-class ATgPlayerController* UUIMoviePlayer::STATIC_GetPlayerOwner()
+class ATgPlayerController* UUIMoviePlayer::GetPlayerOwner()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIMoviePlayer.GetPlayerOwner");
 
@@ -4225,11 +4216,11 @@ class ATgPlayerController* UUIMoviePlayer::STATIC_GetPlayerOwner()
 
 
 // Function TgClient.UIMoviePlayer.GetHUD
-// (Final, Defined, Iterator, Latent, PreOperator, Exec, Native, HasOptionalParms, Const)
+// (Defined, Iterator, NetReliable, Native, Operator, Static, Const)
 // Parameters:
 // class ATgClientHUD*            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-class ATgClientHUD* UUIMoviePlayer::GetHUD()
+class ATgClientHUD* UUIMoviePlayer::STATIC_GetHUD()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIMoviePlayer.GetHUD");
 
@@ -4247,7 +4238,7 @@ class ATgClientHUD* UUIMoviePlayer::GetHUD()
 
 
 // Function TgClient.TgDevMenuMoviePlayer.FilterButtonInput
-// (Final, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Final, Defined, Latent, PreOperator, Singular, Net, NetReliable, Exec, Native, HasOptionalParms)
 // Parameters:
 // int                            ControllerId                   (Parm)
 // struct FName                   ButtonName                     (Parm)
@@ -4275,7 +4266,7 @@ bool UTgDevMenuMoviePlayer::FilterButtonInput(int ControllerId, const struct FNa
 
 
 // Function TgClient.TgDevMenuMoviePlayer.OnClose
-// (Defined, Iterator, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Simulated, Exec, Native, HasOptionalParms)
 
 void UTgDevMenuMoviePlayer::OnClose()
 {
@@ -4293,7 +4284,7 @@ void UTgDevMenuMoviePlayer::OnClose()
 
 
 // Function TgClient.TgDevMenuMoviePlayer.PostInit
-// (Latent, Singular, NetReliable, Simulated, Native, HasOptionalParms)
+// (Defined, Singular, Net, NetReliable, Simulated, Native, HasOptionalParms)
 
 void UTgDevMenuMoviePlayer::PostInit()
 {
@@ -4311,7 +4302,7 @@ void UTgDevMenuMoviePlayer::PostInit()
 
 
 // Function TgClient.TgDevMenuMoviePlayer.usc_FillCommands
-// (Final, Defined, Iterator, Singular, Net, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Final, Iterator, Latent, Net, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 MenuName                       (Parm, NeedCtorLink)
 
@@ -4332,13 +4323,13 @@ void UTgDevMenuMoviePlayer::usc_FillCommands(const struct FString& MenuName)
 
 
 // Function TgClient.TgDevMenuMoviePlayer.AddSubMenu
-// (Final, Singular, Net, Simulated, Exec, HasOptionalParms, Const)
+// (Final, Latent, Net, NetReliable, Simulated, Operator, Static, Const)
 // Parameters:
 // struct FString                 Section                        (Parm, NeedCtorLink)
 // struct FString                 submenuname                    (Parm, NeedCtorLink)
 // struct FString                 DisplayName                    (Parm, NeedCtorLink)
 
-void UTgDevMenuMoviePlayer::AddSubMenu(const struct FString& Section, const struct FString& submenuname, const struct FString& DisplayName)
+void UTgDevMenuMoviePlayer::STATIC_AddSubMenu(const struct FString& Section, const struct FString& submenuname, const struct FString& DisplayName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgDevMenuMoviePlayer.AddSubMenu");
 
@@ -4356,13 +4347,13 @@ void UTgDevMenuMoviePlayer::AddSubMenu(const struct FString& Section, const stru
 
 
 // Function TgClient.TgDevMenuMoviePlayer.AddCommand
-// (Final, Defined, Latent, PreOperator, Net, Simulated, Exec, HasOptionalParms, Const)
+// (Final, Defined, Net, NetReliable, Simulated, Operator, Static, Const)
 // Parameters:
 // struct FString                 Section                        (Parm, NeedCtorLink)
 // struct FString                 Command                        (Parm, NeedCtorLink)
 // struct FString                 DisplayName                    (Parm, NeedCtorLink)
 
-void UTgDevMenuMoviePlayer::AddCommand(const struct FString& Section, const struct FString& Command, const struct FString& DisplayName)
+void UTgDevMenuMoviePlayer::STATIC_AddCommand(const struct FString& Section, const struct FString& Command, const struct FString& DisplayName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgDevMenuMoviePlayer.AddCommand");
 
@@ -4380,11 +4371,11 @@ void UTgDevMenuMoviePlayer::AddCommand(const struct FString& Section, const stru
 
 
 // Function TgClient.TgDevMenuMoviePlayer.FillSubMenuCommands
-// (Final, Defined, Latent, NetReliable, Simulated, Native, HasOptionalParms, Const)
+// (Defined, PreOperator, Singular, Net, NetReliable, Simulated, Exec, Operator, Static, Const)
 // Parameters:
 // struct FString                 submenuname                    (Parm, NeedCtorLink)
 
-void UTgDevMenuMoviePlayer::FillSubMenuCommands(const struct FString& submenuname)
+void UTgDevMenuMoviePlayer::STATIC_FillSubMenuCommands(const struct FString& submenuname)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgDevMenuMoviePlayer.FillSubMenuCommands");
 
@@ -4392,7 +4383,6 @@ void UTgDevMenuMoviePlayer::FillSubMenuCommands(const struct FString& submenunam
 	params.submenuname = submenuname;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4401,16 +4391,15 @@ void UTgDevMenuMoviePlayer::FillSubMenuCommands(const struct FString& submenunam
 
 
 // Function TgClient.TgDevMenuMoviePlayer.FillMenuCommands
-// (Defined, Latent, NetReliable, Simulated, Native, HasOptionalParms, Const)
+// (Final, PreOperator, Singular, Net, NetReliable, Simulated, Exec, Operator, Static, Const)
 
-void UTgDevMenuMoviePlayer::FillMenuCommands()
+void UTgDevMenuMoviePlayer::STATIC_FillMenuCommands()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgDevMenuMoviePlayer.FillMenuCommands");
 
 	UTgDevMenuMoviePlayer_FillMenuCommands_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4419,7 +4408,7 @@ void UTgDevMenuMoviePlayer::FillMenuCommands()
 
 
 // Function TgClient.UIGAPeachStartup.OnClose
-// (Defined, Iterator, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Simulated, Exec, Native, HasOptionalParms)
 
 void UUIGAPeachStartup::OnClose()
 {
@@ -4437,7 +4426,7 @@ void UUIGAPeachStartup::OnClose()
 
 
 // Function TgClient.UIGAPeachStartup.PostInit
-// (Latent, Singular, NetReliable, Simulated, Native, HasOptionalParms)
+// (Defined, Singular, Net, NetReliable, Simulated, Native, HasOptionalParms)
 
 void UUIGAPeachStartup::PostInit()
 {
@@ -4455,7 +4444,7 @@ void UUIGAPeachStartup::PostInit()
 
 
 // Function TgClient.UIGAPeachStartup.UpdateViewportForSafeAreas
-// (Defined, Net, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Latent, Singular, Simulated, Native, Event, HasOptionalParms, Const)
 
 void UUIGAPeachStartup::UpdateViewportForSafeAreas()
 {
@@ -4473,7 +4462,7 @@ void UUIGAPeachStartup::UpdateViewportForSafeAreas()
 
 
 // Function TgClient.UIData_DLCItem.GetInventoryItems
-// (Net, Simulated, Exec, Event, HasOptionalParms)
+// (Iterator, Latent, PreOperator, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // TArray<struct FMarketplaceInventoryItem> InventoryItems                 (Parm, OutParm, NeedCtorLink)
 
@@ -4495,7 +4484,7 @@ void UUIData_DLCItem::GetInventoryItems(TArray<struct FMarketplaceInventoryItem>
 
 
 // Function TgClient.UIData_RealMoneyItem.GetInventoryItems
-// (Net, Simulated, Exec, Event, HasOptionalParms)
+// (Iterator, Latent, PreOperator, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // TArray<struct FMarketplaceInventoryItem> InventoryItems                 (Parm, OutParm, NeedCtorLink)
 
@@ -4517,7 +4506,7 @@ void UUIData_RealMoneyItem::GetInventoryItems(TArray<struct FMarketplaceInventor
 
 
 // Function TgClient.UIDataItem.OnTeamModelUpdated
-// (Final, Latent, PreOperator, Net, Simulated, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Iterator, Latent, PreOperator, Singular, NetReliable, Simulated, Exec, Native, HasOptionalParms, Const)
 
 void UUIDataItem::OnTeamModelUpdated()
 {
@@ -4526,6 +4515,7 @@ void UUIDataItem::OnTeamModelUpdated()
 	UUIDataItem_OnTeamModelUpdated_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4534,11 +4524,11 @@ void UUIDataItem::OnTeamModelUpdated()
 
 
 // Function TgClient.UIDataGoals.GetLoreCompleteCount
-// (Defined, Singular, Exec, Native, HasOptionalParms, Const)
+// (Final, Latent, NetReliable, Native, Operator, Static, Const)
 // Parameters:
 // struct Fdword                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct Fdword UUIDataGoals::GetLoreCompleteCount()
+struct Fdword UUIDataGoals::STATIC_GetLoreCompleteCount()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIDataGoals.GetLoreCompleteCount");
 
@@ -4556,11 +4546,11 @@ struct Fdword UUIDataGoals::GetLoreCompleteCount()
 
 
 // Function TgClient.UIDataGoals.GetLoreProgress
-// (Final, Defined, Singular, Exec, Native, HasOptionalParms, Const)
+// (Defined, Latent, NetReliable, Native, Operator, Static, Const)
 // Parameters:
 // struct Fdword                  ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct Fdword UUIDataGoals::GetLoreProgress()
+struct Fdword UUIDataGoals::STATIC_GetLoreProgress()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIDataGoals.GetLoreProgress");
 
@@ -4577,12 +4567,34 @@ struct Fdword UUIDataGoals::GetLoreProgress()
 }
 
 
+// Function TgClient.UIDataGoals.GetDailyQuestStreakCount
+// (PreOperator, Net, NetReliable, Exec, Native, Event, HasOptionalParms, Const)
+// Parameters:
+// struct Fdword                  ReturnValue                    (Parm, OutParm, ReturnParm)
+
+struct Fdword UUIDataGoals::GetDailyQuestStreakCount()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIDataGoals.GetDailyQuestStreakCount");
+
+	UUIDataGoals_GetDailyQuestStreakCount_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+
+	return params.ReturnValue;
+}
+
+
 // Function TgClient.UIDataGoals.GetDailyLoginBonusDay
-// (Iterator, PreOperator, Exec, Native, HasOptionalParms, Const)
+// (Final, Defined, Latent, PreOperator, Singular, Net, Native, Operator, Static, Const)
 // Parameters:
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UUIDataGoals::GetDailyLoginBonusDay()
+int UUIDataGoals::STATIC_GetDailyLoginBonusDay()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIDataGoals.GetDailyLoginBonusDay");
 
@@ -4600,17 +4612,18 @@ int UUIDataGoals::GetDailyLoginBonusDay()
 
 
 // Function TgClient.UIDataGoals.GetDailyLoginBonusClaimsAvailable
-// (Latent, Singular, Net, Static, HasOptionalParms, Const)
+// (Final, Defined, Iterator, Latent, Net, NetReliable, Exec, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UUIDataGoals::STATIC_GetDailyLoginBonusClaimsAvailable()
+int UUIDataGoals::GetDailyLoginBonusClaimsAvailable()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIDataGoals.GetDailyLoginBonusClaimsAvailable");
 
 	UUIDataGoals_GetDailyLoginBonusClaimsAvailable_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4621,11 +4634,11 @@ int UUIDataGoals::STATIC_GetDailyLoginBonusClaimsAvailable()
 
 
 // Function TgClient.UIDataGoals.GetDailyLoginsCount
-// (Final, Iterator, PreOperator, Exec, Native, HasOptionalParms, Const)
+// (Iterator, Latent, PreOperator, Singular, Net, Native, Operator, Static, Const)
 // Parameters:
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UUIDataGoals::GetDailyLoginsCount()
+int UUIDataGoals::STATIC_GetDailyLoginsCount()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIDataGoals.GetDailyLoginsCount");
 
@@ -4643,11 +4656,11 @@ int UUIDataGoals::GetDailyLoginsCount()
 
 
 // Function TgClient.UIDataGoals.GetLoreQuest
-// (Iterator, Singular, Exec, Native, HasOptionalParms, Const)
+// (Final, Defined, Latent, NetReliable, Native, Operator, Static, Const)
 // Parameters:
 // class UUIData_Quest*           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-class UUIData_Quest* UUIDataGoals::GetLoreQuest()
+class UUIData_Quest* UUIDataGoals::STATIC_GetLoreQuest()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIDataGoals.GetLoreQuest");
 
@@ -4665,11 +4678,11 @@ class UUIData_Quest* UUIDataGoals::GetLoreQuest()
 
 
 // Function TgClient.UIDataGoals.GetDailyLoginsQuest
-// (Defined, Iterator, PreOperator, Exec, Native, HasOptionalParms, Const)
+// (Final, Iterator, Latent, PreOperator, Singular, Net, Native, Operator, Static, Const)
 // Parameters:
 // class UUIData_Quest*           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-class UUIData_Quest* UUIDataGoals::GetDailyLoginsQuest()
+class UUIData_Quest* UUIDataGoals::STATIC_GetDailyLoginsQuest()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIDataGoals.GetDailyLoginsQuest");
 
@@ -4687,11 +4700,11 @@ class UUIData_Quest* UUIDataGoals::GetDailyLoginsQuest()
 
 
 // Function TgClient.UIDataGoals.GetChampionQuest
-// (Final, Defined, PreOperator, Exec, Native, HasOptionalParms, Const)
+// (Defined, Latent, PreOperator, Singular, Net, Native, Operator, Static, Const)
 // Parameters:
 // class UUIData_Quest*           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-class UUIData_Quest* UUIDataGoals::GetChampionQuest()
+class UUIData_Quest* UUIDataGoals::STATIC_GetChampionQuest()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIDataGoals.GetChampionQuest");
 
@@ -4709,9 +4722,9 @@ class UUIData_Quest* UUIDataGoals::GetChampionQuest()
 
 
 // Function TgClient.UIDataManager.StoreOfflineData
-// (Final, Iterator, Net, NetReliable, Simulated, Exec, Native, Static, Const)
+// (PreOperator, Net, NetReliable, Simulated, Native, Operator, Const)
 
-void UUIDataManager::STATIC_StoreOfflineData()
+void UUIDataManager::StoreOfflineData()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIDataManager.StoreOfflineData");
 
@@ -4727,12 +4740,12 @@ void UUIDataManager::STATIC_StoreOfflineData()
 
 
 // Function TgClient.TgBlinder.Draw
-// (Iterator, Latent, PreOperator, Singular, Net, Native, HasOptionalParms, Const)
+// (Iterator, Singular, Net, NetReliable, Exec, Operator, Static, Const)
 // Parameters:
 // class UCanvas*                 DestinationCanvas              (Parm)
 // float                          BlindnessFactor                (Parm)
 
-void UTgBlinder::Draw(class UCanvas* DestinationCanvas, float BlindnessFactor)
+void UTgBlinder::STATIC_Draw(class UCanvas* DestinationCanvas, float BlindnessFactor)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgBlinder.Draw");
 
@@ -4741,7 +4754,6 @@ void UTgBlinder::Draw(class UCanvas* DestinationCanvas, float BlindnessFactor)
 	params.BlindnessFactor = BlindnessFactor;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4750,7 +4762,7 @@ void UTgBlinder::Draw(class UCanvas* DestinationCanvas, float BlindnessFactor)
 
 
 // Function TgClient.TgGameHUD.AddNamedAreas
-// (Iterator, Latent, Singular, Simulated, Exec, Event, HasOptionalParms)
+// (Latent, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
 
 void ATgGameHUD::AddNamedAreas()
 {
@@ -4767,7 +4779,7 @@ void ATgGameHUD::AddNamedAreas()
 
 
 // Function TgClient.TgGameHUD.PlayDeviceFailResponse
-// (Final, Latent, NetReliable, Exec, Event, Operator, Const)
+// (Final, Iterator, Latent, NetReliable, Event, Const)
 // Parameters:
 // TEnumAsByte<EDeviceFailType>   failType                       (Parm)
 // bool                           IsAbility                      (Parm)
@@ -4789,11 +4801,11 @@ void ATgGameHUD::PlayDeviceFailResponse(TEnumAsByte<EDeviceFailType> failType, b
 
 
 // Function TgClient.TgGameHUD.ShowTargetingMap
-// (Iterator, Singular, NetReliable, Simulated, Native, Static, Const)
+// (Final, Iterator, Latent, Singular, NetReliable, Simulated, Exec, Operator, Const)
 // Parameters:
 // bool                           bShow                          (Parm)
 
-void ATgGameHUD::STATIC_ShowTargetingMap(bool bShow)
+void ATgGameHUD::ShowTargetingMap(bool bShow)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGameHUD.ShowTargetingMap");
 
@@ -4801,7 +4813,6 @@ void ATgGameHUD::STATIC_ShowTargetingMap(bool bShow)
 	params.bShow = bShow;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4810,13 +4821,13 @@ void ATgGameHUD::STATIC_ShowTargetingMap(bool bShow)
 
 
 // Function TgClient.TgGameHUD.HoverMap
-// (Final, Defined, Latent, Singular, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Defined, PreOperator, NetReliable, Simulated, Native, Operator, Static, Const)
 // Parameters:
 // float                          X                              (Parm)
 // float                          Y                              (Parm)
 // struct FString                 MapName                        (Parm, NeedCtorLink)
 
-void ATgGameHUD::HoverMap(float X, float Y, const struct FString& MapName)
+void ATgGameHUD::STATIC_HoverMap(float X, float Y, const struct FString& MapName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGameHUD.HoverMap");
 
@@ -4835,7 +4846,7 @@ void ATgGameHUD::HoverMap(float X, float Y, const struct FString& MapName)
 
 
 // Function TgClient.TgGameHUD.PingMap
-// (Defined, Latent, PreOperator, Singular, Exec, Event, Operator, Const)
+// (Defined, Iterator, Latent, PreOperator, Singular, Event, Const)
 // Parameters:
 // float                          X                              (Parm)
 // float                          Y                              (Parm)
@@ -4861,12 +4872,12 @@ void ATgGameHUD::PingMap(float X, float Y, const struct FString& Type, const str
 
 
 // Function TgClient.TgGameHUD.GetMapByName
-// (Final, Iterator, Singular, Exec, Native, HasOptionalParms, Const)
+// (Iterator, Latent, NetReliable, Native, Operator, Static, Const)
 // Parameters:
 // struct FString                 MapName                        (Parm, NeedCtorLink)
 // class UTgMiniMap*              ReturnValue                    (Parm, OutParm, ReturnParm)
 
-class UTgMiniMap* ATgGameHUD::GetMapByName(const struct FString& MapName)
+class UTgMiniMap* ATgGameHUD::STATIC_GetMapByName(const struct FString& MapName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGameHUD.GetMapByName");
 
@@ -4885,7 +4896,7 @@ class UTgMiniMap* ATgGameHUD::GetMapByName(const struct FString& MapName)
 
 
 // Function TgClient.TgGameHUD.UpdateMMTimer
-// (Final, Iterator, PreOperator, Singular, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Latent, PreOperator, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // float                          fNew                           (Parm)
 
@@ -4906,7 +4917,7 @@ void ATgGameHUD::UpdateMMTimer(float fNew)
 
 
 // Function TgClient.TgGameHUD.SetCosmeticWheelVarsMouse
-// (Iterator, Singular, Net, NetReliable, Exec, Event, Operator, HasOptionalParms, Const)
+// (Defined, Latent, Net, Simulated, Event, HasOptionalParms, Const)
 // Parameters:
 // float                          fSelectionDelay                (OptionalParm, Parm)
 // bool                           bAllowInnerSelection           (OptionalParm, Parm)
@@ -4930,7 +4941,7 @@ void ATgGameHUD::SetCosmeticWheelVarsMouse(float fSelectionDelay, bool bAllowInn
 
 
 // Function TgClient.TgGameHUD.SetCosmeticWheelVarsGamepad
-// (Final, Defined, Singular, Net, NetReliable, Exec, Event, Operator, HasOptionalParms, Const)
+// (Final, Latent, Net, Simulated, Event, HasOptionalParms, Const)
 // Parameters:
 // float                          fSelectionDelay                (OptionalParm, Parm)
 // bool                           bAllowInnerSelection           (OptionalParm, Parm)
@@ -4954,11 +4965,11 @@ void ATgGameHUD::SetCosmeticWheelVarsGamepad(float fSelectionDelay, bool bAllowI
 
 
 // Function TgClient.TgGameHUD.DrawMiniMap
-// (Final, Iterator, Latent, PreOperator, Singular, Net, Native, HasOptionalParms, Const)
+// (Final, Iterator, Singular, Net, NetReliable, Exec, Operator, Static, Const)
 // Parameters:
 // class UCanvas*                 theCanvas                      (Parm)
 
-void ATgGameHUD::DrawMiniMap(class UCanvas* theCanvas)
+void ATgGameHUD::STATIC_DrawMiniMap(class UCanvas* theCanvas)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGameHUD.DrawMiniMap");
 
@@ -4966,7 +4977,6 @@ void ATgGameHUD::DrawMiniMap(class UCanvas* theCanvas)
 	params.theCanvas = theCanvas;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -4975,7 +4985,7 @@ void ATgGameHUD::DrawMiniMap(class UCanvas* theCanvas)
 
 
 // Function TgClient.TgGameHUD.PreDemoRewind
-// (Final, Defined, PreOperator, Singular, NetReliable, Simulated, Native, HasOptionalParms)
+// (Final, Iterator, Latent, Singular, Net, NetReliable, Simulated, Native, HasOptionalParms)
 
 void ATgGameHUD::PreDemoRewind()
 {
@@ -4993,7 +5003,7 @@ void ATgGameHUD::PreDemoRewind()
 
 
 // Function TgClient.TgGameHUD.PostRender
-// (Iterator, Latent, Singular, NetReliable, Simulated, Native, HasOptionalParms)
+// (Defined, Iterator, Singular, Net, NetReliable, Simulated, Native, HasOptionalParms)
 
 void ATgGameHUD::PostRender()
 {
@@ -5028,9 +5038,9 @@ void ATgGameHUD::PostBeginPlay()
 
 
 // Function TgClient.TgGameHUD.UnblockLeavingMatch
-// (Final, Defined, Iterator, Latent, Singular, Net, NetReliable, Exec, Native, Static, HasOptionalParms, Const)
+// (Final, Defined, Iterator, NetReliable, Simulated, Native, Operator, HasOptionalParms, Const)
 
-void ATgGameHUD::STATIC_UnblockLeavingMatch()
+void ATgGameHUD::UnblockLeavingMatch()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGameHUD.UnblockLeavingMatch");
 
@@ -5046,12 +5056,12 @@ void ATgGameHUD::STATIC_UnblockLeavingMatch()
 
 
 // Function TgClient.TgGameHUD.AddNamedArea
-// (Final, Defined, Iterator, Latent, PreOperator, Net, Simulated, Exec, HasOptionalParms, Const)
+// (Final, Defined, Iterator, Net, NetReliable, Simulated, Operator, Static, Const)
 // Parameters:
 // class ATgNamedPOIActor*        pPOI                           (Parm)
 // int                            nCount                         (Parm)
 
-void ATgGameHUD::AddNamedArea(class ATgNamedPOIActor* pPOI, int nCount)
+void ATgGameHUD::STATIC_AddNamedArea(class ATgNamedPOIActor* pPOI, int nCount)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGameHUD.AddNamedArea");
 
@@ -5068,7 +5078,7 @@ void ATgGameHUD::AddNamedArea(class ATgNamedPOIActor* pPOI, int nCount)
 
 
 // Function TgClient.TgGameHUD.PrecacheSpray
-// (Final, Iterator, Singular, Net, NetReliable, Simulated, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Latent, Net, Event, HasOptionalParms, Const)
 // Parameters:
 // int                            nSprayId                       (Parm)
 
@@ -5088,7 +5098,7 @@ void ATgGameHUD::PrecacheSpray(int nSprayId)
 
 
 // Function TgClient.TgGameHUD.PrecacheMountSkin
-// (Iterator, Singular, Net, NetReliable, Simulated, Event, Operator, HasOptionalParms, Const)
+// (Defined, Latent, Net, Event, HasOptionalParms, Const)
 // Parameters:
 // int                            nMountSkinId                   (Parm)
 
@@ -5108,7 +5118,7 @@ void ATgGameHUD::PrecacheMountSkin(int nMountSkinId)
 
 
 // Function TgClient.TgGameHUD.PrecacheVoicePack
-// (Defined, Iterator, Singular, Net, NetReliable, Simulated, Event, Operator, HasOptionalParms, Const)
+// (Iterator, Latent, Net, Event, HasOptionalParms, Const)
 // Parameters:
 // int                            nVoicePackId                   (Parm)
 
@@ -5128,16 +5138,15 @@ void ATgGameHUD::PrecacheVoicePack(int nVoicePackId)
 
 
 // Function TgClient.TgGameHUD.CleanupPotGClassModel
-// (Defined, Iterator, PreOperator, Native, HasOptionalParms, Const)
+// (Defined, Iterator, Latent, PreOperator, Singular, Net, Exec, Operator, Static, Const)
 
-void ATgGameHUD::CleanupPotGClassModel()
+void ATgGameHUD::STATIC_CleanupPotGClassModel()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGameHUD.CleanupPotGClassModel");
 
 	ATgGameHUD_CleanupPotGClassModel_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5146,7 +5155,7 @@ void ATgGameHUD::CleanupPotGClassModel()
 
 
 // Function TgClient.TgGameHUD.ChangePotGCameraTransform
-// (Final, Iterator, Latent, PreOperator, Singular, Net, NetReliable, Simulated, Exec, HasOptionalParms, Const)
+// (Final, Iterator, Singular, Net, Exec, Operator, Static, Const)
 // Parameters:
 // float                          fXOffset                       (Parm)
 // float                          fYOffset                       (Parm)
@@ -5155,7 +5164,7 @@ void ATgGameHUD::CleanupPotGClassModel()
 // float                          fPitchOffset                   (Parm)
 // float                          fRollOffset                    (Parm)
 
-void ATgGameHUD::ChangePotGCameraTransform(float fXOffset, float fYOffset, float fZOffset, float fYawOffset, float fPitchOffset, float fRollOffset)
+void ATgGameHUD::STATIC_ChangePotGCameraTransform(float fXOffset, float fYOffset, float fZOffset, float fYawOffset, float fPitchOffset, float fRollOffset)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGameHUD.ChangePotGCameraTransform");
 
@@ -5176,11 +5185,11 @@ void ATgGameHUD::ChangePotGCameraTransform(float fXOffset, float fYOffset, float
 
 
 // Function TgClient.TgGameHUD.EnablePotGCamera
-// (Defined, Iterator, Latent, PreOperator, Simulated, Native, HasOptionalParms, Const)
+// (Defined, Iterator, NetReliable, Simulated, Exec, Operator, Static, Const)
 // Parameters:
 // bool                           bEnabled                       (Parm)
 
-void ATgGameHUD::EnablePotGCamera(bool bEnabled)
+void ATgGameHUD::STATIC_EnablePotGCamera(bool bEnabled)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGameHUD.EnablePotGCamera");
 
@@ -5188,7 +5197,6 @@ void ATgGameHUD::EnablePotGCamera(bool bEnabled)
 	params.bEnabled = bEnabled;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5197,7 +5205,7 @@ void ATgGameHUD::EnablePotGCamera(bool bEnabled)
 
 
 // Function TgClient.TgGameHUD.ChangePotGClassModel
-// (Defined, Iterator, Latent, PreOperator, Singular, Net, NetReliable, Simulated, Exec, HasOptionalParms, Const)
+// (Defined, Iterator, Singular, Net, Exec, Operator, Static, Const)
 // Parameters:
 // int                            nIndex                         (Parm)
 // int                            nClassId                       (Parm)
@@ -5207,7 +5215,7 @@ void ATgGameHUD::EnablePotGCamera(bool bEnabled)
 // TEnumAsByte<ELobbyAnimPose>    pose                           (Parm)
 // bool                           bAsync                         (OptionalParm, Parm)
 
-void ATgGameHUD::ChangePotGClassModel(int nIndex, int nClassId, int nSkinId, int nDeviceId, int nDeviceSkinId, TEnumAsByte<ELobbyAnimPose> pose, bool bAsync)
+void ATgGameHUD::STATIC_ChangePotGClassModel(int nIndex, int nClassId, int nSkinId, int nDeviceId, int nDeviceSkinId, TEnumAsByte<ELobbyAnimPose> pose, bool bAsync)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGameHUD.ChangePotGClassModel");
 
@@ -5229,7 +5237,7 @@ void ATgGameHUD::ChangePotGClassModel(int nIndex, int nClassId, int nSkinId, int
 
 
 // Function TgClient.TgGameHUD.ToggleDeathRecap
-// (Latent, PreOperator, NetReliable, Simulated, Exec, Event, Operator, HasOptionalParms, Const)
+// (Defined, Iterator, Latent, PreOperator, Singular, Net, NetReliable, Simulated, Event, HasOptionalParms, Const)
 
 void ATgGameHUD::ToggleDeathRecap()
 {
@@ -5246,7 +5254,7 @@ void ATgGameHUD::ToggleDeathRecap()
 
 
 // Function TgClient.TgGameHUD.ToggleScoreBoard
-// (Final, Iterator, Latent, PreOperator, NetReliable, Simulated, Exec, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Exec, Event, HasOptionalParms, Const)
 // Parameters:
 // bool                           bAcceptsInput                  (OptionalParm, Parm)
 
@@ -5266,7 +5274,7 @@ void ATgGameHUD::ToggleScoreBoard(bool bAcceptsInput)
 
 
 // Function TgClient.TgGameHUD.ViewScoreboard
-// (Defined, Iterator, Latent, PreOperator, Simulated, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Iterator, NetReliable, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // bool                           bShow                          (Parm)
 // bool                           bAcceptsInput                  (OptionalParm, Parm)
@@ -5291,7 +5299,7 @@ void ATgGameHUD::ViewScoreboard(bool bShow, bool bAcceptsInput, class UTgGfxScen
 
 
 // Function TgClient.TgGameHUD.ToggleMinimap
-// (Defined, Latent, PreOperator, NetReliable, Simulated, Exec, Event, Operator, HasOptionalParms, Const)
+// (Exec, Event, HasOptionalParms, Const)
 
 void ATgGameHUD::ToggleMinimap()
 {
@@ -5308,7 +5316,7 @@ void ATgGameHUD::ToggleMinimap()
 
 
 // Function TgClient.TgGameHUD.ToggleVGS
-// (Singular, NetReliable, Simulated, Exec, Event, Operator, HasOptionalParms, Const)
+// (Defined, Iterator, Exec, Event, HasOptionalParms, Const)
 
 void ATgGameHUD::ToggleVGS()
 {
@@ -5325,7 +5333,7 @@ void ATgGameHUD::ToggleVGS()
 
 
 // Function TgClient.TgGameHUD.PurchaseCard
-// (Final, Defined, Iterator, PreOperator, Exec, Event, Operator, HasOptionalParms, Const)
+// (Final, Iterator, Latent, PreOperator, Singular, Net, Event, HasOptionalParms, Const)
 // Parameters:
 // int                            nId                            (Parm)
 
@@ -5345,7 +5353,7 @@ void ATgGameHUD::PurchaseCard(int nId)
 
 
 // Function TgClient.TgGameHUD.OpenDeckMenu
-// (Final, Defined, Iterator, Latent, PreOperator, Net, Simulated, Event, Operator, HasOptionalParms, Const)
+// (Final, Iterator, Net, NetReliable, Simulated, Exec, Native, HasOptionalParms, Const)
 
 void ATgGameHUD::OpenDeckMenu()
 {
@@ -5354,6 +5362,7 @@ void ATgGameHUD::OpenDeckMenu()
 	ATgGameHUD_OpenDeckMenu_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5362,7 +5371,7 @@ void ATgGameHUD::OpenDeckMenu()
 
 
 // Function TgClient.TgGameHUD.OpenBurnMenu
-// (Iterator, Latent, PreOperator, Net, Simulated, Event, Operator, HasOptionalParms, Const)
+// (Defined, Net, NetReliable, Simulated, Exec, Native, HasOptionalParms, Const)
 
 void ATgGameHUD::OpenBurnMenu()
 {
@@ -5371,6 +5380,7 @@ void ATgGameHUD::OpenBurnMenu()
 	ATgGameHUD_OpenBurnMenu_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5379,7 +5389,7 @@ void ATgGameHUD::OpenBurnMenu()
 
 
 // Function TgClient.TgGameHUD.ToggleCosmeticWheel
-// (Defined, Iterator, PreOperator, NetReliable, Simulated, Exec, Event, Operator, HasOptionalParms, Const)
+// (Iterator, Latent, PreOperator, Singular, Net, NetReliable, Simulated, Event, HasOptionalParms, Const)
 
 void ATgGameHUD::ToggleCosmeticWheel()
 {
@@ -5396,7 +5406,7 @@ void ATgGameHUD::ToggleCosmeticWheel()
 
 
 // Function TgClient.TgGameHUD.OpenCosmeticWheel
-// (Defined, Iterator, Latent, PreOperator, Net, Simulated, Event, Operator, HasOptionalParms, Const)
+// (Iterator, Net, NetReliable, Simulated, Exec, Native, HasOptionalParms, Const)
 // Parameters:
 // bool                           bShouldOpen                    (OptionalParm, Parm)
 
@@ -5408,6 +5418,7 @@ void ATgGameHUD::OpenCosmeticWheel(bool bShouldOpen)
 	params.bShouldOpen = bShouldOpen;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5416,7 +5427,7 @@ void ATgGameHUD::OpenCosmeticWheel(bool bShouldOpen)
 
 
 // Function TgClient.TgGameHUD.OnRoundSetupStarted
-// (PreOperator, Singular, Net, Event, Operator, Const)
+// (Iterator, PreOperator, Singular, Net, Exec, Native, Const)
 
 void ATgGameHUD::OnRoundSetupStarted()
 {
@@ -5425,6 +5436,7 @@ void ATgGameHUD::OnRoundSetupStarted()
 	ATgGameHUD_OnRoundSetupStarted_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5433,7 +5445,7 @@ void ATgGameHUD::OnRoundSetupStarted()
 
 
 // Function TgClient.TgGameHUD.UpdateRoundSetupTimer
-// (Final, Defined, Singular, Simulated, Exec, Operator, Static, Const)
+// (PreOperator, Singular, Simulated, Static, Const)
 // Parameters:
 // float                          SetupTimeRemaining             (Parm)
 // float                          TimeStamp                      (Parm)
@@ -5455,7 +5467,7 @@ void ATgGameHUD::STATIC_UpdateRoundSetupTimer(float SetupTimeRemaining, float Ti
 
 
 // Function TgClient.TgGameHUD.EndMission
-// (Final, Defined, Latent, Singular, Net, NetReliable, Native, Operator, Static, HasOptionalParms)
+// (Iterator, Latent, Singular, Net, NetReliable, Exec, Static, HasOptionalParms)
 // Parameters:
 // bool                           bPlayerAttacker                (Parm)
 // TEnumAsByte<EGAME_WIN_STATE>   finalWinState                  (Parm)
@@ -5469,7 +5481,6 @@ void ATgGameHUD::STATIC_EndMission(bool bPlayerAttacker, TEnumAsByte<EGAME_WIN_S
 	params.finalWinState = finalWinState;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5478,7 +5489,7 @@ void ATgGameHUD::STATIC_EndMission(bool bPlayerAttacker, TEnumAsByte<EGAME_WIN_S
 
 
 // Function TgClient.TgGameHUD.PingWorldLocation
-// (Iterator, Latent, PreOperator, Singular, Exec, Event, Operator, Const)
+// (Net, Event, Const)
 // Parameters:
 // struct FVector                 PingLocation                   (Parm)
 // TEnumAsByte<EPING_TYPE>        Type                           (Parm)
@@ -5500,7 +5511,7 @@ void ATgGameHUD::PingWorldLocation(const struct FVector& PingLocation, TEnumAsBy
 
 
 // Function TgClient.TgGameHUD.UpdateReleaseTimeRemaining
-// (Final, Defined, Latent, PreOperator, Simulated, Exec, Operator, Static, Const)
+// (Latent, Singular, Simulated, Static, Const)
 // Parameters:
 // float                          fTimeRemaining                 (Parm)
 
@@ -5520,7 +5531,7 @@ void ATgGameHUD::STATIC_UpdateReleaseTimeRemaining(float fTimeRemaining)
 
 
 // Function TgClient.TgGameHUD.UpdatePlayerReady
-// (Defined, PreOperator, Simulated, Exec, Operator, Static, Const)
+// (Final, Defined, Iterator, Latent, PreOperator, Simulated, Static, Const)
 // Parameters:
 // class ATgRepInfo_Player*       PRI                            (Parm)
 
@@ -5540,7 +5551,7 @@ void ATgGameHUD::STATIC_UpdatePlayerReady(class ATgRepInfo_Player* PRI)
 
 
 // Function TgClient.TgGameHUD.UpdatePlayerStatUI
-// (Final, Defined, PreOperator, Simulated, Exec, Operator, Static, Const)
+// (Singular, Simulated, Static, Const)
 // Parameters:
 // class ATgPawn*                 changedPawn                    (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
@@ -5563,7 +5574,7 @@ bool ATgGameHUD::STATIC_UpdatePlayerStatUI(class ATgPawn* changedPawn)
 
 
 // Function TgClient.TgGameHUD.UpdateHoverTarget
-// (Defined, Iterator, Latent, Singular, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Iterator, PreOperator, Simulated, Native, Event, HasOptionalParms, Const)
 
 void ATgGameHUD::UpdateHoverTarget()
 {
@@ -5581,7 +5592,7 @@ void ATgGameHUD::UpdateHoverTarget()
 
 
 // Function TgClient.TgGameHUD.UpdateDebugDraws
-// (Final, Defined, Iterator, Singular, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Final, Iterator, Latent, Simulated, Native, Event, HasOptionalParms, Const)
 
 void ATgGameHUD::UpdateDebugDraws()
 {
@@ -5599,7 +5610,7 @@ void ATgGameHUD::UpdateDebugDraws()
 
 
 // Function TgClient.TgGameHUD.UpdateOverlay
-// (Iterator, Simulated, Exec, Operator, Static, Const)
+// (Final, PreOperator, Simulated, Static, Const)
 
 void ATgGameHUD::STATIC_UpdateOverlay()
 {
@@ -5616,9 +5627,9 @@ void ATgGameHUD::STATIC_UpdateOverlay()
 
 
 // Function TgClient.TgGameHUD.InitOverlayMoviePlayer
-// (Defined, Iterator, Net, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Final, Iterator, Latent, Singular, NetReliable, Simulated, Native, Operator, Static, Const)
 
-void ATgGameHUD::InitOverlayMoviePlayer()
+void ATgGameHUD::STATIC_InitOverlayMoviePlayer()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGameHUD.InitOverlayMoviePlayer");
 
@@ -5634,7 +5645,7 @@ void ATgGameHUD::InitOverlayMoviePlayer()
 
 
 // Function TgClient.TgGameHUD.PostRenderDebugDraws
-// (Final, Iterator, PreOperator, Net, NetReliable, Simulated, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Latent, PreOperator, Singular, Event, HasOptionalParms, Const)
 
 void ATgGameHUD::PostRenderDebugDraws()
 {
@@ -5651,7 +5662,7 @@ void ATgGameHUD::PostRenderDebugDraws()
 
 
 // Function TgClient.TgGameHUD.FinishIntro
-// (Defined, PreOperator, NetReliable, Simulated, Exec, Native, Operator, Static, HasOptionalParms)
+// (Final, Defined, PreOperator, NetReliable, Simulated, Native, Static, HasOptionalParms)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
@@ -5673,7 +5684,7 @@ bool ATgGameHUD::STATIC_FinishIntro()
 
 
 // Function TgClient.TgGameHUD.PlayIntro
-// (Final, Latent, PreOperator, Net, NetReliable, Exec, Event, Operator, Const)
+// (Final, Iterator, Latent, PreOperator, Net, NetReliable, Event, Const)
 
 void ATgGameHUD::PlayIntro()
 {
@@ -5690,7 +5701,7 @@ void ATgGameHUD::PlayIntro()
 
 
 // Function TgClient.TgSpectatorHUD.ToggleCursor
-// (Final, Defined, Iterator, PreOperator, NetReliable, Simulated, Exec, Event, Operator, HasOptionalParms, Const)
+// (Final, Iterator, Latent, PreOperator, Singular, Net, NetReliable, Simulated, Event, HasOptionalParms, Const)
 // Parameters:
 // bool                           bEnabled                       (Parm)
 
@@ -5710,7 +5721,7 @@ void ATgSpectatorHUD::ToggleCursor(bool bEnabled)
 
 
 // Function TgClient.TgSpectatorHUD.ValidateSceneForSpectate
-// (Final, Latent, Simulated, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Iterator, Latent, Singular, Net, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 SceneName                      (Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
@@ -5734,9 +5745,9 @@ bool ATgSpectatorHUD::ValidateSceneForSpectate(const struct FString& SceneName)
 
 
 // Function TgClient.TgSpectatorHUD.ToggleHUD
-// (Defined, PreOperator, NetReliable, Exec, Event, HasOptionalParms)
+// (Defined, Latent, PreOperator, Singular, Net, Event, Operator, Static)
 
-void ATgSpectatorHUD::ToggleHUD()
+void ATgSpectatorHUD::STATIC_ToggleHUD()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgSpectatorHUD.ToggleHUD");
 
@@ -5771,7 +5782,7 @@ void ATgSpectatorHUD::Tick(float DeltaTime)
 
 
 // Function TgClient.TgSpectatorHUD.SetVisibilityMode
-// (Final, Latent, PreOperator, Singular, Net, NetReliable, Exec, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Iterator, Latent, PreOperator, Net, Simulated, Event, HasOptionalParms, Const)
 // Parameters:
 // unsigned char                  Mode                           (Parm)
 
@@ -5791,7 +5802,7 @@ void ATgSpectatorHUD::SetVisibilityMode(unsigned char Mode)
 
 
 // Function TgClient.TgSpectatorHUD.ToggleVisibilityMode
-// (Final, Singular, NetReliable, Simulated, Exec, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Iterator, Exec, Event, HasOptionalParms, Const)
 
 void ATgSpectatorHUD::ToggleVisibilityMode()
 {
@@ -5808,7 +5819,7 @@ void ATgSpectatorHUD::ToggleVisibilityMode()
 
 
 // Function TgClient.TgSpectatorHUD.ToggleSecretMessage
-// (Defined, Iterator, Latent, PreOperator, NetReliable, Simulated, Exec, Event, Operator, HasOptionalParms, Const)
+// (Iterator, Exec, Event, HasOptionalParms, Const)
 
 void ATgSpectatorHUD::ToggleSecretMessage()
 {
@@ -5825,7 +5836,7 @@ void ATgSpectatorHUD::ToggleSecretMessage()
 
 
 // Function TgClient.TgSpectatorHUD.SetSpectatorStatsMode
-// (Iterator, Latent, Singular, Net, NetReliable, Exec, Event, Operator, HasOptionalParms, Const)
+// (Defined, PreOperator, Net, Simulated, Event, HasOptionalParms, Const)
 // Parameters:
 // int                            nNum                           (Parm)
 
@@ -5845,7 +5856,7 @@ void ATgSpectatorHUD::SetSpectatorStatsMode(int nNum)
 
 
 // Function TgClient.TgSpectatorHUD.SetSpectatorTeamMode
-// (Final, Iterator, Latent, Singular, Net, NetReliable, Exec, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, PreOperator, Net, Simulated, Event, HasOptionalParms, Const)
 // Parameters:
 // int                            nNum                           (Parm)
 
@@ -5865,7 +5876,7 @@ void ATgSpectatorHUD::SetSpectatorTeamMode(int nNum)
 
 
 // Function TgClient.TgSpectatorHUD.SetSpectatorSkillsMode
-// (Final, Defined, Latent, Singular, Net, NetReliable, Exec, Event, Operator, HasOptionalParms, Const)
+// (Final, PreOperator, Net, Simulated, Event, HasOptionalParms, Const)
 // Parameters:
 // int                            nNum                           (Parm)
 
@@ -5885,7 +5896,7 @@ void ATgSpectatorHUD::SetSpectatorSkillsMode(int nNum)
 
 
 // Function TgClient.TgSpectatorHUD.ToggleBans
-// (Final, Iterator, PreOperator, NetReliable, Simulated, Exec, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Latent, PreOperator, Singular, Net, NetReliable, Simulated, Event, HasOptionalParms, Const)
 
 void ATgSpectatorHUD::ToggleBans()
 {
@@ -5902,7 +5913,7 @@ void ATgSpectatorHUD::ToggleBans()
 
 
 // Function TgClient.TgSpectatorHUD.EndMission
-// (Final, Defined, Latent, Singular, Net, NetReliable, Native, Operator, Static, HasOptionalParms)
+// (Iterator, Latent, Singular, Net, NetReliable, Exec, Static, HasOptionalParms)
 // Parameters:
 // bool                           bPlayerAttacker                (Parm)
 // TEnumAsByte<EGAME_WIN_STATE>   finalWinState                  (Parm)
@@ -5916,7 +5927,6 @@ void ATgSpectatorHUD::STATIC_EndMission(bool bPlayerAttacker, TEnumAsByte<EGAME_
 	params.finalWinState = finalWinState;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5925,7 +5935,7 @@ void ATgSpectatorHUD::STATIC_EndMission(bool bPlayerAttacker, TEnumAsByte<EGAME_
 
 
 // Function TgClient.TgSpectatorHUD.UpdateSpectatorViewMode
-// (Final, Iterator, Latent, PreOperator, Singular, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Singular, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // unsigned char                  Mode                           (Parm)
 
@@ -5946,7 +5956,7 @@ void ATgSpectatorHUD::UpdateSpectatorViewMode(unsigned char Mode)
 
 
 // Function TgClient.TgSpectatorHUD.UpdateSpectatorViewTarget
-// (Defined, Iterator, Latent, PreOperator, Singular, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Iterator, Singular, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // class AActor*                  Target                         (Parm)
 
@@ -5967,7 +5977,7 @@ void ATgSpectatorHUD::UpdateSpectatorViewTarget(class AActor* Target)
 
 
 // Function TgClient.TgDataGroup_Game.NotifyMapChange
-// (Final, Simulated, Event, Operator, HasOptionalParms, Const)
+// (Latent, Singular, Net, Simulated, Exec, Native, HasOptionalParms, Const)
 
 void UTgDataGroup_Game::NotifyMapChange()
 {
@@ -5976,6 +5986,7 @@ void UTgDataGroup_Game::NotifyMapChange()
 	UTgDataGroup_Game_NotifyMapChange_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -5984,12 +5995,12 @@ void UTgDataGroup_Game::NotifyMapChange()
 
 
 // Function TgClient.TgDataGroup_Game.InitializeData
-// (Final, Defined, Net, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Defined, Latent, Singular, NetReliable, Simulated, Native, Operator, Static, Const)
 // Parameters:
 // class UTgDataHandler*          Handler                        (Parm)
 // class UTgDataChunk*            parentChunk                    (Parm)
 
-void UTgDataGroup_Game::InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk)
+void UTgDataGroup_Game::STATIC_InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgDataGroup_Game.InitializeData");
 
@@ -6007,7 +6018,7 @@ void UTgDataGroup_Game::InitializeData(class UTgDataHandler* Handler, class UTgD
 
 
 // Function TgClient.TgGameDC_Device.usc_set_cast_mode
-// (Defined, Latent, PreOperator, Singular, Net, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Singular, Net, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // int                            nCastMode                      (Parm)
 
@@ -6028,7 +6039,7 @@ void UTgGameDC_Device::usc_set_cast_mode(int nCastMode)
 
 
 // Function TgClient.TgGameDC_Device.usc_set_cast_mode_delegate
-// (Final, Defined, Iterator, Latent, NetReliable, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Defined, Latent, Net, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 
 void UTgGameDC_Device::usc_set_cast_mode_delegate()
 {
@@ -6045,7 +6056,7 @@ void UTgGameDC_Device::usc_set_cast_mode_delegate()
 
 
 // Function TgClient.TgGameDC_Device.usc_get_mode_tooltip
-// (Final, Latent, Singular, Net, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Iterator, Latent, Net, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // int                            nRank                          (Parm)
 
@@ -6066,7 +6077,7 @@ void UTgGameDC_Device::usc_get_mode_tooltip(int nRank)
 
 
 // Function TgClient.TgGameDC_Device.usc_get_mode_tooltip_delegate
-// (Defined, NetReliable, Simulated, Exec, Event, HasOptionalParms)
+// (Defined, Iterator, Latent, PreOperator, Singular, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 
 void UTgGameDC_Device::usc_get_mode_tooltip_delegate()
 {
@@ -6083,7 +6094,7 @@ void UTgGameDC_Device::usc_get_mode_tooltip_delegate()
 
 
 // Function TgClient.TgGameDC_Device.NotifyMapChange
-// (Final, Simulated, Event, Operator, HasOptionalParms, Const)
+// (Latent, Singular, Net, Simulated, Exec, Native, HasOptionalParms, Const)
 
 void UTgGameDC_Device::NotifyMapChange()
 {
@@ -6092,6 +6103,7 @@ void UTgGameDC_Device::NotifyMapChange()
 	UTgGameDC_Device_NotifyMapChange_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6100,7 +6112,7 @@ void UTgGameDC_Device::NotifyMapChange()
 
 
 // Function TgClient.TgGameDC_Device.UpdateCastMode
-// (Final, Defined, Singular, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Final, Latent, Simulated, Native, Event, HasOptionalParms, Const)
 
 void UTgGameDC_Device::UpdateCastMode()
 {
@@ -6118,7 +6130,7 @@ void UTgGameDC_Device::UpdateCastMode()
 
 
 // Function TgClient.TgGameDC_Device.UpdateInstanceCount
-// (Final, Defined, Iterator, Latent, Singular, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Final, Iterator, PreOperator, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // class ATgDevice*               Dev                            (Parm)
 
@@ -6139,7 +6151,7 @@ void UTgGameDC_Device::UpdateInstanceCount(class ATgDevice* Dev)
 
 
 // Function TgClient.TgGameDC_Device.UpdatePtsAlloc
-// (Final, Defined, Latent, PreOperator, Singular, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Final, Singular, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // class ATgDevice*               Dev                            (Parm)
 
@@ -6160,7 +6172,7 @@ void UTgGameDC_Device::UpdatePtsAlloc(class ATgDevice* Dev)
 
 
 // Function TgClient.TgGameDC_Device.UpdateCooldown
-// (Iterator, Singular, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Defined, Latent, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // class ATgDevice*               Dev                            (Parm)
 
@@ -6181,7 +6193,7 @@ void UTgGameDC_Device::UpdateCooldown(class ATgDevice* Dev)
 
 
 // Function TgClient.TgGameDC_Device.UpdateCanFire
-// (Defined, Singular, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Latent, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // class ATgDevice*               Dev                            (Parm)
 
@@ -6202,7 +6214,7 @@ void UTgGameDC_Device::UpdateCanFire(class ATgDevice* Dev)
 
 
 // Function TgClient.TgGameDC_Device.UpdateSelected
-// (Iterator, Latent, PreOperator, Singular, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Defined, Singular, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // bool                           bSelected                      (Parm)
 
@@ -6223,7 +6235,7 @@ void UTgGameDC_Device::UpdateSelected(bool bSelected)
 
 
 // Function TgClient.TgGameDC_Device.UpdateValues
-// (Final, Net, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Iterator, Singular, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // class ATgDevice*               Dev                            (Parm)
 
@@ -6244,12 +6256,12 @@ void UTgGameDC_Device::UpdateValues(class ATgDevice* Dev)
 
 
 // Function TgClient.TgGameDC_Device.DeviceChangeEvent
-// (Final, Defined, Iterator, PreOperator, Net, NetReliable, Simulated, Operator, Static, HasOptionalParms)
+// (Latent, PreOperator, Net, NetReliable, Simulated, Exec, Native, Event, Operator, HasOptionalParms)
 // Parameters:
 // class ATgDevice*               Dev                            (Parm)
 // TEnumAsByte<EDeviceChangeEvent> Event                          (Parm)
 
-void UTgGameDC_Device::STATIC_DeviceChangeEvent(class ATgDevice* Dev, TEnumAsByte<EDeviceChangeEvent> Event)
+void UTgGameDC_Device::DeviceChangeEvent(class ATgDevice* Dev, TEnumAsByte<EDeviceChangeEvent> Event)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGameDC_Device.DeviceChangeEvent");
 
@@ -6258,6 +6270,7 @@ void UTgGameDC_Device::STATIC_DeviceChangeEvent(class ATgDevice* Dev, TEnumAsByt
 	params.Event = Event;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6266,12 +6279,12 @@ void UTgGameDC_Device::STATIC_DeviceChangeEvent(class ATgDevice* Dev, TEnumAsByt
 
 
 // Function TgClient.TgGameDC_Device.InitializeData
-// (Final, Defined, Net, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Defined, Latent, Singular, NetReliable, Simulated, Native, Operator, Static, Const)
 // Parameters:
 // class UTgDataHandler*          Handler                        (Parm)
 // class UTgDataChunk*            parentChunk                    (Parm)
 
-void UTgGameDC_Device::InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk)
+void UTgGameDC_Device::STATIC_InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGameDC_Device.InitializeData");
 
@@ -6289,7 +6302,7 @@ void UTgGameDC_Device::InitializeData(class UTgDataHandler* Handler, class UTgDa
 
 
 // Function TgClient.TgGameDC_DeviceList.SetEmpty
-// (Defined, Iterator, Singular, Net, NetReliable, Exec, Event, Operator, HasOptionalParms, Const)
+// (Iterator, Latent, Net, Simulated, Event, HasOptionalParms, Const)
 // Parameters:
 // TEnumAsByte<ETG_EQUIP_POINT>   eSlot                          (Parm)
 
@@ -6309,7 +6322,7 @@ void UTgGameDC_DeviceList::SetEmpty(TEnumAsByte<ETG_EQUIP_POINT> eSlot)
 
 
 // Function TgClient.TgGameDC_DeviceList.UpdatePtsAlloc
-// (Final, Defined, Latent, PreOperator, Singular, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Final, Singular, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // class ATgDevice*               Dev                            (Parm)
 
@@ -6330,7 +6343,7 @@ void UTgGameDC_DeviceList::UpdatePtsAlloc(class ATgDevice* Dev)
 
 
 // Function TgClient.TgGameDC_DeviceList.UpdateSelected
-// (Iterator, Latent, PreOperator, Singular, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Defined, Singular, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // class ATgDevice*               Dev                            (Parm)
 
@@ -6351,7 +6364,7 @@ void UTgGameDC_DeviceList::UpdateSelected(class ATgDevice* Dev)
 
 
 // Function TgClient.TgGameDC_DeviceList.UpdateDevice
-// (Latent, Singular, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Defined, Iterator, Latent, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // class ATgDevice*               Dev                            (Parm)
 
@@ -6372,12 +6385,12 @@ void UTgGameDC_DeviceList::UpdateDevice(class ATgDevice* Dev)
 
 
 // Function TgClient.TgGameDC_DeviceList.DeviceChangeEvent
-// (Final, Defined, Iterator, PreOperator, Net, NetReliable, Simulated, Operator, Static, HasOptionalParms)
+// (Latent, PreOperator, Net, NetReliable, Simulated, Exec, Native, Event, Operator, HasOptionalParms)
 // Parameters:
 // class ATgDevice*               Dev                            (Parm)
 // TEnumAsByte<EDeviceChangeEvent> Event                          (Parm)
 
-void UTgGameDC_DeviceList::STATIC_DeviceChangeEvent(class ATgDevice* Dev, TEnumAsByte<EDeviceChangeEvent> Event)
+void UTgGameDC_DeviceList::DeviceChangeEvent(class ATgDevice* Dev, TEnumAsByte<EDeviceChangeEvent> Event)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGameDC_DeviceList.DeviceChangeEvent");
 
@@ -6386,6 +6399,7 @@ void UTgGameDC_DeviceList::STATIC_DeviceChangeEvent(class ATgDevice* Dev, TEnumA
 	params.Event = Event;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6394,12 +6408,12 @@ void UTgGameDC_DeviceList::STATIC_DeviceChangeEvent(class ATgDevice* Dev, TEnumA
 
 
 // Function TgClient.TgGameDC_DeviceList.GetDeviceChunk
-// (Final, Latent, PreOperator, Exec, Native, HasOptionalParms, Const)
+// (NetReliable, Native, Operator, Static, Const)
 // Parameters:
 // class ATgDevice*               Dev                            (Parm)
 // class UTgGameDC_Device*        ReturnValue                    (Parm, OutParm, ReturnParm)
 
-class UTgGameDC_Device* UTgGameDC_DeviceList::GetDeviceChunk(class ATgDevice* Dev)
+class UTgGameDC_Device* UTgGameDC_DeviceList::STATIC_GetDeviceChunk(class ATgDevice* Dev)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGameDC_DeviceList.GetDeviceChunk");
 
@@ -6418,12 +6432,12 @@ class UTgGameDC_Device* UTgGameDC_DeviceList::GetDeviceChunk(class ATgDevice* De
 
 
 // Function TgClient.TgGameDC_DeviceList.InitializeData
-// (Final, Defined, Net, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Defined, Latent, Singular, NetReliable, Simulated, Native, Operator, Static, Const)
 // Parameters:
 // class UTgDataHandler*          Handler                        (Parm)
 // class UTgDataChunk*            parentChunk                    (Parm)
 
-void UTgGameDC_DeviceList::InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk)
+void UTgGameDC_DeviceList::STATIC_InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGameDC_DeviceList.InitializeData");
 
@@ -6441,7 +6455,7 @@ void UTgGameDC_DeviceList::InitializeData(class UTgDataHandler* Handler, class U
 
 
 // Function TgClient.TgGameDC_Effect.NotifyMapChange
-// (Final, Simulated, Event, Operator, HasOptionalParms, Const)
+// (Latent, Singular, Net, Simulated, Exec, Native, HasOptionalParms, Const)
 
 void UTgGameDC_Effect::NotifyMapChange()
 {
@@ -6450,6 +6464,7 @@ void UTgGameDC_Effect::NotifyMapChange()
 	UTgGameDC_Effect_NotifyMapChange_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6458,12 +6473,12 @@ void UTgGameDC_Effect::NotifyMapChange()
 
 
 // Function TgClient.TgGameDC_Effect.InitializeData
-// (Final, Defined, Net, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Defined, Latent, Singular, NetReliable, Simulated, Native, Operator, Static, Const)
 // Parameters:
 // class UTgDataHandler*          Handler                        (Parm)
 // class UTgDataChunk*            parentChunk                    (Parm)
 
-void UTgGameDC_Effect::InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk)
+void UTgGameDC_Effect::STATIC_InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGameDC_Effect.InitializeData");
 
@@ -6481,7 +6496,7 @@ void UTgGameDC_Effect::InitializeData(class UTgDataHandler* Handler, class UTgDa
 
 
 // Function TgClient.TgGameDC_EffectList.UpdateEffects
-// (Final, Latent, Singular, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Iterator, Latent, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // class ATgEffectManager*        effectManager                  (Parm)
 // int                            indexChanged                   (Parm)
@@ -6504,12 +6519,12 @@ void UTgGameDC_EffectList::UpdateEffects(class ATgEffectManager* effectManager, 
 
 
 // Function TgClient.TgGameDC_EffectList.InitializeData
-// (Final, Defined, Net, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Defined, Latent, Singular, NetReliable, Simulated, Native, Operator, Static, Const)
 // Parameters:
 // class UTgDataHandler*          Handler                        (Parm)
 // class UTgDataChunk*            parentChunk                    (Parm)
 
-void UTgGameDC_EffectList::InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk)
+void UTgGameDC_EffectList::STATIC_InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGameDC_EffectList.InitializeData");
 
@@ -6527,7 +6542,7 @@ void UTgGameDC_EffectList::InitializeData(class UTgDataHandler* Handler, class U
 
 
 // Function TgClient.TgGameDC_Game.UpdateGameCapturePoint
-// (Defined, Latent, Singular, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (PreOperator, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // int                            Index                          (Parm)
 // int                            Taskforce                      (Parm)
@@ -6550,7 +6565,7 @@ void UTgGameDC_Game::UpdateGameCapturePoint(int Index, int Taskforce)
 
 
 // Function TgClient.TgGameDC_Game.UpdateGameClock
-// (Final, Defined, Latent, Singular, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Final, PreOperator, Simulated, Native, Event, HasOptionalParms, Const)
 
 void UTgGameDC_Game::UpdateGameClock()
 {
@@ -6568,7 +6583,7 @@ void UTgGameDC_Game::UpdateGameClock()
 
 
 // Function TgClient.TgGameDC_Game.NotifyMapChange
-// (Final, Simulated, Event, Operator, HasOptionalParms, Const)
+// (Latent, Singular, Net, Simulated, Exec, Native, HasOptionalParms, Const)
 
 void UTgGameDC_Game::NotifyMapChange()
 {
@@ -6577,6 +6592,7 @@ void UTgGameDC_Game::NotifyMapChange()
 	UTgGameDC_Game_NotifyMapChange_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6585,12 +6601,12 @@ void UTgGameDC_Game::NotifyMapChange()
 
 
 // Function TgClient.TgGameDC_Game.InitializeData
-// (Final, Defined, Net, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Defined, Latent, Singular, NetReliable, Simulated, Native, Operator, Static, Const)
 // Parameters:
 // class UTgDataHandler*          Handler                        (Parm)
 // class UTgDataChunk*            parentChunk                    (Parm)
 
-void UTgGameDC_Game::InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk)
+void UTgGameDC_Game::STATIC_InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGameDC_Game.InitializeData");
 
@@ -6608,7 +6624,7 @@ void UTgGameDC_Game::InitializeData(class UTgDataHandler* Handler, class UTgData
 
 
 // Function TgClient.TgGameDC_MapEntity.NotifyMapChange
-// (Final, Simulated, Event, Operator, HasOptionalParms, Const)
+// (Latent, Singular, Net, Simulated, Exec, Native, HasOptionalParms, Const)
 
 void UTgGameDC_MapEntity::NotifyMapChange()
 {
@@ -6617,6 +6633,7 @@ void UTgGameDC_MapEntity::NotifyMapChange()
 	UTgGameDC_MapEntity_NotifyMapChange_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6625,7 +6642,7 @@ void UTgGameDC_MapEntity::NotifyMapChange()
 
 
 // Function TgClient.TgGameDC_MapEntity.UpdateMapPosition
-// (PreOperator, Singular, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Defined, Iterator, PreOperator, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // struct FVector                 Location                       (Parm)
 // struct FRotator                Rotation                       (Parm)
@@ -6648,7 +6665,7 @@ void UTgGameDC_MapEntity::UpdateMapPosition(const struct FVector& Location, cons
 
 
 // Function TgClient.TgGameDC_MapEntity.UpdateActorMapPosition
-// (Final, Singular, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Iterator, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // class AActor*                  gameActor                      (Parm)
 
@@ -6669,12 +6686,12 @@ void UTgGameDC_MapEntity::UpdateActorMapPosition(class AActor* gameActor)
 
 
 // Function TgClient.TgGameDC_MapEntity.InitializeData
-// (Final, Defined, Net, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Defined, Latent, Singular, NetReliable, Simulated, Native, Operator, Static, Const)
 // Parameters:
 // class UTgDataHandler*          Handler                        (Parm)
 // class UTgDataChunk*            parentChunk                    (Parm)
 
-void UTgGameDC_MapEntity::InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk)
+void UTgGameDC_MapEntity::STATIC_InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGameDC_MapEntity.InitializeData");
 
@@ -6692,7 +6709,7 @@ void UTgGameDC_MapEntity::InitializeData(class UTgDataHandler* Handler, class UT
 
 
 // Function TgClient.TgGameDC_Player.USC_ForceStatsUpdate
-// (Latent, Singular, Net, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Defined, Iterator, Latent, Net, Simulated, Native, Event, HasOptionalParms, Const)
 
 void UTgGameDC_Player::USC_ForceStatsUpdate()
 {
@@ -6710,7 +6727,7 @@ void UTgGameDC_Player::USC_ForceStatsUpdate()
 
 
 // Function TgClient.TgGameDC_Player.USC_ForceStatsUpdate_Delegate
-// (Final, NetReliable, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Iterator, Latent, PreOperator, Singular, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 
 void UTgGameDC_Player::USC_ForceStatsUpdate_Delegate()
 {
@@ -6727,7 +6744,7 @@ void UTgGameDC_Player::USC_ForceStatsUpdate_Delegate()
 
 
 // Function TgClient.TgGameDC_Player.NotifyMapChange
-// (Final, Simulated, Event, Operator, HasOptionalParms, Const)
+// (Latent, Singular, Net, Simulated, Exec, Native, HasOptionalParms, Const)
 
 void UTgGameDC_Player::NotifyMapChange()
 {
@@ -6736,6 +6753,7 @@ void UTgGameDC_Player::NotifyMapChange()
 	UTgGameDC_Player_NotifyMapChange_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6744,7 +6762,7 @@ void UTgGameDC_Player::NotifyMapChange()
 
 
 // Function TgClient.TgGameDC_Player.UpdateItemStoreItems
-// (Defined, Iterator, Singular, Net, NetReliable, Exec, Operator, Static, Const)
+// (Final, Defined, PreOperator, Singular, Net, NetReliable, Static, Const)
 // Parameters:
 // class ATgRepInfo_Player*       PRI                            (Parm)
 
@@ -6764,7 +6782,7 @@ void UTgGameDC_Player::STATIC_UpdateItemStoreItems(class ATgRepInfo_Player* PRI)
 
 
 // Function TgClient.TgGameDC_Player.UpdateStats
-// (Final, Defined, Iterator, Latent, PreOperator, Singular, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Final, Iterator, Singular, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // class ATgPawn*                 changedPawn                    (Parm)
 
@@ -6785,7 +6803,7 @@ void UTgGameDC_Player::UpdateStats(class ATgPawn* changedPawn)
 
 
 // Function TgClient.TgGameDC_Player.UpdatePlayer
-// (Defined, Iterator, PreOperator, Singular, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Iterator, Latent, PreOperator, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // class ATgRepInfo_Player*       PRI                            (Parm)
 
@@ -6806,7 +6824,7 @@ void UTgGameDC_Player::UpdatePlayer(class ATgRepInfo_Player* PRI)
 
 
 // Function TgClient.TgGameDC_Player.SetDirty
-// (Final, Defined, Net, Exec, Native, Event, Operator, HasOptionalParms)
+// (Final, Net, Native, Event, HasOptionalParms)
 
 void UTgGameDC_Player::SetDirty()
 {
@@ -6824,12 +6842,12 @@ void UTgGameDC_Player::SetDirty()
 
 
 // Function TgClient.TgGameDC_Player.InitializeData
-// (Final, Defined, Net, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Defined, Latent, Singular, NetReliable, Simulated, Native, Operator, Static, Const)
 // Parameters:
 // class UTgDataHandler*          Handler                        (Parm)
 // class UTgDataChunk*            parentChunk                    (Parm)
 
-void UTgGameDC_Player::InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk)
+void UTgGameDC_Player::STATIC_InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGameDC_Player.InitializeData");
 
@@ -6847,7 +6865,7 @@ void UTgGameDC_Player::InitializeData(class UTgDataHandler* Handler, class UTgDa
 
 
 // Function TgClient.TgGameDC_LocalPlayer.UpdateSpectatorViewTarget
-// (Defined, Iterator, Latent, PreOperator, Singular, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Iterator, Singular, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // class UTgGameDC_MapEntity*     entity                         (Parm)
 
@@ -6868,7 +6886,7 @@ void UTgGameDC_LocalPlayer::UpdateSpectatorViewTarget(class UTgGameDC_MapEntity*
 
 
 // Function TgClient.TgGameDC_LocalPlayer.SetVendorItemList
-// (Latent, PreOperator, Singular, Net, NetReliable, Exec, Event, Operator, HasOptionalParms, Const)
+// (Defined, Iterator, Latent, PreOperator, Net, Simulated, Event, HasOptionalParms, Const)
 // Parameters:
 // TArray<int>                    nItemIds                       (Parm, NeedCtorLink)
 
@@ -6888,12 +6906,12 @@ void UTgGameDC_LocalPlayer::SetVendorItemList(TArray<int> nItemIds)
 
 
 // Function TgClient.TgGameDC_LocalPlayer.InitializeData
-// (Final, Defined, Net, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Defined, Latent, Singular, NetReliable, Simulated, Native, Operator, Static, Const)
 // Parameters:
 // class UTgDataHandler*          Handler                        (Parm)
 // class UTgDataChunk*            parentChunk                    (Parm)
 
-void UTgGameDC_LocalPlayer::InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk)
+void UTgGameDC_LocalPlayer::STATIC_InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGameDC_LocalPlayer.InitializeData");
 
@@ -6911,7 +6929,7 @@ void UTgGameDC_LocalPlayer::InitializeData(class UTgDataHandler* Handler, class 
 
 
 // Function TgClient.TgGameDC_PlayerVitals.UpdateCoreStats
-// (Final, Iterator, Singular, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Latent, Simulated, Native, Event, HasOptionalParms, Const)
 
 void UTgGameDC_PlayerVitals::UpdateCoreStats()
 {
@@ -6929,7 +6947,7 @@ void UTgGameDC_PlayerVitals::UpdateCoreStats()
 
 
 // Function TgClient.TgGameDC_PlayerVitals.UpdateDamageDone
-// (Defined, Iterator, Singular, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Iterator, Latent, Simulated, Native, Event, HasOptionalParms, Const)
 
 void UTgGameDC_PlayerVitals::UpdateDamageDone()
 {
@@ -6947,7 +6965,7 @@ void UTgGameDC_PlayerVitals::UpdateDamageDone()
 
 
 // Function TgClient.TgGameDC_PlayerVitals.NotifyMapChange
-// (Final, Simulated, Event, Operator, HasOptionalParms, Const)
+// (Latent, Singular, Net, Simulated, Exec, Native, HasOptionalParms, Const)
 
 void UTgGameDC_PlayerVitals::NotifyMapChange()
 {
@@ -6956,6 +6974,7 @@ void UTgGameDC_PlayerVitals::NotifyMapChange()
 	UTgGameDC_PlayerVitals_NotifyMapChange_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -6964,12 +6983,12 @@ void UTgGameDC_PlayerVitals::NotifyMapChange()
 
 
 // Function TgClient.TgGameDC_PlayerVitals.InitializeData
-// (Final, Defined, Net, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Defined, Latent, Singular, NetReliable, Simulated, Native, Operator, Static, Const)
 // Parameters:
 // class UTgDataHandler*          Handler                        (Parm)
 // class UTgDataChunk*            parentChunk                    (Parm)
 
-void UTgGameDC_PlayerVitals::InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk)
+void UTgGameDC_PlayerVitals::STATIC_InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGameDC_PlayerVitals.InitializeData");
 
@@ -6987,12 +7006,12 @@ void UTgGameDC_PlayerVitals::InitializeData(class UTgDataHandler* Handler, class
 
 
 // Function TgClient.TgGameDC_Tower.InitializeData
-// (Final, Defined, Net, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Defined, Latent, Singular, NetReliable, Simulated, Native, Operator, Static, Const)
 // Parameters:
 // class UTgDataHandler*          Handler                        (Parm)
 // class UTgDataChunk*            parentChunk                    (Parm)
 
-void UTgGameDC_Tower::InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk)
+void UTgGameDC_Tower::STATIC_InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGameDC_Tower.InitializeData");
 
@@ -7010,13 +7029,13 @@ void UTgGameDC_Tower::InitializeData(class UTgDataHandler* Handler, class UTgDat
 
 
 // Function TgClient.TgGameDC_Target.UpdateTarget
-// (Defined, Net, NetReliable, Exec, HasOptionalParms, Const)
+// (Final, Singular, Simulated, Operator, Static, Const)
 // Parameters:
 // class AActor*                  NewTarget                      (Parm)
 // bool                           bHovered                       (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UTgGameDC_Target::UpdateTarget(class AActor* NewTarget, bool bHovered)
+bool UTgGameDC_Target::STATIC_UpdateTarget(class AActor* NewTarget, bool bHovered)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGameDC_Target.UpdateTarget");
 
@@ -7035,12 +7054,12 @@ bool UTgGameDC_Target::UpdateTarget(class AActor* NewTarget, bool bHovered)
 
 
 // Function TgClient.TgGameDC_Target.InitializeData
-// (Final, Defined, Net, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Defined, Latent, Singular, NetReliable, Simulated, Native, Operator, Static, Const)
 // Parameters:
 // class UTgDataHandler*          Handler                        (Parm)
 // class UTgDataChunk*            parentChunk                    (Parm)
 
-void UTgGameDC_Target::InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk)
+void UTgGameDC_Target::STATIC_InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGameDC_Target.InitializeData");
 
@@ -7058,7 +7077,7 @@ void UTgGameDC_Target::InitializeData(class UTgDataHandler* Handler, class UTgDa
 
 
 // Function TgClient.TgGameDC_Team.UpdatePlayerSurrender
-// (Defined, Latent, PreOperator, Singular, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Singular, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // class ATgRepInfo_Player*       PRI                            (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
@@ -7082,7 +7101,7 @@ bool UTgGameDC_Team::UpdatePlayerSurrender(class ATgRepInfo_Player* PRI)
 
 
 // Function TgClient.TgGameDC_Team.UpdatePlayerItemStoreItems
-// (Final, Defined, Iterator, PreOperator, Singular, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Final, Iterator, Latent, PreOperator, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // class ATgRepInfo_Player*       PRI                            (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
@@ -7106,7 +7125,7 @@ bool UTgGameDC_Team::UpdatePlayerItemStoreItems(class ATgRepInfo_Player* PRI)
 
 
 // Function TgClient.TgGameDC_Team.UpdatePlayerStat
-// (Final, Latent, PreOperator, Singular, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Iterator, Latent, PreOperator, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // class ATgPawn*                 changedPawn                    (Parm)
 
@@ -7127,7 +7146,7 @@ void UTgGameDC_Team::UpdatePlayerStat(class ATgPawn* changedPawn)
 
 
 // Function TgClient.TgGameDC_Team.UpdateMembers
-// (Defined, PreOperator, Singular, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Latent, PreOperator, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // class ATgRepInfo_TaskForce*    tfri                           (Parm)
 
@@ -7148,7 +7167,7 @@ void UTgGameDC_Team::UpdateMembers(class ATgRepInfo_TaskForce* tfri)
 
 
 // Function TgClient.TgGameDC_Team.NotifyMapChange
-// (Final, Simulated, Event, Operator, HasOptionalParms, Const)
+// (Latent, Singular, Net, Simulated, Exec, Native, HasOptionalParms, Const)
 
 void UTgGameDC_Team::NotifyMapChange()
 {
@@ -7157,6 +7176,7 @@ void UTgGameDC_Team::NotifyMapChange()
 	UTgGameDC_Team_NotifyMapChange_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7165,12 +7185,12 @@ void UTgGameDC_Team::NotifyMapChange()
 
 
 // Function TgClient.TgGameDC_Team.InitializeData
-// (Final, Defined, Net, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Defined, Latent, Singular, NetReliable, Simulated, Native, Operator, Static, Const)
 // Parameters:
 // class UTgDataHandler*          Handler                        (Parm)
 // class UTgDataChunk*            parentChunk                    (Parm)
 
-void UTgGameDC_Team::InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk)
+void UTgGameDC_Team::STATIC_InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGameDC_Team.InitializeData");
 
@@ -7188,11 +7208,11 @@ void UTgGameDC_Team::InitializeData(class UTgDataHandler* Handler, class UTgData
 
 
 // Function TgClient.TgGameDataHandler.InitializeDataHandler
-// (Iterator, Net, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Final, Defined, Latent, Singular, NetReliable, Simulated, Native, Operator, Static, Const)
 // Parameters:
 // class UUIMoviePlayer*          mp                             (Parm)
 
-void UTgGameDataHandler::InitializeDataHandler(class UUIMoviePlayer* mp)
+void UTgGameDataHandler::STATIC_InitializeDataHandler(class UUIMoviePlayer* mp)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGameDataHandler.InitializeDataHandler");
 
@@ -7209,7 +7229,7 @@ void UTgGameDataHandler::InitializeDataHandler(class UUIMoviePlayer* mp)
 
 
 // Function TgClient.TgGameDC_Chat.TokenReplace
-// (Final, Latent, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Iterator, Singular, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // struct FString                 Message                        (Parm, NeedCtorLink)
 // struct FString                 Token                          (Parm, NeedCtorLink)
@@ -7236,7 +7256,7 @@ struct FString UTgGameDC_Chat::TokenReplace(const struct FString& Message, const
 
 
 // Function TgClient.TgGameDC_Chat.SubmitDeferredMessages
-// (Final, Iterator, PreOperator, Net, Simulated, Exec, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Latent, PreOperator, Singular, NetReliable, Simulated, Event, HasOptionalParms, Const)
 // Parameters:
 // int                            nChannel                       (OptionalParm, Parm)
 
@@ -7256,7 +7276,7 @@ void UTgGameDC_Chat::SubmitDeferredMessages(int nChannel)
 
 
 // Function TgClient.TgGameDC_Chat.PlayAnnouncerSound
-// (Latent, PreOperator, Singular, NetReliable, Simulated, Event, Operator, HasOptionalParms, Const)
+// (Defined, Iterator, Latent, PreOperator, Event, HasOptionalParms, Const)
 // Parameters:
 // int                            nMsgId                         (Parm)
 // bool                           bForce                         (OptionalParm, Parm)
@@ -7278,7 +7298,7 @@ void UTgGameDC_Chat::PlayAnnouncerSound(int nMsgId, bool bForce)
 
 
 // Function TgClient.TgGameDC_Chat.PlayVGSPOTG
-// (Final, Iterator, Latent, PreOperator, Singular, NetReliable, Simulated, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Singular, Event, HasOptionalParms, Const)
 // Parameters:
 // struct Fdword                  ePref                          (Parm)
 // struct Fdword                  dwBotId                        (Parm)
@@ -7304,7 +7324,7 @@ void UTgGameDC_Chat::PlayVGSPOTG(const struct Fdword& ePref, const struct Fdword
 
 
 // Function TgClient.TgGameDC_Chat.PlayVGSSound
-// (Defined, Iterator, Latent, PreOperator, Singular, NetReliable, Simulated, Event, Operator, HasOptionalParms, Const)
+// (Iterator, Singular, Event, HasOptionalParms, Const)
 // Parameters:
 // int                            nMsgId                         (Parm)
 // struct Fdword                  ePref                          (Parm)
@@ -7334,7 +7354,7 @@ void UTgGameDC_Chat::PlayVGSSound(int nMsgId, const struct Fdword& ePref, const 
 
 
 // Function TgClient.TgGameDC_Chat.PlayMessageSound
-// (Final, Defined, Latent, PreOperator, Singular, NetReliable, Simulated, Event, Operator, HasOptionalParms, Const)
+// (Final, Singular, Event, HasOptionalParms, Const)
 // Parameters:
 // int                            nMsgId                         (Parm)
 // TEnumAsByte<ETG_CHAT_PRIORITY> ePriority                      (OptionalParm, Parm)
@@ -7356,11 +7376,11 @@ void UTgGameDC_Chat::PlayMessageSound(int nMsgId, TEnumAsByte<ETG_CHAT_PRIORITY>
 
 
 // Function TgClient.TgGameDC_Chat.AddAlert
-// (Final, Defined, Iterator, PreOperator, Net, Simulated, Exec, HasOptionalParms, Const)
+// (Final, Defined, Iterator, Latent, PreOperator, Singular, NetReliable, Simulated, Operator, Static, Const)
 // Parameters:
 // struct FString                 Message                        (Parm, NeedCtorLink)
 
-void UTgGameDC_Chat::AddAlert(const struct FString& Message)
+void UTgGameDC_Chat::STATIC_AddAlert(const struct FString& Message)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGameDC_Chat.AddAlert");
 
@@ -7376,7 +7396,7 @@ void UTgGameDC_Chat::AddAlert(const struct FString& Message)
 
 
 // Function TgClient.TgGameDC_Chat.UpdateMessageSoundQueue
-// (Final, Defined, PreOperator, Singular, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Final, Latent, PreOperator, Simulated, Native, Event, HasOptionalParms, Const)
 
 void UTgGameDC_Chat::UpdateMessageSoundQueue()
 {
@@ -7394,7 +7414,7 @@ void UTgGameDC_Chat::UpdateMessageSoundQueue()
 
 
 // Function TgClient.TgGameDC_Chat.Update
-// (Defined, Iterator, Singular, Net, Exec, Native, HasOptionalParms)
+// (Singular, NetReliable, Exec, Native, HasOptionalParms)
 // Parameters:
 // float                          DeltaTime                      (Parm)
 // bool                           bSkipCallback                  (OptionalParm, Parm)
@@ -7417,11 +7437,11 @@ void UTgGameDC_Chat::Update(float DeltaTime, bool bSkipCallback)
 
 
 // Function TgClient.TgGameDC_Chat.AddPopupMsg
-// (Singular, Net, Simulated, Exec, HasOptionalParms, Const)
+// (Latent, Net, NetReliable, Simulated, Operator, Static, Const)
 // Parameters:
 // struct FString                 msg                            (Parm, NeedCtorLink)
 
-void UTgGameDC_Chat::AddPopupMsg(const struct FString& msg)
+void UTgGameDC_Chat::STATIC_AddPopupMsg(const struct FString& msg)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGameDC_Chat.AddPopupMsg");
 
@@ -7437,11 +7457,11 @@ void UTgGameDC_Chat::AddPopupMsg(const struct FString& msg)
 
 
 // Function TgClient.TgGameDC_Chat.AddCombatMsg
-// (Defined, Latent, PreOperator, Net, Simulated, Exec, HasOptionalParms, Const)
+// (Defined, Net, NetReliable, Simulated, Operator, Static, Const)
 // Parameters:
 // struct FString                 msg                            (Parm, NeedCtorLink)
 
-void UTgGameDC_Chat::AddCombatMsg(const struct FString& msg)
+void UTgGameDC_Chat::STATIC_AddCombatMsg(const struct FString& msg)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGameDC_Chat.AddCombatMsg");
 
@@ -7457,12 +7477,12 @@ void UTgGameDC_Chat::AddCombatMsg(const struct FString& msg)
 
 
 // Function TgClient.TgGameDC_Chat.AddLocalChatMsg
-// (Defined, Iterator, Latent, PreOperator, Net, Simulated, Exec, HasOptionalParms, Const)
+// (Defined, Iterator, Net, NetReliable, Simulated, Operator, Static, Const)
 // Parameters:
 // struct FString                 msg                            (Parm, NeedCtorLink)
 // struct FString                 senderName                     (Parm, NeedCtorLink)
 
-void UTgGameDC_Chat::AddLocalChatMsg(const struct FString& msg, const struct FString& senderName)
+void UTgGameDC_Chat::STATIC_AddLocalChatMsg(const struct FString& msg, const struct FString& senderName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGameDC_Chat.AddLocalChatMsg");
 
@@ -7479,7 +7499,7 @@ void UTgGameDC_Chat::AddLocalChatMsg(const struct FString& msg, const struct FSt
 
 
 // Function TgClient.TgGameDC_Chat.AddChatMsg
-// (Latent, PreOperator, Net, Simulated, Exec, HasOptionalParms, Const)
+// (Net, NetReliable, Simulated, Operator, Static, Const)
 // Parameters:
 // struct FString                 msg                            (Parm, NeedCtorLink)
 // struct FString                 senderName                     (Parm, NeedCtorLink)
@@ -7489,7 +7509,7 @@ void UTgGameDC_Chat::AddLocalChatMsg(const struct FString& msg, const struct FSt
 // bool                           bIsVGS                         (OptionalParm, Parm)
 // int                            nMsgId                         (OptionalParm, Parm)
 
-void UTgGameDC_Chat::AddChatMsg(const struct FString& msg, const struct FString& senderName, const struct Fdword& dwSenderId, int nChannel, bool bIsFeedback, bool bIsVGS, int nMsgId)
+void UTgGameDC_Chat::STATIC_AddChatMsg(const struct FString& msg, const struct FString& senderName, const struct Fdword& dwSenderId, int nChannel, bool bIsFeedback, bool bIsVGS, int nMsgId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGameDC_Chat.AddChatMsg");
 
@@ -7511,12 +7531,12 @@ void UTgGameDC_Chat::AddChatMsg(const struct FString& msg, const struct FString&
 
 
 // Function TgClient.TgGameDC_Chat.InitializeData
-// (Final, Defined, Net, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Defined, Latent, Singular, NetReliable, Simulated, Native, Operator, Static, Const)
 // Parameters:
 // class UTgDataHandler*          Handler                        (Parm)
 // class UTgDataChunk*            parentChunk                    (Parm)
 
-void UTgGameDC_Chat::InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk)
+void UTgGameDC_Chat::STATIC_InitializeData(class UTgDataHandler* Handler, class UTgDataChunk* parentChunk)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGameDC_Chat.InitializeData");
 
@@ -7534,7 +7554,7 @@ void UTgGameDC_Chat::InitializeData(class UTgDataHandler* Handler, class UTgData
 
 
 // Function TgClient.TgMiniMap.CheckSpectatorState
-// (Final, Defined, PreOperator, Singular, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
@@ -7555,7 +7575,7 @@ bool UTgMiniMap::CheckSpectatorState()
 
 
 // Function TgClient.TgMiniMap.UpdateMapSize
-// (Final, PreOperator, Singular, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Iterator, PreOperator, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // int                            newX                           (Parm)
 
@@ -7576,7 +7596,7 @@ void UTgMiniMap::UpdateMapSize(int newX)
 
 
 // Function TgClient.TgMiniMap.UpdateMiniMapTexture
-// (Iterator, PreOperator, Singular, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Defined, Latent, PreOperator, Simulated, Native, Event, HasOptionalParms, Const)
 
 void UTgMiniMap::UpdateMiniMapTexture()
 {
@@ -7594,13 +7614,30 @@ void UTgMiniMap::UpdateMiniMapTexture()
 
 
 // Function TgClient.TgMiniMap.CreateMiniMapTexture
-// (Iterator, Singular, Native, HasOptionalParms, Const)
+// (Iterator, Latent, NetReliable, Exec, Operator, Static, Const)
 
-void UTgMiniMap::CreateMiniMapTexture()
+void UTgMiniMap::STATIC_CreateMiniMapTexture()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgMiniMap.CreateMiniMapTexture");
 
 	UTgMiniMap_CreateMiniMapTexture_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TgClient.TgMiniMap.Clear
+// (Final, Singular, Native, Event, HasOptionalParms)
+
+void UTgMiniMap::Clear()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgMiniMap.Clear");
+
+	UTgMiniMap_Clear_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -7611,33 +7648,17 @@ void UTgMiniMap::CreateMiniMapTexture()
 }
 
 
-// Function TgClient.TgMiniMap.Clear
-// (Final, Iterator, Singular, Net, NetReliable, Simulated, Exec, Event, HasOptionalParms)
-
-void UTgMiniMap::Clear()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgMiniMap.Clear");
-
-	UTgMiniMap_Clear_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
 // Function TgClient.TgMiniMap.RemoveAllEntities
-// (Defined, Latent, PreOperator, Singular, Static, Const)
+// (Net, Exec, Native, Event, Const)
 
-void UTgMiniMap::STATIC_RemoveAllEntities()
+void UTgMiniMap::RemoveAllEntities()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgMiniMap.RemoveAllEntities");
 
 	UTgMiniMap_RemoveAllEntities_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7646,7 +7667,7 @@ void UTgMiniMap::STATIC_RemoveAllEntities()
 
 
 // Function TgClient.TgMiniMap.VerifyMapLocation
-// (Iterator, Latent, Simulated, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Defined, PreOperator, Singular, Net, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // float                          X                              (Parm)
 // float                          Y                              (Parm)
@@ -7672,12 +7693,12 @@ bool UTgMiniMap::VerifyMapLocation(float X, float Y)
 
 
 // Function TgClient.TgMiniMap.GetRepInfosForLocation
-// (Latent, Singular, Exec, Native, HasOptionalParms, Const)
+// (Final, Defined, Iterator, Latent, NetReliable, Native, Operator, Static, Const)
 // Parameters:
 // struct FVector                 mapLoc                         (Parm)
 // TArray<class AReplicationInfo*> repInfos                       (Parm, OutParm, NeedCtorLink)
 
-void UTgMiniMap::GetRepInfosForLocation(const struct FVector& mapLoc, TArray<class AReplicationInfo*>* repInfos)
+void UTgMiniMap::STATIC_GetRepInfosForLocation(const struct FVector& mapLoc, TArray<class AReplicationInfo*>* repInfos)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgMiniMap.GetRepInfosForLocation");
 
@@ -7697,7 +7718,7 @@ void UTgMiniMap::GetRepInfosForLocation(const struct FVector& mapLoc, TArray<cla
 
 
 // Function TgClient.TgMiniMap.WorldToMap
-// (Defined, Iterator, Latent, PreOperator, Singular, Simulated, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Iterator, Singular, NetReliable, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // struct FVector                 Loc                            (Parm)
 // struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
@@ -7721,7 +7742,7 @@ struct FVector UTgMiniMap::WorldToMap(const struct FVector& Loc)
 
 
 // Function TgClient.TgMiniMap.MapToWorld
-// (Final, Singular, Net, NetReliable, Simulated, Exec, Native, Operator, HasOptionalParms, Const)
+// (Latent, Net, Exec, Native, HasOptionalParms, Const)
 // Parameters:
 // struct FVector                 Loc                            (Parm)
 // struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
@@ -7745,16 +7766,15 @@ struct FVector UTgMiniMap::MapToWorld(const struct FVector& Loc)
 
 
 // Function TgClient.TgMiniMap.ClearHover
-// (Final, Defined, Iterator, PreOperator, Native, HasOptionalParms, Const)
+// (Final, Defined, Iterator, Latent, PreOperator, Singular, Net, Exec, Operator, Static, Const)
 
-void UTgMiniMap::ClearHover()
+void UTgMiniMap::STATIC_ClearHover()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgMiniMap.ClearHover");
 
 	UTgMiniMap_ClearHover_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7763,12 +7783,12 @@ void UTgMiniMap::ClearHover()
 
 
 // Function TgClient.TgMiniMap.HoverMap
-// (Final, Defined, Latent, Singular, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Defined, PreOperator, NetReliable, Simulated, Native, Operator, Static, Const)
 // Parameters:
 // float                          X                              (Parm)
 // float                          Y                              (Parm)
 
-void UTgMiniMap::HoverMap(float X, float Y)
+void UTgMiniMap::STATIC_HoverMap(float X, float Y)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgMiniMap.HoverMap");
 
@@ -7786,7 +7806,7 @@ void UTgMiniMap::HoverMap(float X, float Y)
 
 
 // Function TgClient.TgMiniMap.PingMap
-// (Defined, Latent, PreOperator, Singular, Exec, Event, Operator, Const)
+// (Defined, Iterator, Latent, PreOperator, Singular, Event, Const)
 // Parameters:
 // float                          X                              (Parm)
 // float                          Y                              (Parm)
@@ -7810,7 +7830,7 @@ void UTgMiniMap::PingMap(float X, float Y, TEnumAsByte<EPING_TYPE> Pt)
 
 
 // Function TgClient.TgMiniMap.ShouldRender
-// (Final, Iterator, Latent, PreOperator, Singular, Net, NetReliable, Exec, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Singular, Net, Simulated, Event, HasOptionalParms, Const)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
@@ -7831,7 +7851,7 @@ bool UTgMiniMap::ShouldRender()
 
 
 // Function TgClient.TgMiniMap.PingWorldLocation
-// (Iterator, Latent, PreOperator, Singular, Exec, Event, Operator, Const)
+// (Net, Event, Const)
 // Parameters:
 // struct FVector                 PingLocation                   (Parm)
 // TEnumAsByte<EPING_TYPE>        Pt                             (Parm)
@@ -7873,11 +7893,11 @@ void UTgMiniMap::Init(class ATgPlayerController* PC)
 
 
 // Function TgClient.TgMiniMap.Draw
-// (Iterator, Latent, PreOperator, Singular, Net, Native, HasOptionalParms, Const)
+// (Iterator, Singular, Net, NetReliable, Exec, Operator, Static, Const)
 // Parameters:
 // class UCanvas*                 theCanvas                      (Parm)
 
-void UTgMiniMap::Draw(class UCanvas* theCanvas)
+void UTgMiniMap::STATIC_Draw(class UCanvas* theCanvas)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgMiniMap.Draw");
 
@@ -7885,7 +7905,6 @@ void UTgMiniMap::Draw(class UCanvas* theCanvas)
 	params.theCanvas = theCanvas;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7894,7 +7913,7 @@ void UTgMiniMap::Draw(class UCanvas* theCanvas)
 
 
 // Function TgClient.UIGameMoviePlayer.CheckPermissionForOnlineScene
-// (Defined, PreOperator, Singular, Simulated, Exec, Event, HasOptionalParms)
+// (Defined, Iterator, Latent, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // struct FString                 sScene                         (Parm, NeedCtorLink)
 // unsigned char                  ControlledId                   (Parm)
@@ -7920,7 +7939,7 @@ void UUIGameMoviePlayer::CheckPermissionForOnlineScene(const struct FString& sSc
 
 
 // Function TgClient.UIGameMoviePlayer.OnPermissionForOnlineScene
-// (Final, Iterator, PreOperator, Net, Simulated, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Latent, PreOperator, Singular, NetReliable, Simulated, Exec, Native, HasOptionalParms, Const)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // TEnumAsByte<EFeaturePrivilege> Privilege                      (Parm)
@@ -7938,6 +7957,7 @@ void UUIGameMoviePlayer::OnPermissionForOnlineScene(unsigned char LocalUserNum, 
 	params.bDiffersFromHint = bDiffersFromHint;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7946,7 +7966,7 @@ void UUIGameMoviePlayer::OnPermissionForOnlineScene(unsigned char LocalUserNum, 
 
 
 // Function TgClient.UIGameMoviePlayer.NativeOpenURL
-// (Final, Iterator, Latent, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Latent, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // struct FString                 URL                            (Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
@@ -7969,7 +7989,7 @@ bool UUIGameMoviePlayer::NativeOpenURL(const struct FString& URL)
 
 
 // Function TgClient.UIGameMoviePlayer.OnAccountPickerCompleteForLogin
-// (Final, Iterator, Latent, Net, Simulated, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, PreOperator, Singular, NetReliable, Simulated, Exec, Native, HasOptionalParms, Const)
 // Parameters:
 // bool                           bForceLogin                    (Parm)
 
@@ -7981,6 +8001,7 @@ void UUIGameMoviePlayer::OnAccountPickerCompleteForLogin(bool bForceLogin)
 	params.bForceLogin = bForceLogin;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -7989,7 +8010,7 @@ void UUIGameMoviePlayer::OnAccountPickerCompleteForLogin(bool bForceLogin)
 
 
 // Function TgClient.UIGameMoviePlayer.IsAccountPickerOpen
-// (Final, Defined, Iterator, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Defined, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
@@ -8010,7 +8031,7 @@ bool UUIGameMoviePlayer::IsAccountPickerOpen()
 
 
 // Function TgClient.UIGameMoviePlayer.ReadOnlinePlayerData
-// (Final, PreOperator, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Iterator, Latent, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // TArray<struct FString>         PlayerIDs                      (Parm, NeedCtorLink)
 
@@ -8030,7 +8051,7 @@ void UUIGameMoviePlayer::ReadOnlinePlayerData(TArray<struct FString> PlayerIDs)
 
 
 // Function TgClient.UIGameMoviePlayer.OnUserAccountInfoRetrieved
-// (Defined, Exec, Native, Event, Static)
+// (Iterator, Exec, Native, Event, Static)
 // Parameters:
 // bool                           bSuccessful                    (Parm)
 // struct FUserAccountInfo        AccountInfo                    (Parm, NeedCtorLink)
@@ -8053,7 +8074,7 @@ void UUIGameMoviePlayer::STATIC_OnUserAccountInfoRetrieved(bool bSuccessful, con
 
 
 // Function TgClient.UIGameMoviePlayer.GetAccountInfo
-// (Defined, Iterator, Latent, PreOperator, Singular, Simulated, Exec, Event, HasOptionalParms)
+// (Defined, Latent, PreOperator, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
 
 void UUIGameMoviePlayer::GetAccountInfo()
 {
@@ -8070,7 +8091,7 @@ void UUIGameMoviePlayer::GetAccountInfo()
 
 
 // Function TgClient.UIGameMoviePlayer.CanShowContentPurchaseUI
-// (Final, Defined, Iterator, Latent, Singular, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Defined, Latent, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
@@ -8091,7 +8112,7 @@ bool UUIGameMoviePlayer::CanShowContentPurchaseUI()
 
 
 // Function TgClient.UIGameMoviePlayer.ShowContentPurchaseUI
-// (Final, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Iterator, Latent, PreOperator, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // struct FString                 SignedOffer                    (Parm, NeedCtorLink)
 
@@ -8111,7 +8132,7 @@ void UUIGameMoviePlayer::ShowContentPurchaseUI(const struct FString& SignedOffer
 
 
 // Function TgClient.UIGameMoviePlayer.usc_ShowProductDetailsUI
-// (Final, Defined, PreOperator, NetReliable, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, Net, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // struct FString                 ProductID                      (Parm, NeedCtorLink)
 
@@ -8131,7 +8152,7 @@ void UUIGameMoviePlayer::usc_ShowProductDetailsUI(const struct FString& ProductI
 
 
 // Function TgClient.UIGameMoviePlayer.usc_ShowGameDetailsUI
-// (Defined, PreOperator, NetReliable, Simulated, Exec, Event, HasOptionalParms)
+// (Defined, Iterator, Latent, Net, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 
 void UUIGameMoviePlayer::usc_ShowGameDetailsUI()
 {
@@ -8148,7 +8169,7 @@ void UUIGameMoviePlayer::usc_ShowGameDetailsUI()
 
 
 // Function TgClient.UIGameMoviePlayer.usc_ShowContentMarketPlaceUIForProduct
-// (Final, PreOperator, NetReliable, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Iterator, Latent, Net, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // int                            ParentProductType              (Parm)
 // int                            RequestedProductTypes          (Parm)
@@ -8172,7 +8193,7 @@ void UUIGameMoviePlayer::usc_ShowContentMarketPlaceUIForProduct(int ParentProduc
 
 
 // Function TgClient.UIGameMoviePlayer.usc_ShowContentMarketPlaceUI
-// (PreOperator, NetReliable, Simulated, Exec, Event, HasOptionalParms)
+// (Iterator, Latent, Net, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // int                            ParentProductType              (Parm)
 // int                            RequestedProductTypes          (Parm)
@@ -8194,7 +8215,7 @@ void UUIGameMoviePlayer::usc_ShowContentMarketPlaceUI(int ParentProductType, int
 
 
 // Function TgClient.UIGameMoviePlayer.updatePlayerMute
-// (Latent, PreOperator, Singular, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Defined, Iterator, Latent, PreOperator, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // bool                           bWasSuccessful                 (Parm)
 
@@ -8215,7 +8236,7 @@ void UUIGameMoviePlayer::updatePlayerMute(bool bWasSuccessful)
 
 
 // Function TgClient.UIGameMoviePlayer.ShowGamercard
-// (PreOperator, Singular, Exec, Native, HasOptionalParms)
+// (Defined, Latent, Singular, Net, Exec, Native, HasOptionalParms)
 // Parameters:
 // struct FUniqueNetId            PlayerID                       (Parm)
 
@@ -8236,7 +8257,7 @@ void UUIGameMoviePlayer::ShowGamercard(const struct FUniqueNetId& PlayerID)
 
 
 // Function TgClient.UIGameMoviePlayer.ShowGamerCardByUserName
-// (Defined, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Defined, Iterator, Latent, PreOperator, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // struct FString                 UserName                       (Parm, NeedCtorLink)
 // struct FUniqueNetId            PlayerID                       (Parm)
@@ -8258,7 +8279,7 @@ void UUIGameMoviePlayer::ShowGamerCardByUserName(const struct FString& UserName,
 
 
 // Function TgClient.UIGameMoviePlayer.IsPlayerMuted
-// (Latent, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Iterator, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // struct FUniqueNetId            ConsoleId                      (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
@@ -8281,7 +8302,7 @@ bool UUIGameMoviePlayer::IsPlayerMuted(const struct FUniqueNetId& ConsoleId)
 
 
 // Function TgClient.UIGameMoviePlayer.UnmutePlayer
-// (Defined, PreOperator, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Defined, Iterator, Latent, Singular, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FUniqueNetId            ConsoleId                      (Parm)
@@ -8303,7 +8324,7 @@ void UUIGameMoviePlayer::UnmutePlayer(unsigned char LocalUserNum, const struct F
 
 
 // Function TgClient.UIGameMoviePlayer.MutePlayer
-// (Iterator, Latent, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Latent, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // struct FUniqueNetId            ConsoleId                      (Parm)
@@ -8325,7 +8346,7 @@ void UUIGameMoviePlayer::MutePlayer(unsigned char LocalUserNum, const struct FUn
 
 
 // Function TgClient.UIGameMoviePlayer.UnregisterLocalTalker
-// (Iterator, PreOperator, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
+// (PreOperator, Singular, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // unsigned char                  ChannelIndex                   (OptionalParm, Parm)
@@ -8347,7 +8368,7 @@ void UUIGameMoviePlayer::UnregisterLocalTalker(unsigned char LocalUserNum, unsig
 
 
 // Function TgClient.UIGameMoviePlayer.RegisterLocalTalker
-// (Defined, Iterator, PreOperator, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Defined, PreOperator, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // unsigned char                  LocalUserNum                   (Parm)
 // unsigned char                  ChannelIndex                   (OptionalParm, Parm)
@@ -8369,7 +8390,7 @@ void UUIGameMoviePlayer::RegisterLocalTalker(unsigned char LocalUserNum, unsigne
 
 
 // Function TgClient.UIGameMoviePlayer.ToggleAlienFX
-// (Iterator, PreOperator, NetReliable, Simulated, Exec, Event, Operator, HasOptionalParms, Const)
+// (Defined, Latent, PreOperator, Singular, Net, NetReliable, Simulated, Event, HasOptionalParms, Const)
 
 void UUIGameMoviePlayer::ToggleAlienFX()
 {
@@ -8386,7 +8407,7 @@ void UUIGameMoviePlayer::ToggleAlienFX()
 
 
 // Function TgClient.UIGameMoviePlayer.WidgetUnloaded
-// (Defined, Iterator, Latent, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Latent, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // struct FName                   WidgetName                     (Parm)
 // struct FName                   WidgetPath                     (Parm)
@@ -8414,7 +8435,7 @@ bool UUIGameMoviePlayer::WidgetUnloaded(const struct FName& WidgetName, const st
 
 
 // Function TgClient.UIGameMoviePlayer.WidgetInitialized
-// (Final, Iterator, Latent, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Final, Defined, Iterator, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // struct FName                   WidgetName                     (Parm)
 // struct FName                   WidgetPath                     (Parm)
@@ -8442,7 +8463,7 @@ bool UUIGameMoviePlayer::WidgetInitialized(const struct FName& WidgetName, const
 
 
 // Function TgClient.UIGameMoviePlayer.CheckControllerConnected
-// (Final, PreOperator, Singular, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Iterator, Latent, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
@@ -8463,11 +8484,11 @@ bool UUIGameMoviePlayer::CheckControllerConnected()
 
 
 // Function TgClient.UIGameMoviePlayer.OnComponentKeyboardInputComplete
-// (Final, Defined, Singular, NetReliable, Simulated, Native, Static, HasOptionalParms, Const)
+// (Final, Latent, PreOperator, Singular, Native, Operator, HasOptionalParms, Const)
 // Parameters:
 // bool                           bWasSuccessful                 (Parm)
 
-void UUIGameMoviePlayer::STATIC_OnComponentKeyboardInputComplete(bool bWasSuccessful)
+void UUIGameMoviePlayer::OnComponentKeyboardInputComplete(bool bWasSuccessful)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIGameMoviePlayer.OnComponentKeyboardInputComplete");
 
@@ -8484,11 +8505,11 @@ void UUIGameMoviePlayer::STATIC_OnComponentKeyboardInputComplete(bool bWasSucces
 
 
 // Function TgClient.UIGameMoviePlayer.OnTextFieldKeyboardInputComplete
-// (Defined, Iterator, Singular, NetReliable, Simulated, Native, Static, HasOptionalParms, Const)
+// (Iterator, Latent, PreOperator, Singular, Native, Operator, HasOptionalParms, Const)
 // Parameters:
 // bool                           bWasSuccessful                 (Parm)
 
-void UUIGameMoviePlayer::STATIC_OnTextFieldKeyboardInputComplete(bool bWasSuccessful)
+void UUIGameMoviePlayer::OnTextFieldKeyboardInputComplete(bool bWasSuccessful)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIGameMoviePlayer.OnTextFieldKeyboardInputComplete");
 
@@ -8505,7 +8526,7 @@ void UUIGameMoviePlayer::STATIC_OnTextFieldKeyboardInputComplete(bool bWasSucces
 
 
 // Function TgClient.UIGameMoviePlayer.ShowComponentKeyboardUI
-// (Singular, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Iterator, Latent, PreOperator, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // class UUIComponent*            CallingComponent               (Parm)
 // struct FString                 TitleText                      (Parm, NeedCtorLink)
@@ -8537,7 +8558,7 @@ void UUIGameMoviePlayer::ShowComponentKeyboardUI(class UUIComponent* CallingComp
 
 
 // Function TgClient.UIGameMoviePlayer.ShowKeyboardUI
-// (Final, Defined, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, PreOperator, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // class UGFxObject*              FocusedTextField               (Parm)
 // struct FString                 TitleText                      (Parm, NeedCtorLink)
@@ -8569,7 +8590,7 @@ void UUIGameMoviePlayer::ShowKeyboardUI(class UGFxObject* FocusedTextField, cons
 
 
 // Function TgClient.UIGameMoviePlayer.OnAccountPickerCancelledWrapper
-// (Iterator, Latent, Net, Simulated, Event, Operator, HasOptionalParms, Const)
+// (Defined, PreOperator, Singular, NetReliable, Simulated, Exec, Native, HasOptionalParms, Const)
 
 void UUIGameMoviePlayer::OnAccountPickerCancelledWrapper()
 {
@@ -8578,6 +8599,7 @@ void UUIGameMoviePlayer::OnAccountPickerCancelledWrapper()
 	UUIGameMoviePlayer_OnAccountPickerCancelledWrapper_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -8586,7 +8608,7 @@ void UUIGameMoviePlayer::OnAccountPickerCancelledWrapper()
 
 
 // Function TgClient.UIGameMoviePlayer.OnClose
-// (Defined, Iterator, Net, NetReliable, Exec, Native, HasOptionalParms)
+// (Simulated, Exec, Native, HasOptionalParms)
 
 void UUIGameMoviePlayer::OnClose()
 {
@@ -8604,9 +8626,9 @@ void UUIGameMoviePlayer::OnClose()
 
 
 // Function TgClient.UIGameMoviePlayer.InitOSSRef
-// (Final, Iterator, Net, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Iterator, Latent, Singular, NetReliable, Simulated, Native, Operator, Static, Const)
 
-void UUIGameMoviePlayer::InitOSSRef()
+void UUIGameMoviePlayer::STATIC_InitOSSRef()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIGameMoviePlayer.InitOSSRef");
 
@@ -8642,19 +8664,18 @@ void UUIGameMoviePlayer::Init(class ULocalPlayer* LocPlay)
 
 
 // Function TgClient.UIGameMoviePlayer.FindUIScene
-// (Final, Iterator, Latent, NetReliable, Simulated, Native, HasOptionalParms, Const)
+// (Iterator, PreOperator, Singular, Net, NetReliable, Simulated, Exec, Operator, Static, Const)
 // Parameters:
 // struct FName                   sName                          (Const, Parm, OutParm)
 // class UUIScene*                ReturnValue                    (Parm, OutParm, ReturnParm)
 
-class UUIScene* UUIGameMoviePlayer::FindUIScene(struct FName* sName)
+class UUIScene* UUIGameMoviePlayer::STATIC_FindUIScene(struct FName* sName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIGameMoviePlayer.FindUIScene");
 
 	UUIGameMoviePlayer_FindUIScene_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -8668,19 +8689,18 @@ class UUIScene* UUIGameMoviePlayer::FindUIScene(struct FName* sName)
 
 
 // Function TgClient.UIGameMoviePlayer.FindScene
-// (Iterator, Latent, NetReliable, Simulated, Native, HasOptionalParms, Const)
+// (Final, Defined, PreOperator, Singular, Net, NetReliable, Simulated, Exec, Operator, Static, Const)
 // Parameters:
 // struct FName                   sName                          (Const, Parm, OutParm)
 // class UTgGfxScene*             ReturnValue                    (Parm, OutParm, ReturnParm)
 
-class UTgGfxScene* UUIGameMoviePlayer::FindScene(struct FName* sName)
+class UTgGfxScene* UUIGameMoviePlayer::STATIC_FindScene(struct FName* sName)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIGameMoviePlayer.FindScene");
 
 	UUIGameMoviePlayer_FindScene_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -8694,14 +8714,14 @@ class UTgGfxScene* UUIGameMoviePlayer::FindScene(struct FName* sName)
 
 
 // Function TgClient.UIGameMoviePlayer.NativeAllowButtonInput
-// (Latent, PreOperator, Net, Operator, HasOptionalParms)
+// (Defined, Iterator, Latent, Net, Exec, Native, Event, Operator, Static)
 // Parameters:
 // int                            ControllerId                   (Parm)
 // struct FName                   ButtonName                     (Parm)
 // TEnumAsByte<EInputEvent>       InputEvent                     (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UUIGameMoviePlayer::NativeAllowButtonInput(int ControllerId, const struct FName& ButtonName, TEnumAsByte<EInputEvent> InputEvent)
+bool UUIGameMoviePlayer::STATIC_NativeAllowButtonInput(int ControllerId, const struct FName& ButtonName, TEnumAsByte<EInputEvent> InputEvent)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIGameMoviePlayer.NativeAllowButtonInput");
 
@@ -8711,6 +8731,7 @@ bool UUIGameMoviePlayer::NativeAllowButtonInput(int ControllerId, const struct F
 	params.InputEvent = InputEvent;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -8721,7 +8742,7 @@ bool UUIGameMoviePlayer::NativeAllowButtonInput(int ControllerId, const struct F
 
 
 // Function TgClient.UIGameMoviePlayer.ShowErrorMessage
-// (Final, Defined, Iterator, Latent, PreOperator, Singular, Net, NetReliable, Exec, Event, Operator, HasOptionalParms, Const)
+// (Final, Iterator, Singular, Net, Simulated, Event, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 sTitle                         (Parm, NeedCtorLink)
 // struct FString                 sError                         (Parm, NeedCtorLink)
@@ -8746,7 +8767,7 @@ bool UUIGameMoviePlayer::ShowErrorMessage(const struct FString& sTitle, const st
 
 
 // Function TgClient.UIGameMoviePlayer.OnAccountPickerCancelled
-// (Final, Defined, Latent, Net, Simulated, Event, Operator, HasOptionalParms, Const)
+// (Final, PreOperator, Singular, NetReliable, Simulated, Exec, Native, HasOptionalParms, Const)
 
 void UUIGameMoviePlayer::OnAccountPickerCancelled()
 {
@@ -8755,6 +8776,7 @@ void UUIGameMoviePlayer::OnAccountPickerCancelled()
 	UUIGameMoviePlayer_OnAccountPickerCancelled_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -8763,7 +8785,7 @@ void UUIGameMoviePlayer::OnAccountPickerCancelled()
 
 
 // Function TgClient.UIGameMoviePlayer.ShowNoFriendsForProfileViewWarning
-// (Defined, Simulated, Exec, Event, Operator, HasOptionalParms, Const)
+// (Latent, Singular, Net, Simulated, Event, HasOptionalParms, Const)
 
 void UUIGameMoviePlayer::ShowNoFriendsForProfileViewWarning()
 {
@@ -8780,7 +8802,7 @@ void UUIGameMoviePlayer::ShowNoFriendsForProfileViewWarning()
 
 
 // Function TgClient.UIGameMoviePlayer.ShowPartyRequiresPremiumAccountWarning
-// (Final, Defined, Simulated, Exec, Event, Operator, HasOptionalParms, Const)
+// (Final, Latent, Singular, Net, Simulated, Event, HasOptionalParms, Const)
 
 void UUIGameMoviePlayer::ShowPartyRequiresPremiumAccountWarning()
 {
@@ -8797,7 +8819,7 @@ void UUIGameMoviePlayer::ShowPartyRequiresPremiumAccountWarning()
 
 
 // Function TgClient.UIGameMoviePlayer.UnloadScene
-// (Final, PreOperator, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Iterator, Latent, Singular, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // struct FString                 sName                          (Parm, NeedCtorLink)
 
@@ -8817,7 +8839,7 @@ void UUIGameMoviePlayer::UnloadScene(const struct FString& sName)
 
 
 // Function TgClient.UIGameMoviePlayer.LoadScene
-// (Final, Defined, Latent, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Defined, Iterator, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // struct FString                 sName                          (Parm, NeedCtorLink)
 // struct FString                 sPath                          (Parm, NeedCtorLink)
@@ -8841,7 +8863,7 @@ void UUIGameMoviePlayer::LoadScene(const struct FString& sName, const struct FSt
 
 
 // Function TgClient.UIGameMoviePlayer.OnSuccessfulUserAccountInfoRetrieved
-// (Latent, PreOperator, Net, Simulated, Event, Operator, HasOptionalParms, Const)
+// (Defined, Iterator, Latent, PreOperator, Singular, NetReliable, Simulated, Exec, Native, HasOptionalParms, Const)
 // Parameters:
 // struct FUserAccountInfo        AccountInfo                    (Parm, NeedCtorLink)
 
@@ -8853,6 +8875,7 @@ void UUIGameMoviePlayer::OnSuccessfulUserAccountInfoRetrieved(const struct FUser
 	params.AccountInfo = AccountInfo;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -8861,11 +8884,11 @@ void UUIGameMoviePlayer::OnSuccessfulUserAccountInfoRetrieved(const struct FUser
 
 
 // Function TgClient.UIGameMoviePlayer.GetDataHandler
-// (Final, Defined, Iterator, PreOperator, Exec, Native, HasOptionalParms, Const)
+// (Defined, Iterator, Latent, PreOperator, Singular, Net, Native, Operator, Static, Const)
 // Parameters:
 // class UTgGameDataHandler*      ReturnValue                    (Parm, OutParm, ReturnParm)
 
-class UTgGameDataHandler* UUIGameMoviePlayer::GetDataHandler()
+class UTgGameDataHandler* UUIGameMoviePlayer::STATIC_GetDataHandler()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIGameMoviePlayer.GetDataHandler");
 
@@ -8883,11 +8906,11 @@ class UTgGameDataHandler* UUIGameMoviePlayer::GetDataHandler()
 
 
 // Function TgClient.UIGameMoviePlayer.GetGameData
-// (Final, Iterator, Latent, PreOperator, Exec, Native, HasOptionalParms, Const)
+// (Iterator, NetReliable, Native, Operator, Static, Const)
 // Parameters:
 // class UTgDataGroup_Game*       ReturnValue                    (Parm, OutParm, ReturnParm)
 
-class UTgDataGroup_Game* UUIGameMoviePlayer::GetGameData()
+class UTgDataGroup_Game* UUIGameMoviePlayer::STATIC_GetGameData()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIGameMoviePlayer.GetGameData");
 
@@ -8905,9 +8928,9 @@ class UTgDataGroup_Game* UUIGameMoviePlayer::GetGameData()
 
 
 // Function TgClient.UIGameMoviePlayer.HideSubtitle
-// (Iterator, Singular, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Final, Defined, Latent, NetReliable, Simulated, Native, Operator, Static, Const)
 
-void UUIGameMoviePlayer::HideSubtitle()
+void UUIGameMoviePlayer::STATIC_HideSubtitle()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIGameMoviePlayer.HideSubtitle");
 
@@ -8923,7 +8946,7 @@ void UUIGameMoviePlayer::HideSubtitle()
 
 
 // Function TgClient.UIGameMoviePlayer.SwitchSubtitleText
-// (Final, Defined, Latent, PreOperator, Net, Simulated, Exec, Event, Operator, HasOptionalParms, Const)
+// (Final, Net, NetReliable, Simulated, Event, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 sValue                         (Parm, NeedCtorLink)
 
@@ -8943,7 +8966,7 @@ void UUIGameMoviePlayer::SwitchSubtitleText(const struct FString& sValue)
 
 
 // Function TgClient.UIGameMoviePlayer.ShowSubtitle
-// (Iterator, Simulated, Exec, Event, Operator, HasOptionalParms, Const)
+// (Defined, Latent, Singular, Net, Simulated, Event, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 sValue                         (Parm, NeedCtorLink)
 // float                          fTime                          (OptionalParm, Parm)
@@ -8965,7 +8988,7 @@ void UUIGameMoviePlayer::ShowSubtitle(const struct FString& sValue, float fTime)
 
 
 // Function TgClient.UIGameMoviePlayer.NativeWidgetInitialized
-// (Iterator, Latent, PreOperator, NetReliable, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Simulated, Exec, Native, HasOptionalParms, Const)
 // Parameters:
 // struct FName                   WidgetName                     (Parm)
 // struct FName                   WidgetPath                     (Parm)
@@ -8982,6 +9005,7 @@ bool UUIGameMoviePlayer::NativeWidgetInitialized(const struct FName& WidgetName,
 	params.Widget = Widget;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -8992,7 +9016,7 @@ bool UUIGameMoviePlayer::NativeWidgetInitialized(const struct FName& WidgetName,
 
 
 // Function TgClient.UIGameMoviePlayer.NativeWidgetUnloaded
-// (Final, Iterator, Latent, PreOperator, NetReliable, Event, Operator, HasOptionalParms, Const)
+// (Iterator, Simulated, Exec, Native, HasOptionalParms, Const)
 // Parameters:
 // struct FName                   WidgetName                     (Parm)
 // struct FName                   WidgetPath                     (Parm)
@@ -9009,6 +9033,7 @@ bool UUIGameMoviePlayer::NativeWidgetUnloaded(const struct FName& WidgetName, co
 	params.Widget = Widget;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -9019,7 +9044,7 @@ bool UUIGameMoviePlayer::NativeWidgetUnloaded(const struct FName& WidgetName, co
 
 
 // Function TgClient.UIGameMoviePlayer.OnReadOnlinePlayerDataComplete
-// (Defined, Iterator, PreOperator, Net, Simulated, Event, Operator, HasOptionalParms, Const)
+// (Iterator, Latent, PreOperator, Singular, NetReliable, Simulated, Exec, Native, HasOptionalParms, Const)
 // Parameters:
 // bool                           bWasSuccessful                 (Parm)
 // TArray<struct FString>         PlayerIDs                      (Parm, NeedCtorLink)
@@ -9035,6 +9060,7 @@ void UUIGameMoviePlayer::OnReadOnlinePlayerDataComplete(bool bWasSuccessful, TAr
 	params.OnlineProfiles = OnlineProfiles;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -9043,12 +9069,12 @@ void UUIGameMoviePlayer::OnReadOnlinePlayerDataComplete(bool bWasSuccessful, TAr
 
 
 // Function TgClient.UIGameMoviePlayer.HasPlayerDisplayName
-// (Iterator, PreOperator, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Final, Defined, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, Const)
 // Parameters:
 // struct FString                 OnlineID                       (Parm, NeedCtorLink)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UUIGameMoviePlayer::HasPlayerDisplayName(const struct FString& OnlineID)
+bool UUIGameMoviePlayer::STATIC_HasPlayerDisplayName(const struct FString& OnlineID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIGameMoviePlayer.HasPlayerDisplayName");
 
@@ -9067,13 +9093,13 @@ bool UUIGameMoviePlayer::HasPlayerDisplayName(const struct FString& OnlineID)
 
 
 // Function TgClient.UIGameMoviePlayer.GetPlayerDisplayName
-// (Final, Defined, Iterator, Singular, Exec, Native, HasOptionalParms, Const)
+// (Defined, Iterator, Latent, NetReliable, Native, Operator, Static, Const)
 // Parameters:
 // struct FString                 PlayerName                     (Parm, NeedCtorLink)
 // struct FString                 OnlineID                       (Parm, NeedCtorLink)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString UUIGameMoviePlayer::GetPlayerDisplayName(const struct FString& PlayerName, const struct FString& OnlineID)
+struct FString UUIGameMoviePlayer::STATIC_GetPlayerDisplayName(const struct FString& PlayerName, const struct FString& OnlineID)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIGameMoviePlayer.GetPlayerDisplayName");
 
@@ -9093,12 +9119,12 @@ struct FString UUIGameMoviePlayer::GetPlayerDisplayName(const struct FString& Pl
 
 
 // Function TgClient.UIGameMoviePlayer.GetGamepadValueForKeyBind
-// (Defined, Iterator, Latent, PreOperator, Exec, Native, HasOptionalParms, Const)
+// (Final, Iterator, NetReliable, Native, Operator, Static, Const)
 // Parameters:
 // struct FString                 KeyBind                        (Parm, NeedCtorLink)
 // int                            ReturnValue                    (Parm, OutParm, ReturnParm)
 
-int UUIGameMoviePlayer::GetGamepadValueForKeyBind(const struct FString& KeyBind)
+int UUIGameMoviePlayer::STATIC_GetGamepadValueForKeyBind(const struct FString& KeyBind)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIGameMoviePlayer.GetGamepadValueForKeyBind");
 
@@ -9117,7 +9143,7 @@ int UUIGameMoviePlayer::GetGamepadValueForKeyBind(const struct FString& KeyBind)
 
 
 // Function TgClient.UIGameMoviePlayer.UIFadeEndOfRound
-// (Final, Iterator, PreOperator, Net, Exec, Operator, Static, Const)
+// (Defined, Singular, Net, Static, Const)
 // Parameters:
 // bool                           bFade                          (Parm)
 // float                          fTime                          (OptionalParm, Parm)
@@ -9143,7 +9169,7 @@ void UUIGameMoviePlayer::STATIC_UIFadeEndOfRound(bool bFade, float fTime, float 
 
 
 // Function TgClient.UIGameMoviePlayer.UIFade
-// (Final, Defined, PreOperator, Singular, Net, Simulated, Exec, HasOptionalParms)
+// (Final, Latent, Singular, NetReliable, Simulated, Exec, HasOptionalParms)
 // Parameters:
 // bool                           bFade                          (Parm)
 // float                          fTime                          (OptionalParm, Parm)
@@ -9169,7 +9195,7 @@ void UUIGameMoviePlayer::UIFade(bool bFade, float fTime, float fDelay, float fFa
 
 
 // Function TgClient.UIGameMoviePlayer.NativeTick
-// (Final, Defined, Latent, PreOperator, NetReliable, Event, Operator, HasOptionalParms, Const)
+// (Defined, Simulated, Exec, Native, HasOptionalParms, Const)
 // Parameters:
 // float                          DeltaTime                      (Parm)
 
@@ -9181,6 +9207,7 @@ void UUIGameMoviePlayer::NativeTick(float DeltaTime)
 	params.DeltaTime = DeltaTime;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -9189,9 +9216,9 @@ void UUIGameMoviePlayer::NativeTick(float DeltaTime)
 
 
 // Function TgClient.UIGameMoviePlayer.ForceDirty
-// (Defined, Singular, NetReliable, Simulated, Native, HasOptionalParms, Const)
+// (Final, Latent, Native, Operator, Static, Const)
 
-void UUIGameMoviePlayer::ForceDirty()
+void UUIGameMoviePlayer::STATIC_ForceDirty()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIGameMoviePlayer.ForceDirty");
 
@@ -9207,7 +9234,7 @@ void UUIGameMoviePlayer::ForceDirty()
 
 
 // Function TgClient.UIGameMoviePlayer.PostInit
-// (Latent, Singular, NetReliable, Simulated, Native, HasOptionalParms)
+// (Defined, Singular, Net, NetReliable, Simulated, Native, HasOptionalParms)
 
 void UUIGameMoviePlayer::PostInit()
 {
@@ -9225,9 +9252,9 @@ void UUIGameMoviePlayer::PostInit()
 
 
 // Function TgClient.UIGameMoviePlayer.InitAnnouncer
-// (Net, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Final, Defined, Iterator, Singular, NetReliable, Simulated, Native, Operator, Static, Const)
 
-void UUIGameMoviePlayer::InitAnnouncer()
+void UUIGameMoviePlayer::STATIC_InitAnnouncer()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIGameMoviePlayer.InitAnnouncer");
 
@@ -9243,7 +9270,7 @@ void UUIGameMoviePlayer::InitAnnouncer()
 
 
 // Function TgClient.UIGameMoviePlayer.OnVoicePackLoaded
-// (Final, Defined, Latent, PreOperator, Net, Simulated, Event, Operator, HasOptionalParms, Const)
+// (Final, Net, NetReliable, Simulated, Exec, Native, HasOptionalParms, Const)
 
 void UUIGameMoviePlayer::OnVoicePackLoaded()
 {
@@ -9252,6 +9279,7 @@ void UUIGameMoviePlayer::OnVoicePackLoaded()
 	UUIGameMoviePlayer_OnVoicePackLoaded_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -9260,7 +9288,7 @@ void UUIGameMoviePlayer::OnVoicePackLoaded()
 
 
 // Function TgClient.UIGameMoviePlayer.OnAnnouncerLoaded
-// (Defined, Iterator, Latent, Net, Simulated, Event, Operator, HasOptionalParms, Const)
+// (Iterator, PreOperator, Singular, NetReliable, Simulated, Exec, Native, HasOptionalParms, Const)
 
 void UUIGameMoviePlayer::OnAnnouncerLoaded()
 {
@@ -9269,6 +9297,7 @@ void UUIGameMoviePlayer::OnAnnouncerLoaded()
 	UUIGameMoviePlayer_OnAnnouncerLoaded_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -9277,7 +9306,7 @@ void UUIGameMoviePlayer::OnAnnouncerLoaded()
 
 
 // Function TgClient.UIGameMoviePlayer.ShowCardTutorial
-// (Defined, Iterator, Latent, PreOperator, Singular, Net, NetReliable, Exec, Event, Operator, HasOptionalParms, Const)
+// (Iterator, Singular, Net, Simulated, Event, HasOptionalParms, Const)
 // Parameters:
 // bool                           bForce                         (OptionalParm, Parm)
 // bool                           bReset                         (OptionalParm, Parm)
@@ -9299,7 +9328,7 @@ void UUIGameMoviePlayer::ShowCardTutorial(bool bForce, bool bReset)
 
 
 // Function TgClient.UIGameMoviePlayer.SetSpecTeamName
-// (Defined, Iterator, Latent, Singular, Net, NetReliable, Exec, Event, Operator, HasOptionalParms, Const)
+// (Iterator, PreOperator, Net, Simulated, Event, HasOptionalParms, Const)
 // Parameters:
 // bool                           bEnemy                         (Parm)
 // struct FString                 TeamName                       (OptionalParm, Parm, NeedCtorLink)
@@ -9321,12 +9350,12 @@ void UUIGameMoviePlayer::SetSpecTeamName(bool bEnemy, const struct FString& Team
 
 
 // Function TgClient.UIGameMoviePlayer.GetHUDTeamName
-// (Singular, Exec, Native, HasOptionalParms, Const)
+// (Final, Defined, Iterator, NetReliable, Native, Operator, Static, Const)
 // Parameters:
 // bool                           bEnemy                         (Parm)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString UUIGameMoviePlayer::GetHUDTeamName(bool bEnemy)
+struct FString UUIGameMoviePlayer::STATIC_GetHUDTeamName(bool bEnemy)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIGameMoviePlayer.GetHUDTeamName");
 
@@ -9345,7 +9374,7 @@ struct FString UUIGameMoviePlayer::GetHUDTeamName(bool bEnemy)
 
 
 // Function TgClient.UIGameMoviePlayer.SetLoginReady
-// (Final, Latent, Singular, Net, NetReliable, Exec, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Iterator, Latent, Net, Simulated, Event, HasOptionalParms, Const)
 
 void UUIGameMoviePlayer::SetLoginReady()
 {
@@ -9362,7 +9391,7 @@ void UUIGameMoviePlayer::SetLoginReady()
 
 
 // Function TgClient.UIGameMoviePlayer.UpdateGamepadIcons
-// (Iterator, Latent, Singular, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Defined, PreOperator, Simulated, Native, Event, HasOptionalParms, Const)
 
 void UUIGameMoviePlayer::UpdateGamepadIcons()
 {
@@ -9380,16 +9409,15 @@ void UUIGameMoviePlayer::UpdateGamepadIcons()
 
 
 // Function TgClient.UIGameMoviePlayer.CheckControllerDisconnected
-// (Iterator, PreOperator, Native, HasOptionalParms, Const)
+// (Iterator, Latent, PreOperator, Singular, Net, Exec, Operator, Static, Const)
 
-void UUIGameMoviePlayer::CheckControllerDisconnected()
+void UUIGameMoviePlayer::STATIC_CheckControllerDisconnected()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIGameMoviePlayer.CheckControllerDisconnected");
 
 	UUIGameMoviePlayer_CheckControllerDisconnected_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -9398,9 +9426,9 @@ void UUIGameMoviePlayer::CheckControllerDisconnected()
 
 
 // Function TgClient.UIGameMoviePlayer.AddInitialChatMessages
-// (Final, Iterator, Latent, PreOperator, Net, Simulated, Exec, HasOptionalParms, Const)
+// (Final, Iterator, Net, NetReliable, Simulated, Operator, Static, Const)
 
-void UUIGameMoviePlayer::AddInitialChatMessages()
+void UUIGameMoviePlayer::STATIC_AddInitialChatMessages()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIGameMoviePlayer.AddInitialChatMessages");
 
@@ -9415,12 +9443,12 @@ void UUIGameMoviePlayer::AddInitialChatMessages()
 
 
 // Function TgClient.UIGameMoviePlayer.CloseChatTab
-// (Final, Defined, Latent, PreOperator, Native, HasOptionalParms, Const)
+// (Final, Defined, NetReliable, Exec, Operator, Static, Const)
 // Parameters:
 // int                            nChannel                       (Parm)
 // struct FString                 sSender                        (OptionalParm, Parm, NeedCtorLink)
 
-void UUIGameMoviePlayer::CloseChatTab(int nChannel, const struct FString& sSender)
+void UUIGameMoviePlayer::STATIC_CloseChatTab(int nChannel, const struct FString& sSender)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIGameMoviePlayer.CloseChatTab");
 
@@ -9429,7 +9457,6 @@ void UUIGameMoviePlayer::CloseChatTab(int nChannel, const struct FString& sSende
 	params.sSender = sSender;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -9438,7 +9465,7 @@ void UUIGameMoviePlayer::CloseChatTab(int nChannel, const struct FString& sSende
 
 
 // Function TgClient.UIGameMoviePlayer.OpenChatTab
-// (Final, Iterator, Latent, PreOperator, Net, Simulated, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Net, NetReliable, Simulated, Exec, Native, HasOptionalParms, Const)
 // Parameters:
 // int                            nChannel                       (Parm)
 // struct FString                 sName                          (OptionalParm, Parm, NeedCtorLink)
@@ -9454,6 +9481,7 @@ void UUIGameMoviePlayer::OpenChatTab(int nChannel, const struct FString& sName, 
 	params.bOpenWindow = bOpenWindow;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -9462,9 +9490,9 @@ void UUIGameMoviePlayer::OpenChatTab(int nChannel, const struct FString& sName, 
 
 
 // Function TgClient.UIGameMoviePlayer.AttemptAutoReplayDemoRecording
-// (Defined, Latent, PreOperator, Singular, Net, Simulated, Exec, HasOptionalParms, Const)
+// (Defined, Singular, Net, NetReliable, Simulated, Operator, Static, Const)
 
-void UUIGameMoviePlayer::AttemptAutoReplayDemoRecording()
+void UUIGameMoviePlayer::STATIC_AttemptAutoReplayDemoRecording()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIGameMoviePlayer.AttemptAutoReplayDemoRecording");
 
@@ -9479,7 +9507,7 @@ void UUIGameMoviePlayer::AttemptAutoReplayDemoRecording()
 
 
 // Function TgClient.UIGameMoviePlayer.UpdateViewportForSafeAreas
-// (Defined, Net, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Latent, Singular, Simulated, Native, Event, HasOptionalParms, Const)
 
 void UUIGameMoviePlayer::UpdateViewportForSafeAreas()
 {
@@ -9497,9 +9525,9 @@ void UUIGameMoviePlayer::UpdateViewportForSafeAreas()
 
 
 // Function TgClient.UIGameMoviePlayer.AttemptAutoLogin
-// (Final, Latent, PreOperator, Singular, Net, Simulated, Exec, HasOptionalParms, Const)
+// (Final, Singular, Net, NetReliable, Simulated, Operator, Static, Const)
 
-void UUIGameMoviePlayer::AttemptAutoLogin()
+void UUIGameMoviePlayer::STATIC_AttemptAutoLogin()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIGameMoviePlayer.AttemptAutoLogin");
 
@@ -9514,7 +9542,7 @@ void UUIGameMoviePlayer::AttemptAutoLogin()
 
 
 // Function TgClient.UIGameMoviePlayer.QuitGame
-// (Iterator, PreOperator, Singular, Exec, Event, Operator, HasOptionalParms, Const)
+// (Defined, Latent, PreOperator, NetReliable, Event, HasOptionalParms, Const)
 
 void UUIGameMoviePlayer::QuitGame()
 {
@@ -9531,7 +9559,7 @@ void UUIGameMoviePlayer::QuitGame()
 
 
 // Function TgClient.UIGameMoviePlayer.PromptToQuit
-// (Final, Defined, PreOperator, Singular, Net, NetReliable, Simulated, Event, Operator, HasOptionalParms, Const)
+// (Final, Latent, PreOperator, Net, Event, HasOptionalParms, Const)
 // Parameters:
 // bool                           bAllowLogout                   (Parm)
 
@@ -9551,7 +9579,7 @@ void UUIGameMoviePlayer::PromptToQuit(bool bAllowLogout)
 
 
 // Function TgClient.UIGameMoviePlayer.SetRenderTargetEnabled
-// (Defined, Latent, Singular, Net, NetReliable, Exec, Event, Operator, HasOptionalParms, Const)
+// (PreOperator, Net, Simulated, Event, HasOptionalParms, Const)
 // Parameters:
 // bool                           bEnabled                       (Parm)
 // int                            surfaceId                      (Parm)
@@ -9576,7 +9604,7 @@ bool UUIGameMoviePlayer::SetRenderTargetEnabled(bool bEnabled, int surfaceId)
 
 
 // Function TgClient.UIGameMoviePlayer.usc_resize_browser
-// (Latent, PreOperator, Singular, Net, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Defined, Iterator, Latent, PreOperator, Net, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // int                            surfaceId                      (Parm)
 // float                          X                              (Parm)
@@ -9612,7 +9640,7 @@ bool UUIGameMoviePlayer::usc_resize_browser(int surfaceId, float X, float Y, flo
 
 
 // Function TgClient.UIGameMoviePlayer.usc_enable_browser_input
-// (Defined, Iterator, Singular, Net, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Iterator, Latent, Net, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // bool                           bEnable                        (Parm)
 
@@ -9633,7 +9661,7 @@ void UUIGameMoviePlayer::usc_enable_browser_input(bool bEnable)
 
 
 // Function TgClient.UIGameMoviePlayer.usc_chat_close_tab
-// (Final, Singular, Net, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Iterator, Net, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // int                            nChannel                       (Parm)
 // struct FString                 Sender                         (Parm, NeedCtorLink)
@@ -9656,7 +9684,7 @@ void UUIGameMoviePlayer::usc_chat_close_tab(int nChannel, const struct FString& 
 
 
 // Function TgClient.UIGameMoviePlayer.usc_resend_private_messages
-// (Defined, Iterator, PreOperator, Singular, Net, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Iterator, Latent, PreOperator, Net, Simulated, Native, Event, HasOptionalParms, Const)
 
 void UUIGameMoviePlayer::usc_resend_private_messages()
 {
@@ -9674,7 +9702,7 @@ void UUIGameMoviePlayer::usc_resend_private_messages()
 
 
 // Function TgClient.UIGameMoviePlayer.usc_vgs_command
-// (Final, Iterator, Simulated, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Latent, Singular, Net, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // int                            nId                            (Parm)
 // bool                           bSubMenu                       (Parm)
@@ -9697,7 +9725,7 @@ void UUIGameMoviePlayer::usc_vgs_command(int nId, bool bSubMenu)
 
 
 // Function TgClient.UIGameMoviePlayer.usc_toggle_player_mute
-// (Final, Defined, Iterator, Latent, PreOperator, Singular, Net, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Final, Iterator, Singular, Net, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 sPlayerName                    (Parm, NeedCtorLink)
 
@@ -9718,7 +9746,7 @@ void UUIGameMoviePlayer::usc_toggle_player_mute(const struct FString& sPlayerNam
 
 
 // Function TgClient.UIGameMoviePlayer.ViewStatsOnline
-// (Final, Defined, Iterator, Latent, PreOperator, Simulated, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Final, Iterator, NetReliable, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 sInstanceId                    (Parm, NeedCtorLink)
 
@@ -9739,7 +9767,7 @@ void UUIGameMoviePlayer::ViewStatsOnline(const struct FString& sInstanceId)
 
 
 // Function TgClient.UIGameMoviePlayer.WatchReplay
-// (Defined, Latent, PreOperator, Singular, Simulated, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Singular, NetReliable, Simulated, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 sInstanceId                    (Parm, NeedCtorLink)
 // struct FString                 sSpectatePassword              (OptionalParm, Parm, NeedCtorLink)
@@ -9762,7 +9790,7 @@ void UUIGameMoviePlayer::WatchReplay(const struct FString& sInstanceId, const st
 
 
 // Function TgClient.UIGameMoviePlayer.Replay
-// (Defined, Latent, Net, Exec, Event, Operator, HasOptionalParms, Const)
+// (PreOperator, Singular, NetReliable, Event, HasOptionalParms, Const)
 // Parameters:
 // int                            nInstanceId                    (Parm)
 // struct FString                 sSpectatePassword              (OptionalParm, Parm, NeedCtorLink)
@@ -9784,7 +9812,7 @@ void UUIGameMoviePlayer::Replay(int nInstanceId, const struct FString& sSpectate
 
 
 // Function TgClient.UIGameMoviePlayer.ToggleSkillScreen
-// (Final, Defined, Iterator, Latent, PreOperator, NetReliable, Simulated, Exec, Event, Operator, HasOptionalParms, Const)
+// (Final, Iterator, Exec, Event, HasOptionalParms, Const)
 // Parameters:
 // bool                           bShow                          (Parm)
 // int                            nBotIdOverride                 (OptionalParm, Parm)
@@ -9806,16 +9834,15 @@ void UUIGameMoviePlayer::ToggleSkillScreen(bool bShow, int nBotIdOverride)
 
 
 // Function TgClient.UIGameMoviePlayer.EndLobbyPlayback
-// (Singular, Simulated, Native, HasOptionalParms, Const)
+// (Latent, NetReliable, Simulated, Exec, Operator, Static, Const)
 
-void UUIGameMoviePlayer::EndLobbyPlayback()
+void UUIGameMoviePlayer::STATIC_EndLobbyPlayback()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIGameMoviePlayer.EndLobbyPlayback");
 
 	UUIGameMoviePlayer_EndLobbyPlayback_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -9824,9 +9851,9 @@ void UUIGameMoviePlayer::EndLobbyPlayback()
 
 
 // Function TgClient.UIGameMoviePlayer.CancelPlayback
-// (Final, Defined, Iterator, Singular, Net, NetReliable, Simulated, Exec, HasOptionalParms, Const)
+// (Final, Defined, Iterator, Latent, Net, Exec, Operator, Static, Const)
 
-void UUIGameMoviePlayer::CancelPlayback()
+void UUIGameMoviePlayer::STATIC_CancelPlayback()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIGameMoviePlayer.CancelPlayback");
 
@@ -9841,7 +9868,7 @@ void UUIGameMoviePlayer::CancelPlayback()
 
 
 // Function TgClient.UIGameMoviePlayer.OnDemoReady
-// (Final, PreOperator, Net, Simulated, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Iterator, PreOperator, Singular, NetReliable, Simulated, Exec, Native, HasOptionalParms, Const)
 // Parameters:
 // bool                           bDemoRecorded                  (OptionalParm, Parm)
 
@@ -9853,23 +9880,6 @@ void UUIGameMoviePlayer::OnDemoReady(bool bDemoRecorded)
 	params.bDemoRecorded = bDemoRecorded;
 
 	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TgClient.UIGameMoviePlayer.DumpMctsEventProfiling
-// (Defined, NetReliable, Native, HasOptionalParms, Const)
-
-void UUIGameMoviePlayer::DumpMctsEventProfiling()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIGameMoviePlayer.DumpMctsEventProfiling");
-
-	UUIGameMoviePlayer_DumpMctsEventProfiling_Params params;
-
-	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
@@ -9878,8 +9888,25 @@ void UUIGameMoviePlayer::DumpMctsEventProfiling()
 }
 
 
+// Function TgClient.UIGameMoviePlayer.DumpMctsEventProfiling
+// (Defined, Latent, Singular, Net, NetReliable, Exec, Operator, Static, Const)
+
+void UUIGameMoviePlayer::STATIC_DumpMctsEventProfiling()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIGameMoviePlayer.DumpMctsEventProfiling");
+
+	UUIGameMoviePlayer_DumpMctsEventProfiling_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function TgClient.TgLobbyHUD.ChangePedestalModel
-// (Iterator, Latent, PreOperator, Singular, Net, NetReliable, Simulated, Exec, HasOptionalParms, Const)
+// (Iterator, Singular, Net, Exec, Operator, Static, Const)
 // Parameters:
 // TEnumAsByte<EPedestalType>     PedestalType                   (Parm)
 // int                            BotId                          (Parm)
@@ -9889,7 +9916,7 @@ void UUIGameMoviePlayer::DumpMctsEventProfiling()
 // int                            MVPId                          (OptionalParm, Parm)
 // int                            CharacterMastery               (OptionalParm, Parm)
 
-void ATgLobbyHUD::ChangePedestalModel(TEnumAsByte<EPedestalType> PedestalType, int BotId, int SkinId, int DeviceID, int DeviceSkinId, int MVPId, int CharacterMastery)
+void ATgLobbyHUD::STATIC_ChangePedestalModel(TEnumAsByte<EPedestalType> PedestalType, int BotId, int SkinId, int DeviceID, int DeviceSkinId, int MVPId, int CharacterMastery)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgLobbyHUD.ChangePedestalModel");
 
@@ -9911,7 +9938,7 @@ void ATgLobbyHUD::ChangePedestalModel(TEnumAsByte<EPedestalType> PedestalType, i
 
 
 // Function TgClient.TgLobbyHUD.TestDailyDealItems
-// (Final, Iterator, PreOperator, Singular, Net, Simulated, Exec, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Latent, PreOperator, Net, NetReliable, Simulated, Event, HasOptionalParms, Const)
 // Parameters:
 // int                            nItemId0                       (Parm)
 // int                            nItemId1                       (Parm)
@@ -9935,9 +9962,9 @@ void ATgLobbyHUD::TestDailyDealItems(int nItemId0, int nItemId1, int nItemId2)
 
 
 // Function TgClient.TgLobbyHUD.StopMVP
-// (Latent, PreOperator, Singular, NetReliable, Simulated, Exec, Native, Static, Const)
+// (Defined, Net, NetReliable, Simulated, Native, Operator, Const)
 
-void ATgLobbyHUD::STATIC_StopMVP()
+void ATgLobbyHUD::StopMVP()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgLobbyHUD.StopMVP");
 
@@ -9953,7 +9980,7 @@ void ATgLobbyHUD::STATIC_StopMVP()
 
 
 // Function TgClient.TgLobbyHUD.PlayMVP
-// (Final, Defined, Iterator, Latent, Singular, Net, NetReliable, Exec, Event, Operator, Const)
+// (Final, Defined, PreOperator, Singular, Net, NetReliable, Event, Const)
 // Parameters:
 // int                            nDeviceId                      (Parm)
 
@@ -9973,9 +10000,9 @@ void ATgLobbyHUD::PlayMVP(int nDeviceId)
 
 
 // Function TgClient.TgLobbyHUD.StopEmote
-// (Latent, Singular, NetReliable, Simulated, Exec, Native, Static, Const)
+// (Defined, PreOperator, Singular, NetReliable, Simulated, Native, Operator, Const)
 
-void ATgLobbyHUD::STATIC_StopEmote()
+void ATgLobbyHUD::StopEmote()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgLobbyHUD.StopEmote");
 
@@ -9991,7 +10018,7 @@ void ATgLobbyHUD::STATIC_StopEmote()
 
 
 // Function TgClient.TgLobbyHUD.PlayEmote
-// (Defined, Iterator, Latent, NetReliable, Exec, Event, Operator, Const)
+// (Defined, PreOperator, NetReliable, Event, Const)
 // Parameters:
 // int                            nDeviceId                      (Parm)
 
@@ -10011,7 +10038,7 @@ void ATgLobbyHUD::PlayEmote(int nDeviceId)
 
 
 // Function TgClient.TgLobbyHUD.ChangeModel
-// (Final, Defined, Latent, PreOperator, Singular, Net, NetReliable, Simulated, Exec, HasOptionalParms, Const)
+// (Final, Defined, Singular, Net, Exec, Operator, Static, Const)
 // Parameters:
 // int                            BotId                          (Parm)
 // int                            SkinId                         (Parm)
@@ -10026,7 +10053,7 @@ void ATgLobbyHUD::PlayEmote(int nDeviceId)
 // TEnumAsByte<EModelHighlightType> HighlightType                  (OptionalParm, Parm)
 // int                            MVPDeviceId                    (OptionalParm, Parm)
 
-void ATgLobbyHUD::ChangeModel(int BotId, int SkinId, int DeviceID, int DeviceSkinId, int PedestalSkinId, unsigned char pose, TEnumAsByte<ELobbyCameraTag> CameraTag, float BlendTime, TEnumAsByte<EViewTargetBlendFunction> BlendFunction, float BlendExp, TEnumAsByte<EModelHighlightType> HighlightType, int MVPDeviceId)
+void ATgLobbyHUD::STATIC_ChangeModel(int BotId, int SkinId, int DeviceID, int DeviceSkinId, int PedestalSkinId, unsigned char pose, TEnumAsByte<ELobbyCameraTag> CameraTag, float BlendTime, TEnumAsByte<EViewTargetBlendFunction> BlendFunction, float BlendExp, TEnumAsByte<EModelHighlightType> HighlightType, int MVPDeviceId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgLobbyHUD.ChangeModel");
 
@@ -10053,7 +10080,7 @@ void ATgLobbyHUD::ChangeModel(int BotId, int SkinId, int DeviceID, int DeviceSki
 
 
 // Function TgClient.TgLobbyHUD.SwitchToCards
-// (Final, Iterator, Latent, PreOperator, Net, Simulated, Exec, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Net, NetReliable, Simulated, Event, HasOptionalParms, Const)
 // Parameters:
 // bool                           bEnabled                       (Parm)
 
@@ -10073,7 +10100,7 @@ void ATgLobbyHUD::SwitchToCards(bool bEnabled)
 
 
 // Function TgClient.TgLobbyHUD.CheckBoostedTextureStaticMeshActors
-// (PreOperator, Singular, Simulated, Exec, Event, HasOptionalParms)
+// (Iterator, Latent, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
 
 void ATgLobbyHUD::CheckBoostedTextureStaticMeshActors()
 {
@@ -10107,7 +10134,7 @@ void ATgLobbyHUD::PostBeginPlay()
 
 
 // Function TgClient.TgLobbyHUD.TryPushScene
-// (Final, Iterator, Singular, NetReliable, Simulated, Exec, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Latent, Exec, Event, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 sName                          (Parm, NeedCtorLink)
 // bool                           bSkipPrivilegeCheck            (OptionalParm, Parm)
@@ -10129,7 +10156,7 @@ void ATgLobbyHUD::TryPushScene(const struct FString& sName, bool bSkipPrivilegeC
 
 
 // Function TgClient.TgLobbyHUD.TriggerLazyPrecache
-// (Final, Defined, Singular, NetReliable, Simulated, Exec, Event, Operator, HasOptionalParms, Const)
+// (Final, Latent, Exec, Event, HasOptionalParms, Const)
 
 void ATgLobbyHUD::TriggerLazyPrecache()
 {
@@ -10146,7 +10173,7 @@ void ATgLobbyHUD::TriggerLazyPrecache()
 
 
 // Function TgClient.TgLobbyHUD.ResetSplashVersion
-// (Final, Defined, Latent, Net, Exec, Event, Operator, HasOptionalParms, Const)
+// (Final, PreOperator, Singular, NetReliable, Event, HasOptionalParms, Const)
 
 void ATgLobbyHUD::ResetSplashVersion()
 {
@@ -10163,7 +10190,7 @@ void ATgLobbyHUD::ResetSplashVersion()
 
 
 // Function TgClient.TgLobbyHUD.TestDynamicFeature
-// (Final, Defined, Iterator, PreOperator, Singular, Net, Simulated, Exec, Event, Operator, HasOptionalParms, Const)
+// (Final, Iterator, Latent, PreOperator, Net, NetReliable, Simulated, Event, HasOptionalParms, Const)
 
 void ATgLobbyHUD::TestDynamicFeature()
 {
@@ -10180,16 +10207,15 @@ void ATgLobbyHUD::TestDynamicFeature()
 
 
 // Function TgClient.TgLobbyHUD.DisplayCharacter
-// (Defined, Latent, PreOperator, Singular, Net, Native, HasOptionalParms, Const)
+// (Defined, Singular, Net, NetReliable, Exec, Operator, Static, Const)
 
-void ATgLobbyHUD::DisplayCharacter()
+void ATgLobbyHUD::STATIC_DisplayCharacter()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgLobbyHUD.DisplayCharacter");
 
 	ATgLobbyHUD_DisplayCharacter_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -10198,7 +10224,7 @@ void ATgLobbyHUD::DisplayCharacter()
 
 
 // Function TgClient.TgLobbyHUD.TestBattlePassCloseup
-// (Iterator, PreOperator, Exec, Native, Static, HasOptionalParms, Const)
+// (Defined, Latent, Singular, NetReliable, Native, Operator, HasOptionalParms, Const)
 // Parameters:
 // int                            nItemId1                       (OptionalParm, Parm)
 // int                            nItemId2                       (OptionalParm, Parm)
@@ -10206,7 +10232,7 @@ void ATgLobbyHUD::DisplayCharacter()
 // int                            nItemId4                       (OptionalParm, Parm)
 // int                            nItemId5                       (OptionalParm, Parm)
 
-void ATgLobbyHUD::STATIC_TestBattlePassCloseup(int nItemId1, int nItemId2, int nItemId3, int nItemId4, int nItemId5)
+void ATgLobbyHUD::TestBattlePassCloseup(int nItemId1, int nItemId2, int nItemId3, int nItemId4, int nItemId5)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgLobbyHUD.TestBattlePassCloseup");
 
@@ -10227,14 +10253,14 @@ void ATgLobbyHUD::STATIC_TestBattlePassCloseup(int nItemId1, int nItemId2, int n
 
 
 // Function TgClient.TgLobbyHUD.TestItemPreview
-// (Final, Iterator, PreOperator, Exec, Native, Static, HasOptionalParms, Const)
+// (Final, Defined, Latent, Singular, NetReliable, Native, Operator, HasOptionalParms, Const)
 // Parameters:
 // TEnumAsByte<ELobbyCameraTag>   CamTag                         (Parm)
 // float                          fIntroTime                     (Parm)
 // int                            nItemIdToPreview               (OptionalParm, Parm)
 // int                            nTargetIndex                   (OptionalParm, Parm)
 
-void ATgLobbyHUD::STATIC_TestItemPreview(TEnumAsByte<ELobbyCameraTag> CamTag, float fIntroTime, int nItemIdToPreview, int nTargetIndex)
+void ATgLobbyHUD::TestItemPreview(TEnumAsByte<ELobbyCameraTag> CamTag, float fIntroTime, int nItemIdToPreview, int nTargetIndex)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgLobbyHUD.TestItemPreview");
 
@@ -10254,12 +10280,12 @@ void ATgLobbyHUD::STATIC_TestItemPreview(TEnumAsByte<ELobbyCameraTag> CamTag, fl
 
 
 // Function TgClient.TgLobbyHUD.GetStorePreviewMeshActor
-// (Final, Latent, Singular, Net, Static, HasOptionalParms, Const)
+// (Final, PreOperator, Net, NetReliable, Exec, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // int                            nTargetIndex                   (OptionalParm, Parm)
 // class ATgSkeletalMeshActor_Lobby* ReturnValue                    (Parm, OutParm, ReturnParm)
 
-class ATgSkeletalMeshActor_Lobby* ATgLobbyHUD::STATIC_GetStorePreviewMeshActor(int nTargetIndex)
+class ATgSkeletalMeshActor_Lobby* ATgLobbyHUD::GetStorePreviewMeshActor(int nTargetIndex)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgLobbyHUD.GetStorePreviewMeshActor");
 
@@ -10267,6 +10293,7 @@ class ATgSkeletalMeshActor_Lobby* ATgLobbyHUD::STATIC_GetStorePreviewMeshActor(i
 	params.nTargetIndex = nTargetIndex;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -10277,17 +10304,18 @@ class ATgSkeletalMeshActor_Lobby* ATgLobbyHUD::STATIC_GetStorePreviewMeshActor(i
 
 
 // Function TgClient.TgLobbyHUD.GetCurrentSprayPreviewOffset
-// (Final, Defined, Iterator, Singular, Net, Static, HasOptionalParms, Const)
+// (Defined, Iterator, Latent, Net, NetReliable, Exec, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // struct FVector                 ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FVector ATgLobbyHUD::STATIC_GetCurrentSprayPreviewOffset()
+struct FVector ATgLobbyHUD::GetCurrentSprayPreviewOffset()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgLobbyHUD.GetCurrentSprayPreviewOffset");
 
 	ATgLobbyHUD_GetCurrentSprayPreviewOffset_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -10298,7 +10326,7 @@ struct FVector ATgLobbyHUD::STATIC_GetCurrentSprayPreviewOffset()
 
 
 // Function TgClient.TgLobbyHUD.SwitchToCamera
-// (Iterator, Latent, PreOperator, Net, Simulated, Exec, Event, Operator, HasOptionalParms, Const)
+// (Defined, Net, NetReliable, Simulated, Event, HasOptionalParms, Const)
 // Parameters:
 // TEnumAsByte<ELobbyCameraTag>   CamTag                         (Parm)
 // TEnumAsByte<ECameraTransType>  camDirection                   (OptionalParm, Parm)
@@ -10329,12 +10357,12 @@ class ATgLobbyCamera* ATgLobbyHUD::SwitchToCamera(TEnumAsByte<ELobbyCameraTag> C
 
 
 // Function TgClient.TgLobbyHUD.GetCamera
-// (Defined, Iterator, Latent, Exec, Native, HasOptionalParms, Const)
+// (Final, Iterator, PreOperator, Singular, Net, Native, Operator, Static, Const)
 // Parameters:
 // TEnumAsByte<ELobbyCameraTag>   CamTag                         (Parm)
 // class ATgLobbyCamera*          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-class ATgLobbyCamera* ATgLobbyHUD::GetCamera(TEnumAsByte<ELobbyCameraTag> CamTag)
+class ATgLobbyCamera* ATgLobbyHUD::STATIC_GetCamera(TEnumAsByte<ELobbyCameraTag> CamTag)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgLobbyHUD.GetCamera");
 
@@ -10353,7 +10381,7 @@ class ATgLobbyCamera* ATgLobbyHUD::GetCamera(TEnumAsByte<ELobbyCameraTag> CamTag
 
 
 // Function TgClient.TgLobbyHUD.PlayTeamEmote
-// (Iterator, Latent, PreOperator, Singular, NetReliable, Simulated, Event, Operator, HasOptionalParms, Const)
+// (Defined, Singular, Event, HasOptionalParms, Const)
 // Parameters:
 // bool                           bFriendly                      (Parm)
 // int                            nIndex                         (Parm)
@@ -10377,16 +10405,15 @@ void ATgLobbyHUD::PlayTeamEmote(bool bFriendly, int nIndex, int nEmoteId)
 
 
 // Function TgClient.TgLobbyHUD.CleanupPedestalModels
-// (Final, Iterator, PreOperator, Native, HasOptionalParms, Const)
+// (Final, Iterator, Latent, PreOperator, Singular, Net, Exec, Operator, Static, Const)
 
-void ATgLobbyHUD::CleanupPedestalModels()
+void ATgLobbyHUD::STATIC_CleanupPedestalModels()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgLobbyHUD.CleanupPedestalModels");
 
 	ATgLobbyHUD_CleanupPedestalModels_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -10395,12 +10422,12 @@ void ATgLobbyHUD::CleanupPedestalModels()
 
 
 // Function TgClient.TgLobbyHUD.ChangeMenuModel
-// (Defined, Latent, PreOperator, Singular, Net, NetReliable, Simulated, Exec, HasOptionalParms, Const)
+// (Defined, Singular, Net, Exec, Operator, Static, Const)
 // Parameters:
 // TEnumAsByte<EMenuContentDataType> Type                           (Parm)
 // struct FMeshData               Data                           (Parm, OutParm)
 
-void ATgLobbyHUD::ChangeMenuModel(TEnumAsByte<EMenuContentDataType> Type, struct FMeshData* Data)
+void ATgLobbyHUD::STATIC_ChangeMenuModel(TEnumAsByte<EMenuContentDataType> Type, struct FMeshData* Data)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgLobbyHUD.ChangeMenuModel");
 
@@ -10419,7 +10446,7 @@ void ATgLobbyHUD::ChangeMenuModel(TEnumAsByte<EMenuContentDataType> Type, struct
 
 
 // Function TgClient.TgLobbyHUD.ChangeTeamModel
-// (Final, Defined, Iterator, Latent, PreOperator, Singular, Net, NetReliable, Simulated, Exec, HasOptionalParms, Const)
+// (Final, Defined, Iterator, Singular, Net, Exec, Operator, Static, Const)
 // Parameters:
 // bool                           bFriendly                      (Parm)
 // int                            nIndex                         (Parm)
@@ -10435,7 +10462,7 @@ void ATgLobbyHUD::ChangeMenuModel(TEnumAsByte<EMenuContentDataType> Type, struct
 // int                            nCharacterXP                   (OptionalParm, Parm)
 // struct FScriptDelegate         MeshUpdatedDelegate            (OptionalParm, Parm, NeedCtorLink)
 
-void ATgLobbyHUD::ChangeTeamModel(bool bFriendly, int nIndex, int nClassId, int nSkinId, int nDeviceId, int nDeviceSkinId, int nPedestalSkinId, TEnumAsByte<ELobbyAnimPose> pose, bool bAsync, TEnumAsByte<EModelHighlightType> HighlightType, int MVPDeviceId, int nCharacterXP, const struct FScriptDelegate& MeshUpdatedDelegate)
+void ATgLobbyHUD::STATIC_ChangeTeamModel(bool bFriendly, int nIndex, int nClassId, int nSkinId, int nDeviceId, int nDeviceSkinId, int nPedestalSkinId, TEnumAsByte<ELobbyAnimPose> pose, bool bAsync, TEnumAsByte<EModelHighlightType> HighlightType, int MVPDeviceId, int nCharacterXP, const struct FScriptDelegate& MeshUpdatedDelegate)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgLobbyHUD.ChangeTeamModel");
 
@@ -10463,12 +10490,12 @@ void ATgLobbyHUD::ChangeTeamModel(bool bFriendly, int nIndex, int nClassId, int 
 
 
 // Function TgClient.TgLobbyHUD.SetModelRotation
-// (Final, Latent, PreOperator, Singular, Net, NetReliable, Simulated, Native, Static, HasOptionalParms, Const)
+// (Final, Defined, Iterator, Latent, NetReliable, Native, Operator, HasOptionalParms, Const)
 // Parameters:
 // float                          fRotationDegrees               (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ATgLobbyHUD::STATIC_SetModelRotation(float fRotationDegrees)
+bool ATgLobbyHUD::SetModelRotation(float fRotationDegrees)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgLobbyHUD.SetModelRotation");
 
@@ -10487,12 +10514,12 @@ bool ATgLobbyHUD::STATIC_SetModelRotation(float fRotationDegrees)
 
 
 // Function TgClient.TgLobbyHUD.RotateModel
-// (Final, Latent, Singular, Simulated, Static, Const)
+// (PreOperator, Singular, Simulated, Exec, Native, Event, Const)
 // Parameters:
 // float                          fValue                         (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ATgLobbyHUD::STATIC_RotateModel(float fValue)
+bool ATgLobbyHUD::RotateModel(float fValue)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgLobbyHUD.RotateModel");
 
@@ -10500,6 +10527,7 @@ bool ATgLobbyHUD::STATIC_RotateModel(float fValue)
 	params.fValue = fValue;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -10510,7 +10538,7 @@ bool ATgLobbyHUD::STATIC_RotateModel(float fValue)
 
 
 // Function TgClient.TgLobbyHUD.ChangeClassModel
-// (Final, Latent, PreOperator, Singular, Net, NetReliable, Simulated, Exec, HasOptionalParms, Const)
+// (Final, Singular, Net, Exec, Operator, Static, Const)
 // Parameters:
 // int                            nClassId                       (Parm)
 // int                            nSkinId                        (Parm)
@@ -10523,7 +10551,7 @@ bool ATgLobbyHUD::STATIC_RotateModel(float fValue)
 // TEnumAsByte<EModelHighlightType> HighlightType                  (OptionalParm, Parm)
 // int                            MVPDeviceId                    (OptionalParm, Parm)
 
-void ATgLobbyHUD::ChangeClassModel(int nClassId, int nSkinId, int nDeviceId, int nDeviceSkinId, int nPedestalSkinId, TEnumAsByte<ELobbyAnimPose> pose, TEnumAsByte<ECameraTransType> camDirection, bool bAsync, TEnumAsByte<EModelHighlightType> HighlightType, int MVPDeviceId)
+void ATgLobbyHUD::STATIC_ChangeClassModel(int nClassId, int nSkinId, int nDeviceId, int nDeviceSkinId, int nPedestalSkinId, TEnumAsByte<ELobbyAnimPose> pose, TEnumAsByte<ECameraTransType> camDirection, bool bAsync, TEnumAsByte<EModelHighlightType> HighlightType, int MVPDeviceId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgLobbyHUD.ChangeClassModel");
 
@@ -10548,7 +10576,7 @@ void ATgLobbyHUD::ChangeClassModel(int nClassId, int nSkinId, int nDeviceId, int
 
 
 // Function TgClient.TgLobbyHUD.SetUpEOMLobby
-// (Final, Defined, Iterator, PreOperator, Singular, Net, NetReliable, Exec, Event, Operator, HasOptionalParms, Const)
+// (Final, Iterator, Latent, PreOperator, Net, Simulated, Event, HasOptionalParms, Const)
 
 void ATgLobbyHUD::SetUpEOMLobby()
 {
@@ -10565,11 +10593,11 @@ void ATgLobbyHUD::SetUpEOMLobby()
 
 
 // Function TgClient.TgLobbyHUD.HaveEOMLobbyData
-// (Defined, Iterator, PreOperator, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Final, Iterator, Latent, PreOperator, Singular, Net, Simulated, Native, Operator, Static, Const)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool ATgLobbyHUD::HaveEOMLobbyData()
+bool ATgLobbyHUD::STATIC_HaveEOMLobbyData()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgLobbyHUD.HaveEOMLobbyData");
 
@@ -10587,16 +10615,15 @@ bool ATgLobbyHUD::HaveEOMLobbyData()
 
 
 // Function TgClient.TgLobbyHUD.Initialize
-// (Final, Defined, Latent, Exec, Native, Event, Static)
+// (Defined, Latent, Singular, NetReliable, Simulated, Exec, Event, Operator)
 
-void ATgLobbyHUD::STATIC_Initialize()
+void ATgLobbyHUD::Initialize()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgLobbyHUD.Initialize");
 
 	ATgLobbyHUD_Initialize_Params params;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -10605,7 +10632,7 @@ void ATgLobbyHUD::STATIC_Initialize()
 
 
 // Function TgClient.TgSettingsManager.GetKeybindExtended
-// (Final, Singular, Exec, Native, HasOptionalParms, Const)
+// (Latent, NetReliable, Native, Operator, Static, Const)
 // Parameters:
 // struct FString                 sCommand                       (Parm, NeedCtorLink)
 // bool                           bGamepad                       (Parm)
@@ -10613,7 +10640,7 @@ void ATgLobbyHUD::STATIC_Initialize()
 // int                            nBotId                         (OptionalParm, Parm)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
 
-struct FString UTgSettingsManager::GetKeybindExtended(const struct FString& sCommand, bool bGamepad, int nAlt, int nBotId)
+struct FString UTgSettingsManager::STATIC_GetKeybindExtended(const struct FString& sCommand, bool bGamepad, int nAlt, int nBotId)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgSettingsManager.GetKeybindExtended");
 
@@ -10635,12 +10662,12 @@ struct FString UTgSettingsManager::GetKeybindExtended(const struct FString& sCom
 
 
 // Function TgClient.UIComponent.OnKeyboardUIComplete
-// (Iterator, Singular, NetReliable, Simulated, Native, Static, HasOptionalParms, Const)
+// (Defined, Latent, PreOperator, Singular, Native, Operator, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 sResult                        (Parm, NeedCtorLink)
 // unsigned char                  bCanceled                      (Parm)
 
-void UUIComponent::STATIC_OnKeyboardUIComplete(const struct FString& sResult, unsigned char bCanceled)
+void UUIComponent::OnKeyboardUIComplete(const struct FString& sResult, unsigned char bCanceled)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIComponent.OnKeyboardUIComplete");
 
@@ -10658,11 +10685,11 @@ void UUIComponent::STATIC_OnKeyboardUIComplete(const struct FString& sResult, un
 
 
 // Function TgClient.UIComponent.GetYMouse
-// (PreOperator, Singular, Exec, Native, HasOptionalParms, Const)
+// (Final, Defined, Iterator, PreOperator, NetReliable, Native, Operator, Static, Const)
 // Parameters:
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UUIComponent::GetYMouse()
+float UUIComponent::STATIC_GetYMouse()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIComponent.GetYMouse");
 
@@ -10680,11 +10707,11 @@ float UUIComponent::GetYMouse()
 
 
 // Function TgClient.UIComponent.GetXMouse
-// (Final, Defined, Iterator, Latent, Singular, Exec, Native, HasOptionalParms, Const)
+// (Defined, Iterator, PreOperator, NetReliable, Native, Operator, Static, Const)
 // Parameters:
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UUIComponent::GetXMouse()
+float UUIComponent::STATIC_GetXMouse()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIComponent.GetXMouse");
 
@@ -10702,7 +10729,7 @@ float UUIComponent::GetXMouse()
 
 
 // Function TgClient.UIComponent.HandleAnimEvent
-// (Iterator, Net, Simulated, Exec, Event, HasOptionalParms)
+// (NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // int                            nEventType                     (Parm)
 // TArray<float>                  fExtraData                     (OptionalParm, Parm, NeedCtorLink)
@@ -10727,11 +10754,11 @@ float UUIComponent::HandleAnimEvent(int nEventType, TArray<float> fExtraData)
 
 
 // Function TgClient.UIComponent.ClearQueuedSounds
-// (Latent, PreOperator, Native, HasOptionalParms, Const)
+// (NetReliable, Exec, Operator, Static, Const)
 // Parameters:
 // class UAkBaseSoundObject*      akSound                        (OptionalParm, Parm)
 
-void UUIComponent::ClearQueuedSounds(class UAkBaseSoundObject* akSound)
+void UUIComponent::STATIC_ClearQueuedSounds(class UAkBaseSoundObject* akSound)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIComponent.ClearQueuedSounds");
 
@@ -10739,7 +10766,6 @@ void UUIComponent::ClearQueuedSounds(class UAkBaseSoundObject* akSound)
 	params.akSound = akSound;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -10748,7 +10774,7 @@ void UUIComponent::ClearQueuedSounds(class UAkBaseSoundObject* akSound)
 
 
 // Function TgClient.UIComponent.QueueSound
-// (Final, Defined, PreOperator, Singular, Exec, Event, Operator, HasOptionalParms, Const)
+// (Final, Latent, PreOperator, NetReliable, Event, HasOptionalParms, Const)
 // Parameters:
 // class UAkBaseSoundObject*      akSound                        (Parm)
 // float                          fDelay                         (Parm)
@@ -10770,12 +10796,12 @@ void UUIComponent::QueueSound(class UAkBaseSoundObject* akSound, float fDelay)
 
 
 // Function TgClient.UIComponent.IsSoundQueued
-// (Defined, Latent, PreOperator, Net, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Final, Net, NetReliable, Simulated, Native, Operator, Static, Const)
 // Parameters:
 // class UAkBaseSoundObject*      akSound                        (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UUIComponent::IsSoundQueued(class UAkBaseSoundObject* akSound)
+bool UUIComponent::STATIC_IsSoundQueued(class UAkBaseSoundObject* akSound)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIComponent.IsSoundQueued");
 
@@ -10794,12 +10820,12 @@ bool UUIComponent::IsSoundQueued(class UAkBaseSoundObject* akSound)
 
 
 // Function TgClient.UIComponent.EndAnim
-// (Final, Defined, Iterator, Latent, PreOperator, Simulated, Native, HasOptionalParms, Const)
+// (Final, Defined, Iterator, NetReliable, Simulated, Exec, Operator, Static, Const)
 // Parameters:
 // class UGFxObject*              pObj                           (Parm)
 // TEnumAsByte<EUIANIMTYPE>       eType                          (OptionalParm, Parm)
 
-void UUIComponent::EndAnim(class UGFxObject* pObj, TEnumAsByte<EUIANIMTYPE> eType)
+void UUIComponent::STATIC_EndAnim(class UGFxObject* pObj, TEnumAsByte<EUIANIMTYPE> eType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIComponent.EndAnim");
 
@@ -10808,7 +10834,6 @@ void UUIComponent::EndAnim(class UGFxObject* pObj, TEnumAsByte<EUIANIMTYPE> eTyp
 	params.eType = eType;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -10817,13 +10842,13 @@ void UUIComponent::EndAnim(class UGFxObject* pObj, TEnumAsByte<EUIANIMTYPE> eTyp
 
 
 // Function TgClient.UIComponent.GetAnimationTarget
-// (Final, Iterator, Latent, Exec, Native, HasOptionalParms, Const)
+// (Iterator, PreOperator, Singular, Net, Native, Operator, Static, Const)
 // Parameters:
 // class UGFxObject*              pObj                           (Parm)
 // TEnumAsByte<EUIANIMTYPE>       eType                          (OptionalParm, Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UUIComponent::GetAnimationTarget(class UGFxObject* pObj, TEnumAsByte<EUIANIMTYPE> eType)
+float UUIComponent::STATIC_GetAnimationTarget(class UGFxObject* pObj, TEnumAsByte<EUIANIMTYPE> eType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIComponent.GetAnimationTarget");
 
@@ -10843,13 +10868,13 @@ float UUIComponent::GetAnimationTarget(class UGFxObject* pObj, TEnumAsByte<EUIAN
 
 
 // Function TgClient.UIComponent.IsAnimating
-// (Defined, Latent, Net, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Final, PreOperator, Singular, NetReliable, Simulated, Native, Operator, Static, Const)
 // Parameters:
 // class UGFxObject*              pObj                           (Parm)
 // TEnumAsByte<EUIANIMTYPE>       eType                          (OptionalParm, Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UUIComponent::IsAnimating(class UGFxObject* pObj, TEnumAsByte<EUIANIMTYPE> eType)
+bool UUIComponent::STATIC_IsAnimating(class UGFxObject* pObj, TEnumAsByte<EUIANIMTYPE> eType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIComponent.IsAnimating");
 
@@ -10869,7 +10894,7 @@ bool UUIComponent::IsAnimating(class UGFxObject* pObj, TEnumAsByte<EUIANIMTYPE> 
 
 
 // Function TgClient.UIComponent.QueueAnim
-// (Final, Defined, Iterator, Latent, Singular, Exec, Event, Operator, HasOptionalParms, Const)
+// (Final, Iterator, PreOperator, NetReliable, Event, HasOptionalParms, Const)
 // Parameters:
 // class UGFxObject*              pObj                           (Parm)
 // float                          fTime                          (Parm)
@@ -10897,7 +10922,7 @@ void UUIComponent::QueueAnim(class UGFxObject* pObj, float fTime, TEnumAsByte<EU
 
 
 // Function TgClient.UIComponent.Animate
-// (Final, Defined, Latent, Singular, Net, Simulated, Exec, HasOptionalParms, Const)
+// (Final, Defined, PreOperator, Net, NetReliable, Simulated, Operator, Static, Const)
 // Parameters:
 // class UGFxObject*              pObj                           (Parm)
 // float                          fTime                          (Parm)
@@ -10907,7 +10932,7 @@ void UUIComponent::QueueAnim(class UGFxObject* pObj, float fTime, TEnumAsByte<EU
 // unsigned char                  eQuad                          (OptionalParm, Parm)
 // bool                           bEndCurrentAnim                (OptionalParm, Parm)
 
-void UUIComponent::Animate(class UGFxObject* pObj, float fTime, TEnumAsByte<EUIANIMTYPE> eType, float fValue, float fDelay, unsigned char eQuad, bool bEndCurrentAnim)
+void UUIComponent::STATIC_Animate(class UGFxObject* pObj, float fTime, TEnumAsByte<EUIANIMTYPE> eType, float fValue, float fDelay, unsigned char eQuad, bool bEndCurrentAnim)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIComponent.Animate");
 
@@ -10929,13 +10954,13 @@ void UUIComponent::Animate(class UGFxObject* pObj, float fTime, TEnumAsByte<EUIA
 
 
 // Function TgClient.UIComponent.FadeOut
-// (Final, Defined, Iterator, PreOperator, Singular, NetReliable, Exec, Native, Static)
+// (Final, Defined, Latent, Net, Native, Operator)
 // Parameters:
 // class UGFxObject*              pObj                           (Parm)
 // float                          fTime                          (OptionalParm, Parm)
 // float                          fDelay                         (OptionalParm, Parm)
 
-void UUIComponent::STATIC_FadeOut(class UGFxObject* pObj, float fTime, float fDelay)
+void UUIComponent::FadeOut(class UGFxObject* pObj, float fTime, float fDelay)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIComponent.FadeOut");
 
@@ -10954,13 +10979,13 @@ void UUIComponent::STATIC_FadeOut(class UGFxObject* pObj, float fTime, float fDe
 
 
 // Function TgClient.UIComponent.FadeIn
-// (Iterator, Latent, Singular, NetReliable, Exec, Native, Static)
+// (Net, Native, Operator)
 // Parameters:
 // class UGFxObject*              pObj                           (Parm)
 // float                          fTime                          (OptionalParm, Parm)
 // float                          fDelay                         (OptionalParm, Parm)
 
-void UUIComponent::STATIC_FadeIn(class UGFxObject* pObj, float fTime, float fDelay)
+void UUIComponent::FadeIn(class UGFxObject* pObj, float fTime, float fDelay)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIComponent.FadeIn");
 
@@ -10979,7 +11004,7 @@ void UUIComponent::STATIC_FadeIn(class UGFxObject* pObj, float fTime, float fDel
 
 
 // Function TgClient.UIComponent.AnimateAsWell
-// (Iterator, Latent, Singular, Net, Simulated, Exec, HasOptionalParms, Const)
+// (Iterator, PreOperator, Net, NetReliable, Simulated, Operator, Static, Const)
 // Parameters:
 // class UGFxObject*              pObj                           (Parm)
 // float                          fTime                          (Parm)
@@ -10988,7 +11013,7 @@ void UUIComponent::STATIC_FadeIn(class UGFxObject* pObj, float fTime, float fDel
 // float                          fDelay                         (OptionalParm, Parm)
 // unsigned char                  eQuad                          (OptionalParm, Parm)
 
-void UUIComponent::AnimateAsWell(class UGFxObject* pObj, float fTime, TEnumAsByte<EUIANIMTYPE> eType, float fValue, float fDelay, unsigned char eQuad)
+void UUIComponent::STATIC_AnimateAsWell(class UGFxObject* pObj, float fTime, TEnumAsByte<EUIANIMTYPE> eType, float fValue, float fDelay, unsigned char eQuad)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIComponent.AnimateAsWell");
 
@@ -11009,13 +11034,13 @@ void UUIComponent::AnimateAsWell(class UGFxObject* pObj, float fTime, TEnumAsByt
 
 
 // Function TgClient.UIComponent.FadeOutAsWell
-// (Final, Defined, Latent, Singular, Net, Simulated, Native, HasOptionalParms, Const)
+// (Defined, PreOperator, Net, NetReliable, Simulated, Exec, Operator, Static, Const)
 // Parameters:
 // class UGFxObject*              pObj                           (Parm)
 // float                          fTime                          (OptionalParm, Parm)
 // float                          fDelay                         (OptionalParm, Parm)
 
-void UUIComponent::FadeOutAsWell(class UGFxObject* pObj, float fTime, float fDelay)
+void UUIComponent::STATIC_FadeOutAsWell(class UGFxObject* pObj, float fTime, float fDelay)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIComponent.FadeOutAsWell");
 
@@ -11025,7 +11050,6 @@ void UUIComponent::FadeOutAsWell(class UGFxObject* pObj, float fTime, float fDel
 	params.fDelay = fDelay;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -11034,13 +11058,13 @@ void UUIComponent::FadeOutAsWell(class UGFxObject* pObj, float fTime, float fDel
 
 
 // Function TgClient.UIComponent.FadeInAsWell
-// (Defined, Latent, Singular, Net, Simulated, Native, HasOptionalParms, Const)
+// (Final, PreOperator, Net, NetReliable, Simulated, Exec, Operator, Static, Const)
 // Parameters:
 // class UGFxObject*              pObj                           (Parm)
 // float                          fTime                          (OptionalParm, Parm)
 // float                          fDelay                         (OptionalParm, Parm)
 
-void UUIComponent::FadeInAsWell(class UGFxObject* pObj, float fTime, float fDelay)
+void UUIComponent::STATIC_FadeInAsWell(class UGFxObject* pObj, float fTime, float fDelay)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIComponent.FadeInAsWell");
 
@@ -11050,7 +11074,6 @@ void UUIComponent::FadeInAsWell(class UGFxObject* pObj, float fTime, float fDela
 	params.fDelay = fDelay;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -11059,7 +11082,7 @@ void UUIComponent::FadeInAsWell(class UGFxObject* pObj, float fTime, float fDela
 
 
 // Function TgClient.UIComponent_EventVault.OnCardArtLoaded
-// (Final, Defined, Iterator, Latent, Net, Simulated, Event, Operator, HasOptionalParms, Const)
+// (Final, Iterator, PreOperator, Singular, NetReliable, Simulated, Exec, Native, HasOptionalParms, Const)
 
 void UUIComponent_EventVault::OnCardArtLoaded()
 {
@@ -11068,6 +11091,7 @@ void UUIComponent_EventVault::OnCardArtLoaded()
 	UUIComponent_EventVault_OnCardArtLoaded_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -11076,7 +11100,7 @@ void UUIComponent_EventVault::OnCardArtLoaded()
 
 
 // Function TgClient.UIComponent_EventVault.PreviewCardArt
-// (Final, Latent, Singular, Net, NetReliable, Simulated, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Iterator, Latent, Net, Event, HasOptionalParms, Const)
 
 void UUIComponent_EventVault::PreviewCardArt()
 {
@@ -11093,9 +11117,9 @@ void UUIComponent_EventVault::PreviewCardArt()
 
 
 // Function TgClient.UIComponent_EventVault.InitCardArtManifest
-// (Final, Net, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Latent, Singular, NetReliable, Simulated, Native, Operator, Static, Const)
 
-void UUIComponent_EventVault::InitCardArtManifest()
+void UUIComponent_EventVault::STATIC_InitCardArtManifest()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIComponent_EventVault.InitCardArtManifest");
 
@@ -11111,7 +11135,7 @@ void UUIComponent_EventVault::InitCardArtManifest()
 
 
 // Function TgClient.UIComponent_MojiCounter.StartMaxStacksAnim
-// (Final, Defined, Latent, Net, Simulated, Exec, Event, Operator, HasOptionalParms, Const)
+// (Final, PreOperator, Singular, NetReliable, Simulated, Event, HasOptionalParms, Const)
 
 void UUIComponent_MojiCounter::StartMaxStacksAnim()
 {
@@ -11128,7 +11152,7 @@ void UUIComponent_MojiCounter::StartMaxStacksAnim()
 
 
 // Function TgClient.UIComponent_MojiCounter.UpdateStackCount
-// (Defined, Iterator, PreOperator, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Defined, PreOperator, Singular, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // int                            nNewStacks                     (Parm)
 
@@ -11148,7 +11172,7 @@ void UUIComponent_MojiCounter::UpdateStackCount(int nNewStacks)
 
 
 // Function TgClient.UIComponent_LazarusShieldBar.HideUltTimer
-// (Defined, Iterator, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Defined, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // bool                           bWasUltUsed                    (Parm)
 
@@ -11168,7 +11192,7 @@ void UUIComponent_LazarusShieldBar::HideUltTimer(bool bWasUltUsed)
 
 
 // Function TgClient.UIComponent_LazarusShieldBar.ShowUltTimer
-// (Iterator, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Singular, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 
 void UUIComponent_LazarusShieldBar::ShowUltTimer()
 {
@@ -11185,7 +11209,7 @@ void UUIComponent_LazarusShieldBar::ShowUltTimer()
 
 
 // Function TgClient.UIComponent_Targeter_Rider.UpdateVisualFromStacks
-// (Final, Defined, Iterator, PreOperator, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Defined, PreOperator, Singular, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // float                          fDeltaTime                     (Parm)
 
@@ -11205,13 +11229,13 @@ void UUIComponent_Targeter_Rider::UpdateVisualFromStacks(float fDeltaTime)
 
 
 // Function TgClient.UIComponent_TitlesView.FadeOut
-// (Final, Defined, Iterator, PreOperator, Singular, NetReliable, Exec, Native, Static)
+// (Final, Defined, Latent, Net, Native, Operator)
 // Parameters:
 // class UGFxObject*              pObj                           (Parm)
 // float                          fTime                          (OptionalParm, Parm)
 // float                          fDelay                         (OptionalParm, Parm)
 
-void UUIComponent_TitlesView::STATIC_FadeOut(class UGFxObject* pObj, float fTime, float fDelay)
+void UUIComponent_TitlesView::FadeOut(class UGFxObject* pObj, float fTime, float fDelay)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIComponent_TitlesView.FadeOut");
 
@@ -11230,13 +11254,13 @@ void UUIComponent_TitlesView::STATIC_FadeOut(class UGFxObject* pObj, float fTime
 
 
 // Function TgClient.UIComponent_TitlesView.FadeIn
-// (Iterator, Latent, Singular, NetReliable, Exec, Native, Static)
+// (Net, Native, Operator)
 // Parameters:
 // class UGFxObject*              pObj                           (Parm)
 // float                          fTime                          (OptionalParm, Parm)
 // float                          fDelay                         (OptionalParm, Parm)
 
-void UUIComponent_TitlesView::STATIC_FadeIn(class UGFxObject* pObj, float fTime, float fDelay)
+void UUIComponent_TitlesView::FadeIn(class UGFxObject* pObj, float fTime, float fDelay)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIComponent_TitlesView.FadeIn");
 
@@ -11255,11 +11279,11 @@ void UUIComponent_TitlesView::STATIC_FadeIn(class UGFxObject* pObj, float fTime,
 
 
 // Function TgClient.UIScene.ClearQueuedSounds
-// (Latent, PreOperator, Native, HasOptionalParms, Const)
+// (NetReliable, Exec, Operator, Static, Const)
 // Parameters:
 // class UAkBaseSoundObject*      akSound                        (OptionalParm, Parm)
 
-void UUIScene::ClearQueuedSounds(class UAkBaseSoundObject* akSound)
+void UUIScene::STATIC_ClearQueuedSounds(class UAkBaseSoundObject* akSound)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIScene.ClearQueuedSounds");
 
@@ -11267,7 +11291,6 @@ void UUIScene::ClearQueuedSounds(class UAkBaseSoundObject* akSound)
 	params.akSound = akSound;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -11276,7 +11299,7 @@ void UUIScene::ClearQueuedSounds(class UAkBaseSoundObject* akSound)
 
 
 // Function TgClient.UIScene.QueueSound
-// (Final, Defined, PreOperator, Singular, Exec, Event, Operator, HasOptionalParms, Const)
+// (Final, Latent, PreOperator, NetReliable, Event, HasOptionalParms, Const)
 // Parameters:
 // class UAkBaseSoundObject*      akSound                        (Parm)
 // float                          fDelay                         (Parm)
@@ -11298,12 +11321,12 @@ void UUIScene::QueueSound(class UAkBaseSoundObject* akSound, float fDelay)
 
 
 // Function TgClient.UIScene.IsSoundQueued
-// (Defined, Latent, PreOperator, Net, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Final, Net, NetReliable, Simulated, Native, Operator, Static, Const)
 // Parameters:
 // class UAkBaseSoundObject*      akSound                        (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UUIScene::IsSoundQueued(class UAkBaseSoundObject* akSound)
+bool UUIScene::STATIC_IsSoundQueued(class UAkBaseSoundObject* akSound)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIScene.IsSoundQueued");
 
@@ -11322,12 +11345,12 @@ bool UUIScene::IsSoundQueued(class UAkBaseSoundObject* akSound)
 
 
 // Function TgClient.UIScene.EndAnim
-// (Final, Defined, Iterator, Latent, PreOperator, Simulated, Native, HasOptionalParms, Const)
+// (Final, Defined, Iterator, NetReliable, Simulated, Exec, Operator, Static, Const)
 // Parameters:
 // class UGFxObject*              pObj                           (Parm)
 // TEnumAsByte<EUIANIMTYPE>       eType                          (OptionalParm, Parm)
 
-void UUIScene::EndAnim(class UGFxObject* pObj, TEnumAsByte<EUIANIMTYPE> eType)
+void UUIScene::STATIC_EndAnim(class UGFxObject* pObj, TEnumAsByte<EUIANIMTYPE> eType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIScene.EndAnim");
 
@@ -11336,7 +11359,6 @@ void UUIScene::EndAnim(class UGFxObject* pObj, TEnumAsByte<EUIANIMTYPE> eType)
 	params.eType = eType;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -11345,13 +11367,13 @@ void UUIScene::EndAnim(class UGFxObject* pObj, TEnumAsByte<EUIANIMTYPE> eType)
 
 
 // Function TgClient.UIScene.GetAnimationTarget
-// (Final, Iterator, Latent, Exec, Native, HasOptionalParms, Const)
+// (Iterator, PreOperator, Singular, Net, Native, Operator, Static, Const)
 // Parameters:
 // class UGFxObject*              pObj                           (Parm)
 // TEnumAsByte<EUIANIMTYPE>       eType                          (OptionalParm, Parm)
 // float                          ReturnValue                    (Parm, OutParm, ReturnParm)
 
-float UUIScene::GetAnimationTarget(class UGFxObject* pObj, TEnumAsByte<EUIANIMTYPE> eType)
+float UUIScene::STATIC_GetAnimationTarget(class UGFxObject* pObj, TEnumAsByte<EUIANIMTYPE> eType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIScene.GetAnimationTarget");
 
@@ -11371,13 +11393,13 @@ float UUIScene::GetAnimationTarget(class UGFxObject* pObj, TEnumAsByte<EUIANIMTY
 
 
 // Function TgClient.UIScene.IsAnimating
-// (Defined, Latent, Net, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Final, PreOperator, Singular, NetReliable, Simulated, Native, Operator, Static, Const)
 // Parameters:
 // class UGFxObject*              pObj                           (Parm)
 // TEnumAsByte<EUIANIMTYPE>       eType                          (OptionalParm, Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UUIScene::IsAnimating(class UGFxObject* pObj, TEnumAsByte<EUIANIMTYPE> eType)
+bool UUIScene::STATIC_IsAnimating(class UGFxObject* pObj, TEnumAsByte<EUIANIMTYPE> eType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIScene.IsAnimating");
 
@@ -11397,7 +11419,7 @@ bool UUIScene::IsAnimating(class UGFxObject* pObj, TEnumAsByte<EUIANIMTYPE> eTyp
 
 
 // Function TgClient.UIScene.QueueAnim
-// (Final, Defined, Iterator, Latent, Singular, Exec, Event, Operator, HasOptionalParms, Const)
+// (Final, Iterator, PreOperator, NetReliable, Event, HasOptionalParms, Const)
 // Parameters:
 // class UGFxObject*              pObj                           (Parm)
 // float                          fTime                          (Parm)
@@ -11425,7 +11447,7 @@ void UUIScene::QueueAnim(class UGFxObject* pObj, float fTime, TEnumAsByte<EUIANI
 
 
 // Function TgClient.UIScene.Animate
-// (Final, Defined, Latent, Singular, Net, Simulated, Exec, HasOptionalParms, Const)
+// (Final, Defined, PreOperator, Net, NetReliable, Simulated, Operator, Static, Const)
 // Parameters:
 // class UGFxObject*              pObj                           (Parm)
 // float                          fTime                          (Parm)
@@ -11435,7 +11457,7 @@ void UUIScene::QueueAnim(class UGFxObject* pObj, float fTime, TEnumAsByte<EUIANI
 // unsigned char                  eQuad                          (OptionalParm, Parm)
 // bool                           bEndCurrentAnim                (OptionalParm, Parm)
 
-void UUIScene::Animate(class UGFxObject* pObj, float fTime, TEnumAsByte<EUIANIMTYPE> eType, float fValue, float fDelay, unsigned char eQuad, bool bEndCurrentAnim)
+void UUIScene::STATIC_Animate(class UGFxObject* pObj, float fTime, TEnumAsByte<EUIANIMTYPE> eType, float fValue, float fDelay, unsigned char eQuad, bool bEndCurrentAnim)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIScene.Animate");
 
@@ -11457,13 +11479,13 @@ void UUIScene::Animate(class UGFxObject* pObj, float fTime, TEnumAsByte<EUIANIMT
 
 
 // Function TgClient.UIScene.FadeOutAsWell
-// (Final, Defined, Latent, Singular, Net, Simulated, Native, HasOptionalParms, Const)
+// (Defined, PreOperator, Net, NetReliable, Simulated, Exec, Operator, Static, Const)
 // Parameters:
 // class UGFxObject*              pObj                           (Parm)
 // float                          fTime                          (OptionalParm, Parm)
 // float                          fDelay                         (OptionalParm, Parm)
 
-void UUIScene::FadeOutAsWell(class UGFxObject* pObj, float fTime, float fDelay)
+void UUIScene::STATIC_FadeOutAsWell(class UGFxObject* pObj, float fTime, float fDelay)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIScene.FadeOutAsWell");
 
@@ -11473,7 +11495,6 @@ void UUIScene::FadeOutAsWell(class UGFxObject* pObj, float fTime, float fDelay)
 	params.fDelay = fDelay;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -11482,13 +11503,13 @@ void UUIScene::FadeOutAsWell(class UGFxObject* pObj, float fTime, float fDelay)
 
 
 // Function TgClient.UIScene.FadeInAsWell
-// (Defined, Latent, Singular, Net, Simulated, Native, HasOptionalParms, Const)
+// (Final, PreOperator, Net, NetReliable, Simulated, Exec, Operator, Static, Const)
 // Parameters:
 // class UGFxObject*              pObj                           (Parm)
 // float                          fTime                          (OptionalParm, Parm)
 // float                          fDelay                         (OptionalParm, Parm)
 
-void UUIScene::FadeInAsWell(class UGFxObject* pObj, float fTime, float fDelay)
+void UUIScene::STATIC_FadeInAsWell(class UGFxObject* pObj, float fTime, float fDelay)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIScene.FadeInAsWell");
 
@@ -11498,7 +11519,6 @@ void UUIScene::FadeInAsWell(class UGFxObject* pObj, float fTime, float fDelay)
 	params.fDelay = fDelay;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -11507,13 +11527,13 @@ void UUIScene::FadeInAsWell(class UGFxObject* pObj, float fTime, float fDelay)
 
 
 // Function TgClient.UIScene.FadeOut
-// (Final, Defined, Iterator, PreOperator, Singular, NetReliable, Exec, Native, Static)
+// (Final, Defined, Latent, Net, Native, Operator)
 // Parameters:
 // class UGFxObject*              pObj                           (Parm)
 // float                          fTime                          (OptionalParm, Parm)
 // float                          fDelay                         (OptionalParm, Parm)
 
-void UUIScene::STATIC_FadeOut(class UGFxObject* pObj, float fTime, float fDelay)
+void UUIScene::FadeOut(class UGFxObject* pObj, float fTime, float fDelay)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIScene.FadeOut");
 
@@ -11532,13 +11552,13 @@ void UUIScene::STATIC_FadeOut(class UGFxObject* pObj, float fTime, float fDelay)
 
 
 // Function TgClient.UIScene.FadeIn
-// (Iterator, Latent, Singular, NetReliable, Exec, Native, Static)
+// (Net, Native, Operator)
 // Parameters:
 // class UGFxObject*              pObj                           (Parm)
 // float                          fTime                          (OptionalParm, Parm)
 // float                          fDelay                         (OptionalParm, Parm)
 
-void UUIScene::STATIC_FadeIn(class UGFxObject* pObj, float fTime, float fDelay)
+void UUIScene::FadeIn(class UGFxObject* pObj, float fTime, float fDelay)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIScene.FadeIn");
 
@@ -11574,7 +11594,7 @@ void UUIScene_UIEOMLAcquisition::TransitionOut()
 
 
 // Function TgClient.UIScene_UIEOMLAcquisition.TransitionIn
-// (Defined, Latent, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Defined, Iterator, Singular, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 
 void UUIScene_UIEOMLAcquisition::TransitionIn()
 {
@@ -11591,7 +11611,7 @@ void UUIScene_UIEOMLAcquisition::TransitionIn()
 
 
 // Function TgClient.UIScene_UIFooterGamepad.Thaw
-// (Latent, NetReliable, Simulated, Exec, Event, Operator, HasOptionalParms, Const)
+// (Defined, Iterator, Latent, Singular, Net, NetReliable, Simulated, Event, HasOptionalParms, Const)
 
 void UUIScene_UIFooterGamepad::Thaw()
 {
@@ -11608,7 +11628,7 @@ void UUIScene_UIFooterGamepad::Thaw()
 
 
 // Function TgClient.UIScene_UIFooterGamepad.Freeze
-// (Net, Simulated, Event, Operator, Static, HasOptionalParms)
+// (Defined, Net, Simulated, Exec, Native, Static, HasOptionalParms)
 
 void UUIScene_UIFooterGamepad::STATIC_Freeze()
 {
@@ -11617,6 +11637,7 @@ void UUIScene_UIFooterGamepad::STATIC_Freeze()
 	UUIScene_UIFooterGamepad_Freeze_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -11625,7 +11646,7 @@ void UUIScene_UIFooterGamepad::STATIC_Freeze()
 
 
 // Function TgClient.UIScene_UIHnHAcquisition.HandleAnimState
-// (Final, Iterator, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Final, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // int                            nAnimState                     (Parm)
 // bool                           bDelayAcquisitionState         (OptionalParm, Parm)
@@ -11649,12 +11670,12 @@ void UUIScene_UIHnHAcquisition::HandleAnimState(int nAnimState, bool bDelayAcqui
 
 
 // Function TgClient.UIScene_UILobbyChat.OnKeyboardUIComplete
-// (Iterator, Singular, NetReliable, Simulated, Native, Static, HasOptionalParms, Const)
+// (Defined, Latent, PreOperator, Singular, Native, Operator, HasOptionalParms, Const)
 // Parameters:
 // struct FString                 sResult                        (Parm, NeedCtorLink)
 // unsigned char                  bCanceled                      (Parm)
 
-void UUIScene_UILobbyChat::STATIC_OnKeyboardUIComplete(const struct FString& sResult, unsigned char bCanceled)
+void UUIScene_UILobbyChat::OnKeyboardUIComplete(const struct FString& sResult, unsigned char bCanceled)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIScene_UILobbyChat.OnKeyboardUIComplete");
 
@@ -11672,7 +11693,7 @@ void UUIScene_UILobbyChat::STATIC_OnKeyboardUIComplete(const struct FString& sRe
 
 
 // Function TgClient.UIScene_UISimulMedia.CompleteWatchingAd
-// (Defined, Iterator, PreOperator, Singular, Simulated, Exec, Event, HasOptionalParms)
+// (Defined, PreOperator, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
 
 void UUIScene_UISimulMedia::CompleteWatchingAd()
 {
@@ -11689,7 +11710,7 @@ void UUIScene_UISimulMedia::CompleteWatchingAd()
 
 
 // Function TgClient.UIScene_UISimulMedia.OnVideoError
-// (Final, Iterator, PreOperator, Singular, Simulated, Exec, Native, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, Singular, Net, Simulated, Exec, Native, HasOptionalParms)
 // Parameters:
 // class APComVideoPlayer*        VideoPlayer                    (Parm)
 // TEnumAsByte<EPComVideoPlayerError> ErrorCode                      (Parm)
@@ -11712,7 +11733,7 @@ void UUIScene_UISimulMedia::OnVideoError(class APComVideoPlayer* VideoPlayer, TE
 
 
 // Function TgClient.UIScene_UISimulMedia.DestroyVideoPlayer
-// (Final, Latent, PreOperator, Singular, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Iterator, PreOperator, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
 
 void UUIScene_UISimulMedia::DestroyVideoPlayer()
 {
@@ -11729,7 +11750,7 @@ void UUIScene_UISimulMedia::DestroyVideoPlayer()
 
 
 // Function TgClient.UIScene_UISimulMedia.SpawnVideoPlayer
-// (Final, Iterator, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Singular, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // class AActor*                  SpawningActor                  (Parm)
 
@@ -11749,7 +11770,7 @@ void UUIScene_UISimulMedia::SpawnVideoPlayer(class AActor* SpawningActor)
 
 
 // Function TgClient.UIScene_UISimulMedia.AbortAd
-// (Final, Defined, Iterator, PreOperator, Singular, Net, NetReliable, Simulated, Exec, Native, Event, Operator, HasOptionalParms, Const)
+// (Defined, Iterator, Latent, PreOperator, Net, Exec, Native, Event, HasOptionalParms, Const)
 
 void UUIScene_UISimulMedia::AbortAd()
 {
@@ -11767,15 +11788,16 @@ void UUIScene_UISimulMedia::AbortAd()
 
 
 // Function TgClient.UIScene_UISimulMedia.CompleteAd
-// (Final, PreOperator, Static, HasOptionalParms, Const)
+// (Latent, PreOperator, Singular, Net, Exec, Native, Event, HasOptionalParms, Const)
 
-void UUIScene_UISimulMedia::STATIC_CompleteAd()
+void UUIScene_UISimulMedia::CompleteAd()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIScene_UISimulMedia.CompleteAd");
 
 	UUIScene_UISimulMedia_CompleteAd_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -11784,7 +11806,7 @@ void UUIScene_UISimulMedia::STATIC_CompleteAd()
 
 
 // Function TgClient.UIScene_UIStore.OnDeathStampLoaded
-// (PreOperator, Net, Simulated, Event, Operator, HasOptionalParms, Const)
+// (Defined, Iterator, PreOperator, Singular, NetReliable, Simulated, Exec, Native, HasOptionalParms, Const)
 // Parameters:
 // int                            nTargetIndex                   (OptionalParm, Parm)
 
@@ -11796,6 +11818,7 @@ void UUIScene_UIStore::OnDeathStampLoaded(int nTargetIndex)
 	params.nTargetIndex = nTargetIndex;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -11804,7 +11827,7 @@ void UUIScene_UIStore::OnDeathStampLoaded(int nTargetIndex)
 
 
 // Function TgClient.UIScene_UIStore.PreviewDeathStamp
-// (Defined, Latent, Singular, Net, NetReliable, Simulated, Event, Operator, HasOptionalParms, Const)
+// (PreOperator, Net, Event, HasOptionalParms, Const)
 // Parameters:
 // int                            nItemId                        (Parm)
 // int                            nTargetIndex                   (OptionalParm, Parm)
@@ -11826,9 +11849,9 @@ void UUIScene_UIStore::PreviewDeathStamp(int nItemId, int nTargetIndex)
 
 
 // Function TgClient.UIScene_UIStore.InitDeathStampManifest
-// (Defined, Net, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Final, Latent, Singular, NetReliable, Simulated, Native, Operator, Static, Const)
 
-void UUIScene_UIStore::InitDeathStampManifest()
+void UUIScene_UIStore::STATIC_InitDeathStampManifest()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIScene_UIStore.InitDeathStampManifest");
 
@@ -11844,7 +11867,7 @@ void UUIScene_UIStore::InitDeathStampManifest()
 
 
 // Function TgClient.UIScene_UIStore.OnSprayLoaded
-// (Final, Defined, Iterator, PreOperator, Net, Simulated, Event, Operator, HasOptionalParms, Const)
+// (Final, Iterator, Latent, PreOperator, Singular, NetReliable, Simulated, Exec, Native, HasOptionalParms, Const)
 // Parameters:
 // int                            nTargetIndex                   (OptionalParm, Parm)
 
@@ -11856,6 +11879,7 @@ void UUIScene_UIStore::OnSprayLoaded(int nTargetIndex)
 	params.nTargetIndex = nTargetIndex;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -11864,7 +11888,7 @@ void UUIScene_UIStore::OnSprayLoaded(int nTargetIndex)
 
 
 // Function TgClient.UIScene_UIStore.PreviewSpray
-// (Final, Defined, Latent, Singular, Net, NetReliable, Simulated, Event, Operator, HasOptionalParms, Const)
+// (Final, PreOperator, Net, Event, HasOptionalParms, Const)
 // Parameters:
 // int                            nItemId                        (Parm)
 // int                            nTargetIndex                   (OptionalParm, Parm)
@@ -11886,9 +11910,9 @@ void UUIScene_UIStore::PreviewSpray(int nItemId, int nTargetIndex)
 
 
 // Function TgClient.UIScene_UIStore.InitSpraysManifest
-// (Final, Defined, Iterator, Net, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Defined, Iterator, Latent, Singular, NetReliable, Simulated, Native, Operator, Static, Const)
 
-void UUIScene_UIStore::InitSpraysManifest()
+void UUIScene_UIStore::STATIC_InitSpraysManifest()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIScene_UIStore.InitSpraysManifest");
 
@@ -11904,9 +11928,9 @@ void UUIScene_UIStore::InitSpraysManifest()
 
 
 // Function TgClient.UIInteractable_DailyDeal.TriggerDailyDealWait
-// (Latent, PreOperator, Exec, Native, Static, HasOptionalParms, Const)
+// (Defined, Iterator, Latent, Singular, NetReliable, Native, Operator, HasOptionalParms, Const)
 
-void UUIInteractable_DailyDeal::STATIC_TriggerDailyDealWait()
+void UUIInteractable_DailyDeal::TriggerDailyDealWait()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIInteractable_DailyDeal.TriggerDailyDealWait");
 
@@ -11922,7 +11946,7 @@ void UUIInteractable_DailyDeal::STATIC_TriggerDailyDealWait()
 
 
 // Function TgClient.UIInteractable_DailyDeal.OnLeaveStorefront
-// (Iterator, PreOperator, Singular, Net, Simulated, Native, HasOptionalParms)
+// (Defined, Iterator, Latent, Singular, NetReliable, Simulated, Native, HasOptionalParms)
 
 void UUIInteractable_DailyDeal::OnLeaveStorefront()
 {
@@ -11940,7 +11964,7 @@ void UUIInteractable_DailyDeal::OnLeaveStorefront()
 
 
 // Function TgClient.UIInteractable_DailyDeal.UnregisterLeaveStorefrontDelegate
-// (Final, Defined, PreOperator, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Defined, Iterator, Latent, Singular, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 
 void UUIInteractable_DailyDeal::UnregisterLeaveStorefrontDelegate()
 {
@@ -11957,7 +11981,7 @@ void UUIInteractable_DailyDeal::UnregisterLeaveStorefrontDelegate()
 
 
 // Function TgClient.UIInteractable_DailyDeal.RegisterLeaveStorefrontDelegate
-// (Final, Iterator, PreOperator, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Final, PreOperator, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 
 void UUIInteractable_DailyDeal::RegisterLeaveStorefrontDelegate()
 {
@@ -11974,30 +11998,13 @@ void UUIInteractable_DailyDeal::RegisterLeaveStorefrontDelegate()
 
 
 // Function TgClient.UIInteractable_DailyDeal.OnCardArtLoaded
-// (Final, Defined, Iterator, Latent, Net, Simulated, Event, Operator, HasOptionalParms, Const)
+// (Final, Iterator, PreOperator, Singular, NetReliable, Simulated, Exec, Native, HasOptionalParms, Const)
 
 void UUIInteractable_DailyDeal::OnCardArtLoaded()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIInteractable_DailyDeal.OnCardArtLoaded");
 
 	UUIInteractable_DailyDeal_OnCardArtLoaded_Params params;
-
-	auto flags = fn->FunctionFlags;
-
-	UObject::ProcessEvent(fn, &params);
-
-	fn->FunctionFlags = flags;
-}
-
-
-// Function TgClient.UIInteractable_DailyDeal.ClearTextures
-// (Defined, Latent, PreOperator, Native, HasOptionalParms, Const)
-
-void UUIInteractable_DailyDeal::ClearTextures()
-{
-	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIInteractable_DailyDeal.ClearTextures");
-
-	UUIInteractable_DailyDeal_ClearTextures_Params params;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;
@@ -12008,10 +12015,27 @@ void UUIInteractable_DailyDeal::ClearTextures()
 }
 
 
-// Function TgClient.UIInteractable_DailyDeal.InitCardArtManifest
-// (Final, Net, Simulated, Exec, Native, HasOptionalParms, Const)
+// Function TgClient.UIInteractable_DailyDeal.ClearTextures
+// (Defined, NetReliable, Exec, Operator, Static, Const)
 
-void UUIInteractable_DailyDeal::InitCardArtManifest()
+void UUIInteractable_DailyDeal::STATIC_ClearTextures()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIInteractable_DailyDeal.ClearTextures");
+
+	UUIInteractable_DailyDeal_ClearTextures_Params params;
+
+	auto flags = fn->FunctionFlags;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function TgClient.UIInteractable_DailyDeal.InitCardArtManifest
+// (Latent, Singular, NetReliable, Simulated, Native, Operator, Static, Const)
+
+void UUIInteractable_DailyDeal::STATIC_InitCardArtManifest()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIInteractable_DailyDeal.InitCardArtManifest");
 
@@ -12027,7 +12051,7 @@ void UUIInteractable_DailyDeal::InitCardArtManifest()
 
 
 // Function TgClient.UIComponent_MeshActorLobbyControl.OnLocalTeamModelUpdated
-// (Final, Defined, PreOperator, Net, Simulated, Event, Operator, HasOptionalParms, Const)
+// (Final, Latent, PreOperator, Singular, NetReliable, Simulated, Exec, Native, HasOptionalParms, Const)
 
 void UUIComponent_MeshActorLobbyControl::OnLocalTeamModelUpdated()
 {
@@ -12036,6 +12060,7 @@ void UUIComponent_MeshActorLobbyControl::OnLocalTeamModelUpdated()
 	UUIComponent_MeshActorLobbyControl_OnLocalTeamModelUpdated_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -12044,17 +12069,18 @@ void UUIComponent_MeshActorLobbyControl::OnLocalTeamModelUpdated()
 
 
 // Function TgClient.UIComponent_ProgressBarHorizontal.IsValid
-// (Defined, Iterator, Singular, NetReliable, Simulated, Event)
+// (Final, Latent, Simulated, Exec, Native, Operator, Static, HasOptionalParms, Const)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UUIComponent_ProgressBarHorizontal::IsValid()
+bool UUIComponent_ProgressBarHorizontal::STATIC_IsValid()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIComponent_ProgressBarHorizontal.IsValid");
 
 	UUIComponent_ProgressBarHorizontal_IsValid_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -12065,7 +12091,7 @@ bool UUIComponent_ProgressBarHorizontal::IsValid()
 
 
 // Function TgClient.TgGfxScene.HandleAnimState
-// (Final, Iterator, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Final, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // int                            nAnimState                     (Parm)
 // int                            nAnimGroup                     (OptionalParm, Parm)
@@ -12087,7 +12113,7 @@ void UTgGfxScene::HandleAnimState(int nAnimState, int nAnimGroup)
 
 
 // Function TgClient.TgGfxScene.SlamOutAnim
-// (Defined, Singular, Simulated, Exec, Event, Operator, HasOptionalParms, Const)
+// (Latent, NetReliable, Simulated, Event, HasOptionalParms, Const)
 // Parameters:
 // class UGFxObject*              pObj                           (Parm)
 // float                          fDelay                         (OptionalParm, Parm)
@@ -12109,7 +12135,7 @@ void UTgGfxScene::SlamOutAnim(class UGFxObject* pObj, float fDelay)
 
 
 // Function TgClient.TgGfxScene.SlamInAnim
-// (Final, Singular, Simulated, Exec, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Iterator, NetReliable, Simulated, Event, HasOptionalParms, Const)
 // Parameters:
 // class UGFxObject*              pObj                           (Parm)
 // float                          fDelay                         (OptionalParm, Parm)
@@ -12131,13 +12157,13 @@ void UTgGfxScene::SlamInAnim(class UGFxObject* pObj, float fDelay)
 
 
 // Function TgClient.TgGfxScene.Highlight
-// (Final, Iterator, Singular, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Iterator, Latent, NetReliable, Simulated, Native, Operator, Static, Const)
 // Parameters:
 // class UGFxObject*              pObj                           (Parm)
 // bool                           bShow                          (Parm)
 // float                          fTime                          (OptionalParm, Parm)
 
-void UTgGfxScene::Highlight(class UGFxObject* pObj, bool bShow, float fTime)
+void UTgGfxScene::STATIC_Highlight(class UGFxObject* pObj, bool bShow, float fTime)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGfxScene.Highlight");
 
@@ -12156,13 +12182,13 @@ void UTgGfxScene::Highlight(class UGFxObject* pObj, bool bShow, float fTime)
 
 
 // Function TgClient.TgGfxScene.FadeOut
-// (Final, Defined, Iterator, PreOperator, Singular, NetReliable, Exec, Native, Static)
+// (Final, Defined, Latent, Net, Native, Operator)
 // Parameters:
 // class UGFxObject*              pObj                           (Parm)
 // float                          fTime                          (OptionalParm, Parm)
 // float                          fDelay                         (OptionalParm, Parm)
 
-void UTgGfxScene::STATIC_FadeOut(class UGFxObject* pObj, float fTime, float fDelay)
+void UTgGfxScene::FadeOut(class UGFxObject* pObj, float fTime, float fDelay)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGfxScene.FadeOut");
 
@@ -12181,13 +12207,13 @@ void UTgGfxScene::STATIC_FadeOut(class UGFxObject* pObj, float fTime, float fDel
 
 
 // Function TgClient.TgGfxScene.FadeIn
-// (Iterator, Latent, Singular, NetReliable, Exec, Native, Static)
+// (Net, Native, Operator)
 // Parameters:
 // class UGFxObject*              pObj                           (Parm)
 // float                          fTime                          (OptionalParm, Parm)
 // float                          fDelay                         (OptionalParm, Parm)
 
-void UTgGfxScene::STATIC_FadeIn(class UGFxObject* pObj, float fTime, float fDelay)
+void UTgGfxScene::FadeIn(class UGFxObject* pObj, float fTime, float fDelay)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGfxScene.FadeIn");
 
@@ -12206,11 +12232,11 @@ void UTgGfxScene::STATIC_FadeIn(class UGFxObject* pObj, float fTime, float fDela
 
 
 // Function TgClient.TgGfxScene.ClearQueuedSounds
-// (Latent, PreOperator, Native, HasOptionalParms, Const)
+// (NetReliable, Exec, Operator, Static, Const)
 // Parameters:
 // class UAkBaseSoundObject*      akSound                        (OptionalParm, Parm)
 
-void UTgGfxScene::ClearQueuedSounds(class UAkBaseSoundObject* akSound)
+void UTgGfxScene::STATIC_ClearQueuedSounds(class UAkBaseSoundObject* akSound)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGfxScene.ClearQueuedSounds");
 
@@ -12218,7 +12244,6 @@ void UTgGfxScene::ClearQueuedSounds(class UAkBaseSoundObject* akSound)
 	params.akSound = akSound;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -12227,7 +12252,7 @@ void UTgGfxScene::ClearQueuedSounds(class UAkBaseSoundObject* akSound)
 
 
 // Function TgClient.TgGfxScene.QueueSound
-// (Final, Defined, PreOperator, Singular, Exec, Event, Operator, HasOptionalParms, Const)
+// (Final, Latent, PreOperator, NetReliable, Event, HasOptionalParms, Const)
 // Parameters:
 // class UAkBaseSoundObject*      akSound                        (Parm)
 // float                          fDelay                         (Parm)
@@ -12249,12 +12274,12 @@ void UTgGfxScene::QueueSound(class UAkBaseSoundObject* akSound, float fDelay)
 
 
 // Function TgClient.TgGfxScene.IsSoundQueued
-// (Defined, Latent, PreOperator, Net, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Final, Net, NetReliable, Simulated, Native, Operator, Static, Const)
 // Parameters:
 // class UAkBaseSoundObject*      akSound                        (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UTgGfxScene::IsSoundQueued(class UAkBaseSoundObject* akSound)
+bool UTgGfxScene::STATIC_IsSoundQueued(class UAkBaseSoundObject* akSound)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGfxScene.IsSoundQueued");
 
@@ -12273,13 +12298,13 @@ bool UTgGfxScene::IsSoundQueued(class UAkBaseSoundObject* akSound)
 
 
 // Function TgClient.TgGfxScene.IsAnimatingType
-// (Final, Defined, Latent, Net, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Defined, PreOperator, Singular, NetReliable, Simulated, Native, Operator, Static, Const)
 // Parameters:
 // class UGFxObject*              pObj                           (Parm)
 // TEnumAsByte<EUIANIMTYPE>       eType                          (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UTgGfxScene::IsAnimatingType(class UGFxObject* pObj, TEnumAsByte<EUIANIMTYPE> eType)
+bool UTgGfxScene::STATIC_IsAnimatingType(class UGFxObject* pObj, TEnumAsByte<EUIANIMTYPE> eType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGfxScene.IsAnimatingType");
 
@@ -12299,12 +12324,12 @@ bool UTgGfxScene::IsAnimatingType(class UGFxObject* pObj, TEnumAsByte<EUIANIMTYP
 
 
 // Function TgClient.TgGfxScene.IsAnimating
-// (Defined, Latent, Net, Simulated, Exec, Native, HasOptionalParms, Const)
+// (Final, PreOperator, Singular, NetReliable, Simulated, Native, Operator, Static, Const)
 // Parameters:
 // class UGFxObject*              pObj                           (Parm)
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UTgGfxScene::IsAnimating(class UGFxObject* pObj)
+bool UTgGfxScene::STATIC_IsAnimating(class UGFxObject* pObj)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGfxScene.IsAnimating");
 
@@ -12323,12 +12348,12 @@ bool UTgGfxScene::IsAnimating(class UGFxObject* pObj)
 
 
 // Function TgClient.TgGfxScene.EndAnim
-// (Final, Defined, Iterator, Latent, PreOperator, Simulated, Native, HasOptionalParms, Const)
+// (Final, Defined, Iterator, NetReliable, Simulated, Exec, Operator, Static, Const)
 // Parameters:
 // class UGFxObject*              pObj                           (Parm)
 // TEnumAsByte<EUIANIMTYPE>       eType                          (Parm)
 
-void UTgGfxScene::EndAnim(class UGFxObject* pObj, TEnumAsByte<EUIANIMTYPE> eType)
+void UTgGfxScene::STATIC_EndAnim(class UGFxObject* pObj, TEnumAsByte<EUIANIMTYPE> eType)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGfxScene.EndAnim");
 
@@ -12337,7 +12362,6 @@ void UTgGfxScene::EndAnim(class UGFxObject* pObj, TEnumAsByte<EUIANIMTYPE> eType
 	params.eType = eType;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -12346,11 +12370,11 @@ void UTgGfxScene::EndAnim(class UGFxObject* pObj, TEnumAsByte<EUIANIMTYPE> eType
 
 
 // Function TgClient.TgGfxScene.CancelAnim
-// (Defined, Iterator, Singular, Net, NetReliable, Simulated, Exec, HasOptionalParms, Const)
+// (Defined, Iterator, Latent, Net, Exec, Operator, Static, Const)
 // Parameters:
 // class UGFxObject*              pObj                           (Parm)
 
-void UTgGfxScene::CancelAnim(class UGFxObject* pObj)
+void UTgGfxScene::STATIC_CancelAnim(class UGFxObject* pObj)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGfxScene.CancelAnim");
 
@@ -12366,7 +12390,7 @@ void UTgGfxScene::CancelAnim(class UGFxObject* pObj)
 
 
 // Function TgClient.TgGfxScene.Animate
-// (Final, Defined, Latent, Singular, Net, Simulated, Exec, HasOptionalParms, Const)
+// (Final, Defined, PreOperator, Net, NetReliable, Simulated, Operator, Static, Const)
 // Parameters:
 // class UGFxObject*              pObj                           (Parm)
 // float                          fTime                          (Parm)
@@ -12376,7 +12400,7 @@ void UTgGfxScene::CancelAnim(class UGFxObject* pObj)
 // unsigned char                  eQuad                          (OptionalParm, Parm)
 // bool                           bEndCurrentAnim                (OptionalParm, Parm)
 
-void UTgGfxScene::Animate(class UGFxObject* pObj, float fTime, TEnumAsByte<EUIANIMTYPE> eType, float fValue, float fDelay, unsigned char eQuad, bool bEndCurrentAnim)
+void UTgGfxScene::STATIC_Animate(class UGFxObject* pObj, float fTime, TEnumAsByte<EUIANIMTYPE> eType, float fValue, float fDelay, unsigned char eQuad, bool bEndCurrentAnim)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.TgGfxScene.Animate");
 
@@ -12398,7 +12422,7 @@ void UTgGfxScene::Animate(class UGFxObject* pObj, float fTime, TEnumAsByte<EUIAN
 
 
 // Function TgClient.TgGfxScene.Click
-// (Iterator, PreOperator, Singular, Simulated, Exec, Event, HasOptionalParms)
+// (PreOperator, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // class UGFxObject*              pObj                           (Parm)
 
@@ -12418,7 +12442,7 @@ void UTgGfxScene::Click(class UGFxObject* pObj)
 
 
 // Function TgClient.TgGfxScene.Rollout
-// (Defined, Latent, PreOperator, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Defined, Iterator, PreOperator, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // class UGFxObject*              pObj                           (Parm)
 
@@ -12438,7 +12462,7 @@ void UTgGfxScene::Rollout(class UGFxObject* pObj)
 
 
 // Function TgClient.TgGfxScene.Rollover
-// (Final, Defined, Latent, PreOperator, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Defined, Iterator, PreOperator, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // class UGFxObject*              pObj                           (Parm)
 
@@ -12458,7 +12482,7 @@ void UTgGfxScene::Rollover(class UGFxObject* pObj)
 
 
 // Function TgClient.TgGfxScene.Focus
-// (Final, Iterator, Latent, PreOperator, Singular, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Latent, PreOperator, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // class UGFxObject*              pObj                           (Parm)
 
@@ -12478,7 +12502,7 @@ void UTgGfxScene::Focus(class UGFxObject* pObj)
 
 
 // Function TgClient.TgGfxScene.ReceiveEvent
-// (Final, Iterator, Net, Exec, Event, Operator, HasOptionalParms, Const)
+// (Final, Defined, Latent, Singular, NetReliable, Event, HasOptionalParms, Const)
 // Parameters:
 // class UGFxObject*              pObj                           (Parm)
 // int                            nEvent                         (Parm)
@@ -12500,7 +12524,7 @@ void UTgGfxScene::ReceiveEvent(class UGFxObject* pObj, int nEvent)
 
 
 // Function TgClient.TgGfxScene.DelegateEvent
-// (Latent, PreOperator, Singular, Simulated, Exec, Event, HasOptionalParms)
+// (Iterator, PreOperator, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // class UGFxObject*              pObj                           (Parm)
 // int                            nEvent                         (Parm)
@@ -12522,7 +12546,7 @@ void UTgGfxScene::DelegateEvent(class UGFxObject* pObj, int nEvent)
 
 
 // Function TgClient.UIAccountLinkPopup.SetOSSRecordingEnabled
-// (Final, Defined, Iterator, Latent, PreOperator, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Defined, Latent, PreOperator, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // bool                           bEnabled                       (Parm)
 
@@ -12542,7 +12566,7 @@ void UUIAccountLinkPopup::SetOSSRecordingEnabled(bool bEnabled)
 
 
 // Function TgClient.UIHudChampionSelect.GetBotSpawnName
-// (Final, Defined, Iterator, Latent, PreOperator, Singular, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Defined, Latent, PreOperator, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // struct FString                 sValue                         (Parm, NeedCtorLink)
 // struct FString                 ReturnValue                    (Parm, OutParm, ReturnParm, NeedCtorLink)
@@ -12565,12 +12589,12 @@ struct FString UUIHudChampionSelect::GetBotSpawnName(const struct FString& sValu
 
 
 // Function TgClient.UIHudCredits.CreateRewardInfo
-// (Final, Iterator, Singular, Native, HasOptionalParms, Const)
+// (Final, Iterator, Latent, NetReliable, Exec, Operator, Static, Const)
 // Parameters:
 // bool                           bIsCombo                       (Parm)
 // struct FUIRewardInfo           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FUIRewardInfo UUIHudCredits::CreateRewardInfo(bool bIsCombo)
+struct FUIRewardInfo UUIHudCredits::STATIC_CreateRewardInfo(bool bIsCombo)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIHudCredits.CreateRewardInfo");
 
@@ -12578,7 +12602,6 @@ struct FUIRewardInfo UUIHudCredits::CreateRewardInfo(bool bIsCombo)
 	params.bIsCombo = bIsCombo;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -12589,11 +12612,11 @@ struct FUIRewardInfo UUIHudCredits::CreateRewardInfo(bool bIsCombo)
 
 
 // Function TgClient.UIHudKillFeed.RemoveEntry
-// (Final, Defined, Iterator, PreOperator, Net, NetReliable, Simulated, Native, Static, HasOptionalParms, Const)
+// (Final, Iterator, Latent, Singular, Net, Native, Operator, HasOptionalParms, Const)
 // Parameters:
 // int                            nNdx                           (Parm)
 
-void UUIHudKillFeed::STATIC_RemoveEntry(int nNdx)
+void UUIHudKillFeed::RemoveEntry(int nNdx)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIHudKillFeed.RemoveEntry");
 
@@ -12610,12 +12633,12 @@ void UUIHudKillFeed::STATIC_RemoveEntry(int nNdx)
 
 
 // Function TgClient.UIHudKillFeed.PrepareEntry
-// (Defined, Iterator, Net, NetReliable, Simulated, Native, Static, HasOptionalParms, Const)
+// (Iterator, Latent, PreOperator, Net, Native, Operator, HasOptionalParms, Const)
 // Parameters:
 // bool                           bIncludeHHPickupElements       (Parm)
 // struct FUIKILLFEED_DATA        ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FUIKILLFEED_DATA UUIHudKillFeed::STATIC_PrepareEntry(bool bIncludeHHPickupElements)
+struct FUIKILLFEED_DATA UUIHudKillFeed::PrepareEntry(bool bIncludeHHPickupElements)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIHudKillFeed.PrepareEntry");
 
@@ -12634,12 +12657,12 @@ struct FUIKILLFEED_DATA UUIHudKillFeed::STATIC_PrepareEntry(bool bIncludeHHPicku
 
 
 // Function TgClient.UIHudKillFeed.CreateEntry
-// (Final, Defined, Singular, Native, HasOptionalParms, Const)
+// (Final, Defined, Latent, NetReliable, Exec, Operator, Static, Const)
 // Parameters:
 // bool                           bIncludeHHPickupElements       (Parm)
 // struct FUIKILLFEED_DATA        ReturnValue                    (Parm, OutParm, ReturnParm)
 
-struct FUIKILLFEED_DATA UUIHudKillFeed::CreateEntry(bool bIncludeHHPickupElements)
+struct FUIKILLFEED_DATA UUIHudKillFeed::STATIC_CreateEntry(bool bIncludeHHPickupElements)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIHudKillFeed.CreateEntry");
 
@@ -12647,7 +12670,6 @@ struct FUIKILLFEED_DATA UUIHudKillFeed::CreateEntry(bool bIncludeHHPickupElement
 	params.bIncludeHHPickupElements = bIncludeHHPickupElements;
 
 	auto flags = fn->FunctionFlags;
-	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -12658,11 +12680,11 @@ struct FUIKILLFEED_DATA UUIHudKillFeed::CreateEntry(bool bIncludeHHPickupElement
 
 
 // Function TgClient.UIHudMap.AddNamedArea
-// (Final, Defined, Iterator, Latent, PreOperator, Net, Simulated, Exec, HasOptionalParms, Const)
+// (Final, Defined, Iterator, Net, NetReliable, Simulated, Operator, Static, Const)
 // Parameters:
 // class ATgNamedPOIActor*        pPOI                           (Parm)
 
-void UUIHudMap::AddNamedArea(class ATgNamedPOIActor* pPOI)
+void UUIHudMap::STATIC_AddNamedArea(class ATgNamedPOIActor* pPOI)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIHudMap.AddNamedArea");
 
@@ -12678,11 +12700,11 @@ void UUIHudMap::AddNamedArea(class ATgNamedPOIActor* pPOI)
 
 
 // Function TgClient.UIHudMinimap.AddNamedArea
-// (Final, Defined, Iterator, Latent, PreOperator, Net, Simulated, Exec, HasOptionalParms, Const)
+// (Final, Defined, Iterator, Net, NetReliable, Simulated, Operator, Static, Const)
 // Parameters:
 // class ATgNamedPOIActor*        pPOI                           (Parm)
 
-void UUIHudMinimap::AddNamedArea(class ATgNamedPOIActor* pPOI)
+void UUIHudMinimap::STATIC_AddNamedArea(class ATgNamedPOIActor* pPOI)
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIHudMinimap.AddNamedArea");
 
@@ -12698,7 +12720,7 @@ void UUIHudMinimap::AddNamedArea(class ATgNamedPOIActor* pPOI)
 
 
 // Function TgClient.UIHudResult.HandleAnimState
-// (Final, Iterator, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Final, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // int                            nAnimState                     (Parm)
 // int                            nAnimGroup                     (OptionalParm, Parm)
@@ -12720,17 +12742,18 @@ void UUIHudResult::HandleAnimState(int nAnimState, int nAnimGroup)
 
 
 // Function TgClient.UIHudScoreboard.HasCachedScalingCautEffect
-// (PreOperator, Singular, Net, Static, HasOptionalParms, Const)
+// (Latent, PreOperator, Net, NetReliable, Exec, Native, Event, HasOptionalParms, Const)
 // Parameters:
 // bool                           ReturnValue                    (Parm, OutParm, ReturnParm)
 
-bool UUIHudScoreboard::STATIC_HasCachedScalingCautEffect()
+bool UUIHudScoreboard::HasCachedScalingCautEffect()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UIHudScoreboard.HasCachedScalingCautEffect");
 
 	UUIHudScoreboard_HasCachedScalingCautEffect_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 
@@ -12741,7 +12764,7 @@ bool UUIHudScoreboard::STATIC_HasCachedScalingCautEffect()
 
 
 // Function TgClient.UIHudTeam.TransitionTeamSidesSizing
-// (Defined, Singular, NetReliable, Simulated, Exec, Event, Operator, HasOptionalParms, Const)
+// (Latent, Exec, Event, HasOptionalParms, Const)
 // Parameters:
 // bool                           bSmall                         (Parm)
 // float                          fAnimTime                      (OptionalParm, Parm)
@@ -12763,7 +12786,7 @@ void UUIHudTeam::TransitionTeamSidesSizing(bool bSmall, float fAnimTime)
 
 
 // Function TgClient.UIHudTeam.TransitionStats
-// (Final, Defined, Latent, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Defined, Iterator, Singular, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // bool                           bShow                          (Parm)
 // float                          fAnimTime                      (Parm)
@@ -12785,7 +12808,7 @@ void UUIHudTeam::TransitionStats(bool bShow, float fAnimTime)
 
 
 // Function TgClient.UIHudTeam.TransitionTeamSides
-// (Iterator, Latent, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Latent, Singular, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // bool                           bShow                          (Parm)
 // float                          fAnimTime                      (Parm)
@@ -12807,7 +12830,7 @@ void UUIHudTeam::TransitionTeamSides(bool bShow, float fAnimTime)
 
 
 // Function TgClient.UIHudTeam.TransitionTeamTop
-// (Final, Iterator, Latent, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Final, Latent, Singular, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // bool                           bShow                          (Parm)
 // float                          fAnimTime                      (Parm)
@@ -12829,7 +12852,7 @@ void UUIHudTeam::TransitionTeamTop(bool bShow, float fAnimTime)
 
 
 // Function TgClient.UIHudTeam.HandleAnimState
-// (Final, Iterator, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Final, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // int                            nAnimState                     (Parm)
 // int                            nAnimGroup                     (OptionalParm, Parm)
@@ -12851,7 +12874,7 @@ void UUIHudTeam::HandleAnimState(int nAnimState, int nAnimGroup)
 
 
 // Function TgClient.UIPurchaseGems.GetInventoryItems
-// (Net, Simulated, Exec, Event, HasOptionalParms)
+// (Iterator, Latent, PreOperator, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // TArray<struct FMarketplaceInventoryItem> InventoryItems                 (Parm, OutParm, NeedCtorLink)
 
@@ -12873,7 +12896,7 @@ void UUIPurchaseGems::GetInventoryItems(TArray<struct FMarketplaceInventoryItem>
 
 
 // Function TgClient.UISimulMedia.UpdateSimulmediaPopupOpportunities
-// (Final, Iterator, PreOperator, Singular, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Final, PreOperator, Singular, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 // Parameters:
 // float                          DeltaTime                      (Parm)
 
@@ -12893,7 +12916,7 @@ void UUISimulMedia::UpdateSimulmediaPopupOpportunities(float DeltaTime)
 
 
 // Function TgClient.UISimulMedia.RemoveSimulmediaDelegate
-// (Latent, PreOperator, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Iterator, PreOperator, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 
 void UUISimulMedia::RemoveSimulmediaDelegate()
 {
@@ -12910,7 +12933,7 @@ void UUISimulMedia::RemoveSimulmediaDelegate()
 
 
 // Function TgClient.UISimulMedia.SetOnPostAdvanceDelegateSimulmedia
-// (Defined, Iterator, Latent, PreOperator, Net, Simulated, Exec, Event, HasOptionalParms)
+// (Defined, Latent, PreOperator, NetReliable, Simulated, Exec, Event, HasOptionalParms)
 
 void UUISimulMedia::SetOnPostAdvanceDelegateSimulmedia()
 {
@@ -12927,9 +12950,9 @@ void UUISimulMedia::SetOnPostAdvanceDelegateSimulmedia()
 
 
 // Function TgClient.UISimulMedia.OnOpportunityUpdated
-// (Final, Iterator, Singular, NetReliable, Simulated, Native, Static, HasOptionalParms, Const)
+// (Final, Defined, Latent, PreOperator, Singular, Native, Operator, HasOptionalParms, Const)
 
-void UUISimulMedia::STATIC_OnOpportunityUpdated()
+void UUISimulMedia::OnOpportunityUpdated()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function TgClient.UISimulMedia.OnOpportunityUpdated");
 
@@ -12945,7 +12968,7 @@ void UUISimulMedia::STATIC_OnOpportunityUpdated()
 
 
 // Function TgClient.TgIconGroup.OnManifestLoaded
-// (Iterator, PreOperator, Net, Simulated, Event, Operator, HasOptionalParms, Const)
+// (Defined, Latent, PreOperator, Singular, NetReliable, Simulated, Exec, Native, HasOptionalParms, Const)
 
 void UTgIconGroup::OnManifestLoaded()
 {
@@ -12954,6 +12977,7 @@ void UTgIconGroup::OnManifestLoaded()
 	UTgIconGroup_OnManifestLoaded_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 

@@ -1,6 +1,6 @@
 #pragma once
 
-// Paladins (3.05) SDK
+// Paladins (5.5) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -1358,6 +1358,12 @@ struct UUIDataGoals_GetLoreCompleteCount_Params
 
 // Function TgClient.UIDataGoals.GetLoreProgress
 struct UUIDataGoals_GetLoreProgress_Params
+{
+	struct Fdword                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgClient.UIDataGoals.GetDailyQuestStreakCount
+struct UUIDataGoals_GetDailyQuestStreakCount_Params
 {
 	struct Fdword                                      ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };

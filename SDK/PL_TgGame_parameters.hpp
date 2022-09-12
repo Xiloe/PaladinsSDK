@@ -1,6 +1,6 @@
 #pragma once
 
-// Paladins (3.05) SDK
+// Paladins (5.5) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -5883,6 +5883,21 @@ struct UTgBattleCheatManager_TestServerRequestCard_Params
 // Function TgGame.TgBattleCheatManager.separator
 struct UTgBattleCheatManager_separator_Params
 {
+};
+
+// Function TgGame.TgBattleCheatManager.ResetQuestsAnimation
+struct UTgBattleCheatManager_ResetQuestsAnimation_Params
+{
+	int                                                nReduce;                                                  // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgBattleCheatManager.AddNotification
+struct UTgBattleCheatManager_AddNotification_Params
+{
+	int                                                nQuantity;                                                // (OptionalParm, Parm)
+	unsigned char                                      eQuestOrigin;                                             // (OptionalParm, Parm)
+	unsigned char                                      eType;                                                    // (OptionalParm, Parm)
+	int                                                dwLootId;                                                 // (OptionalParm, Parm)
 };
 
 // Function TgGame.TgBattleCheatManager.ToggleTransitionManifest
@@ -12351,6 +12366,13 @@ struct ATgDevice_ArcingBeam_EndArcing_Params
 	int                                                Index;                                                    // (Parm)
 };
 
+// Function TgGame.TgDevice_ArcingBeam.ApplyCustomFireToInitial
+struct ATgDevice_ArcingBeam_ApplyCustomFireToInitial_Params
+{
+	class AActor*                                      InitialTarget;                                            // (Parm)
+	class UTgDeviceFire*                               FireMode;                                                 // (Parm)
+};
+
 // Function TgGame.TgDevice_ArcingBeam.BeginArcing
 struct ATgDevice_ArcingBeam_BeginArcing_Params
 {
@@ -12532,8 +12554,18 @@ struct ATgDevice_ChainSequence_OnChainReset_Params
 {
 };
 
+// Function TgGame.TgDevice_ChainSequence.OnInterruptEvent
+struct ATgDevice_ChainSequence_OnInterruptEvent_Params
+{
+};
+
 // Function TgGame.TgDevice_ChainSequence.UpdateDesiredFireMode
 struct ATgDevice_ChainSequence_UpdateDesiredFireMode_Params
+{
+};
+
+// Function TgGame.TgDevice_ChainSequence.PostReloadTimer
+struct ATgDevice_ChainSequence_PostReloadTimer_Params
 {
 };
 
@@ -15787,6 +15819,14 @@ struct UTgDeviceForm_CacheAnimNode_Params
 struct UTgDeviceForm_ClearAnimNodes_Params
 {
 	bool                                               bIs3p;                                                    // (Parm)
+};
+
+// Function TgGame.TgDeviceForm.GetAssemblyIdFromFiremode
+struct UTgDeviceForm_GetAssemblyIdFromFiremode_Params
+{
+	int                                                nFireMode;                                                // (Parm)
+	bool                                               bFromProj;                                                // (OptionalParm, Parm)
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function TgGame.TgDeviceForm.GetPawnById
@@ -41075,6 +41115,12 @@ struct ATgGame_PaladinsExtended_GetOvertimeDuration_Params
 	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function TgGame.TgGame_PaladinsExtended.GetWinningTickets
+struct ATgGame_PaladinsExtended_GetWinningTickets_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function TgGame.TgGame_Paladins_Siege.HasCaptureObjectives
 struct ATgGame_Paladins_Siege_HasCaptureObjectives_Params
 {
@@ -43275,6 +43321,11 @@ struct ATgRepInfo_Game_UpdateGameClockUI_Params
 {
 };
 
+// Function TgGame.TgRepInfo_Game.ProcessServerGameProperties
+struct ATgRepInfo_Game_ProcessServerGameProperties_Params
+{
+};
+
 // Function TgGame.TgRepInfo_Game.CheckIsEnemy
 struct ATgRepInfo_Game_CheckIsEnemy_Params
 {
@@ -44538,6 +44589,14 @@ struct UTgGamePhase_Bombardment_BombardmentDelay_Params
 // Function TgGame.TgGamePhase_Bombardment.BeginPhase
 struct UTgGamePhase_Bombardment_BeginPhase_Params
 {
+};
+
+// Function TgGame.TgGamePhase_Bombardment.GetEndpoint
+struct UTgGamePhase_Bombardment_GetEndpoint_Params
+{
+	struct FVector                                     vStart;                                                   // (Parm)
+	struct FVector                                     vDirection;                                               // (Parm)
+	float                                              fDist;                                                    // (Parm)
 };
 
 // Function TgGame.TgGamePhase_Bombardment.SetupFireMode
@@ -60980,6 +61039,13 @@ struct ATgDevice_Stealth_ShouldInterruptReloadOnFire_Params
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function TgGame.TgDevice_Stealth.GetFiringPostHitDelay
+struct ATgDevice_Stealth_GetFiringPostHitDelay_Params
+{
+	int                                                nMode;                                                    // (OptionalParm, Parm)
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function TgGame.TgDevice_Stealth.NativeCanBeCanceled
 struct ATgDevice_Stealth_NativeCanBeCanceled_Params
 {
@@ -71028,6 +71094,12 @@ struct ATgPawn_Vampire_GetBloodBonusFiremode_Params
 	class UTgDeviceFire*                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function TgGame.TgAnimNodeChannelFire_CaspianMovement.SetAnimState
+struct UTgAnimNodeChannelFire_CaspianMovement_SetAnimState_Params
+{
+	TEnumAsByte<ECaspianMovementAnimState>             animState;                                                // (Parm)
+};
+
 // Function TgGame.TgDevice_CaspianAltfire.PrepReload
 struct ATgDevice_CaspianAltfire_PrepReload_Params
 {
@@ -71067,6 +71139,13 @@ struct ATgDevice_CaspianAltfire_UsesSimulatedAmmo_Params
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function TgGame.TgDevice_CaspianAltfire.ConsumeAmmo
+struct ATgDevice_CaspianAltfire_ConsumeAmmo_Params
+{
+	int                                                Amount;                                                   // (OptionalParm, Parm)
+	bool                                               bShouldValidate;                                          // (OptionalParm, Parm)
+};
+
 // Function TgGame.TgDevice_CaspianAltfire.FireAmmunition
 struct ATgDevice_CaspianAltfire_FireAmmunition_Params
 {
@@ -71090,6 +71169,12 @@ struct ATgDevice_CaspianAltfire_GetFiringPreHitDelay_Params
 {
 	int                                                nMode;                                                    // (OptionalParm, Parm)
 	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianAltfire.CanBeSilenced
+struct ATgDevice_CaspianAltfire_CanBeSilenced_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function TgGame.TgDevice_CaspianAltfire.CanDeviceFireNow
@@ -71148,6 +71233,26 @@ struct ATgDevice_CaspianQ_HasCachedCaspian_Params
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function TgGame.TgDevice_CaspianQTalent.OnUnlinkDevice
+struct ATgDevice_CaspianQTalent_OnUnlinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_CaspianQTalent.OnLinkDevice
+struct ATgDevice_CaspianQTalent_OnLinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_CaspianQTalent.CanSpawnOnClientFirst
+struct ATgDevice_CaspianQTalent_CanSpawnOnClientFirst_Params
+{
+	class UClass*                                      ProjectileClass;                                          // (Parm)
+	bool                                               bUsesTrackingTarget;                                      // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function TgGame.TgDevice_CaspianUlt.OnUnlinkDevice
 struct ATgDevice_CaspianUlt_OnUnlinkDevice_Params
 {
@@ -71172,98 +71277,14 @@ struct ATgDevice_CaspianUlt_LinkedDeviceEquipped_Params
 	class ATgDevice*                                   Dev;                                                      // (Parm)
 };
 
-// Function TgGame.TgDevice_CaspianUlt.EarlyOut
-struct ATgDevice_CaspianUlt_EarlyOut_Params
-{
-};
-
-// Function TgGame.TgDevice_CaspianUlt.UpdateSwordMissiles
-struct ATgDevice_CaspianUlt_UpdateSwordMissiles_Params
-{
-};
-
-// Function TgGame.TgDevice_CaspianUlt.UpdateSword
-struct ATgDevice_CaspianUlt_UpdateSword_Params
-{
-	int                                                Index;                                                    // (Parm)
-};
-
-// Function TgGame.TgDevice_CaspianUlt.DeactivateSword
-struct ATgDevice_CaspianUlt_DeactivateSword_Params
-{
-	int                                                I;                                                        // (Parm)
-};
-
 // Function TgGame.TgDevice_CaspianUlt.DeactivateAllSwords
 struct ATgDevice_CaspianUlt_DeactivateAllSwords_Params
 {
 };
 
-// Function TgGame.TgDevice_CaspianUlt.LocalActivateSword
-struct ATgDevice_CaspianUlt_LocalActivateSword_Params
+// Function TgGame.TgDevice_CaspianUlt.EarlyOut
+struct ATgDevice_CaspianUlt_EarlyOut_Params
 {
-	int                                                I;                                                        // (Parm)
-};
-
-// Function TgGame.TgDevice_CaspianUlt.SpawnSword
-struct ATgDevice_CaspianUlt_SpawnSword_Params
-{
-	int                                                nPosition;                                                // (Parm)
-};
-
-// Function TgGame.TgDevice_CaspianUlt.RollbackSimulatedSwordMissileFire
-struct ATgDevice_CaspianUlt_RollbackSimulatedSwordMissileFire_Params
-{
-	int                                                Index;                                                    // (Parm)
-};
-
-// Function TgGame.TgDevice_CaspianUlt.DeactivateSwordFx
-struct ATgDevice_CaspianUlt_DeactivateSwordFx_Params
-{
-	int                                                Index;                                                    // (Parm)
-};
-
-// Function TgGame.TgDevice_CaspianUlt.ActivateSwordFx
-struct ATgDevice_CaspianUlt_ActivateSwordFx_Params
-{
-	int                                                Index;                                                    // (Parm)
-};
-
-// Function TgGame.TgDevice_CaspianUlt.GetNextFreeSwordIndex
-struct ATgDevice_CaspianUlt_GetNextFreeSwordIndex_Params
-{
-	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function TgGame.TgDevice_CaspianUlt.GetSwordWorldLocation
-struct ATgDevice_CaspianUlt_GetSwordWorldLocation_Params
-{
-	int                                                nNdx;                                                     // (Parm)
-	struct FVector                                     ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function TgGame.TgDevice_CaspianUlt.GetNextSwordProjectileFireOffset
-struct ATgDevice_CaspianUlt_GetNextSwordProjectileFireOffset_Params
-{
-	struct FVector                                     ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function TgGame.TgDevice_CaspianUlt.GetNextSwordToFire
-struct ATgDevice_CaspianUlt_GetNextSwordToFire_Params
-{
-	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function TgGame.TgDevice_CaspianUlt.OnSwordExploded
-struct ATgDevice_CaspianUlt_OnSwordExploded_Params
-{
-	class ATgProjectile*                               SwordProjectile;                                          // (Parm)
-};
-
-// Function TgGame.TgDevice_CaspianUlt.OnSwordFired
-struct ATgDevice_CaspianUlt_OnSwordFired_Params
-{
-	class ATgProjectile*                               SwordProjectile;                                          // (Parm)
 };
 
 // Function TgGame.TgDevice_CaspianUlt.FireAmmunition
@@ -71277,80 +71298,9 @@ struct ATgDevice_CaspianUlt_Tick_Params
 	float                                              DeltaSeconds;                                             // (Parm)
 };
 
-// Function TgGame.TgDevice_CaspianUlt.AuthSwordUpdated
-struct ATgDevice_CaspianUlt_AuthSwordUpdated_Params
-{
-	int                                                I;                                                        // (Parm)
-};
-
 // Function TgGame.TgDevice_CaspianUlt.ShouldInterruptInhand
 struct ATgDevice_CaspianUlt_ShouldInterruptInhand_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function TgGame.TgDevice_CaspianUlt.ReplicatedEvent
-struct ATgDevice_CaspianUlt_ReplicatedEvent_Params
-{
-	struct FName                                       VarName;                                                  // (Parm)
-};
-
-// Function TgGame.TgDevice_CaspianUlt.GetSwordIsFiredSimulated
-struct ATgDevice_CaspianUlt_GetSwordIsFiredSimulated_Params
-{
-	int                                                nNdx;                                                     // (Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function TgGame.TgDevice_CaspianUlt.SetSwordPositionIndex
-struct ATgDevice_CaspianUlt_SetSwordPositionIndex_Params
-{
-	int                                                nNdx;                                                     // (Parm)
-	int                                                nPosition;                                                // (Parm)
-};
-
-// Function TgGame.TgDevice_CaspianUlt.SetSwordIsFired
-struct ATgDevice_CaspianUlt_SetSwordIsFired_Params
-{
-	int                                                nNdx;                                                     // (Parm)
-	bool                                               bIsFired;                                                 // (Parm)
-};
-
-// Function TgGame.TgDevice_CaspianUlt.SetSwordIsActive
-struct ATgDevice_CaspianUlt_SetSwordIsActive_Params
-{
-	int                                                nNdx;                                                     // (Parm)
-	bool                                               bIsActive;                                                // (Parm)
-};
-
-// Function TgGame.TgDevice_CaspianUlt.NumSwordsReadyToFire
-struct ATgDevice_CaspianUlt_NumSwordsReadyToFire_Params
-{
-	bool                                               bAuthoritativeOnly;                                       // (OptionalParm, Parm)
-	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function TgGame.TgDevice_CaspianUlt.GetSwordIsActive
-struct ATgDevice_CaspianUlt_GetSwordIsActive_Params
-{
-	int                                                nNdx;                                                     // (Parm)
-	bool                                               byRep;                                                    // (OptionalParm, Parm)
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function TgGame.TgDevice_CaspianUlt.GetSwordPositionIndex
-struct ATgDevice_CaspianUlt_GetSwordPositionIndex_Params
-{
-	int                                                nNdx;                                                     // (Parm)
-	bool                                               byRep;                                                    // (OptionalParm, Parm)
-	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function TgGame.TgDevice_CaspianUlt.GetSwordIsFired
-struct ATgDevice_CaspianUlt_GetSwordIsFired_Params
-{
-	int                                                nNdx;                                                     // (Parm)
-	bool                                               byRep;                                                    // (OptionalParm, Parm)
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -71373,13 +71323,6 @@ struct ATgDevice_CaspianUlt_IsDeviceFiringForUI_Params
 // Function TgGame.TgDevice_CaspianUlt.IsInFalsePostfire
 struct ATgDevice_CaspianUlt_IsInFalsePostfire_Params
 {
-	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
-// Function TgGame.TgDevice_CaspianUlt.IsSimulatingSpeculativeSwordFired
-struct ATgDevice_CaspianUlt_IsSimulatingSpeculativeSwordFired_Params
-{
-	int                                                Index;                                                    // (Parm)
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
@@ -71419,12 +71362,6 @@ struct ATgDevice_CaspianUltFire_ShouldInterruptInhand_Params
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
-// Function TgGame.TgDevice_CaspianUltFire.GetSwordMeshAsmId
-struct ATgDevice_CaspianUltFire_GetSwordMeshAsmId_Params
-{
-	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
-};
-
 // Function TgGame.TgDevice_CaspianUltFire.CanDeviceFireNow
 struct ATgDevice_CaspianUltFire_CanDeviceFireNow_Params
 {
@@ -71435,10 +71372,27 @@ struct ATgDevice_CaspianUltFire_CanDeviceFireNow_Params
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function TgGame.TgDevice_CaspianInhand.PlayClientFireFx
+struct ATgDevice_CaspianInhand_PlayClientFireFx_Params
+{
+	struct FVector                                     HitLocation;                                              // (Parm)
+	int                                                nSocketIndex;                                             // (Parm)
+	bool                                               bSuccessfulHit;                                           // (Parm)
+	float                                              fRefireTime;                                              // (Parm)
+	int                                                nShotsFired;                                              // (OptionalParm, Parm)
+};
+
 // Function TgGame.TgDevice_CaspianInhand.GetChainMax
 struct ATgDevice_CaspianInhand_GetChainMax_Params
 {
 	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianInhand.ConsumeAmmo
+struct ATgDevice_CaspianInhand_ConsumeAmmo_Params
+{
+	int                                                Amount;                                                   // (OptionalParm, Parm)
+	bool                                               bShouldValidate;                                          // (OptionalParm, Parm)
 };
 
 // Function TgGame.TgDevice_CaspianInhand.FireAmmunition
@@ -71446,10 +71400,48 @@ struct ATgDevice_CaspianInhand_FireAmmunition_Params
 {
 };
 
+// Function TgGame.TgDevice_CaspianInhand.ClientDeactivateTalentThreeEvent
+struct ATgDevice_CaspianInhand_ClientDeactivateTalentThreeEvent_Params
+{
+};
+
+// Function TgGame.TgDevice_CaspianInhand.ClientActivateTalentThreeEvent
+struct ATgDevice_CaspianInhand_ClientActivateTalentThreeEvent_Params
+{
+};
+
+// Function TgGame.TgDevice_CaspianInhand.ClientDeactivateTalentThree
+struct ATgDevice_CaspianInhand_ClientDeactivateTalentThree_Params
+{
+};
+
+// Function TgGame.TgDevice_CaspianInhand.ClientActivateTalentThree
+struct ATgDevice_CaspianInhand_ClientActivateTalentThree_Params
+{
+};
+
+// Function TgGame.TgDevice_CaspianInhand.DeactivateTalentThree
+struct ATgDevice_CaspianInhand_DeactivateTalentThree_Params
+{
+};
+
+// Function TgGame.TgDevice_CaspianInhand.ActivateTalentThree
+struct ATgDevice_CaspianInhand_ActivateTalentThree_Params
+{
+};
+
 // Function TgGame.TgDevice_CaspianInhand.HasCachedCaspian
 struct ATgDevice_CaspianInhand_HasCachedCaspian_Params
 {
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianInhand.DeviceAdjustDamage
+struct ATgDevice_CaspianInhand_DeviceAdjustDamage_Params
+{
+	struct FImpactInfo                                 Impact;                                                   // (Const, Parm, OutParm)
+	float                                              fDamage;                                                  // (Parm, OutParm)
+	int                                                nPropertyId;                                              // (Parm)
 };
 
 // Function TgGame.TgDevice_CaspianInhand.GetFiringPostHitDelay
@@ -71473,8 +71465,94 @@ struct ATgDevice_CaspianInhand_SetFireMode_Params
 	bool                                               ForceSet;                                                 // (OptionalParm, Parm)
 };
 
+// Function TgGame.TgDevice_CaspianMovement.GetChargeTime
+struct ATgDevice_CaspianMovement_GetChargeTime_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianMovement.CancelSafetyTimer
+struct ATgDevice_CaspianMovement_CancelSafetyTimer_Params
+{
+};
+
+// Function TgGame.TgDevice_CaspianMovement.DeactivateTalentTwo
+struct ATgDevice_CaspianMovement_DeactivateTalentTwo_Params
+{
+};
+
+// Function TgGame.TgDevice_CaspianMovement.ActivateTalentTwo
+struct ATgDevice_CaspianMovement_ActivateTalentTwo_Params
+{
+};
+
+// Function TgGame.TgDevice_CaspianMovement.ResetTimers
+struct ATgDevice_CaspianMovement_ResetTimers_Params
+{
+};
+
+// Function TgGame.TgDevice_CaspianMovement.ResetPhys
+struct ATgDevice_CaspianMovement_ResetPhys_Params
+{
+};
+
+// Function TgGame.TgDevice_CaspianMovement.EndPhys
+struct ATgDevice_CaspianMovement_EndPhys_Params
+{
+};
+
+// Function TgGame.TgDevice_CaspianMovement.CanBeInterrupted
+struct ATgDevice_CaspianMovement_CanBeInterrupted_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianMovement.CanFiringBeCanceledByReactivation
+struct ATgDevice_CaspianMovement_CanFiringBeCanceledByReactivation_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianMovement.CanFiringBeCanceledByRightMouse
+struct ATgDevice_CaspianMovement_CanFiringBeCanceledByRightMouse_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianMovement.CanFiringBeCanceledByLeftMouse
+struct ATgDevice_CaspianMovement_CanFiringBeCanceledByLeftMouse_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianMovement.CanBeCanceled
+struct ATgDevice_CaspianMovement_CanBeCanceled_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianMovement.ApplyTouchHit
+struct ATgDevice_CaspianMovement_ApplyTouchHit_Params
+{
+	class ATgPawn*                                     InstigatorPawn;                                           // (Parm)
+	struct FVector                                     vHitLocation;                                             // (Parm)
+	struct FVector                                     vHitNormal;                                               // (Parm)
+	class AActor*                                      Target;                                                   // (Parm)
+};
+
+// Function TgGame.TgDevice_CaspianMovement.CheckTalentTwoStack
+struct ATgDevice_CaspianMovement_CheckTalentTwoStack_Params
+{
+	class AActor*                                      Target;                                                   // (Parm)
+};
+
 // Function TgGame.TgDevice_CaspianMovement.BeginSpinningSwords
 struct ATgDevice_CaspianMovement_BeginSpinningSwords_Params
+{
+};
+
+// Function TgGame.TgDevice_CaspianMovement.ClientBeginSpinningSwords
+struct ATgDevice_CaspianMovement_ClientBeginSpinningSwords_Params
 {
 };
 
@@ -71511,6 +71589,13 @@ struct ATgDevice_CaspianMovement_ServerTrySpinningSwords_Params
 	float                                              fTimeOfActivation;                                        // (Parm)
 };
 
+// Function TgGame.TgDevice_CaspianMovement.InterceptSlotReleased
+struct ATgDevice_CaspianMovement_InterceptSlotReleased_Params
+{
+	class ATgPlayerController*                         TgController;                                             // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
 // Function TgGame.TgDevice_CaspianMovement.InterceptSlotPressed
 struct ATgDevice_CaspianMovement_InterceptSlotPressed_Params
 {
@@ -71518,10 +71603,226 @@ struct ATgDevice_CaspianMovement_InterceptSlotPressed_Params
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function TgGame.TgDevice_CaspianMovement.CheckSpinningSwords
+struct ATgDevice_CaspianMovement_CheckSpinningSwords_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianMovement.FireAmmunition
+struct ATgDevice_CaspianMovement_FireAmmunition_Params
+{
+};
+
 // Function TgGame.TgDevice_CaspianMovement.HasCachedCaspian
 struct ATgDevice_CaspianMovement_HasCachedCaspian_Params
 {
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_CaspianMovement.StartCooldown
+struct ATgDevice_CaspianMovement_StartCooldown_Params
+{
+	int                                                nMode;                                                    // (OptionalParm, Parm)
+	float                                              fCooldownTimeOverride;                                    // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDevice_CaspianMovement.ShouldBankCooldown
+struct ATgDevice_CaspianMovement_ShouldBankCooldown_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDeviceFire_CaspianInHand.GetRange
+struct UTgDeviceFire_CaspianInHand_GetRange_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDeviceFire_CaspianInHandAOE.GetRange
+struct UTgDeviceFire_CaspianInHandAOE_GetRange_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDeviceFire_CaspianInHandAOEThree.GetRange
+struct UTgDeviceFire_CaspianInHandAOEThree_GetRange_Params
+{
+	float                                              ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDeviceForm_CaspianInhand.Fire
+struct UTgDeviceForm_CaspianInhand_Fire_Params
+{
+	struct FVector                                     HitLocation;                                              // (Parm)
+	int                                                nFireMode;                                                // (Parm)
+	int                                                nEquipSlot;                                               // (OptionalParm, Parm)
+	int                                                nSocketIndex;                                             // (OptionalParm, Parm)
+	bool                                               bSuccessfulHit;                                           // (OptionalParm, Parm)
+	float                                              fRefireTime;                                              // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDeviceForm_CaspianMovement.StartFire
+struct UTgDeviceForm_CaspianMovement_StartFire_Params
+{
+	int                                                nFireMode;                                                // (Parm)
+	float                                              fRefireTime;                                              // (OptionalParm, Parm)
+	class AActor*                                      Target;                                                   // (OptionalParm, Parm)
+	int                                                nAmmoRemaining;                                           // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDeviceForm_CaspianMovement.CacheAnimNode
+struct UTgDeviceForm_CaspianMovement_CacheAnimNode_Params
+{
+	class UAnimNode*                                   Node;                                                     // (Parm)
+	bool                                               bIs3p;                                                    // (Parm)
+};
+
+// Function TgGame.TgDeviceForm_CaspianMovement.ClearAnimNodes
+struct UTgDeviceForm_CaspianMovement_ClearAnimNodes_Params
+{
+	bool                                               bIs3p;                                                    // (Parm)
+};
+
+// Function TgGame.TgDeviceForm_CaspianMovement.HasCachedCaspian
+struct UTgDeviceForm_CaspianMovement_HasCachedCaspian_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDeviceForm_CaspianMovement.PlayEndSound
+struct UTgDeviceForm_CaspianMovement_PlayEndSound_Params
+{
+};
+
+// Function TgGame.TgDeviceForm_CaspianMovement.Generic1
+struct UTgDeviceForm_CaspianMovement_Generic1_Params
+{
+	unsigned char                                      byExtraData;                                              // (OptionalParm, Parm)
+};
+
+// Function TgGame.TgDeviceForm_CaspianMovement.UpdateMovementAnimState
+struct UTgDeviceForm_CaspianMovement_UpdateMovementAnimState_Params
+{
+	TEnumAsByte<ECaspianMovementAnimState>             eNewState;                                                // (Parm)
+};
+
+// Function TgGame.TgInvListener_CaspianAddStacks.HasCachedCaspian
+struct UTgInvListener_CaspianAddStacks_HasCachedCaspian_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgInvListener_CaspianExtendStackLifetime.HasCachedCaspian
+struct UTgInvListener_CaspianExtendStackLifetime_HasCachedCaspian_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgInvListener_CaspianStackExpired.HasCachedCaspian
+struct UTgInvListener_CaspianStackExpired_HasCachedCaspian_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgInvListener_CaspianTalentThree.HasCachedCaspian
+struct UTgInvListener_CaspianTalentThree_HasCachedCaspian_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Caspian.GetNextSwordToFire
+struct ATgPawn_Caspian_GetNextSwordToFire_Params
+{
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Caspian.GetNextSwordProjectileFireOffset
+struct ATgPawn_Caspian_GetNextSwordProjectileFireOffset_Params
+{
+	struct FVector                                     ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Caspian.RollbackSimulatedSwordMissileFire
+struct ATgPawn_Caspian_RollbackSimulatedSwordMissileFire_Params
+{
+	int                                                Index;                                                    // (Parm)
+};
+
+// Function TgGame.TgPawn_Caspian.DeactivateSwordFx
+struct ATgPawn_Caspian_DeactivateSwordFx_Params
+{
+	int                                                Index;                                                    // (Parm)
+};
+
+// Function TgGame.TgPawn_Caspian.DeactivateSword
+struct ATgPawn_Caspian_DeactivateSword_Params
+{
+	int                                                I;                                                        // (Parm)
+};
+
+// Function TgGame.TgPawn_Caspian.ActivateSwordFx
+struct ATgPawn_Caspian_ActivateSwordFx_Params
+{
+	int                                                Index;                                                    // (Parm)
+};
+
+// Function TgGame.TgPawn_Caspian.GetNextFreeSwordIndex
+struct ATgPawn_Caspian_GetNextFreeSwordIndex_Params
+{
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Caspian.LocalActivateSword
+struct ATgPawn_Caspian_LocalActivateSword_Params
+{
+	int                                                I;                                                        // (Parm)
+};
+
+// Function TgGame.TgPawn_Caspian.SpawnSword
+struct ATgPawn_Caspian_SpawnSword_Params
+{
+	int                                                nPosition;                                                // (Parm)
+};
+
+// Function TgGame.TgPawn_Caspian.UpdateSwordMissiles
+struct ATgPawn_Caspian_UpdateSwordMissiles_Params
+{
+};
+
+// Function TgGame.TgPawn_Caspian.UpdateSword
+struct ATgPawn_Caspian_UpdateSword_Params
+{
+	int                                                Index;                                                    // (Parm)
+};
+
+// Function TgGame.TgPawn_Caspian.OnSwordExploded
+struct ATgPawn_Caspian_OnSwordExploded_Params
+{
+	class ATgProjectile*                               SwordProjectile;                                          // (Parm)
+};
+
+// Function TgGame.TgPawn_Caspian.OnSwordFired
+struct ATgPawn_Caspian_OnSwordFired_Params
+{
+	class ATgProjectile*                               SwordProjectile;                                          // (Parm)
+};
+
+// Function TgGame.TgPawn_Caspian.AttemptFireUltSword
+struct ATgPawn_Caspian_AttemptFireUltSword_Params
+{
+};
+
+// Function TgGame.TgPawn_Caspian.AuthSwordUpdated
+struct ATgPawn_Caspian_AuthSwordUpdated_Params
+{
+	int                                                I;                                                        // (Parm)
+};
+
+// Function TgGame.TgPawn_Caspian.Tick
+struct ATgPawn_Caspian_Tick_Params
+{
+	float                                              DeltaSeconds;                                             // (Parm)
 };
 
 // Function TgGame.TgPawn_Caspian.CanFlyWithoutHover
@@ -71536,9 +71837,54 @@ struct ATgPawn_Caspian_ReplicatedEvent_Params
 	struct FName                                       VarName;                                                  // (Parm)
 };
 
-// Function TgGame.TgPawn_Caspian.AttemptFireUltSword
-struct ATgPawn_Caspian_AttemptFireUltSword_Params
+// Function TgGame.TgPawn_Caspian.ClearStacksOnRespawn
+struct ATgPawn_Caspian_ClearStacksOnRespawn_Params
 {
+};
+
+// Function TgGame.TgPawn_Caspian.OnLiveRespawn
+struct ATgPawn_Caspian_OnLiveRespawn_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Caspian.OnRespawn
+struct ATgPawn_Caspian_OnRespawn_Params
+{
+};
+
+// Function TgGame.TgPawn_Caspian.GetUISkillEqpSlotOverride_Caspian
+struct ATgPawn_Caspian_GetUISkillEqpSlotOverride_Caspian_Params
+{
+	int                                                nEquipSlot;                                               // (Parm)
+	TEnumAsByte<EUI_SKILL_EQUIP_SLOT>                  eUISlot;                                                  // (Parm)
+	bool                                               bShouldSwapAltAndInhandInputs;                            // (Parm)
+	int                                                nFallThroughValue;                                        // (Parm)
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Caspian.GetUISkillEqpSlotOverrideStaticDefault
+struct ATgPawn_Caspian_GetUISkillEqpSlotOverrideStaticDefault_Params
+{
+	int                                                nEquipSlot;                                               // (Parm)
+	TEnumAsByte<EUI_SKILL_EQUIP_SLOT>                  eUISlot;                                                  // (OptionalParm, Parm)
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Caspian.GetUISkillEqpSlotOverride
+struct ATgPawn_Caspian_GetUISkillEqpSlotOverride_Params
+{
+	int                                                nEquipSlot;                                               // (Parm)
+	TEnumAsByte<EUI_SKILL_EQUIP_SLOT>                  eUISlot;                                                  // (OptionalParm, Parm)
+	bool                                               bBaseSkillOnly;                                           // (OptionalParm, Parm)
+	bool                                               bGamepadUI;                                               // (OptionalParm, Parm)
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Caspian.ShouldSwapAltAndInhandInputs
+struct ATgPawn_Caspian_ShouldSwapAltAndInhandInputs_Params
+{
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
 // Function TgGame.TgPawn_Caspian.OnProjectileExploded
@@ -71579,6 +71925,12 @@ struct ATgPawn_Caspian_ValidateClientStacks_Params
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
 };
 
+// Function TgGame.TgPawn_Caspian.TrackAmmoConsumed
+struct ATgPawn_Caspian_TrackAmmoConsumed_Params
+{
+	int                                                nAmount;                                                  // (Parm)
+};
+
 // Function TgGame.TgPawn_Caspian.DeviceOnDamaged
 struct ATgPawn_Caspian_DeviceOnDamaged_Params
 {
@@ -71588,6 +71940,12 @@ struct ATgPawn_Caspian_DeviceOnDamaged_Params
 // Function TgGame.TgPawn_Caspian.UpdateStackCounts
 struct ATgPawn_Caspian_UpdateStackCounts_Params
 {
+};
+
+// Function TgGame.TgPawn_Caspian.OnStackExpired
+struct ATgPawn_Caspian_OnStackExpired_Params
+{
+	unsigned char                                      eSource;                                                  // (Parm)
 };
 
 // Function TgGame.TgPawn_Caspian.AddStackHistoryRecord
@@ -71631,6 +71989,78 @@ struct ATgPawn_Caspian_CountStacks_Internal_Params
 // Function TgGame.TgPawn_Caspian.ClientOnCurrentStacksUpdated
 struct ATgPawn_Caspian_ClientOnCurrentStacksUpdated_Params
 {
+};
+
+// Function TgGame.TgPawn_Caspian.GetSwordIsFiredSimulated
+struct ATgPawn_Caspian_GetSwordIsFiredSimulated_Params
+{
+	int                                                nNdx;                                                     // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Caspian.SetSwordPositionIndex
+struct ATgPawn_Caspian_SetSwordPositionIndex_Params
+{
+	int                                                nNdx;                                                     // (Parm)
+	int                                                nPosition;                                                // (Parm)
+};
+
+// Function TgGame.TgPawn_Caspian.SetSwordIsFired
+struct ATgPawn_Caspian_SetSwordIsFired_Params
+{
+	int                                                nNdx;                                                     // (Parm)
+	bool                                               bIsFired;                                                 // (Parm)
+};
+
+// Function TgGame.TgPawn_Caspian.SetSwordIsActive
+struct ATgPawn_Caspian_SetSwordIsActive_Params
+{
+	int                                                nNdx;                                                     // (Parm)
+	bool                                               bIsActive;                                                // (Parm)
+};
+
+// Function TgGame.TgPawn_Caspian.NumSwordsReadyToFire
+struct ATgPawn_Caspian_NumSwordsReadyToFire_Params
+{
+	bool                                               bAuthoritativeOnly;                                       // (OptionalParm, Parm)
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Caspian.GetSwordIsActive
+struct ATgPawn_Caspian_GetSwordIsActive_Params
+{
+	int                                                nNdx;                                                     // (Parm)
+	bool                                               byRep;                                                    // (OptionalParm, Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Caspian.GetSwordPositionIndex
+struct ATgPawn_Caspian_GetSwordPositionIndex_Params
+{
+	int                                                nNdx;                                                     // (Parm)
+	bool                                               byRep;                                                    // (OptionalParm, Parm)
+	int                                                ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Caspian.GetSwordIsFired
+struct ATgPawn_Caspian_GetSwordIsFired_Params
+{
+	int                                                nNdx;                                                     // (Parm)
+	bool                                               byRep;                                                    // (OptionalParm, Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Caspian.IsSimulatingSpeculativeSwordFired
+struct ATgPawn_Caspian_IsSimulatingSpeculativeSwordFired_Params
+{
+	int                                                Index;                                                    // (Parm)
+	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgPawn_Caspian.LocalOnSwordFired
+struct ATgPawn_Caspian_LocalOnSwordFired_Params
+{
+	int                                                nSwordIndex;                                              // (Parm)
 };
 
 // Function TgGame.TgDevice_FlagBall.ServerExitTargetingMode
@@ -73027,6 +73457,13 @@ struct ATgDevice_DredgeF_CanDeviceStartFiringNow_Params
 	TEnumAsByte<EDeviceFailType>                       failType;                                                 // (OptionalParm, Parm, OutParm)
 	bool                                               bIgnoreCachedValue;                                       // (OptionalParm, Parm)
 	bool                                               ReturnValue;                                              // (Parm, OutParm, ReturnParm)
+};
+
+// Function TgGame.TgDevice_DeepRoots.ApplyCustomFireToInitial
+struct ATgDevice_DeepRoots_ApplyCustomFireToInitial_Params
+{
+	class AActor*                                      InitialTarget;                                            // (Parm)
+	class UTgDeviceFire*                               FireMode;                                                 // (Parm)
 };
 
 // Function TgGame.TgDevice_DeepRoots.TriggerArc
@@ -76648,6 +77085,30 @@ struct ATgDevice_BombQueenTalent3_OnUnlinkDevice_Params
 
 // Function TgGame.TgDevice_BombQueenTalent3.OnLinkDevice
 struct ATgDevice_BombQueenTalent3_OnLinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_CaspianBonusProjectileTalent.OnUnlinkDevice
+struct ATgDevice_CaspianBonusProjectileTalent_OnUnlinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_CaspianBonusProjectileTalent.OnLinkDevice
+struct ATgDevice_CaspianBonusProjectileTalent_OnLinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_CaspianTalentTwo.OnUnlinkDevice
+struct ATgDevice_CaspianTalentTwo_OnUnlinkDevice_Params
+{
+	class ATgPawn*                                     TgP;                                                      // (Parm)
+};
+
+// Function TgGame.TgDevice_CaspianTalentTwo.OnLinkDevice
+struct ATgDevice_CaspianTalentTwo_OnLinkDevice_Params
 {
 	class ATgPawn*                                     TgP;                                                      // (Parm)
 };

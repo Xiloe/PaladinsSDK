@@ -1,6 +1,6 @@
 #pragma once
 
-// Paladins (3.05) SDK
+// Paladins (5.5) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -85,7 +85,7 @@ public:
 
 
 	struct FString GetActionString();
-	void SetDesiredRotation(const struct FRotator& TargetDesiredRotation, bool InLockDesiredRotation, bool InUnlockWhenReached, float InterpolationTime);
+	void STATIC_SetDesiredRotation(const struct FRotator& TargetDesiredRotation, bool InLockDesiredRotation, bool InUnlockWhenReached, float InterpolationTime);
 	void AILog_Internal(const struct FString& LogText, const struct FName& LogCategory, bool bForce);
 	void RecordDemoAILog(const struct FString& LogText);
 	void Destroyed();
@@ -200,8 +200,8 @@ public:
 	void ClientPlayMovie(const struct FString& MovieName, int InStartOfRenderingMovieFrame, int InEndOfRenderingMovieFrame, bool bRestrictPausing, bool bPlayOnceFromStream, bool bOnlyBackButtonSkipsMovie);
 	void KeepPlayingLoadingMovie();
 	void ShowLoadingMovie(bool bShowMovie, bool bPauseAfterHide, float PauseDuration, float KeepPlayingDuration, bool bOverridePreviousDelays);
-	void SetSoundMode(const struct FName& InSoundModeName);
-	void STATIC_DoForceFeedbackForScreenShake(class UCameraShake* ShakeData, float Scale);
+	void STATIC_SetSoundMode(const struct FName& InSoundModeName);
+	void DoForceFeedbackForScreenShake(class UCameraShake* ShakeData, float Scale);
 	void NotifyCrowdAgentInRadius(class AGameCrowdAgent* Agent);
 	void NotifyCrowdAgentRefresh();
 	void CrowdDebug(bool bEnabled);
@@ -227,7 +227,7 @@ public:
 
 
 	void STATIC_OnRequestComplete(class UHttpRequestInterface* OriginalRequest, class UHttpResponseInterface* Response, bool bDidSucceed);
-	void TestHttp(const struct FString& Verb, const struct FString& Payload, const struct FString& URL, bool bSendParallelRequest);
+	void STATIC_TestHttp(const struct FString& Verb, const struct FString& Payload, const struct FString& URL, bool bSendParallelRequest);
 	void EnableDebugCamera(bool bEnableDebugText);
 	void TeleportPawnToCamera(bool bToggleDebugCameraOff);
 	void ToggleDebugCamera(bool bDrawDebugText);
@@ -378,7 +378,7 @@ public:
 	void InitializeAgent(class AActor* SpawnLoc, class AGameCrowdAgent* AgentTemplate, class UGameCrowdGroup* NewGroup, float AgentWarmupTime, bool bWarmupPosition, bool bCheckWarmupVisibility, TArray<struct FCrowdSpawnerPlayerInfo>* PlayerInfo);
 	struct FVector GetAttemptedSpawnLocation(float Pct, const struct FVector& CurPos, float CurRadius, const struct FVector& DestPos, float DestRadius);
 	void SetLighting(bool bEnableLightEnvironment, const struct FLightingChannelContainer& AgentLightingChannel, bool bCastShadows);
-	void STATIC_DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos);
+	void DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos);
 	void Destroyed();
 	void ResetPooledAgent();
 	void KillAgent();
@@ -389,7 +389,7 @@ public:
 	bool PickBehaviorFrom(TArray<struct FBehaviorEntry> BehaviorList, const struct FVector& BestCameraLoc);
 	bool IsPanicked();
 	void FellOutOfWorld(class UClass* dmgType);
-	struct FVector STATIC_GetCollisionExtent();
+	struct FVector GetCollisionExtent();
 };
 
 
@@ -764,7 +764,7 @@ public:
 	void GetSpawnPosition(class USeqAct_GameCrowdSpawner* Spawner, struct FVector* SpawnPos, struct FRotator* SpawnRot);
 	float GetSpawnRadius();
 	bool AllowableDestinationFor(class AGameCrowdAgent* Agent);
-	bool AtCapacity(unsigned char CheckCnt);
+	bool STATIC_AtCapacity(unsigned char CheckCnt);
 	void IncrementCustomerCount(class AGameCrowdAgent* ArrivingAgent);
 	void DecrementCustomerCount(class AGameCrowdAgent* DepartingAgent);
 	void PickNewDestinationFor(class AGameCrowdAgent* Agent, bool bIgnoreRestrictions);
@@ -851,7 +851,7 @@ public:
 	void Tick(float DeltaTime);
 	bool ShouldDebugDestinations();
 	bool IsSpawningActive();
-	void STATIC_DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos);
+	void DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos);
 	void AgentDestroyed(class AGameCrowdAgent* Agent);
 	void FlushAllAgents();
 	void FlushAgents(const struct FCrowdSpawnInfoItem& Item);
@@ -1031,7 +1031,7 @@ public:
 	float BoxDistanceToPoint(const struct FVector& Start, const struct FBox& BBox);
 	bool IsBehindExplosion(class AActor* A);
 	bool DoFullDamageToActor(class AActor* Victim);
-	class UPhysicalMaterial* STATIC_GetPhysicalMaterial();
+	class UPhysicalMaterial* GetPhysicalMaterial();
 	void PreBeginPlay();
 };
 
@@ -1531,7 +1531,7 @@ public:
 
 	void Recycle();
 	bool STATIC_MustBeHiddenFromThisPoint(class UNavigationHandle* NavHandle, const struct FVector& InOutOfViewLocation);
-	void RecycleNative();
+	void STATIC_RecycleNative();
 };
 
 
@@ -2053,7 +2053,7 @@ public:
 
 	void ModifyPostProcessSettings(struct FPostProcessSettings* PP);
 	void Init();
-	void STATIC_DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos);
+	void DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos);
 	void UpdateCamera(class APawn* P, class AGamePlayerCamera* CameraActor, float DeltaTime, struct FTViewTarget* OutVT);
 	void ResetInterpolation();
 	void OnBecomeInActive(class UGameCameraBase* NewCamera);
@@ -2180,9 +2180,9 @@ public:
 	float AdjustFOVForViewport(float inHorizFOV, class APawn* CameraTargetPawn);
 	void ResetInterpolation();
 	void SetColorScale(const struct FVector& NewColorScale);
-	void STATIC_DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos);
+	void DisplayDebug(class AHUD* HUD, float* out_YL, float* out_YPos);
 	void UpdateCameraLensEffects(struct FTViewTarget* OutVT);
-	void UpdateViewTarget(float DeltaTime, struct FTViewTarget* OutVT);
+	void STATIC_UpdateViewTarget(float DeltaTime, struct FTViewTarget* OutVT);
 	bool ShouldConstrainAspectRatio();
 	class UGameCameraBase* FindBestCameraType(class AActor* CameraTarget);
 	void Reset();
@@ -2875,8 +2875,8 @@ public:
 	}
 
 
-	void RestartPlayer(class AController* NewPlayer);
-	void StartMatch();
+	void STATIC_RestartPlayer(class AController* NewPlayer);
+	void STATIC_StartMatch();
 	void PostLogin(class APlayerController* NewPlayer);
 };
 

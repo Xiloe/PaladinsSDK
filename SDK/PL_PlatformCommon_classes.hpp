@@ -1,6 +1,6 @@
 #pragma once
 
-// Paladins (3.05) SDK
+// Paladins (5.5) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -84,7 +84,7 @@ public:
 	bool SetFieldString(int nToken, const struct FString& StrValue);
 	bool SetFieldFloat(int nToken, float FloatValue);
 	bool SetFieldInt(int nToken, int IntValue);
-	bool SetFunction(int nFunction);
+	bool STATIC_SetFunction(int nFunction);
 };
 
 
@@ -539,7 +539,7 @@ public:
 	void ChallengeCreate(int nQueue, const struct FString& fsName, const struct FString& fsPassword);
 	void UpdateDatacenterPing();
 	void TestVideoPlayer();
-	void AddCheats();
+	void STATIC_AddCheats();
 	void ClientAddCheats();
 };
 
@@ -579,8 +579,8 @@ public:
 	void SetDirty();
 	void ReadMouseSettings();
 	void StoreMouseSettings();
-	struct FKeyBind STATIC_GetKeybindWithCurrentModifiers(struct FName* Key);
-	struct FString STATIC_GetBind(struct FName* Key, struct FKeyBind* ModifierKeyBind);
+	struct FKeyBind GetKeybindWithCurrentModifiers(struct FName* Key);
+	struct FString GetBind(struct FName* Key, struct FKeyBind* ModifierKeyBind);
 	struct FString KeybindToExtendedString(struct FKeyBind* Bind);
 	struct FKeyBind ExtendedStringToKeybind(const struct FString& Str, const struct FString& Cmd);
 	struct FKeyBind GetBindFromCommand(const struct FString& Cmd, bool bGamepad, int nAlternate);
@@ -671,7 +671,7 @@ public:
 
 
 	bool IsInSphere(float RewindTime, const struct FVector& LocationToCheck, float RadiusToCheck, struct FPComPositionHistoryData* PastDataUsed);
-	bool STATIC_IsOverlapping(float RewindTime, const struct FVector& LocationToCheck, float RadiusToCheck, struct FPComPositionHistoryData* PastDataUsed);
+	bool IsOverlapping(float RewindTime, const struct FVector& LocationToCheck, float RadiusToCheck, struct FPComPositionHistoryData* PastDataUsed);
 	struct FPComPositionHistoryData GetPastData(float RewindTime, bool bUseClientTimeStamps);
 	void RecordData();
 };
@@ -846,7 +846,7 @@ public:
 	void TestOnVideoError(class APComVideoPlayer* VideoPlayer, TEnumAsByte<EPComVideoPlayerError> ErrorCode);
 	void TestVideoPlayer(class AActor* SpawningActor, const struct FString& InURL);
 	void StopVideoSession();
-	void STATIC_Initialize();
+	void Initialize();
 	void STATIC_NativePostRenderFor(class APlayerController* PC, class UCanvas* Canvas, const struct FVector& CameraPosition, const struct FVector& CameraDir);
 	void OnVideoError(class APComVideoPlayer* VideoPlayer, TEnumAsByte<EPComVideoPlayerError> ErrorCode);
 	void OnVideoFinished();
@@ -923,7 +923,7 @@ public:
 
 
 	void UpdateReplicatedMusicEvent(const struct FName& EventName);
-	void UpdateMusicTrack(const struct FMusicTrackStruct& NewMusicTrack, float fDuration);
+	void STATIC_UpdateMusicTrack(const struct FMusicTrackStruct& NewMusicTrack, float fDuration);
 	void StopMusic();
 	void PlayMusicEvent(const struct FName& EventName);
 	void PlayDefaultMusic();

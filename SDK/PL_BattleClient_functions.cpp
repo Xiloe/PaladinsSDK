@@ -1,4 +1,4 @@
-// Paladins (3.05) SDK
+// Paladins (5.5) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -13,15 +13,16 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // Function BattleClient.BattleHUD.BattleHUDFunction
-// (Final, Latent, PreOperator, Net, Operator, Static, HasOptionalParms, Const)
+// (Defined, Iterator, PreOperator, Singular, Net, NetReliable, Exec, Native, Event, Operator, HasOptionalParms, Const)
 
-void ABattleHUD::STATIC_BattleHUDFunction()
+void ABattleHUD::BattleHUDFunction()
 {
 	static auto fn = UObject::FindObject<UFunction>("Function BattleClient.BattleHUD.BattleHUDFunction");
 
 	ABattleHUD_BattleHUDFunction_Params params;
 
 	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
 
 	UObject::ProcessEvent(fn, &params);
 

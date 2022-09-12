@@ -1,17 +1,17 @@
 #pragma once
 
-// Paladins (3.05) SDK
+// Paladins (5.5) SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
 #endif
 
 #include "PL_Basic.hpp"
-#include "PL_PlatformCommon_classes.hpp"
-#include "PL_GFxUI_classes.hpp"
-#include "PL_Core_classes.hpp"
-#include "PL_Engine_classes.hpp"
 #include "PL_TgGame_classes.hpp"
+#include "PL_PlatformCommon_classes.hpp"
+#include "PL_Core_classes.hpp"
+#include "PL_GFxUI_classes.hpp"
+#include "PL_Engine_classes.hpp"
 
 namespace SDK
 {
@@ -340,12 +340,15 @@ namespace SDK
 #define CONST_UICUSTOM_MODES                                     5
 #define CONST_THICC_SHIELD_REGEN                                 16379
 #define CONST_TEAM_BOOSTER_ID                                    23849
+#define CONST_UICOMPONENT_QUESTROW_GOALS                         7
+#define CONST_UICOMPONENT_QUESTROW_GOAL_SPACING                  15
 #define CONST_ENGAGEMENT_STORE_MAX_BOOSTER_ITEMS                 3
 #define CONST_REI_TARGETER_ANIMATION_FRAMES                      3
 #define CONST_FSBP_LOW_LEVEL_INTERVAL                            30
 #define CONST_FSBP_HIGH_LEVEL_INTERVAL                           50
 #define CONST_FSBP_TOTAL_PREVIEW_ITEMS                           5
 #define CONST_UIHUDATLAS_SHOTS                                   3
+#define CONST_NUM_ULT_SWORDS_CASPIAN                             5
 #define CONST_NUM_PIPS_SAATI                                     8
 #define CONST_SEVEN_INHAND_FIRE_MODES                            3
 #define CONST_VAMPIRE_Q_MODES                                    2
